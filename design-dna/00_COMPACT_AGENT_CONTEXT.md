@@ -11,6 +11,7 @@ Use this before building or reviewing any frontend.
 5. Use screenshots as evidence for the current UI, not templates.
 6. Capture 390, 768, and 1440 px when the UI can run.
 7. Run `evaluation/ui-scorecard.md` before finishing.
+8. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
 
 ## Design Intent Record
 
