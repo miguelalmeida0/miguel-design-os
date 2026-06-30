@@ -1,59 +1,66 @@
 # Workflow: Generate New App
 
-Use this workflow when building a new frontend or application experience.
+Use when building a new app, screen, or frontend feature.
 
-## Read First
+## Mandatory Start
 
-1. `AGENTS.md`
-2. `project-index.md`
-3. `manual-preferences/00_global_frontend_principles.md`
-4. `design-dna/new-app-generation-rules.md`
-5. `design-dna/miguel-style-principles.md`
-6. Relevant archetype, layout, component, copy, and responsive rules
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read relevant `design-dna/` files before touching UI code.
+3. Inspect the current project type, framework, routes, components, styling system, and tokens.
+4. Define a project-specific visual identity before choosing palette or layout.
+5. Name any golden project used as evidence and what will not be copied.
+6. Plan screenshots as evidence for the new work, not templates from old apps.
+7. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
-## Product Framing
+## Design Intent Record
 
-Before coding, identify:
+Write this before implementation:
 
-- user
-- job to be done
-- primary object
-- primary action
-- domain seriousness
-- screen archetype
-- layout recipe
-- visual asset need
-- data/auth constraints
+```md
+Project type:
+Primary user:
+Primary object:
+Primary action:
+Archetype:
+Layout recipe:
+Visual identity words:
+Density:
+Token direction:
+Component contracts:
+States:
+Responsive risks:
+Screenshot targets:
+Score target:
+```
 
-Ask only when a missing answer would materially change the product.
+## Implementation Order
 
-## Build
+1. Reuse existing framework and local component patterns.
+2. Add or map semantic tokens first.
+3. Build the primary object and primary action.
+4. Add secondary context only after the main path works.
+5. Implement states: empty, loading, error, disabled, selected, focus-visible.
+6. Make clickable/passive roles distinct in code and visuals.
+7. Add responsive behavior for 390, 768, and 1440 px.
+8. Add product-specific copy and assets only when they identify the subject, show the product/object, explain state, or help inspection.
 
-1. Follow the existing framework and code patterns if working in an existing repo.
-2. Define semantic tokens before component styling.
-3. Build the first screen as the actual usable experience.
-4. Create component states, not just the ideal state.
-5. Keep one primary action per zone.
-6. Make passive metadata visually distinct from controls.
-7. Add responsive behavior intentionally for mobile, tablet, and desktop.
+## Verification
 
-## Verify
-
-1. Run lint/build/tests when available.
-2. Start the app.
-3. Capture screenshots at 390, 768, and 1440 px.
-4. Inspect screenshots for hierarchy, text clipping, overlap, broken sticky UI, and stretched desktop layouts.
+1. Run available lint/build/tests.
+2. Start the app if possible.
+3. Capture 390, 768, and 1440 px screenshots.
+4. Inspect for Design OS blockers.
 5. Score with `evaluation/ui-scorecard.md`.
-6. Fix the highest-impact issues and recapture changed screens.
+6. Fix blockers and recapture changed screens.
 
 ## Delivery
 
 Report:
 
-- what was built
-- where the key files are
-- what was verified
-- any known caveats
+- design intent record summary
+- key files changed
+- screenshot paths
+- scorecard result
+- blockers or caveats
 
-Do not claim visual quality without screenshot evidence when the app can run.
-
+Do not claim the UI is Miguel-aligned without screenshot evidence and a score.

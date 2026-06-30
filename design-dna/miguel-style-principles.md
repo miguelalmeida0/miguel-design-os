@@ -1,172 +1,176 @@
 # Miguel Style Principles
 
-This is the reusable design DNA extracted from the five golden source projects. It is not a single visual skin. It is a way of deciding what a new interface should become.
+This file defines how future agents should reason before they design or code. It is not a visual theme.
 
-## Evidence Hierarchy
+## Required Design Intent Record
 
-Use these sources in this order:
+Before building or reviewing a UI, write this record in your notes or final report:
 
-1. `manual-preferences/00_global_frontend_principles.md`
-2. The five source projects under `source-projects/`
-3. The extracted project reports under `extracted/`
-4. The case study under `case-studies/in-the-loop-feedback/`
+```md
+Project type:
+Primary user:
+Primary object on the screen:
+Primary action:
+Screen archetype:
+Project-specific visual identity:
+Density level:
+Token direction:
+Data/auth truth constraints:
+Responsive risks:
+Screenshot plan:
+Scorecard target:
+```
 
-The case study is feedback from one app. Treat it as useful signal about taste and failure modes, not as a universal product template.
+If any field is unknown and would change the UI, inspect the current project or ask one short question.
 
-## Core Principles
+## Evidence Order
 
-### 1. Every App Needs Its Own Identity
+Use sources in this order:
 
-Do not apply one house palette or one favorite layout to every project. Agent Boss, Equity, Ghostwritter, Ontime, and Portfolio work because each one speaks in the voice of its product:
+1. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
+2. `manual-preferences/00_global_frontend_principles.md`
+3. `design-dna/*.md`
+4. `extracted/{project}/*.md`
+5. `captures/{project}/.../*.png`
+6. `case-studies/in-the-loop-feedback/`
 
-- Agent Boss: dense, operational, high-trust command environment.
-- Equity: market terminal, data-first, sober and high contrast.
-- Ghostwritter: expressive writing tool, cinematic but functional.
-- Ontime: social planning app, warm and human.
-- Portfolio: editorial personal presence, spacious and authored.
+The case study is one app's feedback. Use it for failure modes only. Do not globalize its palette, social tone, avatar patterns, invite flow, bottom navigation, or consumer warmth.
 
-Before choosing colors, spacing, components, or motion, name the product's domain, emotional register, and primary object.
+## Golden Projects As Evidence
 
-### 2. The Main Object Must Be Obvious
+These projects prove range. They are not templates.
 
-Each screen needs one dominant object of attention:
+- Agent Boss proves dense enterprise control can feel trustworthy when evidence, state, and action hierarchy are explicit.
+- Equity proves a data product can be dark, compact, and numerical without becoming fake-dashboard theater.
+- Ghostwritter proves an AI writing product can be expressive while keeping input, output, and export actions visible.
+- Ontime proves a social planning product can be warm and fast without heavy form energy. This is evidence for consumer coordination, not a universal tone.
+- Portfolio proves an editorial site can lead with identity, media, and authored narrative instead of generic portfolio grids.
 
-- a worker, route, control state, or trust gate
-- a stock, watchlist, timeline, or market feed
-- a draft, voice, rewrite, or playback
-- a plan, meetup, friend, or invitation
-- a person, story, case study, or body of work
+## Non-Negotiable Rules
 
-Layout, copy, and controls should all orbit that object. If the screen feels like a collection of unrelated cards, the main object is not clear enough.
+### 1. Define Identity Before Palette
 
-### 3. One Primary Action Per Zone
+Action for agents:
 
-Miguel-style interfaces avoid CTA soup. A screen can contain many actions, but each visual zone should have a clear hierarchy:
+- Choose 3 identity words tied to the product domain, such as `clinical, fast, private` or `editorial, tactile, selective`.
+- Define semantic token roles before assigning colors.
+- State which golden project is closest in product type, then state what you will not copy from it.
 
-- one primary action
-- one or two secondary actions
-- passive metadata that never competes with real controls
+Pass condition: the UI could change palette and still preserve hierarchy, component roles, and product character.
 
-Button styling should make action rank obvious before the user reads the labels.
+Fail condition: the app inherits navy, warm social colors, editorial portrait treatment, terminal darkness, or cinematic gradients because a source project used them.
 
-### 4. Clickable And Passive Must Look Different
+### 2. Name The Primary Object
 
-A clickable element needs visible affordance and state. Passive labels, status chips, metrics, and metadata should not look tappable.
+Action for agents:
 
-Good signals include:
+- Put the primary object in the first viewport.
+- Give it the largest or clearest spatial claim.
+- Attach the primary action to that object, not to a generic page header.
 
-- hover/focus/pressed states for actions
-- cursor and keyboard behavior that matches visual promise
-- clear disabled states
-- passive tags with calmer contrast and no hover lift
+Examples of primary objects:
 
-Do not use the same pill style for filters, status labels, navigation tabs, and primary actions.
+- enterprise: worker, route, approval, incident, control state
+- finance: stock, watchlist, market event, research note
+- writing: draft, rewrite, voice, comparison
+- planning: plan, meetup, person, invitation
+- portfolio: person, story, project, proof
 
-### 5. Composition Beats Container Soup
+Fail condition: the first viewport is mostly stat cards, marketing copy, or unrelated tiles.
 
-The golden projects use sections, columns, data rails, bands, canvases, and anchored objects. They do not rely on endless nested rounded cards.
+### 3. Use One Primary Action Per Zone
 
-Use cards for repeated objects, tools, modals, and framed items. Avoid using cards as the default wrapper for every thought.
+Action for agents:
 
-### 6. Progressive Disclosure Is A Design Primitive
+- For every major zone, label actions as `primary`, `secondary`, `tertiary`, or `passive`.
+- Render only one `primary` action per zone.
+- Demote extra actions to icon buttons, menus, links, or quiet secondary buttons.
 
-Show enough to make the next decision easy. Hide detail until it is needed.
+Fail condition: two or more same-weight filled buttons compete in one card, toolbar, hero, or modal.
 
-Repeated patterns:
+### 4. Separate Clickable From Passive
 
-- drawers and inspectors for dense enterprise detail
-- expandable evidence and route sections
-- result playback after a generation action
-- accordions for settings or safety detail
-- detail panes beside lists on desktop
+Action for agents:
 
-Progressive disclosure should reduce cognitive load, not bury the primary action.
+- Audit every pill, chip, row, tag, icon, and metric.
+- Assign it one role: action, navigation, selection, filter, input, status, metadata, or decoration.
+- Give clickable roles hover, focus-visible, active, disabled, and selected states where relevant.
+- Remove hover/cursor treatment from passive roles.
 
-### 7. Data And Claims Must Be Honest
+Fail condition: status tags look like filters, filters look like buttons, or rows look selectable when they are static.
 
-When an interface shows metrics, states, safety claims, financial signals, or AI output, it must expose enough context to be trusted.
+### 5. Compose Screens, Do Not Stack Containers
 
-Use:
+Action for agents:
 
-- timestamps
-- sources
-- confidence or status where relevant
-- visible empty, loading, and error states
-- copy that avoids overclaiming
+- Use cards only for repeated objects, framed tools, modals, or selectable items.
+- Use section bands, grids, rails, split panes, inspectors, or direct object composition for page structure.
+- Count nested bordered/rounded containers; if a primary region has more than two nested frames, simplify.
 
-Do not invent live data, fake authority, fake validation, or vague proof language.
+Fail condition: the screen is a card containing cards containing pills containing buttons.
 
-### 8. Tokens Should Be Semantic, Not Decorative
+### 6. Use Progressive Disclosure With A Named Trigger
 
-Good tokens describe roles:
+Action for agents:
 
-- surface, panel, field, overlay
-- text primary, text muted, text inverse
-- action primary, action secondary, danger, success, warning
-- border, ring, shadow, focus
+- Every drawer, accordion, details panel, or modal must answer: what object opened it and what decision does it support?
+- Keep the triggering object visible or make the return path obvious.
+- Do not hide the primary action inside disclosure.
 
-Project palettes should differ, but token roles should stay understandable.
+Good disclosure targets: evidence trail, source detail, generated variants, stock context, route inspector, safety explanation.
 
-### 9. Visual Assets Should Carry Meaning
+### 7. Make Data And Claims Auditable
 
-Use real or generated bitmap imagery when the product benefits from inspection, emotion, place, identity, or texture. Avoid generic atmospheric visuals.
+Action for agents:
 
-In the source projects:
+- Any metric, status, proof claim, AI output, or live indicator needs source, recency, state, or fallback.
+- If data is mocked, label it in code/docs or use neutral sample copy.
+- Provide empty, loading, and error states for data surfaces.
 
-- Portfolio uses portrait and editorial media.
-- Ghostwritter uses visual writing metaphors.
-- Ontime uses human/social imagery and avatars carefully.
-- Enterprise/data tools rely more on structure, indicators, and state than decoration.
+Fail condition: "validated", "live", "secure", "optimized", or confidence scores appear without visible basis.
 
-### 10. Responsiveness Is Designed, Not Stretched
+### 8. Build Semantic Tokens
 
-Mobile, tablet, and desktop should have intentionally different compositions:
+Minimum token set:
 
-- mobile: priority stack, thumb-safe actions, no horizontal surprise
-- tablet: two-column opportunities, preserved reading rhythm
-- desktop: expanded context, not stretched mobile controls
+```txt
+surface/page
+surface/panel
+surface/raised
+text/primary
+text/secondary
+text/muted
+border/subtle
+border/strong
+action/primary
+action/secondary
+state/success
+state/warning
+state/danger
+focus/ring
+shadow/raised
+```
 
-Use screenshots at 390, 768, and 1440 px before claiming the design works.
+Add product-specific tokens only after the role tokens exist.
 
-### 11. Copy Should Sound Like A Product, Not A Demo
+Fail condition: component CSS hard-codes a source-project palette as the design system.
 
-Copy should be concise, concrete, and context-aware. It should not explain the obvious or advertise the interface to itself.
+### 9. Use Screenshots As Evidence, Not Templates
 
-Good copy:
+Action for agents:
 
-- names the action
-- gives useful state
-- removes uncertainty
-- matches domain seriousness
+- Use captures to understand hierarchy, density, and interaction patterns.
+- Do not recreate screenshots by matching colors, spacing, or layout literally.
+- For any new UI, capture its own 390, 768, and 1440 px screenshots before finishing.
 
-Bad copy:
+Fail condition: a new finance app looks like Equity only because Equity is dark, or a planning app looks like Ontime only because Ontime is warm.
 
-- "AI-powered magic"
-- "seamlessly transform your workflow"
-- fake urgency
-- repeated helper text under every control
+### 10. Run The Scorecard Before Done
 
-### 12. Motion Should Clarify State
+Action for agents:
 
-Motion is useful when it shows:
+- Score with `evaluation/ui-scorecard.md`.
+- Fix blocker criteria before calling work complete.
+- Include score, screenshots used, and remaining gaps in the final report.
 
-- generated output arriving
-- a drawer opening
-- active filters changing
-- live status updating
-- focus shifting
-
-Motion should not distract from reading, data comparison, or task completion.
-
-## Miguel Test
-
-Before finishing any new app or UI revision, answer:
-
-1. What is this product's specific identity?
-2. What is the main object on the screen?
-3. What is the one primary action in the current zone?
-4. Which elements are clickable, and can a user tell instantly?
-5. Does the desktop layout use desktop space, or is it stretched mobile?
-6. Does the copy help a real person act?
-7. Would the interface still make sense if the palette changed?
-
+Fail condition: final answer claims "high-quality", "responsive", or "Miguel-style" without screenshot evidence and scorecard result.

@@ -1,170 +1,148 @@
 # Component Recipes
 
-Use these recipes as starting points, then adapt tone, density, and styling to the product.
+Build components as contracts. A component is not complete until role, states, tokens, and failure behavior are defined.
 
-## Button System
-
-Purpose: make action hierarchy instantly legible.
+## Button
 
 Required variants:
 
-- Primary: one per zone, strongest fill or contrast.
-- Secondary: visible but quieter, often outline or tinted surface.
-- Tertiary: text or ghost style for lower-risk actions.
-- Icon: compact tool actions, with tooltip when meaning is not obvious.
-- Danger: destructive or high-risk, never reused for marketing emphasis.
+- `primary`: one per zone; strongest action treatment.
+- `secondary`: same intent area, lower emphasis.
+- `tertiary`: text/ghost for optional actions.
+- `icon`: compact tool action; tooltip or accessible label required.
+- `danger`: destructive; never used as visual spice.
 
-Rules:
+Required states:
 
-- Buttons must have hover, focus-visible, active, disabled, and loading states.
-- Labels should be verbs or verb phrases.
-- Do not use pill status styling for buttons.
-- On desktop, avoid full-width buttons unless the surrounding layout demands it.
+```txt
+default, hover, focus-visible, active, disabled, loading
+```
 
-## Passive Tag
+Implementation checks:
 
-Purpose: label metadata, status, category, or source.
+- Loading state preserves width/height.
+- Disabled button remains readable and explains why when blocked by app state.
+- Label is a verb phrase: `Run check`, `Copy rewrite`, `Create plan`.
+- No button shares the passive tag style.
 
-Rules:
+## Status Tag
 
-- No hover lift.
-- No pointer cursor unless it filters or navigates.
-- Use smaller type and calmer contrast than buttons.
-- Pair status color with text, icon, or semantic placement.
+Use for read-only state such as `Delayed`, `Draft saved`, `3 conflicts`, `Mock data`.
 
-## Filter Chip Or Segmented Control
+Implementation checks:
 
-Purpose: let users change a view.
+- No pointer cursor.
+- No hover transform.
+- No `onClick`.
+- Color is paired with text or icon, not color alone.
+- Text stays readable at 390 px.
 
-Rules:
+## Filter Chip
 
-- Must show selected, hover, focus, and disabled states.
-- Use segmented controls for mutually exclusive options.
-- Use filter chips for additive filters.
-- Keep labels short and scannable.
+Use only when the user changes visible results.
+
+Implementation checks:
+
+- Selected state persists after click.
+- Hover/focus styles exist.
+- `aria-pressed` or equivalent state is used when appropriate.
+- It does not look like a status tag.
+
+## Segmented Control
+
+Use for mutually exclusive modes, views, or time ranges.
+
+Implementation checks:
+
+- Exactly one option is selected unless the product supports "none".
+- Keyboard navigation works.
+- Label width does not shift when selected.
+- At 390 px, options either fit or become a scroll/stack pattern.
 
 ## Page Shell
 
-Purpose: establish app identity and navigation behavior.
+Use for app chrome, navigation, and persistent context.
 
-Common ingredients:
+Implementation checks:
 
-- persistent app/header region
-- contextual nav or breadcrumbs
-- main content with clear max-width or grid
-- responsive safe-area padding
-- status or account controls where relevant
-
-Rules:
-
-- Do not wrap the whole page in a decorative card.
-- Let the shell match product density: enterprise can be denser than editorial pages.
+- Shell exposes product identity without becoming the main object.
+- Main content is not wrapped in a decorative page card.
+- Active route is visible.
+- Sticky regions reserve space and do not cover content.
+- Desktop and mobile navigation are explicitly designed, not left to browser wrapping.
 
 ## Hero Object
 
-Purpose: show the screen's main object.
+Use for the first-viewport object that explains the screen.
+
+Implementation checks:
+
+- Contains the primary object name/state.
+- Contains or directly points to the primary action.
+- Does not rely on a decorative headline alone.
+- On mobile, appears before secondary panels.
 
 Examples:
 
-- portfolio portrait and name
-- current draft and rewrite controls
-- current stock and market signals
-- current meetup or plan
-- current workforce/control state
-
-Rules:
-
-- The hero object should be inspectable, not just decorative.
-- Support it with one primary action and concise context.
-- On mobile, preserve the object before secondary content.
+- `StockHeader`: symbol, price, change, recency, add-to-watchlist.
+- `RewriteWorkspace`: draft input, voice controls, generate action, output preview.
+- `PlanHeader`: event/time/people, confirm or invite action.
 
 ## Data Row
 
-Purpose: support scanning, comparison, and selection.
+Use for lists, tables, feeds, logs, and comparison surfaces.
 
-Required anatomy:
+Implementation checks:
 
-- primary label
-- secondary metadata
-- key metric or state
-- optional source/time
-- optional action affordance
-
-Rules:
-
-- Align numbers consistently.
-- Use tabular numerals where available.
-- Make selection and row actions visually distinct.
-- Avoid turning every row into a heavy card on desktop.
+- Primary label and key metric are aligned consistently.
+- Numbers use tabular numerals where available.
+- Row click behavior is explicit; static rows do not hover like links.
+- Source/time/status is present when trust depends on freshness.
+- Row actions are visually separate from row selection.
 
 ## Card Or Tile
 
-Purpose: frame repeated objects or compact tools.
+Use only when it frames one repeated object or one compact tool.
 
-Rules:
+Implementation checks:
 
 - One card equals one object or decision.
-- Avoid cards inside cards.
-- Give the most important card stronger hierarchy.
-- Use cards sparingly on editorial and hero screens.
+- No card inside a card unless the inner card is a distinct repeated object.
+- Primary card has stronger position, scale, or contrast than supporting cards.
+- Desktop data rows do not become bulky cards unless comparison is no longer the task.
 
 ## Drawer Or Inspector
 
-Purpose: reveal detail without losing context.
+Use for detail that supports a selected object without replacing the whole screen.
 
-Use for:
+Implementation checks:
 
-- evidence trails
-- route details
-- settings detail
-- stock/company context
-- generated output history
-- safety explanation
+- Triggering object remains visible or return path is obvious.
+- Close control is visible and keyboard reachable.
+- Drawer has a title matching the selected object.
+- Source list keeps selection state.
+- Mobile behavior is a route, full-screen drawer, or bottom sheet with safe-area padding.
 
-Rules:
+## Composer And Result
 
-- Keep the triggering object visible when possible.
-- Include a clear close affordance.
-- Preserve scroll position in the source list.
+Use for writing, AI generation, editing, upload, or transformation flows.
 
-## Composer And Result Pair
+Implementation checks:
 
-Purpose: handle input-to-output workflows, especially AI or creative tools.
+- Input and output can be viewed together on desktop.
+- Original input remains recoverable after output appears.
+- Primary generation action has loading and error states.
+- Output has copy/export/save actions.
+- Variants/history are secondary to the current result.
 
-Anatomy:
+## Empty, Loading, Error
 
-- input composer
-- tone/mode controls
-- primary generation action
-- output preview
-- playback/history or variants
-- copy/export action
+Every data or async component needs these states.
 
-Rules:
+Implementation checks:
 
-- The result should feel like a first-class object, not a toast.
-- Explain failures inline.
-- Do not hide the original input once output appears.
-
-## Bottom Navigation
-
-Purpose: mobile-first navigation for apps with repeated daily use.
-
-Rules:
-
-- Use only when the product benefits from thumb navigation.
-- Keep 3 to 5 destinations.
-- Reserve safe-area padding.
-- Do not combine with a competing sticky CTA unless spacing is proven in screenshots.
-
-## Empty, Loading, And Error States
-
-Purpose: maintain trust when data is unavailable or work is in progress.
-
-Rules:
-
-- Empty states should offer one next action.
-- Loading states should preserve layout where possible.
-- Error states should say what happened and what the user can do.
-- Do not use cheerful filler copy for serious failures.
+- Empty state gives one next action.
+- Loading state preserves layout dimensions.
+- Error state says what failed and how to recover.
+- Serious products use neutral error copy, not cheerful filler.
 

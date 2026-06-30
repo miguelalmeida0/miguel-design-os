@@ -1,117 +1,115 @@
 # Copy Rules
 
-Miguel-style copy is human, specific, and useful. It does not advertise the interface to itself.
+Copy must tell the user what the product will do, what state it is in, or what changed. Delete copy that does none of those.
 
-## Voice
+## Product-Specific Voice
 
-The voice changes by product:
+Choose voice from project type:
 
-- enterprise control: precise, calm, accountable
-- finance/research: terse, sourced, numerate
-- writing tools: expressive but still actionable
-- social planning: warm, plain, low-friction
-- portfolio/editorial: authored, confident, selective
+- enterprise control: exact, accountable, consequence-aware
+- finance/research: terse, sourced, numerical
+- AI/writing: outcome-focused, not magical
+- social planning: plain, warm only when people coordination is real
+- editorial/portfolio: authored, selective, not generic
 
-Do not apply the same tone everywhere.
+Do not apply social warmth, AI excitement, or editorial flourish across all apps.
 
 ## Labels
 
-Use labels that name the action or object:
+Buttons use verbs:
 
-- "Run authority check"
-- "Copy rewrite"
-- "Create plan"
-- "Add to watchlist"
-- "View case study"
+- `Run authority check`
+- `Copy rewrite`
+- `Create plan`
+- `Add to watchlist`
+- `Save preference`
 
-Avoid vague labels:
+Links name destinations:
 
-- "Submit"
-- "Continue"
-- "Get started"
-- "Learn more" for core actions
-- "AI magic"
-
-## Helper Copy
-
-Helper copy should answer one of these:
-
-- What will happen?
-- What does this state mean?
-- Why is this disabled?
-- What should I do next?
-- What changed?
-
-Remove helper copy that merely restates the label.
-
-## Status Copy
-
-Status copy must be concrete:
-
-- "Synced 2 min ago"
-- "3 conflicts need review"
-- "Market data delayed"
-- "Invite sent"
-- "Draft saved"
-
-Avoid vague status:
-
-- "Ready"
-- "Live" without source or scope
-- "Optimized"
-- "Powered"
-- "Validated" without evidence
-
-## AI Copy
-
-When an app uses AI:
-
-- name the user-visible outcome
-- show input and output states
-- explain uncertainty where needed
-- provide undo/copy/export controls
+- `View case study`
+- `Open report`
+- `Back to settings`
 
 Avoid:
 
-- "intelligent"
-- "magic"
-- "revolutionary"
-- "seamless"
-- "supercharged"
+- `Submit`
+- `Continue` when destination is unclear
+- `Get started` for a specific action
+- `Learn more` for a core workflow
+- `AI-powered`, `magic`, `seamless`, `supercharged`
 
-## Error Copy
+## Helper Copy
 
-Good error copy:
+Keep helper copy only if it answers one:
 
-- says what happened
-- keeps blame out of the sentence
-- offers the next action
-- preserves user input when possible
+- What happens after this action?
+- Why is this control disabled?
+- What does this status mean?
+- What should the user do next?
+- What changed after the last action?
+
+Delete helper copy that restates the label.
+
+## Status Copy
+
+Good:
+
+- `Synced 2 min ago`
+- `Market data delayed`
+- `Draft saved`
+- `3 conflicts need review`
+- `Mock data`
+
+Bad:
+
+- `Ready` without saying ready for what
+- `Live` without source/scope
+- `Validated` without evidence
+- `Optimized`
+- `Powered by AI`
+
+## Empty, Loading, Error
+
+Empty state formula:
+
+```txt
+No {object} yet. {One next action}.
+```
 
 Examples:
 
-- "The rewrite could not be generated. Your draft is still here; try again."
-- "Market data is unavailable right now. Last successful update: 09:42."
-- "This setting cannot be changed while a check is running."
+- `No watchlists yet. Create one to compare stocks you follow.`
+- `No rewrites saved. Generate a version and it will appear here.`
 
-## Empty State Copy
+Error state formula:
 
-Good empty states include one useful next action.
+```txt
+{What failed}. {What happened to user data}. {Next action}.
+```
 
 Examples:
 
-- "No watchlists yet. Create one to compare stocks you follow."
-- "No rewrites saved. Generate a version and it will appear here."
-- "No active plans. Start with a time, place, or person."
+- `The rewrite could not be generated. Your draft is still here. Try again.`
+- `Market data is unavailable. Last successful update: 09:42.`
 
-## Proofreading Checklist
+Loading state formula:
 
-Before shipping:
+```txt
+{Verb-ing} {object}...
+```
 
-1. Remove generic SaaS phrases.
-2. Replace vague CTAs with specific verbs.
-3. Cut repeated helper text.
-4. Match tone to product seriousness.
-5. Ensure every claim can be supported by UI state or data.
-6. Read the screen aloud. If it sounds like a template, rewrite it.
+Examples:
 
+- `Generating rewrite...`
+- `Checking authority...`
+- `Loading watchlist...`
+
+## Final Copy Audit
+
+Before finishing:
+
+1. Replace vague CTAs with verbs.
+2. Remove helper copy under obvious controls.
+3. Remove unsupported claims.
+4. Label sample/mock data.
+5. Confirm tone matches the current project type, not a source project.

@@ -1,117 +1,74 @@
 # New App Generation Rules
 
-Future agents should read this before building any new frontend in this repo.
+Use this file before coding a new app, feature, or screen.
 
-## Required Read Order
+## Mandatory Start
 
-1. `AGENTS.md`
-2. `project-index.md`
-3. `manual-preferences/00_global_frontend_principles.md`
-4. `design-dna/miguel-style-principles.md`
-5. Relevant files in `design-dna/`
-6. Relevant source project reports in `extracted/`
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read relevant files in `design-dna/`.
+3. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
+4. Define a project-specific visual identity.
+5. State which source project is relevant evidence and what will not be copied.
+6. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
+7. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
-Read the case study only when the task resembles the original in-the-loop product or when looking for known failure modes.
+## Design Intent Record
 
-## Before Building
+Write this before implementation:
 
-Write down:
+```md
+Project type:
+Primary user:
+Primary object:
+Primary action:
+Archetype:
+Layout recipe:
+Visual identity words:
+Density:
+Token direction:
+Components needed:
+States needed:
+Responsive risks:
+Screenshots to capture:
+Target score:
+```
 
-- product domain
-- target user
-- primary object
-- primary action
-- screen archetype
-- tone
-- density level
-- data truth requirements
-- responsive risks
+## Build Order
 
-If these cannot be inferred, ask a short clarifying question.
+1. Implement or update semantic tokens.
+2. Build the page shell/navigation behavior.
+3. Build the primary object and its primary action.
+4. Add secondary context only after the primary object works.
+5. Add component states: empty, loading, error, disabled, selected, focus-visible.
+6. Add responsive behavior for 390, 768, and 1440 px.
+7. Add copy that names actions, states, and consequences.
+8. Add visual assets only when they identify the subject, show the product/object, explain state, or help the user inspect something.
 
-## Choose Identity Before Palette
+## Visual Identity Rules
 
-Pick a visual identity from the product brief, not from a favorite source project.
+Do:
 
-Decide:
+- derive palette, type scale, density, radius, shadows, and motion from the current product
+- use semantic tokens
+- write down why the identity fits
 
-- should it feel operational, editorial, social, creative, analytical, or something else?
-- should density be high, medium, or low?
-- should imagery be central, supporting, or absent?
-- should motion be expressive, restrained, or mostly functional?
+Do not:
 
-Then define semantic tokens.
+- reuse a source project's palette
+- copy a screenshot layout literally
+- use In The Loop warmth unless the product is a social coordination tool
+- use generic AI/SaaS gradients or dashboard cards as default
 
-## Build The Actual Experience
-
-Do not make a marketing landing page when the user asks for an app, tool, game, or workflow. The first screen should be usable.
-
-Exceptions:
-
-- portfolio/editorial sites
-- brand/product pages explicitly requested
-- public marketing sites explicitly requested
-
-## Component Requirements
-
-Every app needs:
-
-- button hierarchy
-- clickable/passive distinction
-- loading states
-- empty states
-- error states
-- focus-visible states
-- responsive navigation behavior
-- copy that matches domain
-
-Add abstractions only when they reduce real duplication or match the framework's existing pattern.
-
-## Layout Requirements
-
-Choose a layout recipe:
-
-- focused hero interaction
-- dense calm workspace
-- data terminal
-- composer studio
-- editorial brand page
-- social plan flow
-- detail with inspector
-- auth gate
-
-Then adapt it to the product.
-
-## Visual Asset Requirements
-
-Use visual assets when they help the user inspect, feel, or understand the subject. Avoid generic atmospheric visuals.
-
-For frontend builds:
-
-- product/place/person/object pages need meaningful first-viewport imagery or object signal
-- enterprise tools can use structure and state instead of decorative imagery
-- games and interactive tools need real visual assets or rich canvas/3D scenes
-
-## Verification Requirements
+## Verification Gate
 
 Before final delivery:
 
-1. Run the app if possible.
-2. Capture screenshots at 390, 768, and 1440 px.
-3. Inspect screenshots for overlap, clipping, blank areas, and broken hierarchy.
-4. Score the UI with `evaluation/ui-scorecard.md`.
-5. Fix high-impact issues and recapture when changed.
+1. Run available lint/build/tests.
+2. Start the app if possible.
+3. Capture 390, 768, and 1440 px screenshots.
+4. Inspect screenshots for blockers in `responsive-rules.md` and `anti-patterns.md`.
+5. Score with `evaluation/ui-scorecard.md`.
+6. Fix blockers and recapture changed screens.
+7. Report score, screenshots, and known gaps.
 
-If the app cannot run, document why and use the best available static or code-level evidence.
-
-## Do Not
-
-- copy one golden app literally
-- force one color palette
-- default to generic dashboard cards
-- make passive tags look clickable
-- hide the main action
-- overexplain the UI
-- ship without responsive proof when running is possible
-- invent live data, auth state, or claims
-
+If the app cannot run, document the command, error, and best alternative evidence.

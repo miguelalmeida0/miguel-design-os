@@ -1,75 +1,77 @@
 # Workflow: Review UI Like Miguel
 
-Use this workflow for UI critique, QA, or design review.
+Use for UI critique, QA, or design review.
 
-## Start With Evidence
+## Mandatory Start
 
-1. Run the app or open the provided target.
-2. Capture screenshots at 390, 768, and 1440 px.
-3. Review the actual rendered UI before judging from code.
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read relevant `design-dna/` files before judging the UI.
+3. Inspect the current project type, user, primary object, primary action, framework, and styling system.
+4. Define the project-specific visual identity from the product, not from a source app.
+5. Identify any source-project evidence used and reject literal copying as a review goal; do not copy old apps literally.
+6. Capture or request screenshots; old Design OS captures are evidence, not templates.
+7. Score with `evaluation/ui-scorecard.md` before finishing.
 
-## Review Dimensions
+## Evidence To Capture
 
-### Purpose And Hierarchy
+Capture or inspect:
 
-- Is the main object obvious?
-- Does the screen have one clear purpose?
-- Is the first action clear?
-- Are secondary areas supporting rather than competing?
+- 390 px mobile
+- 768 px tablet
+- 1440 px desktop
+- current route or primary flow
+- hover/focus/selected states when possible
+- empty/loading/error states when present
 
-### Interaction Grammar
+If screenshots are unavailable, state the blocker and lower confidence.
 
-- Are clickable and passive elements distinct?
-- Is there one primary action per zone?
-- Are hover, focus, selected, disabled, and loading states present?
-- Are controls using the right component type?
+## Review Checklist
 
-### Composition
+Purpose:
 
-- Is the page composed, or is it container soup?
-- Does desktop use space intelligently?
-- Does mobile preserve the core action?
-- Are spacing and alignment intentional?
+- primary object visible in first viewport
+- primary action attached to that object
+- secondary content does not compete
 
-### Components
+Identity:
 
-- Are buttons, tags, cards, drawers, rows, and inputs polished?
-- Do component states preserve layout?
-- Are repeated elements consistent without becoming monotonous?
+- visual identity fits current project type
+- palette is not copied from a golden app
+- app-specific evidence is marked as evidence only
 
-### Copy
+Interaction:
 
-- Is copy specific and human?
-- Are labels action-oriented?
-- Are claims supported?
-- Is helper text actually helpful?
+- clickable/passive roles are distinct
+- one primary action per zone
+- focus, selected, disabled, and loading states exist
 
-### Data Truth And Accessibility
+Composition:
 
-- Are sources, recency, empty states, and errors handled?
-- Is contrast sufficient?
-- Is keyboard focus visible?
-- Are images and icons accessible?
+- no container soup
+- no generic dashboard unless the task is operational scanning
+- desktop adds actionable context for tools/workspaces: inspector, preview, comparison, table density, or source rail
+- mobile has no accidental horizontal scroll
 
-## Output Format
+Copy:
 
-Lead with findings ordered by severity.
+- labels use specific verbs
+- helper copy changes a decision
+- claims have source, recency, or visible basis
 
-For each finding include:
+## Output
 
-- issue
-- evidence from screenshot or file
-- why it matters
+Lead with findings ordered by severity. Each finding includes:
+
+- severity
+- screenshot/file evidence
+- violated Design OS rule
 - concrete fix
 
 Then include:
 
-- quick wins
-- what is already working
-- scorecard summary
+- scorecard total and category scores
+- blockers
+- top 3 fixes
 - verification gaps
 
-## Review Rule
-
-Do not turn a personal preference from one source app into a universal critique. Anchor feedback in global principles, repeated golden-project patterns, or the product's own stated goal.
-
+Do not reward a UI for matching an old screenshot. Reward it for applying the right principle to the current product.

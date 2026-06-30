@@ -1,57 +1,46 @@
 # Miguel Design OS
 
-Miguel Design OS is a personal frontend/design memory system for future agents. It captures how Miguel's best apps think, not just how they look.
+Miguel Design OS is a frontend/design memory system for future coding agents. It converts five golden projects, manual preferences, screenshots, and one scoped case study into actionable rules.
 
-The goal is to help future builds feel specific, polished, useful, and alive without copying one source app literally or forcing one palette everywhere.
+The system's job is not to preserve a look. Its job is to force better product-specific decisions before agents build UI.
 
-## Read Order For Future Agents
+## Fast Start
 
-1. `AGENTS.md`
-2. `project-index.md`
-3. `manual-preferences/00_global_frontend_principles.md`
-4. `design-dna/miguel-style-principles.md`
-5. Relevant `design-dna/` rule files
-6. Relevant `extracted/{project}/` reports
-7. `case-studies/` only when useful as scoped feedback
+For any future project, paste or read:
 
-## What Is In This Repo
+1. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
+2. `AGENTS.md`
+3. relevant files in `design-dna/`
+4. relevant reports in `extracted/`
 
-`manual-preferences/` contains global frontend principles written directly as preference guidance.
+Then create a design intent record, build, capture screenshots, and run `evaluation/ui-scorecard.md`.
 
-`source-projects/` contains the five golden example projects:
+## Evidence Folders
 
-- `agent-boss`: enterprise agent-control workspace
-- `equity`: financial research and market terminal
-- `ghostwritter`: AI writing and rewrite studio
-- `ontime`: social planning app
-- `portfolio`: editorial personal portfolio
+`source-projects/` contains the five golden examples:
 
-`extracted/` contains per-project technical inventories and style reports.
+- `agent-boss`: evidence for enterprise control, auditability, and dense operational UI
+- `equity`: evidence for data terminals, recency/source handling, and numeric scanning
+- `ghostwritter`: evidence for AI/writing studios with visible input/output
+- `ontime`: evidence for social coordination, not universal warmth
+- `portfolio`: evidence for editorial identity and authored presentation
 
-`captures/` contains Playwright screenshots at mobile, tablet, and desktop widths where capture was possible.
+`case-studies/in-the-loop-feedback/` is one app's feedback. Use it for failure modes such as container soup and chip ambiguity, but never as global law.
 
-`design-dna/` contains reusable principles, recipes, screen archetypes, responsive rules, copy rules, and generation rules.
+`extracted/` contains technical inventories and style reports for each golden project.
 
-`agent-workflows/` contains repeatable workflows for ingesting projects, generating apps, reviewing UI, and fixing UI until it reaches a high bar.
+`captures/` contains screenshots at 390, 768, and 1440 px. Use them as evidence of decisions, not templates to recreate.
 
-`evaluation/ui-scorecard.md` contains the 100-point scoring rubric.
+## Operating Files
 
-## Capture Notes
+`design-dna/` contains the reusable rules.
 
-Screenshots were created for all five projects:
+`agent-workflows/` contains step-by-step workflows for ingestion, generation, review, and elite fix loops.
 
-- mobile: 390 px
-- tablet: 768 px
-- desktop: 1440 px
-
-Run caveats:
-
-- `equity` could not bind its local server in this sandbox, so captures were made through a Playwright static-file route against the built public files.
-- `ontime` ran, but unauthenticated captures landed on the login gate. Its authenticated design references remain in the source project.
-- `agent-boss`, `ghostwritter`, and `portfolio` ran with local dev servers and were captured directly.
+`evaluation/ui-scorecard.md` is the required scoring gate before finishing UI work.
 
 ## Core Rule
 
-Extract principles. Do not clone artifacts.
+Define the current project's identity first. Then design.
 
-The golden projects show how to reason about identity, hierarchy, components, responsiveness, copy, and interaction grammar. They are not a shared theme pack.
+Do not copy old apps literally. Do not force one palette. Do not globalize In The Loop. Do not finish without screenshots and a scorecard result when the UI can run.

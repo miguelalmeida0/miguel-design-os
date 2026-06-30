@@ -1,118 +1,156 @@
 # Anti-Patterns
 
-These are the recurring failure modes to avoid when building in Miguel's frontend/design style.
+Use this file as a defect list. If one of these appears in screenshots or code, fix it before delivery or document the product constraint that requires it.
 
-## Universal Anti-Patterns
+## Palette Cloning
 
-### Palette Cloning
+Detect:
 
-Do not copy one golden project's color palette into another app. A market terminal, social planner, personal portfolio, and AI writing studio should not share a skin.
+- New app uses a source project's palette without a product-specific reason.
+- Tokens are named after colors instead of roles, such as `navyCard`, `creamBg`, or `purpleGlow`.
 
-Fix: define semantic tokens for the new product, then choose a palette that fits the domain.
+Fix:
 
-### Generic Dashboard Energy
+- Define semantic tokens first.
+- Choose colors from the current product's domain, audience, and risk level.
+- State what source-project palette you are explicitly not copying.
 
-Avoid dashboards made of interchangeable stat cards, vague charts, and "Overview" panels unless the product truly needs operational scanning.
+## Generic Dashboard
 
-Fix: start from the user's primary object and task. Build a screen around that object.
+Detect:
 
-### Container Soup
+- First viewport is a grid of generic stat cards.
+- Page title is "Dashboard" or "Overview" but the user's next action is unclear.
+- Charts exist without a decision they support.
 
-Too many nested cards, borders, rounded panels, and boxed sections make a page feel generic and heavy.
+Fix:
 
-Fix: use page bands, grids, rails, whitespace, and direct object composition. Reserve cards for repeated items or real tools.
+- Replace the stat grid with the primary object plus its next action.
+- Keep metrics only if they change prioritization, trust, or decision-making.
 
-### CTA Soup
+## Container Soup
 
-Multiple equally loud buttons in one zone create hesitation.
+Detect:
 
-Fix: one primary action per zone. Demote secondary actions to text buttons, icon buttons, menus, or quiet controls.
+- Three or more nested rounded/bordered containers in a primary zone.
+- Every section is a card, including page shell, hero, nav, and repeated items.
+- Borders are doing the work that spacing and hierarchy should do.
 
-### Chip Soup
+Fix:
 
-Pills used for every label, filter, status, nav item, and command make interaction meaning unclear.
+- Remove one wrapper layer.
+- Convert page-level containers to bands, rails, split panes, or direct layout.
+- Reserve cards for repeated objects, tools, and modals.
 
-Fix: assign each role a distinct component recipe. Passive metadata must not look like a button.
+## CTA Soup
 
-### Clickable-Passive Ambiguity
+Detect:
 
-If a static label hovers like a button, or a button looks like a tag, the interface breaks trust.
+- More than one same-weight filled button in a zone.
+- A modal, card, or hero contains primary, secondary, and tertiary actions that look equal.
 
-Fix: clickable elements need state, focus, cursor, and affordance. Passive elements need calmer styling and no action states.
+Fix:
 
-### Fake Form Energy
+- Keep one primary action.
+- Move secondary actions to outline/ghost/text/icon/menu treatments.
+- Put destructive actions in a separate confirmation zone.
 
-Fast consumer actions should not feel like tax forms. Long stacked fields, heavy labels, and repeated helper text slow the experience.
+## Chip Soup
 
-Fix: use conversational pickers, segmented controls, compact inputs, defaults, and progressive disclosure.
+Detect:
 
-### Modal Chains
+- Pills are used for filters, statuses, nav tabs, metrics, categories, and actions.
+- Passive tags have pointer cursor or hover styles.
 
-One modal leading into another makes the product feel brittle.
+Fix:
 
-Fix: use inline expansion, drawers, routed detail screens, or a single focused confirmation.
+- Assign role-specific components: `StatusTag`, `FilterChip`, `Tab`, `Button`, `MetadataLabel`.
+- Give only interactive chips selected/hover/focus states.
 
-### Stretched Mobile On Desktop
+## In-The-Loop Overfit
 
-A centered narrow column with giant controls often wastes desktop space.
+Detect:
 
-Fix: desktop should reveal context: sidebars, inspectors, previews, comparison columns, or supporting data.
+- New apps inherit warm social copy, avatars, invite mechanics, bottom nav, or playful planning language when they are not social planning products.
 
-### Overexplained Copy
+Fix:
 
-Too many descriptions, tutorials, and feature explanations create demo-page friction.
+- Treat the case study as failure-mode evidence only.
+- Keep consumer planning patterns only when the current project coordinates people, time, places, or invitations.
 
-Fix: use labels that describe outcomes. Only add helper copy where it changes a decision.
+## App-Specific Evidence Used As Global Law
 
-### AI Slop
+Detect:
 
-Avoid vague AI words, generic gradients, floating abstract blobs, fake intelligence labels, and "magic" claims.
+- "Use terminal dark UI" because Equity did.
+- "Use bottom nav" because Ontime did.
+- "Use portrait media" because Portfolio did.
+- "Use dense navy shell" because Agent Boss did.
+- "Use cinematic AI gradients" because Ghostwritter did.
 
-Fix: show the actual input, output, confidence, source, or action.
+Fix:
 
-### Low-Contrast Status Systems
+- Translate the source project into a principle, such as "data products need source/recency and numeric alignment."
+- Apply the principle with a new visual identity.
 
-Status color without sufficient contrast, labels, or icon support makes dense UIs harder to scan.
+## Fake Form Energy
 
-Fix: pair color with text, weight, icon, or placement. Check contrast in all states.
+Detect:
 
-### Decorative Motion
+- A fast creation flow starts with a long form before value is visible.
+- Labels and helper text repeat obvious instructions.
 
-Motion that does not clarify state or reward meaningful action gets tiring quickly.
+Fix:
 
-Fix: animate state changes, generated output, route transitions, and feedback. Keep reading surfaces calm.
+- Start with the minimum input needed to produce the first result.
+- Use defaults, segmented controls, inline pickers, and progressive disclosure.
+- Show preview/result as soon as possible.
 
-### Uncanny Social Imagery
+## Data Theater
 
-Generic avatars, creepy faces, or polished stock people weaken trust in consumer/social products.
+Detect:
 
-Fix: use restrained avatars, initials, real user-provided images, or abstract placeholders with warmth.
+- "Live", "validated", "safe", "optimized", confidence, or performance claims have no source, timestamp, or fallback.
+- Empty states pretend data exists.
 
-### Data Theater
+Fix:
 
-Charts, proof panels, confidence scores, and live badges that do not connect to real data create false authority.
+- Add recency/source/status labels.
+- Label mock/sample data.
+- Provide loading, empty, and error states.
 
-Fix: expose source, recency, fallback state, and empty state. Remove claims that cannot be supported.
+## Stretched Mobile Desktop
 
-### Hidden Navigation Collisions
+Detect:
 
-Bottom navs, sticky CTAs, floating bars, and safe-area padding can collide on mobile.
+- Desktop is a centered mobile column for a tool that needs comparison, inspection, or context.
+- Buttons become very wide on desktop without adding value.
 
-Fix: budget vertical space deliberately and test at 390 px height/width combinations.
+Fix:
 
-### Equal-Weight Bento
+- Add a side rail, inspector, preview, comparison column, or denser table where the product benefits from context.
+- Keep editorial pages narrow only when reading is the primary task.
 
-A grid where every tile has the same visual weight leaves users unsure where to start.
+## Decorative Motion
 
-Fix: give the primary tile more scale, contrast, media, or position. Use supporting tiles as context.
+Detect:
 
-## Case-Study-Specific Warnings
+- Animation does not communicate route change, generated output, filter state, loading, selection, or feedback.
 
-The in-the-loop feedback case study strongly criticized container soup, chip ambiguity, and form energy. Those warnings are useful, but the app-specific preferences are not universal. Do not assume all future apps need:
+Fix:
 
-- warm social copy
-- friend/avatar surfaces
-- invite mechanics
-- bottom navigation
-- playful consumer tone
+- Remove it or tie it to state.
+- Keep dense reading/data surfaces still.
 
+## Final Blocker List
+
+Do not finish while any are true:
+
+- main object unclear
+- primary action hidden or competing
+- passive metadata looks clickable
+- source-project palette copied literally
+- mobile screenshot has accidental horizontal scroll
+- desktop screenshot is stretched mobile for a non-editorial app
+- data claims are unsupported
+- no scorecard result

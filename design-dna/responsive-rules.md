@@ -1,87 +1,77 @@
 # Responsive Rules
 
-Responsive design in this repo means each breakpoint has a deliberate composition, not merely fluid widths.
+A UI is not responsive until screenshots prove it at 390, 768, and 1440 px.
 
-## Required Capture Widths
+## Required Evidence
 
-For new apps and UI reviews, capture:
+Capture or document why capture failed:
 
-- mobile: 390 px wide
-- tablet: 768 px wide
-- desktop: 1440 px wide
+```txt
+captures/{project-or-feature}/mobile/primary.png   390 px
+captures/{project-or-feature}/tablet/primary.png   768 px
+captures/{project-or-feature}/desktop/primary.png  1440 px
+```
 
-Use full-page screenshots where page length matters. Use viewport screenshots where app shells or fixed dashboards are the target.
+Use screenshots as evidence for the current UI. Do not use old captures as templates to recreate.
 
-## Mobile Rules
+## 390 px Mobile Checks
 
-At 390 px:
+Pass requires:
 
-- Put the main object before secondary context.
-- Use one dominant action per zone.
-- Avoid horizontal scroll except for intentional data tables or carousels.
-- Keep sticky bars clear of safe areas.
-- Keep tap targets at least 44 px where practical.
-- Make labels wrap cleanly without clipping.
-- Avoid tiny multi-column grids.
+- primary object appears before secondary panels
+- primary action appears in or directly after the primary object
+- no accidental horizontal scroll
+- sticky header/footer does not cover content
+- text in buttons, tags, nav, and cards does not clip
+- tap targets are at least 44 px for primary controls where practical
+- bottom nav and sticky CTA are not both fighting for the same space
 
-## Tablet Rules
+Allowed exception: documented horizontal scroll for dense comparison tables or carousels.
 
-At 768 px:
+## 768 px Tablet Checks
 
-- Do not leave the layout in awkward mobile stretch.
-- Use two columns only when both columns have enough room.
-- Preserve reading rhythm.
-- Let secondary context appear earlier than mobile.
-- Watch for nav collisions and half-broken desktop shells.
+Pass requires:
 
-## Desktop Rules
+- layout is not just a stretched mobile column unless reading is the task
+- two-column layout only appears when both columns remain readable
+- nav does not collide with page title or actions
+- inspector/drawer behavior is defined
+- primary action remains visible without hunting
 
-At 1440 px:
+## 1440 px Desktop Checks
 
-- Use the available width for context, comparison, inspectors, previews, or richer composition.
-- Do not stretch mobile CTAs across huge widths.
-- Avoid single narrow columns unless the product is intentionally editorial.
-- Keep line lengths readable.
-- Align dense data with consistent columns.
+Pass requires:
 
-## Fixed And Sticky UI
+- non-editorial tools use width for context, comparison, preview, table density, or inspector
+- mobile-width controls are not stretched to huge full-width buttons
+- line length is controlled for reading surfaces
+- data columns align and numeric values use consistent alignment
+- primary object and supporting context can be scanned together
 
-Rules:
+## CSS Implementation Checks
 
-- Reserve space for bottom navs, sticky CTAs, and floating controls.
-- Test fixed headers with long content.
-- Ensure drawers/modals fit on short screens.
-- Do not let sticky elements hide form fields or primary actions.
+Use:
 
-## Text And Containers
+- `min-width: 0` on flex/grid children that contain text
+- `overflow-wrap: anywhere` or equivalent for untrusted long strings
+- stable `aspect-ratio` for media and fixed-format tiles
+- explicit safe-area padding for fixed mobile bars
+- container or layout breakpoints tied to content needs, not palette reuse
 
-Rules:
+Avoid:
 
-- Use `min-width: 0` in flex/grid children that contain text.
-- Prefer responsive constraints over viewport-scaled font sizes.
-- Do not use negative letter spacing.
-- Let long labels wrap or shorten them.
-- Use stable dimensions for toolbars, boards, tiles, counters, and icon buttons.
+- viewport-scaled font sizes for normal UI text
+- negative letter spacing
+- hover states that change element size
+- fixed-height cards containing unpredictable copy
 
-## Data On Small Screens
+## Failure Conditions
 
-Rules:
+Do not finish while any are true:
 
-- Collapse comparison grids into prioritized stacks.
-- Keep tables as tables only when comparison matters.
-- Use horizontal scroll for dense financial/operational data only when clearly intentional.
-- Preserve source, time, and status context.
-
-## Media
-
-Rules:
-
-- Use meaningful focal points.
-- Test object-fit crops at all widths.
-- Avoid dark, blurred, or atmospheric images when inspection matters.
-- Provide dimensions or aspect-ratio to prevent layout shift.
-
-## Proof Standard
-
-Do not claim a UI is responsive until screenshots have been captured and inspected at 390, 768, and 1440 px.
-
+- accidental horizontal scroll at 390 px
+- primary action hidden below sticky UI
+- text clipped in the primary flow
+- desktop is stretched mobile for a tool/dashboard/workspace
+- modal/drawer cannot be closed or read on mobile
+- screenshot evidence missing and no blocker documented

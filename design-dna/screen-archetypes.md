@@ -1,128 +1,102 @@
 # Screen Archetypes
 
-Use archetypes to choose the right design grammar before building screens.
+Pick one archetype per screen. Source projects are evidence for archetype behavior, not templates for color or layout.
 
 ## Enterprise Trust Cockpit
 
-Source signal: Agent Boss.
+Evidence: Agent Boss.
 
-Use when: users supervise agents, operations, risk, governance, approvals, evidence, or control systems.
+Use when: users approve, supervise, audit, or control high-risk work.
 
-Design grammar:
+Build:
 
-- dense but calm
-- strong shell/nav
-- status-first hierarchy
-- evidence drawers
-- precise labels
-- high trust, low decoration
+- primary object: case, worker, route, approval, incident, or control state
+- required surfaces: status, evidence/source, next action, audit trail
+- controls: primary action plus secondary review/detail actions
+- copy: precise, accountable, no playful ambiguity
 
-Primary failure mode: generic dashboard cards that do not expose control, evidence, or action.
+Do not copy: navy palette, exact shell, route names, or agent-specific language unless the product is actually agent control.
 
 ## Research Terminal
 
-Source signal: Equity.
+Evidence: Equity.
 
-Use when: users compare markets, logs, feeds, metrics, records, or time-sensitive entities.
+Use when: users compare time-sensitive entities, records, metrics, markets, logs, or feeds.
 
-Design grammar:
+Build:
 
-- high contrast
-- compact rows
-- tabular numbers
-- visible recency/source
-- strong search/filter
-- charts only when useful
+- primary object: entity being researched
+- required surfaces: search, metric strip, source/recency, list/table/feed
+- controls: filters and watch/save actions clearly separated from status tags
+- copy: terse, sourced, numerical
 
-Primary failure mode: finance cosplay with fake data and vague badges.
+Do not copy: dark terminal styling unless the product needs high-density scanning.
 
 ## Rewrite Studio
 
-Source signal: Ghostwritter.
+Evidence: Ghostwritter.
 
-Use when: users transform, generate, edit, or compare language/output.
+Use when: users create, transform, compare, or export language/output.
 
-Design grammar:
+Build:
 
-- expressive but functional
-- input and output both visible
-- mode controls with clear state
-- playback/history for generated results
-- copy/export as real actions
+- primary object: draft, prompt, rewrite, or output variant
+- required surfaces: input, mode controls, output, copy/export, history/variants
+- controls: generate action with loading/error and recoverable input
+- copy: expressive only where it helps choose voice or outcome
 
-Primary failure mode: beautiful shell with weak editor/result ergonomics.
+Do not copy: cinematic AI treatment unless the product benefits from expressive creative framing.
 
-## Consumer Live Plan
+## Consumer Coordination
 
-Source signal: Ontime.
+Evidence: Ontime and the In The Loop case study, both scoped to social/planning contexts.
 
-Use when: users coordinate people, time, place, invitations, or shared plans.
+Use when: users coordinate people, time, place, attendance, or invitations.
 
-Design grammar:
+Build:
 
-- warm, human, fast
-- current plan as main object
-- avatars/people only when meaningful
-- low-friction choices
-- safety/privacy in plain language
+- primary object: plan, meetup, invitation, person, or availability state
+- required surfaces: current plan, participants, time/place, confirm/share action
+- controls: low-friction choices, not long forms
+- copy: plain, warm only if the product relationship supports it
 
-Primary failure mode: heavy form flow or too many chips pretending to be actions.
+Do not copy: bottom navigation, avatars, warm palette, or invite mechanics for non-social products.
 
-## Editorial Personal Presence
+## Editorial Presence
 
-Source signal: Portfolio.
+Evidence: Portfolio.
 
-Use when: presenting a person, practice, body of work, story, or authored point of view.
+Use when: the screen presents a person, practice, body of work, narrative, or brand point of view.
 
-Design grammar:
+Build:
 
-- strong first-viewport identity
-- real media
-- elegant typography
-- narrative scroll
-- selective proof, not exhaustive grids
+- primary object: person, project, story, proof, or offer
+- required surfaces: subject signal, subject-identifying media or typographic identity, selected proof, contact/path
+- controls: few, clear navigation paths
+- copy: authored and selective
 
-Primary failure mode: generic portfolio template with no authored voice.
-
-## Creation Flow
-
-Use when: the user starts with a blank or partial input and needs to produce something.
-
-Design grammar:
-
-- prompt or object first
-- defaults and examples close by
-- minimal required fields
-- preview or result area
-- one clear submit/generate/create action
-
-Primary failure mode: wizard or form sprawl before the user sees value.
-
-## Detail Review
-
-Use when: the user inspects one object deeply.
-
-Design grammar:
-
-- clear title and state
-- grouped details
-- evidence/source region
-- actions near relevant context
-- responsive drawer or route
-
-Primary failure mode: burying the reason the user opened the detail screen.
+Do not copy: portrait-led layout unless the subject is a person or personal practice.
 
 ## Settings And Safety
 
-Use when: users configure preferences, permissions, privacy, or risk.
+Use when: users manage preferences, permissions, risk, privacy, or irreversible choices.
 
-Design grammar:
+Build:
 
-- plain language
-- grouped sections
-- visible consequences
-- confirmations for high-risk changes
-- no playful ambiguity
+- primary object: setting group or permission
+- required surfaces: current value, consequence, save/reset or confirmation
+- controls: toggles, selects, segmented controls, or explicit confirmations
+- copy: plain and consequence-oriented
 
-Primary failure mode: hiding serious controls behind cute copy or generic toggles.
+Do not: hide serious consequences behind cute copy or ambiguous toggles.
 
+## Selection Rule
+
+If a screen seems to fit multiple archetypes, choose based on the primary object:
+
+- object is a decision/risk item: Enterprise Trust Cockpit
+- object is a data entity/feed: Research Terminal
+- object is generated/transformed output: Rewrite Studio
+- object is people/time/place coordination: Consumer Coordination
+- object is authored identity/proof: Editorial Presence
+- object is configuration/risk: Settings And Safety

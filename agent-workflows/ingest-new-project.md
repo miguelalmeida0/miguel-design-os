@@ -1,71 +1,87 @@
 # Workflow: Ingest New Project
 
-Use this workflow when adding another source project to the memory system.
+Use when adding another completed project to this memory system.
 
-## Goal
+## Mandatory Start
 
-Turn a finished or representative project into reusable evidence without overfitting to it.
+Before inspecting the project:
 
-## Steps
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read `design-dna/miguel-style-principles.md`.
+3. Inspect the new project's type, framework, routes, components, styling system, tokens, and screenshots if present.
+4. Define the project's project-specific visual identity in the report.
+5. State that this project is evidence, not a template to copy literally; do not copy old apps literally.
+6. Treat screenshots as evidence of decisions, not as future templates.
+7. Score the rendered project with `evaluation/ui-scorecard.md` before finishing ingestion.
 
-1. Read the project root files:
-   - package manifest
-   - framework config
-   - route files
-   - styling/theme files
-   - README or design notes
+## Technical Inventory
 
-2. Identify technical inventory:
-   - framework
-   - package manager
-   - run command
-   - routes
-   - components
-   - styling system
-   - Tailwind/theme config
-   - layout patterns
-   - reusable UI patterns
+Write `extracted/{project}/technical-inventory.md` with:
 
-3. Run the app:
-   - install dependencies using the project's package manager
-   - use the documented dev/start command
-   - record any required environment variables or blockers
+- framework and rendering mode
+- package manager and lockfile
+- install command used
+- run command used
+- routes and route ownership
+- component map
+- styling system
+- Tailwind/theme/token config
+- data/auth/env requirements
+- responsive implementation notes
+- run result and blockers
 
-4. Capture screenshots if it runs:
+Each claim should name a file or observed runtime behavior.
+
+## Style Report
+
+Write `extracted/{project}/style-report.md` with:
+
+- project type
+- primary user
+- primary object
+- primary action
+- visual identity words
+- density level
+- palette/token strategy
+- typography behavior
+- layout recipe
+- component patterns
+- clickable/passive rules observed
+- responsive behavior observed
+- what future agents may reuse as principle
+- what future agents must not copy literally
+
+## Run And Capture
+
+1. Install dependencies with the project's package manager.
+2. Run the documented dev/start command.
+3. Capture if it runs:
    - `captures/{project}/mobile/primary.png` at 390 px
    - `captures/{project}/tablet/primary.png` at 768 px
    - `captures/{project}/desktop/primary.png` at 1440 px
+4. If it cannot run, record command, error, and best alternative evidence.
 
-5. Write extracted reports:
-   - `extracted/{project}/technical-inventory.md`
-   - `extracted/{project}/style-report.md`
+## Synthesis Rules
 
-6. Synthesize cautiously:
-   - promote patterns only when they align with global principles or recur across projects
-   - mark project-specific quirks as local, not global
-   - never turn a single palette, layout, or copy tone into a universal rule
+Promote a pattern into `design-dna/` only when:
 
-## Report Standards
+- it reinforces global preferences, or
+- it repeats across multiple golden projects, or
+- it is clearly a reusable failure-mode prevention rule.
 
-The technical inventory should be concrete and file-backed.
+Never promote:
 
-The style report should cover:
+- one palette
+- one layout screenshot
+- one product's tone
+- one app's navigation model
+- In The Loop social/planning specifics
 
-- identity
-- palette/tokens
-- typography
-- spacing/composition
-- components
-- interaction patterns
-- responsive behavior
-- what to reuse as principle
-- what not to copy literally
+## Done
 
-## Completion Check
-
-The project is ingested when:
+Ingestion is complete only when:
 
 - both extracted reports exist
 - screenshots exist or a run blocker is documented
-- any design-dna updates are explicitly justified by evidence
-
+- scorecard result is recorded in the style report or final summary
+- any Design OS change names the evidence behind it

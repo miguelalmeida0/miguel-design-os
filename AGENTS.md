@@ -1,70 +1,77 @@
 # Agent Instructions
 
-This repo is a design memory system. Before building, reviewing, or changing a frontend, read the guidance and use it as taste infrastructure.
+This repo is a Design OS for future frontend work. Treat it as operating guidance, not inspiration.
 
-## Required Read Order
+## Required Start For Any UI Task
 
-1. `project-index.md`
-2. `manual-preferences/00_global_frontend_principles.md`
-3. `design-dna/miguel-style-principles.md`
-4. Task-relevant files in `design-dna/`
-5. Task-relevant reports in `extracted/`
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read relevant files in `design-dna/`.
+3. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
+4. Define a project-specific visual identity before choosing palette, layout, or assets.
+5. Name source-project evidence only as evidence. Do not copy old apps literally.
+6. Use screenshots as evidence for the current UI, not templates.
+7. Run `evaluation/ui-scorecard.md` before finishing.
 
-Read `case-studies/in-the-loop-feedback/` only as scoped feedback from one app. Do not treat that case study as global truth.
-
-## Source Of Truth
-
-Manual preferences are global.
-
-The five source projects are golden examples:
-
-- Agent Boss
-- Equity
-- Ghostwritter
-- Ontime
-- Portfolio
-
-Their repeated patterns can become principles. Their local palettes, copy tone, layouts, and product mechanics should not be copied blindly.
-
-## Build Rules
-
-- Give every app its own identity.
-- Name the primary object before designing the screen.
-- Make one primary action obvious per zone.
-- Make clickable and passive elements visually distinct.
-- Avoid generic dashboard energy unless the product truly needs a dashboard.
-- Avoid container soup, CTA soup, and chip soup.
-- Use semantic tokens instead of hard-coding a favorite palette.
-- Build the actual app or tool as the first screen unless a landing page is explicitly requested.
-- Match copy tone to the domain.
-- Design responsive layouts intentionally for mobile, tablet, and desktop.
-
-## Review And Verification
-
-When an app can run, capture screenshots at:
-
-- 390 px
-- 768 px
-- 1440 px
-
-Inspect screenshots before claiming the UI is finished. Check for clipping, overlap, weak hierarchy, stretched desktop layouts, and unclear controls.
-
-Use `evaluation/ui-scorecard.md` for reviews and fix loops.
-
-## Workflow Files
+## Source Hierarchy
 
 Use:
 
-- `agent-workflows/ingest-new-project.md` when adding a source project
-- `agent-workflows/generate-new-app.md` when building a new app
-- `agent-workflows/review-ui-like-miguel.md` when reviewing UI
-- `agent-workflows/fix-ui-until-elite.md` when iterating quality upward
+1. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
+2. `manual-preferences/00_global_frontend_principles.md`
+3. `design-dna/*.md`
+4. `extracted/{project}/*.md`
+5. `captures/{project}/.../*.png`
+6. `case-studies/in-the-loop-feedback/`
+
+The case study is scoped to one app. Do not globalize its warm social tone, avatar patterns, invite mechanics, bottom navigation, or palette.
+
+## Design Intent Record
+
+Before building or reviewing, record:
+
+```md
+Project type:
+Primary user:
+Primary object:
+Primary action:
+Archetype:
+Layout recipe:
+Visual identity words:
+Density:
+Token direction:
+Responsive risks:
+Screenshot targets:
+Score target:
+```
+
+## Build Rules
+
+- Primary object must be visible in the first viewport.
+- Primary action must attach to the primary object.
+- One primary action per zone.
+- Clickable and passive elements must have different components or states.
+- Semantic tokens come before color choices.
+- Cards are for repeated objects, tools, and modals, not every section.
+- Data, AI, safety, and live claims need source, recency, scope, or fallback.
+- Empty, loading, error, disabled, selected, and focus-visible states are required for core flows.
+
+## Verification Rules
+
+When the UI can run:
+
+- capture 390 px
+- capture 768 px
+- capture 1440 px
+- inspect for blockers
+- score with `evaluation/ui-scorecard.md`
+- fix blockers before final response
+
+If the UI cannot run, report the command, error, and alternative evidence.
 
 ## Non-Negotiables
 
-- Do not copy one app literally.
-- Do not force one color palette.
-- Do not globalize the case study.
-- Do not ship passive elements that look clickable.
-- Do not invent data, auth state, or proof.
-- Do not call a UI responsive without screenshot evidence when running is possible.
+- Do not modify `source-projects/` unless explicitly asked.
+- Do not delete `captures/`.
+- Do not copy a golden app's palette or layout literally.
+- Do not apply In The Loop social/planning patterns to unrelated products.
+- Do not claim "responsive", "high-quality", or "Miguel-style" without screenshots and score.

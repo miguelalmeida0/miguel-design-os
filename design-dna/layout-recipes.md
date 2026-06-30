@@ -1,137 +1,141 @@
 # Layout Recipes
 
-These are reusable spatial patterns extracted from the golden projects. Choose one based on product need, then adapt it.
+Choose one recipe before arranging components. Do not mix recipes because a source screenshot looked good.
 
-## Focused Hero Interaction
+## Focused Creation
 
-Best for: creation flows, social planning, onboarding, single primary action.
+Use when: the user creates one thing from a prompt, selection, upload, or short form.
 
-Structure:
+Build:
 
-- top identity/header
-- dominant object or prompt
-- compact supporting controls
-- one primary action
-- recent/history/context below
+- first viewport: primary input/object plus one create/generate action
+- secondary controls: inline or adjacent, not a separate settings maze
+- result/preview: visible immediately after action
+- history/recent items: below mobile, side rail desktop
 
-Watchouts:
+Responsive map:
 
-- Avoid turning the hero into a marketing card.
-- Keep secondary controls from competing with the main action.
+- 390 px: input, controls, primary action, result stacked in that order
+- 768 px: input and result can sit in two columns if each gets enough width
+- 1440 px: add history, examples, or inspector instead of stretching the input
 
-## Dense Calm Workspace
+Do not: make a marketing hero or long wizard before the first result.
 
-Best for: enterprise control, operations, trust/safety, admin tools.
+## Dense Control Workspace
 
-Structure:
+Use when: users supervise operations, approvals, agents, incidents, or governance.
 
-- persistent sidebar or command nav
-- top status/context bar
-- central work surface
-- right inspector or evidence rail
-- compact tables/lists with visible status
+Build:
 
-Watchouts:
+- persistent nav or command rail
+- top context/status bar
+- central queue, table, or work surface
+- inspector/evidence rail for selected object
+- action cluster near selected object
 
-- Density needs alignment, contrast, and strict spacing.
-- Every metric or status must earn its place.
+Responsive map:
 
-## Data Terminal
+- 390 px: nav collapses; selected object and action come before secondary metrics
+- 768 px: list plus detail or collapsible inspector
+- 1440 px: nav, work surface, and inspector can be visible together
 
-Best for: finance, logs, monitoring, research feeds, comparison-heavy work.
+Do not: replace operational state with generic KPI cards.
 
-Structure:
+## Research Terminal
 
-- compact top nav or ticker/search region
+Use when: comparison, recency, and numeric scanning matter.
+
+Build:
+
+- search/entity selector
 - primary entity header
-- metric strip
+- metric strip with recency/source
 - table/feed/chart area
-- optional watchlist or timeline rail
+- watchlist/timeline/context rail when width allows
 
-Watchouts:
+Responsive map:
 
-- Do not fake live data.
-- Use strong numeric alignment and scannable row states.
+- 390 px: preserve key metric and recency; allow documented horizontal scroll only for comparison tables
+- 768 px: split entity summary and feed
+- 1440 px: table/feed plus side context
+
+Do not: show charts or "live" badges without source and timestamp.
 
 ## Composer Studio
 
-Best for: writing, generation, editing, creative transformation.
+Use when: users transform language, media, or structured output.
 
-Structure:
+Build:
 
-- authored header or mode context
 - input surface
-- controls for voice/mood/format
-- output preview/playback
-- variant/history controls
+- mode/tone controls
+- primary generation/transformation action
+- output preview
+- copy/export/save actions
+- variants/history as secondary
 
-Watchouts:
+Responsive map:
 
-- The output must have enough visual weight.
-- Avoid burying copy/export actions.
+- 390 px: input, controls, action, output stack; keep output close to action
+- 768 px: input/output split if readable
+- 1440 px: add playback/history rail, not extra decoration
 
-## Editorial Brand Page
+Do not: hide the generated result in a toast or modal.
 
-Best for: portfolios, personal sites, narrative product pages.
+## Editorial Presence
 
-Structure:
+Use when: presenting a person, practice, story, brand, or authored body of work.
 
-- full-viewport or near-full hero with real identity signal
-- visible hint of next section
-- narrative sections with strong typographic rhythm
-- selected work/proof blocks
-- calm footer/contact action
+Build:
 
-Watchouts:
+- first viewport has the subject as the obvious signal
+- subject-identifying media or typographic identity
+- next section is hinted in the first viewport
+- proof appears as selected narrative, not exhaustive grid
 
-- Do not use a generic split hero card.
-- Media must be meaningful and inspectable.
+Responsive map:
 
-## Social Plan Flow
+- 390 px: subject, core claim, and primary path visible without awkward crop
+- 768 px: preserve reading rhythm
+- 1440 px: use width for media, margin notes, or editorial pacing
 
-Best for: consumer planning, invites, shared events.
+Do not: use a generic split card hero.
 
-Structure:
+## Consumer Coordination
 
-- warm app shell
-- current plan or intent
-- participants/availability
+Use when: users coordinate people, time, places, invitations, or shared plans.
+
+Build:
+
+- current plan/intent as primary object
+- participant/time/place state
 - lightweight choices
-- clear confirmation or share action
+- clear confirm/share/invite action
+- privacy/safety language only where it affects trust
 
-Watchouts:
+Responsive map:
 
-- Avoid form heaviness.
-- Make privacy/safety states understandable without anxiety.
+- 390 px: thumb-safe action and no bottom-nav collision
+- 768 px: plan plus participant/context panel
+- 1440 px: schedule, map, or participant context can sit beside plan
+
+Do not: apply this recipe to non-social products just because the case study liked warmth.
 
 ## Detail With Inspector
 
-Best for: route details, stock details, generated output review, operational evidence.
+Use when: selecting one object from a list and reviewing evidence, settings, or detail.
 
-Structure:
+Build:
 
-- list or primary object on the left/top
-- selected detail in main panel
-- inspector/evidence/actions on side or drawer
+- source list with visible selection
+- detail region named after selected object
+- inspector/actions grouped by decision
+- close/back path on mobile
 
-Watchouts:
+Responsive map:
 
-- Selection state must be obvious.
-- On mobile, inspector becomes a routed view or drawer.
+- 390 px: list routes to detail or opens full-screen drawer
+- 768 px: list plus detail, inspector collapsed
+- 1440 px: list, detail, and inspector can coexist
 
-## Auth Gate
-
-Best for: protected apps, private tools, user-specific workflows.
-
-Structure:
-
-- brand/product identity
-- compact login action
-- trust or privacy cue
-- minimal fields
-
-Watchouts:
-
-- Do not let the auth gate become the only captured evidence for the app if authenticated screens exist.
-- Keep language specific and low-friction.
-
+Do not: make row hover imply selection unless selection exists.

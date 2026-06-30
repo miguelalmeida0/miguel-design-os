@@ -1,50 +1,59 @@
 # Workflow: Fix UI Until Elite
 
-Use this workflow when the goal is not just to make a UI acceptable, but to raise it to a polished, Miguel-aligned standard.
+Use when iterating an existing UI until it clears the Design OS bar.
 
-## Loop
+## Mandatory Start
 
-1. Capture the current UI at 390, 768, and 1440 px.
-2. Score it with `evaluation/ui-scorecard.md`.
-3. Identify the top 3 issues blocking quality.
-4. Fix the highest-impact issue first.
-5. Run the app again.
-6. Recapture affected screens.
-7. Repeat until the score is 90 or higher, or until a blocker is documented.
+1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+2. Read relevant `design-dna/` files before editing.
+3. Inspect the current project type, framework, routes, components, styling system, and tokens.
+4. Define or restate the project-specific visual identity.
+5. Name any source-project evidence and what must not be copied literally.
+6. Capture current screenshots as evidence; do not treat old captures as templates.
+7. Score with `evaluation/ui-scorecard.md` before choosing fixes.
 
-## Priority Order
+## Iteration Loop
+
+1. Capture 390, 768, and 1440 px screenshots.
+2. Score with `evaluation/ui-scorecard.md`.
+3. List blockers and the top 3 score-limiting defects.
+4. Fix the highest-impact defect.
+5. Run lint/build/tests where available.
+6. Restart or refresh the app.
+7. Recapture affected screenshots.
+8. Rescore.
+9. Repeat until score is 90+ with no blockers, or document the blocker.
+
+## Fix Priority
 
 Fix in this order:
 
-1. broken layout, overlap, clipping, blank states
+1. layout breakage, overlap, clipping, blank primary states
 2. unclear primary object or action
-3. clickable/passive ambiguity
-4. responsive failures
-5. weak component states
-6. copy vagueness
-7. palette or visual polish
-8. motion and delight
+3. source-project palette/layout copying
+4. clickable/passive ambiguity
+5. responsive failures
+6. missing component states
+7. unsupported claims or fake data
+8. vague copy
+9. visual refinement and motion
 
-## Guardrails
+## Constraints
 
-- Do not repaint the whole app before fixing hierarchy.
-- Do not add more cards to solve a composition problem.
-- Do not add copy to solve a layout problem.
-- Do not add motion to distract from weak states.
-- Do not clone another source project's palette.
+- Do not repaint before fixing hierarchy.
+- Do not add containers to solve hierarchy.
+- Do not add explanatory copy to solve poor layout.
+- Do not add motion to hide weak state handling.
+- Do not import In The Loop social patterns unless the product is social coordination.
 
-## Done Criteria
+## Done
 
-The UI is elite when:
+Elite requires:
 
-- the main object is obvious at all three widths
-- the primary action is unmistakable
-- component roles are clear
-- responsive screenshots show intentional compositions
-- copy is concise and product-specific
-- empty/loading/error states are handled
-- score is 90 or higher
-- no blocker criteria in the scorecard are present
-
-If a technical blocker prevents completion, document the blocker, the last score, and the exact remaining issues.
+- score 90+
+- no scorecard blockers
+- screenshots at 390, 768, and 1440 px
+- project-specific visual identity preserved
+- no literal source-app copying
+- final report includes score, screenshots, and remaining risks
 

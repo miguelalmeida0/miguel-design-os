@@ -1,108 +1,94 @@
 # Clickable Vs Static Rules
 
-This file exists because many weak UIs fail by making passive information look interactive, or real actions look passive.
+Every visible element must declare one interaction role. This prevents chip soup, fake buttons, and unclear rows.
 
-## Interaction Roles
+## Role Map
 
-Every element must have one clear role:
+Use these roles in component names, props, or comments when the distinction is unclear:
 
-- Action: performs a command.
-- Navigation: changes route or screen.
-- Selection: changes the current object or mode.
-- Filter: changes what is visible.
-- Input: accepts user data.
-- Status: reports state.
-- Metadata: describes an object.
-- Decoration: supports atmosphere only.
+```txt
+action      performs a command
+navigation  changes route/location
+selection   changes current object or mode
+filter      changes visible results
+input       accepts user data
+status      reports state, read-only
+metadata    describes an object, read-only
+decoration  visual support only
+```
 
-Do not let one visual style serve all roles.
+## Implementation Rules
 
-## Clickable Elements Must Have
+Clickable roles must have:
 
-- pointer behavior where appropriate
-- keyboard focus when reachable
-- hover/focus/pressed states
-- visible disabled state
+- semantic element where possible: `button`, `a`, `input`, `select`
 - accessible name
-- state indicator when selected or active
+- hover style on pointer devices
+- focus-visible style
+- active/pressed feedback
+- disabled state when unavailable
+- selected/current state when persistent
 
-Examples:
+Static roles must not have:
 
-- button
-- link
-- menu item
-- tab
-- segmented control item
-- filter chip
-- row with explicit selection behavior
+- `cursor: pointer`
+- hover lift
+- `onClick`
+- `tabIndex=0`
+- button-like fill/contrast
+- command verbs as labels
 
-## Static Elements Must Not Pretend To Click
+## Required Audit
 
-Passive labels should not have hover lift, pointer cursor, strong button-like borders, or command-style copy.
+Before finishing, inspect the DOM or component tree and answer:
 
-Examples:
+1. Which elements use `onClick`?
+2. Do all `onClick` elements look interactive before hover?
+3. Which pills/tags are read-only?
+4. Do read-only pills avoid hover, pointer cursor, and button contrast?
+5. Are selected states different from hover states?
+6. Can keyboard users see focus on all controls?
 
-- status tags
-- metric labels
-- timestamps
-- source labels
-- role badges
-- category labels
+## Component Decisions
 
-## Visual Distinction Checklist
+Use `Button` for commands:
 
-Before shipping, inspect the screen and ask:
+- `Create plan`
+- `Run check`
+- `Copy rewrite`
+- `Save setting`
 
-1. Can I identify every clickable item without moving the cursor?
-2. Can I identify every selected item?
-3. Are passive tags calmer than filter chips?
-4. Is the primary action visually stronger than all secondary actions?
-5. Do table rows only look clickable when they actually select or navigate?
-6. Does focus-visible work for keyboard users?
+Use `Link` for navigation:
 
-## State Rules
+- `View case study`
+- `Open report`
+- `Back to watchlist`
 
-Hover:
+Use `FilterChip` for result filtering:
 
-- Use for clickable elements only.
-- Should confirm affordance, not create layout shift.
+- `Active`
+- `Delayed`
+- `Owned`
 
-Focus:
+Use `StatusTag` for read-only state:
 
-- Must be visible and high contrast.
-- Should not rely on color alone.
+- `Draft saved`
+- `Market data delayed`
+- `Mock data`
+- `3 conflicts`
 
-Pressed:
+Use `MetadataLabel` for read-only descriptors:
 
-- Should give immediate physical feedback.
+- `Updated 2 min ago`
+- `Source: SEC filing`
+- `Owner: Design`
 
-Selected:
+## Screenshot Checks
 
-- Must be persistent and distinct from hover.
+At 390, 768, and 1440 px:
 
-Disabled:
-
-- Must remain readable.
-- Should explain why if the reason is not obvious.
-
-Loading:
-
-- Should preserve size.
-- Should prevent duplicate action when needed.
-
-## Copy Rules For Actions
-
-Use verbs:
-
-- "Create plan"
-- "Run check"
-- "Copy rewrite"
-- "Add to watchlist"
-
-Avoid vague labels:
-
-- "Submit"
-- "Continue" when destination is unclear
-- "Learn more" for core product actions
-- "Try it" when the actual action is specific
+- Primary action is visible without reading every label.
+- Passive tags do not visually compete with primary/secondary actions.
+- A row hover style appears only when row click/selection exists.
+- Focus ring is not clipped by overflow containers.
 
