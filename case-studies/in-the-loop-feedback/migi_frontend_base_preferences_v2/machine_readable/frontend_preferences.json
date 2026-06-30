@@ -1,0 +1,41 @@
+{
+  "purpose": "Master frontend/UX preferences for future projects, not a fixed theme or app-specific design system.",
+  "hard_rules": [
+    "Do not force a fixed color palette across projects.",
+    "Do not copy current-app content, labels, layouts, or features into unrelated future projects.",
+    "Use project-specific visual direction and semantic tokens.",
+    "Avoid container soup, chip soup, CTA soup, and form energy for fast actions.",
+    "Make clickable and non-clickable elements visually distinct.",
+    "Use progressive disclosure instead of exposing every option.",
+    "No modal chains unless explicitly required.",
+    "Always check contrast, responsive fit, and button hierarchy."
+  ],
+  "likes": [
+    "single dominant focal object per screen",
+    "clear primary action",
+    "smart defaults and low-friction flows",
+    "premium button system",
+    "fluid modern composition",
+    "human concise copy",
+    "project-specific visual identity",
+    "responsive layouts that feel intentional on desktop and mobile"
+  ],
+  "dislikes": [
+    "fixed reused color palette",
+    "dashboard look for consumer flows",
+    "nested containers",
+    "ambiguous chips",
+    "unreadable low-contrast UI",
+    "giant full-width desktop CTA slabs",
+    "creepy avatars or profiling copy",
+    "overexplained AI-sounding copy",
+    "forms disguised as fun interactions"
+  ],
+  "component_roles": {
+    "primary_action": "strong clear CTA with high contrast",
+    "secondary_action": "support action visibly clickable but subordinate",
+    "tertiary_action": "quiet link/ghost action",
+    "selectable_chip": "interactive toggle/filter with clear selected state",
+    "passive_tag": "metadata/status label that does not look clickable"
+  }
+}

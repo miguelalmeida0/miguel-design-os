@@ -1,0 +1,14 @@
+source-projects/
+
+.DS_Store
+node_modules/
+.env
+.env.local
+.next/
+.svelte-kit/
+dist/
+build/
+.tmp/
+tmp/
+playwright-report/
+test-results/

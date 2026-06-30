@@ -1,0 +1,19 @@
+{
+  "checklist": [
+    "Does the project use its own appropriate visual direction rather than a reused palette?",
+    "Is there a clear primary purpose for the screen?",
+    "Is the main CTA obvious within 2 seconds?",
+    "Are clickable and passive elements visually distinct?",
+    "Are status tags, filters, and actions using separate visual classes?",
+    "Is complexity hidden behind progressive disclosure?",
+    "Are there unnecessary containers or nested cards?",
+    "Is there CTA soup?",
+    "Is copy concise and human?",
+    "Is contrast acceptable?",
+    "Are image crops intentional?",
+    "Does desktop avoid stretched mobile layout?",
+    "Does mobile avoid hidden primary actions?",
+    "Does bottom navigation avoid content collision?",
+    "Does the result feel premium, not prototype/AI slop?"
+  ]
+}
