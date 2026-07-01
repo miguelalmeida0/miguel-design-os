@@ -1,0 +1,384 @@
+{
+  "version": "p0-2026-07-01",
+  "skills": [
+    {
+      "id": "visual-concept-gate",
+      "path": "skills/visual-concept-gate/SKILL.md",
+      "description": "Pre-implementation gate for visual-heavy frontend work.",
+      "useWhen": [
+        "new app",
+        "major screen",
+        "major redesign",
+        "visual-heavy interface",
+        "inspiration-image driven work",
+        "gallery, roster, character-select, product-discovery, or selection-first experience"
+      ],
+      "doNotUseWhen": [
+        "small bug fix",
+        "security patch",
+        "copy-only edit",
+        "pure technical refactor",
+        "Tailwind migration where visual parity is the goal"
+      ],
+      "requiredInputs": [
+        "product type",
+        "primary user",
+        "primary object",
+        "primary action",
+        "existing UI state if any",
+        "inspiration or references if any",
+        "known rejected directions if any"
+      ],
+      "outputContract": [
+        "Design Intent Record",
+        "obvious cliche to avoid",
+        "three art-direction concepts",
+        "recommendation",
+        "approval needed before implementation"
+      ],
+      "routeKeywords": [
+        "visual-heavy",
+        "new app",
+        "major redesign",
+        "redesign",
+        "inspiration",
+        "gallery",
+        "roster",
+        "character-select",
+        "character selection",
+        "product-discovery",
+        "selection-first",
+        "art direction",
+        "concept"
+      ]
+    },
+    {
+      "id": "visual-target-reconstruction",
+      "path": "skills/visual-target-reconstruction/SKILL.md",
+      "description": "Use a screenshot, Lovable prototype, Pinterest image, mockup, or strong visual reference as art-direction evidence.",
+      "useWhen": [
+        "screenshot, mockup, prototype, Pinterest image, Lovable output, inspiration image, or strong visual target is provided",
+        "design must be compared against a reference",
+        "current UI is far from the inspiration"
+      ],
+      "doNotUseWhen": [
+        "no visual reference exists",
+        "backend-only or copy-only task",
+        "reference is only a loose mood note"
+      ],
+      "requiredInputs": [
+        "reference image, screenshot, URL, or description",
+        "current product type",
+        "primary object and primary action",
+        "current UI screenshots if available",
+        "implementation constraints"
+      ],
+      "outputContract": [
+        "reference analyzed",
+        "composition",
+        "focal object",
+        "material and atmosphere",
+        "hidden information",
+        "absent elements",
+        "interaction model",
+        "copy/avoid/translate",
+        "visual shell comparison",
+        "screenshots",
+        "patch needed"
+      ],
+      "routeKeywords": [
+        "screenshot",
+        "lovable",
+        "pinterest",
+        "mockup",
+        "visual reference",
+        "visual target",
+        "inspiration image",
+        "reference image",
+        "reconstruct",
+        "target"
+      ]
+    },
+    {
+      "id": "selection-first-products",
+      "path": "skills/selection-first-products/SKILL.md",
+      "description": "Design and review products where the core loop is choosing, browsing, collecting, comparing, or opening one object from a set.",
+      "useWhen": [
+        "gallery",
+        "roster",
+        "marketplace",
+        "discovery interface",
+        "card deck",
+        "character selection",
+        "product/object browsing"
+      ],
+      "doNotUseWhen": [
+        "primary task is editing one object after selection",
+        "operational dashboard where urgency matters more than desire",
+        "minor bug fix or copy edit"
+      ],
+      "requiredInputs": [
+        "primary selectable object",
+        "desired post-selection action",
+        "object attributes that create desire",
+        "existing card/list/gallery patterns if any",
+        "rejected directions if any"
+      ],
+      "outputContract": [
+        "selection-first object",
+        "desire mechanism",
+        "first-screen choice moment",
+        "hidden until after selection",
+        "hover reward",
+        "selected reward",
+        "detail view model",
+        "screenshots/evidence",
+        "blockers"
+      ],
+      "routeKeywords": [
+        "selection-first",
+        "gallery",
+        "roster",
+        "marketplace",
+        "discovery",
+        "card deck",
+        "character selection",
+        "character-select",
+        "object browsing",
+        "choose",
+        "collect",
+        "robot"
+      ]
+    },
+    {
+      "id": "anti-ai-slop-review",
+      "path": "skills/anti-ai-slop-review/SKILL.md",
+      "description": "Review an existing UI for common AI-builder failure modes and concrete fixes.",
+      "useWhen": [
+        "reviewing existing UI",
+        "design feels generic, safe, boring, or AI-generated",
+        "anti-slop checks are needed before completion"
+      ],
+      "doNotUseWhen": [
+        "no UI exists yet",
+        "pure backend, data, or infrastructure task",
+        "implementation only for an approved design"
+      ],
+      "requiredInputs": [
+        "screenshots or runnable UI",
+        "product type",
+        "primary object and primary action",
+        "inspiration or approved direction",
+        "rejected direction"
+      ],
+      "outputContract": [
+        "visual thesis found",
+        "AI-slop failures",
+        "score caps applied",
+        "top structural fix",
+        "top interaction fix",
+        "top responsive fix",
+        "patch recommendation"
+      ],
+      "routeKeywords": [
+        "review",
+        "audit",
+        "anti-slop",
+        "ai slop",
+        "generic",
+        "boring",
+        "same layout",
+        "badge soup",
+        "container soup",
+        "critique"
+      ]
+    },
+    {
+      "id": "screenshot-scorecard-review",
+      "path": "skills/screenshot-scorecard-review/SKILL.md",
+      "description": "Evidence-based screenshot review for responsive quality, overlap, readability, scorecard blockers, and handoff readiness.",
+      "useWhen": [
+        "screenshots exist",
+        "UI can run",
+        "frontend QA or final verification",
+        "user asks to prove responsiveness or quality"
+      ],
+      "doNotUseWhen": [
+        "no UI surface exists",
+        "documentation-only task",
+        "backend-only task"
+      ],
+      "requiredInputs": [
+        "screenshots at 390, 768, and 1440 or runnable UI",
+        "route or screen under review",
+        "product type",
+        "Design Intent Record",
+        "selected design thesis when relevant"
+      ],
+      "outputContract": [
+        "screenshots inspected",
+        "390 result",
+        "768 result",
+        "1440 result",
+        "scorecard result",
+        "caps applied",
+        "blockers",
+        "patch pass completed",
+        "remaining verification gaps"
+      ],
+      "routeKeywords": [
+        "screenshot",
+        "screenshots",
+        "responsive",
+        "390",
+        "768",
+        "1440",
+        "scorecard",
+        "QA",
+        "verify",
+        "can run",
+        "viewport"
+      ]
+    },
+    {
+      "id": "frontend-art-director-review",
+      "path": "skills/frontend-art-director-review/SKILL.md",
+      "description": "Ruthless elite redesign critique focused on visual thesis, composition, focal object, material, atmosphere, desire, and interaction reward.",
+      "useWhen": [
+        "elite redesign critique requested",
+        "UI needs art-direction judgment",
+        "product feels safe, generic, flat, boring, or junior",
+        "redesign direction needs approval or rejection"
+      ],
+      "doNotUseWhen": [
+        "small bug fixing",
+        "implementation details only",
+        "approved design needs only technical cleanup"
+      ],
+      "requiredInputs": [
+        "current screenshots or runnable UI",
+        "product type",
+        "primary object and action",
+        "intended audience",
+        "inspiration or approved thesis if any"
+      ],
+      "outputContract": [
+        "verdict",
+        "visual thesis",
+        "focal object",
+        "composition assessment",
+        "material/atmosphere",
+        "desire mechanism",
+        "interaction reward",
+        "concept failures",
+        "execution failures",
+        "required redesign move",
+        "scorecard caps"
+      ],
+      "routeKeywords": [
+        "elite",
+        "art director",
+        "art-director",
+        "ruthless",
+        "redesign critique",
+        "visual thesis",
+        "principal design",
+        "top-tier"
+      ]
+    },
+    {
+      "id": "tailwind-migration-zero-regression",
+      "path": "skills/tailwind-migration-zero-regression/SKILL.md",
+      "description": "Migration playbook for Tailwind or global CSS work where the goal is visual parity, not redesign.",
+      "useWhen": [
+        "migrating CSS to Tailwind",
+        "refactoring global CSS",
+        "replacing ad hoc styles with utility classes",
+        "consolidating styling primitives",
+        "cleaning Tailwind config or theme tokens"
+      ],
+      "doNotUseWhen": [
+        "user asks for a redesign",
+        "visual concept exploration",
+        "existing UI is intentionally changing",
+        "change unrelated to CSS or Tailwind"
+      ],
+      "requiredInputs": [
+        "current screenshots or visual baseline",
+        "files being migrated",
+        "existing styling ownership",
+        "Tailwind config and global CSS",
+        "acceptance criteria for parity"
+      ],
+      "outputContract": [
+        "migration scope",
+        "visual changes intended",
+        "baseline evidence",
+        "files changed",
+        "global CSS changes",
+        "local owner styling",
+        "semantic primitives added",
+        "parity result",
+        "remaining regression risk"
+      ],
+      "routeKeywords": [
+        "tailwind",
+        "global css",
+        "css migration",
+        "style migration",
+        "visual parity",
+        "zero regression",
+        "utility classes"
+      ]
+    },
+    {
+      "id": "truthful-state-product-naming",
+      "path": "skills/truthful-state-product-naming/SKILL.md",
+      "description": "Product-state and copy guardrail for auth, onboarding, login, mock data, error boundaries, production readiness, and claims.",
+      "useWhen": [
+        "auth, login, onboarding, signup, account, or access state is involved",
+        "mock data could look production-real",
+        "production states, error boundaries, loading states, or empty states are involved",
+        "route, page, or feature names may misrepresent reality",
+        "copy includes live, validated, safe, secure, optimized, accurate, real-time, or AI claims"
+      ],
+      "doNotUseWhen": [
+        "no user-facing state, naming, claim, or auth surface",
+        "visual-only task with no product truth implied",
+        "clearly labeled throwaway placeholder copy"
+      ],
+      "requiredInputs": [
+        "current route/page names",
+        "auth/onboarding state model",
+        "data source truth",
+        "error/loading/empty states",
+        "user-facing claims"
+      ],
+      "outputContract": [
+        "state surfaces reviewed",
+        "mock/sample data labels",
+        "auth/onboarding naming",
+        "controlled error flows",
+        "claims removed or qualified",
+        "empty/loading/error states",
+        "remaining truth risks"
+      ],
+      "routeKeywords": [
+        "auth",
+        "login",
+        "onboarding",
+        "signup",
+        "mock data",
+        "production state",
+        "error boundary",
+        "loading state",
+        "empty state",
+        "live",
+        "validated",
+        "safe",
+        "optimized",
+        "real-time"
+      ]
+    }
+  ]
+}

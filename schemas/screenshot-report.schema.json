@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://miguel-design-os.local/schemas/screenshot-report.schema.json",
+  "title": "Miguel Design OS Screenshot Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "projectName",
+    "targetScreenshots",
+    "currentScreenshots",
+    "viewportChecks",
+    "overlapDetected",
+    "horizontalScrollDetected",
+    "unreadableTextDetected",
+    "deadButtonsFound",
+    "visualTargetComparison",
+    "remainingWeaknesses"
+  ],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetScreenshots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "currentScreenshots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "viewportChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["390", "768", "1440"],
+      "properties": {
+        "390": {
+          "$ref": "#/$defs/viewportCheck"
+        },
+        "768": {
+          "$ref": "#/$defs/viewportCheck"
+        },
+        "1440": {
+          "$ref": "#/$defs/viewportCheck"
+        }
+      }
+    },
+    "overlapDetected": {
+      "type": "boolean"
+    },
+    "horizontalScrollDetected": {
+      "type": "boolean"
+    },
+    "unreadableTextDetected": {
+      "type": "boolean"
+    },
+    "deadButtonsFound": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visualTargetComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["matchesComposition", "matchesFocalObject", "matchesHiddenInformation", "notes"],
+      "properties": {
+        "matchesComposition": {
+          "type": "boolean"
+        },
+        "matchesFocalObject": {
+          "type": "boolean"
+        },
+        "matchesHiddenInformation": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "remainingWeaknesses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "viewportCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["screenshot", "primaryObjectVisible", "primaryActionVisible", "noHorizontalScroll", "noOverlap", "readableText", "notes"],
+      "properties": {
+        "screenshot": {
+          "type": "string"
+        },
+        "primaryObjectVisible": {
+          "type": "boolean"
+        },
+        "primaryActionVisible": {
+          "type": "boolean"
+        },
+        "noHorizontalScroll": {
+          "type": "boolean"
+        },
+        "noOverlap": {
+          "type": "boolean"
+        },
+        "readableText": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

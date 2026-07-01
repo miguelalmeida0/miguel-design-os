@@ -6,10 +6,25 @@ This repo is a routed Design OS for future frontend work. `AGENTS.md` is a thin 
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
 2. Classify the task.
-3. Load only the matching skill files below.
-4. Read any files listed in those skills under `Files To Read`.
-5. Inspect the current project type, framework, routes, components, styling system, and tokens when UI work is involved.
-6. Run `evaluation/ui-scorecard.md` before finishing significant frontend work.
+3. Run `node tools/design-os.mjs route --task "<task>"` when the CLI is available.
+4. Load only the matching skill files below.
+5. Read any files listed in those skills under `Files To Read`.
+6. Inspect the current project type, framework, routes, components, styling system, and tokens when UI work is involved.
+7. Run `evaluation/ui-scorecard.md` before finishing significant frontend work.
+
+## P0 Enforcement Loop
+
+For visual-heavy work:
+
+1. Create a brief: `node tools/design-os.mjs new-brief`.
+2. Validate it: `node tools/design-os.mjs validate-brief design-brief.local.json`.
+3. Route skills from task text.
+4. Produce a 3-concept artifact using `templates/visual-concepts.template.json`.
+5. Validate it: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+6. Check the gate: `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+7. Wait for Migi approval before implementation.
+8. Implement only the approved concept.
+9. Capture screenshots, score the UI, and patch blockers.
 
 ## Skill Routing
 
@@ -57,6 +72,8 @@ Use the smallest relevant set. Do not load unrelated skills.
 
 ```md
 Skills used:
+Design brief:
+Visual concepts:
 Design thesis used:
 Files changed:
 Screenshots:

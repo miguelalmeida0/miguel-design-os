@@ -1,0 +1,53 @@
+{
+  "projectName": "Untitled Miguel Design OS Project",
+  "targetScreenshots": {
+    "390": "",
+    "768": "",
+    "1440": ""
+  },
+  "currentScreenshots": {
+    "390": "",
+    "768": "",
+    "1440": ""
+  },
+  "viewportChecks": {
+    "390": {
+      "screenshot": "",
+      "primaryObjectVisible": false,
+      "primaryActionVisible": false,
+      "noHorizontalScroll": false,
+      "noOverlap": false,
+      "readableText": false,
+      "notes": ""
+    },
+    "768": {
+      "screenshot": "",
+      "primaryObjectVisible": false,
+      "primaryActionVisible": false,
+      "noHorizontalScroll": false,
+      "noOverlap": false,
+      "readableText": false,
+      "notes": ""
+    },
+    "1440": {
+      "screenshot": "",
+      "primaryObjectVisible": false,
+      "primaryActionVisible": false,
+      "noHorizontalScroll": false,
+      "noOverlap": false,
+      "readableText": false,
+      "notes": ""
+    }
+  },
+  "overlapDetected": false,
+  "horizontalScrollDetected": false,
+  "unreadableTextDetected": false,
+  "deadButtonsFound": [],
+  "visualTargetComparison": {
+    "matchesComposition": false,
+    "matchesFocalObject": false,
+    "matchesHiddenInformation": false,
+    "notes": ""
+  },
+  "remainingWeaknesses": []
+}

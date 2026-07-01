@@ -4,6 +4,31 @@ Miguel Design OS is a frontend/design operating system for future coding agents.
 
 The system's job is not to preserve a look. Its job is to force better product-specific decisions before agents build UI.
 
+## P0 Local Enforcement
+
+Miguel Design OS now includes local enforcement artifacts:
+
+- `schemas/design-brief.schema.json`
+- `schemas/visual-concepts.schema.json`
+- `schemas/screenshot-report.schema.json`
+- `schemas/ui-scorecard.schema.json`
+- `schemas/skill-registry.schema.json`
+- `templates/*.template.json`
+- `skills/skill-registry.json`
+- `tools/design-os.mjs`
+
+For visual-heavy work:
+
+1. Create a design brief: `node tools/design-os.mjs new-brief`.
+2. Route skills: `node tools/design-os.mjs route --task "<task>"`.
+3. Produce 3 concepts from `templates/visual-concepts.template.json`.
+4. Validate concepts: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+5. Wait for Migi approval.
+6. Implement only the approved concept.
+7. Capture screenshots.
+8. Score the UI.
+9. Patch blockers.
+
 ## Fast Start
 
 For any future project, paste or read:
@@ -105,6 +130,8 @@ Do not copy old apps literally. Do not force one palette. Do not globalize In Th
 
 ```md
 Skills used:
+Design brief:
+Visual concepts:
 Design thesis used:
 Files changed:
 Screenshots:

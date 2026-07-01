@@ -6,17 +6,20 @@ Use when building a new app, screen, or frontend feature.
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
 2. Read `AGENTS.md` and route to the smallest matching skill set.
-3. For new or visual-heavy work, load `skills/visual-concept-gate/SKILL.md`.
-4. If references exist, also load `skills/visual-target-reconstruction/SKILL.md`.
-5. If the product is selection-first, also load `skills/selection-first-products/SKILL.md`.
-6. Read only the files listed by the selected skills before touching UI code.
-7. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-8. Inspect the current project type, framework, routes, components, styling system, and tokens.
-9. If visual-heavy, run the Visual Concept Gate before implementation.
-10. Define a project-specific visual identity before choosing palette or layout.
-11. Name any golden project used as evidence and what will not be copied.
-12. Plan screenshots as evidence for the new work, not templates from old apps.
-13. Plan to run `evaluation/ui-scorecard.md` before finishing.
+3. Run `node tools/design-os.mjs route --task "<task>"` when the CLI is available.
+4. For new or visual-heavy work, load `skills/visual-concept-gate/SKILL.md`.
+5. If references exist, also load `skills/visual-target-reconstruction/SKILL.md`.
+6. If the product is selection-first, also load `skills/selection-first-products/SKILL.md`.
+7. Read only the files listed by the selected skills before touching UI code.
+8. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+9. Inspect the current project type, framework, routes, components, styling system, and tokens.
+10. If visual-heavy, create and validate the brief: `node tools/design-os.mjs new-brief` then `node tools/design-os.mjs validate-brief design-brief.local.json`.
+11. If visual-heavy, produce 3 concepts and validate them: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+12. If visual-heavy, run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json` and wait for Migi approval before implementation.
+13. Define a project-specific visual identity before choosing palette or layout.
+14. Name any golden project used as evidence and what will not be copied.
+15. Plan screenshots as evidence for the new work, not templates from old apps.
+16. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
 ## Design Intent Record
 
@@ -65,6 +68,8 @@ If references are provided, analyze composition, focal object, hidden informatio
 
 When references materially drive the work, store them under `docs/inspiration/[project]/` and create or update `docs/inspiration-analysis.md`.
 
+Save the 3 concepts as `visual-concepts.local.json` or a project-scoped equivalent and validate them with `node tools/design-os.mjs validate-concepts`.
+
 ## Implementation Order
 
 1. Reuse existing framework and local component patterns.
@@ -93,6 +98,8 @@ When references materially drive the work, store them under `docs/inspiration/[p
 Report:
 
 - skills used
+- design brief path
+- visual concepts path
 - design intent record summary
 - design thesis used
 - key files changed
