@@ -225,6 +225,7 @@ const visualDoneModes = new Set(["visual-concept", "literal-target-copy", "visua
 const visualTaskMarkers = ["visual", "frontend", "ui", "redesign", "new-app", "selection", "gallery", "roster", "product-discovery"];
 const requiredVisualQaFields = [
   "status",
+  "captureMode",
   "noOverlap",
   "noTextOnButtons",
   "noWatermark",
@@ -233,6 +234,7 @@ const requiredVisualQaFields = [
 ];
 
 const validVisualQaStatuses = new Set(["passing", "needs-work", "blocked", "manual-review"]);
+const validVisualQaCaptureModes = new Set(["automated", "manual-import", "blocked"]);
 
 const agentAliases = new Map([
   ["inspiration-scout", "01-inspiration-scout"],
@@ -417,8 +419,12 @@ function validateVisualQa(value, label, errors) {
     errors.push(`${label}.status must be one of: ${Array.from(validVisualQaStatuses).join(", ")}.`);
   }
 
+  if (!validVisualQaCaptureModes.has(value.captureMode)) {
+    errors.push(`${label}.captureMode must be one of: ${Array.from(validVisualQaCaptureModes).join(", ")}.`);
+  }
+
   for (const field of requiredVisualQaFields) {
-    if (field === "status") {
+    if (field === "status" || field === "captureMode") {
       continue;
     }
     if (!isBoolean(value[field])) {
@@ -426,7 +432,7 @@ function validateVisualQa(value, label, errors) {
     }
   }
 
-  if (value.noCutHeroObject === false && !isNonEmptyString(value.noCutHeroObjectJustification)) {
+  if (value.status === "passing" && value.noCutHeroObject === false && !isNonEmptyString(value.noCutHeroObjectJustification)) {
     errors.push(`${label}.noCutHeroObjectJustification must explain any accepted hero-object crop.`);
   }
 }
@@ -1029,25 +1035,51 @@ function validateDoneReport(filePath) {
   }
 
   const isVisualWork = inferVisualWork(report);
+  const claimsDone = report.finalStatus === "done";
   if (isVisualWork) {
-    validateRequiredViewportStrings(report.screenshots, "screenshots", errors);
-    if (!isNonEmptyString(report.screenshotReportPath)) {
-      errors.push("screenshotReportPath is required for visual work.");
+    const visualQaBlocked = report.visualQa?.status === "blocked" || report.visualQa?.captureMode === "blocked";
+    if (claimsDone || !visualQaBlocked) {
+      validateRequiredViewportStrings(report.screenshots, "screenshots", errors);
+      if (!isNonEmptyString(report.screenshotReportPath)) {
+        errors.push("screenshotReportPath is required for visual work with available visual QA evidence.");
+      }
     }
 
-    if (report.visualQa?.noOverlap === false) {
+    if (claimsDone && !isNonEmptyString(report.visualQa?.captureMode)) {
+      errors.push("visualQa.captureMode is required before finalStatus can be done for visual work.");
+    }
+    if (claimsDone && report.visualQa?.status === "blocked") {
+      errors.push("finalStatus cannot be done while visualQa.status is blocked.");
+    }
+    if (claimsDone && report.visualQa?.captureMode === "blocked") {
+      errors.push("finalStatus cannot be done while visualQa.captureMode is blocked.");
+    }
+    if (claimsDone && report.visualQa?.captureMode === "manual-import") {
+      const manualChecksPassing = report.visualQa?.noOverlap === true &&
+        report.visualQa?.noTextOnButtons === true &&
+        report.visualQa?.noWatermark === true &&
+        report.visualQa?.noHorizontalOverflow === true &&
+        report.visualQa?.noCutHeroObject === true &&
+        Array.isArray(report.interactionQa?.deadButtons) &&
+        report.interactionQa.deadButtons.length === 0;
+      if (!manualChecksPassing) {
+        errors.push("finalStatus done with manual-import capture requires all manual visual checks to be passing and deadButtons empty.");
+      }
+    }
+
+    if (claimsDone && report.visualQa?.noOverlap === false) {
       errors.push("visualQa.noOverlap must be true before claiming visual work is done.");
     }
-    if (report.visualQa?.noTextOnButtons === false) {
+    if (claimsDone && report.visualQa?.noTextOnButtons === false) {
       errors.push("visualQa.noTextOnButtons must be true before claiming visual work is done.");
     }
-    if (report.visualQa?.noWatermark === false) {
+    if (claimsDone && report.visualQa?.noWatermark === false) {
       errors.push("visualQa.noWatermark must be true before claiming visual work is done.");
     }
-    if (report.visualQa?.noHorizontalOverflow === false) {
+    if (claimsDone && report.visualQa?.noHorizontalOverflow === false) {
       errors.push("visualQa.noHorizontalOverflow must be true before claiming visual work is done.");
     }
-    if (report.visualQa?.noCutHeroObject === false && !isNonEmptyString(report.visualQa.noCutHeroObjectJustification)) {
+    if (claimsDone && report.visualQa?.noCutHeroObject === false && !isNonEmptyString(report.visualQa.noCutHeroObjectJustification)) {
       errors.push("visualQa.noCutHeroObject must be true unless noCutHeroObjectJustification explains the accepted crop.");
     }
   }
@@ -1062,6 +1094,14 @@ function validateDoneReport(filePath) {
 
   if (report.finalStatus === "done" && report.visualQa?.status !== "passing") {
     errors.push("finalStatus cannot be done unless visualQa.status is passing.");
+  }
+
+  if (report.finalStatus === "done" && isNumber(report.score?.current) && report.score.current < 80) {
+    errors.push("score.current below 80 cannot have finalStatus done.");
+  }
+
+  if (isVisualWork && isNumber(report.score?.current) && report.score.current === 60 && report.finalStatus !== "needs-work") {
+    errors.push("visual work with score.current 60 must remain finalStatus needs-work.");
   }
 
   if (
@@ -1284,13 +1324,28 @@ function validateVisualQaReport(filePath) {
 
   const report = readJson(filePath);
   const errors = [];
-  for (const field of ["projectName", "runName", "url", "createdAt", "status", "screenshots", "checks", "manualChecklist", "buttonInventory", "deadButtons", "consoleErrors", "blockers"]) {
+  for (const field of ["projectName", "runName", "url", "createdAt", "status", "finalStatus", "captureMode", "browserRequested", "browserUsed", "browserAttempts", "tempDirectory", "tmpdirOverrideUsed", "tmpdirOverride", "inputDir", "originalScreenshotPaths", "screenshots", "checks", "manualChecklist", "buttonInventory", "deadButtons", "consoleErrors", "blockers"]) {
     if (!(field in report)) {
       errors.push(`${field} is required.`);
     }
   }
   if (report.status && !["captured", "blocked", "needs-manual-review", "passing", "failing"].includes(report.status)) {
     errors.push("status must be captured, blocked, needs-manual-review, passing, or failing.");
+  }
+  if (report.finalStatus && !["passing", "blocked", "needs-human-review"].includes(report.finalStatus)) {
+    errors.push("finalStatus must be passing, blocked, or needs-human-review.");
+  }
+  if (report.captureMode && !["automated", "manual-import", "blocked"].includes(report.captureMode)) {
+    errors.push("captureMode must be automated, manual-import, or blocked.");
+  }
+  if ("tmpdirOverrideUsed" in report && !isBoolean(report.tmpdirOverrideUsed)) {
+    errors.push("tmpdirOverrideUsed must be a boolean.");
+  }
+  if ("browserAttempts" in report && !Array.isArray(report.browserAttempts)) {
+    errors.push("browserAttempts must be an array.");
+  }
+  if ("originalScreenshotPaths" in report && !isPlainObject(report.originalScreenshotPaths)) {
+    errors.push("originalScreenshotPaths must be an object.");
   }
   if (isPlainObject(report.screenshots)) {
     for (const viewport of viewportKeys) {
@@ -1313,7 +1368,7 @@ function validateVisualQaReport(filePath) {
   if (!isPlainObject(report.manualChecklist)) {
     errors.push("manualChecklist must be an object.");
   } else {
-    for (const field of ["noOverlap", "noTextOnButtons", "noWatermarkEditorBrowserArtifact", "noCutHeroObject", "objectSwapInvariance"]) {
+    for (const field of ["noOverlap", "noTextOnButtons", "noWatermark", "noHorizontalOverflow", "noCutHeroObject", "noDeadButtons", "objectSwapInvariance"]) {
       if (!(field in report.manualChecklist)) {
         errors.push(`manualChecklist.${field} is required.`);
       }

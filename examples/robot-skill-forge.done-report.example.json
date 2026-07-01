@@ -20,6 +20,7 @@
   "screenshotReportPath": "docs/qa-runs/robot-skill-forge/screenshot-report.local.json",
   "visualQa": {
     "status": "passing",
+    "captureMode": "automated",
     "noOverlap": true,
     "noTextOnButtons": true,
     "noWatermark": true,

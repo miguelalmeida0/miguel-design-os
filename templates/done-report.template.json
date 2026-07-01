@@ -12,7 +12,8 @@
   },
   "screenshotReportPath": "",
   "visualQa": {
-    "status": "needs-work",
+    "status": "blocked",
+    "captureMode": "blocked",
     "noOverlap": false,
     "noTextOnButtons": false,
     "noWatermark": false,

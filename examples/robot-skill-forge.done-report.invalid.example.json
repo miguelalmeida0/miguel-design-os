@@ -16,7 +16,8 @@
   },
   "screenshotReportPath": "docs/qa-runs/robot-skill-forge/screenshot-report.local.json",
   "visualQa": {
-    "status": "failing",
+    "status": "blocked",
+    "captureMode": "blocked",
     "noOverlap": false,
     "noTextOnButtons": true,
     "noWatermark": true,
