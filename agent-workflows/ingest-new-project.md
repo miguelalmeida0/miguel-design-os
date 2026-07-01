@@ -7,12 +7,13 @@ Use when adding another completed project to this memory system.
 Before inspecting the project:
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `design-dna/miguel-style-principles.md`.
-3. Inspect the new project's type, framework, routes, components, styling system, tokens, and screenshots if present.
-4. Define the project's project-specific visual identity in the report.
-5. State that this project is evidence, not a template to copy literally; do not copy old apps literally.
-6. Treat screenshots as evidence of decisions, not as future templates.
-7. Score the rendered project with `evaluation/ui-scorecard.md` before finishing ingestion.
+2. Read `system.md`, `design-system.json`, and `skills/design-os-ingestion/SKILL.md`.
+3. Read `design-dna/miguel-style-principles.md`.
+4. Inspect the new project's type, framework, routes, components, styling system, tokens, and screenshots if present.
+5. Define the project's project-specific visual identity in the report.
+6. State that this project is evidence, not a template to copy literally; do not copy old apps literally.
+7. Treat screenshots as evidence of decisions, not as future templates.
+8. Score the rendered project with `evaluation/ui-scorecard.md` before finishing ingestion.
 
 ## Technical Inventory
 
@@ -85,3 +86,4 @@ Ingestion is complete only when:
 - screenshots exist or a run blocker is documented
 - scorecard result is recorded in the style report or final summary
 - any Design OS change names the evidence behind it
+- protected folders and app-specific boundaries are confirmed

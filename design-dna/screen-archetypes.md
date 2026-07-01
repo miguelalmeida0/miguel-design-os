@@ -2,6 +2,21 @@
 
 Pick one archetype per screen. Source projects are evidence for archetype behavior, not templates for color or layout.
 
+## Art-Directed Visual Experience
+
+Use when: the product depends on strong art direction, inspiration images, a cinematic target, a visual-heavy first impression, or a selection/discovery experience.
+
+Build:
+
+- primary object: one dominant object, scene, collection, or visual metaphor
+- required surfaces: approved art-direction concept, focal composition, hidden/absent information plan, responsive visual shell, screenshot comparison against concept/reference
+- controls: only enough controls to prove the primary interaction before feature depth
+- copy: minimal and subordinate to the visual concept unless the concept is typographic
+
+Do not: code the app first, flatten references into dark/neon/cards/glow, or substitute generic components for a cinematic or object-led target.
+
+Approval rule: no implementation until Migi approves one of 3 art-direction concepts.
+
 ## Enterprise Trust Cockpit
 
 Evidence: Agent Boss.
@@ -114,6 +129,7 @@ Do not: hide serious consequences behind cute copy or ambiguous toggles.
 
 If a screen seems to fit multiple archetypes, choose based on the primary object:
 
+- object is a visual target, inspiration-led composition, or art-directed first impression: Art-Directed Visual Experience
 - object is a decision/risk item: Enterprise Trust Cockpit
 - object is a data entity/feed: Research Terminal
 - object is generated/transformed output: Rewrite Studio

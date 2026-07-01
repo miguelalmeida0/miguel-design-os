@@ -7,31 +7,47 @@ Use this before finishing any generated app, UI review, source-project ingestion
 Before scoring, record:
 
 - project type
+- task classification
 - primary user
 - primary object
 - primary action
 - intended visual identity
+- selected design thesis when visual-heavy work applies
+- Visual Concept Gate status when visual-heavy work applies
 - screenshot evidence at 390, 768, and 1440 px, or a documented blocker
 
 Score the current UI against its own product identity. Do not score higher because it resembles a golden project.
 
 ## Score Caps
 
-Apply caps before final score:
+Apply caps before final score.
+
+Caps are written as 100-point score with 10-point shorthand in parentheses.
 
 - no screenshots and no documented blocker: max 60
+- no 390/768/1440 proof for significant frontend work: max 80 (8/10)
 - screenshots missing for one viewport: max 80
 - no project-specific visual identity: max 82
 - copied source-project palette/layout literally: max 74
+- 3-concept Visual Concept Gate skipped for visual-heavy work: max 60 (6/10)
+- inspiration flattened into shallow styling traits: max 60 (6/10)
+- rejected layout kept with new paint: max 60 (6/10)
+- strong visual reference provided but result preserves only surface styling: max 60 (6/10)
+- output uses generic app layout instead of reference composition: max 60 (6/10)
+- primary object in reference is replaced by grid/cards/dashboard: max 60 (6/10)
 - main object unclear: max 64
 - primary action unclear: max 64
-- passive elements look clickable in primary flow: max 78
+- clickable/passive ambiguity in primary flow: max 70 (7/10)
 - unsupported live/data/safety/AI claims: max 79
 - mobile accidental horizontal scroll in primary flow: max 79
-- visible UI elements overlap or collide unintentionally: max 60 (6/10 equivalent)
-- design follows the most obvious genre cliche without a fresh thesis: max 70 (7/10 equivalent)
-- excitement is created mainly through badges/glows/stats instead of composition and interaction: max 70 (7/10 equivalent)
-- selection-first product does not make objects desirable to click: max 70 (7/10 equivalent)
+- visible UI elements overlap or collide unintentionally: max 60 (6/10)
+- animation exists only for decoration and does not clarify state/interaction/hierarchy: max 70 (7/10)
+- oversized AI-app typography or containers overwhelm the product: max 70 (7/10)
+- user feels attacked by scale on first load: max 70 (7/10)
+- design follows the most obvious genre cliche without a fresh thesis: max 70 (7/10)
+- first-screen information wall before the user has a reason to care: max 70 (7/10)
+- excitement is created mainly through badges/glows/stats instead of composition and interaction: max 70 (7/10)
+- selection-first product does not make objects desirable to click: max 70 (7/10)
 
 ## Categories
 
@@ -107,6 +123,7 @@ Any blocker prevents elite:
 - main object unclear
 - primary action unclear
 - passive metadata looks clickable in the primary flow
+- first screen is an information wall before desire, action, or object clarity
 - source-project palette/layout copied literally
 - In The Loop social patterns applied to a non-social product
 - text overlap or clipping in primary flow
@@ -114,6 +131,11 @@ Any blocker prevents elite:
 - unsupported live/data/safety/AI claim
 - visible UI elements overlap or collide unintentionally
 - obvious genre cliche without a fresh thesis
+- Visual Concept Gate skipped when required
+- reference flattened into shallow traits
+- same rejected layout with new paint
+- decorative motion that clarifies nothing
+- AI scale inflation overwhelms the product
 - selection-first product lacks object desire or relies on badge/glow/stat clutter for excitement
 - missing scorecard result
 
@@ -121,9 +143,11 @@ Any blocker prevents elite:
 
 Always report:
 
+- design thesis used
 - total score after caps
 - category scores
 - screenshots used
 - top 3 fixes
 - blockers
 - verification gaps
+- whether the UI was patched after review

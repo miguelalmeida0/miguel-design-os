@@ -28,6 +28,52 @@ Fix:
 - Replace the stat grid with the primary object plus its next action.
 - Keep metrics only if they change prioritization, trust, or decision-making.
 
+## Implementation Before Art Direction
+
+Detect:
+
+- The agent starts coding components before defining the visual concept.
+- A visual-heavy screen begins as page shell, cards, nav, and reusable components before art direction is approved.
+- The implementation plan describes components but not metaphor, focal object, emotional hook, hidden information, or what is absent.
+
+Why it fails:
+
+It locks the product into generic component structure before the emotional/product direction is solved.
+
+Correction:
+
+For visual-heavy work, first create 3 art-direction concepts and wait for Migi approval. Implement only the approved direction.
+
+## Reference Flattening
+
+Detect:
+
+- Inspiration is reduced to shallow styling traits: dark theme, neon, glass, cards, large text, glow, gradients, or rounded panels.
+- The result copies surface tokens while changing the reference's composition, focal object, or information strategy.
+
+Why it fails:
+
+It copies the surface but misses the design mechanism.
+
+Correction:
+
+Extract composition, focal object, spatial hierarchy, hidden information, emotional hook, material/texture, interaction model, and what is intentionally absent.
+
+## Same Layout With New Paint
+
+Detect:
+
+- A rejected structure is preserved while colors, scale, spacing, glow, cards, motion, or borders change.
+- The visual direction changes, but the composition and information hierarchy remain the same.
+
+Why it fails:
+
+If the composition is wrong, styling changes are not progress.
+
+Correction:
+
+When Migi rejects the direction, rethink the structure from first principles. Restart at the Visual Concept Gate instead of polishing the rejected layout.
+
 ## Obvious Theme Literalism
 
 Detect:
@@ -35,12 +81,44 @@ Detect:
 - An app about robots becomes dark cyber cards, neon glows, stat badges, and "fighter" language by default.
 - A finance product automatically becomes a Wall Street terminal, a health product automatically becomes clinical blue, or a game-adjacent product automatically becomes neon arcade.
 - The visual system feels like the first generic app-builder result for the prompt.
+- Obvious examples: robot app = dark cyber cards; AI app = glowing orb; finance app = dashboard grid; social app = pastel card feed; portfolio = generic hero sections; developer tool = terminal everywhere.
 
 Fix:
 
 - Before designing, define a non-obvious visual metaphor.
 - Ask: what would a great designer do besides the expected theme treatment?
 - Use theme signals only when they support the product concept, not because the noun suggests them.
+
+## Motion Without Purpose
+
+Detect:
+
+- Animation exists only to make the app feel alive.
+- Movement does not clarify selection, hover, state change, transition, hierarchy, progress, spatial relationship, or user feedback.
+
+Why it fails:
+
+Animation is not automatically polish. Decorative motion becomes noise.
+
+Correction:
+
+Motion is only acceptable when it clarifies selection, hover, state change, transition, hierarchy, progress, spatial relationship, or user feedback. If motion does not clarify something, remove it.
+
+## AI Scale Inflation
+
+Detect:
+
+- Giant headings, huge cards, massive containers, oversized spacing, or inflated panels are used to fake drama.
+- Every object is large, so no object is actually dominant.
+- First load feels physically overwhelming.
+
+Why it fails:
+
+The user feels attacked by scale. Big does not equal premium.
+
+Correction:
+
+Use controlled type scale. Make one object dominant, not every object huge. Create drama through composition, rhythm, imagery, cropping, contrast, and interaction.
 
 ## Excitement Through Clutter
 
@@ -55,8 +133,9 @@ Fix:
 - Create excitement through composition, scale, contrast, motion, selection reward, and object desire.
 - Use fewer elements with more intent.
 - Let one or two strong signals carry the card instead of badge soup.
+- Prefer strong focal object, material, mood, pacing, progressive disclosure, and interaction reward over more labels/effects.
 
-## Overlapping Card Content
+## Overlap / Collision
 
 Detect:
 
@@ -68,6 +147,7 @@ Detect:
 Fix:
 
 - Every card needs clear zones: visual, identity, metadata, action.
+- Include a state zone when status/selection/availability matters.
 - Test at 390 / 768 / 1440.
 - No accidental collision is acceptable.
 - Only use deliberate overlap when it is readable, necessary, and proven responsive.
@@ -244,6 +324,12 @@ Do not finish while any are true:
 - primary action hidden or competing
 - passive metadata looks clickable
 - source-project palette copied literally
+- Visual Concept Gate skipped for visual-heavy work
+- inspiration flattened into shallow style traits
+- rejected layout preserved with new paint
+- strong reference converted into generic components
+- motion exists only as decoration
+- AI scale inflation overwhelms the product
 - visible UI elements overlap or collide unintentionally
 - app follows the obvious genre aesthetic without a fresh thesis
 - selection-first product creates excitement mainly through badges/glows/stats instead of desire and interaction reward

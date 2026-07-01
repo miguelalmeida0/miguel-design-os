@@ -8,11 +8,15 @@ Before building or reviewing a UI, write this record in your notes or final repo
 
 ```md
 Project type:
+Task classification:
 Primary user:
 Primary object on the screen:
 Primary action:
+Visual-heavy work?:
+Inspiration/reference provided?:
 Screen archetype:
 Project-specific visual identity:
+Visual Concept Gate status:
 Density level:
 Token direction:
 Data/auth truth constraints:
@@ -22,6 +26,63 @@ Scorecard target:
 ```
 
 If any field is unknown and would change the UI, inspect the current project or ask one short question.
+
+## Visual Concept Gate
+
+Use for every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images.
+
+Do not implement immediately. First produce 3 radically different art-direction concepts and wait for Migi's approval.
+
+Each concept must include:
+
+- visual metaphor
+- composition
+- focal object
+- emotional hook
+- what is hidden
+- what is absent
+- why it avoids obvious app/theme cliches
+- why it creates desire
+- how it works at 1440 / 768 / 390
+- what would make it fail
+
+The gate does not block small bug fixes, security patches, copy edits, or purely technical refactors.
+
+Pass condition: implementation starts only after Migi approves one concept.
+
+Fail condition: the agent starts coding components before solving the art direction.
+
+## Visual Target Reconstruction Mode
+
+Use when Migi provides inspiration images, screenshots, or a strong visual target.
+
+Analyze references for:
+
+- composition
+- focal object
+- information hierarchy
+- what is hidden
+- what is absent
+- emotional hook
+- material/texture
+- atmosphere
+- interaction model
+- why the reference creates desire
+
+Do not flatten references into shallow style tokens such as dark, neon, cards, glass, glow, gradients, rounded panels, or big text.
+
+If a reference shows a cinematic stage, do not build a dashboard. If it shows one dominant object, do not build a grid. If it hides information, do not expose stats. If it is art-directed, do not answer with generic components.
+
+Required sequence:
+
+1. reference analysis
+2. 3 art-direction concepts
+3. approval checkpoint
+4. visual shell prototype
+5. screenshots
+6. comparison against the chosen concept/reference
+7. patch loop
+8. product logic only after the visual shell works
 
 ## Evidence Order
 
@@ -174,3 +235,16 @@ Action for agents:
 - Include score, screenshots used, and remaining gaps in the final report.
 
 Fail condition: final answer claims "high-quality", "responsive", or "Miguel-style" without screenshot evidence and scorecard result.
+
+### 11. Do Not Mistake Implementation Progress For Design Progress
+
+Robot Skill Forge showed that Codex agents tend to preserve existing structure and make "same layout with new paint" unless forced into art-direction mode.
+
+Action for agents:
+
+- When Migi says a UI is far from the inspiration, stop polishing.
+- Do not keep the rejected component structure and adjust colors, glow, cards, borders, motion, or spacing.
+- Return to the Visual Concept Gate and rethink the composition from first principles.
+- Build the visual shell/poster first; add feature depth only after the visual direction works.
+
+Fail condition: a rejected direction returns with the same layout and new paint.

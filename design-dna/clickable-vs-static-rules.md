@@ -91,4 +91,11 @@ At 390, 768, and 1440 px:
 - Passive tags do not visually compete with primary/secondary actions.
 - A row hover style appears only when row click/selection exists.
 - Focus ring is not clipped by overflow containers.
+- Selection-first objects have a visible hover and selected reward that clarifies selection, not decorative motion.
+- Text, badges, controls, stats, and labels do not overlap or collide inside clickable cards.
 
+## Motion Rule
+
+Motion on interactive elements is allowed only when it clarifies selection, hover, state change, transition, hierarchy, progress, spatial relationship, or user feedback.
+
+If motion does not clarify one of those, remove it.

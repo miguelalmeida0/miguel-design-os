@@ -2,6 +2,32 @@
 
 Choose one recipe before arranging components. Do not mix recipes because a source screenshot looked good.
 
+## Art-Directed Visual Shell
+
+Use when: the task is a new app, major screen, redesign, gallery, roster, selection-first flow, visual-heavy interface, or uses inspiration images.
+
+Before building:
+
+- run the Visual Concept Gate
+- produce 3 radically different art-direction concepts
+- wait for Migi approval
+- analyze references by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is absent
+
+Build:
+
+- visual shell/poster first
+- one focal object or focal composition before component depth
+- enough interaction to prove hover/selection/state behavior
+- only the minimum product logic needed to test the visual direction
+
+Do not:
+
+- start with reusable app components
+- turn cinematic references into dashboards
+- replace one dominant reference object with a grid
+- expose stats when the reference hides information
+- add feature depth before the visual shell works
+
 ## Focused Creation
 
 Use when: the user creates one thing from a prompt, selection, upload, or short form.
@@ -124,6 +150,8 @@ Do not: apply this recipe to non-social products just because the case study lik
 ## Selection Roster
 
 Use when: the core experience is choosing, browsing, collecting, comparing, or discovering objects.
+
+Gate: this is visual-heavy by default. Run the Visual Concept Gate before implementation.
 
 Build:
 

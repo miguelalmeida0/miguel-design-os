@@ -2,15 +2,31 @@
 
 Use this file before coding a new app, feature, or screen.
 
+## Task Classification
+
+Classify before work:
+
+- bug fix
+- technical refactor
+- visual-heavy UI
+- new app
+- redesign
+- selection/gallery/roster/product-discovery experience
+
+Small bug fixes, security patches, copy edits, and purely technical refactors do not require the Visual Concept Gate unless they change a visually important UI direction.
+
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read relevant files in `design-dna/`.
-3. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
-4. Define a project-specific visual identity and a non-obvious visual thesis.
-5. State which source project is relevant evidence and what will not be copied.
-6. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
-7. Plan to run `evaluation/ui-scorecard.md` before finishing.
+2. Read `system.md` and `design-system.json`.
+3. Read relevant `rules/*.md`, `skills/*/SKILL.md`, and `design-dna/*.md`.
+4. Classify the task.
+5. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
+6. If visual-heavy, run the Visual Concept Gate before implementation.
+7. Define a project-specific visual identity and a non-obvious visual thesis.
+8. State which source project is relevant evidence and what will not be copied.
+9. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
+10. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
 ## Design Intent Record
 
@@ -18,13 +34,19 @@ Write this before implementation:
 
 ```md
 Project type:
+Task classification:
 Primary user:
 Primary object:
 Primary action:
+Visual-heavy work?:
+Inspiration/reference provided?:
+Selected skill/playbook:
 Selection-first product?:
 Archetype:
 Layout recipe:
 Visual identity words:
+Visual Concept Gate status:
+Selected design thesis:
 Non-obvious visual thesis:
 Obvious genre route to avoid:
 Density:
@@ -36,16 +58,89 @@ Screenshots to capture:
 Target score:
 ```
 
+## Visual Concept Gate
+
+Applies to every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images.
+
+Do not implement immediately.
+
+First produce 3 design theses:
+
+1. Safe expected direction.
+2. More original/art-directed direction.
+3. Wild but controlled direction.
+
+For each thesis include:
+
+- visual metaphor
+- first-screen composition
+- focal object
+- interaction concept
+- typography/scale direction
+- color/material direction
+- emotional hook
+- what is hidden
+- what is absent
+- why it avoids obvious app/theme cliches
+- why it creates desire
+- how it works at 1440 / 768 / 390
+- what would make it fail
+
+Then stop and wait for Migi's approval. Only after Migi approves one concept may implementation begin.
+
+## Inspiration Handling
+
+Use when Migi provides inspiration images, screenshots, references, or a strong visual target.
+
+1. Store files under `docs/inspiration/[project]/` when practical.
+2. Create or update `docs/inspiration-analysis.md`.
+3. Extract composition, focal object, hierarchy, hidden information, absent elements, emotional hook, material/texture, atmosphere, and interaction model.
+4. List what to copy, what to avoid, and what to translate.
+5. Explain in the final handoff how the implementation used the inspiration without copying it literally.
+
+Do not extract shallow traits only. Dark, neon, cards, glass, glow, gradients, rounded panels, and big text are not a design concept.
+
+## Visual Target Reconstruction Mode
+
+Use when Migi provides inspiration images, screenshots, or a strong visual target.
+
+First analyze:
+
+- composition
+- focal object
+- information hierarchy
+- what is hidden
+- what is absent
+- emotional hook
+- material/texture
+- atmosphere
+- interaction model
+- why the reference creates desire
+
+Then produce:
+
+1. reference analysis
+2. 3 art-direction concepts
+3. approval checkpoint
+4. visual shell prototype
+5. screenshots
+6. comparison against the chosen concept/reference
+7. patch loop
+8. product logic only after the visual shell works
+
+If a reference shows a cinematic stage, do not build a dashboard. If a reference shows one dominant object, do not build a grid. If a reference hides information, do not expose stats. If a reference is art-directed, do not answer with generic components.
+
 ## Build Order
 
-1. Implement or update semantic tokens.
-2. Build the page shell/navigation behavior.
-3. Build the primary object and its primary action.
-4. Add secondary context only after the primary object works.
-5. Add component states: empty, loading, error, disabled, selected, focus-visible.
-6. Add responsive behavior for 390, 768, and 1440 px.
-7. Add copy that names actions, states, and consequences.
-8. Add visual assets only when they identify the subject, show the product/object, explain state, or help the user inspect something.
+1. Implement only the approved direction when the Visual Concept Gate applies.
+2. Build a visual shell/poster composition before feature depth.
+3. Implement or update semantic tokens.
+4. Build the primary object and its primary action.
+5. Add secondary context only after the primary object works.
+6. Add component states: empty, loading, error, disabled, selected, focus-visible.
+7. Add responsive behavior for 390, 768, and 1440 px.
+8. Add copy that names actions, states, and consequences.
+9. Add product logic only after the visual shell works.
 
 ## Selection-First Gate
 
@@ -80,6 +175,7 @@ Do not:
 - default to predictable dark cyber, neon, fighter, stat-badge, or genre-cliche styling
 - create excitement through badge/glow/stat overload
 - allow text, badges, stats, or controls to collide
+- preserve a rejected layout with new paint
 
 Robot Skill Forge evidence: see `design-dna/rejected-directions.md`.
 
@@ -99,6 +195,7 @@ Do not:
 - use generic AI/SaaS gradients or dashboard cards as default
 - make a selection-first product feel like a beige catalog, product brochure, dense terminal, or obvious genre cliche before the user chooses
 - take the obvious aesthetic route just because the app concept suggests it
+- implement visually important UI before the Visual Concept Gate is approved
 
 
 ## Obvious Theme Gate
@@ -126,9 +223,22 @@ Before final delivery:
 1. Run available lint/build/tests.
 2. Start the app if possible.
 3. Capture 390, 768, and 1440 px screenshots.
-4. Inspect screenshots for blockers in `responsive-rules.md` and `anti-patterns.md`.
-5. Score with `evaluation/ui-scorecard.md`.
-6. Fix blockers and recapture changed screens.
-7. Report score, screenshots, and known gaps.
+4. Run lightweight scripts when practical: `scripts/check-horizontal-scroll.mjs`, `scripts/check-overlap.mjs`, `scripts/check-scale-inflation.mjs`, and `scripts/generate-design-report.mjs`.
+5. Inspect screenshots for blockers in `responsive-rules.md`, `rules/*.md`, and `anti-patterns.md`.
+6. Score with `evaluation/ui-scorecard.md`.
+7. Fix blockers and recapture changed screens.
+8. Report score, screenshots, and known gaps.
 
 If the app cannot run, document the command, error, and best alternative evidence.
+
+## Required Handoff
+
+```md
+Design thesis used:
+Files changed:
+Screenshots:
+Scorecard result:
+Blockers fixed:
+Remaining weaknesses:
+Patched after review: yes/no
+```

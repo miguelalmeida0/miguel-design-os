@@ -5,24 +5,30 @@ Use when iterating an existing UI until it clears the Design OS bar.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read relevant `design-dna/` files before editing.
-3. Inspect the current project type, framework, routes, components, styling system, and tokens.
-4. Define or restate the project-specific visual identity.
-5. Name any source-project evidence and what must not be copied literally.
-6. Capture current screenshots as evidence; do not treat old captures as templates.
-7. Score with `evaluation/ui-scorecard.md` before choosing fixes.
+2. Read `system.md`, `design-system.json`, `rules/scorecard.md`, and `skills/frontend-qa/SKILL.md`.
+3. Read relevant `design-dna/` files before editing.
+4. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+5. Inspect the current project type, framework, routes, components, styling system, and tokens.
+6. If the fix is visual-heavy or Migi rejected the direction, run the Visual Concept Gate before editing.
+7. Define or restate the project-specific visual identity.
+8. Name any source-project evidence and what must not be copied literally.
+9. Capture current screenshots as evidence; do not treat old captures as templates.
+10. Score with `evaluation/ui-scorecard.md` before choosing fixes.
 
 ## Iteration Loop
 
 1. Capture 390, 768, and 1440 px screenshots.
-2. Score with `evaluation/ui-scorecard.md`.
-3. List blockers and the top 3 score-limiting defects.
-4. Fix the highest-impact defect.
-5. Run lint/build/tests where available.
-6. Restart or refresh the app.
-7. Recapture affected screenshots.
-8. Rescore.
-9. Repeat until score is 90+ with no blockers, or document the blocker.
+2. Run lightweight scripts when practical: horizontal scroll, overlap, and scale inflation.
+3. Score with `evaluation/ui-scorecard.md`.
+4. List blockers and the top 3 score-limiting defects.
+5. If the blocker is art direction, stop polishing and produce 3 new theses for approval: safe expected, more original/art-directed, wild but controlled.
+6. Build or patch the visual shell before feature depth.
+7. Fix the highest-impact defect.
+8. Run lint/build/tests where available.
+9. Restart or refresh the app.
+10. Recapture affected screenshots.
+11. Rescore.
+12. Repeat until score is 90+ with no blockers, or document the blocker.
 
 ## Fix Priority
 
@@ -30,17 +36,21 @@ Fix in this order:
 
 1. layout breakage, overlap, clipping, blank primary states
 2. unclear primary object or action
-3. source-project palette/layout copying
-4. clickable/passive ambiguity
-5. responsive failures
-6. missing component states
-7. unsupported claims or fake data
-8. vague copy
-9. visual refinement and motion
+3. skipped Visual Concept Gate for visual-heavy work
+4. same rejected layout with new paint
+5. source-project palette/layout copying
+6. clickable/passive ambiguity
+7. responsive failures
+8. missing component states
+9. unsupported claims or fake data
+10. vague copy
+11. visual refinement and motion
 
 ## Constraints
 
 - Do not repaint before fixing hierarchy.
+- Do not repaint before fixing art direction.
+- Do not keep a rejected structure and change only colors, scale, glow, spacing, cards, borders, or motion.
 - Do not add containers to solve hierarchy.
 - Do not add explanatory copy to solve poor layout.
 - Do not add motion to hide weak state handling.
@@ -52,8 +62,8 @@ Elite requires:
 
 - score 90+
 - no scorecard blockers
+- Visual Concept Gate completed and approved when required
 - screenshots at 390, 768, and 1440 px
 - project-specific visual identity preserved
 - no literal source-app copying
-- final report includes score, screenshots, and remaining risks
-
+- final report includes design thesis used, files changed, screenshots, score, blockers fixed, remaining risks, and whether the UI was patched after review

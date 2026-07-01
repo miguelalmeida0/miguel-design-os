@@ -5,12 +5,16 @@ Use when building a new app, screen, or frontend feature.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read relevant `design-dna/` files before touching UI code.
-3. Inspect the current project type, framework, routes, components, styling system, and tokens.
-4. Define a project-specific visual identity before choosing palette or layout.
-5. Name any golden project used as evidence and what will not be copied.
-6. Plan screenshots as evidence for the new work, not templates from old apps.
-7. Plan to run `evaluation/ui-scorecard.md` before finishing.
+2. Read `system.md` and `design-system.json`.
+3. Read `rules/new-app-workflow.md` and any relevant `skills/*/SKILL.md`.
+4. Read relevant `design-dna/` files before touching UI code.
+5. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+6. Inspect the current project type, framework, routes, components, styling system, and tokens.
+7. If visual-heavy, run the Visual Concept Gate before implementation.
+8. Define a project-specific visual identity before choosing palette or layout.
+9. Name any golden project used as evidence and what will not be copied.
+10. Plan screenshots as evidence for the new work, not templates from old apps.
+11. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
 ## Design Intent Record
 
@@ -18,12 +22,18 @@ Write this before implementation:
 
 ```md
 Project type:
+Task classification:
 Primary user:
 Primary object:
 Primary action:
+Visual-heavy work?:
+Inspiration/reference provided?:
+Selected skill/playbook:
 Archetype:
 Layout recipe:
 Visual identity words:
+Visual Concept Gate status:
+Selected design thesis:
 Density:
 Token direction:
 Component contracts:
@@ -33,34 +43,60 @@ Screenshot targets:
 Score target:
 ```
 
+## Visual Concept Gate
+
+Run this gate for visual-heavy UI, new apps, redesigns, selection/gallery/roster/product-discovery experiences, and any work with inspiration images.
+
+Do not code first.
+
+Produce 3 design theses:
+
+1. Safe expected direction.
+2. More original/art-directed direction.
+3. Wild but controlled direction.
+
+Each thesis includes visual metaphor, first-screen composition, focal object, interaction concept, typography/scale direction, color/material direction, emotional hook, what is hidden, what is absent, why it avoids obvious app/theme cliches, why it creates desire, 1440 / 768 / 390 behavior, and what would make it fail.
+
+Stop and wait for Migi's approval. Implement only the approved direction.
+
+If references are provided, analyze composition, focal object, hidden information, emotional hook, material, texture, interaction model, and intentional absence. Do not reduce references to dark, neon, cards, glass, glow, big text, or gradients.
+
+When references materially drive the work, store them under `docs/inspiration/[project]/` and create or update `docs/inspiration-analysis.md`.
+
 ## Implementation Order
 
 1. Reuse existing framework and local component patterns.
-2. Add or map semantic tokens first.
-3. Build the primary object and primary action.
-4. Add secondary context only after the main path works.
-5. Implement states: empty, loading, error, disabled, selected, focus-visible.
-6. Make clickable/passive roles distinct in code and visuals.
-7. Add responsive behavior for 390, 768, and 1440 px.
-8. Add product-specific copy and assets only when they identify the subject, show the product/object, explain state, or help inspection.
+2. Build the approved visual shell/poster composition before feature depth.
+3. Add or map semantic tokens.
+4. Build the primary object and primary action.
+5. Add secondary context only after the main path works.
+6. Implement states: empty, loading, error, disabled, selected, focus-visible.
+7. Make clickable/passive roles distinct in code and visuals.
+8. Add responsive behavior for 390, 768, and 1440 px.
+9. Add product-specific copy and assets only when they identify the subject, show the product/object, explain state, or help inspection.
+10. Add product logic only after the visual shell works.
 
 ## Verification
 
 1. Run available lint/build/tests.
 2. Start the app if possible.
 3. Capture 390, 768, and 1440 px screenshots.
-4. Inspect for Design OS blockers.
-5. Score with `evaluation/ui-scorecard.md`.
-6. Fix blockers and recapture changed screens.
+4. Run `scripts/check-horizontal-scroll.mjs`, `scripts/check-overlap.mjs`, and `scripts/check-scale-inflation.mjs` when practical.
+5. Inspect for Design OS blockers.
+6. Score with `evaluation/ui-scorecard.md`.
+7. Fix blockers and recapture changed screens.
 
 ## Delivery
 
 Report:
 
 - design intent record summary
+- design thesis used
 - key files changed
 - screenshot paths
 - scorecard result
-- blockers or caveats
+- blockers fixed
+- remaining weaknesses
+- whether the UI was patched after review
 
 Do not claim the UI is Miguel-aligned without screenshot evidence and a score.

@@ -2,6 +2,23 @@
 
 Use this file as negative evidence. These directions were rejected for specific products and should prevent future agents from repeating the same mistakes. Do not globalize a rejected direction beyond its stated scope.
 
+## Robot Skill Forge Meta-Lesson: Same Layout With New Paint
+
+Robot Skill Forge showed that Codex agents tend to preserve existing structure and make "same layout with new paint" unless explicitly forced into art-direction mode. Future agents must not mistake implementation progress for design progress.
+
+If Migi says a UI is realities away from the inspiration, stop polishing and rethink the visual concept. Do not keep the same structure and adjust color, glow, spacing, cards, borders, or motion.
+
+Lovable-style visual output can beat Codex when the task is art direction first. Codex must compensate by doing a visual-concept phase before implementation. Do not build the app first. Build the poster/composition first.
+
+Correction:
+
+- run the Visual Concept Gate
+- produce 3 radically different art-direction concepts
+- wait for Migi approval
+- build the visual shell before feature depth
+- compare screenshots against the approved concept/reference
+- add product logic only after the visual shell works
+
 ## Robot Skill Forge v4: Obvious AI Robot App / Overlapping Character Cards
 
 Context:
@@ -162,4 +179,3 @@ Avoid for selection-first products:
 - crossed grid textures as atmosphere
 - dashboards before selection
 - stats/badges/tabs as the first emotional hook
-
