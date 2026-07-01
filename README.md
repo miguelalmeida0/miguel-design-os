@@ -1,252 +1,134 @@
 # Miguel Design OS
 
-Miguel Design OS is a frontend/design operating system for future coding agents. It converts golden projects, manual preferences, screenshots, scoped feedback, rejected directions, skills, score caps, and lightweight QA scripts into enforceable workflow.
+Miguel Design OS is a simple, powerful design memory system for future frontend agents.
 
-The system's job is not to preserve a look. Its job is to force better product-specific decisions before agents build UI.
+It helps Codex quickly understand:
 
-## P0 Local Enforcement
+1. Migi's design rules.
+2. Migi's approved UI examples.
+3. Migi's rejected UI examples.
+4. Prompts, skills, templates, and QA gates for future projects.
 
-Miguel Design OS now includes local enforcement artifacts:
+## What It Is
 
-- `schemas/design-brief.schema.json`
-- `schemas/visual-concepts.schema.json`
-- `schemas/screenshot-report.schema.json`
-- `schemas/done-report.schema.json`
-- `schemas/target-copy-report.schema.json`
-- `schemas/asset-manifest.schema.json`
-- `schemas/inspiration-manifest.schema.json`
-- `schemas/visual-agent-run.schema.json`
-- `schemas/visual-qa-report.schema.json`
-- `schemas/screenshot-comparison-report.schema.json`
-- `schemas/object-swap-report.schema.json`
-- `schemas/ui-scorecard.schema.json`
-- `schemas/skill-registry.schema.json`
-- `templates/*.template.json`
-- `skills/skill-registry.json`
-- `tools/design-os.mjs`
+- a design memory system
+- a visual reference library
+- a frontend agent instruction system
+- a collection of rules, skills, prompts, schemas, and screenshot QA tools
+
+## What It Is Not
+
+- not a product app
+- not a frontend Studio app
+- not a replacement for visual judgment
+- not a gallery of production assets
+
+The previous frontend Studio experiment has been deprecated under `deprecated/studio/`. The previous local concept preview experiment has been deprecated under `deprecated/studio-preview/`. They are not part of the current primary workflow.
+
+## Primary Workflow
+
+Use this repo as:
+
+```txt
+rules + visual-library + prompts + screenshot QA
+```
+
+For frontend/design work:
+
+1. Read `AGENTS.md`.
+2. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
+3. Inspect `visual-library/README.md`.
+4. Check `visual-library/approved/` for references Migi likes.
+5. Check `visual-library/rejected/` for anti-patterns Migi dislikes.
+6. Extract principles for the current product.
+7. Use relevant skills from `skills/` only when needed.
+8. Implement only after the design direction is clear.
+9. Capture screenshot QA before claiming done.
+
+## Visual Library
+
+`visual-library/` is the main place for Migi's visual taste memory.
+
+- `visual-library/approved/`: references Migi likes.
+- `visual-library/rejected/`: references Migi dislikes.
+- `visual-library/inspiration/`: useful references that are not yet global rules.
+- `visual-library/case-studies/`: lessons from wins, failures, and dogfood targets.
+- `visual-library/templates/reference-note.template.md`: note format for every screenshot.
+
+Screenshots are design evidence, not production assets. Future agents should extract composition, hierarchy, density, interaction ideas, and anti-patterns. Do not copy colors, brands, or layouts blindly unless Migi explicitly activates Literal Target Copy Mode.
+
+## Literal Target Copy
+
+When Migi says:
+
+- `copy this exact UI`
+- `100% this design`
+- `literally what you see`
+- `exact visual target`
+
+Literal Target Copy Mode overrides product thinking. The agent should reconstruct the supplied target's visible composition, exclude browser/editor/watermark artifacts, avoid new product ideas, and report exact differences.
+
+When Migi says a screenshot is inspiration, extract principles instead of cloning.
+
+## Useful Files
+
+- `AGENTS.md`: short router for future Codex agents.
+- `design-dna/00_COMPACT_AGENT_CONTEXT.md`: compact always-read design context.
+- `design-dna/`: reusable design rules.
+- `visual-library/`: approved/rejected/inspiration references and notes.
+- `skills/`: focused playbooks for visual concepting, target reconstruction, QA, selection-first products, and truthful state.
+- `templates/prompts/`: Codex prompt templates.
+- `templates/`: report and checklist templates.
+- `evaluation/ui-scorecard.md`: scoring and hard caps.
+- `tools/design-os.mjs`: local CLI for routing and validation.
+- `tools/visual-qa.mjs`: local screenshot QA with fallback reporting.
+- `tools/playwright-doctor.mjs`: local browser capture diagnosis.
+- `tools/import-manual-screenshots.mjs`: app-only manual screenshot import.
+
+## Dogfooding Miguel Design OS
+
+`visual-taste` is the first target app used to test whether Miguel Design OS actually improves frontend output.
+
+Every dogfood failure must feed back into this repo as one of:
+
+- a design rule
+- a skill instruction
+- a prompt update
+- a schema/tool validation update
+- a checklist item
+- an explicit open gap
+
+Use `templates/dogfood-target-checklist.template.md` for future dogfood targets.
 
 ## Embedded Usage
 
-Miguel Design OS can live inside another project as `.design-os`. From that project root, run:
+Miguel Design OS can live inside another project as `.design-os`. From that project root:
 
 ```sh
 node .design-os/tools/design-os.mjs list-skills
 node .design-os/tools/design-os.mjs route --task "Build a visual-heavy robot character selection app from inspiration images"
 ```
 
-The CLI resolves internal Design OS paths such as `skills/`, `schemas/`, `templates/`, `evaluation/`, and `design-dna/` from the location of `.design-os/tools/design-os.mjs`, not from `process.cwd()`.
+The CLI resolves internal Design OS paths from the location of `.design-os/tools/design-os.mjs`, not from `process.cwd()`.
 
-## Visual Swarm v1
+## Validation
 
-Visual Swarm v1 adds five local Markdown agents:
-
-- `01-inspiration-scout`
-- `02-art-direction-concept`
-- `03-literal-target-copy`
-- `04-visual-qa-anti-slop`
-- `05-productionizer`
-
-Run:
+Useful local commands:
 
 ```sh
+node tools/design-os.mjs doctor
+node tools/design-os.mjs route --task "<task>"
 node tools/design-os.mjs list-agents
-node tools/design-os.mjs route-agent --task "Build a cinematic robot character selection app from Pinterest inspiration and a Lovable target"
-node tools/design-os.mjs new-inspiration-manifest
-node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json
-```
-
-The swarm is instruction-only and local. It does not call paid tools, API keys, hosted Lovable, screenshot-to-code generation, Onlook hosted usage, or external model calls.
-
-## Weekend Visual Engine v1
-
-The weekend engine adds local build tools around the swarm:
-
-- `studio-preview/` renders 3 visual concepts at `/concept/1`, `/concept/2`, and `/concept/3`.
-- `tools/capture-concepts.mjs` captures rendered concept screenshots.
-- `tools/compare-screenshots.mjs` creates target/current comparison reports.
-- `tools/visual-qa.mjs` captures app screenshots and creates visual QA reports.
-- `tools/object-swap-check.mjs` checks roster/gallery/configurator object swaps.
-- `tools/new-inspiration-queue.mjs` and `tools/validate-inspiration-queue.mjs` manage the local inspiration corpus queue.
-
-Immediate flow:
-
-```sh
-node tools/design-os.mjs route-agent --task "Build cinematic robot selection app from award-winning inspiration and target screenshots"
-node tools/new-inspiration-queue.mjs
-node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
-cd studio-preview && npm run dev
-node ../tools/capture-concepts.mjs --url http://localhost:5174
-cd ..
-node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
 node tools/design-os.mjs validate-done-report done-report.local.json
+node tools/playwright-doctor.mjs --url http://localhost:5173 --browser auto
+node tools/visual-qa.mjs --url http://localhost:5173 --name <project-name> --browser auto --tmpdir .tmp/playwright
+node tools/import-manual-screenshots.mjs --name <project-name> --390 path/to/390.png --768 path/to/768.png --1440 path/to/1440.png
 ```
 
-The browser scripts use local Playwright only when available. This repo did not install Playwright during the sprint; if it is missing, capture tools produce clear local setup errors or blocked reports.
+Build/lint is not visual QA. Desktop screenshots with browser chrome, dock, editor UI, or watermarks are not valid QA evidence.
 
-## Design OS Studio
+## Protected Folders
 
-`studio/` is the local frontend command center for Miguel Design OS. It is separate from `studio-preview/`, which only renders concept previews.
-
-Run:
-
-```sh
-cd studio
-npm install
-npm run dev
-npm run build
-```
-
-The dev server defaults to `http://127.0.0.1:5175`. When local Playwright is available, capture Studio evidence with:
-
-```sh
-node tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio
-```
-
-Studio includes Command, Inspiration, Concepts, Target Copy, QA Runs, Agents, and Prompts screens. It uses local React state and static sample data in v0; no backend, API keys, hosted Lovable, screenshot-to-code generation, or external AI calls are used.
-
-For visual-heavy work:
-
-1. Create a design brief: `node tools/design-os.mjs new-brief`.
-2. Route skills: `node tools/design-os.mjs route --task "<task>"`.
-3. Produce 3 rendered concept prototypes from `templates/visual-concepts.template.json`.
-4. Add preview routes and `1440 / 768 / 390` screenshot files for each concept.
-5. Validate concepts: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
-6. Show Migi the visuals and wait for approval.
-7. Set `approvalStatus: "approved"` and `selectedConceptId`, then run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
-8. Implement only the approved concept.
-9. Capture implementation screenshots.
-10. Validate screenshot, asset, target-copy, and done-report evidence when applicable.
-11. Score the UI.
-12. Patch blockers.
-
-## Fast Start
-
-For any future project, paste or read:
-
-1. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
-2. `system.md`
-3. `design-system.json`
-4. `AGENTS.md`
-5. only the skill files routed by `AGENTS.md`
-6. the files listed by those skills under `Files To Read`
-
-Then classify the task. If the work is visually important, produce 3 rendered visual concepts and wait for Migi approval before coding:
-
-1. Safe expected direction.
-2. More original/art-directed direction.
-3. Wild but controlled direction.
-
-Each concept needs a preview route and screenshot files at 1440 / 768 / 390 for the gate to pass. Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
-
-After approval, create a Design Intent Record, build the visual shell first, capture implementation screenshots, run the scorecard, validate required evidence reports, patch blockers, and hand off with evidence.
-
-## Evidence Folders
-
-`source-projects/` contains the five golden examples:
-
-- `agent-boss`: evidence for enterprise control, auditability, and dense operational UI
-- `equity`: evidence for data terminals, recency/source handling, and numeric scanning
-- `ghostwritter`: evidence for AI/writing studios with visible input/output
-- `ontime`: evidence for social coordination, not universal warmth
-- `portfolio`: evidence for editorial identity and authored presentation
-
-`case-studies/in-the-loop-feedback/` is one app's feedback. Use it for failure modes such as container soup and chip ambiguity, but never as global law.
-
-`extracted/` contains technical inventories and style reports for each golden project.
-
-`captures/` contains screenshots at 390, 768, and 1440 px. Use them as evidence of decisions, not templates to recreate.
-
-`raw-chat-input/` is temporary uncommitted ingestion input.
-
-`docs/inspiration/[project]/` is for project-specific inspiration and visual target evidence.
-
-## Operating Files
-
-`design-dna/` contains the reusable rules.
-
-`system.md` is the top-level operating model.
-
-`design-system.json` is the machine-readable summary of rules, workflow gates, score caps, component roles, and required evidence.
-
-`MIGUEL_DESIGN_OS_MANUAL.md` explains how future agents should use the OS end to end.
-
-`rules/` contains focused operational rules for tokens, components, layout, interactions, anti-patterns, score caps, and new-app workflow.
-
-`skills/` contains narrow routed playbooks. `AGENTS.md` chooses which skill to load. Do not load every skill for every task.
-
-Active skills:
-
-- `visual-concept-gate`
-- `visual-target-reconstruction`
-- `selection-first-products`
-- `anti-ai-slop-review`
-- `screenshot-scorecard-review`
-- `frontend-art-director-review`
-- `tailwind-migration-zero-regression`
-- `truthful-state-product-naming`
-
-`agent-workflows/` contains step-by-step workflows for ingestion, generation, review, and elite fix loops.
-
-`agent-workflows/visual-target-reconstruction-mode.md` is the required workflow when Migi provides inspiration images, screenshots, or a strong visual target.
-
-`evaluation/ui-scorecard.md` is the required scoring gate before finishing UI work.
-
-`scripts/` contains optional lightweight helpers for screenshot capture, horizontal scroll checks, overlap heuristics, scale-inflation heuristics, and design report templates. Skills themselves remain instruction-only and do not require scripts or external dependencies.
-
-## Visual Concept Gate
-
-For new apps, major screens, redesigns, selection/gallery/roster/product-discovery experiences, visual-heavy interfaces, or work with inspiration images, agents must not implement immediately.
-
-They must first produce exactly 3 rendered concept prototypes and wait for Migi approval after he reviews the visuals. Each concept needs a short explanation, preview route, and screenshot files at 1440 / 768 / 390 for the gate to pass. References must be reconstructed by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent.
-
-Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
-
-The gate does not block small bug fixes, security patches, copy edits, or purely technical refactors.
-
-Literal Target Copy Mode also bypasses the gate. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, the agent must build the pixel-parity shell first, exclude browser/editor/watermark artifacts, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences.
-
-## P0 Evidence Gates
-
-- No done without evidence.
-- Build/lint is not visual QA.
-- Visual-heavy work requires a validated done report before final handoff.
-- Literal Target Copy Mode requires a validated target-copy report.
-- Production image-led work requires a validated asset manifest.
-- Visual-heavy inspiration work requires an inspiration manifest.
-- Visual target screenshots are evidence, not production assets.
-- Watermark, editor, or browser artifacts in production UI are hard blockers.
-- Literal Target Copy Mode cannot be marked done without a screenshot comparison report.
-- Product logic must wait until visual shell parity is approved.
-
-## Lovable-Equivalent Behaviors
-
-- Persistent knowledge: `system.md`, `design-system.json`, and `design-dna/` are always-on guidance.
-- Task skills: `AGENTS.md` routes to narrow `skills/*/SKILL.md` playbooks.
-- Design before coding: visual-heavy work requires 3 rendered visual concepts, screenshots, and one approved direction before implementation.
-- Reference ingestion: source projects, captures, extracted reports, case studies, raw chat input, and inspiration have explicit evidence roles.
-- Screenshot review: significant UI work needs `390 / 768 / 1440` proof.
-- Scorecard enforcement: hard caps prevent vague "looks good" handoffs.
-- Anti-slop checks: generic dashboards, obvious genre cliches, badge soup, card-grid defaults, fake claims, and AI scale inflation are named failure modes.
-- Repeatable new-app workflow: routed skills define the loop from intent to final report without context bloat.
-
-## Core Rule
-
-Define the current project's identity first. Then design.
-
-Do not copy old apps literally. Do not force one palette. Do not globalize In The Loop. Do not preserve rejected layouts with new paint. Do not finish without screenshots, required evidence reports, and a scorecard result when the UI can run.
-
-## Required Handoff
-
-```md
-Skills used:
-Design brief:
-Visual concepts:
-Approved rendered concept:
-Files changed:
-Screenshots:
-Scorecard result:
-Done report:
-Blockers fixed:
-Remaining weaknesses:
-Patched after review: yes/no
-```
+- `source-projects/`: golden source projects; do not modify unless explicitly asked.
+- `captures/`: existing screenshots; do not modify unless explicitly asked.
+- `raw-chat-input/`: temporary ingestion input; do not modify unless explicitly asked.

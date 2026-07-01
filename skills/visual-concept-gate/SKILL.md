@@ -72,8 +72,8 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
    - responsive strategy for `1440 / 768 / 390`
    - what would make it fail
 7. Save the artifact using `templates/visual-concepts.template.json`.
-8. Use `studio-preview/` or a project-local preview route when a local renderer is needed.
-9. Capture rendered concepts with `node tools/capture-concepts.mjs --url http://localhost:5174`.
+8. Use a project-local preview route, static HTML, or another lightweight local render when a concept needs a visual preview. The archived `deprecated/studio-preview/` experiment is not the default workflow.
+9. Capture rendered concepts with available screenshot QA or document a blocked capture honestly.
 10. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` or the captured run artifact when the CLI is available.
 11. Stop and show Migi the visuals.
 12. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
@@ -126,4 +126,4 @@ Approval needed before implementation: yes
 - Do not force every future app to be dark, cinematic, game-like, glassy, or playful.
 - Do not copy a source project or inspiration reference literally.
 - Do not use inspiration screenshots as production assets.
-- Use `studio-preview/` only as a local concept renderer, not as the final product app.
+- Do not build or revive a frontend Studio app just to satisfy this gate. A project-local static preview or screenshot-backed reference note is enough when it proves the visual direction.

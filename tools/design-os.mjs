@@ -141,6 +141,7 @@ const requiredDoneReportFields = [
   "interactionQa",
   "assetQa",
   "targetCopyQa",
+  "productQa",
   "score",
   "remainingWeaknesses",
   "blockers",
@@ -480,6 +481,91 @@ function validateAssetQa(value, label, errors) {
   }
   if (value.required === true && value.validated !== true) {
     errors.push(`${label}.validated must be true when asset QA is required.`);
+  }
+}
+
+function validateProductQa(value, label, errors, report) {
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be an object.`);
+    return;
+  }
+
+  for (const field of ["appPurpose", "designOsTestPurpose", "rulesUnderTest", "coreLoopQa", "persistenceQa", "dogfoodQa"]) {
+    if (!(field in value)) {
+      errors.push(`${label}.${field} is required.`);
+    }
+  }
+
+  if (!Array.isArray(value.rulesUnderTest)) {
+    errors.push(`${label}.rulesUnderTest must be an array.`);
+  }
+
+  if (!isPlainObject(value.coreLoopQa)) {
+    errors.push(`${label}.coreLoopQa must be an object.`);
+  } else {
+    for (const field of ["required", "loop", "manuallyVerified", "verificationNotes"]) {
+      if (!(field in value.coreLoopQa)) {
+        errors.push(`${label}.coreLoopQa.${field} is required.`);
+      }
+    }
+    if (!isBoolean(value.coreLoopQa.required)) {
+      errors.push(`${label}.coreLoopQa.required must be a boolean.`);
+    }
+    if (!isBoolean(value.coreLoopQa.manuallyVerified)) {
+      errors.push(`${label}.coreLoopQa.manuallyVerified must be a boolean.`);
+    }
+    if (report.finalStatus === "done" && value.coreLoopQa.required === true) {
+      if (value.coreLoopQa.manuallyVerified !== true) {
+        errors.push("finalStatus done requires productQa.coreLoopQa.manuallyVerified true when the core loop is required.");
+      }
+      if (!isNonEmptyString(value.coreLoopQa.verificationNotes)) {
+        errors.push("finalStatus done requires productQa.coreLoopQa.verificationNotes when the core loop is required.");
+      }
+    }
+  }
+
+  if (!isPlainObject(value.persistenceQa)) {
+    errors.push(`${label}.persistenceQa must be an object.`);
+  } else {
+    for (const field of ["userGeneratedData", "routeChanges", "refresh", "browserReopen", "uiDisclosure"]) {
+      if (!(field in value.persistenceQa)) {
+        errors.push(`${label}.persistenceQa.${field} is required.`);
+      }
+    }
+    if (!isBoolean(value.persistenceQa.userGeneratedData)) {
+      errors.push(`${label}.persistenceQa.userGeneratedData must be a boolean.`);
+    }
+    if (report.finalStatus === "done" && value.persistenceQa.userGeneratedData === true) {
+      for (const field of ["routeChanges", "refresh", "browserReopen", "uiDisclosure"]) {
+        if (!isNonEmptyString(value.persistenceQa[field])) {
+          errors.push(`finalStatus done requires productQa.persistenceQa.${field} when user-generated data is part of the product promise.`);
+        }
+      }
+    }
+  }
+
+  if (!isPlainObject(value.dogfoodQa)) {
+    errors.push(`${label}.dogfoodQa must be an object.`);
+  } else {
+    for (const field of ["isDogfoodTarget", "failuresBackPropagated", "learningNotes"]) {
+      if (!(field in value.dogfoodQa)) {
+        errors.push(`${label}.dogfoodQa.${field} is required.`);
+      }
+    }
+    if (!isBoolean(value.dogfoodQa.isDogfoodTarget)) {
+      errors.push(`${label}.dogfoodQa.isDogfoodTarget must be a boolean.`);
+    }
+    if (!isBoolean(value.dogfoodQa.failuresBackPropagated)) {
+      errors.push(`${label}.dogfoodQa.failuresBackPropagated must be a boolean.`);
+    }
+    if (report.finalStatus === "done" && value.dogfoodQa.isDogfoodTarget === true) {
+      if (value.dogfoodQa.failuresBackPropagated !== true) {
+        errors.push("finalStatus done requires productQa.dogfoodQa.failuresBackPropagated true for dogfood targets.");
+      }
+      if (!isNonEmptyString(value.dogfoodQa.learningNotes)) {
+        errors.push("finalStatus done requires productQa.dogfoodQa.learningNotes for dogfood targets.");
+      }
+    }
   }
 }
 
@@ -1018,6 +1104,7 @@ function validateDoneReport(filePath) {
 
   validateAssetQa(report.assetQa, "assetQa", errors);
   validateTargetCopyQa(report.targetCopyQa, "targetCopyQa", errors, report.mode);
+  validateProductQa(report.productQa, "productQa", errors, report);
 
   if (report.mode === "literal-target-copy" && report.assetQa?.required !== true) {
     errors.push("assetQa.required must be true for image-led Literal Target Copy Mode.");

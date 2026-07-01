@@ -1,6 +1,6 @@
 # Weekend Visual Engine Sprint v1
 
-This sprint turns Visual Swarm v1 into a local build workflow.
+This historical sprint turned Visual Swarm v1 into a local build workflow. The current primary workflow is simpler: rules + `visual-library/` + prompts + screenshot QA.
 
 It does not use paid tools, API keys, hosted Lovable, screenshot-to-code generation, Onlook hosted usage, or external model calls.
 
@@ -8,7 +8,7 @@ It does not use paid tools, API keys, hosted Lovable, screenshot-to-code generat
 
 1. Route the agents.
 2. Scout inspiration and validate the queue/manifest.
-3. Render 3 concepts in `studio-preview/`.
+3. Render 3 concepts as project-local routes, static previews, or screenshot-backed reference notes.
 4. Capture concept screenshots at `390 / 768 / 1440`.
 5. Approve one concept.
 6. Use Literal Target Copy Mode when an exact target exists.
@@ -24,8 +24,8 @@ It does not use paid tools, API keys, hosted Lovable, screenshot-to-code generat
 node tools/design-os.mjs route-agent --task "Build cinematic robot selection app from award-winning inspiration and target screenshots"
 node tools/new-inspiration-queue.mjs
 node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
-cd studio-preview && npm run dev
-node tools/capture-concepts.mjs --url http://localhost:5174
+node tools/playwright-doctor.mjs --url http://localhost:5173 --browser auto
+node tools/visual-qa.mjs --url http://localhost:5173 --name concept-preview --browser auto --tmpdir .tmp/playwright
 node tools/compare-screenshots.mjs --target path/to/target.png --current path/to/current.png --name robotstack-roster
 node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
 node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix,Digit,Figure" --name robotstack-roster

@@ -45,6 +45,33 @@
     "validated": false,
     "notes": "This example covers implementation completion rather than Literal Target Copy Mode."
   },
+  "productQa": {
+    "appPurpose": "Selection-first robot skill forge that lets a user choose a robot and inspect its skill loadout.",
+    "designOsTestPurpose": "Example done report for visual-heavy implementation evidence.",
+    "rulesUnderTest": [
+      "selection-first clarity",
+      "screenshot QA",
+      "done report evidence"
+    ],
+    "coreLoopQa": {
+      "required": true,
+      "loop": "select robot -> inspect skill loadout -> choose primary action",
+      "manuallyVerified": true,
+      "verificationNotes": "Robot selection, selected state, and visible primary action were checked in the example screenshots."
+    },
+    "persistenceQa": {
+      "userGeneratedData": false,
+      "routeChanges": "not-applicable",
+      "refresh": "not-applicable",
+      "browserReopen": "not-applicable",
+      "uiDisclosure": "not-applicable"
+    },
+    "dogfoodQa": {
+      "isDogfoodTarget": false,
+      "failuresBackPropagated": false,
+      "learningNotes": "Not a dogfood target."
+    }
+  },
   "score": {
     "current": 92,
     "target": 90

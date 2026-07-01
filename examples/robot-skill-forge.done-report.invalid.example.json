@@ -44,6 +44,29 @@
     "validated": false,
     "notes": ""
   },
+  "productQa": {
+    "appPurpose": "Robot Skill Forge",
+    "designOsTestPurpose": "",
+    "rulesUnderTest": [],
+    "coreLoopQa": {
+      "required": true,
+      "loop": "select robot -> train skill",
+      "manuallyVerified": false,
+      "verificationNotes": ""
+    },
+    "persistenceQa": {
+      "userGeneratedData": true,
+      "routeChanges": "",
+      "refresh": "",
+      "browserReopen": "",
+      "uiDisclosure": ""
+    },
+    "dogfoodQa": {
+      "isDogfoodTarget": true,
+      "failuresBackPropagated": false,
+      "learningNotes": ""
+    }
+  },
   "score": {
     "current": 72,
     "target": 90

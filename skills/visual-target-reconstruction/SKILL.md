@@ -34,6 +34,9 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 - Done report artifact before final handoff.
 - Target-copy report for Literal Target Copy Mode.
 - Asset manifest for production image-led reconstruction.
+- Product purpose clarity for new/dogfood apps.
+- Core loop proof when the visual target supports an upload/classify/generate or equivalent product promise.
+- Persistence truth when uploaded or user-generated data is shown.
 
 ## Files To Read
 
@@ -88,9 +91,11 @@ Product logic waits until the pixel-parity shell is approved.
 10. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
 11. Compare the shell against the reference and approved concept by composition, focal object, hidden information, and emotional hook.
 12. Validate `asset-manifest.local.json` when production imagery is used.
-13. Create or update `done-report.local.json` from screenshot evidence.
-14. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-15. Patch the shell before adding feature depth.
+13. Verify the core loop before claiming the visual shell supports the product promise.
+14. Verify persistence truth for uploaded or user-generated data.
+15. Create or update `done-report.local.json` from screenshot evidence.
+16. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+17. Patch the shell before adding feature depth.
 
 ## Stop Conditions
 
@@ -102,6 +107,11 @@ Product logic waits until the pixel-parity shell is approved.
 - Stop before product logic if the visual shell does not match the approved direction.
 - Stop if Literal Target Copy Mode is active and the implementation changes composition, adds unrelated product UI, or explains instead of copying the visible shell.
 - Stop if visual target work has no validated done report before final handoff.
+- Stop if the app's purpose in Miguel Design OS is unclear for a dogfood target.
+- Stop if upload/classify/generate or equivalent core loop proof is missing.
+- Stop if uploaded/user-generated data appears in one area but counts, Memory, or summaries contradict it.
+- Stop if persistence for uploaded/user-generated data is not labeled across route changes, refresh, and browser reopen.
+- Stop if dogfood target failures do not produce Design OS rule/tool/prompt/checklist updates or explicit open gaps.
 - Stop if Literal Target Copy Mode has no validated target-copy report.
 - Stop if Literal Target Copy Mode has no screenshot comparison report.
 - Stop if a target screenshot is used as a production asset.
@@ -129,6 +139,9 @@ Screenshots:
 Done report:
 Target-copy report:
 Asset manifest:
+Core loop proof:
+Persistence truth:
+Dogfood learning:
 Patch needed:
 ```
 
@@ -146,6 +159,10 @@ Patch needed:
 - Missing screenshot comparison report during Literal Target Copy Mode: max score 6.
 - Missing asset manifest for image-led target reconstruction: max score 6.
 - Watermark/editor/browser artifact in reconstructed UI: max score 4.
+- UI count says 0 while uploaded/user data exists: max score 4.
+- Core upload/classify/generate loop unverified: max score 6.
+- Persistence truth missing for uploaded/user data: max score 6.
+- Dogfood target without Design OS learning patch: max score 6.
 
 ## Safety/Scope Rules
 
@@ -155,5 +172,8 @@ Patch needed:
 - Do not expose private inspiration files outside the repo.
 - Do not treat inspiration as a universal rule for unrelated projects.
 - Do not claim visual parity from build/lint alone; screenshot evidence and a validated done report are required.
+- Do not claim a target-inspired product works until the core product loop has been verified.
+- Do not imply durable Memory or persistence for uploaded examples unless route, refresh, and browser-reopen behavior is known and disclosed.
+- Do not let dogfood work drift into building adjacent tools instead of evaluating the target app.
 - Visual target screenshots are evidence, not production assets.
 - Run `tools/compare-screenshots.mjs` for target/current parity evidence.

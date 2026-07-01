@@ -38,6 +38,29 @@
     "validated": false,
     "notes": ""
   },
+  "productQa": {
+    "appPurpose": "",
+    "designOsTestPurpose": "",
+    "rulesUnderTest": [],
+    "coreLoopQa": {
+      "required": false,
+      "loop": "",
+      "manuallyVerified": false,
+      "verificationNotes": ""
+    },
+    "persistenceQa": {
+      "userGeneratedData": false,
+      "routeChanges": "not-applicable",
+      "refresh": "not-applicable",
+      "browserReopen": "not-applicable",
+      "uiDisclosure": "not-applicable"
+    },
+    "dogfoodQa": {
+      "isDogfoodTarget": false,
+      "failuresBackPropagated": false,
+      "learningNotes": ""
+    }
+  },
   "score": {
     "current": 0,
     "target": 90

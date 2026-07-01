@@ -13,6 +13,7 @@ Classify before work:
 - redesign
 - selection/gallery/roster/product-discovery experience
 - literal target copy
+- dogfood target
 
 Small bug fixes, security patches, copy edits, and purely technical refactors do not require the Visual Concept Gate unless they change a visually important UI direction.
 
@@ -29,6 +30,8 @@ Small bug fixes, security patches, copy edits, and purely technical refactors do
 9. State which source project is relevant evidence and what will not be copied.
 10. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
 11. Plan to run `evaluation/ui-scorecard.md` before finishing.
+12. If the project is a Miguel Design OS dogfood target, state what rule/tool/prompt is being tested before coding and commit to translating every target-app failure back into a Design OS patch or named open gap.
+13. State product purpose clarity before implementation: what this app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the master system.
 
 ## Design Intent Record
 
@@ -59,7 +62,75 @@ States needed:
 Responsive risks:
 Screenshots to capture:
 Target score:
+Dogfood target?:
+Design OS rules under test:
+What this app tests in Miguel Design OS:
+Success/failure learning:
+Core loop:
+Core loop proof plan:
+Persistence across route changes:
+Persistence across refresh:
+Persistence across browser reopen:
+UI persistence disclosure:
 ```
+
+## Dogfood Target Rule
+
+Use when a project is created to test Miguel Design OS itself.
+
+Every target-app failure must be translated back into one of:
+
+- a Design OS rule update
+- a CLI/tool validation update
+- a prompt-template update
+- a skill/agent instruction update
+- a schema/checklist update
+- an explicit open gap with owner and next test
+
+Do not treat dogfood target bugs as isolated product bugs. The target app is the test rig for Miguel Design OS.
+
+## Product Purpose Clarity
+
+Before building a new project, state:
+
+- what this app is
+- what it tests in Miguel Design OS
+- which Design OS rules are being validated
+- what success teaches the master system
+- what failure teaches the master system
+
+If the user cannot tell why the target exists in relation to Miguel Design OS, stop and clarify the purpose before continuing.
+
+## Core Loop Proof Rule
+
+If the product's main loop is `upload -> classify -> generate output`, final handoff is blocked unless that loop is manually verified and documented.
+
+The proof must name:
+
+- input used
+- classification result shown
+- generated output shown
+- route/screen where the output appears
+- screenshots or blocked screenshot report
+- remaining mismatch, if any
+
+This also applies to equivalent loops such as import -> analyze -> recommend, select -> configure -> output, or capture -> summarize -> export.
+
+## Persistence Truth Rule
+
+If user-generated data is part of the product promise, specify whether it persists across:
+
+- route changes
+- refresh
+- browser reopen
+
+If persistence is local-only, session-only, mock-only, or not guaranteed, the UI must say so. Do not imply durable memory when the app stores only component state or temporary browser state.
+
+State mismatch blocker: if the UI count says `0` while uploaded or user-generated data exists, max score is 40.
+
+## No Parallel-Product Drift
+
+When the current goal is dogfooding rules against a target app, do not build a second control app, Studio feature, dashboard, or surrounding tool instead of evaluating the target. Tooling patches are allowed only when they directly address a target-app failure.
 
 ## Visual Concept Gate v2 - Visual Concepts Required
 
@@ -187,6 +258,7 @@ If a reference shows a cinematic stage, do not build a dashboard. If a reference
 7. Add responsive behavior for 390, 768, and 1440 px.
 8. Add copy that names actions, states, and consequences.
 9. Add product logic only after the visual shell works.
+10. Verify the core loop and persistence contract before final handoff.
 
 ## Selection-First Gate
 
@@ -273,7 +345,10 @@ Before final delivery:
 5. Inspect screenshots for blockers in `responsive-rules.md`, `rules/*.md`, and `anti-patterns.md`.
 6. Score with `evaluation/ui-scorecard.md`.
 7. Fix blockers and recapture changed screens.
-8. Report score, screenshots, and known gaps.
+8. Verify and document core product loop proof when applicable.
+9. Verify and document persistence truth for user-generated data.
+10. For dogfood targets, document what target failures patch in Miguel Design OS.
+11. Report score, screenshots, and known gaps.
 
 If the app cannot run, document the command, error, and best alternative evidence.
 
@@ -284,6 +359,9 @@ Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:
+Core loop proof:
+Persistence truth:
+Dogfood learning:
 Blockers fixed:
 Remaining weaknesses:
 Patched after review: yes/no

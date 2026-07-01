@@ -17,6 +17,9 @@ This is an instruction-only local agent. It must not call paid tools, external A
 - Check no cut hero object.
 - Check no dead buttons.
 - Check object swap invariance for selection, roster, product gallery, and product configurator UIs.
+- Check core loop proof for upload -> classify -> generate output and equivalent product loops.
+- Check persistence truth for uploaded/user-generated data across route changes, refresh, and browser reopen.
+- Check dogfood targets translate target failures back into Miguel Design OS patches or explicit open gaps.
 - Check motion has purpose.
 - Check AI scale inflation.
 - Check same-layout-with-new-paint.
@@ -33,13 +36,16 @@ This is an instruction-only local agent. It must not call paid tools, external A
    - `node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix,Digit,Figure" --name robotstack-roster`
 5. Create or update `screenshot-report.local.json`.
 6. Run scorecard caps in `evaluation/ui-scorecard.md`.
-7. Create or update `done-report.local.json`.
-8. Validate required evidence:
+7. Verify core product loop proof when applicable.
+8. Verify persistence truth when uploaded or user-generated data appears.
+9. For dogfood targets, fill `templates/dogfood-target-checklist.template.md` and patch Design OS for every target-app failure.
+10. Create or update `done-report.local.json`.
+11. Validate required evidence:
    - `node tools/design-os.mjs validate-done-report done-report.local.json`
    - `node tools/design-os.mjs validate-target-copy target-copy-report.local.json` when Literal Target Copy Mode applies
    - `node tools/design-os.mjs validate-assets asset-manifest.local.json` when production imagery is used
-9. Produce a visual QA markdown report.
-10. Block final handoff if any hard blocker remains.
+12. Produce a visual QA markdown report.
+13. Block final handoff if any hard blocker remains.
 
 ## Output Contract
 
@@ -49,6 +55,9 @@ Done report:
 Visual QA report:
 Blockers:
 Scorecard result:
+Core loop proof:
+Persistence truth:
+Dogfood learning:
 Validation:
 ```
 
@@ -67,3 +76,9 @@ node tools/design-os.mjs validate-done-report done-report.local.json
 - No done without evidence.
 - Watermark/editor/browser artifacts in production UI are hard blockers.
 - Dead visible buttons block completion.
+- Browser chrome, desktop, dock, and editor UI screenshots are not valid QA proof.
+- UI count says `0` while uploaded/user data exists: max score 4.
+- Upload/classify/generate loop must be manually verified before final handoff.
+- User-generated persistence must be disclosed across route changes, refresh, and browser reopen.
+- Dogfood target failures must patch Miguel Design OS or be logged as explicit open gaps.
+- Do not build adjacent Studio/tooling work when the active task is dogfooding a target app.

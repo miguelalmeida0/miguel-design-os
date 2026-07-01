@@ -10,6 +10,16 @@
     "url",
     "createdAt",
     "status",
+    "finalStatus",
+    "captureMode",
+    "browserRequested",
+    "browserUsed",
+    "browserAttempts",
+    "tempDirectory",
+    "tmpdirOverrideUsed",
+    "tmpdirOverride",
+    "inputDir",
+    "originalScreenshotPaths",
     "screenshots",
     "checks",
     "manualChecklist",
@@ -27,6 +37,40 @@
     "status": {
       "type": "string",
       "enum": ["captured", "blocked", "needs-manual-review", "passing", "failing"]
+    },
+    "finalStatus": {
+      "type": "string",
+      "enum": ["passing", "blocked", "needs-human-review"]
+    },
+    "captureMode": {
+      "type": "string",
+      "enum": ["automated", "manual-import", "blocked"]
+    },
+    "browserRequested": {
+      "type": "string"
+    },
+    "browserUsed": {
+      "type": "string"
+    },
+    "browserAttempts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/browserAttempt" }
+    },
+    "tempDirectory": {
+      "type": "string"
+    },
+    "tmpdirOverrideUsed": {
+      "type": "boolean"
+    },
+    "tmpdirOverride": {
+      "type": "string"
+    },
+    "inputDir": {
+      "type": "string"
+    },
+    "originalScreenshotPaths": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
     },
     "screenshots": {
       "type": "object",
@@ -66,15 +110,19 @@
       "required": [
         "noOverlap",
         "noTextOnButtons",
-        "noWatermarkEditorBrowserArtifact",
+        "noWatermark",
+        "noHorizontalOverflow",
         "noCutHeroObject",
+        "noDeadButtons",
         "objectSwapInvariance"
       ],
       "properties": {
         "noOverlap": { "$ref": "#/$defs/manualCheck" },
         "noTextOnButtons": { "$ref": "#/$defs/manualCheck" },
-        "noWatermarkEditorBrowserArtifact": { "$ref": "#/$defs/manualCheck" },
+        "noWatermark": { "$ref": "#/$defs/manualCheck" },
+        "noHorizontalOverflow": { "$ref": "#/$defs/manualCheck" },
         "noCutHeroObject": { "$ref": "#/$defs/manualCheck" },
+        "noDeadButtons": { "$ref": "#/$defs/manualCheck" },
         "objectSwapInvariance": { "$ref": "#/$defs/manualCheck" }
       }
     },
@@ -120,6 +168,17 @@
         "hasHref": { "type": "boolean" },
         "hasClickHandler": { "type": "boolean" },
         "notes": { "type": "string" }
+      }
+    },
+    "browserAttempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["browser", "ok", "durationMs", "error"],
+      "properties": {
+        "browser": { "type": "string" },
+        "ok": { "type": "boolean" },
+        "durationMs": { "type": "number" },
+        "error": { "type": "string" }
       }
     }
   }

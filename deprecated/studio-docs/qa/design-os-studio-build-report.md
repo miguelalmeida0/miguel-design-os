@@ -33,6 +33,7 @@
 - Studio uses local mock/static TypeScript data.
 - It does not claim to read or write repo files from the browser.
 - Visual QA harness availability is shown as blocked when Playwright is unavailable.
+- Playwright doctor, browser mode, capture mode, blocked reason, screenshot requirement, score threshold, and done-report final status are visible in QA Runs.
 - Screenshots remain evidence, not production assets.
 
 ## Visual QA Status
@@ -42,14 +43,18 @@ Visual QA screenshots were not captured because local Playwright is unavailable 
 Command run:
 
 ```sh
-node tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio
+node tools/playwright-doctor.mjs --url http://localhost:5175 --browser auto
+node tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio --browser auto --tmpdir .tmp/playwright
 ```
 
 Result:
 
-- Blocked as expected without Playwright.
-- Blocked report created at `docs/qa-runs/2026-07-01T17-31-48-740Z-design-os-studio/visual-qa-report.json`.
+- Blocked reports are acceptable when they include the exact failure chain.
+- Latest blocked Studio auto report: `docs/qa-runs/2026-07-01T17-47-09-327Z-design-os-studio/visual-qa-report.json`.
+- Latest doctor report: `docs/qa-runs/playwright-doctor-latest.json`.
+- Manual import smoke passed with generated placeholder PNGs at `docs/qa-runs/2026-07-01T17-48-12-096Z-smoke-manual-import/visual-qa-report.json`.
 - No screenshots were fabricated.
+- Manual app-only screenshot import is now available as a fallback.
 
 ## Validation Results
 
@@ -80,9 +85,15 @@ Result: passed. Agent routing selected the Visual QA Anti-Slop Agent for the Stu
 ## Screenshot Commands To Run
 
 ```sh
+# Terminal 1
 cd studio
 npm run dev
-node ../tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio
+
+# Terminal 2, from repo root
+node tools/playwright-doctor.mjs --url http://localhost:5175 --browser auto
+node tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio --browser auto --tmpdir .tmp/playwright
+node tools/import-manual-screenshots.mjs --name design-os-studio --390 path/to/390.png --768 path/to/768.png --1440 path/to/1440.png
+node tools/visual-qa.mjs --manual --input-dir docs/qa-runs/<run>/screenshots --name design-os-studio
 ```
 
 ## Known Limitations

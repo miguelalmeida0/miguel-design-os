@@ -38,15 +38,14 @@ Each concept must include:
 2. Read `inspiration-manifest.local.json` if it exists.
 3. Read the routed skill files.
 4. Create or update `visual-concepts.local.json` from `templates/visual-concepts.template.json`.
-5. Render 3 local previews in `studio-preview/` or another local preview route:
+5. Render 3 local previews as project-local routes, static HTML, or screenshot-backed mockups:
    - safe expected direction
    - more original/art-directed direction
    - wild but controlled direction
-6. Start the local preview app when needed:
-   - `cd studio-preview && npm run dev`
+6. Do not build or revive a frontend Studio app just to render concepts.
 7. Capture `1440 / 768 / 390` screenshots:
-   - `node tools/capture-concepts.mjs --url http://localhost:5174`
-8. Validate concepts with `node tools/design-os.mjs validate-concepts docs/concept-runs/<run>/visual-concepts.local.json`.
+   - use app-local screenshot QA, manual app-only import, or a documented blocker.
+8. Validate concepts with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` when the artifact exists.
 9. Stop for Migi approval.
 
 ## Output Contract
@@ -63,9 +62,9 @@ Validation:
 ## Command Contract
 
 ```sh
-cd studio-preview && npm run dev
-node tools/capture-concepts.mjs --url http://localhost:5174
-node tools/design-os.mjs validate-concepts docs/concept-runs/<run>/visual-concepts.local.json
+node tools/design-os.mjs validate-concepts visual-concepts.local.json
+node tools/playwright-doctor.mjs --url <local-url> --browser auto
+node tools/visual-qa.mjs --url <local-url> --name <concept-name> --browser auto --tmpdir .tmp/playwright
 ```
 
 ## Hard Rules

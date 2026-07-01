@@ -17,6 +17,7 @@
     "interactionQa",
     "assetQa",
     "targetCopyQa",
+    "productQa",
     "score",
     "remainingWeaknesses",
     "blockers",
@@ -116,6 +117,34 @@
         }
       }
     },
+    "productQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appPurpose", "designOsTestPurpose", "rulesUnderTest", "coreLoopQa", "persistenceQa", "dogfoodQa"],
+      "properties": {
+        "appPurpose": {
+          "type": "string"
+        },
+        "designOsTestPurpose": {
+          "type": "string"
+        },
+        "rulesUnderTest": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "coreLoopQa": {
+          "$ref": "#/$defs/coreLoopQa"
+        },
+        "persistenceQa": {
+          "$ref": "#/$defs/persistenceQa"
+        },
+        "dogfoodQa": {
+          "$ref": "#/$defs/dogfoodQa"
+        }
+      }
+    },
     "score": {
       "type": "object",
       "additionalProperties": false,
@@ -211,6 +240,63 @@
           "type": "string"
         },
         "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "coreLoopQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "loop", "manuallyVerified", "verificationNotes"],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "loop": {
+          "type": "string"
+        },
+        "manuallyVerified": {
+          "type": "boolean"
+        },
+        "verificationNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "persistenceQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["userGeneratedData", "routeChanges", "refresh", "browserReopen", "uiDisclosure"],
+      "properties": {
+        "userGeneratedData": {
+          "type": "boolean"
+        },
+        "routeChanges": {
+          "type": "string"
+        },
+        "refresh": {
+          "type": "string"
+        },
+        "browserReopen": {
+          "type": "string"
+        },
+        "uiDisclosure": {
+          "type": "string"
+        }
+      }
+    },
+    "dogfoodQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["isDogfoodTarget", "failuresBackPropagated", "learningNotes"],
+      "properties": {
+        "isDogfoodTarget": {
+          "type": "boolean"
+        },
+        "failuresBackPropagated": {
+          "type": "boolean"
+        },
+        "learningNotes": {
           "type": "string"
         }
       }

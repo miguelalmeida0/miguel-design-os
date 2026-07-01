@@ -13,6 +13,10 @@ Before scoring, record:
 - primary object
 - primary action
 - intended visual identity
+- product purpose: what the app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the system
+- core loop proof when the product depends on upload, classification, generation, selection, or persistence
+- persistence truth for user-generated data across route changes, refresh, and browser reopen
+- dogfood learning when the app is a Miguel Design OS test target
 - approved rendered concept when visual-heavy work applies
 - inspiration manifest when visual-heavy work uses inspiration
 - Visual Concept Gate status, preview routes, concept screenshots, and Migi approval when visual-heavy work applies
@@ -43,6 +47,13 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 - missing screenshot comparison report during Literal Target Copy Mode: max 60 (6/10)
 - build/lint is presented as visual QA without screenshot evidence and done-report validation: max 60 (6/10)
 - no 390/768/1440 proof for significant frontend work: max 80 (8/10)
+- dogfood target with no back-propagated Design OS rule/tool/prompt/checklist learning: max 60 (6/10)
+- new project missing product purpose clarity: max 70 (7/10)
+- upload/classify/generate core loop not manually verified: max 60 (6/10)
+- user-generated data persistence not specified across route changes, refresh, and browser reopen: max 60 (6/10)
+- UI count says 0 while uploaded or user-generated data exists: max 40 (4/10)
+- browser chrome, dock, desktop, or editor UI used as informal screenshot proof: max 60 (6/10)
+- parallel product, Studio feature, or control app built instead of dogfooding the active target: max 60 (6/10)
 - required routed skill skipped for applicable task: max 80
 - screenshots missing for one viewport: max 80
 - no project-specific visual identity: max 82
@@ -160,6 +171,13 @@ Any blocker prevents elite:
 - text on button or unintended button/control overlap
 - accidental mobile horizontal scroll
 - build/lint used as visual QA proof without screenshots and done-report validation
+- dogfood target failure not translated back into a Miguel Design OS patch or explicit open gap
+- product purpose is unclear for a new app or dogfood target
+- upload/classify/generate core loop is unverified in an app whose product promise depends on that loop
+- user-generated data persistence is unstated or contradicted by the UI
+- UI count says 0 while uploaded or user-generated data exists
+- browser chrome, dock, desktop, or editor UI is used as screenshot proof
+- a parallel product, Studio feature, or control app is built while the active goal is dogfooding a target app
 - no done without evidence: visual UI work is missing a validated done report
 - visual-heavy inspiration work is missing an inspiration manifest
 - visual work is missing visual QA evidence
@@ -198,6 +216,8 @@ Always report:
 - category scores
 - concept screenshots used when visual-heavy work applies
 - screenshots used
+- core loop proof and persistence truth when applicable
+- dogfood target learning and Design OS patches when applicable
 - done report path and validation result for visual UI work
 - target-copy report path and validation result when Literal Target Copy Mode applies
 - asset manifest path and validation result for image-led target reconstruction or production image-led work
