@@ -12,3 +12,5 @@ build/
 tmp/
 playwright-report/
 test-results/
+
+raw-chat-input/
