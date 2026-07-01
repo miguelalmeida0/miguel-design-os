@@ -4,16 +4,17 @@ Use this before building or reviewing any frontend.
 
 ## Mandatory Loop
 
-1. Read `system.md`, `design-system.json`, relevant `rules/`, and relevant `design-dna/` files.
-2. Pick the relevant `skills/*/SKILL.md` playbook when the task matches selection-first, redesign, inspiration analysis, screenshot review, frontend QA, or OS ingestion.
-3. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-4. Inspect the current project type, framework, routes, components, styling system, and tokens.
-5. Define a project-specific visual identity before palette/layout.
-6. Use golden projects as evidence only; do not copy old apps literally.
-7. Use screenshots as evidence for the current UI, not templates.
-8. Capture 390, 768, and 1440 px when the UI can run.
-9. Run `evaluation/ui-scorecard.md` before finishing.
-10. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
+1. Read `AGENTS.md` as the skill router.
+2. Load only the routed `skills/*/SKILL.md` files. Do not load every skill.
+3. Read only the files listed by those skills under `Files To Read`, plus `system.md` or `design-system.json` when the selected skill asks for them.
+4. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, selection/gallery/roster/product-discovery, Tailwind migration, or truthful-state/naming.
+5. Inspect the current project type, framework, routes, components, styling system, and tokens.
+6. Define a project-specific visual identity before palette/layout.
+7. Use golden projects as evidence only; do not copy old apps literally.
+8. Use screenshots as evidence for the current UI, not templates.
+9. Capture 390, 768, and 1440 px when the UI can run.
+10. Run `evaluation/ui-scorecard.md` before finishing.
+11. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
 
 Before visually important UI work, do not code. Produce 3 design theses first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
 
@@ -81,6 +82,7 @@ Do not finish until:
 ## Handoff Format
 
 ```md
+Skills used:
 Design thesis used:
 Files changed:
 Screenshots:

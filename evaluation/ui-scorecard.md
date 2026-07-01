@@ -8,6 +8,7 @@ Before scoring, record:
 
 - project type
 - task classification
+- skills used
 - primary user
 - primary object
 - primary action
@@ -26,6 +27,7 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 
 - no screenshots and no documented blocker: max 60
 - no 390/768/1440 proof for significant frontend work: max 80 (8/10)
+- required routed skill skipped for applicable task: max 80
 - screenshots missing for one viewport: max 80
 - no project-specific visual identity: max 82
 - copied source-project palette/layout literally: max 74
@@ -138,11 +140,13 @@ Any blocker prevents elite:
 - AI scale inflation overwhelms the product
 - selection-first product lacks object desire or relies on badge/glow/stat clutter for excitement
 - missing scorecard result
+- required routed skill skipped for the task
 
 ## Required Report
 
 Always report:
 
+- skills used
 - design thesis used
 - total score after caps
 - category scores

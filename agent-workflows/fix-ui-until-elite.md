@@ -5,15 +5,17 @@ Use when iterating an existing UI until it clears the Design OS bar.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `system.md`, `design-system.json`, `rules/scorecard.md`, and `skills/frontend-qa/SKILL.md`.
-3. Read relevant `design-dna/` files before editing.
-4. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-5. Inspect the current project type, framework, routes, components, styling system, and tokens.
-6. If the fix is visual-heavy or Migi rejected the direction, run the Visual Concept Gate before editing.
-7. Define or restate the project-specific visual identity.
-8. Name any source-project evidence and what must not be copied literally.
-9. Capture current screenshots as evidence; do not treat old captures as templates.
-10. Score with `evaluation/ui-scorecard.md` before choosing fixes.
+2. Read `AGENTS.md` and route to the smallest matching skill set.
+3. For UI quality fixes, load `skills/anti-ai-slop-review/SKILL.md` and `skills/screenshot-scorecard-review/SKILL.md`.
+4. If the fix is visual-heavy or Migi rejected the direction, also load `skills/visual-concept-gate/SKILL.md`.
+5. Read only the files listed by the selected skills before editing.
+6. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+7. Inspect the current project type, framework, routes, components, styling system, and tokens.
+8. If the fix is visual-heavy or Migi rejected the direction, run the Visual Concept Gate before editing.
+9. Define or restate the project-specific visual identity.
+10. Name any source-project evidence and what must not be copied literally.
+11. Capture current screenshots as evidence; do not treat old captures as templates.
+12. Score with `evaluation/ui-scorecard.md` before choosing fixes.
 
 ## Iteration Loop
 

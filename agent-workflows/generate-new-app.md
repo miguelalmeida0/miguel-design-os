@@ -5,16 +5,18 @@ Use when building a new app, screen, or frontend feature.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `system.md` and `design-system.json`.
-3. Read `rules/new-app-workflow.md` and any relevant `skills/*/SKILL.md`.
-4. Read relevant `design-dna/` files before touching UI code.
-5. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-6. Inspect the current project type, framework, routes, components, styling system, and tokens.
-7. If visual-heavy, run the Visual Concept Gate before implementation.
-8. Define a project-specific visual identity before choosing palette or layout.
-9. Name any golden project used as evidence and what will not be copied.
-10. Plan screenshots as evidence for the new work, not templates from old apps.
-11. Plan to run `evaluation/ui-scorecard.md` before finishing.
+2. Read `AGENTS.md` and route to the smallest matching skill set.
+3. For new or visual-heavy work, load `skills/visual-concept-gate/SKILL.md`.
+4. If references exist, also load `skills/visual-target-reconstruction/SKILL.md`.
+5. If the product is selection-first, also load `skills/selection-first-products/SKILL.md`.
+6. Read only the files listed by the selected skills before touching UI code.
+7. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+8. Inspect the current project type, framework, routes, components, styling system, and tokens.
+9. If visual-heavy, run the Visual Concept Gate before implementation.
+10. Define a project-specific visual identity before choosing palette or layout.
+11. Name any golden project used as evidence and what will not be copied.
+12. Plan screenshots as evidence for the new work, not templates from old apps.
+13. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
 ## Design Intent Record
 
@@ -90,6 +92,7 @@ When references materially drive the work, store them under `docs/inspiration/[p
 
 Report:
 
+- skills used
 - design intent record summary
 - design thesis used
 - key files changed

@@ -1,107 +1,62 @@
 # Agent Instructions
 
-This repo is a Design OS for future frontend work. Treat it as operating guidance, not inspiration.
+This repo is a routed Design OS for future frontend work. `AGENTS.md` is a thin router. Do not load the whole repo by default.
 
-## Required Start For Any UI Task
+## Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `system.md` and `design-system.json`.
-3. Read relevant files in `rules/`, `skills/`, and `design-dna/`.
-4. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-5. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
-6. If visual-heavy, run the Visual Concept Gate before implementation.
-7. Define a project-specific visual identity before choosing palette, layout, or assets.
-8. Name source-project evidence only as evidence. Do not copy old apps literally.
-9. Use screenshots as evidence for the current UI, not templates.
-10. Run `evaluation/ui-scorecard.md` before finishing.
+2. Classify the task.
+3. Load only the matching skill files below.
+4. Read any files listed in those skills under `Files To Read`.
+5. Inspect the current project type, framework, routes, components, styling system, and tokens when UI work is involved.
+6. Run `evaluation/ui-scorecard.md` before finishing significant frontend work.
 
-## Source Hierarchy
+## Skill Routing
 
-Use:
+Use the smallest relevant set. Do not load unrelated skills.
 
-1. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
-2. `system.md`
-3. `design-system.json`
-4. `manual-preferences/00_global_frontend_principles.md`
-5. `rules/*.md`
-6. `skills/*/SKILL.md`
-7. `design-dna/*.md`
-8. `extracted/{project}/*.md`
-9. `captures/{project}/.../*.png`
-10. `case-studies/in-the-loop-feedback/`
-11. `docs/inspiration/[project]/`
+1. If the task is visual-heavy, new app, major redesign, inspiration-image driven, gallery, roster, character-select, product-discovery, or selection-first:
+   use `skills/visual-concept-gate/SKILL.md`.
 
-The case study is scoped to one app. Do not globalize its warm social tone, avatar patterns, invite mechanics, bottom navigation, or palette.
+2. If a screenshot, Lovable prototype, Pinterest image, mockup, or strong visual reference is provided:
+   use `skills/visual-target-reconstruction/SKILL.md`.
 
-## Design Intent Record
+3. If the app is selection-first, gallery, roster, marketplace, discovery, card deck, character selection, or object browsing:
+   use `skills/selection-first-products/SKILL.md`.
 
-Before building or reviewing, record:
+4. If reviewing existing UI:
+   use `skills/anti-ai-slop-review/SKILL.md`.
 
-```md
-Project type:
-Task classification:
-Primary user:
-Primary object:
-Primary action:
-Visual-heavy work?:
-Inspiration/reference provided?:
-Selected skill/playbook:
-Archetype:
-Layout recipe:
-Visual identity words:
-Visual Concept Gate status:
-Selected design thesis:
-Density:
-Token direction:
-Responsive risks:
-Screenshot targets:
-Score target:
-```
+5. If screenshots exist or the UI can run:
+   use `skills/screenshot-scorecard-review/SKILL.md`.
 
-## Build Rules
+6. If asked for an elite redesign critique:
+   use `skills/frontend-art-director-review/SKILL.md`.
 
-- For visually important UI work, do not code first. Produce 3 design theses and wait for Migi approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction.
-- For inspiration references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is absent. Do not flatten to dark/neon/cards/glow/big text.
-- Store project-specific inspiration under `docs/inspiration/[project]/` and write `docs/inspiration-analysis.md` when references materially drive the direction.
-- Build the visual shell/poster composition before feature depth.
-- Primary object must be visible in the first viewport.
-- Primary action must attach to the primary object.
-- One primary action per zone.
-- Clickable and passive elements must have different components or states.
-- Semantic tokens come before color choices.
-- Cards are for repeated objects, tools, and modals, not every section.
-- Data, AI, safety, and live claims need source, recency, scope, or fallback.
-- Empty, loading, error, disabled, selected, and focus-visible states are required for core flows.
+7. If doing Tailwind/global CSS migration:
+   use `skills/tailwind-migration-zero-regression/SKILL.md`.
 
-## Verification Rules
+8. If dealing with auth, onboarding/login naming, mock data, production states, or error boundaries:
+   use `skills/truthful-state-product-naming/SKILL.md`.
 
-When the UI can run:
+## Core Guardrails
 
-- capture 390 px
-- capture 768 px
-- capture 1440 px
-- inspect for blockers
-- score with `evaluation/ui-scorecard.md`
-- run lightweight scripts in `scripts/` when practical
-- fix blockers before final response
+- Skills are instruction-only. Do not add scripts or external dependencies inside skill files.
+- Use source projects, captures, extracted reports, case studies, and inspiration as evidence, not templates.
+- Do not copy a golden app's palette or layout literally.
+- Do not globalize In The Loop or Robot Skill Forge into unrelated products.
+- Do not claim "responsive", "high-quality", or "Miguel-style" without screenshot evidence and scorecard result when the UI can run.
 
-If the UI cannot run, report the command, error, and alternative evidence.
-
-## Non-Negotiables
+## Protected Folders
 
 - Do not modify `source-projects/` unless explicitly asked.
-- Do not delete `captures/`.
+- Do not delete or modify `captures/` unless explicitly asked.
 - Do not modify `raw-chat-input/` unless explicitly asked.
-- Do not copy a golden app's palette or layout literally.
-- Do not apply In The Loop social/planning patterns to unrelated products.
-- Do not claim "responsive", "high-quality", or "Miguel-style" without screenshots and score.
-- Do not preserve a rejected layout with new paint.
-- Do not use decorative motion unless it clarifies state, hierarchy, transition, selection, or feedback.
-- When Migi provides a visual target, use `agent-workflows/visual-target-reconstruction-mode.md`.
 
 ## Required Handoff
 
 ```md
+Skills used:
 Design thesis used:
 Files changed:
 Screenshots:

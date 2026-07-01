@@ -12,10 +12,8 @@ For any future project, paste or read:
 2. `system.md`
 3. `design-system.json`
 4. `AGENTS.md`
-5. relevant files in `rules/`
-6. relevant `skills/*/SKILL.md`
-7. relevant files in `design-dna/`
-8. relevant reports in `extracted/`
+5. only the skill files routed by `AGENTS.md`
+6. the files listed by those skills under `Files To Read`
 
 Then classify the task. If the work is visually important, produce 3 design theses and wait for Migi approval before coding:
 
@@ -57,7 +55,18 @@ After approval, create a Design Intent Record, build the visual shell first, cap
 
 `rules/` contains focused operational rules for tokens, components, layout, interactions, anti-patterns, score caps, and new-app workflow.
 
-`skills/` contains reusable playbooks for selection-first products, visual redesign, inspiration analysis, screenshot review, frontend QA, and design OS ingestion.
+`skills/` contains narrow routed playbooks. `AGENTS.md` chooses which skill to load. Do not load every skill for every task.
+
+Active skills:
+
+- `visual-concept-gate`
+- `visual-target-reconstruction`
+- `selection-first-products`
+- `anti-ai-slop-review`
+- `screenshot-scorecard-review`
+- `frontend-art-director-review`
+- `tailwind-migration-zero-regression`
+- `truthful-state-product-naming`
 
 `agent-workflows/` contains step-by-step workflows for ingestion, generation, review, and elite fix loops.
 
@@ -65,7 +74,7 @@ After approval, create a Design Intent Record, build the visual shell first, cap
 
 `evaluation/ui-scorecard.md` is the required scoring gate before finishing UI work.
 
-`scripts/` contains lightweight helpers for screenshot capture, horizontal scroll checks, overlap heuristics, scale-inflation heuristics, and design report templates.
+`scripts/` contains optional lightweight helpers for screenshot capture, horizontal scroll checks, overlap heuristics, scale-inflation heuristics, and design report templates. Skills themselves remain instruction-only and do not require scripts or external dependencies.
 
 ## Visual Concept Gate
 
@@ -78,13 +87,13 @@ The gate does not block small bug fixes, security patches, copy edits, or purely
 ## Lovable-Equivalent Behaviors
 
 - Persistent knowledge: `system.md`, `design-system.json`, and `design-dna/` are always-on guidance.
-- Task skills: `skills/` provides reusable playbooks for recurring frontend/design tasks.
+- Task skills: `AGENTS.md` routes to narrow `skills/*/SKILL.md` playbooks.
 - Design before coding: visual-heavy work requires 3 approved theses before implementation.
 - Reference ingestion: source projects, captures, extracted reports, case studies, raw chat input, and inspiration have explicit evidence roles.
 - Screenshot review: significant UI work needs `390 / 768 / 1440` proof.
 - Scorecard enforcement: hard caps prevent vague "looks good" handoffs.
 - Anti-slop checks: generic dashboards, obvious genre cliches, badge soup, card-grid defaults, fake claims, and AI scale inflation are named failure modes.
-- Repeatable new-app workflow: `rules/new-app-workflow.md` and `skills/*` define the loop from intent to final report.
+- Repeatable new-app workflow: routed skills define the loop from intent to final report without context bloat.
 
 ## Core Rule
 
@@ -95,6 +104,7 @@ Do not copy old apps literally. Do not force one palette. Do not globalize In Th
 ## Required Handoff
 
 ```md
+Skills used:
 Design thesis used:
 Files changed:
 Screenshots:

@@ -5,15 +5,18 @@ Use for UI critique, QA, or design review.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `system.md`, `design-system.json`, `rules/scorecard.md`, and `skills/screenshot-review/SKILL.md`.
-3. Read relevant `design-dna/` files before judging the UI.
-4. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
-5. Inspect the current project type, user, primary object, primary action, framework, and styling system.
-6. If visual-heavy work was involved, verify the Visual Concept Gate happened before implementation and name the selected thesis.
-7. Define the project-specific visual identity from the product, not from a source app.
-8. Identify any source-project evidence used and reject literal copying as a review goal; do not copy old apps literally.
-9. Capture or request screenshots; old Design OS captures are evidence, not templates.
-10. Score with `evaluation/ui-scorecard.md` before finishing.
+2. Read `AGENTS.md` and route to the smallest matching skill set.
+3. For existing UI review, load `skills/anti-ai-slop-review/SKILL.md`.
+4. If screenshots exist or the UI can run, also load `skills/screenshot-scorecard-review/SKILL.md`.
+5. If Migi asks for an elite redesign critique, also load `skills/frontend-art-director-review/SKILL.md`.
+6. Read only the files listed by the selected skills before judging the UI.
+7. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
+8. Inspect the current project type, user, primary object, primary action, framework, and styling system.
+9. If visual-heavy work was involved, verify the Visual Concept Gate happened before implementation and name the selected thesis.
+10. Define the project-specific visual identity from the product, not from a source app.
+11. Identify any source-project evidence used and reject literal copying as a review goal; do not copy old apps literally.
+12. Capture or request screenshots; old Design OS captures are evidence, not templates.
+13. Score with `evaluation/ui-scorecard.md` before finishing.
 
 ## Evidence To Capture
 
@@ -77,6 +80,7 @@ Lead with findings ordered by severity. Each finding includes:
 
 Then include:
 
+- skills used
 - design thesis used, if applicable
 - scorecard total and category scores
 - whether Visual Concept Gate was required and completed
