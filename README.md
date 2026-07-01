@@ -83,6 +83,27 @@ node tools/design-os.mjs validate-done-report done-report.local.json
 
 The browser scripts use local Playwright only when available. This repo did not install Playwright during the sprint; if it is missing, capture tools produce clear local setup errors or blocked reports.
 
+## Design OS Studio
+
+`studio/` is the local frontend command center for Miguel Design OS. It is separate from `studio-preview/`, which only renders concept previews.
+
+Run:
+
+```sh
+cd studio
+npm install
+npm run dev
+npm run build
+```
+
+The dev server defaults to `http://127.0.0.1:5175`. When local Playwright is available, capture Studio evidence with:
+
+```sh
+node tools/visual-qa.mjs --url http://localhost:5175 --name design-os-studio
+```
+
+Studio includes Command, Inspiration, Concepts, Target Copy, QA Runs, Agents, and Prompts screens. It uses local React state and static sample data in v0; no backend, API keys, hosted Lovable, screenshot-to-code generation, or external AI calls are used.
+
 For visual-heavy work:
 
 1. Create a design brief: `node tools/design-os.mjs new-brief`.
