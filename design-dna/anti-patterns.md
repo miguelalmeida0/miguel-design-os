@@ -28,6 +28,100 @@ Fix:
 - Replace the stat grid with the primary object plus its next action.
 - Keep metrics only if they change prioritization, trust, or decision-making.
 
+## Obvious Theme Literalism
+
+Detect:
+
+- An app about robots becomes dark cyber cards, neon glows, stat badges, and "fighter" language by default.
+- A finance product automatically becomes a Wall Street terminal, a health product automatically becomes clinical blue, or a game-adjacent product automatically becomes neon arcade.
+- The visual system feels like the first generic app-builder result for the prompt.
+
+Fix:
+
+- Before designing, define a non-obvious visual metaphor.
+- Ask: what would a great designer do besides the expected theme treatment?
+- Use theme signals only when they support the product concept, not because the noun suggests them.
+
+## Excitement Through Clutter
+
+Detect:
+
+- Energy is created by adding badges, labels, stats, glows, borders, overlays, and micro-panels.
+- The interface is visually busy before it is emotionally compelling.
+- Decorative "cool" effects compete with the selectable object or primary action.
+
+Fix:
+
+- Create excitement through composition, scale, contrast, motion, selection reward, and object desire.
+- Use fewer elements with more intent.
+- Let one or two strong signals carry the card instead of badge soup.
+
+## Overlapping Card Content
+
+Detect:
+
+- Badges, labels, stats, text, or controls sit on top of each other.
+- Metadata and actions compete for the same zone.
+- Image overlays reduce readability or collide at responsive sizes.
+- A card only works at one viewport.
+
+Fix:
+
+- Every card needs clear zones: visual, identity, metadata, action.
+- Test at 390 / 768 / 1440.
+- No accidental collision is acceptable.
+- Only use deliberate overlap when it is readable, necessary, and proven responsive.
+
+## Prompt-Generated Genre Default
+
+Detect:
+
+- The UI looks like the first output from a generic app builder after giving it the theme.
+- The design follows genre cliches instead of a product thesis.
+- It mistakes theme decoration for product concept.
+
+Fix:
+
+- Reject the first obvious genre treatment.
+- Produce at least one design thesis that reframes the product.
+- Name the obvious route you are avoiding before choosing palette, layout, language, or effects.
+
+## Selection Catalog When Product Needs Desire
+
+Detect:
+
+- The product's core loop is selection, browsing, collecting, gallery exploration, roster choice, or object discovery.
+- The first screen organizes objects cleanly but does not make users want to choose, click, compare, or collect.
+- Cards look like product listings instead of selectable characters, tools, artifacts, places, or objects.
+- Hover and selected states are flat, passive, or purely informational.
+- Dense specs, tiny stat rows, product-brochure copy, or technical analysis appear before desire is established.
+
+Fix:
+
+- Turn the first screen into a selection moment, not an information page.
+- Make selectable objects visually distinct through image scale, silhouette, rarity/class/tier/vibe labels, personality, role, power, or object-specific traits.
+- Give hover and selected states a visible reward: scale, glow, reveal, animation, sound-safe visual feedback, loadout preview, comparison tray, or committed selected panel.
+- Use progressive disclosure: excitement first, details second.
+- Move dense specs and analysis behind selection, drawer, detail view, comparison mode, or loadout/inspector.
+
+Robot Skill Forge evidence: see `design-dna/rejected-directions.md` for the rejected beige catalog direction.
+
+## Terminal / Newspaper Overload For Selection Products
+
+Detect:
+
+- A selection-first product shows dense terminal panels, newspaper-like information blocks, stats, badges, meters, tabs, and labels before the user chooses an object.
+- Dark robotics or AI-terminal styling is used as a generic mood instead of creating desire to pick an object.
+- Background grid/cross-line texture reads as generic AI atmosphere.
+
+Fix:
+
+- Start with the selectable objects and the emotional reason to choose among them.
+- Put stats, meters, tabs, and technical diagnostics after selection.
+- Replace generic terminal mood with object-specific personality, class, rarity, role, or collection logic.
+
+Robot Skill Forge evidence: see `design-dna/rejected-directions.md` for the rejected terminal/newspaper direction.
+
 ## Container Soup
 
 Detect:
@@ -150,6 +244,10 @@ Do not finish while any are true:
 - primary action hidden or competing
 - passive metadata looks clickable
 - source-project palette copied literally
+- visible UI elements overlap or collide unintentionally
+- app follows the obvious genre aesthetic without a fresh thesis
+- selection-first product creates excitement mainly through badges/glows/stats instead of desire and interaction reward
+- selection-first product opens as a beige catalog, brochure, dashboard, dense terminal, or obvious genre cliche before creating desire
 - mobile screenshot has accidental horizontal scroll
 - desktop screenshot is stretched mobile for a non-editorial app
 - data claims are unsupported

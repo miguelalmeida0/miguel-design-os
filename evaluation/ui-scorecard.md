@@ -28,6 +28,10 @@ Apply caps before final score:
 - passive elements look clickable in primary flow: max 78
 - unsupported live/data/safety/AI claims: max 79
 - mobile accidental horizontal scroll in primary flow: max 79
+- visible UI elements overlap or collide unintentionally: max 60 (6/10 equivalent)
+- design follows the most obvious genre cliche without a fresh thesis: max 70 (7/10 equivalent)
+- excitement is created mainly through badges/glows/stats instead of composition and interaction: max 70 (7/10 equivalent)
+- selection-first product does not make objects desirable to click: max 70 (7/10 equivalent)
 
 ## Categories
 
@@ -38,6 +42,7 @@ Elite: 90 to 100. Pass: 80 to 89. Needs work: 65 to 79. Fail: below 65.
 ### 1. Product Fit And Identity - 15
 
 - 5: visual identity is named and fits current project type
+- identity check: strong themes have a non-obvious visual thesis and avoid the first genre cliche
 - 4: palette/tokens are project-specific, not copied
 - 3: density matches task complexity
 - 3: source-project influence is marked as evidence, not template
@@ -62,6 +67,7 @@ Elite: 90 to 100. Pass: 80 to 89. Needs work: 65 to 79. Fail: below 65.
 - 4: no container soup in primary regions
 - 3: desktop adds actionable context for non-editorial tools: inspector, preview, comparison, table density, or source rail
 - 3: spacing/alignment supports scanning without extra wrappers
+- overlap check: text, badges, controls, stats, and imagery do not collide at tested viewports
 - 3: layout recipe matches archetype
 - 2: visual hierarchy works without reading all labels
 
@@ -106,6 +112,9 @@ Any blocker prevents elite:
 - text overlap or clipping in primary flow
 - accidental mobile horizontal scroll
 - unsupported live/data/safety/AI claim
+- visible UI elements overlap or collide unintentionally
+- obvious genre cliche without a fresh thesis
+- selection-first product lacks object desire or relies on badge/glow/stat clutter for excitement
 - missing scorecard result
 
 ## Required Report

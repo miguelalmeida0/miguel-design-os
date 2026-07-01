@@ -77,6 +77,26 @@ Build:
 
 Do not copy: portrait-led layout unless the subject is a person or personal practice.
 
+## Selection Roster
+
+Evidence: Robot Skill Forge rejected directions.
+
+Use when: users browse, compare, collect, choose, or discover selectable objects before doing anything else.
+
+Build:
+
+- primary object: selectable card/object/character/tool/artifact/place
+- required surfaces: image-led roster, distinct object personality, a non-obvious visual thesis, clear content zones, rewarding hover/selected state, selected preview
+- optional surfaces: class/tier/rarity/vibe labels only when they clarify desire rather than creating badge soup
+- controls: choose/select, compare, save/favorite, inspect details after selection
+- copy: short object hooks that increase desire to choose; dense specs come after selection
+
+Do not: make the first screen a beige catalog, product brochure, SaaS settings page, dense terminal, newspaper layout, stats dashboard, or obvious genre-cliche treatment. Do not use overlapping card content or badge/glow/stat overload as excitement.
+
+Scope: use this archetype only when selection/discovery is the core loop. Do not apply game energy to products whose primary task is approval, research, settings, or reading.
+
+Overlap rule: text, badges, controls, and stats must not collide. Accidental overlap blocks elite scoring even if the concept has energy.
+
 ## Settings And Safety
 
 Use when: users manage preferences, permissions, risk, privacy, or irreversible choices.
@@ -99,4 +119,5 @@ If a screen seems to fit multiple archetypes, choose based on the primary object
 - object is generated/transformed output: Rewrite Studio
 - object is people/time/place coordination: Consumer Coordination
 - object is authored identity/proof: Editorial Presence
+- object is a selectable roster/gallery/collection: Selection Roster
 - object is configuration/risk: Settings And Safety

@@ -121,6 +121,42 @@ Responsive map:
 
 Do not: apply this recipe to non-social products just because the case study liked warmth.
 
+## Selection Roster
+
+Use when: the core experience is choosing, browsing, collecting, comparing, or discovering objects.
+
+Build:
+
+- first viewport: image-led roster or gallery with a strong "which one do I pick?" moment
+- visual thesis: define a non-obvious metaphor before using the expected genre style
+- cards: large enough to show object identity, silhouette, class, rarity, power, vibe, or personality without clutter
+- card zones: visual, identity, metadata, and action stay readable and collision-free
+- interaction: hover and selected states feel rewarding and visually different from passive cards
+- selected object: committed preview, comparison tray, loadout panel, or "picked" state
+- details: dense specs, technical analysis, and long descriptions hidden until after selection
+
+Responsive map:
+
+- 390 px: one dominant card or tight swipe/scroll roster plus clear selected state
+- 768 px: gallery plus selected preview or comparison tray
+- 1440 px: roster, selected preview/loadout, and optional inspector can coexist
+
+Do not:
+
+- open with explanation, brochure copy, or dense stat panels
+- use beige catalog grids when the product needs energy
+- default to the obvious genre aesthetic, such as dark cyber robots with neon/glow/badge soup
+- create excitement mainly through badges, stats, glows, and overlays
+- allow text, badges, stats, or controls to overlap accidentally
+- make cards feel like product listings
+- treat selection like SaaS settings
+
+Robot Skill Forge evidence: the first screen should be a character-select moment, not an information page. It also must not become the obvious AI robot-app cliche.
+
+Layout hard rule:
+
+- Overlapping UI is a hard fail unless deliberately designed, readable, responsive-tested, and necessary. Test cards at 390 / 768 / 1440 before accepting them.
+
 ## Detail With Inspector
 
 Use when: selecting one object from a list and reviewing evidence, settings, or detail.

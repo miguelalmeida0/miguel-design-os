@@ -36,11 +36,13 @@ Score target:
 - One primary action per zone: demote extra actions to secondary, tertiary, icon, menu, or link.
 - Clickable and passive must differ: buttons/links/filters get states; status tags/metadata get no hover, pointer, or command styling.
 - Define semantic tokens before colors: surface, panel, text, border, action, state, focus, shadow.
+- Do not default to the obvious genre aesthetic. For any strong theme, define a non-obvious visual thesis before designing.
 - No palette cloning: do not inherit navy, warm social colors, terminal dark, editorial portrait treatment, or cinematic AI styling from old apps unless the current product independently calls for it.
 - Avoid container soup: no nested card stacks as default layout. Use grids, rails, sections, inspectors, and direct object composition.
+- For selection-first products, do not start with explanation. Start with desire. The first screen should make the user want to choose, click, compare, or collect. Clean is not enough if the product needs energy. Desire must not come from badge soup or predictable AI-slop styling.
 - Data and claims need proof: source, recency, scope, fallback, or explicit sample/mock labeling.
 - Copy must name actions and states. Avoid `Submit`, vague `Continue`, `AI magic`, `seamless`, and unsupported `live/validated/optimized`.
-- Responsive proof is required: mobile has no accidental horizontal scroll; tablet is not broken halfway; desktop is not stretched mobile for tools.
+- Responsive proof is required: mobile has no accidental horizontal scroll; tablet is not broken halfway; desktop is not stretched mobile for tools. Overlap/collision is a hard fail unless deliberate, readable, responsive-tested, and necessary.
 
 ## Evidence, Not Templates
 
@@ -50,6 +52,7 @@ Score target:
 - Ontime: evidence for social coordination only.
 - Portfolio: evidence for editorial identity and authored proof.
 - In The Loop case study: one app's feedback; use for failure modes, not global tone or layout.
+- Robot Skill Forge rejected directions: evidence for selection-first products. Avoid beige catalogs, product brochures, dense terminals, newspaper dashboards, obvious robot-app cliches, badge/glow/stat overload, and overlapping card content when the core loop is choosing or collecting.
 
 ## Done Gate
 
@@ -60,4 +63,3 @@ Do not finish until:
 - scorecard has been run
 - score blockers are fixed or named
 - final report includes score, screenshot evidence, and remaining risks
-
