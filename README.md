@@ -11,11 +11,48 @@ Miguel Design OS now includes local enforcement artifacts:
 - `schemas/design-brief.schema.json`
 - `schemas/visual-concepts.schema.json`
 - `schemas/screenshot-report.schema.json`
+- `schemas/done-report.schema.json`
+- `schemas/target-copy-report.schema.json`
+- `schemas/asset-manifest.schema.json`
+- `schemas/inspiration-manifest.schema.json`
+- `schemas/visual-agent-run.schema.json`
 - `schemas/ui-scorecard.schema.json`
 - `schemas/skill-registry.schema.json`
 - `templates/*.template.json`
 - `skills/skill-registry.json`
 - `tools/design-os.mjs`
+
+## Embedded Usage
+
+Miguel Design OS can live inside another project as `.design-os`. From that project root, run:
+
+```sh
+node .design-os/tools/design-os.mjs list-skills
+node .design-os/tools/design-os.mjs route --task "Build a visual-heavy robot character selection app from inspiration images"
+```
+
+The CLI resolves internal Design OS paths such as `skills/`, `schemas/`, `templates/`, `evaluation/`, and `design-dna/` from the location of `.design-os/tools/design-os.mjs`, not from `process.cwd()`.
+
+## Visual Swarm v1
+
+Visual Swarm v1 adds five local Markdown agents:
+
+- `01-inspiration-scout`
+- `02-art-direction-concept`
+- `03-literal-target-copy`
+- `04-visual-qa-anti-slop`
+- `05-productionizer`
+
+Run:
+
+```sh
+node tools/design-os.mjs list-agents
+node tools/design-os.mjs route-agent --task "Build a cinematic robot character selection app from Pinterest inspiration and a Lovable target"
+node tools/design-os.mjs new-inspiration-manifest
+node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json
+```
+
+The swarm is instruction-only and local. It does not call paid tools, API keys, hosted Lovable, screenshot-to-code generation, Onlook hosted usage, or external model calls.
 
 For visual-heavy work:
 
@@ -28,8 +65,9 @@ For visual-heavy work:
 7. Set `approvalStatus: "approved"` and `selectedConceptId`, then run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
 8. Implement only the approved concept.
 9. Capture implementation screenshots.
-10. Score the UI.
-11. Patch blockers.
+10. Validate screenshot, asset, target-copy, and done-report evidence when applicable.
+11. Score the UI.
+12. Patch blockers.
 
 ## Fast Start
 
@@ -50,7 +88,7 @@ Then classify the task. If the work is visually important, produce 3 rendered vi
 
 Each concept needs a preview route and screenshot files at 1440 / 768 / 390 for the gate to pass. Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
 
-After approval, create a Design Intent Record, build the visual shell first, capture implementation screenshots, run the scorecard, patch blockers, and hand off with evidence.
+After approval, create a Design Intent Record, build the visual shell first, capture implementation screenshots, run the scorecard, validate required evidence reports, patch blockers, and hand off with evidence.
 
 ## Evidence Folders
 
@@ -115,6 +153,19 @@ Text-only concepts do not satisfy the gate. No visual screenshots = Visual Conce
 
 The gate does not block small bug fixes, security patches, copy edits, or purely technical refactors.
 
+Literal Target Copy Mode also bypasses the gate. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, the agent must build the pixel-parity shell first, exclude browser/editor/watermark artifacts, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences.
+
+## P0 Evidence Gates
+
+- No done without evidence.
+- Build/lint is not visual QA.
+- Visual-heavy work requires a validated done report before final handoff.
+- Literal Target Copy Mode requires a validated target-copy report.
+- Production image-led work requires a validated asset manifest.
+- Visual-heavy inspiration work requires an inspiration manifest.
+- Visual target screenshots are evidence, not production assets.
+- Watermark, editor, or browser artifacts in production UI are hard blockers.
+
 ## Lovable-Equivalent Behaviors
 
 - Persistent knowledge: `system.md`, `design-system.json`, and `design-dna/` are always-on guidance.
@@ -130,7 +181,7 @@ The gate does not block small bug fixes, security patches, copy edits, or purely
 
 Define the current project's identity first. Then design.
 
-Do not copy old apps literally. Do not force one palette. Do not globalize In The Loop. Do not preserve rejected layouts with new paint. Do not finish without screenshots and a scorecard result when the UI can run.
+Do not copy old apps literally. Do not force one palette. Do not globalize In The Loop. Do not preserve rejected layouts with new paint. Do not finish without screenshots, required evidence reports, and a scorecard result when the UI can run.
 
 ## Required Handoff
 
@@ -142,6 +193,7 @@ Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:
+Done report:
 Blockers fixed:
 Remaining weaknesses:
 Patched after review: yes/no

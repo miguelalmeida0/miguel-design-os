@@ -14,8 +14,13 @@ Before scoring, record:
 - primary action
 - intended visual identity
 - approved rendered concept when visual-heavy work applies
+- inspiration manifest when visual-heavy work uses inspiration
 - Visual Concept Gate status, preview routes, concept screenshots, and Migi approval when visual-heavy work applies
+- Literal Target Copy Mode status and target-difference report when exact visual copying is requested
 - screenshot evidence at 390, 768, and 1440 px, or a documented blocker
+- validated done report for visual UI work
+- validated target-copy report when Literal Target Copy Mode applies
+- validated asset manifest for image-led target reconstruction or production image-led work
 
 Score the current UI against its own product identity. Do not score higher because it resembles a golden project.
 
@@ -26,13 +31,22 @@ Apply caps before final score.
 Caps are written as 100-point score with 10-point shorthand in parentheses.
 
 - no screenshots and no documented blocker: max 60
+- no inspiration manifest for visual-heavy work that uses inspiration: max 70 (7/10)
+- no validated done report for visual UI work: max 60 (6/10)
+- no done report for visual UI work: max 60 (6/10)
+- no visual QA evidence for visual work: max 60 (6/10)
+- missing visual screenshots for visual work: max 60 (6/10)
+- missing target-copy report during Literal Target Copy Mode: max 60 (6/10)
+- missing asset manifest for image-led target reconstruction or production image-led work: max 60 (6/10)
+- build/lint is presented as visual QA without screenshot evidence and done-report validation: max 60 (6/10)
 - no 390/768/1440 proof for significant frontend work: max 80 (8/10)
 - required routed skill skipped for applicable task: max 80
 - screenshots missing for one viewport: max 80
 - no project-specific visual identity: max 82
 - copied source-project palette/layout literally: max 74
-- 3-concept Visual Concept Gate skipped for visual-heavy work: max 60 (6/10)
+- 3-concept Visual Concept Gate skipped for visual-heavy work when Literal Target Copy Mode was not requested: max 60 (6/10)
 - visual-heavy task produced only text concepts: max 50 (5/10)
+- no rendered visual concepts for visual-heavy concept work: max 50 (5/10)
 - Migi was asked to approve art direction without visual previews: max 50 (5/10)
 - concept screenshots are missing: max 60 (6/10)
 - all 3 concepts share basically the same layout: max 60 (6/10)
@@ -42,12 +56,16 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 - strong visual reference provided but result preserves only surface styling: max 60 (6/10)
 - output uses generic app layout instead of reference composition: max 60 (6/10)
 - primary object in reference is replaced by grid/cards/dashboard: max 60 (6/10)
+- Literal Target Copy Mode requested but the result changes composition or adds unrelated product UI: max 50 (5/10)
 - main object unclear: max 64
 - primary action unclear: max 64
 - clickable/passive ambiguity in primary flow: max 70 (7/10)
 - unsupported live/data/safety/AI claims: max 79
 - mobile accidental horizontal scroll in primary flow: max 79
 - visible UI elements overlap or collide unintentionally: max 60 (6/10)
+- dead button in the primary UI: max 60 (6/10)
+- external watermark, editor artifact, browser chrome, or copied tooling artifact visible in production UI: max 40 (4/10)
+- text on button or unintended button/control overlap: max 50 (5/10)
 - animation exists only for decoration and does not clarify state/interaction/hierarchy: max 70 (7/10)
 - oversized AI-app typography or containers overwhelm the product: max 70 (7/10)
 - user feels attacked by scale on first load: max 70 (7/10)
@@ -134,7 +152,16 @@ Any blocker prevents elite:
 - source-project palette/layout copied literally
 - In The Loop social patterns applied to a non-social product
 - text overlap or clipping in primary flow
+- text on button or unintended button/control overlap
 - accidental mobile horizontal scroll
+- build/lint used as visual QA proof without screenshots and done-report validation
+- no done without evidence: visual UI work is missing a validated done report
+- visual-heavy inspiration work is missing an inspiration manifest
+- visual work is missing visual QA evidence
+- Literal Target Copy Mode is missing a validated target-copy report
+- image-led target reconstruction or production image-led work is missing a validated asset manifest
+- dead button in the primary UI
+- external watermark, editor artifact, browser artifact, or copied tooling artifact visible in production UI
 - unsupported live/data/safety/AI claim
 - visible UI elements overlap or collide unintentionally
 - obvious genre cliche without a fresh thesis
@@ -146,6 +173,7 @@ Any blocker prevents elite:
 - implementation started before visual concept approval
 - reference flattened into shallow traits
 - same rejected layout with new paint
+- Literal Target Copy Mode requested but composition changes or unrelated product UI is added
 - decorative motion that clarifies nothing
 - AI scale inflation overwhelms the product
 - selection-first product lacks object desire or relies on badge/glow/stat clutter for excitement
@@ -162,6 +190,10 @@ Always report:
 - category scores
 - concept screenshots used when visual-heavy work applies
 - screenshots used
+- done report path and validation result for visual UI work
+- target-copy report path and validation result when Literal Target Copy Mode applies
+- asset manifest path and validation result for image-led target reconstruction or production image-led work
+- exact target differences when Literal Target Copy Mode applies
 - top 3 fixes
 - blockers
 - verification gaps

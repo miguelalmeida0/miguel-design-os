@@ -17,4 +17,7 @@ raw-chat-input/
 
 *.local.json
 
+inspiration-library/screenshots/*
+!inspiration-library/screenshots/.gitkeep
+
 smoke-tests/

@@ -27,6 +27,7 @@
         "primary action",
         "existing UI state if any",
         "inspiration or references if any",
+        "inspiration manifest when references are used",
         "known rejected directions if any"
       ],
       "outputContract": [
@@ -51,7 +52,9 @@
         "product-discovery",
         "selection-first",
         "art direction",
-        "concept"
+        "concept",
+        "visual swarm",
+        "inspiration manifest"
       ]
     },
     {
@@ -73,6 +76,9 @@
         "current product type",
         "primary object and primary action",
         "current UI screenshots if available",
+        "inspiration manifest when target/inspiration research is used",
+        "target-copy report for Literal Target Copy Mode",
+        "asset manifest for production image-led reconstruction",
         "implementation constraints"
       ],
       "outputContract": [
@@ -95,9 +101,15 @@
         "mockup",
         "visual reference",
         "visual target",
+        "exact visual target",
         "inspiration image",
         "reference image",
+        "copy this exact ui",
+        "100% this design",
+        "literally what you see",
         "reconstruct",
+        "target copy",
+        "target-copy report",
         "target"
       ]
     },
@@ -203,7 +215,8 @@
         "screenshots exist",
         "UI can run",
         "frontend QA or final verification",
-        "user asks to prove responsiveness or quality"
+        "user asks to prove responsiveness or quality",
+        "Visual Swarm v1 reaches Visual QA Anti-Slop phase"
       ],
       "doNotUseWhen": [
         "no UI surface exists",
@@ -240,7 +253,9 @@
         "QA",
         "verify",
         "can run",
-        "viewport"
+        "viewport",
+        "done report",
+        "visual swarm"
       ]
     },
     {

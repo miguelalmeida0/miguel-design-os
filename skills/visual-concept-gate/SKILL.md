@@ -17,6 +17,7 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 - Inspiration-image driven work.
 - Gallery, roster, character-select, product-discovery, or selection-first experience.
 - Migi asks for a stronger visual direction.
+- Visual Swarm v1 art-direction work.
 
 ## Do Not Use When
 
@@ -35,6 +36,7 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 - Primary action.
 - Existing UI state, if any.
 - Inspiration or references, if any.
+- Inspiration manifest for visual-heavy work when references are used.
 - Known rejected directions, if any.
 
 ## Files To Read
@@ -49,12 +51,13 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 
 1. Stop before implementation.
 2. Classify the task and record the Design Intent Record.
-3. Name the obvious genre cliche the design must avoid.
-4. Produce exactly 3 radically different rendered art-direction concept prototypes:
+3. If inspiration is used, create or validate `inspiration-manifest.local.json`.
+4. Name the obvious genre cliche the design must avoid.
+5. Produce exactly 3 radically different rendered art-direction concept prototypes:
    - Safe expected direction.
    - More original/art-directed direction.
    - Wild but controlled direction.
-5. For each concept include:
+6. For each concept include:
    - preview route
    - screenshot files at `1440 / 768 / 390`
    - short explanation
@@ -68,18 +71,19 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
    - desire mechanism
    - responsive strategy for `1440 / 768 / 390`
    - what would make it fail
-6. Save the artifact using `templates/visual-concepts.template.json`.
-7. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` when the CLI is available.
-8. Stop and show Migi the visuals.
-9. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
-10. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
-11. After the gate passes, implement only the approved direction.
+7. Save the artifact using `templates/visual-concepts.template.json`.
+8. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` when the CLI is available.
+9. Stop and show Migi the visuals.
+10. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
+11. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+12. After the gate passes, implement only the approved direction.
 
 ## Stop Conditions
 
 - Stop before UI implementation if no concept has been approved.
 - Stop if concepts are text-only.
 - Stop if any concept is missing a preview route or screenshot paths.
+- Stop if visual-heavy inspiration work has no inspiration manifest.
 - Stop and ask for approval only after presenting the 3 rendered concepts.
 - Stop polishing if Migi rejects the visual direction; return to concept generation.
 
@@ -110,6 +114,7 @@ Approval needed before implementation: yes
 - Same rejected layout with new paint: max score 6.
 - Obvious genre cliche without a fresh thesis: max score 7.
 - No project-specific visual identity: cap applies.
+- No inspiration manifest for visual-heavy inspiration work: max score 7.
 
 ## Safety/Scope Rules
 
@@ -117,3 +122,4 @@ Approval needed before implementation: yes
 - Do not turn one rejected app direction into a universal style ban.
 - Do not force every future app to be dark, cinematic, game-like, glassy, or playful.
 - Do not copy a source project or inspiration reference literally.
+- Do not use inspiration screenshots as production assets.

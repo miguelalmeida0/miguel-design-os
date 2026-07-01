@@ -14,6 +14,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - The UI can run.
 - The task is frontend QA, final verification, review, or fix-until-elite.
 - The user asks to prove responsiveness or quality.
+- Visual Swarm v1 reaches the Visual QA Anti-Slop phase.
 
 ## Do Not Use When
 
@@ -29,6 +30,9 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Design Intent Record.
 - Approved rendered concept when relevant.
 - Visual Concept Gate artifact when visual-heavy work applies.
+- Done report artifact before final handoff.
+- Asset manifest for production image-led work.
+- Target-copy report when Literal Target Copy Mode applies.
 
 ## Files To Read
 
@@ -47,8 +51,12 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 6. Check every viewport for overlap/collision.
 7. Run `evaluation/ui-scorecard.md`.
 8. Apply caps.
-9. Patch blockers before completion when implementation is in scope.
-10. Re-check changed screens.
+9. Validate `asset-manifest.local.json` when production image-led work is involved.
+10. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
+11. Create or update `done-report.local.json`.
+12. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+13. Patch blockers before completion when implementation is in scope.
+14. Re-check changed screens.
 
 ## Stop Conditions
 
@@ -57,6 +65,9 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if horizontal scroll appears in the primary mobile flow.
 - Stop if unintended overlap or unreadable UI appears.
 - Stop if scorecard blockers remain but the task claims completion.
+- Stop if visual UI work has no validated done report before final handoff.
+- Stop if Literal Target Copy Mode has no validated target-copy report.
+- Stop if production image-led work has no validated asset manifest.
 
 ## Output Contract
 
@@ -67,6 +78,9 @@ Concept screenshots inspected:
 768 result:
 1440 result:
 Scorecard result:
+Done report:
+Target-copy report:
+Asset manifest:
 Caps applied:
 Blockers:
 Patch pass completed: yes/no
@@ -84,10 +98,17 @@ Remaining verification gaps:
 - Mobile horizontal scroll: cap applies.
 - Unreadable or clipped primary UI: prevents elite.
 - Missing scorecard result: prevents elite.
+- Missing validated done report for visual UI work: max score 6.
+- Missing target-copy report during Literal Target Copy Mode: max score 6.
+- Missing asset manifest for production image-led work: max score 6.
+- Dead button in primary UI: max score 6.
+- Watermark/editor/browser artifact: max score 4.
 
 ## Safety/Scope Rules
 
 - Do not claim "responsive" without viewport evidence.
 - Do not rely on old Design OS captures as proof for the current UI.
 - Do not add external screenshot dependencies inside this skill.
+- Do not claim done from build/lint alone; visual work needs screenshot evidence and a validated done report.
+- Treat visual target screenshots as evidence only, never production assets.
 - If the UI cannot run, report the run command, error, and best alternate evidence.

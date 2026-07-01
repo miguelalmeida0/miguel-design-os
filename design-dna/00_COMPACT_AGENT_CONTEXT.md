@@ -15,8 +15,15 @@ Use this before building or reviewing any frontend.
 9. Capture 390, 768, and 1440 px when the UI can run.
 10. Run `evaluation/ui-scorecard.md` before finishing.
 11. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
+12. No done without evidence: visual UI work requires a validated done report before final handoff.
 
-Before visually important UI work, do not code. Produce 3 rendered visual concepts first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. Each concept needs a preview route plus 1440 / 768 / 390 screenshot files for the gate to pass. Visual Concept Gate means 3 rendered visual concepts, not 3 text descriptions. No screenshots, no approval. Do not implement until Migi chooses one visual direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
+Literal Target Copy Mode overrides product thinking. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, do not run the 3-concept gate, create new art direction, expand features, add useful panels, reinterpret, or improve. The only goal is visual parity with the supplied target: identify target screens, reconstruct visible composition, exclude browser chrome/editor/watermark artifacts, build the static shell first, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences. Product logic waits until the pixel-parity shell is approved.
+
+Evidence gates: build/lint is not visual QA; visual target screenshots are evidence, not production assets; watermark/editor/browser artifacts in production UI are hard blockers; production image-led work requires an asset manifest; Literal Target Copy Mode requires a target-copy report; visual-heavy work requires a done report before final handoff.
+
+Visual Swarm v1 agents in `agents/`: Inspiration Scout creates `inspiration-manifest.local.json`; Art Direction Concept creates 3 rendered concepts; Literal Target Copy creates `target-copy-report.local.json`; Visual QA Anti-Slop validates screenshot/done evidence; Productionizer adds interactions only after shell approval. Use `list-agents` and `route-agent` when available.
+
+Before visually important UI work, do not code unless Literal Target Copy Mode is active. Produce 3 rendered visual concepts first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. Each concept needs a preview route plus 1440 / 768 / 390 screenshot files for the gate to pass. Visual Concept Gate means 3 rendered visual concepts, not 3 text descriptions. No screenshots, no approval. Do not implement until Migi chooses one visual direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
 
 ## Design Intent Record
 
@@ -51,6 +58,7 @@ Score target:
 - Do not default to the obvious genre aesthetic. For any strong theme, define a non-obvious visual thesis before designing.
 - No palette cloning: do not inherit navy, warm social colors, terminal dark, editorial portrait treatment, or cinematic AI styling from old apps unless the current product independently calls for it.
 - Do not implement before art direction for visual-heavy work. Three rendered concepts, viewport screenshots, and Migi approval come before components.
+- Literal Target Copy Mode is the exception: exact visual target copying skips concept generation and focuses only on pixel-parity reconstruction.
 - Avoid container soup: no nested card stacks as default layout. Use grids, rails, sections, inspectors, and direct object composition.
 - For selection-first products, do not start with explanation. Start with desire. The first screen should make the user want to choose, click, compare, or collect. Clean is not enough if the product needs energy. Desire must not come from badge soup or predictable AI-slop styling.
 - Build the poster/composition first, then product logic. Lovable-style visual output can beat Codex when the task is art direction first; Codex compensates with a visual-concept phase.
@@ -74,8 +82,12 @@ Score target:
 Do not finish until:
 
 - design intent record exists
-- Visual Concept Gate was completed with 3 rendered concepts, viewport screenshots, and Migi approval when visual-heavy work required it
+- Visual Concept Gate was completed with 3 rendered concepts, viewport screenshots, and Migi approval when visual-heavy work required it, or Literal Target Copy Mode was explicitly requested and screenshot comparison reports exact differences
 - screenshots exist or blocker is documented
+- done report validates for visual UI work
+- target-copy report validates when Literal Target Copy Mode applies
+- asset manifest validates for production image-led work
+- inspiration manifest validates when visual-heavy work uses inspiration
 - scorecard has been run
 - score blockers are fixed or named
 - final report includes score, screenshot evidence, and remaining risks
@@ -88,6 +100,7 @@ Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:
+Done report:
 Blockers fixed:
 Remaining weaknesses:
 Patched after review: yes/no

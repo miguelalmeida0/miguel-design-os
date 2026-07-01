@@ -2,15 +2,59 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = process.cwd();
+const designOsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const projectRoot = process.cwd();
 const args = process.argv.slice(2);
 const command = args[0];
 
 const paths = {
   registry: "skills/skill-registry.json",
-  briefTemplate: "templates/design-brief.template.json"
+  briefTemplate: "templates/design-brief.template.json",
+  doneReportTemplate: "templates/done-report.template.json",
+  targetCopyReportTemplate: "templates/target-copy-report.template.json",
+  assetManifestTemplate: "templates/asset-manifest.template.json",
+  inspirationManifestTemplate: "inspiration-library/manifests/inspiration-manifest.template.json"
 };
+
+const visualAgents = [
+  {
+    id: "01-inspiration-scout",
+    name: "Inspiration Scout Agent",
+    path: "agents/01-inspiration-scout-agent.md",
+    description: "Collects, classifies, and documents visual inspiration before implementation.",
+    routeKeywords: ["inspiration", "pinterest", "moodboard", "awwwards", "fwa", "reference", "visual research", "source"]
+  },
+  {
+    id: "02-art-direction-concept",
+    name: "Art Direction Concept Agent",
+    path: "agents/02-art-direction-concept-agent.md",
+    description: "Turns a brief and inspiration into 3 rendered visual concepts.",
+    routeKeywords: ["concept", "art direction", "visual-heavy", "new app", "rendered", "three concepts", "selection", "roster", "gallery"]
+  },
+  {
+    id: "03-literal-target-copy",
+    name: "Literal Target Copy Agent",
+    path: "agents/03-literal-target-copy-agent.md",
+    description: "Reconstructs exact visual targets without product reinterpretation.",
+    routeKeywords: ["copy this exact ui", "100% this design", "literally what you see", "exact visual target", "lovable target", "target copy", "reconstruct"]
+  },
+  {
+    id: "04-visual-qa-anti-slop",
+    name: "Visual QA Anti-Slop Agent",
+    path: "agents/04-visual-qa-anti-slop-agent.md",
+    description: "Blocks fake done reports with screenshot QA and scorecard caps.",
+    routeKeywords: ["qa", "screenshot", "scorecard", "anti-slop", "verify", "done report", "overlap", "watermark", "dead button"]
+  },
+  {
+    id: "05-productionizer",
+    name: "Productionizer Agent",
+    path: "agents/05-productionizer-agent.md",
+    description: "Adds clean app code and interactions after the visual shell passes.",
+    routeKeywords: ["productionize", "implementation", "interactions", "components", "build", "lint", "local data", "product logic"]
+  }
+];
 
 const requiredBriefFields = [
   "projectName",
@@ -65,9 +109,14 @@ const requiredConceptStringFields = [
 const viewportKeys = ["1440", "768", "390"];
 
 const requiredScreenshotFields = [
+  "projectName",
+  "taskType",
+  "mode",
+  "isVisualWork",
   "targetScreenshots",
   "currentScreenshots",
   "viewportChecks",
+  "visualQa",
   "overlapDetected",
   "horizontalScrollDetected",
   "unreadableTextDetected",
@@ -76,8 +125,118 @@ const requiredScreenshotFields = [
   "remainingWeaknesses"
 ];
 
-function readJson(filePath) {
-  const absolute = path.resolve(root, filePath);
+const requiredDoneReportFields = [
+  "projectName",
+  "taskType",
+  "mode",
+  "isVisualWork",
+  "filesChanged",
+  "commandsRun",
+  "screenshots",
+  "screenshotReportPath",
+  "visualQa",
+  "interactionQa",
+  "assetQa",
+  "targetCopyQa",
+  "score",
+  "remainingWeaknesses",
+  "blockers",
+  "finalStatus"
+];
+
+const requiredTargetCopyFields = [
+  "targetScreens",
+  "targetImagePaths",
+  "currentScreenshotPaths",
+  "excludedArtifacts",
+  "visualShellStatus",
+  "compositionMatchNotes",
+  "focalObjectMatchNotes",
+  "layoutMatchNotes",
+  "typographyMatchNotes",
+  "interactionMinimums",
+  "exactDifferences",
+  "intentionalDifferences",
+  "remainingMismatches",
+  "approvalStatus"
+];
+
+const requiredAssetFields = [
+  "assetPath",
+  "role",
+  "mappedObject",
+  "source",
+  "sourceType",
+  "licenseNote",
+  "watermarkFree",
+  "browserChromeFree",
+  "editorUiFree",
+  "placeholder",
+  "repeatedAsset",
+  "cropFocalPoint",
+  "usageNotes",
+  "approvedForProduction"
+];
+
+const requiredInspirationManifestFields = [
+  "projectName",
+  "purpose",
+  "localScreenshotsPath",
+  "sources",
+  "references",
+  "topThirtyStrongestReferences",
+  "topTenCompositionPatterns",
+  "topTenAntiPatternsToAvoid"
+];
+
+const requiredInspirationReferenceFields = [
+  "id",
+  "title",
+  "sourceName",
+  "sourceUrl",
+  "referenceType",
+  "trustLevel",
+  "screenshotPath",
+  "screenshotLocalOnly",
+  "attributionNotes",
+  "composition",
+  "focalObject",
+  "mood",
+  "material",
+  "motion",
+  "interactionModel",
+  "intentionallyAbsent",
+  "literalTarget",
+  "notes"
+];
+
+const validDoneModes = new Set(["visual-concept", "literal-target-copy", "visual-repair", "implementation", "review"]);
+const validFinalStatuses = new Set(["done", "blocked", "needs-work"]);
+const validApprovalStatuses = new Set(["pending", "approved", "rejected"]);
+const validAssetRoles = new Set(["production", "reference", "temporary", "source"]);
+const validAssetSourceTypes = new Set(["official", "press", "Wikimedia", "provided", "generated", "unknown"]);
+const validReferenceTypes = new Set(["inspiration", "literal-target", "anti-pattern"]);
+const validTrustLevels = new Set(["high", "medium", "moodboard-only"]);
+const visualDoneModes = new Set(["visual-concept", "literal-target-copy", "visual-repair"]);
+const visualTaskMarkers = ["visual", "frontend", "ui", "redesign", "new-app", "selection", "gallery", "roster", "product-discovery"];
+const requiredVisualQaFields = [
+  "noOverlap",
+  "noTextOnButtons",
+  "noWatermark",
+  "noHorizontalOverflow",
+  "noCutHeroObject"
+];
+
+function resolveDesignOsPath(filePath) {
+  return path.isAbsolute(filePath) ? filePath : path.resolve(designOsRoot, filePath);
+}
+
+function resolveProjectPath(filePath) {
+  return path.isAbsolute(filePath) ? filePath : path.resolve(projectRoot, filePath);
+}
+
+function readJson(filePath, options = {}) {
+  const absolute = options.base === "design-os" ? resolveDesignOsPath(filePath) : resolveProjectPath(filePath);
   try {
     return JSON.parse(fs.readFileSync(absolute, "utf8"));
   } catch (error) {
@@ -86,7 +245,7 @@ function readJson(filePath) {
 }
 
 function writeJsonIfMissing(filePath, data) {
-  const absolute = path.resolve(root, filePath);
+  const absolute = resolveProjectPath(filePath);
   if (fs.existsSync(absolute)) {
     return { created: false, filePath };
   }
@@ -95,7 +254,7 @@ function writeJsonIfMissing(filePath, data) {
 }
 
 function writeJson(filePath, data) {
-  const absolute = path.resolve(root, filePath);
+  const absolute = resolveProjectPath(filePath);
   fs.mkdirSync(path.dirname(absolute), { recursive: true });
   fs.writeFileSync(absolute, `${JSON.stringify(data, null, 2)}\n`);
 }
@@ -132,6 +291,14 @@ function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+function isBoolean(value) {
+  return typeof value === "boolean";
+}
+
+function isNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
 function missingFields(object, fields) {
   return fields.filter((field) => !(field in object));
 }
@@ -156,11 +323,109 @@ function validateViewportObject(value, label, errors) {
   }
 }
 
+function validateRequiredViewportStrings(value, label, errors) {
+  validateViewportObject(value, label, errors);
+  if (!isPlainObject(value)) {
+    return;
+  }
+
+  for (const viewport of viewportKeys) {
+    if (!isNonEmptyString(value[viewport])) {
+      errors.push(`${label}.${viewport} is required for visual work.`);
+    }
+  }
+}
+
+function validateVisualQa(value, label, errors) {
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be an object.`);
+    return;
+  }
+
+  for (const field of requiredVisualQaFields) {
+    if (!isBoolean(value[field])) {
+      errors.push(`${label}.${field} must be a boolean.`);
+    }
+  }
+
+  if (value.noCutHeroObject === false && !isNonEmptyString(value.noCutHeroObjectJustification)) {
+    errors.push(`${label}.noCutHeroObjectJustification must explain any accepted hero-object crop.`);
+  }
+}
+
+function inferVisualWork(artifact) {
+  if (artifact?.isVisualWork === true) {
+    return true;
+  }
+  if (artifact?.isVisualWork === false) {
+    return false;
+  }
+  if (visualDoneModes.has(artifact?.mode)) {
+    return true;
+  }
+  const taskType = normalizeText(artifact?.taskType);
+  return visualTaskMarkers.some((marker) => taskType.includes(marker));
+}
+
+function includesAllArtifactExclusions(values) {
+  const text = normalizeText(Array.isArray(values) ? values.join(" ") : values);
+  return text.includes("watermark") &&
+    text.includes("editor") &&
+    text.includes("browser") &&
+    text.includes("chrome");
+}
+
+function isPrimaryObjectAsset(asset) {
+  const text = normalizeText(`${asset?.mappedObject || ""} ${asset?.role || ""} ${asset?.usageNotes || ""}`);
+  return text.includes("primary") || text.includes("hero");
+}
+
+function validateAssetQa(value, label, errors) {
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be an object.`);
+    return;
+  }
+  if (!isBoolean(value.required)) {
+    errors.push(`${label}.required must be a boolean.`);
+  }
+  if (!isNonEmptyString(value.manifestPath) && value.required === true) {
+    errors.push(`${label}.manifestPath is required when asset QA is required.`);
+  }
+  if (!isBoolean(value.validated)) {
+    errors.push(`${label}.validated must be a boolean.`);
+  }
+  if (value.required === true && value.validated !== true) {
+    errors.push(`${label}.validated must be true when asset QA is required.`);
+  }
+}
+
+function validateTargetCopyQa(value, label, errors, mode) {
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be an object.`);
+    return;
+  }
+  if (!isBoolean(value.required)) {
+    errors.push(`${label}.required must be a boolean.`);
+  }
+  if (!isNonEmptyString(value.reportPath) && value.required === true) {
+    errors.push(`${label}.reportPath is required when target-copy QA is required.`);
+  }
+  if (!isBoolean(value.validated)) {
+    errors.push(`${label}.validated must be a boolean.`);
+  }
+  if (mode === "literal-target-copy" && value.required !== true) {
+    errors.push(`${label}.required must be true for Literal Target Copy Mode.`);
+  }
+  if (value.required === true && value.validated !== true) {
+    errors.push(`${label}.validated must be true when target-copy QA is required.`);
+  }
+}
+
 function artifactPathExists(filePath) {
   if (!isNonEmptyString(filePath) || /^https?:\/\//i.test(filePath)) {
     return false;
   }
-  const absolute = path.isAbsolute(filePath) ? filePath : path.resolve(root, filePath);
+  const absolute = resolveProjectPath(filePath);
   return fs.existsSync(absolute);
 }
 
@@ -177,7 +442,7 @@ function validateScreenshotFiles(value, label, errors) {
 }
 
 function getRegistry() {
-  const registry = readJson(paths.registry);
+  const registry = readJson(paths.registry, { base: "design-os" });
   if (!Array.isArray(registry.skills)) {
     fail("Skill registry is invalid: missing skills array.");
   }
@@ -189,6 +454,56 @@ function listSkills() {
   for (const skill of registry.skills) {
     console.log(`${skill.id}\t${skill.path}\t${skill.description}`);
   }
+}
+
+function listAgents() {
+  for (const agent of visualAgents) {
+    console.log(`${agent.id}\t${agent.path}\t${agent.description}`);
+  }
+}
+
+function routeAgent() {
+  const taskIndex = args.indexOf("--task");
+  if (taskIndex === -1 || !args[taskIndex + 1]) {
+    fail('Usage: node tools/design-os.mjs route-agent --task "..."');
+  }
+
+  const task = args[taskIndex + 1];
+  const normalized = task.toLowerCase();
+  const selected = [];
+
+  for (const agent of visualAgents) {
+    const matchedKeywords = agent.routeKeywords.filter((keyword) => normalized.includes(keyword.toLowerCase()));
+    if (matchedKeywords.length > 0) {
+      selected.push({
+        id: agent.id,
+        name: agent.name,
+        path: agent.path,
+        matchedKeywords
+      });
+    }
+  }
+
+  const impliesVisualQa = ["build", "app", "visual", "target", "inspiration", "selection", "roster", "gallery", "redesign"].some((keyword) => normalized.includes(keyword));
+  if (impliesVisualQa && !selected.some((agent) => agent.id === "04-visual-qa-anti-slop")) {
+    selected.push({
+      id: "04-visual-qa-anti-slop",
+      name: "Visual QA Anti-Slop Agent",
+      path: "agents/04-visual-qa-anti-slop-agent.md",
+      matchedKeywords: ["implied-visual-qa"]
+    });
+  }
+
+  if (selected.length === 0) {
+    selected.push({
+      id: "04-visual-qa-anti-slop",
+      name: "Visual QA Anti-Slop Agent",
+      path: "agents/04-visual-qa-anti-slop-agent.md",
+      matchedKeywords: ["fallback-qa"]
+    });
+  }
+
+  console.log(JSON.stringify({ task, recommendedAgents: selected }, null, 2));
 }
 
 function routeTask() {
@@ -234,9 +549,86 @@ function routeTask() {
 }
 
 function newBrief() {
-  const template = readJson(paths.briefTemplate);
+  const template = readJson(paths.briefTemplate, { base: "design-os" });
   const result = writeJsonIfMissing("design-brief.local.json", template);
   pass(result.created ? "Created design-brief.local.json" : "design-brief.local.json already exists");
+}
+
+function newInspirationManifest() {
+  const template = readJson(paths.inspirationManifestTemplate, { base: "design-os" });
+  const result = writeJsonIfMissing("inspiration-manifest.local.json", template);
+  pass(result.created ? "Created inspiration-manifest.local.json" : "inspiration-manifest.local.json already exists");
+}
+
+function validateInspirationManifest(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-inspiration-manifest <file>");
+  }
+
+  const manifest = readJson(filePath);
+  const errors = [];
+  const missing = missingFields(manifest, requiredInspirationManifestFields);
+  if (missing.length > 0) {
+    errors.push(`Missing required fields: ${missing.join(", ")}`);
+  }
+
+  for (const field of ["projectName", "purpose", "localScreenshotsPath"]) {
+    if (field in manifest && !isNonEmptyString(manifest[field])) {
+      errors.push(`${field} must be a non-empty string.`);
+    }
+  }
+
+  for (const field of ["sources", "references", "topThirtyStrongestReferences", "topTenCompositionPatterns", "topTenAntiPatternsToAvoid"]) {
+    if (field in manifest && !Array.isArray(manifest[field])) {
+      errors.push(`${field} must be an array.`);
+    }
+  }
+
+  if (Array.isArray(manifest.references)) {
+    manifest.references.forEach((reference, index) => {
+      if (!isPlainObject(reference)) {
+        errors.push(`references[${index}] must be an object.`);
+        return;
+      }
+      const referenceMissing = missingFields(reference, requiredInspirationReferenceFields);
+      if (referenceMissing.length > 0) {
+        errors.push(`references[${index}] missing: ${referenceMissing.join(", ")}`);
+      }
+      for (const field of ["id", "title", "sourceName", "sourceUrl", "composition", "focalObject", "mood", "material", "motion", "interactionModel", "intentionallyAbsent", "notes"]) {
+        if (field in reference && !isNonEmptyString(reference[field])) {
+          errors.push(`references[${index}].${field} must be a non-empty string.`);
+        }
+      }
+      if (reference.referenceType && !validReferenceTypes.has(reference.referenceType)) {
+        errors.push(`references[${index}].referenceType must be one of: ${Array.from(validReferenceTypes).join(", ")}.`);
+      }
+      if (reference.trustLevel && !validTrustLevels.has(reference.trustLevel)) {
+        errors.push(`references[${index}].trustLevel must be one of: ${Array.from(validTrustLevels).join(", ")}.`);
+      }
+      if ("screenshotLocalOnly" in reference && !isBoolean(reference.screenshotLocalOnly)) {
+        errors.push(`references[${index}].screenshotLocalOnly must be a boolean.`);
+      }
+      if ("literalTarget" in reference && !isBoolean(reference.literalTarget)) {
+        errors.push(`references[${index}].literalTarget must be a boolean.`);
+      }
+      if (reference.sourceName === "Pinterest" && reference.trustLevel !== "moodboard-only") {
+        errors.push(`references[${index}] Pinterest references must use trustLevel moodboard-only.`);
+      }
+      if (reference.literalTarget === true && reference.referenceType !== "literal-target") {
+        errors.push(`references[${index}] literalTarget true requires referenceType literal-target.`);
+      }
+    });
+  }
+
+  if (errors.length > 0) {
+    fail(`Inspiration manifest failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Inspiration manifest valid", {
+    file: filePath,
+    references: manifest.references.length,
+    localScreenshotsPath: manifest.localScreenshotsPath
+  });
 }
 
 function validateBrief(filePath) {
@@ -419,6 +811,20 @@ function validateScreenshotReport(filePath) {
     errors.push(`Missing required fields: ${missing.join(", ")}`);
   }
 
+  const isVisualWork = inferVisualWork(report);
+
+  if ("isVisualWork" in report && !isBoolean(report.isVisualWork)) {
+    errors.push("isVisualWork must be a boolean.");
+  }
+
+  if (report.mode && !validDoneModes.has(report.mode)) {
+    errors.push(`mode must be one of: ${Array.from(validDoneModes).join(", ")}.`);
+  }
+
+  if (isVisualWork) {
+    validateRequiredViewportStrings(report.currentScreenshots, "currentScreenshots", errors);
+  }
+
   if (!report.viewportChecks || typeof report.viewportChecks !== "object") {
     errors.push("viewportChecks must be an object.");
   } else {
@@ -438,9 +844,14 @@ function validateScreenshotReport(filePath) {
         if (viewportMissing.length > 0) {
           errors.push(`viewportChecks.${viewport} missing: ${viewportMissing.join(", ")}`);
         }
+        if (isVisualWork && !isNonEmptyString(report.viewportChecks[viewport].screenshot)) {
+          errors.push(`viewportChecks.${viewport}.screenshot is required for visual work.`);
+        }
       }
     }
   }
+
+  validateVisualQa(report.visualQa, "visualQa", errors);
 
   for (const field of ["overlapDetected", "horizontalScrollDetected", "unreadableTextDetected"]) {
     if (field in report && typeof report[field] !== "boolean") {
@@ -459,6 +870,358 @@ function validateScreenshotReport(filePath) {
     fail(`Screenshot report failed validation:\n- ${errors.join("\n- ")}`);
   }
   pass("Screenshot report valid", { file: filePath });
+}
+
+function newDoneReport() {
+  const template = readJson(paths.doneReportTemplate, { base: "design-os" });
+  const result = writeJsonIfMissing("done-report.local.json", template);
+  pass(result.created ? "Created done-report.local.json" : "done-report.local.json already exists");
+}
+
+function validateDoneReport(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-done-report <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+  const missing = missingFields(report, requiredDoneReportFields);
+  if (missing.length > 0) {
+    errors.push(`Missing required fields: ${missing.join(", ")}`);
+  }
+
+  if (report.mode && !validDoneModes.has(report.mode)) {
+    errors.push(`mode must be one of: ${Array.from(validDoneModes).join(", ")}.`);
+  }
+
+  if (report.finalStatus && !validFinalStatuses.has(report.finalStatus)) {
+    errors.push(`finalStatus must be one of: ${Array.from(validFinalStatuses).join(", ")}.`);
+  }
+
+  if ("isVisualWork" in report && !isBoolean(report.isVisualWork)) {
+    errors.push("isVisualWork must be a boolean.");
+  }
+
+  for (const field of ["filesChanged", "commandsRun", "remainingWeaknesses", "blockers"]) {
+    if (field in report && !Array.isArray(report[field])) {
+      errors.push(`${field} must be an array.`);
+    }
+  }
+
+  if (!isPlainObject(report.screenshots)) {
+    errors.push("screenshots must be an object with 390, 768, and 1440 keys for visual work.");
+  }
+
+  validateVisualQa(report.visualQa, "visualQa", errors);
+
+  if (!isPlainObject(report.interactionQa)) {
+    errors.push("interactionQa must be an object.");
+  } else if (!Array.isArray(report.interactionQa.deadButtons)) {
+    errors.push("interactionQa.deadButtons must be an array.");
+  }
+
+  validateAssetQa(report.assetQa, "assetQa", errors);
+  validateTargetCopyQa(report.targetCopyQa, "targetCopyQa", errors, report.mode);
+
+  if (!isPlainObject(report.score)) {
+    errors.push("score must be an object with current and target numbers.");
+  } else {
+    if (!isNumber(report.score.current)) {
+      errors.push("score.current must be a number.");
+    }
+    if (!isNumber(report.score.target)) {
+      errors.push("score.target must be a number.");
+    }
+  }
+
+  const isVisualWork = inferVisualWork(report);
+  if (isVisualWork) {
+    validateRequiredViewportStrings(report.screenshots, "screenshots", errors);
+    if (!isNonEmptyString(report.screenshotReportPath)) {
+      errors.push("screenshotReportPath is required for visual work.");
+    }
+
+    if (report.visualQa?.noOverlap === false) {
+      errors.push("visualQa.noOverlap must be true before claiming visual work is done.");
+    }
+    if (report.visualQa?.noTextOnButtons === false) {
+      errors.push("visualQa.noTextOnButtons must be true before claiming visual work is done.");
+    }
+    if (report.visualQa?.noWatermark === false) {
+      errors.push("visualQa.noWatermark must be true before claiming visual work is done.");
+    }
+    if (report.visualQa?.noHorizontalOverflow === false) {
+      errors.push("visualQa.noHorizontalOverflow must be true before claiming visual work is done.");
+    }
+    if (report.visualQa?.noCutHeroObject === false && !isNonEmptyString(report.visualQa.noCutHeroObjectJustification)) {
+      errors.push("visualQa.noCutHeroObject must be true unless noCutHeroObjectJustification explains the accepted crop.");
+    }
+  }
+
+  if (Array.isArray(report.interactionQa?.deadButtons) && report.interactionQa.deadButtons.length > 0) {
+    errors.push("interactionQa.deadButtons must be empty before completion.");
+  }
+
+  if (Array.isArray(report.blockers) && report.blockers.length > 0 && report.finalStatus === "done") {
+    errors.push("finalStatus cannot be done while blockers exist.");
+  }
+
+  if (
+    Array.isArray(report.remainingWeaknesses) &&
+    report.remainingWeaknesses.length === 0 &&
+    isNumber(report.score?.current) &&
+    isNumber(report.score?.target) &&
+    report.score.current < report.score.target
+  ) {
+    errors.push("remainingWeaknesses cannot be empty when score.current is below score.target.");
+  }
+
+  if (errors.length > 0) {
+    fail(`Done report failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Done report valid", {
+    file: filePath,
+    mode: report.mode,
+    finalStatus: report.finalStatus,
+    score: report.score
+  });
+}
+
+function validateTargetCopy(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-target-copy <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+  const missing = missingFields(report, requiredTargetCopyFields);
+  if (missing.length > 0) {
+    errors.push(`Missing required fields: ${missing.join(", ")}`);
+  }
+
+  if (!isNonEmptyArray(report.targetScreens)) {
+    errors.push("targetScreens must include at least one target screen.");
+  }
+
+  if (!isPlainObject(report.targetImagePaths)) {
+    errors.push("targetImagePaths must be an object keyed by target screen.");
+  } else if (!Object.values(report.targetImagePaths).some(isNonEmptyString)) {
+    errors.push("targetImagePaths must include at least one target image path.");
+  }
+  if (!isPlainObject(report.currentScreenshotPaths)) {
+    errors.push("currentScreenshotPaths must be an object keyed by target screen.");
+  } else if (!Object.values(report.currentScreenshotPaths).some(isNonEmptyString)) {
+    errors.push("currentScreenshotPaths must include at least one current screenshot path.");
+  }
+
+  if (Array.isArray(report.targetScreens)) {
+    for (const screen of report.targetScreens) {
+      if (!isNonEmptyString(report.targetImagePaths?.[screen])) {
+        errors.push(`targetImagePaths.${screen} is required.`);
+      }
+      if (!isNonEmptyString(report.currentScreenshotPaths?.[screen])) {
+        errors.push(`currentScreenshotPaths.${screen} is required.`);
+      }
+    }
+  }
+
+  if (!Array.isArray(report.excludedArtifacts)) {
+    errors.push("excludedArtifacts must be an array.");
+  } else if (!includesAllArtifactExclusions(report.excludedArtifacts)) {
+    errors.push("excludedArtifacts must mention watermarks, editor UI, and browser chrome.");
+  }
+
+  if (!isPlainObject(report.visualShellStatus)) {
+    errors.push("visualShellStatus must be an object.");
+  } else {
+    if (!isBoolean(report.visualShellStatus.staticShellBuilt)) {
+      errors.push("visualShellStatus.staticShellBuilt must be a boolean.");
+    }
+    if (!isBoolean(report.visualShellStatus.productFeaturesAddedBeforeShellParityApproval)) {
+      errors.push("visualShellStatus.productFeaturesAddedBeforeShellParityApproval must be a boolean.");
+    }
+    if (report.visualShellStatus.productFeaturesAddedBeforeShellParityApproval === true) {
+      errors.push("product features cannot be added before shell parity approval.");
+    }
+  }
+
+  if (!isNonEmptyArray(report.exactDifferences)) {
+    errors.push("exactDifferences must include the exact remaining target/current differences.");
+  }
+
+  if (!Array.isArray(report.intentionalDifferences)) {
+    errors.push("intentionalDifferences must be an array.");
+  }
+  if (!Array.isArray(report.remainingMismatches)) {
+    errors.push("remainingMismatches must be an array.");
+  }
+
+  if (report.approvalStatus && !validApprovalStatuses.has(report.approvalStatus)) {
+    errors.push(`approvalStatus must be one of: ${Array.from(validApprovalStatuses).join(", ")}.`);
+  }
+
+  if (report.approvalStatus === "approved" && Array.isArray(report.remainingMismatches)) {
+    const blocking = report.remainingMismatches.filter((mismatch) => {
+      if (typeof mismatch === "string") {
+        return normalizeText(mismatch).includes("blocking");
+      }
+      return mismatch?.blocking === true;
+    });
+    if (blocking.length > 0) {
+      errors.push("approvalStatus cannot be approved while remainingMismatches contains blocking items.");
+    }
+  }
+
+  for (const field of [
+    "compositionMatchNotes",
+    "focalObjectMatchNotes",
+    "layoutMatchNotes",
+    "typographyMatchNotes"
+  ]) {
+    if (!isNonEmptyString(report[field])) {
+      errors.push(`${field} must be a non-empty string.`);
+    }
+  }
+
+  if (!Array.isArray(report.interactionMinimums)) {
+    errors.push("interactionMinimums must be an array.");
+  }
+
+  if (errors.length > 0) {
+    fail(`Target copy report failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Target copy report valid", {
+    file: filePath,
+    targetScreens: report.targetScreens,
+    approvalStatus: report.approvalStatus
+  });
+}
+
+function validateAssets(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-assets <file>");
+  }
+
+  const manifest = readJson(filePath);
+  const errors = [];
+  if (!Array.isArray(manifest.assets) || manifest.assets.length === 0) {
+    errors.push("assets must be a non-empty array.");
+  }
+
+  (manifest.assets || []).forEach((asset, index) => {
+    if (!isPlainObject(asset)) {
+      errors.push(`assets[${index}] must be an object.`);
+      return;
+    }
+
+    const missing = missingFields(asset, requiredAssetFields);
+    if (missing.length > 0) {
+      errors.push(`assets[${index}] missing: ${missing.join(", ")}`);
+    }
+
+    if (asset.role && !validAssetRoles.has(asset.role)) {
+      errors.push(`assets[${index}].role must be one of: ${Array.from(validAssetRoles).join(", ")}.`);
+    }
+    if (asset.sourceType && !validAssetSourceTypes.has(asset.sourceType)) {
+      errors.push(`assets[${index}].sourceType must be one of: ${Array.from(validAssetSourceTypes).join(", ")}.`);
+    }
+
+    for (const field of ["watermarkFree", "browserChromeFree", "editorUiFree", "placeholder", "repeatedAsset", "approvedForProduction"]) {
+      if (field in asset && !isBoolean(asset[field])) {
+        errors.push(`assets[${index}].${field} must be a boolean.`);
+      }
+    }
+
+    const assetText = normalizeText(`${asset.assetPath || ""} ${asset.mappedObject || ""} ${asset.source || ""} ${asset.usageNotes || ""}`);
+    const isProduction = asset.role === "production" || asset.approvedForProduction === true;
+
+    if (asset.role === "production") {
+      if (asset.watermarkFree === false) {
+        errors.push(`assets[${index}] production asset must be watermarkFree.`);
+      }
+      if (asset.browserChromeFree === false) {
+        errors.push(`assets[${index}] production asset must be browserChromeFree.`);
+      }
+      if (asset.editorUiFree === false) {
+        errors.push(`assets[${index}] production asset must be editorUiFree.`);
+      }
+      if (asset.sourceType === "generated" && !isNonEmptyString(asset.generatedApprovalNote)) {
+        errors.push(`assets[${index}] generated production asset requires generatedApprovalNote.`);
+      }
+    }
+
+    if (asset.repeatedAsset === true && isPrimaryObjectAsset(asset)) {
+      errors.push(`assets[${index}] primary object assets cannot be marked repeatedAsset.`);
+    }
+
+    if (asset.approvedForProduction === true && !isNonEmptyString(asset.source)) {
+      errors.push(`assets[${index}] approvedForProduction requires a non-empty source.`);
+    }
+
+    if (isProduction && assetText.includes("target screenshot")) {
+      errors.push(`assets[${index}] target screenshot cannot be marked as a production asset.`);
+    }
+  });
+
+  if (errors.length > 0) {
+    fail(`Asset manifest failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Asset manifest valid", {
+    file: filePath,
+    assetCount: manifest.assets.length
+  });
+}
+
+function doctor() {
+  const checks = [];
+  const errors = [];
+  const checkJson = (filePath, options = {}) => {
+    const absolute = options.base === "design-os" ? resolveDesignOsPath(filePath) : resolveProjectPath(filePath);
+    try {
+      JSON.parse(fs.readFileSync(absolute, "utf8"));
+      checks.push(filePath);
+    } catch (error) {
+      errors.push(`${filePath}: ${error.message}`);
+    }
+  };
+
+  for (const filePath of [
+    paths.registry,
+    paths.briefTemplate,
+    paths.doneReportTemplate,
+    paths.targetCopyReportTemplate,
+    paths.assetManifestTemplate,
+    paths.inspirationManifestTemplate,
+    "templates/visual-agent-run.template.json",
+    "templates/screenshot-report.template.json",
+    "templates/visual-concepts.template.json",
+    "inspiration-library/sources/award-sites.json",
+    "inspiration-library/sources/pinterest-queries.json",
+    "inspiration-library/sources/ui-gallery-sources.json",
+    "schemas/design-brief.schema.json",
+    "schemas/done-report.schema.json",
+    "schemas/target-copy-report.schema.json",
+    "schemas/asset-manifest.schema.json",
+    "schemas/inspiration-manifest.schema.json",
+    "schemas/visual-agent-run.schema.json",
+    "schemas/screenshot-report.schema.json",
+    "schemas/visual-concepts.schema.json"
+  ]) {
+    checkJson(filePath, { base: "design-os" });
+  }
+
+  if (errors.length > 0) {
+    fail(`Design OS doctor failed:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Design OS doctor passed", {
+    designOsRoot,
+    projectRoot,
+    checkedJsonFiles: checks
+  });
 }
 
 function checkVisualGate(briefPath, conceptsPath) {
@@ -619,7 +1382,7 @@ ${brief.requiredSkills.map((skill) => `- ${skill}`).join("\n")}
 - Run the UI scorecard and patch blockers before claiming completion.
 `;
 
-  const absolute = path.resolve(root, outPath);
+  const absolute = resolveProjectPath(outPath);
   fs.mkdirSync(path.dirname(absolute), { recursive: true });
   fs.writeFileSync(absolute, prompt);
   pass("Compiled agent prompt", {
@@ -633,15 +1396,24 @@ function showHelp() {
 
 Commands:
   list-skills
+  list-agents
   route --task "..."
+  route-agent --task "..."
   new-brief
+  new-inspiration-manifest
+  new-done-report
   validate-brief <file>
+  validate-inspiration-manifest <file>
   validate-concepts <file>
   validate-screenshot-report <file>
+  validate-done-report <file>
+  validate-target-copy <file>
+  validate-assets <file>
   check-visual-gate <brief> <concepts>   Requires 3 rendered concepts, screenshots, and approved selectedConceptId for visual-heavy briefs.
   validate-gate <brief> <concepts>        Alias for check-visual-gate.
   approve-concept <concepts> --id <id>    Marks one concept approved by Migi.
   compile-agent-prompt --brief <brief> --concepts <concepts> --out <file>
+  doctor
 `);
 }
 
@@ -649,20 +1421,44 @@ switch (command) {
   case "list-skills":
     listSkills();
     break;
+  case "list-agents":
+    listAgents();
+    break;
   case "route":
     routeTask();
+    break;
+  case "route-agent":
+    routeAgent();
     break;
   case "new-brief":
     newBrief();
     break;
+  case "new-inspiration-manifest":
+    newInspirationManifest();
+    break;
+  case "new-done-report":
+    newDoneReport();
+    break;
   case "validate-brief":
     validateBrief(args[1]);
+    break;
+  case "validate-inspiration-manifest":
+    validateInspirationManifest(args[1]);
     break;
   case "validate-concepts":
     validateConcepts(args[1]);
     break;
   case "validate-screenshot-report":
     validateScreenshotReport(args[1]);
+    break;
+  case "validate-done-report":
+    validateDoneReport(args[1]);
+    break;
+  case "validate-target-copy":
+    validateTargetCopy(args[1]);
+    break;
+  case "validate-assets":
+    validateAssets(args[1]);
     break;
   case "check-visual-gate":
     checkVisualGate(args[1], args[2]);
@@ -675,6 +1471,9 @@ switch (command) {
     break;
   case "compile-agent-prompt":
     compileAgentPrompt();
+    break;
+  case "doctor":
+    doctor();
     break;
   case undefined:
   case "help":
