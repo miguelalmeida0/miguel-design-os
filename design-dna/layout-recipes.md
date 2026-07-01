@@ -8,9 +8,10 @@ Use when: the task is a new app, major screen, redesign, gallery, roster, select
 
 Before building:
 
-- run the Visual Concept Gate
-- produce 3 radically different art-direction concepts
-- wait for Migi approval
+- run Visual Concept Gate v2
+- produce 3 radically different rendered concept prototypes
+- screenshot each concept at 1440 / 768 / 390 for the gate to pass
+- wait for Migi to approve one visual direction
 - analyze references by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is absent
 
 Build:
@@ -23,6 +24,7 @@ Build:
 Do not:
 
 - start with reusable app components
+- ask Migi to approve a text-only art direction
 - turn cinematic references into dashboards
 - replace one dominant reference object with a grid
 - expose stats when the reference hides information
@@ -151,7 +153,7 @@ Do not: apply this recipe to non-social products just because the case study lik
 
 Use when: the core experience is choosing, browsing, collecting, comparing, or discovering objects.
 
-Gate: this is visual-heavy by default. Run the Visual Concept Gate before implementation.
+Gate: this is visual-heavy by default. Run Visual Concept Gate v2 before implementation. The first screen needs 3 rendered roster/gallery concepts with screenshots so Migi can choose by seeing desire, scale, rhythm, and selection reward.
 
 Build:
 

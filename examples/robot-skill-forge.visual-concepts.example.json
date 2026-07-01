@@ -12,14 +12,22 @@
       "composition": "One oversized selected robot anchors the left side while a tight vertical rail of smaller robot specimens creates comparison without turning into a catalog.",
       "focalObject": "The currently hovered or selected robot silhouette, cropped large enough to feel collectible.",
       "emotionalHook": "The first screen asks which machine deserves to be activated, creating curiosity through scale, material, and partial reveal.",
-      "whatIsHidden": "Dense skill analysis, stat tables, and implementation details stay behind the selected forge panel.",
-      "whatIsAbsent": "No beige catalog, no generic dark cyber grid, no badge soup, no terminal newspaper panels.",
+      "hiddenInformation": "Dense skill analysis, stat tables, and implementation details stay behind the selected forge panel.",
+      "absentElements": "No beige catalog, no generic dark cyber grid, no badge soup, no terminal newspaper panels.",
       "clicheAvoidance": "Robotics is expressed through tactile specimen presentation rather than neon cyber fighter cards.",
       "desireMechanism": "Hover reveals a robot-specific trait and shifts the specimen into the main stage; selection locks it into the forge.",
-      "desktop1440Strategy": "Large selected robot stage, compact roster rail, and a restrained forge inspector use width without inflating every element.",
-      "tablet768Strategy": "Selected robot stays dominant above a two-column roster/inspector stack with preserved card zones.",
-      "mobile390Strategy": "One dominant robot card appears first, followed by a swipeable roster and a clear choose action without horizontal page scroll.",
-      "failureMode": "It fails if the specimen metaphor becomes a plain product gallery or hides selection reward."
+      "responsiveStrategy": {
+        "1440": "Large selected robot stage, compact roster rail, and a restrained forge inspector use width without inflating every element.",
+        "768": "Selected robot stays dominant above a two-column roster/inspector stack with preserved card zones.",
+        "390": "One dominant robot card appears first, followed by a swipeable roster and a clear choose action without horizontal page scroll."
+      },
+      "failureMode": "It fails if the specimen metaphor becomes a plain product gallery or hides selection reward.",
+      "previewRoute": "/concepts/robot-skill-forge/specimen-wall",
+      "screenshots": {
+        "1440": "docs/concepts/robot-skill-forge/specimen-wall/1440.png",
+        "768": "docs/concepts/robot-skill-forge/specimen-wall/768.png",
+        "390": "docs/concepts/robot-skill-forge/specimen-wall/390.png"
+      }
     },
     {
       "id": "forge-loadout",
@@ -28,14 +36,22 @@
       "composition": "The first viewport centers a robot loadout bay with selectable robot cards arranged as tool cartridges below.",
       "focalObject": "The loadout bay with the active robot, class signal, and one primary forge action.",
       "emotionalHook": "Selecting a robot feels like slotting a powerful tool into a forge and seeing it come alive.",
-      "whatIsHidden": "Long descriptions, diagnostics, and skill breakdowns appear only after the robot is selected.",
-      "whatIsAbsent": "No brochure detail page, no passive card grid, no generic dashboard metrics.",
+      "hiddenInformation": "Long descriptions, diagnostics, and skill breakdowns appear only after the robot is selected.",
+      "absentElements": "No brochure detail page, no passive card grid, no generic dashboard metrics.",
       "clicheAvoidance": "It avoids the obvious robot-game fighter screen by using a crafted workshop/loadout metaphor.",
       "desireMechanism": "Each card changes the loadout bay material, action label, and preview stance so selection feels committed.",
-      "desktop1440Strategy": "Wide layout uses bay, cartridge rail, and inspector as three distinct zones.",
-      "tablet768Strategy": "The loadout bay remains top priority with a compact rail and collapsible inspector.",
-      "mobile390Strategy": "The active robot bay comes first, then a horizontal cartridge selector with clear tap targets.",
-      "failureMode": "It fails if the loadout bay becomes a static hero with inactive cards."
+      "responsiveStrategy": {
+        "1440": "Wide layout uses bay, cartridge rail, and inspector as three distinct zones.",
+        "768": "The loadout bay remains top priority with a compact rail and collapsible inspector.",
+        "390": "The active robot bay comes first, then a horizontal cartridge selector with clear tap targets."
+      },
+      "failureMode": "It fails if the loadout bay becomes a static hero with inactive cards.",
+      "previewRoute": "/concepts/robot-skill-forge/forge-loadout",
+      "screenshots": {
+        "1440": "docs/concepts/robot-skill-forge/forge-loadout/1440.png",
+        "768": "docs/concepts/robot-skill-forge/forge-loadout/768.png",
+        "390": "docs/concepts/robot-skill-forge/forge-loadout/390.png"
+      }
     },
     {
       "id": "signal-hunt",
@@ -44,14 +60,22 @@
       "composition": "A large signal map or silhouette field sits behind three featured robot choices, with the selected robot resolving from signal to form.",
       "focalObject": "The robot signal resolving into a visible robot identity.",
       "emotionalHook": "The user wants to uncover which robot signal is rare, strange, or powerful.",
-      "whatIsHidden": "Exact specs and long skill cards are hidden until the signal resolves through selection.",
-      "whatIsAbsent": "No stat-first dashboard, no fighter labels, no grid texture as generic AI atmosphere.",
+      "hiddenInformation": "Exact specs and long skill cards are hidden until the signal resolves through selection.",
+      "absentElements": "No stat-first dashboard, no fighter labels, no grid texture as generic AI atmosphere.",
       "clicheAvoidance": "The robot theme becomes discovery and reveal rather than dark cyber decoration.",
       "desireMechanism": "Hover previews a signal personality; selection transforms it into a robot identity with a visible reward.",
-      "desktop1440Strategy": "Desktop uses depth: signal field, featured choices, and a narrow resolved-details tray.",
-      "tablet768Strategy": "Signal field remains readable while choices become a compact two-row roster.",
-      "mobile390Strategy": "One signal/robot reveal dominates the screen, with three clear choices below.",
-      "failureMode": "It fails if the signal effect becomes decorative motion that does not clarify selection."
+      "responsiveStrategy": {
+        "1440": "Desktop uses depth: signal field, featured choices, and a narrow resolved-details tray.",
+        "768": "Signal field remains readable while choices become a compact two-row roster.",
+        "390": "One signal/robot reveal dominates the screen, with three clear choices below."
+      },
+      "failureMode": "It fails if the signal effect becomes decorative motion that does not clarify selection.",
+      "previewRoute": "/concepts/robot-skill-forge/signal-hunt",
+      "screenshots": {
+        "1440": "docs/concepts/robot-skill-forge/signal-hunt/1440.png",
+        "768": "docs/concepts/robot-skill-forge/signal-hunt/768.png",
+        "390": "docs/concepts/robot-skill-forge/signal-hunt/390.png"
+      }
     }
   ]
 }

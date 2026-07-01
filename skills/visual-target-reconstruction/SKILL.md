@@ -51,17 +51,19 @@ Use a screenshot, Lovable prototype, Pinterest image, mockup, or strong visual r
    - desire mechanism
 3. Reject shallow traits as the concept: dark, neon, cards, glow, gradients, glass, rounded panels, or large text.
 4. Define what to copy, avoid, and translate.
-5. Run the Visual Concept Gate if the work is visual-heavy.
-6. Build a static visual shell before product logic.
-7. Capture or inspect screenshots at `390 / 768 / 1440`.
-8. Compare the shell against the reference by composition, focal object, hidden information, and emotional hook.
-9. Patch the shell before adding feature depth.
+5. Run Visual Concept Gate v2 if the work is visual-heavy: exactly 3 rendered concepts, preview routes, and `1440 / 768 / 390` screenshot files.
+6. Stop for Migi approval after showing the rendered concepts.
+7. Build a static visual shell from the approved concept before product logic.
+8. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
+9. Compare the shell against the reference and approved concept by composition, focal object, hidden information, and emotional hook.
+10. Patch the shell before adding feature depth.
 
 ## Stop Conditions
 
 - Stop if the reference has not been analyzed.
 - Stop if the output preserves only surface styling.
 - Stop if the chosen layout contradicts the reference composition.
+- Stop if the visual-heavy concept gate is text-only or missing screenshots.
 - Stop before product logic if the visual shell does not match the approved direction.
 
 ## Output Contract
@@ -77,6 +79,8 @@ Interaction model:
 Copy:
 Avoid:
 Translate:
+Rendered concepts:
+Approved concept:
 Visual shell comparison:
 Screenshots:
 Patch needed:
@@ -88,6 +92,8 @@ Patch needed:
 - Strong reference provided but result preserves only surface styling: max score 6.
 - Generic app layout used instead of reference composition: max score 6.
 - Primary reference object replaced by grid/cards/dashboard: max score 6.
+- Text-only concepts for visual-heavy reference work: max score 5.
+- Concept screenshots missing before approval: max score 6.
 
 ## Safety/Scope Rules
 

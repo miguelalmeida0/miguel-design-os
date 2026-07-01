@@ -14,8 +14,8 @@ Use when building a new app, screen, or frontend feature.
 8. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
 9. Inspect the current project type, framework, routes, components, styling system, and tokens.
 10. If visual-heavy, create and validate the brief: `node tools/design-os.mjs new-brief` then `node tools/design-os.mjs validate-brief design-brief.local.json`.
-11. If visual-heavy, produce 3 concepts and validate them: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
-12. If visual-heavy, run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json` and wait for Migi approval before implementation.
+11. If visual-heavy, produce 3 rendered concepts with preview routes and `1440 / 768 / 390` screenshot files, then validate them: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+12. If visual-heavy, show Migi the rendered concepts, wait for approval, set `approvalStatus: "approved"` and `selectedConceptId`, then run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json` before implementation.
 13. Define a project-specific visual identity before choosing palette or layout.
 14. Name any golden project used as evidence and what will not be copied.
 15. Plan screenshots as evidence for the new work, not templates from old apps.
@@ -38,7 +38,8 @@ Archetype:
 Layout recipe:
 Visual identity words:
 Visual Concept Gate status:
-Selected design thesis:
+Approved rendered concept:
+Concept preview screenshots:
 Density:
 Token direction:
 Component contracts:
@@ -54,15 +55,15 @@ Run this gate for visual-heavy UI, new apps, redesigns, selection/gallery/roster
 
 Do not code first.
 
-Produce 3 design theses:
+Produce exactly 3 rendered visual concepts:
 
 1. Safe expected direction.
 2. More original/art-directed direction.
 3. Wild but controlled direction.
 
-Each thesis includes visual metaphor, first-screen composition, focal object, interaction concept, typography/scale direction, color/material direction, emotional hook, what is hidden, what is absent, why it avoids obvious app/theme cliches, why it creates desire, 1440 / 768 / 390 behavior, and what would make it fail.
+Each concept includes a preview route, screenshots at 1440 / 768 / 390 when possible, visual metaphor, first-screen composition, focal object, interaction concept, typography/scale direction, color/material direction, emotional hook, hidden information, absent elements, why it avoids obvious app/theme cliches, why it creates desire, 1440 / 768 / 390 behavior, and what would make it fail.
 
-Stop and wait for Migi's approval. Implement only the approved direction.
+Stop and wait for Migi's approval after he reviews the visuals. Implement only the approved direction. Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
 
 If references are provided, analyze composition, focal object, hidden information, emotional hook, material, texture, interaction model, and intentional absence. Do not reduce references to dark, neon, cards, glass, glow, big text, or gradients.
 
@@ -101,9 +102,9 @@ Report:
 - design brief path
 - visual concepts path
 - design intent record summary
-- design thesis used
+- approved rendered concept
 - key files changed
-- screenshot paths
+- screenshot files
 - scorecard result
 - blockers fixed
 - remaining weaknesses

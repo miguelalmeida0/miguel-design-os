@@ -4,7 +4,7 @@
     {
       "id": "visual-concept-gate",
       "path": "skills/visual-concept-gate/SKILL.md",
-      "description": "Pre-implementation gate for visual-heavy frontend work.",
+      "description": "Pre-implementation gate requiring 3 rendered visual concepts before visual-heavy frontend work.",
       "useWhen": [
         "new app",
         "major screen",
@@ -32,8 +32,10 @@
       "outputContract": [
         "Design Intent Record",
         "obvious cliche to avoid",
-        "three art-direction concepts",
-        "recommendation",
+        "three rendered art-direction concepts",
+        "preview routes",
+        "concept screenshots at 1440/768/390",
+        "recommended concept",
         "approval needed before implementation"
       ],
       "routeKeywords": [
@@ -213,7 +215,8 @@
         "route or screen under review",
         "product type",
         "Design Intent Record",
-        "selected design thesis when relevant"
+        "approved rendered concept when relevant",
+        "Visual Concept Gate artifact when visual-heavy work applies"
       ],
       "outputContract": [
         "screenshots inspected",

@@ -19,12 +19,14 @@ For visual-heavy work:
 1. Create a brief: `node tools/design-os.mjs new-brief`.
 2. Validate it: `node tools/design-os.mjs validate-brief design-brief.local.json`.
 3. Route skills from task text.
-4. Produce a 3-concept artifact using `templates/visual-concepts.template.json`.
-5. Validate it: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
-6. Check the gate: `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
-7. Wait for Migi approval before implementation.
-8. Implement only the approved concept.
-9. Capture screenshots, score the UI, and patch blockers.
+4. Produce exactly 3 rendered concept prototypes using `templates/visual-concepts.template.json`.
+5. Add each concept's preview route and `1440 / 768 / 390` screenshot files. No concept screenshots means the gate failed.
+6. Validate it: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+7. Show Migi the rendered concepts and wait for approval.
+8. Set `approvalStatus: "approved"` and `selectedConceptId` only after Migi chooses one.
+9. Check the gate: `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+10. Implement only the approved concept.
+11. Capture implementation screenshots, score the UI, and patch blockers.
 
 ## Skill Routing
 
@@ -74,7 +76,7 @@ Use the smallest relevant set. Do not load unrelated skills.
 Skills used:
 Design brief:
 Visual concepts:
-Design thesis used:
+Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:

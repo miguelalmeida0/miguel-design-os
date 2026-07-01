@@ -55,7 +55,7 @@ Risks:
 
 What it does:
 
-- Produces 3 radically different art-direction concepts before coding.
+- Produces 3 radically different rendered art-direction concepts with preview screenshots before coding.
 - Requires visual metaphor, composition, focal object, emotional hook, hidden information, absent elements, cliche avoidance, desire mechanism, and responsive strategy.
 - Adds simple composition diagrams using text grids, Mermaid, or local SVG.
 

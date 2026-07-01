@@ -21,13 +21,15 @@ For visual-heavy work:
 
 1. Create a design brief: `node tools/design-os.mjs new-brief`.
 2. Route skills: `node tools/design-os.mjs route --task "<task>"`.
-3. Produce 3 concepts from `templates/visual-concepts.template.json`.
-4. Validate concepts: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
-5. Wait for Migi approval.
-6. Implement only the approved concept.
-7. Capture screenshots.
-8. Score the UI.
-9. Patch blockers.
+3. Produce 3 rendered concept prototypes from `templates/visual-concepts.template.json`.
+4. Add preview routes and `1440 / 768 / 390` screenshot files for each concept.
+5. Validate concepts: `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
+6. Show Migi the visuals and wait for approval.
+7. Set `approvalStatus: "approved"` and `selectedConceptId`, then run `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+8. Implement only the approved concept.
+9. Capture implementation screenshots.
+10. Score the UI.
+11. Patch blockers.
 
 ## Fast Start
 
@@ -40,13 +42,15 @@ For any future project, paste or read:
 5. only the skill files routed by `AGENTS.md`
 6. the files listed by those skills under `Files To Read`
 
-Then classify the task. If the work is visually important, produce 3 design theses and wait for Migi approval before coding:
+Then classify the task. If the work is visually important, produce 3 rendered visual concepts and wait for Migi approval before coding:
 
 1. Safe expected direction.
 2. More original/art-directed direction.
 3. Wild but controlled direction.
 
-After approval, create a Design Intent Record, build the visual shell first, capture screenshots, run the scorecard, patch blockers, and hand off with evidence.
+Each concept needs a preview route and screenshot files at 1440 / 768 / 390 for the gate to pass. Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
+
+After approval, create a Design Intent Record, build the visual shell first, capture implementation screenshots, run the scorecard, patch blockers, and hand off with evidence.
 
 ## Evidence Folders
 
@@ -105,7 +109,9 @@ Active skills:
 
 For new apps, major screens, redesigns, selection/gallery/roster/product-discovery experiences, visual-heavy interfaces, or work with inspiration images, agents must not implement immediately.
 
-They must first produce 3 design theses and wait for Migi approval. References must be reconstructed by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent.
+They must first produce exactly 3 rendered concept prototypes and wait for Migi approval after he reviews the visuals. Each concept needs a short explanation, preview route, and screenshot files at 1440 / 768 / 390 for the gate to pass. References must be reconstructed by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent.
+
+Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
 
 The gate does not block small bug fixes, security patches, copy edits, or purely technical refactors.
 
@@ -113,7 +119,7 @@ The gate does not block small bug fixes, security patches, copy edits, or purely
 
 - Persistent knowledge: `system.md`, `design-system.json`, and `design-dna/` are always-on guidance.
 - Task skills: `AGENTS.md` routes to narrow `skills/*/SKILL.md` playbooks.
-- Design before coding: visual-heavy work requires 3 approved theses before implementation.
+- Design before coding: visual-heavy work requires 3 rendered visual concepts, screenshots, and one approved direction before implementation.
 - Reference ingestion: source projects, captures, extracted reports, case studies, raw chat input, and inspiration have explicit evidence roles.
 - Screenshot review: significant UI work needs `390 / 768 / 1440` proof.
 - Scorecard enforcement: hard caps prevent vague "looks good" handoffs.
@@ -132,7 +138,7 @@ Do not copy old apps literally. Do not force one palette. Do not globalize In Th
 Skills used:
 Design brief:
 Visual concepts:
-Design thesis used:
+Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:

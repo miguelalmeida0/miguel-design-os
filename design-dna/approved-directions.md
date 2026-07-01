@@ -4,7 +4,7 @@ Use this file to record directions Migi explicitly approved. Do not infer approv
 
 ## Approval Rule
 
-For visual-heavy work, implementation may begin only after Migi approves one Visual Concept Gate concept.
+For visual-heavy work, implementation may begin only after Migi approves one rendered Visual Concept Gate concept with screenshot evidence.
 
 Record approved directions with:
 

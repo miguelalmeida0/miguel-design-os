@@ -75,8 +75,8 @@ Local helpers:
 
 ## What Is Weak
 
-- Enforcement is still mostly text. There is no required artifact that proves a gate happened.
-- Visual Concept Gate concepts are text-only. There is no composition diagram, wire thumbnail, or structured concept JSON.
+- Enforcement is improving through local artifacts, but many checks still depend on agents actually running the CLI.
+- Visual Concept Gate v2 now requires rendered concepts and screenshot evidence; the remaining gap is proving visual quality, not merely field presence.
 - Screenshot comparison is not first-class. Screenshots can be captured, but there is no standard project run folder, baseline folder, diff report, or visual review artifact.
 - Anti-slop checks are partly manual. Scripts only cover horizontal scroll, overlap heuristics, and scale inflation.
 - Design-system schema is not yet the canonical source of truth. It mirrors docs but does not drive validation.
@@ -136,8 +136,8 @@ These are instructions, not gates. A local CLI/harness could enforce many of the
 ## Where Agents Can Still Fail
 
 - They can read `README.md` and `system.md` and skip skill routing.
-- They can claim the Visual Concept Gate happened without saving the concepts.
-- They can write 3 concepts that are only palette variants.
+- They can skip the CLI and claim the Visual Concept Gate happened without validated artifacts.
+- They can render 3 concepts that are only palette variants.
 - They can implement before approval if the user prompt is ambiguous.
 - They can flatten inspiration into dark/neon/cards/glow.
 - They can run screenshots but not compare them to the target.

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://miguel-design-os.local/schemas/visual-concepts.schema.json",
-  "title": "Miguel Design OS Visual Concepts",
+  "title": "Miguel Design OS Visual Concepts v2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -44,14 +44,14 @@
           "composition",
           "focalObject",
           "emotionalHook",
-          "whatIsHidden",
-          "whatIsAbsent",
+          "hiddenInformation",
+          "absentElements",
           "clicheAvoidance",
           "desireMechanism",
-          "desktop1440Strategy",
-          "tablet768Strategy",
-          "mobile390Strategy",
-          "failureMode"
+          "responsiveStrategy",
+          "failureMode",
+          "previewRoute",
+          "screenshots"
         ],
         "properties": {
           "id": {
@@ -78,11 +78,11 @@
             "type": "string",
             "minLength": 1
           },
-          "whatIsHidden": {
+          "hiddenInformation": {
             "type": "string",
             "minLength": 1
           },
-          "whatIsAbsent": {
+          "absentElements": {
             "type": "string",
             "minLength": 1
           },
@@ -94,21 +94,51 @@
             "type": "string",
             "minLength": 1
           },
-          "desktop1440Strategy": {
-            "type": "string",
-            "minLength": 1
-          },
-          "tablet768Strategy": {
-            "type": "string",
-            "minLength": 1
-          },
-          "mobile390Strategy": {
-            "type": "string",
-            "minLength": 1
+          "responsiveStrategy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["1440", "768", "390"],
+            "properties": {
+              "1440": {
+                "type": "string",
+                "minLength": 1
+              },
+              "768": {
+                "type": "string",
+                "minLength": 1
+              },
+              "390": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
           },
           "failureMode": {
             "type": "string",
             "minLength": 1
+          },
+          "previewRoute": {
+            "type": "string",
+            "minLength": 1
+          },
+          "screenshots": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["1440", "768", "390"],
+            "properties": {
+              "1440": {
+                "type": "string",
+                "minLength": 1
+              },
+              "768": {
+                "type": "string",
+                "minLength": 1
+              },
+              "390": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
           }
         }
       }

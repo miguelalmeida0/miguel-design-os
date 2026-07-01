@@ -37,15 +37,32 @@ const requiredConceptFields = [
   "composition",
   "focalObject",
   "emotionalHook",
-  "whatIsHidden",
-  "whatIsAbsent",
+  "hiddenInformation",
+  "absentElements",
   "clicheAvoidance",
   "desireMechanism",
-  "desktop1440Strategy",
-  "tablet768Strategy",
-  "mobile390Strategy",
-  "failureMode"
+  "responsiveStrategy",
+  "failureMode",
+  "previewRoute",
+  "screenshots"
 ];
+
+const requiredConceptStringFields = [
+  "id",
+  "name",
+  "visualMetaphor",
+  "composition",
+  "focalObject",
+  "emotionalHook",
+  "hiddenInformation",
+  "absentElements",
+  "clicheAvoidance",
+  "desireMechanism",
+  "failureMode",
+  "previewRoute"
+];
+
+const viewportKeys = ["1440", "768", "390"];
 
 const requiredScreenshotFields = [
   "targetScreenshots",
@@ -77,6 +94,12 @@ function writeJsonIfMissing(filePath, data) {
   return { created: true, filePath };
 }
 
+function writeJson(filePath, data) {
+  const absolute = path.resolve(root, filePath);
+  fs.mkdirSync(path.dirname(absolute), { recursive: true });
+  fs.writeFileSync(absolute, `${JSON.stringify(data, null, 2)}\n`);
+}
+
 function fail(message) {
   console.error(message);
   process.exit(1);
@@ -89,6 +112,14 @@ function pass(message, details = null) {
   }
 }
 
+function getFlagValue(flag) {
+  const index = args.indexOf(flag);
+  if (index === -1 || !args[index + 1]) {
+    return "";
+  }
+  return args[index + 1];
+}
+
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -97,8 +128,52 @@ function isNonEmptyArray(value) {
   return Array.isArray(value) && value.length > 0;
 }
 
+function isPlainObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
 function missingFields(object, fields) {
   return fields.filter((field) => !(field in object));
+}
+
+function normalizeText(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function validateViewportObject(value, label, errors) {
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be an object with 1440, 768, and 390 keys.`);
+    return;
+  }
+
+  for (const viewport of viewportKeys) {
+    if (!isNonEmptyString(value[viewport])) {
+      errors.push(`${label}.${viewport} must be a non-empty string.`);
+    }
+  }
+}
+
+function artifactPathExists(filePath) {
+  if (!isNonEmptyString(filePath) || /^https?:\/\//i.test(filePath)) {
+    return false;
+  }
+  const absolute = path.isAbsolute(filePath) ? filePath : path.resolve(root, filePath);
+  return fs.existsSync(absolute);
+}
+
+function validateScreenshotFiles(value, label, errors) {
+  if (!isPlainObject(value)) {
+    return;
+  }
+
+  for (const viewport of viewportKeys) {
+    if (isNonEmptyString(value[viewport]) && !artifactPathExists(value[viewport])) {
+      errors.push(`${label}.${viewport} must point to an existing local screenshot file.`);
+    }
+  }
 }
 
 function getRegistry() {
@@ -264,25 +339,58 @@ function getConceptErrors(artifact, options = {}) {
   }
 
   const ids = new Set();
+  const compositionFingerprints = new Set();
+  const conceptFingerprints = new Set();
+
   artifact.concepts.forEach((concept, index) => {
     const missing = missingFields(concept, requiredConceptFields);
     if (missing.length > 0) {
       errors.push(`concepts[${index}] missing: ${missing.join(", ")}`);
     }
-    for (const field of requiredConceptFields) {
+
+    for (const field of requiredConceptStringFields) {
       if (field in concept && !isNonEmptyString(concept[field])) {
         errors.push(`concepts[${index}].${field} must be a non-empty string.`);
       }
     }
+
+    if ("responsiveStrategy" in concept) {
+      validateViewportObject(concept.responsiveStrategy, `concepts[${index}].responsiveStrategy`, errors);
+    }
+
+    if ("screenshots" in concept) {
+      validateViewportObject(concept.screenshots, `concepts[${index}].screenshots`, errors);
+      if (options.requireScreenshotFiles) {
+        validateScreenshotFiles(concept.screenshots, `concepts[${index}].screenshots`, errors);
+      }
+    }
+
     if (concept.id) {
       if (ids.has(concept.id)) {
         errors.push(`Duplicate concept id: ${concept.id}`);
       }
       ids.add(concept.id);
     }
+
+    if (isNonEmptyString(concept.composition)) {
+      compositionFingerprints.add(normalizeText(concept.composition));
+    }
+
+    if (isNonEmptyString(concept.visualMetaphor) || isNonEmptyString(concept.composition)) {
+      conceptFingerprints.add(`${normalizeText(concept.visualMetaphor)}|${normalizeText(concept.composition)}`);
+    }
   });
 
-  if (artifact.approvalStatus === "approved") {
+  if (artifact.concepts.length === 3 && compositionFingerprints.size === 1) {
+    errors.push("concepts must be visually distinct; all three compositions are identical.");
+  }
+
+  if (artifact.concepts.length === 3 && conceptFingerprints.size < 3) {
+    errors.push("concepts must be distinct; duplicate visual metaphor/composition pairs found.");
+  }
+
+  const approvalRequired = options.requireApproved === true || artifact.approvalStatus === "approved";
+  if (approvalRequired) {
     if (!isNonEmptyString(artifact.selectedConceptId)) {
       errors.push("approved concepts must include selectedConceptId.");
     } else if (!ids.has(artifact.selectedConceptId)) {
@@ -293,8 +401,8 @@ function getConceptErrors(artifact, options = {}) {
     }
   }
 
-  if (options.requirePendingOrApproved && !["pending", "approved"].includes(artifact.approvalStatus)) {
-    errors.push("visual-heavy gate requires approvalStatus pending or approved.");
+  if (options.requireApproved && artifact.approvalStatus !== "approved") {
+    errors.push("visual-heavy gate requires approvalStatus approved after Migi reviews rendered previews.");
   }
 
   return errors;
@@ -374,7 +482,7 @@ function checkVisualGate(briefPath, conceptsPath) {
     return;
   }
 
-  const conceptErrors = getConceptErrors(concepts, { requirePendingOrApproved: true });
+  const conceptErrors = getConceptErrors(concepts, { requireApproved: true, requireScreenshotFiles: true });
   if (conceptErrors.length > 0) {
     fail(`Visual gate failed:\n- ${conceptErrors.join("\n- ")}`);
   }
@@ -383,7 +491,140 @@ function checkVisualGate(briefPath, conceptsPath) {
     brief: briefPath,
     concepts: conceptsPath,
     approvalStatus: concepts.approvalStatus,
+    selectedConceptId: concepts.selectedConceptId,
     conceptCount: concepts.concepts.length
+  });
+}
+
+function approveConcept(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs approve-concept <concepts-file> --id <concept-id> [--by <name>] [--notes <text>]");
+  }
+
+  const conceptId = getFlagValue("--id");
+  if (!conceptId) {
+    fail("approve-concept requires --id <concept-id>.");
+  }
+
+  const artifact = readJson(filePath);
+  const errors = getConceptErrors(artifact);
+  if (errors.length > 0) {
+    fail(`Cannot approve invalid visual concepts:\n- ${errors.join("\n- ")}`);
+  }
+
+  const concept = artifact.concepts.find((candidate) => candidate.id === conceptId);
+  if (!concept) {
+    fail(`Cannot approve missing concept id: ${conceptId}`);
+  }
+
+  artifact.approvalStatus = "approved";
+  artifact.selectedConceptId = conceptId;
+  artifact.approvedBy = getFlagValue("--by") || "Migi";
+  artifact.approvalNotes = getFlagValue("--notes") || `Approved via Miguel Design OS CLI: ${concept.name}`;
+
+  writeJson(filePath, artifact);
+  pass("Concept approved", {
+    file: filePath,
+    selectedConceptId: conceptId,
+    approvedBy: artifact.approvedBy
+  });
+}
+
+function compileAgentPrompt() {
+  const briefPath = getFlagValue("--brief");
+  const conceptsPath = getFlagValue("--concepts");
+  const outPath = getFlagValue("--out");
+
+  if (!briefPath || !conceptsPath || !outPath) {
+    fail("Usage: node tools/design-os.mjs compile-agent-prompt --brief <brief> --concepts <concepts> --out <file>");
+  }
+
+  const brief = readJson(briefPath);
+  const concepts = readJson(conceptsPath);
+  const missing = missingFields(brief, requiredBriefFields);
+  if (missing.length > 0) {
+    fail(`Cannot compile prompt from invalid brief:\n- Missing required fields: ${missing.join(", ")}`);
+  }
+
+  const conceptErrors = getConceptErrors(concepts, { requireApproved: true, requireScreenshotFiles: true });
+  if (conceptErrors.length > 0) {
+    fail(`Cannot compile implementation prompt before Visual Concept Gate passes:\n- ${conceptErrors.join("\n- ")}`);
+  }
+
+  const selected = concepts.concepts.find((concept) => concept.id === concepts.selectedConceptId);
+  if (!selected) {
+    fail("Cannot compile prompt: selectedConceptId does not match a concept.");
+  }
+
+  const prompt = `# Miguel Design OS Implementation Prompt
+
+Project: ${brief.projectName}
+Project type: ${brief.projectType}
+Task type: ${brief.taskType}
+Primary user: ${brief.primaryUser}
+Primary object: ${brief.primaryObject}
+Primary action: ${brief.primaryAction}
+
+## Gate Status
+
+Visual Concept Gate v2 passed.
+Approved concept: ${selected.name} (${selected.id})
+Approved by: ${concepts.approvedBy}
+Approval notes: ${concepts.approvalNotes}
+
+Do not implement any other concept unless Migi explicitly changes approval.
+
+## Approved Visual Concept
+
+Visual metaphor: ${selected.visualMetaphor}
+Composition: ${selected.composition}
+Focal object: ${selected.focalObject}
+Emotional hook: ${selected.emotionalHook}
+Hidden information: ${selected.hiddenInformation}
+Absent elements: ${selected.absentElements}
+Cliche avoidance: ${selected.clicheAvoidance}
+Desire mechanism: ${selected.desireMechanism}
+Failure mode: ${selected.failureMode}
+
+Responsive strategy:
+- 1440: ${selected.responsiveStrategy["1440"]}
+- 768: ${selected.responsiveStrategy["768"]}
+- 390: ${selected.responsiveStrategy["390"]}
+
+Preview route: ${selected.previewRoute}
+Concept screenshots:
+- 1440: ${selected.screenshots["1440"]}
+- 768: ${selected.screenshots["768"]}
+- 390: ${selected.screenshots["390"]}
+
+## Constraints
+
+${brief.constraints.map((constraint) => `- ${constraint}`).join("\n")}
+
+## Forbidden Directions
+
+${brief.forbiddenDirections.map((direction) => `- ${direction}`).join("\n")}
+
+## Required Skills
+
+${brief.requiredSkills.map((skill) => `- ${skill}`).join("\n")}
+
+## Implementation Standard
+
+- Build the approved visual shell first.
+- Preserve the primary object and primary action from the brief.
+- Do not copy old apps literally.
+- Do not flatten references into shallow traits.
+- Capture implementation screenshots at 390 / 768 / 1440.
+- Run the UI scorecard and patch blockers before claiming completion.
+`;
+
+  const absolute = path.resolve(root, outPath);
+  fs.mkdirSync(path.dirname(absolute), { recursive: true });
+  fs.writeFileSync(absolute, prompt);
+  pass("Compiled agent prompt", {
+    out: outPath,
+    selectedConceptId: selected.id
   });
 }
 
@@ -397,7 +638,10 @@ Commands:
   validate-brief <file>
   validate-concepts <file>
   validate-screenshot-report <file>
-  check-visual-gate <brief> <concepts>
+  check-visual-gate <brief> <concepts>   Requires 3 rendered concepts, screenshots, and approved selectedConceptId for visual-heavy briefs.
+  validate-gate <brief> <concepts>        Alias for check-visual-gate.
+  approve-concept <concepts> --id <id>    Marks one concept approved by Migi.
+  compile-agent-prompt --brief <brief> --concepts <concepts> --out <file>
 `);
 }
 
@@ -422,6 +666,15 @@ switch (command) {
     break;
   case "check-visual-gate":
     checkVisualGate(args[1], args[2]);
+    break;
+  case "validate-gate":
+    checkVisualGate(args[1], args[2]);
+    break;
+  case "approve-concept":
+    approveConcept(args[1]);
+    break;
+  case "compile-agent-prompt":
+    compileAgentPrompt();
     break;
   case undefined:
   case "help":

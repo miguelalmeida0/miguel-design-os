@@ -38,7 +38,7 @@ node tools/design-os.mjs validate-brief design-brief.local.json
 node tools/design-os.mjs route --task "Build a visual-heavy robot character selection app from inspiration images"
 ```
 
-4. Produce 3 concepts from `templates/visual-concepts.template.json`.
+4. Produce 3 rendered concept prototypes from `templates/visual-concepts.template.json`. Each concept needs a preview route and screenshot files for `1440 / 768 / 390`.
 
 5. Validate concepts:
 
@@ -46,13 +46,13 @@ node tools/design-os.mjs route --task "Build a visual-heavy robot character sele
 node tools/design-os.mjs validate-concepts visual-concepts.local.json
 ```
 
-6. Check the visual gate:
+6. Show the rendered concepts to Migi, wait for approval, then set `approvalStatus: "approved"` and `selectedConceptId`.
+
+7. Check the visual gate:
 
 ```sh
 node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json
 ```
-
-7. Wait for Migi approval before implementation.
 
 8. Implement only the approved concept.
 
@@ -75,9 +75,9 @@ node tools/design-os.mjs validate-screenshot-report screenshot-report.local.json
 - Visual-heavy briefs include inspiration sources or visual references.
 - Visual-heavy briefs include target screens.
 - Visual concepts contain exactly 3 concepts.
-- Every concept includes metaphor, composition, focal object, emotional hook, hidden/absent information, cliche avoidance, desire mechanism, responsive strategies, and failure mode.
+- Every concept includes metaphor, composition, focal object, emotional hook, hidden/absent information, cliche avoidance, desire mechanism, responsive strategies, preview route, screenshot files, and failure mode.
 - Screenshot reports include `390 / 768 / 1440` viewport checks.
-- Visual gate fails when visual-heavy work lacks a pending or approved 3-concept artifact.
+- Visual gate fails when visual-heavy work lacks exactly 3 rendered concepts, missing screenshot paths, existing local screenshot files, `approvalStatus: "approved"`, or a `selectedConceptId` matching one of the concepts.
 
 ## What Remains Manual
 

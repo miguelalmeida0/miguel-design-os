@@ -8,16 +8,34 @@ Robot Skill Forge showed that Codex agents tend to preserve existing structure a
 
 If Migi says a UI is realities away from the inspiration, stop polishing and rethink the visual concept. Do not keep the same structure and adjust color, glow, spacing, cards, borders, or motion.
 
-Lovable-style visual output can beat Codex when the task is art direction first. Codex must compensate by doing a visual-concept phase before implementation. Do not build the app first. Build the poster/composition first.
+Lovable-style visual output can beat Codex when the task is art direction first. Codex must compensate by doing a visual-concept phase before implementation. Text-only concepts are not enough. Do not build the app first. Build and screenshot the poster/composition first.
 
 Correction:
 
-- run the Visual Concept Gate
-- produce 3 radically different art-direction concepts
-- wait for Migi approval
+- run Visual Concept Gate v2
+- produce 3 radically different rendered art-direction prototypes
+- screenshot each concept at 1440 / 768 / 390 for the gate to pass
+- wait for Migi to approve one visual direction after seeing the previews
 - build the visual shell before feature depth
 - compare screenshots against the approved concept/reference
 - add product logic only after the visual shell works
+
+## System Rejected Direction: Text-Only Visual Concept Gate
+
+Context:
+
+The first Visual Concept Gate allowed agents to submit 3 written theses without showing rendered concepts. That made the workflow sound disciplined while still forcing Migi to choose art direction from words.
+
+Rejected because:
+
+- text does not show composition, scale, rhythm, object treatment, density, or mood
+- agents can describe "art direction" while preserving a generic layout
+- Migi cannot approve a visual direction he cannot see
+- implementation can start before the visual idea has been proven on screen
+
+New rule:
+
+For visual-heavy work, exactly 3 rendered concept prototypes are required before implementation. Each concept needs a preview route and screenshots at 1440 / 768 / 390 for the gate to pass. No visual screenshots = Visual Concept Gate failed.
 
 ## Robot Skill Forge v4: Obvious AI Robot App / Overlapping Character Cards
 

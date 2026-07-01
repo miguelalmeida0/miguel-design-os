@@ -16,3 +16,5 @@ test-results/
 raw-chat-input/
 
 *.local.json
+
+smoke-tests/

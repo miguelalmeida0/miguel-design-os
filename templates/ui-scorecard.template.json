@@ -99,7 +99,27 @@
   "blockers": {
     "skippedVisualConceptGate": {
       "maxScore": 60,
-      "description": "Visual-heavy work skipped the 3-concept Visual Concept Gate."
+      "description": "Visual-heavy work skipped the 3 rendered-concept Visual Concept Gate."
+    },
+    "textOnlyConcepts": {
+      "maxScore": 50,
+      "description": "Visual-heavy work produced text-only concepts instead of rendered previews."
+    },
+    "approvalWithoutVisualPreviews": {
+      "maxScore": 50,
+      "description": "Migi was asked to approve art direction without visual previews."
+    },
+    "missingConceptScreenshots": {
+      "maxScore": 60,
+      "description": "Concept screenshot paths are missing for the Visual Concept Gate."
+    },
+    "sameConceptLayout": {
+      "maxScore": 60,
+      "description": "All three concepts share basically the same layout."
+    },
+    "implementationBeforeConceptApproval": {
+      "maxScore": 60,
+      "description": "Implementation began before Migi approved one rendered visual concept."
     },
     "referenceFlattening": {
       "maxScore": 60,
@@ -144,7 +164,8 @@
   },
   "requiredReportFields": [
     "skillsUsed",
-    "designThesisUsed",
+    "approvedRenderedConcept",
+    "conceptScreenshotsUsed",
     "totalScoreAfterCaps",
     "categoryScores",
     "screenshotsUsed",

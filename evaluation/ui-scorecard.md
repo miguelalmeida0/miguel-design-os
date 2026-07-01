@@ -13,8 +13,8 @@ Before scoring, record:
 - primary object
 - primary action
 - intended visual identity
-- selected design thesis when visual-heavy work applies
-- Visual Concept Gate status when visual-heavy work applies
+- approved rendered concept when visual-heavy work applies
+- Visual Concept Gate status, preview routes, concept screenshots, and Migi approval when visual-heavy work applies
 - screenshot evidence at 390, 768, and 1440 px, or a documented blocker
 
 Score the current UI against its own product identity. Do not score higher because it resembles a golden project.
@@ -32,6 +32,11 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 - no project-specific visual identity: max 82
 - copied source-project palette/layout literally: max 74
 - 3-concept Visual Concept Gate skipped for visual-heavy work: max 60 (6/10)
+- visual-heavy task produced only text concepts: max 50 (5/10)
+- Migi was asked to approve art direction without visual previews: max 50 (5/10)
+- concept screenshots are missing: max 60 (6/10)
+- all 3 concepts share basically the same layout: max 60 (6/10)
+- implementation starts before visual concept approval: max 60 (6/10)
 - inspiration flattened into shallow styling traits: max 60 (6/10)
 - rejected layout kept with new paint: max 60 (6/10)
 - strong visual reference provided but result preserves only surface styling: max 60 (6/10)
@@ -134,6 +139,11 @@ Any blocker prevents elite:
 - visible UI elements overlap or collide unintentionally
 - obvious genre cliche without a fresh thesis
 - Visual Concept Gate skipped when required
+- text-only art direction for visual-heavy work
+- art direction approval requested without visual previews
+- missing concept screenshots
+- all 3 visual concepts use basically the same layout
+- implementation started before visual concept approval
 - reference flattened into shallow traits
 - same rejected layout with new paint
 - decorative motion that clarifies nothing
@@ -147,9 +157,10 @@ Any blocker prevents elite:
 Always report:
 
 - skills used
-- design thesis used
+- approved rendered concept
 - total score after caps
 - category scores
+- concept screenshots used when visual-heavy work applies
 - screenshots used
 - top 3 fixes
 - blockers

@@ -16,7 +16,7 @@ Use this before building or reviewing any frontend.
 10. Run `evaluation/ui-scorecard.md` before finishing.
 11. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
 
-Before visually important UI work, do not code. Produce 3 design theses first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
+Before visually important UI work, do not code. Produce 3 rendered visual concepts first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. Each concept needs a preview route plus 1440 / 768 / 390 screenshot files for the gate to pass. Visual Concept Gate means 3 rendered visual concepts, not 3 text descriptions. No screenshots, no approval. Do not implement until Migi chooses one visual direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
 
 ## Design Intent Record
 
@@ -33,7 +33,8 @@ Archetype:
 Layout recipe:
 Visual identity words:
 Visual Concept Gate status:
-Selected design thesis:
+Selected rendered concept:
+Concept preview screenshots:
 Density:
 Token direction:
 Responsive risks:
@@ -49,7 +50,7 @@ Score target:
 - Define semantic tokens before colors: surface, panel, text, border, action, state, focus, shadow.
 - Do not default to the obvious genre aesthetic. For any strong theme, define a non-obvious visual thesis before designing.
 - No palette cloning: do not inherit navy, warm social colors, terminal dark, editorial portrait treatment, or cinematic AI styling from old apps unless the current product independently calls for it.
-- Do not implement before art direction for visual-heavy work. Three concepts and Migi approval come before components.
+- Do not implement before art direction for visual-heavy work. Three rendered concepts, viewport screenshots, and Migi approval come before components.
 - Avoid container soup: no nested card stacks as default layout. Use grids, rails, sections, inspectors, and direct object composition.
 - For selection-first products, do not start with explanation. Start with desire. The first screen should make the user want to choose, click, compare, or collect. Clean is not enough if the product needs energy. Desire must not come from badge soup or predictable AI-slop styling.
 - Build the poster/composition first, then product logic. Lovable-style visual output can beat Codex when the task is art direction first; Codex compensates with a visual-concept phase.
@@ -73,7 +74,7 @@ Score target:
 Do not finish until:
 
 - design intent record exists
-- Visual Concept Gate was completed and approved when visual-heavy work required it
+- Visual Concept Gate was completed with 3 rendered concepts, viewport screenshots, and Migi approval when visual-heavy work required it
 - screenshots exist or blocker is documented
 - scorecard has been run
 - score blockers are fixed or named
@@ -83,7 +84,7 @@ Do not finish until:
 
 ```md
 Skills used:
-Design thesis used:
+Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:

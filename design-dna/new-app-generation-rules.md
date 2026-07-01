@@ -22,7 +22,7 @@ Small bug fixes, security patches, copy edits, and purely technical refactors do
 3. Read relevant `rules/*.md`, `skills/*/SKILL.md`, and `design-dna/*.md`.
 4. Classify the task.
 5. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
-6. If visual-heavy, run the Visual Concept Gate before implementation.
+6. If visual-heavy, run Visual Concept Gate v2 before implementation: 3 rendered concept prototypes, screenshots, and approval.
 7. Define a project-specific visual identity and a non-obvious visual thesis.
 8. State which source project is relevant evidence and what will not be copied.
 9. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
@@ -46,7 +46,8 @@ Archetype:
 Layout recipe:
 Visual identity words:
 Visual Concept Gate status:
-Selected design thesis:
+Selected rendered concept:
+Concept preview screenshots:
 Non-obvious visual thesis:
 Obvious genre route to avoid:
 Density:
@@ -58,35 +59,40 @@ Screenshots to capture:
 Target score:
 ```
 
-## Visual Concept Gate
+## Visual Concept Gate v2 - Visual Concepts Required
 
 Applies to every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images.
 
 Do not implement immediately.
 
-First produce 3 design theses:
+First produce exactly 3 visually rendered concept prototypes:
 
 1. Safe expected direction.
 2. More original/art-directed direction.
 3. Wild but controlled direction.
 
-For each thesis include:
+For each concept include:
 
+- rendered preview route or prototype route
+- screenshot files at 1440 / 768 / 390 for the gate to pass
+- short explanation
 - visual metaphor
-- first-screen composition
+- first-screen composition visible in the preview
 - focal object
 - interaction concept
 - typography/scale direction
 - color/material direction
 - emotional hook
-- what is hidden
-- what is absent
+- hidden information
+- absent elements
 - why it avoids obvious app/theme cliches
 - why it creates desire
 - how it works at 1440 / 768 / 390
 - what would make it fail
 
-Then stop and wait for Migi's approval. Only after Migi approves one concept may implementation begin.
+Then stop and wait for Migi to review the visuals. Only after Migi approves one rendered concept may implementation begin.
+
+Text-only concepts do not satisfy the gate. No visual screenshots = Visual Concept Gate failed.
 
 ## Inspiration Handling
 
@@ -120,7 +126,7 @@ First analyze:
 Then produce:
 
 1. reference analysis
-2. 3 art-direction concepts
+2. 3 rendered art-direction concept prototypes with viewport screenshots
 3. approval checkpoint
 4. visual shell prototype
 5. screenshots
@@ -132,7 +138,7 @@ If a reference shows a cinematic stage, do not build a dashboard. If a reference
 
 ## Build Order
 
-1. Implement only the approved direction when the Visual Concept Gate applies.
+1. Implement only the approved rendered direction when the Visual Concept Gate applies.
 2. Build a visual shell/poster composition before feature depth.
 3. Implement or update semantic tokens.
 4. Build the primary object and its primary action.
@@ -195,7 +201,7 @@ Do not:
 - use generic AI/SaaS gradients or dashboard cards as default
 - make a selection-first product feel like a beige catalog, product brochure, dense terminal, or obvious genre cliche before the user chooses
 - take the obvious aesthetic route just because the app concept suggests it
-- implement visually important UI before the Visual Concept Gate is approved
+- implement visually important UI before the Visual Concept Gate is approved with rendered concepts and screenshots
 
 
 ## Obvious Theme Gate
@@ -234,7 +240,7 @@ If the app cannot run, document the command, error, and best alternative evidenc
 ## Required Handoff
 
 ```md
-Design thesis used:
+Approved rendered concept:
 Files changed:
 Screenshots:
 Scorecard result:

@@ -9,13 +9,13 @@ Use when: the product depends on strong art direction, inspiration images, a cin
 Build:
 
 - primary object: one dominant object, scene, collection, or visual metaphor
-- required surfaces: approved art-direction concept, focal composition, hidden/absent information plan, responsive visual shell, screenshot comparison against concept/reference
+- required surfaces: approved rendered art-direction concept, concept preview route, 1440 / 768 / 390 concept screenshots, focal composition, hidden/absent information plan, responsive visual shell, screenshot comparison against concept/reference
 - controls: only enough controls to prove the primary interaction before feature depth
 - copy: minimal and subordinate to the visual concept unless the concept is typographic
 
 Do not: code the app first, flatten references into dark/neon/cards/glow, or substitute generic components for a cinematic or object-led target.
 
-Approval rule: no implementation until Migi approves one of 3 art-direction concepts.
+Approval rule: no implementation until Migi reviews 3 rendered concept prototypes and approves one visual direction. Text-only concepts do not satisfy the gate.
 
 ## Enterprise Trust Cockpit
 
@@ -101,7 +101,7 @@ Use when: users browse, compare, collect, choose, or discover selectable objects
 Build:
 
 - primary object: selectable card/object/character/tool/artifact/place
-- required surfaces: image-led roster, distinct object personality, a non-obvious visual thesis, clear content zones, rewarding hover/selected state, selected preview
+- required surfaces: image-led roster, distinct object personality, approved rendered concept, clear content zones, rewarding hover/selected state, selected preview
 - optional surfaces: class/tier/rarity/vibe labels only when they clarify desire rather than creating badge soup
 - controls: choose/select, compare, save/favorite, inspect details after selection
 - copy: short object hooks that increase desire to choose; dense specs come after selection

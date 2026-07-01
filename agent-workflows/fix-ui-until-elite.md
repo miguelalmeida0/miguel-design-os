@@ -68,4 +68,4 @@ Elite requires:
 - screenshots at 390, 768, and 1440 px
 - project-specific visual identity preserved
 - no literal source-app copying
-- final report includes design thesis used, files changed, screenshots, score, blockers fixed, remaining risks, and whether the UI was patched after review
+- final report includes approved rendered concept, files changed, screenshots, score, blockers fixed, remaining risks, and whether the UI was patched after review

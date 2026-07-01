@@ -6,7 +6,7 @@ visual-concept-gate
 
 ## Description
 
-Pre-implementation gate for visual-heavy frontend work. It forces art direction before components so the agent does not lock the product into a generic layout.
+Pre-implementation gate for visual-heavy frontend work. It forces rendered visual art direction before components so the agent does not lock the product into a generic layout.
 
 ## Use When
 
@@ -50,28 +50,37 @@ Pre-implementation gate for visual-heavy frontend work. It forces art direction 
 1. Stop before implementation.
 2. Classify the task and record the Design Intent Record.
 3. Name the obvious genre cliche the design must avoid.
-4. Produce 3 radically different art-direction concepts:
+4. Produce exactly 3 radically different rendered art-direction concept prototypes:
    - Safe expected direction.
    - More original/art-directed direction.
    - Wild but controlled direction.
 5. For each concept include:
+   - preview route
+   - screenshot files at `1440 / 768 / 390`
+   - short explanation
    - visual metaphor
    - composition
    - focal object
    - emotional hook
-   - what is hidden
-   - what is absent
+   - hidden information
+   - absent elements
    - cliche avoidance
    - desire mechanism
-   - `1440 / 768 / 390` strategy
+   - responsive strategy for `1440 / 768 / 390`
    - what would make it fail
-6. Wait for Migi approval.
-7. After approval, implement only the approved direction.
+6. Save the artifact using `templates/visual-concepts.template.json`.
+7. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` when the CLI is available.
+8. Stop and show Migi the visuals.
+9. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
+10. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+11. After the gate passes, implement only the approved direction.
 
 ## Stop Conditions
 
 - Stop before UI implementation if no concept has been approved.
-- Stop and ask for approval after presenting the 3 concepts.
+- Stop if concepts are text-only.
+- Stop if any concept is missing a preview route or screenshot paths.
+- Stop and ask for approval only after presenting the 3 rendered concepts.
 - Stop polishing if Migi rejects the visual direction; return to concept generation.
 
 ## Output Contract
@@ -79,16 +88,25 @@ Pre-implementation gate for visual-heavy frontend work. It forces art direction 
 ```md
 Design Intent Record:
 Obvious cliche to avoid:
-Concept 1 - Safe expected direction:
-Concept 2 - More original/art-directed direction:
-Concept 3 - Wild but controlled direction:
-Recommendation:
+Concept artifact:
+- concept count: 3
+- preview routes:
+- screenshots at 1440 / 768 / 390:
+Concept 1 - Safe expected direction preview:
+Concept 2 - More original/art-directed direction preview:
+Concept 3 - Wild but controlled direction preview:
+Recommended concept:
 Approval needed before implementation: yes
 ```
 
 ## Scorecard Blockers
 
 - Visual Concept Gate skipped for visual-heavy work: max score 6.
+- Text-only concepts for visual-heavy work: max score 5.
+- Migi asked to approve art direction without visual previews: max score 5.
+- Concept screenshots missing: max score 6.
+- Implementation started before visual concept approval: max score 6.
+- All 3 concepts share basically the same layout: max score 6.
 - Same rejected layout with new paint: max score 6.
 - Obvious genre cliche without a fresh thesis: max score 7.
 - No project-specific visual identity: cap applies.

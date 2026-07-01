@@ -42,7 +42,23 @@ It locks the product into generic component structure before the emotional/produ
 
 Correction:
 
-For visual-heavy work, first create 3 art-direction concepts and wait for Migi approval. Implement only the approved direction.
+For visual-heavy work, first create 3 rendered art-direction prototypes with preview routes and 1440 / 768 / 390 screenshot files. Wait for Migi to approve one visual direction, then implement only that approved direction.
+
+## Text-Only Art Direction
+
+Detect:
+
+- The agent gives concept names or descriptions but no rendered visuals.
+- Migi is asked to approve direction from text instead of seeing composition, scale, object treatment, and mood.
+- A visual-heavy gate artifact has no preview route or missing concept screenshots.
+
+Why it fails:
+
+Migi cannot choose a visual direction from text. Visual design requires seeing composition, scale, rhythm, object treatment, and mood.
+
+Correction:
+
+Create 3 actual visual prototypes and screenshot them before approval. No visual screenshots = Visual Concept Gate failed.
 
 ## Reference Flattening
 
@@ -325,6 +341,10 @@ Do not finish while any are true:
 - passive metadata looks clickable
 - source-project palette copied literally
 - Visual Concept Gate skipped for visual-heavy work
+- visual-heavy work presents only text concepts
+- Migi is asked to approve art direction without visual previews
+- concept screenshots are missing
+- implementation begins before visual concept approval
 - inspiration flattened into shallow style traits
 - rejected layout preserved with new paint
 - strong reference converted into generic components

@@ -13,7 +13,7 @@ Use for UI critique, QA, or design review.
 7. Read only the files listed by the selected skills before judging the UI.
 8. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, or selection/gallery/roster/product-discovery experience.
 9. Inspect the current project type, user, primary object, primary action, framework, and styling system.
-10. If visual-heavy work was involved, verify the Visual Concept Gate happened before implementation and name the selected thesis.
+10. If visual-heavy work was involved, verify the Visual Concept Gate happened before implementation and name the approved rendered concept.
 11. If concept artifacts exist, run `node tools/design-os.mjs validate-concepts <concept-file>`.
 12. If screenshot report artifacts exist, run `node tools/design-os.mjs validate-screenshot-report <report-file>`.
 13. Define the project-specific visual identity from the product, not from a source app.
@@ -84,7 +84,7 @@ Lead with findings ordered by severity. Each finding includes:
 Then include:
 
 - skills used
-- design thesis used, if applicable
+- approved rendered concept, if applicable
 - scorecard total and category scores
 - whether Visual Concept Gate was required and completed
 - blockers

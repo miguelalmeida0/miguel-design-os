@@ -17,6 +17,8 @@ Inspiration/reference provided?:
 Screen archetype:
 Project-specific visual identity:
 Visual Concept Gate status:
+Approved rendered concept:
+Concept preview screenshots:
 Density level:
 Token direction:
 Data/auth truth constraints:
@@ -31,16 +33,19 @@ If any field is unknown and would change the UI, inspect the current project or 
 
 Use for every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images.
 
-Do not implement immediately. First produce 3 radically different art-direction concepts and wait for Migi's approval.
+Do not implement immediately. First produce exactly 3 radically different rendered art-direction concept prototypes and wait for Migi's approval after he reviews the visuals.
 
 Each concept must include:
 
+- preview route
+- screenshot files at 1440 / 768 / 390 for the gate to pass
+- short explanation
 - visual metaphor
 - composition
 - focal object
 - emotional hook
-- what is hidden
-- what is absent
+- hidden information
+- absent elements
 - why it avoids obvious app/theme cliches
 - why it creates desire
 - how it works at 1440 / 768 / 390
@@ -48,9 +53,9 @@ Each concept must include:
 
 The gate does not block small bug fixes, security patches, copy edits, or purely technical refactors.
 
-Pass condition: implementation starts only after Migi approves one concept.
+Pass condition: implementation starts only after Migi approves one rendered concept with screenshot evidence.
 
-Fail condition: the agent starts coding components before solving the art direction.
+Fail condition: the agent starts coding components before solving the art direction, or asks Migi to approve text-only concepts. No visual screenshots = Visual Concept Gate failed.
 
 ## Visual Target Reconstruction Mode
 
@@ -76,7 +81,7 @@ If a reference shows a cinematic stage, do not build a dashboard. If it shows on
 Required sequence:
 
 1. reference analysis
-2. 3 art-direction concepts
+2. 3 rendered art-direction concept prototypes with screenshots
 3. approval checkpoint
 4. visual shell prototype
 5. screenshots
