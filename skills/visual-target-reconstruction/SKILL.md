@@ -85,11 +85,12 @@ Product logic waits until the pixel-parity shell is approved.
 7. Stop for Migi approval after showing the rendered concepts.
 8. Build a static visual shell from the approved concept before product logic.
 9. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
-10. Compare the shell against the reference and approved concept by composition, focal object, hidden information, and emotional hook.
-11. Validate `asset-manifest.local.json` when production imagery is used.
-12. Create or update `done-report.local.json` from screenshot evidence.
-13. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-14. Patch the shell before adding feature depth.
+10. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
+11. Compare the shell against the reference and approved concept by composition, focal object, hidden information, and emotional hook.
+12. Validate `asset-manifest.local.json` when production imagery is used.
+13. Create or update `done-report.local.json` from screenshot evidence.
+14. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+15. Patch the shell before adding feature depth.
 
 ## Stop Conditions
 
@@ -102,6 +103,7 @@ Product logic waits until the pixel-parity shell is approved.
 - Stop if Literal Target Copy Mode is active and the implementation changes composition, adds unrelated product UI, or explains instead of copying the visible shell.
 - Stop if visual target work has no validated done report before final handoff.
 - Stop if Literal Target Copy Mode has no validated target-copy report.
+- Stop if Literal Target Copy Mode has no screenshot comparison report.
 - Stop if a target screenshot is used as a production asset.
 - Stop if production image-led reconstruction has no validated asset manifest.
 
@@ -141,6 +143,7 @@ Patch needed:
 - Literal Target Copy Mode requested but composition changes or unrelated product UI is added: max score 5.
 - Missing validated done report for visual target work: max score 6.
 - Missing target-copy report during Literal Target Copy Mode: max score 6.
+- Missing screenshot comparison report during Literal Target Copy Mode: max score 6.
 - Missing asset manifest for image-led target reconstruction: max score 6.
 - Watermark/editor/browser artifact in reconstructed UI: max score 4.
 
@@ -153,3 +156,4 @@ Patch needed:
 - Do not treat inspiration as a universal rule for unrelated projects.
 - Do not claim visual parity from build/lint alone; screenshot evidence and a validated done report are required.
 - Visual target screenshots are evidence, not production assets.
+- Run `tools/compare-screenshots.mjs` for target/current parity evidence.

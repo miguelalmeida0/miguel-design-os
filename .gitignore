@@ -20,4 +20,17 @@ raw-chat-input/
 inspiration-library/screenshots/*
 !inspiration-library/screenshots/.gitkeep
 
+docs/qa-runs/*
+!docs/qa-runs/README.md
+!docs/qa-runs/.gitkeep
+docs/comparisons/*
+!docs/comparisons/README.md
+!docs/comparisons/.gitkeep
+docs/concept-runs/*
+!docs/concept-runs/README.md
+!docs/concept-runs/.gitkeep
+docs/object-swap/*
+!docs/object-swap/README.md
+!docs/object-swap/.gitkeep
+
 smoke-tests/

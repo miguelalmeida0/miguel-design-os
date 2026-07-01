@@ -27,9 +27,11 @@ This is an instruction-only local agent. It must not call paid tools, external A
 4. Add deterministic local data and interactions.
 5. Keep components scoped and readable.
 6. Run build/lint.
-7. Run screenshot QA again.
+7. Run screenshot QA again:
+   - `node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster`
 8. Update `done-report.local.json`.
-9. Validate done report.
+9. Validate done report:
+   - `node tools/design-os.mjs validate-done-report done-report.local.json`
 
 ## Output Contract
 
@@ -43,6 +45,14 @@ Done report:
 Remaining weaknesses:
 ```
 
+## Command Contract
+
+```sh
+npm run build
+node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
+node tools/design-os.mjs validate-done-report done-report.local.json
+```
+
 ## Hard Rules
 
 - No product logic before visual shell approval.
@@ -50,4 +60,3 @@ Remaining weaknesses:
 - No backend unless approved.
 - No paid APIs.
 - Do not change the approved composition while refactoring.
-

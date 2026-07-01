@@ -18,7 +18,20 @@ No paid tools, API calls, model keys, hosted builders, cloud deployment, or exte
 - `skills/skill-registry.json`
 - `tools/design-os.mjs`
 
+## Embedded `.design-os` Usage
+
+When Miguel Design OS is copied into another project as `.design-os`, run the CLI from that project root:
+
+```sh
+node .design-os/tools/design-os.mjs list-skills
+node .design-os/tools/design-os.mjs route --task "Build a visual-heavy robot character selection app from inspiration images"
+```
+
+The CLI resolves internal Design OS paths from the location of `.design-os/tools/design-os.mjs`, so `skills/skill-registry.json`, `schemas/`, `templates/`, `evaluation/`, and `design-dna/` are loaded from `.design-os` instead of the host project root.
+
 ## Visual-Heavy Workflow
+
+Skip this 3-concept workflow only when Literal Target Copy Mode is active. Exact target copying means pixel-parity shell first, minimum visible interactions only, screenshot comparison, and exact differences reported.
 
 1. Create design brief:
 

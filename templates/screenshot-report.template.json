@@ -1,5 +1,8 @@
 {
   "projectName": "Untitled Miguel Design OS Project",
+  "taskType": "visual-heavy-ui",
+  "mode": "implementation",
+  "isVisualWork": true,
   "targetScreenshots": {
     "390": "",
     "768": "",
@@ -38,6 +41,16 @@
       "readableText": false,
       "notes": ""
     }
+  },
+  "visualQa": {
+    "status": "needs-work",
+    "noOverlap": false,
+    "noTextOnButtons": false,
+    "noWatermark": false,
+    "noHorizontalOverflow": false,
+    "noCutHeroObject": false,
+    "noCutHeroObjectJustification": "",
+    "notes": ""
   },
   "overlapDetected": false,
   "horizontalScrollDetected": false,

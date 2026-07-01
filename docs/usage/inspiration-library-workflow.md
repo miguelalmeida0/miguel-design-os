@@ -7,6 +7,7 @@ The inspiration library helps agents collect and classify visual references safe
 - Source config: `inspiration-library/sources/`
 - Local screenshots: `inspiration-library/screenshots/`
 - Manifest templates/examples: `inspiration-library/manifests/`
+- Queue files: `inspiration-library/queues/`
 - Project manifest: `inspiration-manifest.local.json`
 
 `inspiration-library/screenshots/` is ignored by git by default except for `.gitkeep`.
@@ -22,6 +23,15 @@ Validate it:
 ```sh
 node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json
 ```
+
+## Create A Queue
+
+```sh
+node tools/new-inspiration-queue.mjs
+node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
+```
+
+The weekend queue uses structured targets for at least 150 references without pretending screenshots were captured.
 
 ## Pinterest Policy
 
@@ -76,4 +86,3 @@ This workflow does not require:
 - screenshot-to-code generation
 - Onlook hosted usage
 - external model calls
-

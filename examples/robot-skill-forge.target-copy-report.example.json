@@ -1,0 +1,49 @@
+{
+  "projectName": "Robot Skill Forge",
+  "targetScreens": ["390", "768", "1440"],
+  "targetImagePaths": {
+    "390": "docs/targets/robot-skill-forge/390-target.png",
+    "768": "docs/targets/robot-skill-forge/768-target.png",
+    "1440": "docs/targets/robot-skill-forge/1440-target.png"
+  },
+  "currentScreenshotPaths": {
+    "390": "docs/qa-runs/robot-skill-forge/390.png",
+    "768": "docs/qa-runs/robot-skill-forge/768.png",
+    "1440": "docs/qa-runs/robot-skill-forge/1440.png"
+  },
+  "comparisonReportPath": "docs/comparisons/robot-skill-forge/comparison-report.json",
+  "excludedArtifacts": [
+    "Watermarks from the target screenshot are excluded.",
+    "Editor UI overlays are excluded.",
+    "Browser chrome is excluded."
+  ],
+  "visualShellStatus": {
+    "staticShellBuilt": true,
+    "productFeaturesAddedBeforeShellParityApproval": false,
+    "shellParityApproved": true,
+    "notes": "Static shell was reconstructed before product behavior was added."
+  },
+  "compositionMatchNotes": "The current shell preserves the target's dominant robot roster composition and first-viewport hierarchy.",
+  "focalObjectMatchNotes": "Robot bodies remain the focal objects; side metadata stays secondary.",
+  "layoutMatchNotes": "Card rhythm, selected-state placement, and mobile stack match the target closely enough for approval.",
+  "typographyMatchNotes": "Type scale and label density follow the target without copying browser or editor artifacts.",
+  "interactionMinimums": [
+    "Robot selection changes the selected state.",
+    "Non-visible product features are deferred until shell parity is approved."
+  ],
+  "exactDifferences": [
+    "Robot silhouettes use clean production assets instead of the target screenshot pixels.",
+    "Spacing differs by small responsive adjustments to avoid mobile clipping."
+  ],
+  "intentionalDifferences": [
+    "Removed target watermark and browser chrome.",
+    "Replaced screenshot-captured robots with production-safe assets."
+  ],
+  "remainingMismatches": [
+    {
+      "description": "Desktop card shadows are slightly softer than target.",
+      "blocking": false
+    }
+  ],
+  "approvalStatus": "approved"
+}

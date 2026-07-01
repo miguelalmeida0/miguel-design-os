@@ -6,9 +6,13 @@
   "additionalProperties": false,
   "required": [
     "projectName",
+    "taskType",
+    "mode",
+    "isVisualWork",
     "targetScreenshots",
     "currentScreenshots",
     "viewportChecks",
+    "visualQa",
     "overlapDetected",
     "horizontalScrollDetected",
     "unreadableTextDetected",
@@ -21,17 +25,22 @@
       "type": "string",
       "minLength": 1
     },
+    "taskType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["visual-concept", "literal-target-copy", "visual-repair", "implementation", "review"]
+    },
+    "isVisualWork": {
+      "type": "boolean"
+    },
     "targetScreenshots": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "$ref": "#/$defs/viewportScreenshots"
     },
     "currentScreenshots": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "$ref": "#/$defs/viewportScreenshots"
     },
     "viewportChecks": {
       "type": "object",
@@ -48,6 +57,9 @@
           "$ref": "#/$defs/viewportCheck"
         }
       }
+    },
+    "visualQa": {
+      "$ref": "#/$defs/visualQa"
     },
     "overlapDetected": {
       "type": "boolean"
@@ -91,6 +103,22 @@
     }
   },
   "$defs": {
+    "viewportScreenshots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["390", "768", "1440"],
+      "properties": {
+        "390": {
+          "type": "string"
+        },
+        "768": {
+          "type": "string"
+        },
+        "1440": {
+          "type": "string"
+        }
+      }
+    },
     "viewportCheck": {
       "type": "object",
       "additionalProperties": false,
@@ -113,6 +141,47 @@
         },
         "readableText": {
           "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "visualQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "noOverlap",
+        "noTextOnButtons",
+        "noWatermark",
+        "noHorizontalOverflow",
+        "noCutHeroObject",
+        "noCutHeroObjectJustification",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["passing", "needs-work", "blocked", "manual-review"]
+        },
+        "noOverlap": {
+          "type": "boolean"
+        },
+        "noTextOnButtons": {
+          "type": "boolean"
+        },
+        "noWatermark": {
+          "type": "boolean"
+        },
+        "noHorizontalOverflow": {
+          "type": "boolean"
+        },
+        "noCutHeroObject": {
+          "type": "boolean"
+        },
+        "noCutHeroObjectJustification": {
+          "type": "string"
         },
         "notes": {
           "type": "string"

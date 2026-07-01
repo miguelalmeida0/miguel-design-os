@@ -23,6 +23,8 @@ Evidence gates: build/lint is not visual QA; visual target screenshots are evide
 
 Visual Swarm v1 agents in `agents/`: Inspiration Scout creates `inspiration-manifest.local.json`; Art Direction Concept creates 3 rendered concepts; Literal Target Copy creates `target-copy-report.local.json`; Visual QA Anti-Slop validates screenshot/done evidence; Productionizer adds interactions only after shell approval. Use `list-agents` and `route-agent` when available.
 
+Weekend Visual Engine v1 adds local/free execution: `tools/new-inspiration-queue.mjs`, `tools/validate-inspiration-queue.mjs`, `studio-preview/`, `tools/capture-concepts.mjs`, `tools/compare-screenshots.mjs`, `tools/visual-qa.mjs`, `tools/object-swap-check.mjs`, and agent prompt templates. Generated runs under `docs/qa-runs/`, `docs/comparisons/`, `docs/concept-runs/`, and `docs/object-swap/` are local evidence and gitignored by default. Playwright is optional; if unavailable, capture tools must report a clear local setup blocker.
+
 Before visually important UI work, do not code unless Literal Target Copy Mode is active. Produce 3 rendered visual concepts first and wait for approval: Safe expected direction, More original/art-directed direction, and Wild but controlled direction. Each concept needs a preview route plus 1440 / 768 / 390 screenshot files for the gate to pass. Visual Concept Gate means 3 rendered visual concepts, not 3 text descriptions. No screenshots, no approval. Do not implement until Migi chooses one visual direction. For references, extract composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is intentionally absent -- not shallow traits like dark, neon, cards, glass, glow, or big text.
 
 ## Design Intent Record
@@ -86,8 +88,10 @@ Do not finish until:
 - screenshots exist or blocker is documented
 - done report validates for visual UI work
 - target-copy report validates when Literal Target Copy Mode applies
+- screenshot comparison report exists when Literal Target Copy Mode applies
 - asset manifest validates for production image-led work
 - inspiration manifest validates when visual-heavy work uses inspiration
+- visual QA report exists when the UI can run
 - scorecard has been run
 - score blockers are fixed or named
 - final report includes score, screenshot evidence, and remaining risks

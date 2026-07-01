@@ -1,0 +1,51 @@
+{
+  "projectName": "Untitled Miguel Design OS Project",
+  "taskType": "visual-heavy-ui",
+  "mode": "implementation",
+  "isVisualWork": true,
+  "filesChanged": [],
+  "commandsRun": [],
+  "screenshots": {
+    "390": "",
+    "768": "",
+    "1440": ""
+  },
+  "screenshotReportPath": "",
+  "visualQa": {
+    "status": "needs-work",
+    "noOverlap": false,
+    "noTextOnButtons": false,
+    "noWatermark": false,
+    "noHorizontalOverflow": false,
+    "noCutHeroObject": false,
+    "noCutHeroObjectJustification": "",
+    "notes": ""
+  },
+  "interactionQa": {
+    "deadButtons": [],
+    "notes": ""
+  },
+  "assetQa": {
+    "required": false,
+    "manifestPath": "",
+    "validated": false,
+    "notes": ""
+  },
+  "targetCopyQa": {
+    "required": false,
+    "reportPath": "",
+    "validated": false,
+    "notes": ""
+  },
+  "score": {
+    "current": 0,
+    "target": 90
+  },
+  "remainingWeaknesses": [
+    "Fill this with honest remaining visual weaknesses before validation."
+  ],
+  "blockers": [
+    "Fill this with unresolved blockers, or clear it only after evidence proves they are fixed."
+  ],
+  "finalStatus": "needs-work"
+}

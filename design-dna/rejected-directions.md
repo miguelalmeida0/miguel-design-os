@@ -37,6 +37,36 @@ New rule:
 
 For visual-heavy work, exactly 3 rendered concept prototypes are required before implementation. Each concept needs a preview route and screenshots at 1440 / 768 / 390 for the gate to pass. No visual screenshots = Visual Concept Gate failed.
 
+## System Rejected Direction: Product Thinking During Literal Copy
+
+Context:
+
+When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, the request is visual parity with the supplied target.
+
+Rejected because:
+
+- agents keep adding product logic, data panels, useful features, or design improvements
+- agents reinterpret the visual target into a new product direction
+- agents run the 3-concept gate even though Migi asked for exact copying
+- agents explain or expand instead of reconstructing what is visible
+- product usefulness overrides pixel-parity shell work
+
+Correction:
+
+- enter Literal Target Copy Mode immediately
+- identify target screens
+- reconstruct the visible composition
+- exclude browser chrome, editor UI, and watermark artifacts
+- build the static shell first
+- implement only minimum visible interactions
+- screenshot compare against the target
+- report exact differences
+- delay product logic until the pixel-parity shell is approved
+
+Scope:
+
+This overrides normal visual-heavy product thinking only when Migi explicitly asks for exact target copying. It does not permit copying old golden projects as a default design strategy.
+
 ## Robot Skill Forge v4: Obvious AI Robot App / Overlapping Character Cards
 
 Context:

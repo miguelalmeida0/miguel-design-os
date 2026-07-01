@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://miguel-design-os.local/schemas/done-report.schema.json",
+  "title": "Miguel Design OS Done Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "projectName",
+    "taskType",
+    "mode",
+    "isVisualWork",
+    "filesChanged",
+    "commandsRun",
+    "screenshots",
+    "screenshotReportPath",
+    "visualQa",
+    "interactionQa",
+    "assetQa",
+    "targetCopyQa",
+    "score",
+    "remainingWeaknesses",
+    "blockers",
+    "finalStatus"
+  ],
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "taskType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["visual-concept", "literal-target-copy", "visual-repair", "implementation", "review"]
+    },
+    "isVisualWork": {
+      "type": "boolean"
+    },
+    "filesChanged": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "commandsRun": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "screenshots": {
+      "$ref": "#/$defs/viewportScreenshots"
+    },
+    "screenshotReportPath": {
+      "type": "string"
+    },
+    "visualQa": {
+      "$ref": "#/$defs/visualQa"
+    },
+    "interactionQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deadButtons", "notes"],
+      "properties": {
+        "deadButtons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "assetQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "manifestPath", "validated", "notes"],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "manifestPath": {
+          "type": "string"
+        },
+        "validated": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "targetCopyQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "reportPath", "validated", "notes"],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "reportPath": {
+          "type": "string"
+        },
+        "validated": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current", "target"],
+      "properties": {
+        "current": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "target": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "remainingWeaknesses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "finalStatus": {
+      "type": "string",
+      "enum": ["done", "blocked", "needs-work"]
+    }
+  },
+  "$defs": {
+    "viewportScreenshots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["390", "768", "1440"],
+      "properties": {
+        "390": {
+          "type": "string"
+        },
+        "768": {
+          "type": "string"
+        },
+        "1440": {
+          "type": "string"
+        }
+      }
+    },
+    "visualQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "noOverlap",
+        "noTextOnButtons",
+        "noWatermark",
+        "noHorizontalOverflow",
+        "noCutHeroObject",
+        "noCutHeroObjectJustification",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["passing", "needs-work", "blocked", "manual-review"]
+        },
+        "noOverlap": {
+          "type": "boolean"
+        },
+        "noTextOnButtons": {
+          "type": "boolean"
+        },
+        "noWatermark": {
+          "type": "boolean"
+        },
+        "noHorizontalOverflow": {
+          "type": "boolean"
+        },
+        "noCutHeroObject": {
+          "type": "boolean"
+        },
+        "noCutHeroObjectJustification": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

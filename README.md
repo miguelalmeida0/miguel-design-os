@@ -16,6 +16,9 @@ Miguel Design OS now includes local enforcement artifacts:
 - `schemas/asset-manifest.schema.json`
 - `schemas/inspiration-manifest.schema.json`
 - `schemas/visual-agent-run.schema.json`
+- `schemas/visual-qa-report.schema.json`
+- `schemas/screenshot-comparison-report.schema.json`
+- `schemas/object-swap-report.schema.json`
 - `schemas/ui-scorecard.schema.json`
 - `schemas/skill-registry.schema.json`
 - `templates/*.template.json`
@@ -53,6 +56,32 @@ node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.loca
 ```
 
 The swarm is instruction-only and local. It does not call paid tools, API keys, hosted Lovable, screenshot-to-code generation, Onlook hosted usage, or external model calls.
+
+## Weekend Visual Engine v1
+
+The weekend engine adds local build tools around the swarm:
+
+- `studio-preview/` renders 3 visual concepts at `/concept/1`, `/concept/2`, and `/concept/3`.
+- `tools/capture-concepts.mjs` captures rendered concept screenshots.
+- `tools/compare-screenshots.mjs` creates target/current comparison reports.
+- `tools/visual-qa.mjs` captures app screenshots and creates visual QA reports.
+- `tools/object-swap-check.mjs` checks roster/gallery/configurator object swaps.
+- `tools/new-inspiration-queue.mjs` and `tools/validate-inspiration-queue.mjs` manage the local inspiration corpus queue.
+
+Immediate flow:
+
+```sh
+node tools/design-os.mjs route-agent --task "Build cinematic robot selection app from award-winning inspiration and target screenshots"
+node tools/new-inspiration-queue.mjs
+node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
+cd studio-preview && npm run dev
+node ../tools/capture-concepts.mjs --url http://localhost:5174
+cd ..
+node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
+node tools/design-os.mjs validate-done-report done-report.local.json
+```
+
+The browser scripts use local Playwright only when available. This repo did not install Playwright during the sprint; if it is missing, capture tools produce clear local setup errors or blocked reports.
 
 For visual-heavy work:
 
@@ -165,6 +194,8 @@ Literal Target Copy Mode also bypasses the gate. When Migi says `copy this exact
 - Visual-heavy inspiration work requires an inspiration manifest.
 - Visual target screenshots are evidence, not production assets.
 - Watermark, editor, or browser artifacts in production UI are hard blockers.
+- Literal Target Copy Mode cannot be marked done without a screenshot comparison report.
+- Product logic must wait until visual shell parity is approved.
 
 ## Lovable-Equivalent Behaviors
 

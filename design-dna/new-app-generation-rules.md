@@ -12,6 +12,7 @@ Classify before work:
 - new app
 - redesign
 - selection/gallery/roster/product-discovery experience
+- literal target copy
 
 Small bug fixes, security patches, copy edits, and purely technical refactors do not require the Visual Concept Gate unless they change a visually important UI direction.
 
@@ -22,11 +23,12 @@ Small bug fixes, security patches, copy edits, and purely technical refactors do
 3. Read relevant `rules/*.md`, `skills/*/SKILL.md`, and `design-dna/*.md`.
 4. Classify the task.
 5. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
-6. If visual-heavy, run Visual Concept Gate v2 before implementation: 3 rendered concept prototypes, screenshots, and approval.
-7. Define a project-specific visual identity and a non-obvious visual thesis.
-8. State which source project is relevant evidence and what will not be copied.
-9. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
-10. Plan to run `evaluation/ui-scorecard.md` before finishing.
+6. If Literal Target Copy Mode is active, skip the Visual Concept Gate and build only the target-parity shell.
+7. If visual-heavy, run Visual Concept Gate v2 before implementation: 3 rendered concept prototypes, screenshots, and approval.
+8. Define a project-specific visual identity and a non-obvious visual thesis.
+9. State which source project is relevant evidence and what will not be copied.
+10. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
+11. Plan to run `evaluation/ui-scorecard.md` before finishing.
 
 ## Design Intent Record
 
@@ -61,7 +63,7 @@ Target score:
 
 ## Visual Concept Gate v2 - Visual Concepts Required
 
-Applies to every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images.
+Applies to every new app, major screen, redesign, selection-first product, gallery, roster, visual-heavy interface, or project with inspiration images unless Migi explicitly requests Literal Target Copy Mode.
 
 Do not implement immediately.
 
@@ -102,13 +104,51 @@ Use when Migi provides inspiration images, screenshots, references, or a strong 
 2. Create or update `docs/inspiration-analysis.md`.
 3. Extract composition, focal object, hierarchy, hidden information, absent elements, emotional hook, material/texture, atmosphere, and interaction model.
 4. List what to copy, what to avoid, and what to translate.
-5. Explain in the final handoff how the implementation used the inspiration without copying it literally.
+5. Explain in the final handoff how the implementation used the inspiration without copying it literally, unless Literal Target Copy Mode was explicitly requested.
 
 Do not extract shallow traits only. Dark, neon, cards, glass, glow, gradients, rounded panels, and big text are not a design concept.
+
+## Literal Target Copy Mode
+
+Use when Migi says:
+
+- `copy this exact UI`
+- `100% this design`
+- `literally what you see`
+- `exact visual target`
+
+This mode overrides product thinking.
+
+Do not:
+
+- run the 3-concept gate
+- invent new art direction
+- expand product features
+- run a usefulness pass
+- add extra panels
+- add extra explanation
+- improve the target
+- reinterpret the target
+
+The only goal is visual parity with the supplied target.
+
+Required sequence:
+
+1. Identify the target screens.
+2. Reconstruct the visible composition.
+3. Exclude browser chrome, editor UI, and watermark artifacts.
+4. Build the static shell first.
+5. Implement only minimum visible interactions.
+6. Capture comparison screenshots.
+7. Report exact differences.
+
+Product logic waits until the pixel-parity shell is approved.
 
 ## Visual Target Reconstruction Mode
 
 Use when Migi provides inspiration images, screenshots, or a strong visual target.
+
+If Literal Target Copy Mode is active, do not translate the reference into new concepts. Copy the visible composition first and report differences.
 
 First analyze:
 
@@ -138,7 +178,7 @@ If a reference shows a cinematic stage, do not build a dashboard. If a reference
 
 ## Build Order
 
-1. Implement only the approved rendered direction when the Visual Concept Gate applies.
+1. Implement only the approved rendered direction when the Visual Concept Gate applies, or only the supplied target when Literal Target Copy Mode applies.
 2. Build a visual shell/poster composition before feature depth.
 3. Implement or update semantic tokens.
 4. Build the primary object and its primary action.
@@ -196,12 +236,12 @@ Do:
 Do not:
 
 - reuse a source project's palette
-- copy a screenshot layout literally
+- copy a screenshot layout literally unless Migi explicitly requested Literal Target Copy Mode for that supplied target
 - use In The Loop warmth unless the product is a social coordination tool
 - use generic AI/SaaS gradients or dashboard cards as default
 - make a selection-first product feel like a beige catalog, product brochure, dense terminal, or obvious genre cliche before the user chooses
 - take the obvious aesthetic route just because the app concept suggests it
-- implement visually important UI before the Visual Concept Gate is approved with rendered concepts and screenshots
+- implement visually important UI before the Visual Concept Gate is approved with rendered concepts and screenshots, unless Literal Target Copy Mode is active
 
 
 ## Obvious Theme Gate

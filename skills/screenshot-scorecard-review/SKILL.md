@@ -44,19 +44,21 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 ## Workflow
 
 1. Capture or inspect `390`, `768`, and `1440`.
-2. For visual-heavy work, verify the Visual Concept Gate had exactly 3 rendered concepts with preview routes and concept screenshots before implementation.
-3. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
-4. Check tablet for cramped desktop or broken mobile layout.
-5. Check desktop for stretched mobile, empty expanses, or inflated scale.
-6. Check every viewport for overlap/collision.
-7. Run `evaluation/ui-scorecard.md`.
-8. Apply caps.
-9. Validate `asset-manifest.local.json` when production image-led work is involved.
-10. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
-11. Create or update `done-report.local.json`.
-12. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-13. Patch blockers before completion when implementation is in scope.
-14. Re-check changed screens.
+2. Prefer local capture with `node tools/visual-qa.mjs --url <url> --name <name>` when the UI can run.
+3. Run `node tools/object-swap-check.mjs --url <url> --objects "<objects>" --name <name>` for roster, gallery, configurator, and selection-first products.
+4. For visual-heavy work, verify the Visual Concept Gate had exactly 3 rendered concepts with preview routes and concept screenshots before implementation.
+5. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
+6. Check tablet for cramped desktop or broken mobile layout.
+7. Check desktop for stretched mobile, empty expanses, or inflated scale.
+8. Check every viewport for overlap/collision.
+9. Run `evaluation/ui-scorecard.md`.
+10. Apply caps.
+11. Validate `asset-manifest.local.json` when production image-led work is involved.
+12. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
+13. Create or update `done-report.local.json`.
+14. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+15. Patch blockers before completion when implementation is in scope.
+16. Re-check changed screens.
 
 ## Stop Conditions
 
@@ -66,6 +68,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if unintended overlap or unreadable UI appears.
 - Stop if scorecard blockers remain but the task claims completion.
 - Stop if visual UI work has no validated done report before final handoff.
+- Stop if visual UI work has no visual QA report when the UI can run.
 - Stop if Literal Target Copy Mode has no validated target-copy report.
 - Stop if production image-led work has no validated asset manifest.
 

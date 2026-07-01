@@ -1,0 +1,57 @@
+{
+  "projectName": "Robot Skill Forge",
+  "taskType": "visual-heavy-ui",
+  "mode": "implementation",
+  "isVisualWork": true,
+  "filesChanged": [
+    "src/app/page.tsx"
+  ],
+  "commandsRun": [
+    "npm run lint"
+  ],
+  "screenshots": {
+    "390": "docs/qa-runs/robot-skill-forge/390.png",
+    "768": "",
+    "1440": "docs/qa-runs/robot-skill-forge/1440.png"
+  },
+  "screenshotReportPath": "docs/qa-runs/robot-skill-forge/screenshot-report.local.json",
+  "visualQa": {
+    "status": "failing",
+    "noOverlap": false,
+    "noTextOnButtons": true,
+    "noWatermark": true,
+    "noHorizontalOverflow": true,
+    "noCutHeroObject": true,
+    "noCutHeroObjectJustification": "",
+    "notes": "This report is intentionally invalid."
+  },
+  "interactionQa": {
+    "deadButtons": [
+      "Train skill button has no handler"
+    ],
+    "notes": "Intentional dead button for invalid-example validation."
+  },
+  "assetQa": {
+    "required": true,
+    "manifestPath": "",
+    "validated": false,
+    "notes": "Intentional missing asset manifest validation."
+  },
+  "targetCopyQa": {
+    "required": false,
+    "reportPath": "",
+    "validated": false,
+    "notes": ""
+  },
+  "score": {
+    "current": 72,
+    "target": 90
+  },
+  "remainingWeaknesses": [],
+  "blockers": [
+    "Missing 768 screenshot",
+    "Overlap detected",
+    "Dead button exists"
+  ],
+  "finalStatus": "done"
+}

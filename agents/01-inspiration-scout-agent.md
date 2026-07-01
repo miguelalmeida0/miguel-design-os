@@ -54,11 +54,15 @@ This is an instruction-only local agent. It must not call paid tools, external A
 1. Read `inspiration-library/sources/award-sites.json`.
 2. Read `inspiration-library/sources/pinterest-queries.json` when moodboard discovery is useful.
 3. Read `inspiration-library/sources/ui-gallery-sources.json`.
-4. Create `inspiration-manifest.local.json` from `inspiration-library/manifests/inspiration-manifest.template.json`.
-5. Collect references as URLs and notes first.
-6. Capture screenshots only when accessible and appropriate.
-7. Mark each reference as `inspiration` or `literal-target`.
-8. Classify each reference:
+4. Create or validate the queue:
+   - `node tools/new-inspiration-queue.mjs`
+   - `node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json`
+5. Create `inspiration-manifest.local.json`:
+   - `node tools/design-os.mjs new-inspiration-manifest`
+6. Collect references as URLs and notes first.
+7. Capture screenshots only when accessible and appropriate.
+8. Mark each reference as `inspiration` or `literal-target`.
+9. Classify each reference:
    - composition
    - focal object
    - mood
@@ -66,10 +70,10 @@ This is an instruction-only local agent. It must not call paid tools, external A
    - motion
    - interaction model
    - intentionally absent elements
-9. Identify top 30 strongest references.
-10. Identify top 10 composition patterns.
-11. Identify top 10 anti-patterns to avoid.
-12. Run `node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json`.
+10. Identify top 30 strongest references.
+11. Identify top 10 composition patterns.
+12. Identify top 10 anti-patterns to avoid.
+13. Run `node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json`.
 
 ## Output Contract
 
@@ -82,6 +86,15 @@ Top 10 composition patterns:
 Top 10 anti-patterns to avoid:
 Literal targets separated: yes/no
 Validation:
+```
+
+## Command Contract
+
+```sh
+node tools/new-inspiration-queue.mjs
+node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
+node tools/design-os.mjs new-inspiration-manifest
+node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json
 ```
 
 ## Hard Rules

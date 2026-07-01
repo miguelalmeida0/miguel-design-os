@@ -15,7 +15,10 @@ const paths = {
   doneReportTemplate: "templates/done-report.template.json",
   targetCopyReportTemplate: "templates/target-copy-report.template.json",
   assetManifestTemplate: "templates/asset-manifest.template.json",
-  inspirationManifestTemplate: "inspiration-library/manifests/inspiration-manifest.template.json"
+  inspirationManifestTemplate: "inspiration-library/manifests/inspiration-manifest.template.json",
+  visualQaReportTemplate: "templates/visual-qa-report.template.json",
+  screenshotComparisonReportTemplate: "templates/screenshot-comparison-report.template.json",
+  objectSwapReportTemplate: "templates/object-swap-report.template.json"
 };
 
 const visualAgents = [
@@ -38,7 +41,7 @@ const visualAgents = [
     name: "Literal Target Copy Agent",
     path: "agents/03-literal-target-copy-agent.md",
     description: "Reconstructs exact visual targets without product reinterpretation.",
-    routeKeywords: ["copy this exact ui", "100% this design", "literally what you see", "exact visual target", "lovable target", "target copy", "reconstruct"]
+    routeKeywords: ["copy this exact ui", "100% this design", "literally what you see", "exact visual target", "lovable target", "target copy", "target screenshot", "target screenshots", "reconstruct"]
   },
   {
     id: "04-visual-qa-anti-slop",
@@ -148,6 +151,7 @@ const requiredTargetCopyFields = [
   "targetScreens",
   "targetImagePaths",
   "currentScreenshotPaths",
+  "comparisonReportPath",
   "excludedArtifacts",
   "visualShellStatus",
   "compositionMatchNotes",
@@ -220,12 +224,79 @@ const validTrustLevels = new Set(["high", "medium", "moodboard-only"]);
 const visualDoneModes = new Set(["visual-concept", "literal-target-copy", "visual-repair"]);
 const visualTaskMarkers = ["visual", "frontend", "ui", "redesign", "new-app", "selection", "gallery", "roster", "product-discovery"];
 const requiredVisualQaFields = [
+  "status",
   "noOverlap",
   "noTextOnButtons",
   "noWatermark",
   "noHorizontalOverflow",
   "noCutHeroObject"
 ];
+
+const validVisualQaStatuses = new Set(["passing", "needs-work", "blocked", "manual-review"]);
+
+const agentAliases = new Map([
+  ["inspiration-scout", "01-inspiration-scout"],
+  ["01-inspiration-scout", "01-inspiration-scout"],
+  ["art-direction-concept", "02-art-direction-concept"],
+  ["02-art-direction-concept", "02-art-direction-concept"],
+  ["literal-target-copy", "03-literal-target-copy"],
+  ["03-literal-target-copy", "03-literal-target-copy"],
+  ["visual-qa-anti-slop", "04-visual-qa-anti-slop"],
+  ["04-visual-qa-anti-slop", "04-visual-qa-anti-slop"],
+  ["productionizer", "05-productionizer"],
+  ["05-productionizer", "05-productionizer"]
+]);
+
+const agentPromptConfig = {
+  "01-inspiration-scout": {
+    template: "templates/prompts/codex-inspiration-scout.md",
+    agentPath: "agents/01-inspiration-scout-agent.md",
+    skillPaths: ["skills/visual-concept-gate/SKILL.md"],
+    validationCommands: [
+      "node tools/new-inspiration-queue.mjs",
+      "node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json",
+      "node tools/design-os.mjs validate-inspiration-manifest inspiration-manifest.local.json"
+    ]
+  },
+  "02-art-direction-concept": {
+    template: "templates/prompts/codex-art-direction-concept.md",
+    agentPath: "agents/02-art-direction-concept-agent.md",
+    skillPaths: ["skills/visual-concept-gate/SKILL.md"],
+    validationCommands: [
+      "node tools/capture-concepts.mjs --url http://localhost:5174",
+      "node tools/design-os.mjs validate-concepts docs/concept-runs/<run>/visual-concepts.local.json"
+    ]
+  },
+  "03-literal-target-copy": {
+    template: "templates/prompts/codex-literal-target-copy.md",
+    agentPath: "agents/03-literal-target-copy-agent.md",
+    skillPaths: ["skills/visual-target-reconstruction/SKILL.md"],
+    validationCommands: [
+      "node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>",
+      "node tools/design-os.mjs validate-target-copy target-copy-report.local.json"
+    ]
+  },
+  "04-visual-qa-anti-slop": {
+    template: "templates/prompts/codex-visual-qa-fix.md",
+    agentPath: "agents/04-visual-qa-anti-slop-agent.md",
+    skillPaths: ["skills/screenshot-scorecard-review/SKILL.md", "skills/anti-ai-slop-review/SKILL.md"],
+    validationCommands: [
+      "node tools/visual-qa.mjs --url http://localhost:5173 --name <name>",
+      "node tools/design-os.mjs validate-visual-qa-report docs/qa-runs/<run>/visual-qa-report.json",
+      "node tools/design-os.mjs validate-done-report done-report.local.json"
+    ]
+  },
+  "05-productionizer": {
+    template: "templates/prompts/codex-productionizer.md",
+    agentPath: "agents/05-productionizer-agent.md",
+    skillPaths: ["skills/screenshot-scorecard-review/SKILL.md"],
+    validationCommands: [
+      "npm run build",
+      "node tools/visual-qa.mjs --url http://localhost:5173 --name <name>",
+      "node tools/design-os.mjs validate-done-report done-report.local.json"
+    ]
+  }
+};
 
 function resolveDesignOsPath(filePath) {
   return path.isAbsolute(filePath) ? filePath : path.resolve(designOsRoot, filePath);
@@ -342,7 +413,14 @@ function validateVisualQa(value, label, errors) {
     return;
   }
 
+  if (!validVisualQaStatuses.has(value.status)) {
+    errors.push(`${label}.status must be one of: ${Array.from(validVisualQaStatuses).join(", ")}.`);
+  }
+
   for (const field of requiredVisualQaFields) {
+    if (field === "status") {
+      continue;
+    }
     if (!isBoolean(value[field])) {
       errors.push(`${label}.${field} must be a boolean.`);
     }
@@ -878,6 +956,18 @@ function newDoneReport() {
   pass(result.created ? "Created done-report.local.json" : "done-report.local.json already exists");
 }
 
+function newTargetCopyReport() {
+  const template = readJson(paths.targetCopyReportTemplate, { base: "design-os" });
+  const result = writeJsonIfMissing("target-copy-report.local.json", template);
+  pass(result.created ? "Created target-copy-report.local.json" : "target-copy-report.local.json already exists");
+}
+
+function newAssetManifest() {
+  const template = readJson(paths.assetManifestTemplate, { base: "design-os" });
+  const result = writeJsonIfMissing("asset-manifest.local.json", template);
+  pass(result.created ? "Created asset-manifest.local.json" : "asset-manifest.local.json already exists");
+}
+
 function validateDoneReport(filePath) {
   if (!filePath) {
     fail("Usage: node tools/design-os.mjs validate-done-report <file>");
@@ -923,6 +1013,10 @@ function validateDoneReport(filePath) {
   validateAssetQa(report.assetQa, "assetQa", errors);
   validateTargetCopyQa(report.targetCopyQa, "targetCopyQa", errors, report.mode);
 
+  if (report.mode === "literal-target-copy" && report.assetQa?.required !== true) {
+    errors.push("assetQa.required must be true for image-led Literal Target Copy Mode.");
+  }
+
   if (!isPlainObject(report.score)) {
     errors.push("score must be an object with current and target numbers.");
   } else {
@@ -964,6 +1058,10 @@ function validateDoneReport(filePath) {
 
   if (Array.isArray(report.blockers) && report.blockers.length > 0 && report.finalStatus === "done") {
     errors.push("finalStatus cannot be done while blockers exist.");
+  }
+
+  if (report.finalStatus === "done" && report.visualQa?.status !== "passing") {
+    errors.push("finalStatus cannot be done unless visualQa.status is passing.");
   }
 
   if (
@@ -1013,6 +1111,10 @@ function validateTargetCopy(filePath) {
     errors.push("currentScreenshotPaths must be an object keyed by target screen.");
   } else if (!Object.values(report.currentScreenshotPaths).some(isNonEmptyString)) {
     errors.push("currentScreenshotPaths must include at least one current screenshot path.");
+  }
+
+  if (report.approvalStatus === "approved" && !isNonEmptyString(report.comparisonReportPath)) {
+    errors.push("comparisonReportPath is required before Literal Target Copy Mode can be approved.");
   }
 
   if (Array.isArray(report.targetScreens)) {
@@ -1175,6 +1277,131 @@ function validateAssets(filePath) {
   });
 }
 
+function validateVisualQaReport(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-visual-qa-report <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+  for (const field of ["projectName", "runName", "url", "createdAt", "status", "screenshots", "checks", "manualChecklist", "buttonInventory", "deadButtons", "consoleErrors", "blockers"]) {
+    if (!(field in report)) {
+      errors.push(`${field} is required.`);
+    }
+  }
+  if (report.status && !["captured", "blocked", "needs-manual-review", "passing", "failing"].includes(report.status)) {
+    errors.push("status must be captured, blocked, needs-manual-review, passing, or failing.");
+  }
+  if (isPlainObject(report.screenshots)) {
+    for (const viewport of viewportKeys) {
+      if (!(viewport in report.screenshots)) {
+        errors.push(`screenshots.${viewport} is required.`);
+      }
+    }
+  } else {
+    errors.push("screenshots must be an object.");
+  }
+  if (!isPlainObject(report.checks)) {
+    errors.push("checks must be an object.");
+  } else {
+    for (const field of ["captured390", "captured768", "captured1440", "noHorizontalOverflow"]) {
+      if (!(field in report.checks) || !isBoolean(report.checks[field])) {
+        errors.push(`checks.${field} must be a boolean.`);
+      }
+    }
+  }
+  if (!isPlainObject(report.manualChecklist)) {
+    errors.push("manualChecklist must be an object.");
+  } else {
+    for (const field of ["noOverlap", "noTextOnButtons", "noWatermarkEditorBrowserArtifact", "noCutHeroObject", "objectSwapInvariance"]) {
+      if (!(field in report.manualChecklist)) {
+        errors.push(`manualChecklist.${field} is required.`);
+      }
+    }
+  }
+  for (const field of ["buttonInventory", "deadButtons", "consoleErrors", "blockers"]) {
+    if (field in report && !Array.isArray(report[field])) {
+      errors.push(`${field} must be an array.`);
+    }
+  }
+
+  if (errors.length > 0) {
+    fail(`Visual QA report failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Visual QA report valid", {
+    file: filePath,
+    status: report.status,
+    blockers: Array.isArray(report.blockers) ? report.blockers.length : 0
+  });
+}
+
+function validateComparisonReport(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-comparison-report <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+  for (const field of ["projectName", "targetImagePath", "currentImagePath", "dimensions", "dimensionsMatch", "layoutMatchNotes", "focalObjectMatchNotes", "typographyMatchNotes", "spacingMatchNotes", "extraMissingUiNotes", "exactRemainingDifferences", "blockingDifferences"]) {
+    if (!(field in report)) {
+      errors.push(`${field} is required.`);
+    }
+  }
+  if (!isPlainObject(report.dimensions)) {
+    errors.push("dimensions must be an object.");
+  }
+  if ("dimensionsMatch" in report && !isBoolean(report.dimensionsMatch)) {
+    errors.push("dimensionsMatch must be a boolean.");
+  }
+  for (const field of ["exactRemainingDifferences", "blockingDifferences"]) {
+    if (field in report && !Array.isArray(report[field])) {
+      errors.push(`${field} must be an array.`);
+    }
+  }
+  if (errors.length > 0) {
+    fail(`Screenshot comparison report failed validation:\n- ${errors.join("\n- ")}`);
+  }
+  pass("Screenshot comparison report valid", { file: filePath, dimensionsMatch: report.dimensionsMatch });
+}
+
+function validateObjectSwapReport(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-object-swap-report <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+  for (const field of ["objectSetName", "objectsTested", "screenshotPaths", "stableFrame", "crop", "scale", "objectPosition", "horizontalOverflow", "overlap", "failures", "finalStatus"]) {
+    if (!(field in report)) {
+      errors.push(`${field} is required.`);
+    }
+  }
+  if (!Array.isArray(report.objectsTested)) {
+    errors.push("objectsTested must be an array.");
+  }
+  if (!isPlainObject(report.screenshotPaths)) {
+    errors.push("screenshotPaths must be an object.");
+  }
+  for (const field of ["stableFrame", "crop", "scale", "objectPosition", "horizontalOverflow", "overlap"]) {
+    if (!isPlainObject(report[field])) {
+      errors.push(`${field} must be an object.`);
+    } else if (!("confirmed" in report[field])) {
+      errors.push(`${field}.confirmed is required.`);
+    }
+  }
+  if (!Array.isArray(report.failures)) {
+    errors.push("failures must be an array.");
+  }
+  if (report.finalStatus && !["pass", "fail", "blocked", "manual-review"].includes(report.finalStatus)) {
+    errors.push("finalStatus must be pass, fail, blocked, or manual-review.");
+  }
+  if (errors.length > 0) {
+    fail(`Object swap report failed validation:\n- ${errors.join("\n- ")}`);
+  }
+  pass("Object swap report valid", { file: filePath, finalStatus: report.finalStatus });
+}
+
 function doctor() {
   const checks = [];
   const errors = [];
@@ -1195,9 +1422,18 @@ function doctor() {
     paths.targetCopyReportTemplate,
     paths.assetManifestTemplate,
     paths.inspirationManifestTemplate,
+    paths.visualQaReportTemplate,
+    paths.screenshotComparisonReportTemplate,
+    paths.objectSwapReportTemplate,
     "templates/visual-agent-run.template.json",
+    "templates/prompts/codex-inspiration-scout.md",
+    "templates/prompts/codex-art-direction-concept.md",
+    "templates/prompts/codex-literal-target-copy.md",
+    "templates/prompts/codex-visual-qa-fix.md",
+    "templates/prompts/codex-productionizer.md",
     "templates/screenshot-report.template.json",
     "templates/visual-concepts.template.json",
+    "inspiration-library/queues/weekend-visual-corpus.queue.json",
     "inspiration-library/sources/award-sites.json",
     "inspiration-library/sources/pinterest-queries.json",
     "inspiration-library/sources/ui-gallery-sources.json",
@@ -1207,10 +1443,22 @@ function doctor() {
     "schemas/asset-manifest.schema.json",
     "schemas/inspiration-manifest.schema.json",
     "schemas/visual-agent-run.schema.json",
+    "schemas/visual-qa-report.schema.json",
+    "schemas/screenshot-comparison-report.schema.json",
+    "schemas/object-swap-report.schema.json",
     "schemas/screenshot-report.schema.json",
     "schemas/visual-concepts.schema.json"
   ]) {
-    checkJson(filePath, { base: "design-os" });
+    if (filePath.endsWith(".md")) {
+      const absolute = resolveDesignOsPath(filePath);
+      if (fs.existsSync(absolute)) {
+        checks.push(filePath);
+      } else {
+        errors.push(`${filePath}: missing`);
+      }
+    } else {
+      checkJson(filePath, { base: "design-os" });
+    }
   }
 
   if (errors.length > 0) {
@@ -1293,7 +1541,28 @@ function approveConcept(filePath) {
   });
 }
 
-function compileAgentPrompt() {
+function readText(filePath, options = {}) {
+  const absolute = options.base === "design-os" ? resolveDesignOsPath(filePath) : resolveProjectPath(filePath);
+  try {
+    return fs.readFileSync(absolute, "utf8").trim();
+  } catch (error) {
+    fail(`Could not read file: ${filePath}\n${error.message}`);
+  }
+}
+
+function assertDesignOsFile(filePath, message) {
+  if (!fs.existsSync(resolveDesignOsPath(filePath))) {
+    fail(message);
+  }
+}
+
+function renderPromptTemplate(template, replacements) {
+  return template.replace(/\{\{([A-Z0-9_]+)\}\}/g, (match, key) => (
+    Object.prototype.hasOwnProperty.call(replacements, key) ? replacements[key] : match
+  ));
+}
+
+function compileLegacyImplementationPrompt() {
   const briefPath = getFlagValue("--brief");
   const conceptsPath = getFlagValue("--concepts");
   const outPath = getFlagValue("--out");
@@ -1391,6 +1660,74 @@ ${brief.requiredSkills.map((skill) => `- ${skill}`).join("\n")}
   });
 }
 
+function compileAgentPrompt() {
+  const requestedAgent = getFlagValue("--agent");
+  if (!requestedAgent) {
+    compileLegacyImplementationPrompt();
+    return;
+  }
+
+  const task = getFlagValue("--task");
+  if (!task) {
+    fail('Usage: node tools/design-os.mjs compile-agent-prompt --agent <agent> --task "..." [--out <file>]');
+  }
+
+  const agentId = agentAliases.get(requestedAgent);
+  if (!agentId || !agentPromptConfig[agentId]) {
+    fail(`Unknown agent for prompt compiler: ${requestedAgent}`);
+  }
+
+  if (agentId === "03-literal-target-copy") {
+    assertDesignOsFile(paths.targetCopyReportTemplate, "Cannot compile Literal Target Copy prompt: target-copy report template is missing.");
+  }
+  if (agentId === "04-visual-qa-anti-slop" || agentId === "05-productionizer") {
+    assertDesignOsFile("schemas/done-report.schema.json", "Cannot compile visual-heavy final handoff prompt: done-report schema is missing.");
+  }
+  if (agentId === "05-productionizer") {
+    const normalizedTask = normalizeText(task);
+    if (!normalizedTask.includes("approved") || !normalizedTask.includes("visual qa")) {
+      fail("Cannot compile Productionizer prompt until the task states the visual shell is approved and visual QA has run.");
+    }
+  }
+
+  const config = agentPromptConfig[agentId];
+  const agent = visualAgents.find((candidate) => candidate.id === agentId);
+  const template = readText(config.template, { base: "design-os" });
+  const agentInstructions = readText(config.agentPath, { base: "design-os" });
+  const skillInstructions = config.skillPaths
+    .map((skillPath) => `## ${skillPath}\n\n${readText(skillPath, { base: "design-os" })}`)
+    .join("\n\n---\n\n");
+
+  const prompt = renderPromptTemplate(template, {
+    AGENT_NAME: agent.name,
+    AGENT_ID: agent.id,
+    TASK: task,
+    AGENT_INSTRUCTIONS: agentInstructions,
+    SKILL_INSTRUCTIONS: skillInstructions,
+    PROTECTED_FOLDERS: "- source-projects/\n- captures/\n- raw-chat-input/",
+    EVIDENCE_GATES: [
+      "- No done without evidence.",
+      "- Build/lint is not visual QA.",
+      "- Visual-heavy work needs 390 / 768 / 1440 screenshot evidence.",
+      "- Literal Target Copy Mode needs a target-copy report and comparison report.",
+      "- Production image-led work needs an asset manifest.",
+      "- Final handoff needs a validated done report."
+    ].join("\n"),
+    VALIDATION_COMMANDS: config.validationCommands.map((commandLine) => `- \`${commandLine}\``).join("\n")
+  });
+
+  const outPath = getFlagValue("--out");
+  if (outPath) {
+    const absolute = resolveProjectPath(outPath);
+    fs.mkdirSync(path.dirname(absolute), { recursive: true });
+    fs.writeFileSync(absolute, `${prompt}\n`);
+    pass("Compiled agent prompt", { agent: agentId, out: outPath });
+    return;
+  }
+
+  console.log(prompt);
+}
+
 function showHelp() {
   console.log(`Miguel Design OS P0 CLI
 
@@ -1402,6 +1739,8 @@ Commands:
   new-brief
   new-inspiration-manifest
   new-done-report
+  new-target-copy-report
+  new-asset-manifest
   validate-brief <file>
   validate-inspiration-manifest <file>
   validate-concepts <file>
@@ -1409,9 +1748,13 @@ Commands:
   validate-done-report <file>
   validate-target-copy <file>
   validate-assets <file>
+  validate-visual-qa-report <file>
+  validate-comparison-report <file>
+  validate-object-swap-report <file>
   check-visual-gate <brief> <concepts>   Requires 3 rendered concepts, screenshots, and approved selectedConceptId for visual-heavy briefs.
   validate-gate <brief> <concepts>        Alias for check-visual-gate.
   approve-concept <concepts> --id <id>    Marks one concept approved by Migi.
+  compile-agent-prompt --agent <agent> --task "..." [--out <file>]
   compile-agent-prompt --brief <brief> --concepts <concepts> --out <file>
   doctor
 `);
@@ -1439,6 +1782,12 @@ switch (command) {
   case "new-done-report":
     newDoneReport();
     break;
+  case "new-target-copy-report":
+    newTargetCopyReport();
+    break;
+  case "new-asset-manifest":
+    newAssetManifest();
+    break;
   case "validate-brief":
     validateBrief(args[1]);
     break;
@@ -1459,6 +1808,15 @@ switch (command) {
     break;
   case "validate-assets":
     validateAssets(args[1]);
+    break;
+  case "validate-visual-qa-report":
+    validateVisualQaReport(args[1]);
+    break;
+  case "validate-comparison-report":
+    validateComparisonReport(args[1]);
+    break;
+  case "validate-object-swap-report":
+    validateObjectSwapReport(args[1]);
     break;
   case "check-visual-gate":
     checkVisualGate(args[1], args[2]);

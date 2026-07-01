@@ -24,3 +24,17 @@ Every visual run should produce a `visual-agent-run.local.json` from `templates/
 
 No done without evidence.
 
+## Weekend Visual Engine Commands
+
+```sh
+node tools/design-os.mjs route-agent --task "Build cinematic robot selection app from award-winning inspiration and target screenshots"
+node tools/new-inspiration-queue.mjs
+node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json
+node tools/capture-concepts.mjs --url http://localhost:5174
+node tools/compare-screenshots.mjs --target path/to/target.png --current path/to/current.png --name robotstack-roster
+node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
+node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix,Digit,Figure" --name robotstack-roster
+node tools/design-os.mjs validate-done-report done-report.local.json
+```
+
+Generated screenshots and run folders stay local and gitignored by default.

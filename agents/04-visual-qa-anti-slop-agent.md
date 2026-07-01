@@ -25,15 +25,21 @@ This is an instruction-only local agent. It must not call paid tools, external A
 ## Workflow
 
 1. Capture or inspect `390 / 768 / 1440` screenshots.
-2. Create or update `screenshot-report.local.json`.
-3. Run scorecard caps in `evaluation/ui-scorecard.md`.
-4. Create or update `done-report.local.json`.
-5. Validate required evidence:
+2. Run local visual QA when the app can run:
+   - `node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster`
+3. Validate the generated visual QA report:
+   - `node tools/design-os.mjs validate-visual-qa-report docs/qa-runs/<run>/visual-qa-report.json`
+4. Run object-swap QA for roster/gallery/configurator products:
+   - `node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix,Digit,Figure" --name robotstack-roster`
+5. Create or update `screenshot-report.local.json`.
+6. Run scorecard caps in `evaluation/ui-scorecard.md`.
+7. Create or update `done-report.local.json`.
+8. Validate required evidence:
    - `node tools/design-os.mjs validate-done-report done-report.local.json`
    - `node tools/design-os.mjs validate-target-copy target-copy-report.local.json` when Literal Target Copy Mode applies
    - `node tools/design-os.mjs validate-assets asset-manifest.local.json` when production imagery is used
-6. Produce a visual QA markdown report.
-7. Block final handoff if any hard blocker remains.
+9. Produce a visual QA markdown report.
+10. Block final handoff if any hard blocker remains.
 
 ## Output Contract
 
@@ -46,10 +52,18 @@ Scorecard result:
 Validation:
 ```
 
+## Command Contract
+
+```sh
+node tools/visual-qa.mjs --url http://localhost:5173 --name robotstack-roster
+node tools/design-os.mjs validate-visual-qa-report docs/qa-runs/<run>/visual-qa-report.json
+node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix,Digit,Figure" --name robotstack-roster
+node tools/design-os.mjs validate-done-report done-report.local.json
+```
+
 ## Hard Rules
 
 - Build/lint is not visual QA.
 - No done without evidence.
 - Watermark/editor/browser artifacts in production UI are hard blockers.
 - Dead visible buttons block completion.
-

@@ -38,13 +38,16 @@ Each concept must include:
 2. Read `inspiration-manifest.local.json` if it exists.
 3. Read the routed skill files.
 4. Create or update `visual-concepts.local.json` from `templates/visual-concepts.template.json`.
-5. Build 3 rendered previews:
+5. Render 3 local previews in `studio-preview/` or another local preview route:
    - safe expected direction
    - more original/art-directed direction
    - wild but controlled direction
-6. Capture `1440 / 768 / 390` screenshots when possible.
-7. Validate concepts with `node tools/design-os.mjs validate-concepts visual-concepts.local.json`.
-8. Stop for Migi approval.
+6. Start the local preview app when needed:
+   - `cd studio-preview && npm run dev`
+7. Capture `1440 / 768 / 390` screenshots:
+   - `node tools/capture-concepts.mjs --url http://localhost:5174`
+8. Validate concepts with `node tools/design-os.mjs validate-concepts docs/concept-runs/<run>/visual-concepts.local.json`.
+9. Stop for Migi approval.
 
 ## Output Contract
 
@@ -57,10 +60,17 @@ Selected concept:
 Validation:
 ```
 
+## Command Contract
+
+```sh
+cd studio-preview && npm run dev
+node tools/capture-concepts.mjs --url http://localhost:5174
+node tools/design-os.mjs validate-concepts docs/concept-runs/<run>/visual-concepts.local.json
+```
+
 ## Hard Rules
 
 - Text-only concepts fail.
 - No implementation before approval.
 - Do not use inspiration screenshots as production assets.
 - Do not make 3 palette variants of the same layout.
-

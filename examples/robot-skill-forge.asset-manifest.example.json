@@ -1,0 +1,37 @@
+{
+  "projectName": "Robot Skill Forge",
+  "assets": [
+    {
+      "assetPath": "public/robots/atlas-clean.png",
+      "role": "production",
+      "mappedObject": "primary robot Atlas card",
+      "source": "Provided by Migi for this project",
+      "sourceType": "provided",
+      "licenseNote": "User-provided project asset approved for local prototype use.",
+      "watermarkFree": true,
+      "browserChromeFree": true,
+      "editorUiFree": true,
+      "placeholder": false,
+      "repeatedAsset": false,
+      "cropFocalPoint": "Robot head and torso centered; feet may crop below card fold.",
+      "usageNotes": "Primary image-led card asset.",
+      "approvedForProduction": true
+    },
+    {
+      "assetPath": "docs/targets/robot-skill-forge/1440-target.png",
+      "role": "reference",
+      "mappedObject": "target screenshot reference",
+      "source": "Migi supplied target screenshot",
+      "sourceType": "provided",
+      "licenseNote": "Reference-only target evidence; not used in production UI.",
+      "watermarkFree": false,
+      "browserChromeFree": false,
+      "editorUiFree": true,
+      "placeholder": false,
+      "repeatedAsset": false,
+      "cropFocalPoint": "Reference only.",
+      "usageNotes": "Target screenshot evidence only.",
+      "approvedForProduction": false
+    }
+  ]
+}

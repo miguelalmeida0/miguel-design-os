@@ -42,7 +42,7 @@ It locks the product into generic component structure before the emotional/produ
 
 Correction:
 
-For visual-heavy work, first create 3 rendered art-direction prototypes with preview routes and 1440 / 768 / 390 screenshot files. Wait for Migi to approve one visual direction, then implement only that approved direction.
+For visual-heavy work outside Literal Target Copy Mode, first create 3 rendered art-direction prototypes with preview routes and 1440 / 768 / 390 screenshot files. Wait for Migi to approve one visual direction, then implement only that approved direction.
 
 ## Text-Only Art Direction
 
@@ -74,6 +74,22 @@ It copies the surface but misses the design mechanism.
 Correction:
 
 Extract composition, focal object, spatial hierarchy, hidden information, emotional hook, material/texture, interaction model, and what is intentionally absent.
+
+## Anti-pattern: Product Thinking During Literal Copy
+
+Detect:
+
+- Migi asked for `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`.
+- The agent adds product logic, data panels, useful features, explanatory UI, alternate layouts, or design improvements.
+- The result changes the supplied target's composition instead of matching the visible shell.
+
+Why it fails:
+
+Literal Target Copy Mode is not a product-design exercise. The request is visual parity with the supplied target, not a better or more useful product.
+
+Correction:
+
+When Literal Target Copy Mode is active, product logic waits. Build the pixel-parity shell first, implement only minimum visible interactions, screenshot compare against the target, and report exact differences.
 
 ## Same Layout With New Paint
 
@@ -340,12 +356,13 @@ Do not finish while any are true:
 - primary action hidden or competing
 - passive metadata looks clickable
 - source-project palette copied literally
-- Visual Concept Gate skipped for visual-heavy work
+- Visual Concept Gate skipped for visual-heavy work when Literal Target Copy Mode was not requested
 - visual-heavy work presents only text concepts
 - Migi is asked to approve art direction without visual previews
 - concept screenshots are missing
 - implementation begins before visual concept approval
 - inspiration flattened into shallow style traits
+- Literal Target Copy Mode requested but the agent changes composition or adds unrelated product UI
 - rejected layout preserved with new paint
 - strong reference converted into generic components
 - motion exists only as decoration

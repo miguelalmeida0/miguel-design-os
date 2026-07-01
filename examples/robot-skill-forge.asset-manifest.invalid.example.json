@@ -1,0 +1,21 @@
+{
+  "projectName": "Robot Skill Forge",
+  "assets": [
+    {
+      "assetPath": "public/robots/target-screenshot-robot.png",
+      "role": "production",
+      "mappedObject": "primary hero robot from target screenshot",
+      "source": "",
+      "sourceType": "generated",
+      "licenseNote": "",
+      "watermarkFree": false,
+      "browserChromeFree": false,
+      "editorUiFree": false,
+      "placeholder": false,
+      "repeatedAsset": true,
+      "cropFocalPoint": "Unknown.",
+      "usageNotes": "Target screenshot reused as production robot asset.",
+      "approvedForProduction": true
+    }
+  ]
+}

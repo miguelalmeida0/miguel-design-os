@@ -21,6 +21,8 @@ Before scoring, record:
 - validated done report for visual UI work
 - validated target-copy report when Literal Target Copy Mode applies
 - validated asset manifest for image-led target reconstruction or production image-led work
+- screenshot comparison report when Literal Target Copy Mode applies
+- visual QA report from local capture when the app can run
 
 Score the current UI against its own product identity. Do not score higher because it resembles a golden project.
 
@@ -38,6 +40,7 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 - missing visual screenshots for visual work: max 60 (6/10)
 - missing target-copy report during Literal Target Copy Mode: max 60 (6/10)
 - missing asset manifest for image-led target reconstruction or production image-led work: max 60 (6/10)
+- missing screenshot comparison report during Literal Target Copy Mode: max 60 (6/10)
 - build/lint is presented as visual QA without screenshot evidence and done-report validation: max 60 (6/10)
 - no 390/768/1440 proof for significant frontend work: max 80 (8/10)
 - required routed skill skipped for applicable task: max 80
@@ -65,6 +68,8 @@ Caps are written as 100-point score with 10-point shorthand in parentheses.
 - visible UI elements overlap or collide unintentionally: max 60 (6/10)
 - dead button in the primary UI: max 60 (6/10)
 - external watermark, editor artifact, browser chrome, or copied tooling artifact visible in production UI: max 40 (4/10)
+- target screenshots used as production assets: max 40 (4/10)
+- product logic added before visual shell parity approval: max 60 (6/10)
 - text on button or unintended button/control overlap: max 50 (5/10)
 - animation exists only for decoration and does not clarify state/interaction/hierarchy: max 70 (7/10)
 - oversized AI-app typography or containers overwhelm the product: max 70 (7/10)
@@ -160,6 +165,9 @@ Any blocker prevents elite:
 - visual work is missing visual QA evidence
 - Literal Target Copy Mode is missing a validated target-copy report
 - image-led target reconstruction or production image-led work is missing a validated asset manifest
+- Literal Target Copy Mode is missing a screenshot comparison report
+- target screenshots are used as production assets
+- product logic was added before visual shell parity approval
 - dead button in the primary UI
 - external watermark, editor artifact, browser artifact, or copied tooling artifact visible in production UI
 - unsupported live/data/safety/AI claim

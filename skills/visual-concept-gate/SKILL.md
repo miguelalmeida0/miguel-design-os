@@ -72,17 +72,20 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
    - responsive strategy for `1440 / 768 / 390`
    - what would make it fail
 7. Save the artifact using `templates/visual-concepts.template.json`.
-8. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` when the CLI is available.
-9. Stop and show Migi the visuals.
-10. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
-11. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
-12. After the gate passes, implement only the approved direction.
+8. Use `studio-preview/` or a project-local preview route when a local renderer is needed.
+9. Capture rendered concepts with `node tools/capture-concepts.mjs --url http://localhost:5174`.
+10. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` or the captured run artifact when the CLI is available.
+11. Stop and show Migi the visuals.
+12. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
+13. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+14. After the gate passes, implement only the approved direction.
 
 ## Stop Conditions
 
 - Stop before UI implementation if no concept has been approved.
 - Stop if concepts are text-only.
 - Stop if any concept is missing a preview route or screenshot paths.
+- Stop if `tools/capture-concepts.mjs` cannot produce screenshots and no blocker is documented.
 - Stop if visual-heavy inspiration work has no inspiration manifest.
 - Stop and ask for approval only after presenting the 3 rendered concepts.
 - Stop polishing if Migi rejects the visual direction; return to concept generation.
@@ -123,3 +126,4 @@ Approval needed before implementation: yes
 - Do not force every future app to be dark, cinematic, game-like, glassy, or playful.
 - Do not copy a source project or inspiration reference literally.
 - Do not use inspiration screenshots as production assets.
+- Use `studio-preview/` only as a local concept renderer, not as the final product app.

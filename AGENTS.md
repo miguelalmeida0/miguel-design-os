@@ -50,6 +50,18 @@ For visual-heavy work, use the local Markdown agents in `agents/` when their pha
 
 Use `node tools/design-os.mjs list-agents` and `node tools/design-os.mjs route-agent --task "<task>"` when the CLI is available.
 
+## Weekend Visual Engine v1
+
+Use these local/free tools when the matching phase applies:
+
+- Inspiration queue: `node tools/new-inspiration-queue.mjs` and `node tools/validate-inspiration-queue.mjs inspiration-library/queues/weekend-visual-corpus.queue.json`.
+- Rendered concepts: `studio-preview/` plus `node tools/capture-concepts.mjs --url http://localhost:5174`.
+- Literal target comparison: `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>`.
+- Visual QA: `node tools/visual-qa.mjs --url http://localhost:5173 --name <name>`.
+- Object swap: `node tools/object-swap-check.mjs --url http://localhost:5173 --objects "Atlas,Neo,Phoenix" --name <name>`.
+
+Generated run folders under `docs/qa-runs/`, `docs/comparisons/`, `docs/concept-runs/`, and `docs/object-swap/` are local evidence and gitignored by default.
+
 ## Literal Target Copy Mode
 
 When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, Literal Target Copy Mode overrides product thinking and the P0 concept gate.

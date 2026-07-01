@@ -1,0 +1,54 @@
+{
+  "projectName": "Robot Skill Forge",
+  "taskType": "visual-heavy-ui",
+  "mode": "implementation",
+  "isVisualWork": true,
+  "filesChanged": [
+    "src/app/page.tsx",
+    "src/app/globals.css"
+  ],
+  "commandsRun": [
+    "npm run lint",
+    "node .design-os/tools/design-os.mjs validate-screenshot-report screenshot-report.local.json",
+    "node .design-os/tools/design-os.mjs validate-done-report done-report.local.json"
+  ],
+  "screenshots": {
+    "390": "docs/qa-runs/robot-skill-forge/390.png",
+    "768": "docs/qa-runs/robot-skill-forge/768.png",
+    "1440": "docs/qa-runs/robot-skill-forge/1440.png"
+  },
+  "screenshotReportPath": "docs/qa-runs/robot-skill-forge/screenshot-report.local.json",
+  "visualQa": {
+    "status": "passing",
+    "noOverlap": true,
+    "noTextOnButtons": true,
+    "noWatermark": true,
+    "noHorizontalOverflow": true,
+    "noCutHeroObject": true,
+    "noCutHeroObjectJustification": "",
+    "notes": "Viewport screenshots were inspected for card collisions, cut hero robots, copied editor artifacts, watermark artifacts, and horizontal overflow."
+  },
+  "interactionQa": {
+    "deadButtons": [],
+    "notes": "Visible controls either perform a local action, change selection, or are clearly disabled."
+  },
+  "assetQa": {
+    "required": true,
+    "manifestPath": "examples/robot-skill-forge.asset-manifest.example.json",
+    "validated": true,
+    "notes": "Production robot imagery is documented and target screenshots remain reference-only."
+  },
+  "targetCopyQa": {
+    "required": false,
+    "reportPath": "",
+    "validated": false,
+    "notes": "This example covers implementation completion rather than Literal Target Copy Mode."
+  },
+  "score": {
+    "current": 92,
+    "target": 90
+  },
+  "remainingWeaknesses": [],
+  "blockers": [],
+  "finalStatus": "done"
+}

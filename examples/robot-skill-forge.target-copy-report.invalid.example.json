@@ -1,0 +1,36 @@
+{
+  "projectName": "Robot Skill Forge",
+  "targetScreens": [],
+  "targetImagePaths": {
+    "390": "docs/targets/robot-skill-forge/390-target.png"
+  },
+  "currentScreenshotPaths": {
+    "390": "",
+    "768": "",
+    "1440": ""
+  },
+  "comparisonReportPath": "",
+  "excludedArtifacts": [
+    "Exclude editor UI only."
+  ],
+  "visualShellStatus": {
+    "staticShellBuilt": true,
+    "productFeaturesAddedBeforeShellParityApproval": true,
+    "shellParityApproved": false,
+    "notes": "Intentional invalid example."
+  },
+  "compositionMatchNotes": "Composition not reviewed.",
+  "focalObjectMatchNotes": "Focal object not reviewed.",
+  "layoutMatchNotes": "Layout not reviewed.",
+  "typographyMatchNotes": "Typography not reviewed.",
+  "interactionMinimums": [],
+  "exactDifferences": [],
+  "intentionalDifferences": [],
+  "remainingMismatches": [
+    {
+      "description": "Robot card layout does not match target.",
+      "blocking": true
+    }
+  ],
+  "approvalStatus": "approved"
+}
