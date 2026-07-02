@@ -8,6 +8,8 @@ node_modules/
 .svelte-kit/
 dist/
 build/
+deprecated/**/dist/
+deprecated/**/build/
 .tmp/
 tmp/
 playwright-report/
@@ -34,3 +36,7 @@ docs/object-swap/*
 !docs/object-swap/.gitkeep
 
 smoke-tests/
+
+research-input/taste-motion-skills/*.zip
+research-input/**/raw/
+research-input/**/*.zip

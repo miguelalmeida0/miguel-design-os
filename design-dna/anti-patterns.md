@@ -59,7 +59,11 @@ Use clear labels such as Command, Signals, Compare, Brief, Intake, Memory, Genom
 Detect:
 
 - Desktop rail simply turns into oversized mobile pills.
+- Desktop navigation is copied directly onto mobile.
+- Top navigation consumes valuable mobile space in an app with 3+ primary destinations.
+- Top and bottom navigation are both present for the same primary destinations.
 - Mobile nav is cramped, cryptic, or wraps awkwardly.
+- Bottom nav uses tiny icon bars, oversized bars, generic Android-looking defaults, poor safe-area handling, or weak icon/text alignment.
 - Nav overlaps content or blocks touch targets.
 - Selected state becomes unclear at smaller widths.
 
@@ -69,7 +73,7 @@ Responsive navigation is a product surface, not leftover chrome. It must feel cr
 
 Correction:
 
-Design desktop, tablet, and mobile nav intentionally. Use a polished bottom nav or compact top system on mobile with clear labels, comfortable touch targets, balanced spacing, and visible selected state.
+Design desktop, tablet, and mobile nav intentionally. For applications with 3+ primary destinations, default to a polished bottom nav on mobile with clear labels, comfortable touch targets, balanced spacing, safe-area support, excellent icon/text alignment, and visible selected state. Use mobile top nav only for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites.
 
 ## Anti-Pattern: Misaligned Toolbar
 
@@ -249,6 +253,24 @@ Color should communicate identity, hierarchy, mood, and state. Machine-default p
 Correction:
 
 Define a human palette direction from references or product mood. Limit accent roles, vary surface material, and use state colors only when they clarify behavior.
+
+## Anti-Pattern: Safe AI Palette Default
+
+Detect:
+
+- Artistic, landing, portfolio, cinematic, creative, or experimental page uses muddy brown, dull charcoal, beige, grey-blue, orange accent, purple glow, terminal green, neon lime, or one predictable safe accent.
+- Palette exploration is missing.
+- Palette feels readable but conceptually boring.
+- Image colors and UI colors do not feel intentionally composed.
+- Color is treated as background filler instead of identity.
+
+Why it fails:
+
+Creative modes need color as part of the concept. Safe generated-app palettes make original layouts feel like templates.
+
+Correction:
+
+Explore three palette directions before implementation: safe refined, artistic expressive, and unexpected high-character. Select one that fits the concept, imagery, and references, then validate OKLCH/APCA contrast.
 
 ## Anti-Pattern: Functional But Unfinished Dashboard
 
@@ -928,6 +950,13 @@ Fix:
 
 Do not finish while any are true:
 
+- meaningful charts were implemented without chart-selection report
+- chart choice does not match the data shape or user decision
+- chart relies on color alone without an accessible fallback
+- visual style was selected by vibe only with no style-selection report
+- incompatible style systems are mashed together without a primary style spine
+- premium website/landing work skips image-first analysis when references or generation are available
+- website implementation drifts from section references into generic coded sections
 - main object unclear
 - primary action hidden or competing
 - passive metadata looks clickable
@@ -954,3 +983,42 @@ Do not finish while any are true:
 - desktop screenshot is stretched mobile for a non-editorial app
 - data claims are unsupported
 - no scorecard result
+## Anti-Pattern: AI Landing Page Tells
+
+Description:
+The agent builds a landing/portfolio/marketing page that exposes common AI defaults: centered dark hero, purple glow, three equal feature cards, fake product screenshots, generic names, fake metrics, section-number eyebrows, duplicate CTAs, and decorative status dots.
+
+Why bad:
+These patterns make the page feel generated even when the styling is polished.
+
+Blockers:
+
+- fake div screenshot used as product proof
+- CTA wraps on desktop
+- duplicate CTA intent
+- em-dashes in visible UI copy
+- repeated same-family sections
+- logo wall is plain text wordmarks
+- scroll cues or fake version labels in hero
+
+Correction:
+Run a design read, lock the design system, give every section a job, use real/generated images where needed, and run anti-AI-tell preflight before handoff.
+
+## Anti-Pattern: Animation Fatigue
+
+Description:
+The UI animates too many frequent interactions, adding delay and noise.
+
+Why bad:
+Motion has a cost. High-frequency controls should feel instant. Delight becomes irritating when repeated.
+
+Blockers:
+
+- keyboard actions animated
+- hover effects everywhere
+- constant ambient motion in utility UI
+- no reduced-motion behavior
+- animation has no purpose
+
+Correction:
+Use the frequency table. Keep common actions instant, occasional interactions crisp, and delight for rare earned moments.

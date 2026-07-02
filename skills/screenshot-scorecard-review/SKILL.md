@@ -50,6 +50,8 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/responsive-rules.md`
 - `design-dna/clickable-vs-static-rules.md`
+- `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing screenshots
+- `design-dna/motion-and-delight-rules.md` when screenshots are part of motion/polish review
 
 ## Workflow
 
@@ -64,10 +66,19 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - design transfer spec happened before coding
    - final output compares against anchors in `docs/qa/reference-match-report.md`
    - screenshot output does not copy vibe only
-6. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
-7. Check tablet for cramped desktop or broken mobile layout.
-8. Check desktop for stretched mobile, empty expanses, or inflated scale.
-9. Check scale calibration:
+6. For Three-Direction Mockup Gate work, verify:
+   - `docs/design/direction-options.md` exists when visual direction was not already approved
+   - three directions are meaningfully different
+   - Migi selected A, B, C, or a hybrid before coding
+   - `docs/design/selected-direction.md` exists after selection
+   - screenshots/implementation follow the selected direction
+7. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
+   - If the app has 3+ primary destinations, confirm mobile uses bottom navigation or documents a valid exception.
+   - Confirm the top of mobile screens is not wasting space on primary navigation when it should hold brand, title, search, context, or hero imagery.
+   - Confirm bottom nav is premium, aligned, safe-area aware, readable, not cramped, and not oversized.
+8. Check tablet for cramped desktop or broken mobile layout.
+9. Check desktop for stretched mobile, empty expanses, or inflated scale.
+10. Check scale calibration:
    - Is the UI inflated?
    - Are text sizes calibrated to references?
    - Are containers larger than their content?
@@ -75,7 +86,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Are at least 3 meaningful content objects visible above the fold, unless the reference strongly justifies fewer?
    - Does the layout feel like mobile blown up?
    - Did the agent mistake premium for giant?
-10. For Command Center / Dashboard Mode, check dashboard composition:
+11. For Command Center / Dashboard Mode, check dashboard composition:
    - Is there one memorable attraction zone or focal visual/data anchor?
    - Are panel weights varied?
    - Are charts useful and integrated into the composition?
@@ -96,7 +107,17 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Are buttons proportionate to their role?
    - Is the palette reference-driven and human rather than robotic/generic?
    - Are live/session/status indicators real and understandable instead of decorative?
-11. Check contrast and text-on-image discipline:
+12. Check palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work:
+   - Did the agent explore multiple palette directions?
+   - Does the palette feel authored or generated?
+   - Is the palette tied to the concept?
+   - Does the palette create identity?
+   - Is it readable?
+   - Does it avoid the same muddy AI backgrounds?
+   - Is the accent overused?
+   - Do image colors and UI colors work together?
+   - Did OKLCH/APCA or contrast logic guide the final palette?
+13. Check contrast and text-on-image discipline:
    - Is every important text layer readable?
    - Is text over image protected?
    - Are small labels readable?
@@ -105,8 +126,8 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Is image treatment consistent?
    - Are gradients/scrims intentional, not emergency fixes?
    - Does any text rely on a lucky crop?
-12. Check every viewport for overlap/collision, including nav, toolbars, chips, badges, forms, panels, and image overlays.
-13. Check P0 layout integrity:
+14. Check every viewport for overlap/collision, including nav, toolbars, chips, badges, forms, panels, and image overlays.
+15. Check P0 layout integrity:
    - Does any text escape its card?
    - Are any card titles clipped?
    - Do charts stay inside chart containers?
@@ -117,30 +138,40 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Does the layout adapt or merely squeeze?
    - Are labels still semantic at small widths?
    - Does nav remain understandable at desktop/tablet/mobile?
+   - Should this become bottom navigation?
+   - Is valuable vertical space being wasted?
+   - Does this feel like a premium mobile product?
+   - Is the bottom navigation crafted or generic?
    - Does the UI survive 1440 / 1280 / 1024 / 768 / 390?
-14. Manually verify the core loop when it is upload -> classify -> generate output, import -> analyze -> recommend, select -> configure -> output, or equivalent.
+16. Manually verify the core loop when it is upload -> classify -> generate output, import -> analyze -> recommend, select -> configure -> output, or equivalent.
 15. Verify persistence claims for user-generated data across route changes, refresh, and browser reopen.
 16. For dogfood targets, map every target-app failure back to a Miguel Design OS rule/tool/prompt/checklist patch or explicit open gap.
 17. Run `evaluation/ui-scorecard.md`.
-18. Apply caps.
-19. Validate `asset-manifest.local.json` when production image-led work is involved.
-20. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
-21. Create or update `done-report.local.json`.
-22. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-23. Patch blockers before completion when implementation is in scope.
-24. Re-check changed screens.
+18. For landing/portfolio/marketing screenshots, run anti-AI-tell checks: em-dashes, hero clutter, CTA wrap, duplicate CTA intent, fake screenshots, logo wall misuse, repeated section family, and scroll cues.
+19. For motion review, verify the screenshot evidence is paired with motion rationale or code review when animation changed.
+20. Apply caps.
+21. Validate `asset-manifest.local.json` when production image-led work is involved.
+22. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
+23. Create or update `done-report.local.json`.
+24. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+25. Patch blockers before completion when implementation is in scope.
+26. Re-check changed screens.
 
 ## Stop Conditions
 
 - Stop if a required viewport is missing and the UI can run.
 - Stop if visual-heavy work asks for approval from text-only concepts or missing concept screenshots.
 - Stop if Reference-Locked Build Mode has no exact anchors, no reference decomposition, no design transfer spec, or no final reference-match report.
+- Stop if Three-Direction Mockup Gate applies but direction options, Migi selection, or selected-direction documentation is missing.
+- Stop if implementation ignores the selected direction.
 - Stop if the screenshot output copies folder vibe but not anchor composition, density, chart behavior, image/object role, palette/material, and responsive mechanics.
 - Stop if horizontal scroll appears in the primary mobile flow.
 - Stop if unintended overlap or unreadable UI appears.
 - Stop if dashboard references produce same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only admin layout, decorative charts, weak chart system, image-starved surfaces, or no attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic or responsive nav overlaps content.
+- Stop if a mobile app with 3+ primary destinations uses desktop/top navigation without justification.
+- Stop if bottom navigation is generic, cramped, oversized, poorly aligned, or lacks safe-area support.
 - Stop if toolbar controls misalign or collide when wrapping.
 - Stop if text-heavy containers kill scanability.
 - Stop if buttons become oversized full-width bars without justification.
@@ -151,6 +182,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if layout only works at one viewport.
 - Stop if fake live/session/status UI appears without real product meaning.
 - Stop if palette feels robotic, generic, or template-generated.
+- Stop if expressive mode uses a dull generated-app palette with no documented exploration.
 - Stop if the screenshot feels like giant text, images, cards, or containers attacking the user.
 - Stop if desktop layout feels like enlarged mobile without strong reference justification.
 - Stop if any important text is hard to read.
@@ -165,6 +197,8 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if visual UI work has no visual QA report when the UI can run.
 - Stop if Literal Target Copy Mode has no validated target-copy report.
 - Stop if production image-led work has no validated asset manifest.
+- Stop if landing/portfolio/marketing screenshots fail Taste preflight.
+- Stop if animation changed but no motion standards review was performed.
 
 ## Output Contract
 
@@ -272,6 +306,11 @@ Remaining verification gaps:
 - Nav abbreviations without obvious meaning: max score 6.
 - Icon-only nav without labels/tooltips/context: max score 6.
 - Broken responsive nav or nav overlap: max score 5.
+- Mobile app using desktop navigation without justification: max score 5.
+- Poor bottom navigation craftsmanship: max score 5.
+- Top navigation stealing vertical space on mobile: max score 5.
+- Bottom navigation with poor spacing/alignment: max score 5.
+- Generic mobile navigation with no personality: max score 6.
 - Mobile nav cryptic or cramped: max score 6.
 - Misaligned search/action toolbar: max score 7.
 - Toolbar controls collide or wrap badly: max score 6.
@@ -284,6 +323,20 @@ Remaining verification gaps:
 - Fake live/session status UI: max score 5.
 - Decorative telemetry/status chips: max score 6.
 - Palette feels machine-generated/generic: max score 6.
+- Artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max score 6.
+- Palette feels machine-generated/generic despite expressive mode: max score 5.
+- No palette exploration documented for artistic/cinematic mode: max score 6.
+- Color palette is readable but conceptually boring in an art-directed page: max score 7.
+- Palette chosen without relation to imagery, references, or concept: max score 6.
+- Bold palette used but contrast/readability fails: max score 5.
+- Agent defaults to charcoal/brown/orange generated-app palette again: max score 5.
+- Visual-heavy new app implemented without direction-options gate: max score 6.
+- Agent provides only one direction when direction is not approved: max score 6.
+- Three directions are minor variations of same layout/palette: max score 5.
+- Agent codes before Migi selects direction: max score 5.
+- Direction options lack palette/image/layout/motion strategy: max score 6.
+- Agent ignores selected direction during implementation: max score 5.
+- No selected-direction.md after Migi chooses: max score 7.
 - Text visibly escapes container: max score 2.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.

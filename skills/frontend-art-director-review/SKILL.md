@@ -46,6 +46,9 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - `design-dna/anti-patterns.md`
 - `design-dna/approved-directions.md` when relevant
 - `design-dna/rejected-directions.md` when relevant
+- `design-dna/brief-inference-rules.md` for landing/portfolio/marketing work
+- `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing work
+- `design-dna/motion-and-delight-rules.md` when motion or delight is part of the critique
 - `evaluation/ui-scorecard.md`
 
 ## Workflow
@@ -56,6 +59,9 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 4. Reject junior card grids when they are the default answer rather than the right structure.
 5. Reject safe generic layouts when the product needs art direction.
 6. If visual-library references are used, verify:
+   - Three-Direction Mockup Gate happened when no visual direction was approved
+   - directions are meaningfully different, not small layout/palette variants
+   - `docs/design/selected-direction.md` exists after Migi chose or hybridized a direction
    - the correct Reference Folder Mode was selected
    - Reference-Locked Build Mode selected 3-5 exact anchors when a folder/screenshot set was the design basis
    - each anchor has a role: composition, palette/material, graph/component, image/object/media, or responsive/layout
@@ -85,11 +91,18 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
    - live indicators, transitions, or active-state cues exist when the product represents monitoring, freshness, or activity
    - navigation labels are understandable and not cryptic abbreviations
    - responsive nav is crafted for desktop, tablet, and mobile instead of squeezed
+   - mobile apps with 3+ primary destinations default to bottom navigation unless a named exception applies
+   - valuable mobile top space is reserved for branding, page title, search, context, or hero imagery instead of primary nav
+   - bottom navigation feels premium, aligned, safe-area aware, and intentional rather than generic
    - search, filters, and action buttons align as one toolbar system
    - panels are scan-first, not paragraph-heavy containers
    - buttons are proportionate and full-width only when justified
    - responsive resizing does not create overlapping panels, pills, controls, or hidden content
    - palette feels human and reference-driven, not machine-generated
+   - artistic/landing/portfolio/cinematic/experimental palette exploration exists when relevant
+   - palette feels authored, tied to the concept, and not generated-app mud
+   - image colors and UI colors work together
+   - OKLCH/APCA or equivalent contrast logic guided final palette
    - live/session/status indicators have real product meaning instead of decorative theater
 8. For landing-page, creative, artistic, cinematic, editorial, or image-led work, verify:
    - composition was extracted, not just colors
@@ -136,15 +149,37 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
    - Does the layout adapt or merely squeeze?
    - Are labels still semantic at small widths?
    - Does nav remain understandable at desktop/tablet/mobile?
+   - Should mobile navigation become bottom navigation?
+   - Is valuable vertical space being wasted by top nav?
+   - Does the mobile navigation feel like a premium mobile product?
+   - Is the bottom navigation crafted or generic?
    - Does the UI survive 1440 / 1280 / 1024 / 768 / 390?
 13. Evaluate material, atmosphere, hierarchy, desire, and interaction reward.
-14. Separate concept failure from execution failure.
-15. If concept failure exists, route to `visual-concept-gate`.
-16. If execution failure exists, provide concrete patch priorities.
+14. For Three-Direction Mockup Gate work, verify:
+   - did the agent create 3 distinct directions?
+   - did each direction include palette, typography, layout, imagery, motion, mobile strategy, risks, and AI-default avoided?
+   - did Migi select a direction before coding?
+   - did implementation follow the selected direction?
+   - was any hybrid documented?
+15. For landing, portfolio, marketing, and redesign work, run the Taste preflight lens:
+   - design read exists
+   - zero visible em-dashes
+   - no fake div screenshots
+   - no duplicate CTA intent
+   - no CTA wraps on desktop
+   - no repeated generic section families
+   - hero stack is disciplined
+16. When motion exists, verify purpose, frequency, duration, easing, reduced motion, and performance.
+17. Separate concept failure from execution failure.
+18. If concept failure exists, route to `visual-concept-gate`.
+19. If execution failure exists, provide concrete patch priorities.
 
 ## Stop Conditions
 
 - Stop if the critique lacks evidence from screenshots or references.
+- Stop if new visual-heavy work skipped the Three-Direction Mockup Gate and no visual direction was already approved.
+- Stop if Migi has not selected a direction but implementation has started.
+- Stop if implementation ignores `docs/design/selected-direction.md`.
 - Stop if the first viewport has no focal object.
 - Stop if visual-library references were used with the wrong folder mode or no reference usage report.
 - Stop if the agent cannot name the exact reference anchors and their transferred mechanics.
@@ -153,10 +188,13 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Stop if Command Center / Dashboard Mode becomes generic admin template, same-weight card soup, text-and-metrics-only dashboard, terminal-ish dark panel spam, murky monochrome dashboard, weak/decorative chart system, or lacks a meaningful attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic or responsive nav collides with content.
+- Stop if an app with 3+ primary destinations uses desktop/top navigation on mobile without justification.
+- Stop if bottom navigation is cramped, oversized, poorly aligned, generic, or unsafe around gesture/safe areas.
 - Stop if toolbar inputs/buttons are visibly misaligned or collide when wrapping.
 - Stop if text-heavy containers kill scanability.
 - Stop if fake live/session/status indicators appear without real product meaning.
 - Stop if the palette feels robotic, generic, or template-generated.
+- Stop if an artistic/landing/portfolio UI uses a dull generated-app palette with no documented exploration.
 - Stop if any text escapes a container.
 - Stop if any chart overflows its plot/card bounds.
 - Stop if any responsive collision exists.
@@ -169,6 +207,8 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Stop if any important text is hard to read.
 - Stop if the reference is immersive/image-led but the result uses a boxed rectangular image layout.
 - Stop if landing-page, creative, artistic, or image-led output looks like a normal landing page with artistic images pasted into sections.
+- Stop if landing/portfolio/marketing work fails anti-AI-tell preflight.
+- Stop if motion has no purpose or lacks reduced-motion behavior.
 
 ## Output Contract
 
@@ -247,6 +287,11 @@ Scorecard caps:
 - Nav abbreviations without obvious meaning: max score 6.
 - Icon-only nav without labels/tooltips/context: max score 6.
 - Broken responsive nav or nav overlap: max score 5.
+- Mobile app using desktop navigation without justification: max score 5.
+- Poor bottom navigation craftsmanship: max score 5.
+- Top navigation stealing vertical space on mobile: max score 5.
+- Bottom navigation with poor spacing/alignment: max score 5.
+- Generic mobile navigation with no personality: max score 6.
 - Mobile nav cryptic or cramped: max score 6.
 - Misaligned search/action toolbar: max score 7.
 - Toolbar controls collide or wrap badly: max score 6.
@@ -259,6 +304,20 @@ Scorecard caps:
 - Decorative telemetry/status chips: max score 6.
 - Palette feels machine-generated/generic: max score 6.
 - Dull robotic palette despite expressive references: max score 5.
+- Artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max score 6.
+- Palette feels machine-generated/generic despite expressive mode: max score 5.
+- No palette exploration documented for artistic/cinematic mode: max score 6.
+- Color palette is readable but conceptually boring in an art-directed page: max score 7.
+- Palette chosen without relation to imagery, references, or concept: max score 6.
+- Bold palette used but contrast/readability fails: max score 5.
+- Agent defaults to charcoal/brown/orange generated-app palette again: max score 5.
+- Visual-heavy new app implemented without direction-options gate: max score 6.
+- Agent provides only one direction when direction is not approved: max score 6.
+- Three directions are minor variations of same layout/palette: max score 5.
+- Agent codes before Migi selects direction: max score 5.
+- Direction options lack palette/image/layout/motion strategy: max score 6.
+- Agent ignores selected direction during implementation: max score 5.
+- No selected-direction.md after Migi chooses: max score 7.
 - Text visibly escapes container: max score 2.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.

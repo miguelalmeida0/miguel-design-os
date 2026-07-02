@@ -13,6 +13,16 @@ Before scoring, record:
 - primary object
 - primary action
 - intended visual identity
+- design read for visual-heavy landing, portfolio, marketing, or redesign work
+- active design dials
+- `docs/design/visual-spec.md` for visual-heavy work
+- `docs/design/direction-options.md` before visual-heavy implementation when visual direction is not already approved
+- `docs/design/selected-direction.md` after Migi chooses or hybridizes a direction
+- Direction Gate Summary inside visual spec
+- Palette Exploration section for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work
+- design-system direction for significant UI work
+- frontend aha moment and local/mock data location for new frontend MVPs
+- visible interactions verified locally
 - reference folder mode when visual-library references are used
 - `docs/design/reference-usage-report.md` when visual-heavy work uses visual-library references
 - Reference-Locked Build Mode status when a visual-library folder or screenshot set is the requested basis
@@ -26,6 +36,16 @@ Before scoring, record:
 - Graph System Strategy when Command Center / Dashboard Mode is used
 - Image / Object / Media Strategy when Command Center / Dashboard Mode is used
 - Dashboard live/motion strategy when the product represents monitoring, freshness, activity, or queues
+- chart-selection report when meaningful charts, analytics, BI, monitoring, forecasts, maps, funnels, networks, or graph-rich dashboard systems are used
+- chart data shape, user decision, accessibility fallback, rendering strategy, and chart bounds strategy
+- visual-style selection report when a style family/taxonomy direction is used
+- selected primary style family, rejected styles, token plan, effect limits, accessibility/performance/mobile risks
+- image-first website analysis when building premium websites, landing pages, hero sections, marketing sites, product pages, editorial/portfolio pages, or website image-to-code outputs
+- section references and extraction notes before website implementation when image-first workflow applies
+- anti-AI-tell preflight for landing, portfolio, marketing, and redesign work
+- motion strategy when animation exists or motion is planned
+- animation review when motion code changed
+- delight strategy when personality/delight is added
 - Scale Calibration section from `docs/design/reference-usage-report.md` when visual-library references are used
 - Image Environment Strategy from `docs/design/reference-usage-report.md` when image-led, artistic, landing-page, cinematic, or visual-heavy references are used
 - Contrast / Legibility Strategy from `docs/design/reference-usage-report.md` when image-led or visual-library references are used
@@ -37,6 +57,21 @@ Before scoring, record:
 - Layout Integrity Contract for visual-heavy work
 - Responsive Breakpoint Proof at 1440, 1280, 1024, 768, and 390
 - Palette Direction explaining why the color system avoids machine/default color
+- design-system token quality: semantic colors, type roles, spacing, radius, shadow/elevation, borders, chart colors, state colors, component variants, image treatment, and motion rules
+- OKLCH/APCA palette pass for significant UI: APCA targets, WCAG targets when formal compliance is claimed, lightness repairs, numeric scale, dark-mode mapping, and hue-drift risk
+- palette intelligence from references/product reasoning or `design-intelligence/product-color-matrix.json`
+- UI Wiki review when broad interaction, typography, pseudo-element, audio, UX-law, or perceived-performance rules apply
+- Interface Feel Pass after main layout exists and before final screenshot review
+- chart intelligence from data shape/user decision or `design-intelligence/chart-recommendation-matrix.json`
+- style intelligence from selected style family or `design-intelligence/style-taxonomy.json`
+- landing pattern when landing pages are built or reviewed
+- mobile platform fit when mobile work is involved
+- mobile navigation default/exception when the app has 3+ primary destinations
+- implementation workflow/tool discipline when code is changed
+- brief inference quality: page kind, audience, vibe, reference signals, mode/system, quiet constraints
+- landing/portfolio craft: section jobs, composition anchors, background modes, CTA variation, and section rhythm
+- motion craft: purpose, frequency, duration, easing, reduced motion, performance
+- delight appropriateness: earned moment, domain register, no task delay
 - image role strategy for every major image
 - product purpose: what the app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the system
 - core loop proof when the product depends on upload, classification, generation, selection, or persistence
@@ -68,6 +103,73 @@ Artistic style never excuses poor readability. Award-level UI protects legibilit
 Layout integrity caps apply before taste scoring. A broken layout cannot be award-level.
 
 - no screenshots and no documented blocker: max 60
+- visual-heavy new app implemented without direction-options gate: max 60 (6/10)
+- agent provides only one direction when direction is not approved: max 60 (6/10)
+- three directions are minor variations of same layout or palette: max 50 (5/10)
+- agent codes before Migi selects direction: max 50 (5/10)
+- direction options lack palette, image, layout, or motion strategy: max 60 (6/10)
+- agent ignores selected direction during implementation: max 50 (5/10)
+- no `docs/design/selected-direction.md` after Migi chooses: max 70 (7/10)
+- artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max 60 (6/10)
+- palette feels machine-generated/generic despite expressive mode: max 50 (5/10)
+- no palette exploration documented for artistic/cinematic mode: max 60 (6/10)
+- color palette is readable but conceptually boring in an art-directed page: max 70 (7/10)
+- palette chosen without relation to imagery, references, or concept: max 60 (6/10)
+- bold palette used but contrast/readability fails: max 50 (5/10)
+- agent defaults to charcoal/brown/orange generated-app palette again: max 50 (5/10)
+- no APCA/WCAG contrast check for final palette: max 70 (7/10)
+- normal text below APCA `Lc 60` without reason: max 60 (6/10)
+- UI component contrast below APCA `Lc 30`: max 60 (6/10)
+- palette repaired by changing chroma instead of lightness: max 70 (7/10)
+- HSL ramp shows hue drift greater than `10deg` and remains uncorrected: max 60 (6/10)
+- palette feels robotic because no perceptual color system was used: max 60 (6/10)
+- no numeric palette scale for a design system: max 70 (7/10)
+- dark mode created by random color picking instead of mapped tokens: max 60 (6/10)
+- multi-hue palette has uneven perceived brightness: max 60 (6/10)
+- foreground/background token lacks documented contrast target: max 70 (7/10)
+- pressable elements have no active feedback: max 70 (7/10)
+- interactive target below comfortable size without compensation: max 60 (6/10)
+- typography lacks tabular numbers where data aligns: max 70 (7/10)
+- user-initiated UI animation exceeds 300ms without reason: max 60 (6/10)
+- keyboard or high-frequency interaction is slowed by animation: max 50 (5/10)
+- motion ignores frequency-of-use: max 60 (6/10)
+- pseudo-elements used without correct layering/content: max 70 (7/10)
+- audio feedback has no visual equivalent or mute control: max 50 (5/10)
+- UI works but feels dead or unresponsive: max 60 (6/10)
+- loading/empty/error states are generic or missing: max 60 (6/10)
+- spacing scale feels arbitrary: max 60 (6/10)
+- pure black shadows make elevation feel harsh or fake: max 70 (7/10)
+- visual hierarchy violates proximity, similarity, or common-region principles: max 60 (6/10)
+- micro-polish pass missing before final visual review: max 70 (7/10)
+- visual-heavy task has no design read: max 60 (6/10)
+- no visual spec for visual-heavy work: max 60 (6/10)
+- no active dials declared for visual-heavy or new frontend work: max 70 (7/10)
+- no design-system tokens for significant UI: max 70 (7/10)
+- visible UI generated before design-system direction exists: max 70 (7/10)
+- no frontend aha moment proof for new frontend MVP: max 60 (6/10)
+- landing/portfolio page violates major Taste preflight checks: max 60 (6/10)
+- visible UI copy contains em-dashes after preflight: max 70 (7/10)
+- repeated generic sections or same layout family overused: max 60 (6/10)
+- hero overstuffed with micro-labels, trust, pricing, features, or prose: max 60 (6/10)
+- CTA wraps on desktop: max 60 (6/10)
+- duplicate CTA intent: max 70 (7/10)
+- fake div-based screenshot used as product visual: max 50 (5/10)
+- generated landing references compress multiple sections into one unreadable image: max 50 (5/10)
+- plain text logo wall used as social proof when logos are required: max 60 (6/10)
+- generic AI names, fake-perfect numbers, or generic avatar eggs are visible: max 70 (7/10)
+- section-number eyebrows, decorative scroll cues, or hero version labels used without real purpose: max 70 (7/10)
+- animation has no purpose: max 60 (6/10)
+- ease-in on UI motion: max 50 (5/10)
+- scale(0) entrance animation: max 50 (5/10)
+- missing prefers-reduced-motion on movement: max 50 (5/10)
+- high-frequency action animated: max 40 (4/10)
+- `transition: all` in production UI: max 50 (5/10)
+- delight delays or blocks core task: max 40 (4/10)
+- delight mismatches domain seriousness: max 60 (6/10)
+- no local core-loop interaction in frontend MVP: max 60 (6/10)
+- mock data buried in components: max 70 (7/10)
+- code is monolithic/spaghetti: max 60 (6/10)
+- implementation ignores efficient-agent workflow and makes broad uninspected edits: max 70 (7/10)
 - no inspiration manifest for visual-heavy work that uses inspiration: max 70 (7/10)
 - no reference usage report for visual-heavy work using visual-library references: max 60 (6/10)
 - missing Scale Calibration for visual-library reference work: max 60 (6/10)
@@ -95,6 +197,12 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - dashboard has too few meaningful charts despite graph-rich references: max 60 (6/10)
 - dashboard has too few useful chart forms for the product state: max 60 (6/10)
 - dashboard charts are decorative or do not support visible decisions: max 60 (6/10)
+- meaningful chart implemented with no chart-selection report: max 60 (6/10)
+- no chart rationale for dashboard charts: max 60 (6/10)
+- chart type does not match data shape: max 50 (5/10)
+- chart relies on color alone without value labels, patterns, line styles, or table fallback: max 50 (5/10)
+- inaccessible chart type used as primary representation with no fallback: max 50 (5/10)
+- real-time chart has motion without pause/reduced-motion behavior: max 60 (6/10)
 - major dashboard chart is decorative or unclear: max 50 (5/10)
 - dashboard imagery/object/media is absent despite relevant reference evidence: max 60 (6/10)
 - dashboard uses only text/metrics/panels with no image/object/media layer despite reference support: max 60 (6/10)
@@ -114,6 +222,12 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - icon-only nav without labels, tooltips, or obvious context: max 60 (6/10)
 - broken responsive nav: max 50 (5/10)
 - nav overlaps content on resize: max 50 (5/10)
+- mobile app using desktop navigation without justification: max 50 (5/10)
+- top navigation stealing vertical space on mobile: max 50 (5/10)
+- poor bottom navigation craftsmanship: max 50 (5/10)
+- bottom navigation with poor spacing/alignment: max 50 (5/10)
+- duplicated top and bottom navigation for the same primary destinations: max 50 (5/10)
+- generic mobile navigation with no personality: max 60 (6/10)
 - mobile nav is cryptic or cramped: max 60 (6/10)
 - desktop rail simply becomes giant mobile pills: max 60 (6/10)
 - visibly misaligned search/action toolbar: max 70 (7/10)
@@ -143,6 +257,11 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - status indicator with no user meaning: max 60 (6/10)
 - decorative telemetry/status chips: max 60 (6/10)
 - palette feels machine-generated/generic: max 60 (6/10)
+- visual style chosen by vibe only with no style-selection report: max 60 (6/10)
+- palette selected without reference/product reasoning: max 60 (6/10)
+- incompatible visual style systems mashed together without hierarchy: max 60 (6/10)
+- style family conflicts with product purpose or reference mode: max 60 (6/10)
+- style effects damage accessibility or performance without mitigation: max 60 (6/10)
 - dull robotic palette despite expressive references: max 50 (5/10)
 - palette not explained in reference report: max 60 (6/10)
 - all references treated equally without prioritization: max 70 (7/10)
@@ -180,6 +299,10 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - primary object in reference is replaced by grid/cards/dashboard: max 60 (6/10)
 - Literal Target Copy Mode requested but the result changes composition or adds unrelated product UI: max 50 (5/10)
 - landing-page / artistic / creative / image-led request becomes a generic SaaS, blog, or grid page: max 60 (6/10)
+- premium website/landing task skips image-first analysis when visual references or image generation are available: max 60 (6/10)
+- multi-section website reference compressed into one unreadable board: max 60 (6/10)
+- implementation drifts from section references into generic coded layout: max 60 (6/10)
+- hero cluttered with fake pills, system labels, or micro-UI during website image-to-code work: max 60 (6/10)
 - artistic hero followed by generic cards, stacked sections, or normal content blocks: max 70 (7/10)
 - imagery is used as filler instead of the composition driver: max 70 (7/10)
 - image used as decoration only: max 70 (7/10)
@@ -192,6 +315,8 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - desktop viewport shows fewer than 3 meaningful content objects without strong reference justification: max 60 (6/10)
 - oversized image used as filler: max 70 (7/10)
 - desktop layout feels like enlarged mobile layout: max 60 (6/10)
+- mobile app looks like scaled-down website: max 50 (5/10)
+- mobile flow lacks native-feeling nav, safe areas, or thumb-safe actions: max 60 (6/10)
 - containers much larger than their content: max 60 (6/10)
 - reference folder has dense controlled UI but output is sparse/giant: max 50 (5/10)
 - hero consumes the screen and hides core product loop without justification: max 60 (6/10)
@@ -296,6 +421,104 @@ Elite: 90 to 100. Pass: 80 to 89. Needs work: 65 to 79. Fail: below 65.
 - 2: imagery/assets identify the subject, show the product/object, explain state, or help inspection
 - 2: motion communicates state or feedback
 - 1: no generic AI/SaaS decoration
+
+## Additional Required Lenses
+
+These do not change the 100-point total, but they can trigger caps and blockers.
+
+### Design System Quality
+
+- semantic color tokens exist before implementation
+- typography roles are defined
+- spacing/radius/shadow/border logic is coherent
+- chart colors and state colors are intentional
+- component variants are consistent
+- image treatment and motion rules are named
+
+### Visual Spec Completeness
+
+- active dials are declared
+- references and selected mode are named
+- layout skeleton and visual thesis exist
+- interaction and responsive strategy are buildable
+- evidence plan is explicit
+
+### Palette Intelligence
+
+- palette is reference/product-driven
+- accent has a defined role
+- state colors are not confused with brand color
+- contrast risks are named and mitigated
+
+### Chart Intelligence
+
+- chart type matches data shape
+- chart answers a user decision
+- accessibility fallback exists
+- chart bounds and responsive behavior are planned
+
+### Mobile Platform Fit
+
+- mobile is not a scaled-down website
+- nav is thumb-safe and readable
+- safe areas and touch targets are planned
+- 390 px proof exists or blocker is documented
+
+### Frontend Aha Moment
+
+- local/mock data is truthful and isolated in data files
+- core loop works locally
+- visible controls are not dead
+- backend is not added unless requested or contract is approved
+
+### Tool Discipline
+
+- useful context was read first
+- edits are scoped
+- components are not monolithic
+- logs/screenshots/errors guide debugging
+- final proof is concise and concrete
+
+### Brief Inference Quality
+
+- design read names page kind/product type
+- audience is specific
+- vibe language is explicit
+- selected mode/system/aesthetic fits the brief
+- quiet constraints are named
+
+### Anti-AI-Tell Compliance
+
+- visible UI copy has zero em-dashes
+- no generic names, fake-perfect numbers, or generic avatars
+- no fake div screenshots
+- no decorative fake status/session/live chips
+- no scroll cues, section-number eyebrows, or hero version labels without purpose
+- CTA intent and label system are clean
+
+### Landing / Portfolio Craft
+
+- every section has a job
+- generated references are one horizontal image per section
+- section rhythm varies
+- palette and typography stay locked
+- hero stack is disciplined
+- image usage is structural, not decorative
+
+### Motion Craft
+
+- each animation has a purpose
+- frequency profile matches the control
+- duration/easing follows motion standards
+- reduced-motion behavior exists
+- performance avoids layout animation and `transition: all`
+
+### Delight Appropriateness
+
+- delight is earned by user moment
+- personality register fits domain seriousness
+- delight never blocks or delays core task
+- errors and high-stakes flows stay clear before charming
 
 ## Blockers
 

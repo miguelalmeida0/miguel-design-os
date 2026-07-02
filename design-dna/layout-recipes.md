@@ -8,9 +8,12 @@ Use when: the task is a new app, major screen, redesign, gallery, roster, select
 
 Before building:
 
+- create `docs/design/direction-options.md` with Direction A Safe Refined, Direction B Artistic Expressive, and Direction C Unexpected High-Character when no visual direction is already approved
+- stop for Migi to choose A, B, C, or a hybrid
+- create `docs/design/selected-direction.md` after Migi chooses
 - run Visual Concept Gate v2
-- produce 3 radically different rendered concept prototypes
-- screenshot each concept at 1440 / 768 / 390 for the gate to pass
+- produce 3 radically different rendered concept prototypes when visual tooling exists, or concrete direction cards when it does not
+- screenshot each rendered concept at 1440 / 768 / 390 when capture is available
 - wait for Migi to approve one visual direction
 - analyze references by composition, focal object, hidden information, emotional hook, material, texture, interaction model, and what is absent
 
@@ -24,11 +27,43 @@ Build:
 Do not:
 
 - start with reusable app components
+- code before Migi selects a direction unless the direction is already approved
 - ask Migi to approve a text-only art direction
+- make the three directions small variations of the same layout or palette
 - turn cinematic references into dashboards
 - replace one dominant reference object with a grid
 - expose stats when the reference hides information
 - add feature depth before the visual shell works
+
+## Image-First Website Translation
+
+Use when: the task is a premium website, landing page, hero section, marketing site, product page, editorial brand page, portfolio site, or visually important website redesign.
+
+Before building:
+
+- route `skills/image-first-website-to-code/SKILL.md`
+- create `docs/design/image-first-website-analysis.md`
+- generate or select large section-specific references when available
+- use one reference per section when multiple sections are requested
+- create fresh detail/extraction references when text, buttons, spacing, or cards are unclear
+- analyze typography, spacing, buttons, colors, image treatment, component logic, and section rhythm before code
+
+Build:
+
+- implement the visual references as the design source of truth
+- preserve section-specific composition and rhythm
+- keep the hero clean, short, readable, and visible on a small laptop
+- use image roles intentionally
+- remove fake pills, micro-label clutter, and nested-card container prisons
+- screenshot compare the coded result to the reference/analysis
+
+Do not:
+
+- compress the entire website into one tiny unreadable board
+- crop old images for section extraction when a fresh section reference is needed
+- start from generic landing-page components when visual quality is the task
+- replace distinctive sections with repeated left/right blocks or card grids
+- let the coded site drift away from the generated/selected references
 
 ## Reference Folder Mode Selector
 
@@ -60,7 +95,9 @@ Every mode requires Scale Calibration before coding: compare headline size, body
 
 Every mode requires Award-Level Contrast Discipline before coding: identify text backgrounds, classify image/gradient/texture risk, choose protection for text over imagery, protect focal objects, and verify legibility at 1440 / 768 / 390.
 
-Every visual-heavy or dashboard mode requires a craft pass before coding: navigation labels are understandable, responsive nav behavior is designed, toolbars align inputs/buttons, panels stay scan-first, buttons are proportionate, 1440 / 1280 / 1024 / 768 / 390 collision risks are named, palette direction feels human/reference-driven, and fake live/session/status theater is removed unless it has real product meaning.
+Every artistic, cinematic, landing, portfolio, creative, editorial, or experimental mode requires Art-Directed Palette Exploration before locking tokens: propose Safe Refined, Artistic Expressive, and Unexpected High-Character palettes; document base colors, accent logic, image compatibility, contrast risks, concept fit, and AI-default palette avoided; then select one with OKLCH/APCA or equivalent contrast reasoning. Do not default to muddy brown, generic charcoal/orange, AI purple glow, beige premium, terminal green, neon lime, or dull blue-grey SaaS color.
+
+Every visual-heavy or dashboard mode requires a craft pass before coding: navigation labels are understandable, responsive nav behavior is designed, mobile apps with 3+ primary destinations default to bottom navigation, toolbars align inputs/buttons, panels stay scan-first, buttons are proportionate, 1440 / 1280 / 1024 / 768 / 390 collision risks are named, palette direction feels human/reference-driven, and fake live/session/status theater is removed unless it has real product meaning.
 
 Every mode requires P0 Layout Integrity before taste scoring: text stays inside containers, charts stay inside plot/card bounds, card titles are not clipped, cards do not collapse below readable width, labels remain semantic, chips/badges do not collide, forms/buttons stay readable, and the layout is proven at 1440 / 1280 / 1024 / 768 / 390.
 
@@ -128,7 +165,7 @@ Build:
 
 Responsive map:
 
-- 390 px: become prioritized command sections; preserve the focal object and primary action first; use polished bottom or compact top navigation; simplify charts or move details into accordions/lists without losing state or creating collisions.
+- 390 px: become prioritized command sections; preserve the focal object and primary action first; use polished bottom navigation by default for 3+ primary destinations unless a named exception applies; simplify charts or move details into accordions/lists without losing state or creating collisions.
 - 768 px: reduce columns; show focal zone plus one supporting operational zone; avoid cramped desktop grids and nav/toolbars that wrap badly.
 - 1024 px: reorganize multi-column cockpit layouts before panels become too thin.
 - 1280 px: keep dense dashboard structure only if chart labels, cards, queues, and actions remain readable.
@@ -397,3 +434,35 @@ Responsive map:
 - 1440 px: list, detail, and inspector can coexist
 
 Do not: make row hover imply selection unless selection exists.
+## Recipe: Tasteful Image-First Landing Page
+
+Use when:
+
+- landing, marketing, portfolio, or redesign page
+- visual references or generated section references drive the work
+- Migi wants a premium page that does not feel templated
+
+Recipe:
+
+1. Declare the design read.
+2. Set active dials.
+3. Choose one concept spine.
+4. Define section jobs.
+5. Generate or select one horizontal image/reference per section.
+6. For each section, choose composition anchor, background mode, image role, CTA variation, and second-read moment.
+7. Lock palette and typography across the page.
+8. Vary section rhythm.
+9. Keep hero stack disciplined.
+10. Put trust/logo proof below hero, not inside it.
+11. Avoid repeated layout families.
+12. Run anti-AI-tell preflight.
+
+Avoid:
+
+- one unreadable full-page design board
+- Blogspot structure
+- repeated zigzag sections
+- fake div screenshots
+- plain text logo walls
+- decorative scroll cues
+- motion without purpose

@@ -138,6 +138,41 @@ Scope:
 
 This applies whenever Migi points to a folder in `visual-library/approved/` or `visual-library/rejected/`. It does not override Literal Target Copy Mode when Migi explicitly requests exact visual parity.
 
+## System Rejected Direction: Desktop Navigation Copied Onto Mobile
+
+Context:
+
+For applications with 3+ primary destinations, mobile navigation defaults to bottom navigation. Migi's preferred mobile interaction model reserves the top of the screen for branding, current page title, search, context, or hero imagery.
+
+Rejected because:
+
+- desktop navigation copied directly onto mobile wastes valuable vertical space
+- top navigation fights thumb reach in app-like mobile products
+- duplicated top and bottom navigation creates hierarchy confusion
+- tiny icon bars, oversized bars, and generic Android-looking navigation feel unfinished
+- poor safe-area handling breaks gesture navigation and premium feel
+
+Signs:
+
+- desktop top nav remains the primary mobile nav without justification
+- top nav consumes the first mobile viewport in an app with multiple destinations
+- bottom nav is cramped, oversized, poorly aligned, or generic
+- labels are unreadable or icons carry too much unexplained meaning
+- active state looks accidental
+- top and bottom nav duplicate the same primary destinations
+
+Correction:
+
+- default to bottom navigation for mobile apps with 3+ primary destinations
+- use generous touch targets, readable labels, excellent icon/text alignment, and safe-area support
+- choose floating or integrated treatment based on the design direction
+- reserve top mobile space for brand, page title, search, context, or hero imagery
+- allow top navigation only for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites
+
+Scope:
+
+This applies to mobile apps, mobile web apps, app-like dashboards, consumer product flows, onboarding/profile/search/home screens, and any responsive application with 3+ primary destinations. It does not ban top navigation for the listed exceptions.
+
 ## System Rejected Direction: Generic Admin Dashboard
 
 Context:
@@ -253,6 +288,41 @@ Rejected because:
 Correction:
 
 Use accent color selectively for active state, primary action, selected data, or critical status. Support other states with a disciplined state-color system.
+
+## System Rejected Direction: Safe AI Palette Default
+
+Description:
+
+A generated UI palette that uses the same muddy dark brown, charcoal, beige, grey-blue, orange accent, or purple-glow defaults seen in countless AI-generated apps.
+
+Rejected because:
+
+- feels machine-made
+- lacks identity
+- weakens art direction
+- makes creative pages feel generic
+- hides behind "premium" while actually being dull
+- wastes the opportunity for memorable color
+
+Signs:
+
+- muddy brown/black generated-app background
+- generic charcoal plus orange
+- generic blue-grey SaaS
+- AI purple/blue glow
+- washed-out beige premium cliche
+- green terminal palette
+- neon lime tech palette
+- safe neutral surfaces with one predictable accent
+- dull gradients that feel like AI filler
+
+Correction:
+
+Create a palette from the concept, imagery, references, and mood. Explore bolder and more specific color systems while preserving readability and contrast.
+
+Scope:
+
+This applies especially to artistic, cinematic, landing, portfolio, creative, editorial, and experimental interfaces. It does not require every UI to become loud; it requires color to be deliberate when the mode supports it.
 
 ## System Rejected Direction: Decorative Chart Wallpaper
 

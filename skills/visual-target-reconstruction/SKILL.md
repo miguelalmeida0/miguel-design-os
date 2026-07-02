@@ -30,12 +30,14 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 - Reference image, screenshot, URL, or description.
 - Reference folder path and selected Reference Folder Mode when using visual-library folders.
 - `docs/design/reference-usage-report.md` for visual-heavy work using visual-library references.
+- `docs/design/direction-options.md` and `docs/design/selected-direction.md` for new visual-heavy work when Literal Target Copy Mode is not active and no visual direction is already approved.
 - Reference-Locked Build Mode artifacts when a visual-library folder or screenshot set is the design basis: selected anchors, anchor roles, `docs/design/reference-decomposition.md`, `docs/design/design-transfer-spec.md`, and final `docs/qa/reference-match-report.md`.
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is selected.
 - Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is selected.
 - Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used.
 - Scale Calibration section when visual-library references are used.
 - Contrast / Legibility Strategy when image-led or visual-library references are used.
+- Palette Exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental reference work.
 - Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, and Palette Direction for dashboard or visual-heavy work.
 - Layout Integrity Contract and Responsive Breakpoint Proof at 1440, 1280, 1024, 768, and 390 for visual-heavy work.
 - Current product type.
@@ -55,6 +57,10 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/new-app-generation-rules.md`
 - `agent-workflows/visual-target-reconstruction-mode.md`
+- `agent-workflows/image-first-frontend-workflow.md` for image-led landing/portfolio/marketing work
+- `design-dna/art-directed-palette-exploration.md` for artistic, cinematic, landing, portfolio, creative, editorial, or experimental reference work
+- `design-dna/landing-page-craft-rules.md` for landing/portfolio/marketing references
+- `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing references
 - `evaluation/ui-scorecard.md`
 - `docs/inspiration-analysis.md` if it exists for the project
 
@@ -146,8 +152,14 @@ Product logic waits until the pixel-parity shell is approved.
    - Layout Integrity Contract: minimum card widths, tablet/mobile behavior, chart containment, truncation/line-clamp, chip wrapping, badge collision prevention, nav behavior, form/control wrapping, and long-content behavior
    - Responsive Breakpoint Proof: 1440, 1280, 1024, 768, and 390 checks for nav readability, toolbar alignment, card readability, chart containment, overlap, horizontal overflow, and primary-action reachability
    - Palette Direction: reference palette, chosen palette, accent roles, surface system, and why it avoids machine/default color
-11. If references come from discovery work, create or validate `inspiration-manifest.local.json`.
-12. Extract:
+11. If artistic, cinematic, landing, portfolio, creative, editorial, or experimental references are used, complete Art-Directed Palette Exploration:
+   - Safe Refined palette
+   - Artistic Expressive palette
+   - Unexpected High-Character palette
+   - base colors, accent logic, image compatibility, mood, contrast risks, concept fit, and AI-default palette avoided for each
+   - selected palette and OKLCH/APCA or equivalent contrast reasoning
+12. If references come from discovery work, create or validate `inspiration-manifest.local.json`.
+13. Extract:
    - composition
    - focal object
    - material
@@ -157,15 +169,16 @@ Product logic waits until the pixel-parity shell is approved.
    - information hierarchy
    - interaction model
    - desire mechanism
-13. Declare the role of every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
-14. Decide whether major imagery should be environment or asset. If the reference uses a strong background scene, start from the scene before grid/layout.
-15. Reject shallow traits as the concept: dark, neon, cards, glow, gradients, glass, rounded panels, or large text.
-16. Reject folder-vibe design: do not copy mood, color, or category without transferring anchor composition, density, chart behavior, image/object role, palette/material, and responsive mechanics.
-17. Reject dashboard flattening: command-center references must not become generic admin panels, same-weight card fields, text-and-metrics-only dashboards, terminal-ish dark panel spam, murky monochrome palettes, decorative chart collections, image-starved surfaces, cryptic nav, misaligned toolbars, fake live/session status theater, or machine-generated palettes.
-18. Reject scale-only drama: giant headlines, giant images, huge empty containers, and low desktop density are not premium.
-19. Reject hope-based contrast: important text over imagery needs a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image.
-20. Reject background image fear: immersive references should not be reduced to boxed rectangular assets.
-21. For landing-page, creative, artistic, cinematic, editorial, or image-led references, explicitly check:
+14. Declare the role of every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
+15. Decide whether major imagery should be environment or asset. If the reference uses a strong background scene, start from the scene before grid/layout.
+16. Reject shallow traits as the concept: dark, neon, cards, glow, gradients, glass, rounded panels, or large text.
+17. Reject folder-vibe design: do not copy mood, color, or category without transferring anchor composition, density, chart behavior, image/object role, palette/material, and responsive mechanics.
+18. Reject dashboard flattening: command-center references must not become generic admin panels, same-weight card fields, text-and-metrics-only dashboards, terminal-ish dark panel spam, murky monochrome palettes, decorative chart collections, image-starved surfaces, cryptic nav, misaligned toolbars, fake live/session status theater, or machine-generated palettes.
+19. Reject scale-only drama: giant headlines, giant images, huge empty containers, and low desktop density are not premium.
+20. Reject hope-based contrast: important text over imagery needs a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image.
+21. Reject background image fear: immersive references should not be reduced to boxed rectangular assets.
+22. Reject safe AI palette defaults: artistic, landing, portfolio, cinematic, creative, editorial, and experimental reference work must not default to muddy brown/black, generic charcoal/orange, AI purple glow, beige premium, terminal green, neon lime, blue-grey SaaS, or safe neutral with one predictable accent.
+23. For landing-page, creative, artistic, cinematic, editorial, or image-led references, explicitly check:
    - composition was extracted, not just colors
    - image dominance is preserved
    - image is used as environment when the reference supports it
@@ -174,19 +187,25 @@ Product logic waits until the pixel-parity shell is approved.
    - generic section stacking is absent
    - visual mood continues after the hero
    - the screen behaves like a poster/editorial spread
-22. Define what to copy, avoid, and translate.
-23. Run Visual Concept Gate v2 if the work is visual-heavy: exactly 3 rendered concepts, preview routes, and `1440 / 768 / 390` screenshot files.
-24. Stop for Migi approval after showing the rendered concepts.
-25. Build a static visual shell from the approved concept before product logic.
-26. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
-27. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
-28. Compare the shell against the reference and approved concept by selected anchors, transferred mechanics, composition, focal object, hidden information, emotional hook, image environment, scale/density, contrast strategy, navigation clarity, toolbar alignment, text density, button proportions, layout integrity, responsive breakpoint proof, responsive collision behavior, palette direction, dashboard command-surface strategy, dashboard palette strategy, graph system, and image/object/media strategy when applicable.
-29. Validate `asset-manifest.local.json` when production imagery is used.
-30. Verify the core loop before claiming the visual shell supports the product promise.
-31. Verify persistence truth for uploaded or user-generated data.
-32. Create or update `done-report.local.json` from screenshot evidence.
-33. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-34. Patch the shell before adding feature depth.
+24. Define what to copy, avoid, and translate.
+25. For landing, portfolio, marketing, and imagegen reference work:
+   - use one horizontal image/reference per section
+   - never compress multiple sections into one unreadable board
+   - define section job, composition anchor, background mode, CTA variation, and second-read moment
+   - run anti-AI-tell preflight before implementation
+26. If this is new visual-heavy work and Literal Target Copy Mode is not active, run the Three-Direction Mockup Gate before implementation: create `docs/design/direction-options.md`, stop for Migi to choose A, B, C, or a hybrid, then create `docs/design/selected-direction.md`.
+27. Run Visual Concept Gate v2 if the work is visual-heavy: exactly 3 rendered concepts, preview routes, and `1440 / 768 / 390` screenshot files when tooling exists.
+28. Stop for Migi approval after showing the directions or rendered concepts.
+29. Build a static visual shell from the approved direction/concept before product logic.
+30. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
+31. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
+32. Compare the shell against the reference and approved concept by selected anchors, transferred mechanics, composition, focal object, hidden information, emotional hook, image environment, scale/density, contrast strategy, navigation clarity, toolbar alignment, text density, button proportions, layout integrity, responsive breakpoint proof, responsive collision behavior, palette direction, dashboard command-surface strategy, dashboard palette strategy, graph system, and image/object/media strategy when applicable.
+33. Validate `asset-manifest.local.json` when production imagery is used.
+34. Verify the core loop before claiming the visual shell supports the product promise.
+35. Verify persistence truth for uploaded or user-generated data.
+36. Create or update `done-report.local.json` from screenshot evidence.
+37. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+38. Patch the shell before adding feature depth.
 
 ## Stop Conditions
 
@@ -203,6 +222,10 @@ Product logic waits until the pixel-parity shell is approved.
 - Stop if Command Center / Dashboard Mode has no Dashboard Palette Strategy or Graph System Strategy.
 - Stop if dashboard or visual-heavy work has no Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, or Palette Direction.
 - Stop if visual-heavy work has no Layout Integrity Contract or Responsive Breakpoint Proof.
+- Stop if new visual-heavy work is not Literal Target Copy Mode, no visual direction is already approved, and `docs/design/direction-options.md` is missing.
+- Stop if implementation starts before Migi chooses Direction A, B, C, or a hybrid.
+- Stop if Migi chooses a direction but `docs/design/selected-direction.md` is missing.
+- Stop if artistic, landing, portfolio, cinematic, creative, editorial, or experimental reference work has no Safe Refined, Artistic Expressive, and Unexpected High-Character palette exploration.
 - Stop if command-center references become generic SaaS/admin, same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only panels, decorative charts, image-starved surfaces, or no focal attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if nav is cryptic, responsive layout collides, fake session/live status appears, text-heavy containers kill scanability, toolbar controls misalign, or palette feels robotic/generic.
@@ -253,6 +276,8 @@ Reference-Locked Build Mode:
 Reference anchors:
 Reference decomposition:
 Design transfer spec:
+Direction options:
+Selected direction:
 Reference match report:
 Dashboard command-surface strategy:
 Dashboard palette strategy:
@@ -270,6 +295,7 @@ Responsive collision checks:
 Layout integrity contract:
 Responsive breakpoint proof:
 Palette direction:
+Palette exploration:
 Rendered concepts:
 Approved concept:
 Literal Target Copy Mode:
@@ -298,6 +324,13 @@ Patch needed:
 - Agent copies colors but not structure: max score 6.
 - Agent ignores image/object/chart behavior from anchors: max score 6.
 - No final reference-match report: max score 6.
+- Visual-heavy new app implemented without direction-options gate: max score 6.
+- Agent provides only one direction when direction is not approved: max score 6.
+- Three directions are minor variations of same layout/palette: max score 5.
+- Agent codes before Migi selects direction: max score 5.
+- Direction options lack palette/image/layout/motion strategy: max score 6.
+- Agent ignores selected direction during implementation: max score 5.
+- No selected-direction.md after Migi chooses: max score 7.
 - Missing Dashboard Command-Surface Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Dashboard Palette Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Graph System Strategy for Command Center / Dashboard Mode: max score 6.
@@ -362,6 +395,13 @@ Patch needed:
 - Fake live/session status UI: max score 5.
 - Decorative telemetry/status chips: max score 6.
 - Palette feels machine-generated/generic: max score 6.
+- Artistic/landing/portfolio/cinematic/experimental reference work uses safe AI-default muddy palette without exploration: max score 6.
+- Palette feels machine-generated/generic despite expressive mode: max score 5.
+- No palette exploration documented for artistic/cinematic mode: max score 6.
+- Color palette is readable but conceptually boring in an art-directed page: max score 7.
+- Palette chosen without relation to imagery, references, or concept: max score 6.
+- Bold palette used but contrast/readability fails: max score 5.
+- Agent defaults to charcoal/brown/orange generated-app palette again: max score 5.
 - Text visibly escapes container: max score 2.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.

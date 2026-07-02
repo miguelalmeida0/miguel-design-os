@@ -34,6 +34,15 @@ Each anchor must have one or more roles:
 
 For each anchor, state why it was selected and what it is allowed to teach.
 
+For landing, marketing, portfolio, and image-led references, each anchor must also identify:
+
+- section job
+- composition anchor
+- background mode
+- CTA behavior
+- image role
+- second-read moment
+
 ### 2. Create Reference Decomposition
 
 Create:
@@ -81,6 +90,28 @@ The spec must translate the reference mechanics into the target app. It must inc
 - responsive strategy
 - forbidden drift
 - acceptance criteria
+- anti-AI-tell checks when landing, portfolio, or marketing
+- motion/delight strategy when relevant
+
+### 4. Run The Direction Gate When Direction Is Not Approved
+
+If this is a new visual-heavy app, landing page, portfolio, mobile app, dashboard redesign, or artistic interface and Migi has not already approved a direction, create:
+
+`docs/design/direction-options.md`
+
+The three directions must be built from the selected reference anchors, not from vague folder mood:
+
+- Direction A - Safe Refined
+- Direction B - Artistic Expressive
+- Direction C - Unexpected High-Character
+
+Each direction must explain which anchor mechanics it transfers: composition, palette/material, typography, density, image/object/media behavior, graph/component behavior, responsive behavior, and motion cues.
+
+After Migi chooses A, B, C, or a hybrid, create:
+
+`docs/design/selected-direction.md`
+
+Do not implement until the selected or hybrid direction is documented.
 
 ## Build Segments
 
@@ -120,6 +151,9 @@ Include:
 - Stop if `docs/design/reference-decomposition.md` does not exist before coding.
 - Stop if `docs/design/design-transfer-spec.md` does not exist before coding.
 - Stop if the design transfer spec only describes vibe, mood, or style tokens.
+- Stop if direction is unapproved and `docs/design/direction-options.md` is missing.
+- Stop if Migi has not selected Direction A, B, C, or a hybrid.
+- Stop if Migi selected a direction but `docs/design/selected-direction.md` is missing.
 - Stop if implementation starts from generic layout instead of the spec.
 - Stop if final handoff has no `docs/qa/reference-match-report.md`.
 
@@ -131,6 +165,8 @@ Reference anchors:
 Anchor roles:
 Reference decomposition:
 Design transfer spec:
+Direction options:
+Selected direction:
 Build segments completed:
 Reference match report:
 Known mismatches:

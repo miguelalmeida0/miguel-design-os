@@ -11,16 +11,34 @@ Use this before building or reviewing any frontend.
 5. Classify the task: bug fix, technical refactor, copy/content edit, frontend QA, visual-heavy UI, new app, redesign, selection/gallery/roster/product-discovery, reference-folder mode, Tailwind migration, or truthful-state/naming.
 6. Inspect the current project type, framework, routes, components, styling system, and tokens.
 7. Define a project-specific visual identity before palette/layout.
-8. If Migi points to a visual-library reference folder, activate the matching Reference Folder Mode before choosing layout.
-9. If Migi asks to use a specific visual-library folder or screenshots as the design basis, activate Reference-Locked Build Mode before coding.
-10. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
-11. Use golden projects and visual-library screenshots as evidence only; do not copy old apps literally unless Literal Target Copy Mode is active.
-12. Use screenshots as evidence for the current UI, not templates.
-13. Capture 390, 768, and 1440 px when the UI can run.
-14. Run `evaluation/ui-scorecard.md` before finishing.
-15. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
-16. No done without evidence: visual UI work requires a validated done report before final handoff.
-17. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must become a Design OS rule, tool, prompt, schema, checklist, or explicit open gap.
+8. Declare active design dials from `design-dna/design-generation-dials.md`.
+9. If Migi points to a visual-library reference folder, activate the matching Reference Folder Mode before choosing layout.
+10. If Migi asks to use a specific visual-library folder or screenshots as the design basis, activate Reference-Locked Build Mode before coding.
+11. For new visual-heavy apps, landing pages, portfolios, mobile apps, dashboard redesigns, or artistic interfaces with no approved direction, create `docs/design/direction-options.md`, then stop for Migi to choose A, B, C, or a hybrid.
+12. After Migi chooses, create `docs/design/selected-direction.md`.
+13. For visual-heavy work, route `skills/visual-spec-compiler/SKILL.md` and create `docs/design/visual-spec.md` before implementation.
+14. For significant UI work, define design-system direction from `design-dna/design-system-first-rules.md` before components.
+15. For artistic, cinematic, landing, portfolio, creative, editorial, or experimental work, read `design-dna/art-directed-palette-exploration.md` and include 3 palette directions before locking tokens.
+16. For significant UI palettes, contrast repair, dark mode, or chart/state colors, route `skills/oklch-contrast-palette/SKILL.md` and check OKLCH/APCA before final palette approval.
+17. For frontend MVP/new app work, use `agent-workflows/frontend-aha-moment-workflow.md`: local truthful mock data, working visible interactions, and no backend unless requested.
+18. For landing, portfolio, marketing, or redesign work, read `design-dna/brief-inference-rules.md` and state the design read before coding.
+19. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
+20. If charts, analytics, BI, monitoring, forecast, maps, funnels, or graph-rich dashboards are involved, route chart skills and create a chart-selection report before implementing meaningful charts.
+21. If the task needs a deliberate style family or taxonomy-driven art direction, route `skills/visual-style-selection/SKILL.md` and create a visual-style selection report before tokens are locked.
+22. If the task is a premium website, landing page, hero, marketing site, product page, editorial/portfolio page, or website image-to-code task, use `agent-workflows/image-first-frontend-workflow.md`, route image-first skills, and create image-first website analysis before coding.
+23. For landing, portfolio, marketing, and redesign work, route `skills/landing-page-craft-director/SKILL.md` and `skills/anti-ai-tell-preflight/SKILL.md`.
+24. If motion is planned or animation code changes, route `skills/motion-craft-director/SKILL.md` or `skills/review-animations/SKILL.md`; use `skills/animation-vocabulary/SKILL.md` only to name/specify motion.
+25. If adding delight/personality, route `skills/delight-opportunity-director/SKILL.md`.
+26. If broad UI/UX craft, typography, pseudo-elements, audio feedback, predictive prefetching, UX laws, or visual design rules are relevant, route `skills/userinterface-wiki/SKILL.md`.
+27. After main layout exists and before screenshot review, route `skills/make-interfaces-feel-better/SKILL.md` when the UI feels stiff, dead, generic, unresponsive, or under-polished.
+28. If the task is mobile-first, read `design-dna/mobile-product-rules.md` and create or fill `docs/design/mobile-flow-spec.md`.
+29. Use golden projects and visual-library screenshots as evidence only; do not copy old apps literally unless Literal Target Copy Mode is active.
+30. Use screenshots as evidence for the current UI, not templates.
+31. Capture 390, 768, and 1440 px when the UI can run.
+32. Run `evaluation/ui-scorecard.md` before finishing.
+33. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
+34. No done without evidence: visual UI work requires a validated done report before final handoff.
+35. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must become a Design OS rule, tool, prompt, schema, checklist, or explicit open gap.
 
 Literal Target Copy Mode overrides product thinking. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, do not run the 3-concept gate, create new art direction, expand features, add useful panels, reinterpret, or improve. The only goal is visual parity with the supplied target: identify target screens, reconstruct visible composition, exclude browser chrome/editor/watermark artifacts, build the static shell first, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences. Product logic waits until the pixel-parity shell is approved.
 
@@ -39,6 +57,30 @@ Migi strongly rejects poor contrast and unreadable text over images. Artistic/im
 Migi strongly rejects cryptic navigation, fake live/session indicators, misaligned toolbars, text-heavy cards, oversized full-width buttons, responsive collisions, and machine-looking color palettes. Every app must have understandable nav, crafted responsive navigation, aligned input/action groups, scan-first containers, proportionate buttons, collision-free resizing, and a human reference-driven palette.
 
 Migi treats layout integrity as P0. Text escaping containers, chart bars overflowing, clipped card titles, overlapping badges, unreadable squeezed cards, broken responsive nav, labels collapsing into meaningless fragments, or any collision on resize are hard failures before taste is evaluated. Responsive design must adapt, not squeeze.
+
+Migi's chart rule is now data-shape first. Charts must be selected from user decision, data shape, volume, accessibility, and interaction need. Decorative chart wallpaper, chart-lite dashboards, inaccessible color-only charts, and graphs that overflow their containers are blockers.
+
+Migi's style rule is now taxonomy-constrained. Pick one primary style family and at most one supporting treatment from product fit, reference mode, accessibility, performance, and rejected directions. Do not mash aesthetics together or use a style because it looks cool in isolation.
+
+For premium websites and landing pages, image-first workflow is preferred when image generation or strong visual references are available: section references first, deep extraction second, implementation third. Avoid compressed multi-section boards, cropped section cutouts, nested-card prisons, fake micro-UI clutter, and coded drift away from the reference.
+
+World-class local builder loop: classify task mode, declare active dials, select references/image-first mode, create 3 direction options and stop for Migi when direction is not already approved, document selected direction, compile `docs/design/visual-spec.md`, define design-system tokens, check OKLCH/APCA contrast, implement a frontend aha moment, apply interface-feel polish, review motion if present, verify interactions, screenshot QA, scorecard/done report, and patch Design OS from failures.
+
+Three-Direction Mockup Gate: for new visual-heavy apps, landing pages, portfolios, mobile apps, dashboard redesigns, and artistic interfaces, Migi expects 3 distinct mockup/design directions first: Safe Refined, Artistic Expressive, and Unexpected High-Character. Each needs vibe, palette, layout, imagery, motion, tradeoffs, and risks. The agent must stop for selection before coding. No direct implementation unless the visual direction is already approved.
+
+Design-system-first is a hard gate for significant UI: semantic color tokens, typography roles, spacing scale, radius logic, shadow/elevation, borders/dividers, chart colors, state colors, component variants, image treatment, and motion rules must exist before implementation.
+
+OKLCH/APCA color rule: significant UI palettes need semantic tokens, numeric scales, documented foreground/background contrast targets, and lightness-based repairs. APCA is the default perceptual model; WCAG 2 remains required for formal compliance claims. Do not repair contrast by random hex or chroma tweaks.
+
+Art-directed palette exploration rule: for artistic, cinematic, landing, portfolio, creative, editorial, and experimental interfaces, the palette must be actively designed. Explore safe refined, artistic expressive, and unexpected high-character palettes before locking tokens. Avoid muddy generated-app browns, generic charcoal/orange, AI purple glow, blue-grey SaaS, beige premium cliche, terminal green, neon lime, and predictable one-accent neutrals.
+
+Frontend aha moment rule: local/mock data is allowed, but it must be truthful and live in data/mock files, not buried in components. Every visible interaction must work locally. Do not add backend until the frontend loop is compelling unless Migi requested backend.
+
+Interface feel rule: after the main layout and interactions exist, run a polish pass for active/focus states, loading/empty/error states, perceived performance, spacing rhythm, numeric alignment, dead surfaces, and jank before screenshot scorecard review.
+
+Taste preflight rule: landing, portfolio, marketing, and redesign work must declare a design read, avoid common AI tells, use one horizontal image/reference per generated section, keep CTA intent clean, avoid visible em-dashes, fake screenshots, generic names, fake numbers, section-number eyebrows, scroll cues, hero clutter, and repeated generic sections.
+
+Motion craft rule: motion must serve feedback, state, spatial continuity, hierarchy, storytelling, explanation, or perceived performance. High-frequency actions should not animate. UI motion should generally stay under 300ms, avoid ease-in, avoid scale(0), avoid transition all, and define reduced-motion behavior.
 
 When Migi asks for artistic, landing-page, cinematic, or image-led work, do not trap imagery in rectangular cards by default. If references use immersive image scenes, treat the image as the page environment: full-bleed, oversized, masked, layered, or composition-driving. Image-led means the page is built around the image, not that an image is inserted into a grid.
 
@@ -68,6 +110,12 @@ Reference-Locked Build Mode:
 Reference anchors:
 Reference decomposition:
 Design transfer spec:
+Active design dials:
+Direction options:
+Selected direction:
+Design read:
+Visual spec:
+Design-system direction:
 Dashboard attraction zone:
 Dashboard panel mix:
 Dashboard chart forms:
@@ -75,6 +123,24 @@ Dashboard palette strategy:
 Dashboard image/object strategy:
 Dashboard live/motion strategy:
 Dashboard calm/busy rhythm:
+Chart selection report:
+Chart data shapes:
+Chart accessibility fallback:
+Visual style selection report:
+Primary style family:
+Style token plan:
+Image-first website analysis:
+Image-first workflow:
+Anti-AI-tell preflight:
+Motion strategy:
+Delight strategy:
+Section references:
+Section extraction status:
+Mobile product rules:
+Mobile flow spec:
+Frontend aha moment:
+Mock data location:
+Visible interactions verified:
 Selected skill/playbook:
 Archetype:
 Layout recipe:
@@ -91,6 +157,9 @@ Responsive collision checks:
 Layout integrity contract:
 Responsive breakpoint proof:
 Palette direction:
+Palette exploration:
+OKLCH / APCA palette pass:
+Interface feel pass:
 Visual Concept Gate status:
 Selected rendered concept:
 Concept preview screenshots:
@@ -121,12 +190,20 @@ Persistence contract:
 - Reference-Locked Build Mode is not optional when a folder or screenshot set is the basis for the design: select 3-5 exact anchors, decompose them, translate them into a Design Transfer Spec, and compare the final output back to those anchors.
 - Dashboard references require a composed command surface: one attraction zone plus useful metrics, charts, queues/lists, imagery/content, controls, and actions. Do not ship generic admin templates, same-weight widget fields, text-and-metrics-only panels, murky terminal-green palettes, decorative chart wallpaper, tiny-avatar-only media use, or dark terminal card spam.
 - Dashboard Visual Energy Rule: utility is not enough. Dashboard mode needs graph richness, palette discipline, purposeful image/object/media anchors, varied material surfaces, and live-state signals when the product represents monitoring, activity, or freshness.
+- Data Visualization Selection Rule: every meaningful chart must match data shape and user decision. Choose line, bar, stacked/waffle, scatter, heatmap, map, funnel/Sankey, bullet/gauge, confidence band, anomaly line, treemap, waterfall, radar, candlestick, network, box plot, decomposition tree, streaming, sentiment list, or process visualization only when the matrix supports it.
+- Visual Style Selection Rule: use the style taxonomy as a constraint system. Choose a primary style family, define tokens/effects, reject mismatched styles, and check accessibility/performance/mobile fit before implementation.
+- Image-First Website Rule: for premium website/landing work, generate or select large section-specific references, analyze text/type/spacing/buttons/colors/images, then code faithfully. Do not code first from generic web templates when visual quality is central.
+- Visual Spec Rule: visual-heavy implementation is blocked until `docs/design/visual-spec.md` exists and names mode, dials, references, visual thesis, layout, design system, interactions, responsive strategy, and evidence plan.
+- Direction Gate Rule: visual-heavy implementation is blocked until `docs/design/direction-options.md` exists, Migi chooses a direction, and `docs/design/selected-direction.md` documents the selection or hybrid.
+- Design-System-First Rule: no significant UI before semantic tokens and component variants are defined. Avoid random Tailwind color chaos and one-off component styling.
+- Frontend Aha Rule: the first local version should prove the product loop with truthful mock data and working interactions before backend expansion.
 - Every major image needs a declared role: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer. Images must not be random decoration.
 - Image as Environment, Not Rectangular Asset: when references use a dominant atmospheric scene, explore full-bleed, oversized, masked, layered, edge-to-edge, or backdrop treatment before defaulting to a boxed image. The image should feel like the page was composed around it.
 - No AI Scale Inflation: calibrate headline size, body text, containers, cards, images, spacing, visible content objects, and meaningful information above the fold against the selected reference folder. The goal is controlled scale, useful density, hierarchy with range, and no giant empty furniture.
 - Award-Level Contrast Discipline: every important text layer needs a stable readable background. For text over imagery, use deliberate protection such as a scrim, plate, vignette, mask, safe image zone, deliberate crop, or move text outside the image.
 - No Cryptic Navigation: primary navigation must be immediately understandable. Do not ship unexplained abbreviations like `CMD`, `SIG`, `CMP`, `BRF`, vague labels like `SD LOCAL`, or icon-only navigation without clear labels, tooltips, or obvious context.
-- Crafted Responsive Navigation: desktop, tablet, and mobile navigation must each be intentionally designed. Mobile nav should become a polished bottom or compact top system with readable labels, clear selected state, comfortable touch targets, and no collision with content.
+- Mobile Navigation Defaults: for applications with 3+ primary destinations, mobile navigation defaults to a bottom navigation bar. Desktop may use top nav or left sidebar; tablet adapts; mobile top nav is reserved for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites. The top of app screens should hold branding, page title, search, context, or hero imagery, not primary navigation.
+- Crafted Responsive Navigation: desktop, tablet, and mobile navigation must each be intentionally designed. Mobile bottom nav must be beautifully proportioned, safe-area aware, readable, touch-generous, never cramped, never oversized, and never generic.
 - Toolbar Alignment Discipline: search inputs, filters, and action buttons in one toolbar need a clean height/baseline system, consistent gaps, and graceful wrapping.
 - Container Text Weight Limit: product/dashboard panels should be scan-first. Use labels, values, summaries, metadata chips, and progressive disclosure instead of paragraphs inside boxes.
 - Button Proportion Discipline: button width should usually follow content. Full-width buttons are allowed only when the layout clearly supports them; long desktop pills that dominate more than their action deserves are a craft failure.
@@ -205,6 +282,12 @@ Do not finish until:
 - reference usage report includes Layout Integrity Contract and Responsive Breakpoint Proof for visual-heavy work
 - reference usage report includes Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is used
 - reference usage report includes Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is used
+- chart-selection report exists before meaningful dashboard/analytics charts are implemented
+- visual-style selection report exists before style-family/taxonomy-driven visual implementation
+- image-first website analysis exists before premium website/landing image-to-code implementation
+- visual spec exists before visual-heavy implementation
+- design-system direction exists before significant UI implementation
+- frontend aha moment has local/mock data path and verified visible interactions before backend handoff
 - Visual Concept Gate was completed with 3 rendered concepts, viewport screenshots, and Migi approval when visual-heavy work required it, or Literal Target Copy Mode was explicitly requested and screenshot comparison reports exact differences
 - screenshots exist or blocker is documented
 - done report validates for visual UI work

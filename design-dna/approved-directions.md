@@ -243,12 +243,14 @@ What works:
 
 - desktop top nav, side rail, or hybrid chosen for the product
 - tablet nav that preserves spacing and label readability
-- mobile bottom nav or compact top nav with balanced spacing, touch-safe targets, clear labels, and visible selected state
+- mobile bottom navigation by default for applications with 3+ primary destinations
+- compact top navigation only for documented exceptions: documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites
+- bottom nav with balanced spacing, touch-safe targets, clear labels, excellent icon/text alignment, safe-area support, and visible selected state
 - nav that never overlaps content or becomes oversized pills fighting the layout
 
 Future-agent rule:
 
-Mobile navigation should feel as polished as a strong consumer app, even in a dashboard or command surface.
+Mobile navigation should feel as polished as a strong consumer app, even in a dashboard or command surface. The top of mobile app screens should be reserved for branding, current page title, search, context, or hero imagery, not primary navigation.
 
 ## Approved: Scan-First Product Panels
 
@@ -281,6 +283,31 @@ What works:
 Future-agent rule:
 
 Palette must have an argument. If the color system feels emitted by a template, redo it before calling the UI polished.
+
+## Approved: Expressive Balanced Palette
+
+Description:
+
+A palette that feels original and memorable while still readable, controlled, and conceptually appropriate.
+
+What works:
+
+- surprising but harmonious color relationships
+- strong foreground/background contrast
+- color tied to the subject matter
+- image-compatible tones
+- controlled accents
+- semantic state colors
+- no random rainbow noise
+- no generic generated-app mud
+
+Why it works:
+
+It gives the product a visual identity instead of making it look like another template.
+
+Future-agent rule:
+
+For artistic, cinematic, landing, portfolio, creative, editorial, and experimental modes, explore expressive palettes instead of automatically choosing the safest neutral. Bold color is allowed when OKLCH/APCA contrast and readability hold.
 
 ## Approved: Polished Functional Dashboard
 
@@ -393,3 +420,84 @@ What works:
 Future-agent rule:
 
 If the reference uses a strong background scene, start from the scene. Do not start from a grid and insert an image later.
+
+## Approved: Data-Shape-First Chart Systems
+
+Charts become strong when they answer a product question and match the underlying data shape.
+
+What works:
+
+- chart type selected from trend, comparison, proportion, correlation, intensity, geography, flow, target, forecast, anomaly, hierarchy, network, distribution, finance, real-time, or sentiment data
+- explicit accessibility fallback before implementation
+- labels, legends, values, and interaction that help decisions
+- graph variety in dashboards only when each visualization has a distinct job
+- chart bounds planned before responsive implementation
+
+Future-agent rule:
+
+Do not add charts because dashboards are supposed to have charts. Select the chart type from data shape, user decision, volume, accessibility, and interaction need.
+
+## Approved: Taxonomy-Constrained Style Direction
+
+A strong visual style is chosen deliberately, not mixed from random aesthetic keywords.
+
+What works:
+
+- one primary style family
+- at most one supporting treatment
+- token extraction before CSS implementation
+- effects and motion tied to product role
+- accessibility, performance, mobile, and conversion fit checked before coding
+- mismatched styles explicitly rejected
+
+Future-agent rule:
+
+Use the style taxonomy as a constraint system. Style must support product purpose and selected references, not decorate around weak layout.
+
+## Approved: Image-First Website Translation
+
+For premium websites and landing pages, high-quality section references should drive implementation.
+
+What works:
+
+- large section-specific references
+- fresh detail/extraction images when typography or components are unclear
+- deep analysis of text, type, spacing, buttons, colors, imagery, and section rhythm
+- code that preserves the source composition instead of drifting into generic sections
+- clean, readable hero sections with sparse meaningful UI
+
+Future-agent rule:
+
+When visual website quality is central and image generation or strong references are available, generate or select the visual references first, analyze second, and implement third.
+## Approved: Tasteful Landing Craft
+
+Landing, portfolio, and marketing pages should feel read, not generated. The agent starts with a design read, chooses a clear system or aesthetic, locks palette and typography, gives every section a job, and uses images as structural material.
+
+What works:
+
+- one visual concept spine across the page
+- section rhythm varies without becoming random
+- hero is disciplined and fits the viewport
+- CTA intent is consistent
+- real or generated images carry actual composition
+- motion is purposeful and restrained
+- small details feel invisible but correct
+
+Future-agent rule:
+For landing/portfolio/marketing work, run anti-AI-tell preflight before coding and again before handoff.
+
+## Approved: Purposeful Motion Craft
+
+Motion should make the interface feel responsive, coherent, and alive only where useful.
+
+What works:
+
+- press feedback under 160ms
+- popovers grow from triggers
+- transitions are interruptible
+- movement uses transform and opacity by default
+- reduced-motion behavior is defined
+- one signature brand moment beats motion everywhere
+
+Future-agent rule:
+Every animation needs a reason: feedback, state, spatial continuity, hierarchy, story, explanation, or perceived performance.

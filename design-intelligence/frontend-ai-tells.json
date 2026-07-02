@@ -1,0 +1,87 @@
+{
+  "version": "2026-07-02",
+  "categories": {
+    "visualTells": [
+      "generic AI-purple / blue gradient default",
+      "generic glassmorphism everywhere",
+      "neon or outer glow used as polish",
+      "pure black without material nuance",
+      "fake div-based product screenshots",
+      "decorative colored status dots without semantic state"
+    ],
+    "paletteTells": [
+      "muddy brown or black generated-app background",
+      "generic charcoal plus orange",
+      "generic blue-grey SaaS palette",
+      "AI purple or blue glow used as identity",
+      "washed-out beige premium cliche",
+      "green terminal palette without reference support",
+      "neon lime tech palette without reference support",
+      "safe neutral surfaces with one predictable accent",
+      "artistic or landing page has no palette exploration"
+    ],
+    "typographyTells": [
+      "Inter used as premium default without reason",
+      "serif chosen automatically for premium or creative",
+      "oversized headline without layout reason",
+      "em-dashes in visible UI copy",
+      "section-number eyebrows",
+      "uppercase eyebrow above every section"
+    ],
+    "copyTells": [
+      "generic names such as Acme, Nexus, SmartFlow, Cloudly, John Doe",
+      "fake-perfect numbers or fake spec precision",
+      "poetic micro-meta labels that do not help the user",
+      "photo-credit captions used as decoration",
+      "fake live/session/version labels"
+    ],
+    "layoutTells": [
+      "three equal feature cards as default",
+      "endless centered sections",
+      "repeated same-family sections",
+      "zigzag image/text sections beyond two in a row",
+      "split-header pattern used as filler",
+      "container/card soup"
+    ],
+    "heroTells": [
+      "left-text/right-image chosen by default",
+      "hero overstuffed with micro-labels, trust, pricing, and features",
+      "hero version label without launch context",
+      "scroll cue in hero",
+      "trust/logo wall inside hero"
+    ],
+    "ctaTells": [
+      "duplicate CTA intent",
+      "CTA text wraps on desktop",
+      "weak button contrast",
+      "too many competing CTAs"
+    ],
+    "logoSocialProofTells": [
+      "plain text wordmark wall",
+      "logo labels below logos",
+      "quietly trusted by wording",
+      "social-proof avatars with generic eggs"
+    ],
+    "animationTells": [
+      "fade-and-rise everywhere",
+      "animation with no purpose",
+      "ease-in on UI motion",
+      "scale(0) entrance",
+      "transition: all",
+      "missing prefers-reduced-motion"
+    ],
+    "dashboardTells": [
+      "dashboard inherits landing-page Taste rules blindly",
+      "terminal panel spam",
+      "same-weight card field",
+      "chart wallpaper",
+      "fake live telemetry"
+    ],
+    "mobileTells": [
+      "desktop layout squeezed into phone",
+      "touch targets too small",
+      "bottom nav cramped or cryptic",
+      "hover-only behavior on touch"
+    ]
+  }
+}

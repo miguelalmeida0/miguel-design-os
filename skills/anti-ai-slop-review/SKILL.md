@@ -46,6 +46,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/anti-patterns.md`
 - `design-dna/rejected-directions.md`
+- `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing work
+- `design-dna/motion-and-delight-rules.md` when motion exists
 - `rules/anti-patterns.md`
 - `evaluation/ui-scorecard.md`
 
@@ -85,6 +87,10 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - design transfer spec missing before coding
    - output copies mood but not anchor composition
    - output copies color but not structure
+   - Three-Direction Mockup Gate skipped for new visual-heavy work
+   - direction options are minor variants of the same layout or palette
+   - implementation started before Migi selected a direction
+   - selected direction ignored during implementation
    - image/object/chart behavior from selected anchors ignored
    - missing final reference-match report
    - references blended equally with no priority
@@ -93,6 +99,10 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - generic dashboard energy
    - cryptic navigation labels such as `CMD`, `SIG`, `CMP`, `BRF`, or vague system labels
    - broken responsive navigation, cramped mobile nav, or nav overlapping content
+   - desktop/top navigation copied directly onto mobile despite 3+ primary destinations
+   - top navigation stealing mobile vertical space that should hold brand, title, search, context, or hero imagery
+   - generic, cramped, oversized, poorly aligned, or safe-area-hostile bottom navigation
+   - duplicated top and bottom navigation for the same primary destinations
    - misaligned search/filter/action toolbar controls
    - text-heavy containers that feel like prose boxes
    - oversized full-width buttons without layout justification
@@ -104,6 +114,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - semantic label collapse into fragments such as `C`, `U`, or `?`
    - fake live/session/status/telemetry UI with no user-facing product meaning
    - machine-generated palette: dull robotic color, terminal green, AI purple, neon lime, or generic blue/grey defaults
+   - safe AI-default palette in expressive modes: muddy brown, dull charcoal, beige, grey-blue, orange accent, purple glow, terminal green, neon lime, or safe neutral plus predictable accent
+   - no palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work
    - dashboard-specific slop:
      - generic SaaS/admin template
      - same-weight card/widget field
@@ -132,7 +144,24 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
      - dashboard furniture avoided
      - generic section stacking avoided
      - visual mood continued after the hero
-     - screen treated like a poster/editorial spread
+      - screen treated like a poster/editorial spread
+   - Taste-style AI tells for landing/portfolio/marketing:
+     - em-dashes in visible UI copy
+     - fake div-based screenshots
+     - generic names or fake-perfect numbers
+     - duplicate CTA intent
+     - CTA wrapping on desktop
+     - repeated same-family sections
+     - hero clutter and scroll cues
+     - logo walls made of plain text wordmarks
+     - fake status/session/live chips
+   - motion/delight slop:
+     - animation with no purpose
+     - ease-in UI motion
+     - scale(0) entrances
+     - transition: all
+     - high-frequency controls animated
+     - delight blocking the task
 3. Apply score caps before giving praise.
 4. Convert each failure into a concrete correction.
 5. Prioritize structural fixes before color or animation.
@@ -146,6 +175,9 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 ## Stop Conditions
 
 - Stop if screenshot evidence is missing and the UI can run.
+- Stop if a new visual-heavy app, landing page, portfolio, mobile app, dashboard redesign, or artistic interface skipped `docs/design/direction-options.md` and no visual direction was already approved.
+- Stop if implementation starts before Migi chooses A, B, C, or a hybrid.
+- Stop if `docs/design/selected-direction.md` is missing after Migi chooses.
 - Stop if the design has no clear primary object or action.
 - Stop if a rejected layout is being polished.
 - Stop if visual-library references were used with the wrong folder mode or no reference usage report.
@@ -157,6 +189,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if dashboard references become generic SaaS/admin, same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only panels, decorative charts, image-starved surfaces, or a surface with no focal attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic.
+- Stop if an app with 3+ primary destinations uses desktop/top navigation on mobile without justification.
+- Stop if bottom navigation feels generic, cramped, oversized, poorly aligned, or unsafe around gestures.
 - Stop if responsive layout collides or nav overlaps content.
 - Stop if any text escapes a container.
 - Stop if any chart overflows its plot/card bounds.
@@ -166,6 +200,7 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if text-heavy containers kill scanability.
 - Stop if toolbar controls are visibly misaligned.
 - Stop if the palette feels robotic, generic, or template-generated.
+- Stop if an expressive mode uses a dull generated-app palette with no documented palette exploration.
 - Stop if Image Environment Strategy is missing for image-led/artistic/landing references.
 - Stop if Scale Calibration is missing for visual-library reference work.
 - Stop if Contrast / Legibility Strategy is missing for image-led or visual-library reference work.
@@ -177,6 +212,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if visual UI work has no validated done report before final handoff.
 - Stop if target-copy or asset-manifest evidence is missing for the applicable mode.
 - Stop if Literal Target Copy Mode has no screenshot comparison report.
+- Stop if landing/portfolio/marketing work fails anti-AI-tell preflight.
+- Stop if motion lacks purpose, reduced-motion behavior, or performance discipline.
 
 ## Output Contract
 
@@ -291,6 +328,11 @@ Patch recommendation:
 - Nav abbreviations without obvious meaning: max score 6.
 - Icon-only nav without labels/tooltips/context: max score 6.
 - Broken responsive nav or nav overlap: max score 5.
+- Mobile app using desktop navigation without justification: max score 5.
+- Poor bottom navigation craftsmanship: max score 5.
+- Top navigation stealing vertical space on mobile: max score 5.
+- Bottom navigation with poor spacing/alignment: max score 5.
+- Generic mobile navigation with no personality: max score 6.
 - Mobile nav cryptic or cramped: max score 6.
 - Misaligned search/action toolbar: max score 7.
 - Toolbar controls collide or wrap badly: max score 6.
@@ -304,6 +346,20 @@ Patch recommendation:
 - Status indicator with no user meaning: max score 6.
 - Decorative telemetry/status chips: max score 6.
 - Palette feels machine-generated/generic: max score 6.
+- Artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max score 6.
+- Palette feels machine-generated/generic despite expressive mode: max score 5.
+- No palette exploration documented for artistic/cinematic mode: max score 6.
+- Color palette is readable but conceptually boring in an art-directed page: max score 7.
+- Palette chosen without relation to imagery, references, or concept: max score 6.
+- Bold palette used but contrast/readability fails: max score 5.
+- Agent defaults to charcoal/brown/orange generated-app palette again: max score 5.
+- Visual-heavy new app implemented without direction-options gate: max score 6.
+- Agent provides only one direction when direction is not approved: max score 6.
+- Three directions are minor variations of same layout/palette: max score 5.
+- Agent codes before Migi selects direction: max score 5.
+- Direction options lack palette/image/layout/motion strategy: max score 6.
+- Agent ignores selected direction during implementation: max score 5.
+- No selected-direction.md after Migi chooses: max score 7.
 - Dull robotic palette despite expressive references: max score 5.
 - Text visibly escapes container: max score 2.
 - Chart bars/lines escape chart/card bounds: max score 2.

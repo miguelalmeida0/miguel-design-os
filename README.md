@@ -38,12 +38,21 @@ For frontend/design work:
 1. Read `AGENTS.md`.
 2. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
 3. Inspect `visual-library/README.md`.
-4. Check `visual-library/approved/` for references Migi likes.
-5. Check `visual-library/rejected/` for anti-patterns Migi dislikes.
-6. Extract principles for the current product.
-7. Use relevant skills from `skills/` only when needed.
-8. Implement only after the design direction is clear.
-9. Capture screenshot QA before claiming done.
+4. Classify task mode.
+5. Declare active design dials.
+6. Select references or image-first mode.
+7. For new visual-heavy work, create `docs/design/direction-options.md` with 3 directions and stop for Migi's choice.
+8. Create `docs/design/selected-direction.md` after Migi chooses.
+9. Create `docs/design/visual-spec.md`.
+10. Define design-system tokens.
+11. Check OKLCH/APCA contrast and palette logic.
+12. Implement the frontend aha moment.
+13. Apply an interface-feel polish pass.
+14. Review motion if present.
+15. Verify interactions.
+16. Capture screenshot QA.
+17. Run scorecard / done report.
+18. Patch Design OS from failures.
 
 ## Visual Library
 
@@ -70,9 +79,17 @@ Literal Target Copy Mode overrides product thinking. The agent should reconstruc
 
 When Migi says a screenshot is inspiration, extract principles instead of cloning.
 
+## Three-Direction Mockup Gate
+
+For new visual-heavy apps, landing pages, portfolios, mobile apps, dashboard redesigns, or artistic interfaces with no approved visual direction, agents must create `docs/design/direction-options.md` first, then stop for Migi to choose Direction A, B, C, or a hybrid. Implementation starts only after `docs/design/selected-direction.md` exists.
+
+Each direction must be meaningfully different and include vibe, palette, typography, layout, imagery, motion, mobile strategy, tradeoffs, and what AI default it avoids.
+
 ## Landing Page / Artistic Mode
 
 When Migi says landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, agents must use poster logic, image-led composition, sparse copy, and minimal UI chrome. Do not turn these references into Blogspot-style section stacks, generic SaaS grids, feature-card rows, stats blocks, or dashboard furniture.
+
+For these modes, palette exploration is required: one safe refined palette, one artistic expressive palette, and one unexpected high-character palette. Bold color is allowed; unreadable color is not.
 
 ## Dashboard Mode
 
@@ -80,13 +97,57 @@ When Migi points to `visual-library/approved/inspiration/01-command-centers-dash
 
 Avoid same-weight card soup, text-and-metrics-only dashboards, terminal-ish dark panel spam, decorative charts, oversized empty dashboard UI, and any dashboard with no memorable visual anchor.
 
+## Ingested World-Class Skills
+
+Three external skill/reference systems are now normalized into repo-local skills:
+
+- `skills/data-visualization-selection/`: chart type selection, accessibility fallback, rendering strategy, and graph usefulness.
+- `skills/visual-style-selection/`: style taxonomy selection, token planning, effect limits, accessibility/performance fit, and rejected-style checks.
+- `skills/image-first-website-to-code/`: image-first website workflow, section-specific references, deep extraction, and anti-drift implementation.
+
+Use these through `AGENTS.md` and `skills/skill-registry.json`; do not paste raw source tables into project prompts. The goal is deliberate selection, report artifacts, and scorecard enforcement.
+
+## AI UI Builder Research Upgrade
+
+Research inputs are archived under `research-input/ai-ui-builders/raw/` with manifests in `research-input/ai-ui-builders/`.
+
+The transferable mechanisms now live as:
+
+- `docs/research/ai-ui-builder-research-synthesis.md`
+- `docs/research/ai-builder-operating-model.md`
+- `design-dna/design-generation-dials.md`
+- `design-dna/design-system-first-rules.md`
+- `design-dna/mobile-product-rules.md`
+- `agent-workflows/frontend-aha-moment-workflow.md`
+- `agent-workflows/efficient-agent-implementation-workflow.md`
+- `agent-workflows/image-first-frontend-workflow.md`
+- `docs/design/mobile-flow-spec.md`
+- `design-intelligence/`
+- `skills/visual-spec-compiler/`
+- `skills/dashboard-graph-system/`
+- `skills/landing-page-pattern-director/`
+- `skills/image-first-frontend/`
+- `skills/mobile-product-flow/`
+- `skills/landing-page-craft-director/`
+- `skills/anti-ai-tell-preflight/`
+- `skills/motion-craft-director/`
+- `skills/review-animations/`
+- `skills/emil-design-engineering/`
+- `skills/delight-opportunity-director/`
+- `skills/animation-vocabulary/`
+- `design-dna/brief-inference-rules.md`
+- `design-dna/anti-ai-tell-preflight.md`
+- `design-dna/motion-and-delight-rules.md`
+- `design-dna/landing-page-craft-rules.md`
+
 ## Useful Files
 
 - `AGENTS.md`: short router for future Codex agents.
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`: compact always-read design context.
 - `design-dna/`: reusable design rules.
+- `design-intelligence/`: distilled recommendation engines for color, charts, style, and landing patterns.
 - `visual-library/`: approved/rejected/inspiration references and notes.
-- `skills/`: focused playbooks for visual concepting, target reconstruction, QA, selection-first products, and truthful state.
+- `skills/`: focused playbooks for visual concepting, target reconstruction, QA, selection-first products, OKLCH/APCA color, UI craft, interface-feel polish, data visualization, style selection, image-first website work, and truthful state.
 - `templates/prompts/`: Codex prompt templates.
 - `templates/`: report and checklist templates.
 - `evaluation/ui-scorecard.md`: scoring and hard caps.
@@ -94,6 +155,35 @@ Avoid same-weight card soup, text-and-metrics-only dashboards, terminal-ish dark
 - `tools/visual-qa.mjs`: local screenshot QA with fallback reporting.
 - `tools/playwright-doctor.mjs`: local browser capture diagnosis.
 - `tools/import-manual-screenshots.mjs`: app-only manual screenshot import.
+
+## Taste + Motion Ingestion
+
+Taste, Emil design-engineering, imagegen frontend web, and animation vocabulary sources are archived under `research-input/taste-motion-skills/raw/` with manifests and a local zip pack in `research-input/taste-motion-skills/`.
+
+Distilled mechanisms now live in Design OS as:
+
+- brief inference before visual work
+- anti-AI-tell preflight for landing/portfolio/marketing
+- landing-page craft rules
+- motion and delight rules
+- motion review standards
+- landing craft, anti-AI, motion, delight, Emil polish, and animation vocabulary skills
+
+## External UI Skill Ingestion
+
+The requested external skill install pass is documented in `docs/qa/external-skill-install-log.md`.
+
+The sandbox could not fetch the upstream packages, so `research-input/external-ui-skills/raw/` contains install-blocked source capsules rather than full upstream raw skill archives. The Miguel-native distilled mechanisms live in:
+
+- `skills/oklch-contrast-palette/`
+- `skills/userinterface-wiki/`
+- `skills/make-interfaces-feel-better/`
+- `design-dna/oklch-contrast-and-palette-rules.md`
+- `design-dna/interface-feel-rules.md`
+- `design-intelligence/contrast-thresholds.json`
+- `design-intelligence/oklch-palette-generation.json`
+- `design-intelligence/userinterface-wiki-rules.json`
+- `design-intelligence/interface-feel-checklist.json`
 
 ## Dogfooding Miguel Design OS
 
