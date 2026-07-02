@@ -37,6 +37,9 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 - Existing UI state, if any.
 - Inspiration or references, if any.
 - Inspiration manifest for visual-heavy work when references are used.
+- Reference folder mode, especially Command Center / Dashboard Mode when dashboard references are used.
+- Global UI craft plan for dashboard or visual-heavy concepts: navigation clarity, responsive nav, toolbar alignment, text density, button proportions, collision checks, and palette direction.
+- Layout Integrity Contract and Responsive Breakpoint Proof plan for 1440, 1280, 1024, 768, and 390.
 - Known rejected directions, if any.
 
 ## Files To Read
@@ -53,6 +56,8 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 2. Classify the task and record the Design Intent Record.
 3. If inspiration is used, create or validate `inspiration-manifest.local.json`.
 4. Name the obvious genre cliche the design must avoid.
+   - For dashboard/command-center references, explicitly avoid generic admin template, same-weight card soup, text-and-metrics-only dashboard, murky monochrome / terminal-green palette, single-accent overuse, terminal-ish dark panel spam, decorative charts, chart-lite systems, image-starved surfaces, and no focal attraction zone.
+   - Also avoid cryptic nav, misaligned toolbar controls, prose-heavy panels, clumsy full-width buttons, responsive collisions, fake live/session/status theater, and machine-generated palettes.
 5. Produce exactly 3 radically different rendered art-direction concept prototypes:
    - Safe expected direction.
    - More original/art-directed direction.
@@ -70,7 +75,10 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
    - cliche avoidance
    - desire mechanism
    - responsive strategy for `1440 / 768 / 390`
+   - layout integrity strategy for `1440 / 1280 / 1024 / 768 / 390`
    - what would make it fail
+   - for dashboard concepts: attraction zone, panel mix, chart forms, palette strategy, image/object/media role, live/motion strategy, material range, and calm/busy rhythm
+   - for dashboard or visual-heavy concepts: navigation strategy, toolbar alignment, text density, button proportions, responsive collision risks, and human palette direction
 7. Save the artifact using `templates/visual-concepts.template.json`.
 8. Use a project-local preview route, static HTML, or another lightweight local render when a concept needs a visual preview. The archived `deprecated/studio-preview/` experiment is not the default workflow.
 9. Capture rendered concepts with available screenshot QA or document a blocked capture honestly.
@@ -84,6 +92,11 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 
 - Stop before UI implementation if no concept has been approved.
 - Stop if concepts are text-only.
+- Stop if dashboard concepts are only dark cards, metrics, and generic charts with no attraction zone, panel-role variation, palette strategy, graph system, or image/object/media strategy.
+- Stop if dashboard concepts use lifeless same-color panels with weak charts and no visual anchor.
+- Stop if dashboard concepts rely on cryptic navigation, fake status theater, misaligned toolbars, prose-heavy cards, clumsy full-width buttons, or robotic palette direction.
+- Stop if concepts do not explain how cards, charts, labels, nav, badges, forms, and buttons preserve layout integrity across 1440 / 1280 / 1024 / 768 / 390.
+- Stop if a concept depends on squeezing the desktop layout until cards, charts, labels, or nav become unreadable.
 - Stop if any concept is missing a preview route or screenshot paths.
 - Stop if `tools/capture-concepts.mjs` cannot produce screenshots and no blocker is documented.
 - Stop if visual-heavy inspiration work has no inspiration manifest.
@@ -95,6 +108,11 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 ```md
 Design Intent Record:
 Obvious cliche to avoid:
+Dashboard command-surface strategy when applicable:
+Dashboard palette / graph / media strategy when applicable:
+Navigation / toolbar / text density / button / collision / palette craft strategy when applicable:
+Layout integrity contract:
+Responsive breakpoint proof:
 Concept artifact:
 - concept count: 3
 - preview routes:
@@ -116,6 +134,16 @@ Approval needed before implementation: yes
 - All 3 concepts share basically the same layout: max score 6.
 - Same rejected layout with new paint: max score 6.
 - Obvious genre cliche without a fresh thesis: max score 7.
+- Dashboard concept is generic admin/card soup: max score 6.
+- Dashboard concept has no attraction zone: max score 6.
+- Dashboard concept uses decorative charts instead of useful visualization: max score 6.
+- Dashboard concept uses murky monochrome / terminal-green palette: max score 5.
+- Dashboard concept has too few meaningful chart forms despite graph-rich references: max score 6.
+- Dashboard concept is image-starved despite reference evidence: max score 6.
+- Dashboard concept has cryptic nav, fake status theater, or machine-generated palette: max score 6.
+- Dashboard concept has misaligned toolbar, prose-heavy panels, clumsy full-width buttons, or responsive collision risks with no plan: max score 6.
+- Concept has no layout integrity strategy for cards/charts/nav/labels across breakpoints: max score 6.
+- Concept relies on squeezed cards, clipped labels, or one-viewport responsiveness: max score 5.
 - No project-specific visual identity: cap applies.
 - No inspiration manifest for visual-heavy inspiration work: max score 7.
 

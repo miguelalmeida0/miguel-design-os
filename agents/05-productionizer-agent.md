@@ -9,6 +9,7 @@ This is an instruction-only local agent. It must not call paid tools, external A
 ## Responsibilities
 
 - Preserve approved visual shell.
+- Preserve dashboard command-surface structure when approved: attraction zone, varied panel weights, useful chart forms, image/object/media roles, compact scale, and calm/busy rhythm.
 - Modularize components.
 - Add real interactions.
 - Add local/static data.
@@ -70,6 +71,7 @@ node tools/design-os.mjs validate-done-report done-report.local.json
 - No backend unless approved.
 - No paid APIs.
 - Do not change the approved composition while refactoring.
+- Do not flatten an approved dashboard shell into generic SaaS/admin cards, same-weight widgets, terminal-ish dark panel spam, or decorative charts while adding product logic.
 - Do not claim productionized if the main upload/classify/generate loop is unverified.
 - Do not imply persistent Memory unless route changes, refresh, and browser reopen behavior is proven and disclosed.
 - Do not continue productization when UI state contradicts itself, such as a `0` count while uploaded data exists.

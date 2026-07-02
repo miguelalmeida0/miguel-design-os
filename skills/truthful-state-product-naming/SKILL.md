@@ -46,6 +46,7 @@ Product-state and copy guardrail for auth, onboarding, login, mock data, error b
 3. Ensure onboarding is not named or designed as login unless it is actually authentication.
 4. Ensure route/page names match the true product state.
 5. Remove or qualify fake live, validated, safe, secure, optimized, real-time, accurate, or production-ready claims.
+   - Do not use decorative `live`, `session-only`, monitoring, telemetry, or glowing status chips. These labels are allowed only when they describe real product state, are understandable to the user, and affect behavior or decisions.
 6. Add visible source, recency, scope, fallback, or sample labeling when needed.
 7. For uploaded or user-generated data, state whether it persists across route changes, refresh, and browser reopen.
 8. If data is local-only, session-only, mock-only, or not guaranteed, make the UI say so.
@@ -60,6 +61,7 @@ Product-state and copy guardrail for auth, onboarding, login, mock data, error b
 - Stop if auth failure can crash the visible app.
 - Stop if onboarding/login naming is false.
 - Stop if claims imply validation or safety without evidence.
+- Stop if fake live/session/status indicators appear as product theater.
 - Stop if UI count says `0` while uploaded or user-generated data exists.
 - Stop if uploaded examples, Memory, or generated outputs disappear without a visible local/session-only explanation.
 - Stop if user-generated persistence across route changes, refresh, and browser reopen is unknown.
@@ -85,6 +87,7 @@ Remaining truth risks:
 ## Scorecard Blockers
 
 - Unsupported live/data/safety/AI claim: cap applies.
+- Fake live/session/status UI with no user meaning: max score 5.
 - Raw auth crash in user flow: prevents completion.
 - Fake/mock production state: prevents completion.
 - Onboarding mislabeled as login: prevents completion.
@@ -96,6 +99,7 @@ Remaining truth risks:
 ## Safety/Scope Rules
 
 - Do not fake proof, validation, safety, or live status.
+- Do not add session/live/telemetry labels unless they explain real state in user language.
 - Do not hide auth failures.
 - Do not make production claims for sample data.
 - Do not imply durable Memory for uploaded examples unless persistence is proven.

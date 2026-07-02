@@ -14,6 +14,7 @@ This is an instruction-only local agent. It must not call paid tools, external A
 - Capture screenshots at `1440 / 768 / 390` when possible.
 - Save concepts in `visual-concepts.local.json`.
 - Keep `approvalStatus: "pending"` and `selectedConceptId: ""` until Migi approves one.
+- For dashboard/command-center references, create image-aware, graph-rich command-surface concepts, not generic admin panels.
 
 ## Required Concept Fields
 
@@ -31,6 +32,7 @@ Each concept must include:
 - failure mode
 - preview route or static preview HTML
 - screenshot paths
+- dashboard attraction zone, panel mix, chart forms, image/object/media role, and calm/busy rhythm when Command Center / Dashboard Mode applies
 
 ## Workflow
 
@@ -73,3 +75,4 @@ node tools/visual-qa.mjs --url <local-url> --name <concept-name> --browser auto 
 - No implementation before approval.
 - Do not use inspiration screenshots as production assets.
 - Do not make 3 palette variants of the same layout.
+- Dashboard concepts fail if they are only dark cards, metrics, and generic charts with no attraction zone, panel-role variation, or useful chart purpose.

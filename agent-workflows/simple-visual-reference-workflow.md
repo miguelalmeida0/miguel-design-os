@@ -8,15 +8,92 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
 2. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
 3. Check `visual-library/approved/` for relevant approved references.
 4. Check `visual-library/rejected/` for relevant anti-patterns.
-5. For the current task, extract relevant principles:
+5. If Migi points to a visual-library folder, select the correct Reference Folder Mode:
+   - `01-command-centers-dashboards`: Command Center / Dashboard Mode
+   - `02-creative-experimental-ui`: Artistic / Creative Mode
+   - `03-mobile-consumer-apps` or `mobile-apps`: Mobile Product Flow Mode
+   - `04-selection-gallery-browse`: Selection / Gallery / Browse Mode
+   - `05-landing-hero-pages`: Landing Page / Poster Mode
+6. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding. Include references inspected, folder mode selected, extracted principles, what will not be copied, visual thesis, layout strategy, image role strategy, Image Environment Strategy, Scale Calibration, Contrast / Legibility Strategy, Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, Layout Integrity Contract, Responsive Breakpoint Proof, Palette Direction, and anti-patterns avoided.
+   - For `01-command-centers-dashboards`, also include Dashboard Command-Surface Strategy: attraction zone, panel mix, chart forms and purpose, image/object/media role, utility-heavy zone, queue/list/activity zone, control/action zone, calm zones, busy zones, and how the design avoids same-weight card soup.
+   - Also include Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy. Name the palette failure to avoid, the major/supporting chart system, and the visual/object/media anchor.
+7. For the current task, extract relevant principles:
    - composition
    - focal object
    - density
    - interaction model
    - what to avoid
-6. Produce a clear design direction before implementation.
-7. Implement only after the direction is clear.
-8. Capture screenshot QA before claiming done.
+8. Declare the role of every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
+9. Run an Image Environment Pass for artistic, landing-page, cinematic, editorial, image-led, or visual-heavy references:
+   - decide whether the reference uses image as environment or asset
+   - if the image is environment, compose around the scene before choosing a grid
+   - consider full-bleed, oversized, masked, layered, edge-to-edge, or backdrop treatment
+   - state why the image should or should not be boxed
+   - plan focal object protection and text safe zones
+   - avoid image-trapped-in-grid unless the reference explicitly uses that structure
+10. Run a Scale Calibration Pass against the selected references:
+   - estimate visible content objects above the fold
+   - compare largest text, medium text, and small labels
+   - compare container/card density
+   - compare image scale roles
+   - avoid giant empty furniture and inflated desktop layouts
+11. Run a Contrast / Legibility Pass:
+   - identify every important text background
+   - protect text over imagery with a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image
+   - keep small labels, nav, and CTAs readable
+   - protect faces, eyes, hands, and focal objects from copy overlays
+   - verify responsive crops at 1440 / 768 / 390
+12. Run a Global UI Craft Pass:
+   - navigation labels are understandable, not cryptic abbreviations
+   - responsive nav behavior is designed for desktop, tablet, and mobile
+   - search, filters, and action buttons align in one toolbar system
+   - panels are scan-first and do not become prose boxes
+   - buttons are proportionate; full-width desktop actions need justification
+   - 1440 / 1280 / 1024 / 768 / 390 collision risks are named and prevented
+   - palette feels human/reference-driven, not terminal-green, AI-purple, neon-lime, generic blue/grey, or one machine-generated wash
+   - live/session/status chips are real, understandable, and decision-relevant, or removed
+13. Run a P0 Layout Integrity Pass:
+   - text stays inside containers
+   - card titles are not clipped
+   - charts stay inside plot/card bounds
+   - cards do not shrink below readable width
+   - chips, pills, and image badges do not overlap
+   - labels stay semantic and do not collapse into meaningless fragments
+   - forms and buttons remain readable
+   - layout adapts instead of squeezing
+   - 1440 / 1280 / 1024 / 768 / 390 are covered in the plan
+14. If the task says landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, activate Landing Page / Artistic Mode:
+   - poster logic, not dashboard logic
+   - image-first, not section-first
+   - composition-led, not component-led
+   - sparse copy, not explanatory blocks
+   - no dashboard furniture, feature-card rows, boxed proof sections, or Blogspot/content-template structure
+   - visual mood continues after the hero
+15. If the task uses dashboard or command-center references, activate Image-Aware Dashboard Mode:
+   - one attraction zone before arranging panels
+   - graph-rich useful visualization, not decorative charts
+   - at least two visualization types considered when data supports it
+   - reference-driven palette, no murky monochrome / terminal-green default
+   - accent color used selectively, not everywhere
+   - mixed panel roles: metrics, charts, queues/lists, activity, imagery/content, controls, actions
+   - deliberate image/object/media use when it improves hierarchy or memorability
+   - mixed materials: base, raised, quiet, active, image/media, and data surfaces
+   - live/state energy when the product represents monitoring, freshness, or activity
+   - compact controlled type and container scale
+   - varied panel weights with calm/busy rhythm
+   - readable nav and crafted responsive navigation
+   - aligned search/filter/action toolbar
+   - scan-first panels, not text-heavy prose boxes
+   - proportionate buttons
+   - collision-free resizing
+   - chart bounds discipline
+   - tablet column reduction and mobile prioritized sections
+   - no squeezed card garbage or semantic label collapse
+   - no fake live/session/status theater
+   - no generic admin template, same-weight card soup, murky same-color panels, terminal-ish dark panel spam, decorative charts, image-starved surfaces, or text-and-metrics-only dashboard
+16. Produce a clear design direction before implementation.
+17. Implement only after the direction is clear.
+18. Capture screenshot QA before claiming done.
 
 ## Literal Copy Exception
 

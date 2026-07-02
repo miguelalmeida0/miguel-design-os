@@ -70,6 +70,16 @@ Literal Target Copy Mode overrides product thinking. The agent should reconstruc
 
 When Migi says a screenshot is inspiration, extract principles instead of cloning.
 
+## Landing Page / Artistic Mode
+
+When Migi says landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, agents must use poster logic, image-led composition, sparse copy, and minimal UI chrome. Do not turn these references into Blogspot-style section stacks, generic SaaS grids, feature-card rows, stats blocks, or dashboard furniture.
+
+## Dashboard Mode
+
+When Migi points to `visual-library/approved/inspiration/01-command-centers-dashboards/`, dashboard means image-aware command surface, not generic admin panel. Future agents must define one attraction zone, varied panel weights, useful chart forms, deliberate image/object/media roles, compact scale, and calm/busy rhythm before coding.
+
+Avoid same-weight card soup, text-and-metrics-only dashboards, terminal-ish dark panel spam, decorative charts, oversized empty dashboard UI, and any dashboard with no memorable visual anchor.
+
 ## Useful Files
 
 - `AGENTS.md`: short router for future Codex agents.

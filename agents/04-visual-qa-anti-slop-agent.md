@@ -22,6 +22,7 @@ This is an instruction-only local agent. It must not call paid tools, external A
 - Check dogfood targets translate target failures back into Miguel Design OS patches or explicit open gaps.
 - Check motion has purpose.
 - Check AI scale inflation.
+- Check dashboard/command-center references for attraction zone, varied panel weights, useful chart forms, deliberate image/object/media roles, compact scale, and calm/busy rhythm.
 - Check same-layout-with-new-paint.
 - Check obvious theme literalism.
 
@@ -74,6 +75,7 @@ node tools/design-os.mjs validate-done-report done-report.local.json
 
 - Build/lint is not visual QA.
 - No done without evidence.
+- Dashboard references cannot pass as generic admin templates, same-weight card soup, text-and-metrics-only panels, terminal-ish dark panel spam, decorative charts, or no-attraction-zone surfaces.
 - Watermark/editor/browser artifacts in production UI are hard blockers.
 - Dead visible buttons block completion.
 - Browser chrome, desktop, dock, and editor UI screenshots are not valid QA proof.

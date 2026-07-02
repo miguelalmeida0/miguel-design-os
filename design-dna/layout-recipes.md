@@ -30,6 +30,128 @@ Do not:
 - expose stats when the reference hides information
 - add feature depth before the visual shell works
 
+## Reference Folder Mode Selector
+
+Use this selector before choosing a recipe when Migi points to a visual-library folder.
+
+| Folder signal | Mode | Recipe bias |
+| --- | --- | --- |
+| `01-command-centers-dashboards`, dashboard folder, command center references | Command Center / Dashboard Mode | Image-Aware Command Dashboard, Dense Control Workspace, or Research Terminal |
+| `02-creative-experimental-ui`, creative folder, experimental/editorial references | Artistic / Creative Mode | Art-Directed Visual Shell or Editorial Presence |
+| `05-landing-hero-pages`, landing page folder, hero page references | Landing Page / Poster Mode | Image-Led Artistic Landing Page |
+| `03-mobile-consumer-apps`, `mobile-apps`, mobile app references | Mobile Product Flow Mode | Consumer Coordination, Focused Creation, or a mobile-first adaptation of the product archetype |
+| `04-selection-gallery-browse`, selection/gallery folder, roster/browse references | Selection / Gallery / Browse Mode | Selection Roster or Detail With Inspector |
+
+The selected mode must be recorded in `docs/design/reference-usage-report.md` before visual-heavy implementation.
+
+Every mode requires Scale Calibration before coding: compare headline size, body text, container/card density, image roles, spacing, visible content objects, and meaningful information above the fold against the selected reference screenshots. Match scale relationships, not just mood.
+
+Every mode requires Award-Level Contrast Discipline before coding: identify text backgrounds, classify image/gradient/texture risk, choose protection for text over imagery, protect focal objects, and verify legibility at 1440 / 768 / 390.
+
+Every visual-heavy or dashboard mode requires a craft pass before coding: navigation labels are understandable, responsive nav behavior is designed, toolbars align inputs/buttons, panels stay scan-first, buttons are proportionate, 1440 / 1280 / 1024 / 768 / 390 collision risks are named, palette direction feels human/reference-driven, and fake live/session/status theater is removed unless it has real product meaning.
+
+Every mode requires P0 Layout Integrity before taste scoring: text stays inside containers, charts stay inside plot/card bounds, card titles are not clipped, cards do not collapse below readable width, labels remain semantic, chips/badges do not collide, forms/buttons stay readable, and the layout is proven at 1440 / 1280 / 1024 / 768 / 390.
+
+Mode-specific scale rules:
+
+- Command Center / Dashboard Mode: dense but readable, graph-rich, image-aware when references support it; avoid giant widgets, same-weight cards, and text-and-metrics-only admin layouts; desktop should show multiple useful panels plus one memorable attraction zone.
+- Artistic / Creative Mode: dramatic scale is allowed only with intent; balance large type/images with smaller details, visual tension, or layered composition; no giant empty slabs.
+- Landing Page / Poster Mode: large hero type is allowed only when image scene and composition justify it; never reduce the page to one huge headline plus one huge image.
+- Mobile Product Flow Mode: do not blow mobile screenshot proportions up on desktop; use richer desktop composition or multiple visible frames.
+- Selection / Gallery / Browse Mode: do not make one selected object so huge that browsing disappears; keep preview, options, comparison, and selected state visible together.
+
+Mode-specific contrast rules:
+
+- Command Center / Dashboard Mode: dense UI requires strong text/background separation; do not use weak grey labels everywhere.
+- Artistic / Creative Mode: unusual composition is allowed, but readability cannot be accidental.
+- Landing Page / Poster Mode: image-led pages must protect sparse copy; CTAs and small labels need stable contrast zones.
+- Mobile Product Flow Mode: mobile crops make text-on-image riskier; avoid important text over uncontrolled image areas.
+- Selection / Gallery / Browse Mode: image cards must keep title, selected state, and key metadata readable.
+
+## Image-Aware Command Dashboard
+
+Use when: Migi points to `01-command-centers-dashboards`, asks for a dashboard/command center, or the product needs a dense tool that should feel premium, memorable, and designed rather than like an admin template.
+
+Before building:
+
+- inspect the dashboard references and identify the strongest 3 to 5 patterns
+- define the attraction zone: dominant chart, 3D/isometric scene, product object, media block, card stack, avatar/content cluster, map, selected object, or equivalent
+- define the panel taxonomy: metrics, charts, queues/lists, activity, media/object content, actions, controls
+- define chart forms and what each chart helps decide
+- define image/object roles when imagery appears
+- define palette strategy: neutral base, controlled accent, state colors, material range, and image/object color influence
+- define graph system: one major chart or map plus supporting microcharts/scores when data supports it
+- define live/motion strategy when the product represents monitoring, freshness, activity, or queue movement
+- define navigation strategy with understandable labels and crafted responsive behavior
+- define toolbar alignment strategy for search, filters, and actions
+- define text density strategy so panels are scan-first instead of prose-heavy
+- define button proportion strategy so actions do not become clumsy full-width bars
+- define responsive collision risks and how 1440, 1280, 1024, 768, and 390 prevent them
+- define minimum card/panel widths and what happens below those widths
+- define chart bounds strategy: plot clipping, label margins, SVG/viewBox discipline, and fallback chart forms
+- define semantic label strategy so compact labels never collapse into meaningless fragments
+- calibrate scale so desktop shows useful volume quickly without tiny unreadable UI
+
+Build:
+
+1. Start with one major focal zone. It can be visual, data-driven, or object-led, but it must give the screen gravity.
+2. Build a graph system with at least two visualization types when the data supports it: one major chart/map/matrix/timeline plus supporting bars, rings, progress tracks, sparklines, ranked scores, heat maps, or score meters.
+3. Add information zones for current state, queue/list, comparison, activity/timeline, and output/action area.
+4. Add one imagery/content zone when references or product context support it: product object, media cover, avatar cluster, scene block, map, document preview, card stack, live tile, or selected item.
+5. Add one control/action zone close to the object or decision it affects.
+6. Use material range: base surface, raised panels, active panels, image/media panels, quiet utility panels, primary action surface, and data panels.
+7. Use palette strategy: neutral base, controlled accent, state colors, image/object color influence, and no monochrome mud.
+8. Add live/state energy when relevant: live indicators, chart transitions, progress movement, timeline strips, hover/selection transitions, or optional live/animated tiles with a product role.
+9. Vary panel size, density, color, and visual weight. Some panels should be dense, some calm, some visual, some operational.
+10. Integrate charts as composition: annotated line/area charts, bars, rings, progress tracks, heatmaps, maps, funnels, timelines, sparklines, or score indicators.
+11. Keep typography compact and controlled. Use large type only for primary numbers, selected objects, or critical labels.
+12. Use soft premium surfaces where the references support them: refined radii, subtle shadows, translucent panels, quiet borders, polished chips, and segmented controls.
+13. Keep navigation restrained and readable. The content surface, not the sidebar, should carry the dashboard identity, but labels must still be understandable.
+14. Align top toolbars so search, filters, and actions share a clean height/baseline system.
+15. Keep panels scan-first: structured labels, values, chips, short summaries, and progressive disclosure instead of prose boxes.
+16. Keep buttons proportionate to their role; use full-width desktop actions only with clear layout justification.
+17. Preserve chart bounds inside cards; bars, lines, points, axes, and labels must not leave the plotting area.
+18. Adapt the dashboard structure at breakpoints instead of squeezing columns until cards become unreadable.
+19. Balance calm and busy zones so the screen feels rich, not noisy.
+
+Responsive map:
+
+- 390 px: become prioritized command sections; preserve the focal object and primary action first; use polished bottom or compact top navigation; simplify charts or move details into accordions/lists without losing state or creating collisions.
+- 768 px: reduce columns; show focal zone plus one supporting operational zone; avoid cramped desktop grids and nav/toolbars that wrap badly.
+- 1024 px: reorganize multi-column cockpit layouts before panels become too thin.
+- 1280 px: keep dense dashboard structure only if chart labels, cards, queues, and actions remain readable.
+- 1440 px: show focal zone, utility zone, chart/stats zone, and at least one queue/list/content rail together with aligned toolbar controls.
+
+Do not:
+
+- build same-weight card soup
+- use a generic SaaS/admin dashboard skeleton
+- use murky monochrome or terminal-green palette by default
+- overuse one accent color across every label, chart, border, and button
+- make every panel a rectangle of the same importance
+- use charts as decoration
+- ship chart-lite dashboards when references are graph-rich
+- make the major chart decorative or unclear
+- ship text-and-metrics-only panels when references show visual anchors
+- reduce image/object/media usage to tiny avatars when references show stronger anchors
+- inflate cards, headings, charts, and padding
+- use cryptic nav labels such as `CMD`, `SIG`, `CMP`, `BRF`, or vague labels such as `SD LOCAL`
+- let desktop nav become giant cramped mobile pills
+- misalign search inputs, filters, and action buttons
+- stuff containers with long prose when scan-first state would work
+- use oversized full-width buttons without layout justification
+- allow pills, badges, panels, nav, or forms to collide on resize
+- let text escape card boundaries or titles clip
+- let chart bars/lines/points escape plot or card bounds
+- squeeze dashboard cards until labels collapse into `C`, `U`, `?`, or other meaningless fragments
+- keep a 3-column dashboard when tablet width makes columns unreadable
+- use the same desktop composition at every viewport
+- add fake `live`, `session-only`, or monitoring chips as decorative theater
+- use a machine-generated palette instead of a reference-driven color system
+- paste random imagery that does not create hierarchy, product clarity, or memorability
+- leave live/monitoring products feeling static and dead
+- rely on terminal-ish dark panel spam as the visual concept
+
 ## Focused Creation
 
 Use when: the user creates one thing from a prompt, selection, upload, or short form.
@@ -53,6 +175,8 @@ Do not: make a marketing hero or long wizard before the first result.
 
 Use when: users supervise operations, approvals, agents, incidents, or governance.
 
+For Migi's dashboard references, prefer `Image-Aware Command Dashboard` when the surface should be visually memorable. Use this recipe only when the product is primarily operational and still preserve focal hierarchy, chart richness, and compact scale.
+
 Build:
 
 - persistent nav or command rail
@@ -67,7 +191,7 @@ Responsive map:
 - 768 px: list plus detail or collapsible inspector
 - 1440 px: nav, work surface, and inspector can be visible together
 
-Do not: replace operational state with generic KPI cards.
+Do not: replace operational state with generic KPI cards, same-weight widget fields, or text-and-metrics-only admin panels.
 
 ## Research Terminal
 
@@ -186,6 +310,62 @@ Robot Skill Forge evidence: the first screen should be a character-select moment
 Layout hard rule:
 
 - Overlapping UI is a hard fail unless deliberately designed, readable, responsive-tested, and necessary. Test cards at 390 / 768 / 1440 before accepting them.
+
+## Recipe: Image-Led Artistic Landing Page
+
+Use when:
+
+- user asks for landing page, creative, artistic, cinematic, editorial, visual-heavy, or image-led work
+- references are landing pages, editorial, creative, atmospheric, cinematic, or image-led
+- visual impression matters more than feature density
+
+Recipe:
+
+1. Start with one dominant image or scene.
+2. Keep the first screen poster-like.
+3. Use short copy blocks only.
+4. Use 1-2 CTAs max.
+5. Avoid repeated feature grids.
+6. Avoid equal-width cards unless the reference clearly uses them.
+7. Use floating or lightly anchored text where appropriate.
+8. Let image composition drive layout.
+9. Keep navigation minimal.
+10. Preserve the artistic rhythm beyond the hero.
+11. On mobile, preserve the emotional image-first experience, not just the text order.
+
+Do not:
+
+- turn landing-page inspiration into a Blogspot/content-template structure
+- use dashboard furniture, stats blocks, boxed proof rows, or generic SaaS homepage rhythm
+- make only the hero artistic and then fall back to normal cards and sections
+
+## Recipe: Immersive Image-Led Landing Page
+
+Use when:
+
+- landing-page references are image-led
+- creative folder uses full-scene imagery
+- user asks for artistic, cinematic, or poster-like
+- the image is the emotional hook
+
+Recipe:
+
+1. Pick one dominant image/scene.
+2. Compose the page around that image first.
+3. Decide the image role: environment, focal object, proof object, editorial fragment, or background atmosphere.
+4. If the image is the environment, do not trap it in a card.
+5. Use sparse text and place it in safe image zones.
+6. Protect text with scrims, vignettes, masks, plates, or deliberate crops.
+7. Let the image bleed, crop, or dominate where useful.
+8. Keep UI chrome minimal.
+9. Avoid repeating rectangular image cards unless the reference explicitly uses them.
+10. Continue image-led rhythm beyond the hero.
+
+Do not:
+
+- start with a rigid grid and paste the image into it later
+- turn a full-scene reference into a square image asset
+- add visible borders around the main image unless the reference clearly uses that treatment
 
 ## Detail With Inspector
 

@@ -9,6 +9,8 @@ Task:
 
 - Productionize only after the visual shell is approved and visual QA has run.
 - Preserve the approved visual shell.
+- If the approved shell is Landing Page / Artistic Mode, preserve poster logic, image-led composition, sparse copy, minimal chrome, and artistic rhythm beyond the hero. Do not convert it into cards, stats, grids, or a normal SaaS homepage while adding product logic.
+- If the approved shell is Command Center / Dashboard Mode, preserve the attraction zone, varied panel weights, useful chart forms, deliberate image/object/media roles, compact scale, and calm/busy rhythm. Do not collapse it into generic SaaS/admin cards or terminal-ish dark panel spam while adding product logic.
 - Add real interactions and local/static data only after shell parity.
 - Manually verify the core product loop when the app depends on upload, classification, generation, selection, or persistence.
 - State persistence truth for user-generated data across route changes, refresh, and browser reopen.

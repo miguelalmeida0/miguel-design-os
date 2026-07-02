@@ -67,6 +67,434 @@ Scope:
 
 This overrides normal visual-heavy product thinking only when Migi explicitly asks for exact target copying. It does not permit copying old golden projects as a default design strategy.
 
+## System Rejected Direction: Blogspot Landing Page
+
+Context:
+
+Migi's landing-page, creative, artistic, cinematic, editorial, and image-led references are visual statements. They are not requests for a normal content-template page with a prettier hero.
+
+Rejected because:
+
+- feels assembled instead of art-directed
+- looks like a template, blog, or page-builder output
+- becomes too explanatory
+- is too grid-driven
+- loses visual emotion after the hero
+- ignores the artistic landing-page references
+- uses images as decoration instead of the composition driver
+
+Signs:
+
+- repeated image-left/text-right blocks
+- feature-card rows
+- boxed proof sections
+- heavy section stacking
+- many equal cards
+- normal SaaS homepage rhythm
+- lots of copy explaining the product instead of making the product desirable
+- hero feels artistic, but everything after it becomes generic
+
+Correction:
+
+- activate Landing Page / Artistic Mode
+- use poster logic, not dashboard logic
+- start from one dominant image or scene
+- keep copy sparse and sharp
+- use weaker or invisible grids when possible
+- make image and typography carry identity
+- continue the visual rhythm beyond the hero
+- remove dashboard furniture, stats blocks, and repeated card rows unless the reference clearly earns them
+
+Scope:
+
+This applies when Migi asks for landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration. It does not ban structured product pages when the user explicitly asks for a conventional SaaS homepage or functional product surface.
+
+## System Rejected Direction: Wrong Reference Folder Mode
+
+Context:
+
+Migi's visual-library folders are not interchangeable piles of nice screenshots. Each folder carries a different design mode.
+
+Rejected because:
+
+- command-center references become random card dashboards
+- creative references become safe grids
+- landing references become Blogspot/content-template pages
+- mobile references become unusable Dribbble stills
+- gallery references become boring equal-card catalogs
+- all references are blended equally with no prioritization
+- images are used as decoration instead of having a role
+
+Correction:
+
+- select the correct Reference Folder Mode before layout
+- write `docs/design/reference-usage-report.md` before coding visual-heavy referenced work
+- identify the strongest references and the weaker/irrelevant references
+- declare every major image role
+- name what will not be copied
+- choose a layout recipe that matches the selected mode
+
+Scope:
+
+This applies whenever Migi points to a folder in `visual-library/approved/` or `visual-library/rejected/`. It does not override Literal Target Copy Mode when Migi explicitly requests exact visual parity.
+
+## System Rejected Direction: Generic Admin Dashboard
+
+Context:
+
+Migi's command-center/dashboard references are dense, expressive, image-aware, and composed. They are not requests for a normal admin template with darker paint.
+
+Rejected because:
+
+- feels like software default instead of a designed command surface
+- treats the dashboard as a grid of interchangeable cards
+- lacks a memorable focal object, scene, dominant chart, media block, or attraction zone
+- uses metrics and labels without enough chart richness or operational context
+- makes every panel the same visual weight
+- has too much copy inside panels and not enough crafted hierarchy
+- turns charts into decoration instead of decision support
+- uses terminal-ish dark rectangles without premium visual material
+- wastes desktop space with oversized empty cards, headings, padding, and chart shells
+
+Signs:
+
+- generic SaaS/admin layout with nav, title, metric cards, and a table
+- same-weight widget field
+- text-and-metrics-only dashboard
+- oversized empty dashboard with low information density
+- terminal-like dark panel spam
+- no image, object, media, scene, avatar, map, or dominant chart anchor when references show one
+- many boxes but little hierarchy
+- chart widgets that do not support a visible decision
+- all panels share the same size, radius, border, and internal rhythm
+- no contrast between calm zones and busy zones
+
+Correction:
+
+- activate Command Center / Dashboard Mode
+- define one attraction zone before arranging panels
+- mix panel functions: metrics, charts, queues, lists/tables, status chips, avatars, media/image blocks, product/object visuals, action modules, and controls
+- include useful chart forms such as lines, bars, rings, progress tracks, heatmaps, maps, funnels, timelines, sparklines, or score indicators
+- vary panel scale, density, and visual weight
+- use imagery or product/object visuals deliberately when the reference language supports it
+- keep typography compact and controlled
+- make charts part of the composition and the decision model
+
+Scope:
+
+This applies to dashboard folders, command-center references, dense data/productivity tools, Signal Desk-style command surfaces, and any future dashboard task using `visual-library/approved/inspiration/01-command-centers-dashboards/`. It does not ban simple dashboards when the user explicitly asks for a plain internal admin tool, but Migi's dashboard references require the stronger direction by default.
+
+## System Rejected Direction: Murky Monochrome Dashboard
+
+Description:
+
+A dashboard where the entire interface is one dark muddy color system with one overused neon/accent color.
+
+Rejected because:
+
+- feels lifeless
+- feels terminal-generated
+- lacks product identity
+- makes every panel feel the same
+- loses the richness of reference dashboards
+- makes the accent color meaningless
+
+Correction:
+
+Use reference-based palette range, material contrast, controlled accents, state colors, and surfaces with distinct roles: base, raised panel, quiet panel, active panel, image/media panel, and data panel.
+
+## System Rejected Direction: Terminal Green Panel Spam
+
+Description:
+
+Dark cockpit UI where everything becomes green/black panels and neon accents.
+
+Rejected because:
+
+- mistakes terminal styling for dashboard sophistication
+- makes the surface feel murky and lifeless
+- flattens chart, action, and media hierarchy into the same color language
+- overuses lime/green until state and emphasis disappear
+
+Correction:
+
+Use dark palettes only when the references and product justify them. Add material range, controlled accent use, chart variety, and image/object/media anchors.
+
+## System Rejected Direction: Lifeless Dashboard
+
+Description:
+
+A technically functional dashboard with no visual energy, no attraction zone, weak charts, no image/object/media use, and no memorable composition.
+
+Rejected because:
+
+- may be usable but is not award-level
+- feels like operational furniture
+- fails Migi's dashboard-reference taste test
+- lacks a designed reason to remember the screen
+
+Correction:
+
+Add a clear attraction zone, graph-rich data layer, palette discipline, mixed material system, and live/state energy when the product represents activity or monitoring.
+
+## System Rejected Direction: Single-Accent Overuse
+
+Description:
+
+The same accent color is applied to labels, borders, charts, buttons, icons, statuses, glows, and active surfaces until hierarchy disappears.
+
+Rejected because:
+
+- makes the accent meaningless
+- weakens state communication
+- creates a one-note dashboard
+- often causes the murky neon cockpit failure
+
+Correction:
+
+Use accent color selectively for active state, primary action, selected data, or critical status. Support other states with a disciplined state-color system.
+
+## System Rejected Direction: Decorative Chart Wallpaper
+
+Description:
+
+A large chart-like visual that looks cool but does not clearly help the user understand state, priority, comparison, or change.
+
+Rejected because:
+
+- wastes dashboard space
+- feels fake
+- creates the illusion of intelligence
+- does not support action
+
+Correction:
+
+Use charts that clearly encode product state and help the operator decide what to do next. If a chart cannot explain its job, replace it with a useful visualization.
+
+## System Rejected Direction: Chart-Lite Dashboard
+
+Description:
+
+Dashboard mode with too few meaningful charts or visualizations despite graph-rich references.
+
+Rejected because:
+
+- underuses the dashboard folder's strongest visual language
+- makes dense tools feel flat and text-heavy
+- misses the opportunity to show change, comparison, priority, freshness, and progress
+
+Correction:
+
+Consider at least two distinct chart or data-visualization types, including one major chart/map/matrix/timeline and supporting microcharts or score visuals.
+
+## System Rejected Direction: Image-Starved Dashboard
+
+Description:
+
+A dashboard that uses only text, metrics, and abstract panels even though the reference folder shows meaningful imagery, object visuals, media tiles, avatar/content systems, or scene previews.
+
+Rejected because:
+
+- feels dry
+- lacks visual memory
+- underuses reference evidence
+- becomes functional but forgettable
+
+Correction:
+
+Add purposeful image/object/media use when product context supports it: attraction zone, proof object, user/entity context, media/content preview, product object, status visualization, live tile, or scene mini-map.
+
+## System Rejected Direction: Fake Live / Session Status Slop
+
+Description:
+
+Random `live`, `session-only`, glowing dots, fake monitoring chips, or system-status badges that exist only to make the UI look technical.
+
+Migi strongly rejects this.
+
+Rejected because:
+
+- pure AI slop
+- creates a fake sense of intelligence
+- wastes attention
+- often has no clear user meaning
+- looks like generated product theater
+- implies backend, telemetry, freshness, or monitoring that may not exist
+
+Forbidden examples:
+
+- `SESSION-ONLY` chips with no user value
+- random green live dots
+- fake `10 live`
+- status pills that imply backend/live monitoring when the app is local/static
+- decorative telemetry indicators
+- vague local/session labels that do not explain behavior
+
+Allowed only if:
+
+- the product truly has live state
+- the label is understandable
+- the user knows why it matters
+- it changes behavior or decision-making
+
+Correction:
+
+Remove fake status theater. If state matters, label it truthfully in user language and tie it to a visible behavior, timestamp, source, freshness rule, persistence rule, or decision.
+
+Scope:
+
+This applies globally, but it is especially important in dashboards and command centers where fake telemetry can make unfinished work look falsely intelligent.
+
+## System Rejected Direction: Layout Integrity Failure
+
+Description:
+
+A UI where content visibly breaks out of its intended structure: text escapes containers, chart bars run into neighboring cards, titles are clipped, badges overlap, labels collapse into nonsense, or the layout only works at one default viewport.
+
+Rejected because:
+
+- looks junior before taste is even discussed
+- breaks trust instantly
+- proves the screen was not tested at real viewport sizes
+- destroys scanability and dashboard usefulness
+- cannot be award-level
+
+Signs:
+
+- body text escaping card boundaries
+- card titles cut off at the top or sides
+- chart bars, lines, points, axes, or labels running outside their plot/card area
+- stat bars crossing borders
+- image badges or pills overlapping
+- containers becoming too thin to read
+- labels collapsing into `C`, `U`, `?`, or other meaningless fragments
+- nav becoming oversized, cryptic, or overlapping on resize
+- form fields or buttons clipped by their container
+
+Correction:
+
+- define a Layout Integrity Contract before implementation
+- test 1440, 1280, 1024, 768, and 390
+- use `minmax(0, 1fr)`, min-width rules, `flex-wrap`, max-widths, line clamps, container-aware breakpoints, and responsive grid collapse
+- clip charts to explicit plot bounds with label-aware margins
+- change chart type, panel presentation, or metadata visibility at smaller widths
+- stack, collapse, or convert cards to rows/lists/accordions when width is insufficient
+
+Scope:
+
+This applies globally to every app type. It is P0 for dashboards because dense surfaces expose layout failure faster.
+
+## System Rejected Direction: AI Scale Inflation
+
+Description:
+
+A UI where everything is oversized: huge text, huge image blocks, huge cards, huge empty containers, and low information density.
+
+Rejected because:
+
+- feels like generic AI builder output
+- lacks refinement
+- wastes the desktop viewport
+- hides useful content below the fold
+- makes the user feel attacked by giant objects
+- mistakes "premium" for "oversized"
+- fails to match real reference density
+
+Signs:
+
+- one headline consumes half the screen without enough visual payoff
+- only 1-2 meaningful things visible on desktop
+- giant cards with little content inside
+- huge image blocks used as filler
+- excessive vertical spacing
+- buttons and labels scaled like hero elements
+- below-the-fold content starts too late
+- desktop page feels like a mobile layout blown up
+
+Correction:
+
+- perform a Scale Calibration Pass against the selected reference folder
+- reduce inflated elements
+- increase meaningful visible content
+- introduce smaller supporting type
+- tighten containers to content
+- match the density and rhythm of the chosen reference folder
+
+Scope:
+
+This applies globally to every visual-library folder and every design mode. Large type is allowed only when justified by the reference and balanced by composition, imagery, and supporting content density.
+
+## System Rejected Direction: Unreadable Artistic Overlay
+
+Description:
+
+A visual-heavy UI where text is placed over images without enough contrast protection.
+
+Rejected because:
+
+- looks amateur despite good imagery
+- fails accessibility and polish
+- makes the page feel uncontrolled
+- breaks trust immediately
+- elite apps do not make users fight to read
+
+Signs:
+
+- white text over pale image areas
+- small labels over photo texture
+- body copy over gradients with uneven contrast
+- focal object and text competing in the same area
+- text readable on desktop but failing on tablet/mobile crop
+- image overlays inconsistent between cards or sections
+
+Correction:
+
+- define a Contrast / Legibility Strategy before implementation
+- place text in a safe zone or outside the image
+- use a deliberate scrim, plate, vignette, mask, or crop
+- protect focal objects from overlays
+- verify text over images at 1440 / 768 / 390
+
+Scope:
+
+This applies globally to every visual-library folder and every design mode. Artistic style never excuses unreadable text.
+
+## System Rejected Direction: Image Trapped In The Grid
+
+Description:
+
+The agent uses powerful image references but implements the image as a square or rectangular block inside a conventional layout.
+
+Rejected because:
+
+- loses the emotional power of the reference
+- makes the page feel assembled
+- turns art direction into content placement
+- creates generic two-column or card-grid structure
+- fails to produce a poster/editorial feeling
+- makes imagery feel decorative instead of structural
+
+Signs:
+
+- image appears as a bordered rectangle
+- image sits beside text in a normal grid
+- image cards repeat with equal weight
+- hero image is large but still boxed
+- background image potential is ignored
+- page feels like components placed on top of black background
+
+Correction:
+
+- define Image Environment Strategy before layout
+- start from the scene when the reference uses one
+- use full-bleed, oversized, masked, layered, or composition-driving image treatment
+- place text in safe zones with contrast protection
+- remove obvious borders/card wrappers unless the reference explicitly earns them
+
+Scope:
+
+This applies when artistic, landing-page, cinematic, editorial, or image-led references use dominant background scenes or immersive imagery. It does not ban image cards when the reference is explicitly card/gallery/product-listing based.
+
 ## Robot Skill Forge v4: Obvious AI Robot App / Overlapping Character Cards
 
 Context:

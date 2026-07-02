@@ -59,7 +59,9 @@ Interaction:
 Composition:
 
 - no container soup
-- no generic dashboard unless the task is operational scanning
+- no generic dashboard unless Migi explicitly asked for a plain admin tool
+- dashboard/command-center references must show one attraction zone, varied panel weights, useful chart forms, reference-driven palette, deliberate image/object/media roles when relevant, compact scale, mixed materials, and calm/busy rhythm
+- no same-weight dashboard card soup, murky monochrome / terminal-green palette, single-accent overuse, text-and-metrics-only admin layout, terminal-ish dark panel spam, decorative charts, image-starved surfaces, or dead live/monitoring surfaces
 - no same rejected layout with new paint
 - no generic app layout replacing a strong reference composition
 - no accidental overlap/collision

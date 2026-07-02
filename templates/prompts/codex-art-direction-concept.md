@@ -9,6 +9,7 @@ Task:
 
 - Render visual concepts before implementation.
 - Text-only concepts fail.
+- If the task uses `01-command-centers-dashboards` or dashboard references, concepts must define a Dashboard Command-Surface Strategy: attraction zone, panel mix, chart forms, image/object/media role, compact scale, and calm/busy rhythm. Do not submit generic admin panels, same-weight card soup, terminal-ish dark panel spam, or decorative charts.
 - Work locally and do not call external models or hosted builders.
 - Do not modify protected folders:
 {{PROTECTED_FOLDERS}}

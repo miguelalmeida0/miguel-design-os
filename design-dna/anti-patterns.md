@@ -22,11 +22,457 @@ Detect:
 - First viewport is a grid of generic stat cards.
 - Page title is "Dashboard" or "Overview" but the user's next action is unclear.
 - Charts exist without a decision they support.
+- Dashboard references are image-aware and graph-rich, but the output becomes a plain admin panel.
+- There is no memorable focal object, dominant chart, scene, media block, map, product visual, avatar/content cluster, or attraction zone.
+- Every widget has nearly the same weight, size, radius, border, and internal rhythm.
+- The screen is text-and-metrics only, with little visual gravity.
+- The design uses terminal-ish dark rectangles or generic SaaS cards as the whole visual idea.
 
 Fix:
 
-- Replace the stat grid with the primary object plus its next action.
+- Replace the stat grid with an art-directed command surface.
+- Define one focal attraction zone first.
+- Mix metrics, charts, queues, tables/lists, status chips, avatars, media/image blocks, product/object visuals, action modules, and controls.
 - Keep metrics only if they change prioritization, trust, or decision-making.
+- Integrate charts as part of the composition and the decision model, not as decorative filler.
+- Vary panel scale, density, and visual weight so the screen has hierarchy.
+
+## Anti-Pattern: Cryptic Navigation
+
+Detect:
+
+- Primary navigation uses unexplained abbreviations such as `CMD`, `SIG`, `CMP`, or `BRF`.
+- Brand/system labels such as `SD LOCAL` appear without user-facing meaning.
+- Icon-only nav has no labels, tooltips, or obvious context.
+- Compact nav sacrifices comprehension to look technical.
+
+Why it fails:
+
+Users should not have to decode navigation. Cryptic labels make a product feel internal, unfinished, and hostile to first use.
+
+Correction:
+
+Use clear labels such as Command, Signals, Compare, Brief, Intake, Memory, Genome, or Rulebook. If abbreviations are used for style, expose the full meaning through visible labels, tooltips, or unmistakable context.
+
+## Anti-Pattern: Broken Responsive Navigation
+
+Detect:
+
+- Desktop rail simply turns into oversized mobile pills.
+- Mobile nav is cramped, cryptic, or wraps awkwardly.
+- Nav overlaps content or blocks touch targets.
+- Selected state becomes unclear at smaller widths.
+
+Why it fails:
+
+Responsive navigation is a product surface, not leftover chrome. It must feel crafted at every width.
+
+Correction:
+
+Design desktop, tablet, and mobile nav intentionally. Use a polished bottom nav or compact top system on mobile with clear labels, comfortable touch targets, balanced spacing, and visible selected state.
+
+## Anti-Pattern: Misaligned Toolbar
+
+Detect:
+
+- Search field and action buttons sit on different baselines.
+- Buttons and inputs have unrelated heights without an intentional scale relationship.
+- Filter/action groups collide or wrap badly.
+- Primary action floats awkwardly away from the input group.
+
+Why it fails:
+
+Search, filters, and actions are high-use controls. Misalignment makes the whole interface feel uncrafted.
+
+Correction:
+
+Create a toolbar height system. Align baselines, normalize control height where appropriate, use consistent gaps, and define responsive wrapping before implementation.
+
+## Anti-Pattern: Prose-Box Panels
+
+Detect:
+
+- Dashboard/product cards are filled with multi-line paragraphs.
+- Every panel requires reading instead of scanning.
+- Dense copy repeats across many containers.
+- Long explanation sits inside compact operational UI.
+
+Why it fails:
+
+Containers become tiring when they hold prose instead of state. Dense tools need structured information, not paragraph weight.
+
+Correction:
+
+Use scan-first panels: title, value/status, one-line summary, a few meaningful chips, and a clear action. Move long copy into details, drawer, preview artifact, or expanded state.
+
+## Anti-Pattern: Clumsy Full-Width Buttons
+
+Detect:
+
+- Desktop buttons stretch across large containers without a clear reason.
+- Long action labels become massive pills.
+- Button width dominates more than the action deserves.
+- Repeated full-width actions make the page feel amateur.
+
+Why it fails:
+
+Button proportion is part of craft. Oversized actions often signal that layout spacing is doing the work hierarchy should do.
+
+Correction:
+
+Let button width usually follow content. Use full-width buttons only when the surrounding layout, mobile context, or single-action zone clearly supports it.
+
+## Anti-Pattern: Responsive Collision
+
+Detect:
+
+- Containers overlap during resizing.
+- Pills, chips, stat badges, or controls stack on top of each other.
+- Form controls break out of containers.
+- Nav, overlays, or image captions cover content.
+- Horizontal overflow appears on core screens.
+
+Why it fails:
+
+Collision means the layout system failed. It is not a polish issue.
+
+Correction:
+
+Check 1440, 1280, 1024, 768, and 390. Use `minmax(0, 1fr)`, `flex-wrap`, `clamp`, sane min-widths, overflow protection, and breakpoint-specific grid changes. No accidental overlap is acceptable.
+
+## Anti-Pattern: Content Escaping Containers
+
+Detect:
+
+- Text, charts, bars, chips, badges, or controls overflow outside their intended card/container.
+- Chart bars run into adjacent cards.
+- Card titles are cut off at the top or sides.
+- Body text escapes card boundaries.
+- Stat bars cross container borders.
+- Pills overlap image badges.
+- Input text is clipped by its field.
+- Nav items overlap page content.
+
+Why it fails:
+
+Content escaping containers looks junior, breaks trust instantly, destroys scanability, and proves the layout was only checked at one viewport. It cannot be award-level.
+
+Correction:
+
+Use real responsive constraints: `minmax(0, 1fr)`, min-width rules, `flex-wrap`, max-width, line clamp, content-aware breakpoints, responsive grid collapse, container queries where useful, chart clipping/margins, SVG/viewBox discipline, explicit chart bounds, and intentional overflow only when paired with visible truncation or scroll behavior.
+
+## Anti-Pattern: Squeezed Card Garbage
+
+Detect:
+
+- Cards or panels shrink until content becomes unreadable.
+- Labels truncate to single letters without an obvious legend.
+- Multi-word titles are cut off.
+- Chart axes become unreadable.
+- Buttons squeeze into awkward pills.
+- Image thumbnails overlap metadata.
+- A card technically fits but is too narrow for its content model.
+
+Why it fails:
+
+Responsive layout should adapt, not suffocate. Elite dashboards preserve readability at every breakpoint.
+
+Correction:
+
+If a card cannot preserve meaning at a width, change the layout: stack vertically, convert to a list row, collapse secondary details, move details into a drawer, hide noncritical metadata, use abbreviations only with visible legends, or change the chart type for smaller widths.
+
+## Anti-Pattern: Chart Bounds Failure
+
+Detect:
+
+- Bars, lines, points, axes, or labels leave the plot area.
+- Graph marks cross unrelated panels or card borders.
+- Chart labels collide with neighboring content.
+- A chart is visually attractive but structurally broken.
+- SVG overflow or missing chart margins let data spill past its container.
+
+Why it fails:
+
+Charts are part of the UI structure. A chart that escapes its bounds makes the whole dashboard feel untested and fake.
+
+Correction:
+
+Use explicit chart dimensions, plot-area clipping, label-aware margins, controlled SVG `viewBox`, `overflow` discipline, and responsive chart variants. If a chart cannot fit, use a simpler chart at that breakpoint.
+
+## Anti-Pattern: Semantic Label Collapse
+
+Detect:
+
+- Labels collapse into `C`, `U`, `?`, or other unexplained fragments.
+- Operational UI uses cryptic initials without a visible legend.
+- Chart labels are shortened beyond comprehension.
+- Navigation abbreviations are unclear.
+- Words are clipped until the meaning is gone.
+
+Why it fails:
+
+Compact UI is allowed; meaningless UI is not. Labels carry product meaning, and losing that meaning breaks trust and navigation.
+
+Correction:
+
+Use standard abbreviations only when obvious or explained. Add a visible legend, change the layout, hide noncritical metadata, or move detail into a secondary view before labels become meaningless.
+
+## Anti-Pattern: Fake Live / Session Status Slop
+
+Detect:
+
+- Decorative `live`, `session-only`, monitoring, telemetry, or glowing status chips appear without real product meaning.
+- Status indicators imply backend freshness, live monitoring, or active sessions in a local/static UI.
+- The label does not help the user decide anything.
+
+Why it fails:
+
+It is product theater. It makes unfinished software look falsely intelligent and wastes attention.
+
+Correction:
+
+Remove fake live/session/status badges. If state is real, explain it in user language and connect it to behavior, timestamp, source, persistence, or decision-making.
+
+## Anti-Pattern: Machine-Generated Palette
+
+Detect:
+
+- Palette feels dull, robotic, generic, or emitted by a template.
+- Terminal green, neon lime, AI purple, or generic blue/grey appears by default.
+- One accent color is used everywhere.
+- Surfaces lack roles: base, raised, quiet, active, image/media, data, danger, and success.
+
+Why it fails:
+
+Color should communicate identity, hierarchy, mood, and state. Machine-default palettes make even good structure feel unfinished.
+
+Correction:
+
+Define a human palette direction from references or product mood. Limit accent roles, vary surface material, and use state colors only when they clarify behavior.
+
+## Anti-Pattern: Functional But Unfinished Dashboard
+
+Detect:
+
+- The dashboard has working controls but lacks polish.
+- Navigation is cryptic.
+- Toolbars are misaligned.
+- Panels are text-heavy.
+- Buttons feel clumsy.
+- Responsiveness collides.
+- Palette feels generic or robotic.
+- Fake status theater appears.
+
+Why it fails:
+
+Working interactions do not equal a finished dashboard. Migi's dashboard direction requires utility plus visual craft.
+
+Correction:
+
+Before handoff, prove clear navigation, aligned toolbars, scan-first panels, proportionate actions, collision-free responsive behavior, human palette, and no fake live/session UI.
+
+## Anti-Pattern: Same-Weight Dashboard Widget Field
+
+Detect:
+
+- Dashboard is made from many equal cards.
+- Every panel appears equally important.
+- There is no dominant visual/data stage.
+- Density is solved by adding more boxes rather than clearer hierarchy.
+- Calm and busy zones are not differentiated.
+
+Why it fails:
+
+Migi's dashboard references use varied panel roles and deliberate asymmetry. Same-weight repetition makes a dashboard feel like an admin template even when the colors are polished.
+
+Correction:
+
+Create a panel hierarchy: one major focal zone, one utility-heavy zone, one chart/stats zone, one queue/list zone, one imagery/content zone, and one control/action zone. Let some panels be dense, some calm, some visual, and some operational.
+
+## Anti-Pattern: Dashboard Without Visual Gravity
+
+Detect:
+
+- The screen has no memorable attraction zone.
+- Imagery, objects, avatars, media, maps, scenes, or dominant charts are absent even though dashboard references use them.
+- The page is utility-only and forgettable.
+- The first screen could belong to any SaaS admin product.
+
+Why it fails:
+
+The dashboard folder shows that dashboards can be useful and visually memorable. Without one visual anchor, the surface has no designed center of gravity.
+
+Correction:
+
+Choose one focal anchor: 3D object, isometric scene, media/image block, product visual, bold content object, dominant graph, map, account/card stack, selected item, or equivalent. Build the remaining panels around it.
+
+## Anti-Pattern: Charts As Decoration
+
+Detect:
+
+- Charts appear because dashboards are expected to have charts.
+- Chart types repeat without functional difference.
+- Graphs do not support a visible decision, comparison, status, or trend.
+- Chart styling is disconnected from the surrounding composition.
+
+Why it fails:
+
+The references use charts as useful visual instruments: line charts, bars, rings, progress tracks, heatmaps, maps, funnels, timelines, sparklines, and score indicators. Decorative charts create false richness.
+
+Correction:
+
+Name what each chart helps the user understand or decide. Use varied chart forms only when the data role differs, and integrate the chart's color, scale, annotation, and interaction with the surrounding hierarchy.
+
+## Anti-Pattern: Murky Monochrome Dashboard
+
+Detect:
+
+- Dashboard is mostly one muddy dark color family.
+- Lime, green, purple, or another accent appears everywhere.
+- Panels, charts, buttons, labels, and statuses share the same color energy.
+- Neutral surfaces lack material range.
+- The result feels terminal-like, lifeless, or one-note.
+
+Why it fails:
+
+Dashboard references use palette and material to clarify hierarchy. One dark wash makes every panel feel the same and kills the visual energy Migi expects.
+
+Correction:
+
+Define Dashboard Palette Strategy before implementation. Use a reference-driven palette with base, raised panel, quiet panel, active panel, image/media panel, data panel, controlled accents, and clear state colors.
+
+## Anti-Pattern: Single-Accent Overuse
+
+Detect:
+
+- One accent color is used for every active tab, chart, border, glow, icon, label, button, status, and highlight.
+- The accent stops communicating priority or state.
+- Dashboard hierarchy depends on color repetition instead of panel role and composition.
+
+Why it fails:
+
+Accent color is a signal. If everything is accented, nothing is.
+
+Correction:
+
+Reserve accent for active state, primary action, selected data, or critical status. Use separate state colors for success, warning, danger, freshness, and neutral metadata only when the product needs them.
+
+## Anti-Pattern: Decorative Chart Wallpaper
+
+Detect:
+
+- A large graph-like shape looks impressive but does not communicate clear state.
+- Axes, labels, legends, annotations, or comparisons are missing when needed.
+- The user cannot explain what the chart changes about their next action.
+- The chart occupies the attraction zone but acts like background art.
+
+Why it fails:
+
+It creates the illusion of intelligence while wasting the most important dashboard space.
+
+Correction:
+
+Tie the major chart to a product concept: trend, priority, risk, freshness, change, comparison, distribution, capacity, or progress. Add labels, annotations, selected states, and supporting microcharts only where they improve decision-making.
+
+## Anti-Pattern: Chart-Lite Dashboard
+
+Detect:
+
+- Dashboard uses mostly text, metric cards, and lists despite graph-rich references.
+- Only one basic chart type appears across the whole dashboard.
+- Microcharts, score meters, progress tracks, maps, matrices, timelines, or sparklines are absent even where they would improve scanning.
+
+Why it fails:
+
+The dashboard folder's visual energy comes partly from graph variety. A chart-lite dashboard feels flat and under-designed.
+
+Correction:
+
+Consider at least two visualization types: one major chart/map/matrix/timeline plus supporting bars, rings, progress tracks, sparklines, ranked scores, heat maps, or timeline strips.
+
+## Anti-Pattern: Image-Starved Dashboard
+
+Detect:
+
+- Dashboard uses only text, numbers, abstract panels, and charts.
+- References show avatars, media, objects, scene previews, product visuals, or image-led panels, but the output reduces imagery to tiny avatars or omits it.
+- The surface has no memorable visual object or media anchor.
+
+Why it fails:
+
+Without image/object/media layers, the dashboard can be functional but forgettable. Migi's dashboard references often use visual anchors to create memory and hierarchy.
+
+Correction:
+
+Define Image / Object / Media Strategy. Use a purposeful attraction zone, proof object, user/entity context, media/content preview, product object, status visualization, live tile, or environment mini-map when the product supports it.
+
+## Anti-Pattern: Dead Dashboard Surface
+
+Detect:
+
+- Product represents live signals, activity, monitoring, queues, events, or freshness, but the dashboard feels frozen.
+- No live indicators, progress movement, chart transitions, selected states, timeline motion, or active-state cues are present.
+- Motion, if present, is decorative and unrelated to state.
+
+Why it fails:
+
+Elite dashboards feel alive when the product is alive. Static surfaces can make operational products feel fake or stale.
+
+Correction:
+
+Add a Dashboard Live Visual Layer: live indicators, progress movement, animated chart transitions, timeline/state strips, hover/selection transitions, or live media tiles. Motion must communicate state, freshness, selection, progress, or activity.
+
+## Anti-Pattern: Terminal-Ish Dark Panel Spam
+
+Detect:
+
+- The dashboard is mostly dark rectangles with labels, numbers, and weak grey text.
+- Visual contrast comes from neon accents instead of hierarchy.
+- There is no soft premium surface treatment, image/object material, or graph richness.
+- The result feels like a generic finance/dev terminal regardless of product type.
+
+Why it fails:
+
+Migi's dashboard references include dark surfaces, but they are polished, image-aware, graph-rich, and compositionally varied. Dark mode alone is not art direction.
+
+Correction:
+
+Use dark surfaces only when they support the product. Add crafted hierarchy through focal zones, expressive visualization, meaningful imagery/object use, controlled typography, soft depth, and varied panel roles.
+
+## Anti-Pattern: Oversized Empty Dashboard
+
+Detect:
+
+- Dashboard cards, headings, charts, and padding are inflated.
+- Desktop shows too few meaningful objects despite dense references.
+- Large containers hold little content.
+- The screen feels like a mobile dashboard blown up.
+
+Why it fails:
+
+Dashboard references deliver useful volume quickly. Oversized empty dashboards waste the viewport and hide the product's operational value.
+
+Correction:
+
+Run a dashboard Scale Calibration Pass. Tighten typography, card dimensions, chart shells, and spacing until the desktop viewport shows meaningful metrics, visualization, queues/lists, controls, and a focal visual/data object without feeling cramped.
+
+## Anti-Pattern: Dashboard Furniture in Artistic Landing Pages
+
+Detect:
+
+- Migi asked for landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, or landing-page inspiration.
+- The result uses repetitive card rows, visible grids, boxed content modules, stats blocks, feature grids, or product-dashboard structure.
+- Images sit inside a normal marketing layout instead of driving the composition.
+- The hero is artistic, but the rest of the page becomes generic.
+- The page has too much explanatory copy for an image-led reference set.
+
+Why it fails:
+
+Artistic and creative landing pages should feel composed, not administrated. Dashboard furniture turns atmosphere into page-builder output.
+
+Correction:
+
+Use fewer elements, stronger image treatment, quieter UI chrome, larger visual moments, sparse copy, and a weak or invisible grid when possible. Preserve the image-led rhythm beyond the hero.
 
 ## Implementation Before Art Direction
 
@@ -74,6 +520,78 @@ It copies the surface but misses the design mechanism.
 Correction:
 
 Extract composition, focal object, spatial hierarchy, hidden information, emotional hook, material/texture, interaction model, and what is intentionally absent.
+
+## Wrong Reference Folder Mode
+
+Detect:
+
+- Migi points to a visual-library folder, but the output uses a different design mode.
+- Command-center references become generic SaaS dashboards.
+- Creative references become safe template grids.
+- Landing references become text-heavy content pages.
+- Mobile references become pretty but unusable stills.
+- Gallery references become equal-card catalogs with weak selected state.
+- All references are treated equally with no priority or stated thesis.
+
+Why it fails:
+
+The folder is part of the instruction. Ignoring it discards the design intent before implementation begins.
+
+Correction:
+
+Select the correct Reference Folder Mode, create `docs/design/reference-usage-report.md`, prioritize the strongest references, and name what will not be copied.
+
+## Random Decorative Image Use
+
+Detect:
+
+- Images appear because the page needs visual interest, but they do not define composition, identity, proof, mood, selection, or material.
+- Major images have no declared role.
+- A hero image works, but later imagery becomes filler in generic cards or sections.
+
+Why it fails:
+
+Images are design material, not wallpaper. Random images make referenced work look assembled instead of directed.
+
+Correction:
+
+Declare one role for every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer. Remove images that cannot earn a role.
+
+## Anti-Pattern: Background Image Fear
+
+Detect:
+
+- The reference uses immersive image scenes, but the agent boxes the image into a safe rectangle.
+- A dominant scene becomes a square card, bordered image block, or rigid two-column image/text layout.
+- The page is component-led even though the reference is scene-led.
+- Image potential as full-bleed, oversized, masked, or layered environment is ignored.
+
+Why it fails:
+
+Artistic references often work because image, typography, and space are fused. Boxing the image destroys the composition.
+
+Correction:
+
+Use image-as-environment techniques: full-bleed scene, oversized crop, masked image field, image bleeding beyond grid boundaries, scrim-protected text over image, text in clean negative-space zones, layered foreground/background, and image-driven section rhythm.
+
+## Anti-Pattern: Hope-Based Contrast
+
+Detect:
+
+- Text sits over an image, gradient, video, texture, or noisy panel with no explicit protection.
+- White or cream text appears directly on bright or busy photo areas.
+- Small labels sit over high-frequency image detail.
+- Accent labels sit over bright image areas without backing.
+- Important product copy sits over faces, eyes, hands, or focal objects.
+- Text is readable in one crop but fails in another.
+
+Why it fails:
+
+Readability changes across the image and across responsive crops. A text layer that looks okay in one area can fail completely on another.
+
+Correction:
+
+Use a defined contrast protection system: safe zone, plate, scrim, mask, local vignette, blur/backdrop plate, deliberate crop, or move the text outside the image. Verify at 1440 / 768 / 390.
 
 ## Anti-pattern: Product Thinking During Literal Copy
 
@@ -140,17 +658,41 @@ Motion is only acceptable when it clarifies selection, hover, state change, tran
 
 Detect:
 
-- Giant headings, huge cards, massive containers, oversized spacing, or inflated panels are used to fake drama.
+- Giant headlines, cards, sections, images, buttons, spacing, and containers are used to fake drama.
 - Every object is large, so no object is actually dominant.
 - First load feels physically overwhelming.
+- Desktop shows fewer than 3 meaningful content objects without strong reference justification.
+- The page has low content/data density above the fold.
+- Containers are much larger than their content.
+- The desktop layout feels like a mobile design blown up.
 
 Why it fails:
 
-The user feels attacked by scale. Big does not equal premium.
+The user feels attacked by scale. Big does not equal premium. Real premium references use proportion, density, rhythm, and content calibration; they do not simply enlarge everything.
 
 Correction:
 
-Use controlled type scale. Make one object dominant, not every object huge. Create drama through composition, rhythm, imagery, cropping, contrast, and interaction.
+Perform a Scale Calibration Pass against the selected reference folder before implementation. Compare headline size, body text size, container size, card density, image size, spacing, visible content objects, and meaningful information above the fold. Use controlled type scale, useful density, hierarchy with range, content richness, and no giant empty furniture.
+
+## Anti-Pattern: Giant Container Attack
+
+Detect:
+
+- Hero text is too large relative to the viewport.
+- Oversized image/card has a weak content role.
+- Low amount of visible information appears above the fold.
+- Sections are giant and empty.
+- Oversized containers repeat across the page.
+- Desktop behaves like enlarged mobile layout.
+- There is no scale contrast beyond "huge."
+
+Why it fails:
+
+The UI feels inflated rather than designed. Real premium references use proportion, density, rhythm, and content calibration.
+
+Correction:
+
+Reduce inflated elements, increase meaningful visible content, introduce smaller supporting type, tighten containers to content, and match the density/rhythm of the chosen reference folder.
 
 ## Excitement Through Clutter
 
@@ -367,6 +909,9 @@ Do not finish while any are true:
 - strong reference converted into generic components
 - motion exists only as decoration
 - AI scale inflation overwhelms the product
+- giant container attack: huge type, huge empty containers, and low desktop density
+- hope-based contrast: important text is hard to read or relies on a lucky image crop
+- background image fear: immersive references are reduced to boxed rectangular image assets
 - visible UI elements overlap or collide unintentionally
 - app follows the obvious genre aesthetic without a fresh thesis
 - selection-first product creates excitement mainly through badges/glows/stats instead of desire and interaction reward

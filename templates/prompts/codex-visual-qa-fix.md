@@ -10,6 +10,7 @@ Task:
 - Build/lint is not visual QA.
 - Screenshot evidence is required.
 - Block fake done reports.
+- For dashboard/command-center work, block generic admin templates, same-weight card soup, no attraction zone, decorative charts, terminal-ish dark panel spam, and oversized low-density dashboards.
 - Do not modify protected folders:
 {{PROTECTED_FOLDERS}}
 
