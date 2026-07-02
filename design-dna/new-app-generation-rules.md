@@ -28,19 +28,20 @@ Small bug fixes, security patches, copy edits, and purely technical refactors do
 5. Inspect the current project type, framework, routes, components, styling system, and existing tokens.
 6. If Literal Target Copy Mode is active, skip the Visual Concept Gate and build only the target-parity shell.
 7. If Migi points to a visual-library reference folder, select the matching Reference Folder Mode before choosing a layout.
-8. If Migi asks for landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, activate Landing Page / Artistic Mode before choosing a layout.
-9. If visual-heavy work uses visual-library references, create `docs/design/reference-usage-report.md` before coding.
-10. Perform a Scale Calibration Pass against the selected reference folder before implementation.
-11. If Command Center / Dashboard Mode is selected, define Dashboard Command-Surface Strategy before implementation.
-12. Define Image Environment Strategy before implementation when references are artistic, landing-page, cinematic, image-led, or visual-heavy.
-13. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture.
-14. If visual-heavy, run Visual Concept Gate v2 before implementation: 3 rendered concept prototypes, screenshots, and approval.
-15. Define a project-specific visual identity and a non-obvious visual thesis.
-16. State which source project is relevant evidence and what will not be copied.
-17. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
-18. Plan to run `evaluation/ui-scorecard.md` before finishing.
-19. If the project is a Miguel Design OS dogfood target, state what rule/tool/prompt is being tested before coding and commit to translating every target-app failure back into a Design OS patch or named open gap.
-20. State product purpose clarity before implementation: what this app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the master system.
+8. If Migi asks to use a specific visual-library folder or screenshot set as the design basis, activate Reference-Locked Build Mode before choosing a layout.
+9. If Migi asks for landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, activate Landing Page / Artistic Mode before choosing a layout.
+10. If visual-heavy work uses visual-library references, create `docs/design/reference-usage-report.md` before coding.
+11. Perform a Scale Calibration Pass against the selected reference folder before implementation.
+12. If Command Center / Dashboard Mode is selected, define Dashboard Command-Surface Strategy before implementation.
+13. Define Image Environment Strategy before implementation when references are artistic, landing-page, cinematic, image-led, or visual-heavy.
+14. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture.
+15. If visual-heavy, run Visual Concept Gate v2 before implementation: 3 rendered concept prototypes, screenshots, and approval.
+16. Define a project-specific visual identity and a non-obvious visual thesis.
+17. State which source project is relevant evidence and what will not be copied.
+18. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
+19. Plan to run `evaluation/ui-scorecard.md` before finishing.
+20. If the project is a Miguel Design OS dogfood target, state what rule/tool/prompt is being tested before coding and commit to translating every target-app failure back into a Design OS patch or named open gap.
+21. State product purpose clarity before implementation: what this app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the master system.
 
 ## Design Intent Record
 
@@ -57,6 +58,10 @@ Inspiration/reference provided?:
 Reference folder path:
 Reference folder mode:
 Reference usage report:
+Reference-Locked Build Mode?:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
 Landing Page / Artistic Mode?:
 Dashboard attraction zone:
 Dashboard panel mix:
@@ -210,6 +215,64 @@ Use when Migi provides inspiration images, screenshots, references, or a strong 
 5. Explain in the final handoff how the implementation used the inspiration without copying it literally, unless Literal Target Copy Mode was explicitly requested.
 
 Do not extract shallow traits only. Dark, neon, cards, glass, glow, gradients, rounded panels, and big text are not a design concept.
+
+## Reference-Locked Build Mode
+
+Use when Migi says:
+
+- use dashboard folder
+- use creative folder
+- use landing-page folder
+- base it on these screenshots
+- make it like these references
+- follow the same approach as these apps
+
+Do not proceed from folder vibes. Before implementation, select 3-5 specific reference anchors.
+
+Each anchor must have one or more roles:
+
+- composition anchor
+- palette/material anchor
+- graph/component anchor
+- image/object/media anchor
+- responsive/layout anchor
+
+Create before coding:
+
+- `docs/design/reference-decomposition.md` using `templates/reference-decomposition.template.md`
+- `docs/design/design-transfer-spec.md` using `templates/design-transfer-spec.template.md`
+
+The design transfer spec must translate reference mechanics into the target app:
+
+- chosen visual mode
+- primary composition strategy
+- layout skeleton
+- panel hierarchy
+- graph system
+- image/object/media strategy
+- palette/material strategy
+- typography scale
+- navigation strategy
+- responsive strategy
+- forbidden drift
+- acceptance criteria
+
+Implementation must follow the transfer spec by segments:
+
+1. shell/nav
+2. attraction zone
+3. chart/data system
+4. queue/list system
+5. action/output system
+6. responsive adaptation
+
+Create after implementation:
+
+- `docs/qa/reference-match-report.md`
+
+The report must include what matched, what missed, density comparison, composition comparison, palette comparison, chart comparison, image/object comparison, responsiveness comparison, and next patch required.
+
+Stop if the agent cannot name the exact reference anchors and their transferred mechanics.
 
 ## Reference Folder Modes
 
@@ -586,6 +649,10 @@ Before coding any visual-heavy task using visual-library references, create `doc
 It must include:
 
 - references inspected
+- selected reference anchors when Reference-Locked Build Mode is active
+- anchor roles when Reference-Locked Build Mode is active
+- reference decomposition path when Reference-Locked Build Mode is active
+- design transfer spec path when Reference-Locked Build Mode is active
 - folder mode selected
 - extracted principles
 - what will not be copied

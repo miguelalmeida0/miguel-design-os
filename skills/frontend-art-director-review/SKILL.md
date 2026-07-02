@@ -29,6 +29,7 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Intended audience.
 - Inspiration or approved thesis, if any.
 - Reference folder mode and `docs/design/reference-usage-report.md` when visual-library references are used.
+- Reference-Locked Build Mode artifacts when a visual-library folder or screenshot set is the design basis: selected anchors, anchor roles, `docs/design/reference-decomposition.md`, `docs/design/design-transfer-spec.md`, and `docs/qa/reference-match-report.md`.
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is used.
 - Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is used.
 - Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used.
@@ -56,6 +57,12 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 5. Reject safe generic layouts when the product needs art direction.
 6. If visual-library references are used, verify:
    - the correct Reference Folder Mode was selected
+   - Reference-Locked Build Mode selected 3-5 exact anchors when a folder/screenshot set was the design basis
+   - each anchor has a role: composition, palette/material, graph/component, image/object/media, or responsive/layout
+   - `docs/design/reference-decomposition.md` extracts canvas, composition, density, typography, charts/data, image/object/media, palette/material, and interaction model
+   - `docs/design/design-transfer-spec.md` translates reference mechanics into the target app
+   - implementation follows the transfer spec instead of generic mode
+   - `docs/qa/reference-match-report.md` compares final output against anchors
    - `docs/design/reference-usage-report.md` exists before implementation
    - Scale Calibration compares text, container, card, image, spacing, and above-the-fold density against the selected references
    - references were prioritized instead of blended equally
@@ -140,6 +147,9 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Stop if the critique lacks evidence from screenshots or references.
 - Stop if the first viewport has no focal object.
 - Stop if visual-library references were used with the wrong folder mode or no reference usage report.
+- Stop if the agent cannot name the exact reference anchors and their transferred mechanics.
+- Stop if Reference-Locked Build Mode is active but reference decomposition or design transfer spec is missing before coding.
+- Stop if output copies vibe, color, or category but not anchor composition, density, chart behavior, image/object role, palette/material, and responsive mechanics.
 - Stop if Command Center / Dashboard Mode becomes generic admin template, same-weight card soup, text-and-metrics-only dashboard, terminal-ish dark panel spam, murky monochrome dashboard, weak/decorative chart system, or lacks a meaningful attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic or responsive nav collides with content.
@@ -169,6 +179,11 @@ Focal object:
 Composition assessment:
 Reference folder mode:
 Reference usage report:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
+Reference match report:
 Dashboard command-surface strategy:
 Dashboard palette strategy:
 Graph system:
@@ -202,6 +217,14 @@ Scorecard caps:
 - Same layout with new paint: max score 6.
 - Wrong reference folder mode used: max score 6.
 - No reference usage report for visual-heavy visual-library work: max score 6.
+- Visual-library folder used but no reference anchors selected: max score 5.
+- No reference decomposition before coding: max score 5.
+- No design transfer spec before coding: max score 5.
+- Output uses generic mode instead of selected anchor mechanics: max score 5.
+- Agent copies mood but not composition: max score 6.
+- Agent copies colors but not structure: max score 6.
+- Agent ignores image/object/chart behavior from anchors: max score 6.
+- No final reference-match report: max score 6.
 - Missing Dashboard Command-Surface Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Dashboard Palette Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Graph System Strategy for Command Center / Dashboard Mode: max score 6.

@@ -28,6 +28,7 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Any inspiration or approved direction.
 - Any rejected direction.
 - Reference folder mode and `docs/design/reference-usage-report.md` when visual-library references are used.
+- Reference-Locked Build Mode artifacts when a visual-library folder or screenshot set is the design basis: selected anchors, anchor roles, `docs/design/reference-decomposition.md`, `docs/design/design-transfer-spec.md`, and `docs/qa/reference-match-report.md`.
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is used.
 - Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is used.
 - Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used.
@@ -79,6 +80,13 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - reference flattening
    - wrong reference folder mode
    - missing reference usage report
+   - visual-library folder used with no selected reference anchors
+   - reference decomposition missing before coding
+   - design transfer spec missing before coding
+   - output copies mood but not anchor composition
+   - output copies color but not structure
+   - image/object/chart behavior from selected anchors ignored
+   - missing final reference-match report
    - references blended equally with no priority
    - major images used as decoration only
    - overlap/collision
@@ -141,6 +149,9 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if the design has no clear primary object or action.
 - Stop if a rejected layout is being polished.
 - Stop if visual-library references were used with the wrong folder mode or no reference usage report.
+- Stop if Migi asked to use a folder/screenshot set as the design basis and the agent cannot name exact reference anchors, anchor roles, and transferred mechanics.
+- Stop if Reference-Locked Build Mode is active but reference decomposition or design transfer spec is missing before coding.
+- Stop if final Reference-Locked handoff lacks `docs/qa/reference-match-report.md`.
 - Stop if Command Center / Dashboard Mode has no Dashboard Command-Surface Strategy.
 - Stop if Command Center / Dashboard Mode has no Dashboard Palette Strategy or Graph System Strategy.
 - Stop if dashboard references become generic SaaS/admin, same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only panels, decorative charts, image-starved surfaces, or a surface with no focal attraction zone.
@@ -173,6 +184,11 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 Visual thesis found:
 Reference folder mode:
 Reference usage report:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
+Reference match report:
 Dashboard command-surface strategy:
 Dashboard palette strategy:
 Graph system:
@@ -208,6 +224,14 @@ Patch recommendation:
 - Reference flattening: max score 6.
 - Wrong reference folder mode used: max score 6.
 - No reference usage report for visual-heavy visual-library work: max score 6.
+- Visual-library folder used but no reference anchors selected: max score 5.
+- No reference decomposition before coding: max score 5.
+- No design transfer spec before coding: max score 5.
+- Output uses generic mode instead of selected anchor mechanics: max score 5.
+- Agent copies mood but not composition: max score 6.
+- Agent copies colors but not structure: max score 6.
+- Agent ignores image/object/chart behavior from anchors: max score 6.
+- No final reference-match report: max score 6.
 - Missing Dashboard Command-Surface Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Dashboard Palette Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Graph System Strategy for Command Center / Dashboard Mode: max score 6.
@@ -303,6 +327,7 @@ Patch recommendation:
 - Do not accept dashboard work that reduces Migi's references to a plain admin panel, equal-card grid, or dark terminal surface.
 - Do not accept dashboard work that uses murky monochrome palette, overused accent color, weak charts, or tiny-avatar-only media when references show richer systems.
 - Do not accept visual-library reference work without Scale Calibration.
+- Do not accept visual-library folder work that cannot name exact anchors and transferred mechanics.
 - Do not accept image-led work without a Contrast / Legibility Strategy.
 - Do not accept image-led/artistic/landing work without Image Environment Strategy.
 - Do not accept cryptic nav, misaligned toolbars, text-heavy cards, oversized unjustified buttons, responsive collisions, fake live/session/status theater, or machine palettes as acceptable dashboard polish.

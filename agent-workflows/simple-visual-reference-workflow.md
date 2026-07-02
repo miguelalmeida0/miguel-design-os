@@ -14,36 +14,43 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
    - `03-mobile-consumer-apps` or `mobile-apps`: Mobile Product Flow Mode
    - `04-selection-gallery-browse`: Selection / Gallery / Browse Mode
    - `05-landing-hero-pages`: Landing Page / Poster Mode
-6. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding. Include references inspected, folder mode selected, extracted principles, what will not be copied, visual thesis, layout strategy, image role strategy, Image Environment Strategy, Scale Calibration, Contrast / Legibility Strategy, Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, Layout Integrity Contract, Responsive Breakpoint Proof, Palette Direction, and anti-patterns avoided.
+6. If Migi asks to use the folder/screenshots as the design basis, activate Reference-Locked Build Mode:
+   - select 3-5 exact reference anchors
+   - assign each anchor a role: composition, palette/material, graph/component, image/object/media, or responsive/layout
+   - create `docs/design/reference-decomposition.md`
+   - create `docs/design/design-transfer-spec.md`
+   - implement only from the transfer spec
+   - create `docs/qa/reference-match-report.md` before final handoff
+7. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding. Include references inspected, folder mode selected, selected reference anchors and roles when Reference-Locked Build Mode is active, extracted principles, what will not be copied, visual thesis, layout strategy, image role strategy, Image Environment Strategy, Scale Calibration, Contrast / Legibility Strategy, Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, Layout Integrity Contract, Responsive Breakpoint Proof, Palette Direction, and anti-patterns avoided.
    - For `01-command-centers-dashboards`, also include Dashboard Command-Surface Strategy: attraction zone, panel mix, chart forms and purpose, image/object/media role, utility-heavy zone, queue/list/activity zone, control/action zone, calm zones, busy zones, and how the design avoids same-weight card soup.
    - Also include Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy. Name the palette failure to avoid, the major/supporting chart system, and the visual/object/media anchor.
-7. For the current task, extract relevant principles:
+8. For the current task, extract relevant principles:
    - composition
    - focal object
    - density
    - interaction model
    - what to avoid
-8. Declare the role of every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
-9. Run an Image Environment Pass for artistic, landing-page, cinematic, editorial, image-led, or visual-heavy references:
+9. Declare the role of every major image: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
+10. Run an Image Environment Pass for artistic, landing-page, cinematic, editorial, image-led, or visual-heavy references:
    - decide whether the reference uses image as environment or asset
    - if the image is environment, compose around the scene before choosing a grid
    - consider full-bleed, oversized, masked, layered, edge-to-edge, or backdrop treatment
    - state why the image should or should not be boxed
    - plan focal object protection and text safe zones
    - avoid image-trapped-in-grid unless the reference explicitly uses that structure
-10. Run a Scale Calibration Pass against the selected references:
+11. Run a Scale Calibration Pass against the selected references:
    - estimate visible content objects above the fold
    - compare largest text, medium text, and small labels
    - compare container/card density
    - compare image scale roles
    - avoid giant empty furniture and inflated desktop layouts
-11. Run a Contrast / Legibility Pass:
+12. Run a Contrast / Legibility Pass:
    - identify every important text background
    - protect text over imagery with a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image
    - keep small labels, nav, and CTAs readable
    - protect faces, eyes, hands, and focal objects from copy overlays
    - verify responsive crops at 1440 / 768 / 390
-12. Run a Global UI Craft Pass:
+13. Run a Global UI Craft Pass:
    - navigation labels are understandable, not cryptic abbreviations
    - responsive nav behavior is designed for desktop, tablet, and mobile
    - search, filters, and action buttons align in one toolbar system
@@ -52,7 +59,7 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
    - 1440 / 1280 / 1024 / 768 / 390 collision risks are named and prevented
    - palette feels human/reference-driven, not terminal-green, AI-purple, neon-lime, generic blue/grey, or one machine-generated wash
    - live/session/status chips are real, understandable, and decision-relevant, or removed
-13. Run a P0 Layout Integrity Pass:
+14. Run a P0 Layout Integrity Pass:
    - text stays inside containers
    - card titles are not clipped
    - charts stay inside plot/card bounds
@@ -62,14 +69,14 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
    - forms and buttons remain readable
    - layout adapts instead of squeezing
    - 1440 / 1280 / 1024 / 768 / 390 are covered in the plan
-14. If the task says landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, activate Landing Page / Artistic Mode:
+15. If the task says landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, activate Landing Page / Artistic Mode:
    - poster logic, not dashboard logic
    - image-first, not section-first
    - composition-led, not component-led
    - sparse copy, not explanatory blocks
    - no dashboard furniture, feature-card rows, boxed proof sections, or Blogspot/content-template structure
    - visual mood continues after the hero
-15. If the task uses dashboard or command-center references, activate Image-Aware Dashboard Mode:
+16. If the task uses dashboard or command-center references, activate Image-Aware Dashboard Mode:
    - one attraction zone before arranging panels
    - graph-rich useful visualization, not decorative charts
    - at least two visualization types considered when data supports it
@@ -91,9 +98,9 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
    - no squeezed card garbage or semantic label collapse
    - no fake live/session/status theater
    - no generic admin template, same-weight card soup, murky same-color panels, terminal-ish dark panel spam, decorative charts, image-starved surfaces, or text-and-metrics-only dashboard
-16. Produce a clear design direction before implementation.
-17. Implement only after the direction is clear.
-18. Capture screenshot QA before claiming done.
+17. Produce a clear design direction before implementation.
+18. Implement only after the direction is clear.
+19. Capture screenshot QA before claiming done.
 
 ## Literal Copy Exception
 

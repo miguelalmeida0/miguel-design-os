@@ -18,6 +18,8 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - Approved references teach composition and taste; they are not palettes or brands to clone blindly.
 - Rejected references are valuable because they name what future agents must avoid.
 - Each reference folder activates a design mode. Select the folder mode before choosing layout.
+- If Migi asks to use a folder or screenshot set as the basis for a design, activate Reference-Locked Build Mode. Select 3-5 exact reference anchors, decompose them, create a design transfer spec, and compare the result back to those anchors.
+- Do not proceed from folder vibe. Future agents must name the exact reference files and what each one contributes: composition, palette/material, graph/component, image/object/media, or responsive/layout mechanics.
 - The dashboard folder activates an image-aware command-surface mode, not a generic admin template. Extract attraction zone, panel mix, chart forms, palette strategy, image/object/media roles, material range, density, live/state energy, and calm/busy rhythm.
 - Visual references also teach craft details: readable navigation, responsive nav behavior, toolbar rhythm, text density, button proportions, collision-free layout, and human palette direction. Do not copy only color/mood and miss these systems.
 - Visual references also teach layout integrity: containment, minimum card widths, chart bounds, label semantics, badge spacing, and how the design adapts across desktop, tablet, and mobile. Do not squeeze layouts until content breaks.
@@ -48,6 +50,9 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 
 ## What To Extract
 
+- exact reference anchors selected
+- role of each anchor
+- reference mechanics transferred into the target product
 - composition
 - focal object
 - dashboard attraction zone when using command-center references
@@ -77,5 +82,15 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - what is hidden or delayed
 - what makes the screen desirable
 - what future agents should not repeat
+
+## Reference-Locked Build Mode Outputs
+
+When active, the project must include:
+
+- `docs/design/reference-decomposition.md`
+- `docs/design/design-transfer-spec.md`
+- `docs/qa/reference-match-report.md`
+
+The final UI must be compared against the selected anchors for density, composition, palette, chart behavior, image/object/media behavior, and responsiveness.
 
 The goal is not to make a museum. The goal is to make future work faster, sharper, and less generic.

@@ -12,20 +12,23 @@ Use this before building or reviewing any frontend.
 6. Inspect the current project type, framework, routes, components, styling system, and tokens.
 7. Define a project-specific visual identity before palette/layout.
 8. If Migi points to a visual-library reference folder, activate the matching Reference Folder Mode before choosing layout.
-9. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
-10. Use golden projects and visual-library screenshots as evidence only; do not copy old apps literally unless Literal Target Copy Mode is active.
-11. Use screenshots as evidence for the current UI, not templates.
-12. Capture 390, 768, and 1440 px when the UI can run.
-13. Run `evaluation/ui-scorecard.md` before finishing.
-14. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
-15. No done without evidence: visual UI work requires a validated done report before final handoff.
-16. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must become a Design OS rule, tool, prompt, schema, checklist, or explicit open gap.
+9. If Migi asks to use a specific visual-library folder or screenshots as the design basis, activate Reference-Locked Build Mode before coding.
+10. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
+11. Use golden projects and visual-library screenshots as evidence only; do not copy old apps literally unless Literal Target Copy Mode is active.
+12. Use screenshots as evidence for the current UI, not templates.
+13. Capture 390, 768, and 1440 px when the UI can run.
+14. Run `evaluation/ui-scorecard.md` before finishing.
+15. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
+16. No done without evidence: visual UI work requires a validated done report before final handoff.
+17. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must become a Design OS rule, tool, prompt, schema, checklist, or explicit open gap.
 
 Literal Target Copy Mode overrides product thinking. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, do not run the 3-concept gate, create new art direction, expand features, add useful panels, reinterpret, or improve. The only goal is visual parity with the supplied target: identify target screens, reconstruct visible composition, exclude browser chrome/editor/watermark artifacts, build the static shell first, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences. Product logic waits until the pixel-parity shell is approved.
 
 Landing Page / Artistic Mode overrides dashboard and product-app habits. When Migi asks for a landing page, creative, artistic, cinematic, editorial, visual-heavy, image-led, landing-page inspiration, or creative inspiration, use poster logic, not dashboard logic. The page must be image-first, composition-led, sparse, atmospheric, and emotionally directed. Do not answer with normal SaaS/homepage grids, feature-card rows, stats blocks, bordered proof sections, dashboard furniture, or lots of explanatory copy. Preserve the image-led rhythm beyond the hero.
 
 Reference Folder Mode is mandatory when Migi points to a visual-library folder. `01-command-centers-dashboards` means Command Center / Dashboard Mode; `02-creative-experimental-ui` means Artistic / Creative Mode; `03-mobile-consumer-apps` or `mobile-apps` means Mobile Product Flow Mode; `04-selection-gallery-browse` means Selection / Gallery / Browse Mode; `05-landing-hero-pages` means Landing Page / Poster Mode. Wrong folder mode caps the score at 6.
+
+Reference-Locked Build Mode is mandatory when Migi says to use a specific folder or make the design like a set of screenshots. Do not summarize folder vibe and start coding. Select 3-5 exact reference anchors, assign each an anchor role, create `docs/design/reference-decomposition.md`, create `docs/design/design-transfer-spec.md`, build from that spec by segments, and finish with `docs/qa/reference-match-report.md`.
 
 Migi's dashboard mode does not mean generic admin panel. `01-command-centers-dashboards` means an image-aware, graph-rich, composition-led command surface with one memorable attraction zone, varied panel weights, useful chart forms, deliberate image/object/media use when references support it, compact controlled scale, and a calm/busy rhythm. Reject lifeless terminal panels, murky monochrome palettes, overused lime/neon accents, same-weight card soup, text-and-metrics-only dashboards, weak or decorative charts, no focal anchor, and oversized empty dashboard UI. Dashboard mode should feel visually alive, not like one-color operational furniture.
 
@@ -61,6 +64,10 @@ Visual-heavy work?:
 Inspiration/reference provided?:
 Reference folder mode:
 Reference usage report:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
 Dashboard attraction zone:
 Dashboard panel mix:
 Dashboard chart forms:
@@ -111,6 +118,7 @@ Persistence contract:
 - Literal Target Copy Mode is the exception: exact visual target copying skips concept generation and focuses only on pixel-parity reconstruction.
 - Landing Page / Artistic Mode is the other hard router: for landing, creative, artistic, cinematic, editorial, visual-heavy, or image-led requests, stop using dashboard/product-app structure. Use one dominant visual thesis, image-first composition, sparse copy, restrained UI chrome, and curated rhythm after the hero.
 - Reference Folder Mode is not optional: when a folder is cited, use its mode instead of treating all references as equal mood images.
+- Reference-Locked Build Mode is not optional when a folder or screenshot set is the basis for the design: select 3-5 exact anchors, decompose them, translate them into a Design Transfer Spec, and compare the final output back to those anchors.
 - Dashboard references require a composed command surface: one attraction zone plus useful metrics, charts, queues/lists, imagery/content, controls, and actions. Do not ship generic admin templates, same-weight widget fields, text-and-metrics-only panels, murky terminal-green palettes, decorative chart wallpaper, tiny-avatar-only media use, or dark terminal card spam.
 - Dashboard Visual Energy Rule: utility is not enough. Dashboard mode needs graph richness, palette discipline, purposeful image/object/media anchors, varied material surfaces, and live-state signals when the product represents monitoring, activity, or freshness.
 - Every major image needs a declared role: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer. Images must not be random decoration.
@@ -161,6 +169,24 @@ Persistence contract:
 - `visual-library/rejected/`: Migi-rejected references. Treat as anti-patterns and do not preserve them with new paint.
 - `visual-library/inspiration/`: useful references that are not yet global taste rules.
 
+## Reference-Locked Build Mode
+
+Activate when Migi says `use dashboard folder`, `use creative folder`, `use landing-page folder`, `base it on these screenshots`, `make it like these references`, or `follow the same approach as these apps`.
+
+Required before implementation:
+
+- select 3-5 exact reference anchors
+- assign anchor roles: composition, palette/material, graph/component, image/object/media, responsive/layout
+- create `docs/design/reference-decomposition.md`
+- create `docs/design/design-transfer-spec.md`
+
+Implementation must follow the transfer spec by segments: shell/nav, attraction zone, chart/data system, queue/list system, action/output system, responsive adaptation.
+
+Required after implementation:
+
+- create `docs/qa/reference-match-report.md`
+- compare density, composition, palette, chart behavior, image/object/media behavior, and responsiveness against the selected anchors
+
 ## Done Gate
 
 Do not finish until:
@@ -168,6 +194,11 @@ Do not finish until:
 - design intent record exists
 - `docs/design/reference-usage-report.md` exists when visual-heavy work uses visual-library references
 - reference usage report includes Scale Calibration when visual-library references are used
+- Reference-Locked Build Mode includes 3-5 exact anchors when a visual-library folder or screenshot set is the basis for the design
+- `docs/design/reference-decomposition.md` exists before coding when Reference-Locked Build Mode is active
+- `docs/design/design-transfer-spec.md` exists before coding when Reference-Locked Build Mode is active
+- implementation follows the transfer spec by build segment
+- `docs/qa/reference-match-report.md` exists before final handoff when Reference-Locked Build Mode is active
 - reference usage report includes Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used
 - reference usage report includes Contrast / Legibility Strategy when image-led or visual-library references are used
 - reference usage report includes Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, and Palette Direction for dashboard or visual-heavy work
@@ -196,6 +227,11 @@ Skills used:
 Approved rendered concept:
 Reference usage report:
 Reference folder mode:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
+Reference match report:
 Dashboard attraction zone:
 Dashboard panel mix:
 Dashboard chart forms:

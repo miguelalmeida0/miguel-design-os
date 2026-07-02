@@ -34,6 +34,18 @@ Do not:
 
 Use this selector before choosing a recipe when Migi points to a visual-library folder.
 
+If Migi asks to use the folder as the basis for a design, activate Reference-Locked Build Mode before choosing a recipe:
+
+- select 3-5 exact reference anchors
+- assign each anchor a role: composition, palette/material, graph/component, image/object/media, or responsive/layout
+- create `docs/design/reference-decomposition.md`
+- create `docs/design/design-transfer-spec.md`
+- use the transfer spec to choose and adapt the recipe
+- build by segments: shell/nav, attraction zone, chart/data system, queue/list system, action/output system, responsive adaptation
+- finish with `docs/qa/reference-match-report.md`
+
+Do not choose a recipe from a folder vibe alone.
+
 | Folder signal | Mode | Recipe bias |
 | --- | --- | --- |
 | `01-command-centers-dashboards`, dashboard folder, command center references | Command Center / Dashboard Mode | Image-Aware Command Dashboard, Dense Control Workspace, or Research Terminal |

@@ -15,6 +15,11 @@ Before scoring, record:
 - intended visual identity
 - reference folder mode when visual-library references are used
 - `docs/design/reference-usage-report.md` when visual-heavy work uses visual-library references
+- Reference-Locked Build Mode status when a visual-library folder or screenshot set is the requested basis
+- 3-5 selected reference anchors and their roles when Reference-Locked Build Mode is active
+- `docs/design/reference-decomposition.md` before coding when Reference-Locked Build Mode is active
+- `docs/design/design-transfer-spec.md` before coding when Reference-Locked Build Mode is active
+- `docs/qa/reference-match-report.md` before final handoff when Reference-Locked Build Mode is active
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is used
 - dashboard attraction zone, panel mix, chart forms, image/object strategy, and calm/busy rhythm when dashboard references are used
 - Dashboard Palette Strategy when Command Center / Dashboard Mode is used
@@ -69,6 +74,14 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - image-led UI without a contrast strategy: max 60 (6/10)
 - image-led/artistic/landing reference work missing Image Environment Strategy: max 60 (6/10)
 - wrong reference folder mode used: max 60 (6/10)
+- visual-library folder used but no reference anchors selected: max 50 (5/10)
+- no reference decomposition before coding: max 50 (5/10)
+- no design transfer spec before coding: max 50 (5/10)
+- output uses generic mode instead of selected anchor mechanics: max 50 (5/10)
+- agent copies mood but not composition: max 60 (6/10)
+- agent copies colors but not structure: max 60 (6/10)
+- agent ignores image/object/chart behavior from anchors: max 60 (6/10)
+- no final reference-match report: max 60 (6/10)
 - Command Center / Dashboard Mode used without Dashboard Command-Surface Strategy: max 60 (6/10)
 - dashboard feels like generic SaaS/admin template: max 60 (6/10)
 - dashboard has no meaningful visual anchor or attraction zone when references show one: max 60 (6/10)
@@ -312,6 +325,11 @@ Any blocker prevents elite:
 - no done without evidence: visual UI work is missing a validated done report
 - visual-heavy inspiration work is missing an inspiration manifest
 - visual-heavy work using visual-library references is missing `docs/design/reference-usage-report.md`
+- visual-library folder or screenshot set is used as the basis, but Reference-Locked Build Mode did not select 3-5 exact anchors
+- Reference-Locked Build Mode is active, but `docs/design/reference-decomposition.md` is missing before coding
+- Reference-Locked Build Mode is active, but `docs/design/design-transfer-spec.md` is missing before coding
+- implementation ignores the design transfer spec and falls back to generic mode
+- final handoff in Reference-Locked Build Mode lacks `docs/qa/reference-match-report.md`
 - Command Center / Dashboard Mode is missing Dashboard Command-Surface Strategy
 - Command Center / Dashboard Mode is missing Dashboard Palette Strategy or Graph System Strategy
 - dashboard reference work has no attraction zone, focal object, dominant chart, media/object block, scene, map, or equivalent visual gravity
@@ -391,6 +409,7 @@ Always report:
 - skills used
 - approved rendered concept
 - reference folder mode and reference usage report when visual-library references are used
+- Reference-Locked Build Mode status, selected anchors, anchor roles, reference decomposition, design transfer spec, and reference-match report when a folder or screenshot set is the requested basis
 - Image Environment Strategy when image-led/artistic/landing references are used
 - Scale Calibration summary when visual-library references are used
 - Contrast / Legibility Strategy when image-led or visual-library references are used

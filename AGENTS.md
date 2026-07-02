@@ -11,9 +11,10 @@ For any frontend/design task:
 3. Check `visual-library/approved/` for relevant references.
 4. Check `visual-library/rejected/` for relevant anti-patterns.
 5. Use `agent-workflows/simple-visual-reference-workflow.md` when visual references matter.
-6. Use routed skills only when relevant; do not load the whole repo.
-7. Run `node tools/design-os.mjs route --task "<task>"` when the CLI is useful.
-8. Run `evaluation/ui-scorecard.md` before finishing significant frontend work.
+6. Use `agent-workflows/reference-locked-build-mode.md` when Migi asks to base work on a specific visual-library folder or screenshot set.
+7. Use routed skills only when relevant; do not load the whole repo.
+8. Run `node tools/design-os.mjs route --task "<task>"` when the CLI is useful.
+9. Run `evaluation/ui-scorecard.md` before finishing significant frontend work.
 
 ## Core Rules
 
@@ -26,6 +27,7 @@ For any frontend/design task:
 - Screenshots are design evidence, not production assets.
 - If Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, use Literal Target Copy Mode.
 - If Migi points to a visual-library folder, select the correct Reference Folder Mode before layout and create `docs/design/reference-usage-report.md` before visual-heavy coding.
+- If Migi says to use a specific visual-library folder or make it like a set of screenshots, activate Reference-Locked Build Mode: select 3-5 exact reference anchors, create `docs/design/reference-decomposition.md`, create `docs/design/design-transfer-spec.md`, build from that spec, and finish with `docs/qa/reference-match-report.md`.
 - If Migi says landing page, creative, artistic, cinematic, editorial, visual-heavy, or image-led, use Landing Page / Artistic Mode: poster logic, image-led composition, sparse copy, no Blogspot structure, and no dashboard furniture.
 - Every major image needs a declared role; images are not random decoration.
 - For artistic, landing-page, cinematic, editorial, or image-led references, decide whether the image is environment or asset. Do not trap immersive scenes in rectangular cards by default.
@@ -62,6 +64,19 @@ When Migi points to a visual-library folder, activate the matching mode:
 
 For visual-heavy work using these references, create `docs/design/reference-usage-report.md` before coding and declare the role of every major image.
 
+## Reference-Locked Build Mode
+
+When Migi says to use a folder or specific screenshots as the basis for a design, do not proceed from folder vibe. Select 3-5 exact reference anchors and assign each one a role: composition, palette/material, graph/component, image/object/media, or responsive/layout.
+
+Required before coding:
+
+- `docs/design/reference-decomposition.md`
+- `docs/design/design-transfer-spec.md`
+
+Required after implementation:
+
+- `docs/qa/reference-match-report.md`
+
 ## Protected Folders
 
 - Do not modify `source-projects/` unless explicitly asked.
@@ -75,6 +90,10 @@ Skills used:
 Visual references checked:
 Reference folder mode:
 Reference usage report:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
 Image roles:
 Image environment strategy:
 Scale calibration:
@@ -87,6 +106,7 @@ Responsive collision checks:
 Layout integrity contract:
 Responsive breakpoint proof:
 Palette direction:
+Reference match report:
 Approved/rejected principles used:
 Files changed:
 Screenshots:

@@ -38,6 +38,7 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 - Inspiration or references, if any.
 - Inspiration manifest for visual-heavy work when references are used.
 - Reference folder mode, especially Command Center / Dashboard Mode when dashboard references are used.
+- Reference-Locked Build Mode plan when a visual-library folder or screenshot set is the design basis: exact anchors, anchor roles, reference decomposition, and design transfer spec.
 - Global UI craft plan for dashboard or visual-heavy concepts: navigation clarity, responsive nav, toolbar alignment, text density, button proportions, collision checks, and palette direction.
 - Layout Integrity Contract and Responsive Breakpoint Proof plan for 1440, 1280, 1024, 768, and 390.
 - Known rejected directions, if any.
@@ -58,11 +59,12 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 4. Name the obvious genre cliche the design must avoid.
    - For dashboard/command-center references, explicitly avoid generic admin template, same-weight card soup, text-and-metrics-only dashboard, murky monochrome / terminal-green palette, single-accent overuse, terminal-ish dark panel spam, decorative charts, chart-lite systems, image-starved surfaces, and no focal attraction zone.
    - Also avoid cryptic nav, misaligned toolbar controls, prose-heavy panels, clumsy full-width buttons, responsive collisions, fake live/session/status theater, and machine-generated palettes.
-5. Produce exactly 3 radically different rendered art-direction concept prototypes:
+5. If Reference-Locked Build Mode is active, select 3-5 exact anchors, assign anchor roles, create `docs/design/reference-decomposition.md`, and create `docs/design/design-transfer-spec.md` before concepts are rendered.
+6. Produce exactly 3 radically different rendered art-direction concept prototypes:
    - Safe expected direction.
    - More original/art-directed direction.
    - Wild but controlled direction.
-6. For each concept include:
+7. For each concept include:
    - preview route
    - screenshot files at `1440 / 768 / 390`
    - short explanation
@@ -79,18 +81,20 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
    - what would make it fail
    - for dashboard concepts: attraction zone, panel mix, chart forms, palette strategy, image/object/media role, live/motion strategy, material range, and calm/busy rhythm
    - for dashboard or visual-heavy concepts: navigation strategy, toolbar alignment, text density, button proportions, responsive collision risks, and human palette direction
-7. Save the artifact using `templates/visual-concepts.template.json`.
-8. Use a project-local preview route, static HTML, or another lightweight local render when a concept needs a visual preview. The archived `deprecated/studio-preview/` experiment is not the default workflow.
-9. Capture rendered concepts with available screenshot QA or document a blocked capture honestly.
-10. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` or the captured run artifact when the CLI is available.
-11. Stop and show Migi the visuals.
-12. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
-13. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
-14. After the gate passes, implement only the approved direction.
+8. Save the artifact using `templates/visual-concepts.template.json`.
+9. Use a project-local preview route, static HTML, or another lightweight local render when a concept needs a visual preview. The archived `deprecated/studio-preview/` experiment is not the default workflow.
+10. Capture rendered concepts with available screenshot QA or document a blocked capture honestly.
+11. Validate it with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` or the captured run artifact when the CLI is available.
+12. Stop and show Migi the visuals.
+13. After Migi approves one rendered direction, set `approvalStatus: "approved"` and `selectedConceptId`.
+14. Check the gate with `node tools/design-os.mjs check-visual-gate design-brief.local.json visual-concepts.local.json`.
+15. After the gate passes, implement only the approved direction.
 
 ## Stop Conditions
 
 - Stop before UI implementation if no concept has been approved.
+- Stop if Reference-Locked Build Mode is active but exact anchors, reference decomposition, or design transfer spec are missing.
+- Stop if concepts are generated from folder vibe instead of selected anchor mechanics.
 - Stop if concepts are text-only.
 - Stop if dashboard concepts are only dark cards, metrics, and generic charts with no attraction zone, panel-role variation, palette strategy, graph system, or image/object/media strategy.
 - Stop if dashboard concepts use lifeless same-color panels with weak charts and no visual anchor.
@@ -108,6 +112,10 @@ Pre-implementation gate for visual-heavy frontend work. It forces rendered visua
 ```md
 Design Intent Record:
 Obvious cliche to avoid:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
 Dashboard command-surface strategy when applicable:
 Dashboard palette / graph / media strategy when applicable:
 Navigation / toolbar / text density / button / collision / palette craft strategy when applicable:
@@ -132,6 +140,10 @@ Approval needed before implementation: yes
 - Concept screenshots missing: max score 6.
 - Implementation started before visual concept approval: max score 6.
 - All 3 concepts share basically the same layout: max score 6.
+- Visual-library folder used but no reference anchors selected: max score 5.
+- No reference decomposition before concept/build work: max score 5.
+- No design transfer spec before concept/build work: max score 5.
+- Concept copies mood but not anchor composition/mechanics: max score 6.
 - Same rejected layout with new paint: max score 6.
 - Obvious genre cliche without a fresh thesis: max score 7.
 - Dashboard concept is generic admin/card soup: max score 6.

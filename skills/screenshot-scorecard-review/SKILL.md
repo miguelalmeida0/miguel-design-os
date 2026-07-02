@@ -30,6 +30,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Design Intent Record.
 - Approved rendered concept when relevant.
 - Reference folder mode, reference usage report, and Scale Calibration when visual-library references are used.
+- Reference-Locked Build Mode artifacts when a visual-library folder or screenshot set is the design basis: selected anchors, anchor roles, `docs/design/reference-decomposition.md`, `docs/design/design-transfer-spec.md`, and `docs/qa/reference-match-report.md`.
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is used.
 - Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is used.
 - Contrast / Legibility Strategy when image-led or visual-library references are used.
@@ -56,10 +57,17 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 2. Prefer local capture with `node tools/visual-qa.mjs --url <url> --name <name>` when the UI can run.
 3. Run `node tools/object-swap-check.mjs --url <url> --objects "<objects>" --name <name>` for roster, gallery, configurator, and selection-first products.
 4. For visual-heavy work, verify the Visual Concept Gate had exactly 3 rendered concepts with preview routes and concept screenshots before implementation.
-5. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
-6. Check tablet for cramped desktop or broken mobile layout.
-7. Check desktop for stretched mobile, empty expanses, or inflated scale.
-8. Check scale calibration:
+5. For Reference-Locked Build Mode, verify:
+   - exact reference anchors were selected
+   - each anchor has a role
+   - reference decomposition happened before coding
+   - design transfer spec happened before coding
+   - final output compares against anchors in `docs/qa/reference-match-report.md`
+   - screenshot output does not copy vibe only
+6. Check mobile first for horizontal scroll, clipping, sticky collision, and unreadable UI.
+7. Check tablet for cramped desktop or broken mobile layout.
+8. Check desktop for stretched mobile, empty expanses, or inflated scale.
+9. Check scale calibration:
    - Is the UI inflated?
    - Are text sizes calibrated to references?
    - Are containers larger than their content?
@@ -67,7 +75,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Are at least 3 meaningful content objects visible above the fold, unless the reference strongly justifies fewer?
    - Does the layout feel like mobile blown up?
    - Did the agent mistake premium for giant?
-9. For Command Center / Dashboard Mode, check dashboard composition:
+10. For Command Center / Dashboard Mode, check dashboard composition:
    - Is there one memorable attraction zone or focal visual/data anchor?
    - Are panel weights varied?
    - Are charts useful and integrated into the composition?
@@ -88,7 +96,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Are buttons proportionate to their role?
    - Is the palette reference-driven and human rather than robotic/generic?
    - Are live/session/status indicators real and understandable instead of decorative?
-10. Check contrast and text-on-image discipline:
+11. Check contrast and text-on-image discipline:
    - Is every important text layer readable?
    - Is text over image protected?
    - Are small labels readable?
@@ -97,8 +105,8 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Is image treatment consistent?
    - Are gradients/scrims intentional, not emergency fixes?
    - Does any text rely on a lucky crop?
-11. Check every viewport for overlap/collision, including nav, toolbars, chips, badges, forms, panels, and image overlays.
-12. Check P0 layout integrity:
+12. Check every viewport for overlap/collision, including nav, toolbars, chips, badges, forms, panels, and image overlays.
+13. Check P0 layout integrity:
    - Does any text escape its card?
    - Are any card titles clipped?
    - Do charts stay inside chart containers?
@@ -110,22 +118,24 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Are labels still semantic at small widths?
    - Does nav remain understandable at desktop/tablet/mobile?
    - Does the UI survive 1440 / 1280 / 1024 / 768 / 390?
-13. Manually verify the core loop when it is upload -> classify -> generate output, import -> analyze -> recommend, select -> configure -> output, or equivalent.
-14. Verify persistence claims for user-generated data across route changes, refresh, and browser reopen.
-15. For dogfood targets, map every target-app failure back to a Miguel Design OS rule/tool/prompt/checklist patch or explicit open gap.
-16. Run `evaluation/ui-scorecard.md`.
-17. Apply caps.
-18. Validate `asset-manifest.local.json` when production image-led work is involved.
-19. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
-20. Create or update `done-report.local.json`.
-21. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-22. Patch blockers before completion when implementation is in scope.
-23. Re-check changed screens.
+14. Manually verify the core loop when it is upload -> classify -> generate output, import -> analyze -> recommend, select -> configure -> output, or equivalent.
+15. Verify persistence claims for user-generated data across route changes, refresh, and browser reopen.
+16. For dogfood targets, map every target-app failure back to a Miguel Design OS rule/tool/prompt/checklist patch or explicit open gap.
+17. Run `evaluation/ui-scorecard.md`.
+18. Apply caps.
+19. Validate `asset-manifest.local.json` when production image-led work is involved.
+20. Validate `target-copy-report.local.json` when Literal Target Copy Mode applies.
+21. Create or update `done-report.local.json`.
+22. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+23. Patch blockers before completion when implementation is in scope.
+24. Re-check changed screens.
 
 ## Stop Conditions
 
 - Stop if a required viewport is missing and the UI can run.
 - Stop if visual-heavy work asks for approval from text-only concepts or missing concept screenshots.
+- Stop if Reference-Locked Build Mode has no exact anchors, no reference decomposition, no design transfer spec, or no final reference-match report.
+- Stop if the screenshot output copies folder vibe but not anchor composition, density, chart behavior, image/object role, palette/material, and responsive mechanics.
 - Stop if horizontal scroll appears in the primary mobile flow.
 - Stop if unintended overlap or unreadable UI appears.
 - Stop if dashboard references produce same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only admin layout, decorative charts, weak chart system, image-starved surfaces, or no attraction zone.
@@ -164,6 +174,11 @@ Concept screenshots inspected:
 390 result:
 768 result:
 1440 result:
+Reference-Locked Build Mode:
+Reference anchors:
+Reference decomposition:
+Design transfer spec:
+Reference match report:
 Scale calibration:
 Dashboard command-surface strategy:
 Dashboard palette strategy:
@@ -198,6 +213,14 @@ Remaining verification gaps:
 - Art direction approval requested without visual previews: max score 5.
 - Missing concept screenshots: max score 6.
 - Implementation before visual concept approval: max score 6.
+- Visual-library folder used but no reference anchors selected: max score 5.
+- No reference decomposition before coding: max score 5.
+- No design transfer spec before coding: max score 5.
+- Output uses generic mode instead of selected anchor mechanics: max score 5.
+- Agent copies mood but not composition: max score 6.
+- Agent copies colors but not structure: max score 6.
+- Agent ignores image/object/chart behavior from anchors: max score 6.
+- No final reference-match report: max score 6.
 - Missing Dashboard Command-Surface Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Dashboard Palette Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Graph System Strategy for Command Center / Dashboard Mode: max score 6.

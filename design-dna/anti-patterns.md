@@ -541,6 +541,40 @@ Correction:
 
 Select the correct Reference Folder Mode, create `docs/design/reference-usage-report.md`, prioritize the strongest references, and name what will not be copied.
 
+## Anti-Pattern: Folder Vibe Instead Of Reference Anchors
+
+Detect:
+
+- Migi asks to use a visual-library folder or screenshot set.
+- The agent summarizes the folder as a vibe, such as dashboard energy, creative mood, premium dark, or landing-page feel.
+- No exact reference files are selected.
+- No anchor roles are assigned.
+- The output uses a generic layout that could have been produced without the references.
+
+Why it fails:
+
+Folder-level inspiration is too vague. It lets agents copy mood, color, or category while ignoring composition, density, chart behavior, image/object roles, material systems, and responsive mechanics.
+
+Correction:
+
+Activate Reference-Locked Build Mode. Select 3-5 exact reference anchors, assign each a role, create `docs/design/reference-decomposition.md`, create `docs/design/design-transfer-spec.md`, build from the spec, and finish with `docs/qa/reference-match-report.md`.
+
+## Anti-Pattern: Mood Copy Without Mechanics
+
+Detect:
+
+- The result copies dark/light mood, accent color, rounded surfaces, or general category.
+- Composition, panel hierarchy, density, chart system, image/object behavior, and responsive structure do not match the selected anchors.
+- The agent cannot explain what each reference contributed.
+
+Why it fails:
+
+Migi's visual references are not moodboards only. They are evidence of design mechanics.
+
+Correction:
+
+Decompose canvas, composition, density, typography, charts/data, image/object/media, palette/material, and interaction model before coding. Transfer mechanics, not vibes.
+
 ## Random Decorative Image Use
 
 Detect:
