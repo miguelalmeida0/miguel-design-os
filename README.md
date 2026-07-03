@@ -192,6 +192,7 @@ Any chart, graph, diagram, map, timeline, pattern canvas, node graph, floor plan
 - `skills/data-viz-hardening-review/`: post-build stress testing for long labels, missing values, many series/items, no data, async states, tooltips, legends, zoom, high contrast, reduced motion, and keyboard access.
 - `design-intelligence/visualization-tool-routing.md`: D3, Observable Plot, Vega-Lite, ECharts, Recharts, Chart.js, Nivo, React Flow, React Konva/Konva, Mermaid, D2, custom SVG, and CSS/HTML routing.
 - `tools/diagram-integrity-check.mjs`: optional Playwright geometry check for runnable diagrams/canvases marked with `data-diagram-*` attributes.
+- `design-dna/diagram-canvas-elite-quality-bar.md`: positive quality bar for pattern canvases and dense spatial diagrams, including label lanes, callout routes, badge safe zones, construction semantics, and performance budget.
 
 Broken diagrams cannot be hidden under visual polish. Primary product objects must have a model, not just composition.
 

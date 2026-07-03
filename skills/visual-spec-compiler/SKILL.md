@@ -89,7 +89,7 @@ Create `docs/design/visual-spec.md` with:
 - chart strategy
 - visualization tool routing / library recommendation when charts, diagrams, maps, timelines, canvases, or spatial product objects exist
 - data contract for every chart or data-encoding diagram
-- diagram/canvas coordinate, layer, object, label, collision, and selection model when spatial UI exists
+- diagram/canvas coordinate, layer, object, label lane, callout route, badge-safe-zone, collision, performance, and selection model when spatial UI exists
 - diagram integrity QA plan or blocked reason when runnable spatial UI exists
 - mobile strategy
 - modal / sheet fit strategy for mobile overlays

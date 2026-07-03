@@ -51,7 +51,10 @@ Use before implementing or reviewing pattern drafting canvases, floor maps, node
 ## Label Model
 - label types:
 - priority:
+- label lanes:
 - safe zones:
+- callout routes:
+- badge/status safe zones:
 - truncation/wrapping:
 - units:
 - collision rules:
@@ -71,6 +74,15 @@ Use before implementing or reviewing pattern drafting canvases, floor maps, node
 - 768:
 - 390:
 - fallback if canvas cannot fit:
+
+## Performance Budget
+- expected object count:
+- expected label count:
+- rendering layer:
+- pan/zoom/drag target:
+- expensive effects avoided:
+- virtualization/culling if needed:
+- reduced-motion behavior:
 
 ## Hardening Test Cases
 - long labels:
@@ -102,6 +114,9 @@ Use before implementing or reviewing pattern drafting canvases, floor maps, node
 - Diagram objects need semantic state.
 - Decorative grids are forbidden unless functional.
 - Canvas must have a real object model, not random absolute-positioned cards.
+- Badges, selected outlines, and callouts must not cover piece names, measurements, axes, ruler labels, or construction lines.
+- Pattern canvases must define label lanes, callout routes, badge safe zones, and construction-line semantics.
+- Canvas performance must be budgeted before dense labels, shadows, filters, glows, pan/zoom, drag, or live interaction are added.
 - Selection must update inspector/details.
 - Nav/tabs must change content/state.
 - All object positions must be documented or data-driven.
@@ -122,9 +137,13 @@ When a runnable UI exists, use `tools/diagram-integrity-check.mjs` where practic
 ## Score Caps
 
 - Diagram labels collide with objects: max score 4.
+- Pattern canvas labels collide with pieces, badges, callouts, construction lines, ruler labels, or measurement chips: max score 3.
+- Catastrophic diagram overlap makes the canvas unreadable: max score 2.
 - Object layout is arbitrary and undocumented: max score 5.
-- Selected object obscures critical labels: max score 5.
+- Selected object, badge, or callout obscures critical labels/data: max score 4.
 - Canvas has no layer model: max score 6.
+- Canvas has no collision model for labels, badges, callouts, and measurement layers: max score 4.
+- Canvas feels slow, janky, or performance-heavy without mitigation: max score 5.
 - Primary product object is buried by panels: max score 6.
 - Diagram is decorative rather than operational: max score 5.
 - Inspector does not update from selection: max score 4.

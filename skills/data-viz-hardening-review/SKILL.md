@@ -35,6 +35,9 @@ Use after a chart, graph, diagram, spatial map, floor plan, timeline, canvas, or
 - high contrast
 - reduced motion
 - keyboard navigation
+- pan/zoom/drag performance
+- repeated shadows/filters/glows
+- dense SVG/DOM node count
 
 ## Hard Rules
 
@@ -48,6 +51,7 @@ Use after a chart, graph, diagram, spatial map, floor plan, timeline, canvas, or
 - Abbreviations need explanation.
 - Important states cannot rely on color alone.
 - Canvas controls need keyboard alternatives where practical.
+- Interactive diagrams need a rendering/performance budget; dense labels, shadows, filters, and glows must not make pan, zoom, drag, selection, or hover feel slow.
 
 ## Review Steps
 
@@ -72,3 +76,5 @@ Use after a chart, graph, diagram, spatial map, floor plan, timeline, canvas, or
 - Many series/items make the visualization unreadable: max hardening score 5.
 - Color-only encoding for important states: max hardening score 5.
 - Canvas/diagram lacks keyboard fallback where practical: max hardening score 6.
+- Diagram/canvas interaction is janky or performance-heavy without mitigation: max hardening score 5.
+- Pattern canvas labels/callouts/status chips collide under zoom or dense data: max hardening score 3.

@@ -23,10 +23,16 @@ Produce:
 - layer model
 - object model
 - label model
+- label lanes
+- callout routes
+- badge/status safe zones
+- construction-line semantics
 - collision strategy
 - selection/inspector model
 - zoom/pan model if needed
+- rendering/performance budget
 - responsive fallback
 - hardening test cases
 
 If a runnable UI exists, use `tools/diagram-integrity-check.mjs` where practical, or document why it is blocked. Block arbitrary absolute-positioned objects and label collisions.
+Also block clipped primary text, catastrophic pattern-canvas overlap, badges/callouts covering core measurements or piece names, and performance-heavy diagram surfaces with no rendering budget.

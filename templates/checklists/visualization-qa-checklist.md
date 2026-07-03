@@ -5,7 +5,10 @@
 - Are units visible?
 - Are axes/labels readable?
 - Are labels clipped?
+- Are primary headings or important labels cut off above, below, or sideways?
 - Are objects overlapping?
+- For pattern canvases, are label lanes, callout routes, badge safe zones, measurements, rulers, and construction lines readable?
+- Do badges, selected outlines, or callouts cover piece names, measurements, axes, or construction semantics?
 - Is color semantic?
 - Is color the only encoding?
 - Does the legend work?
@@ -18,4 +21,5 @@
 - Are tooltips/focus states accessible?
 - Is reduced motion supported?
 - Are charts/diagrams still useful without animation?
+- Is the diagram/canvas performance budget documented for pan, zoom, drag, hover, selection, and dense label layers?
 - If a runnable diagram/canvas exists, did `tools/diagram-integrity-check.mjs` pass or produce a blocked report?

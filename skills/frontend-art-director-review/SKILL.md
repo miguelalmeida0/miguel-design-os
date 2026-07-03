@@ -247,9 +247,11 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Stop if the palette feels random for the product domain.
 - Stop if nav/tabs/filters change selected styling but no visible content or product state changes.
 - Stop if map/floor-plan/timeline/canvas labels collide with objects, cards, glows, or badges.
+- Stop if a diagram or pattern canvas turns into an unreadable pile of overlapping labels, callouts, badges, measurements, construction lines, and objects.
 - Stop if a desktop command surface buries its primary product object inside generic card soup.
 - Stop if an artistic/landing/portfolio UI uses a dull generated-app palette with no documented exploration.
 - Stop if any text escapes a container.
+- Stop if primary headings or important UI text are clipped/cut off.
 - Stop if any chart overflows its plot/card bounds.
 - Stop if any responsive collision exists.
 - Stop if any core card becomes unreadable.
@@ -399,6 +401,7 @@ Scorecard caps:
 - Agent ignores selected direction during implementation: max score 5.
 - No selected-direction.md after Migi chooses: max score 7.
 - Text visibly escapes container: max score 2.
+- Primary heading or important text clipped/cut off: max score 3.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.
 - Card content clipped/cut off: max score 4.
@@ -473,4 +476,5 @@ Stop condition: if Migi asked for advanced/cinematic/artistic motion and the res
 - For spatial canvases, inspect whether the composition comes from a coordinate/layer/object model or from hand-placed shapes.
 - Pattern canvases, floor maps, timelines, and node graphs need protected labels, meaningful construction/guideline semantics, and selected states that clarify rather than obscure.
 - A visually beautiful chart or diagram still fails if users cannot read labels, units, scale, state, or what changed after selection.
+- Canvas beauty is irrelevant if performance feels heavy. Dense SVG/DOM labels, repeated shadows/filters/glows, and unbudgeted pan/zoom/drag interactions are review blockers.
 - When a runnable spatial UI exists, require diagram integrity evidence from `tools/diagram-integrity-check.mjs` or an explicit blocked report.

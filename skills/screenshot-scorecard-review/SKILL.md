@@ -232,6 +232,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if text-heavy containers kill scanability.
 - Stop if buttons become oversized full-width bars without justification.
 - Stop if any text escapes a container.
+- Stop if primary headings or important UI text are clipped/cut off above, below, or sideways.
 - Stop if any chart overflows its plot/card bounds.
 - Stop if any core card becomes unreadable.
 - Stop if labels collapse into meaningless fragments.
@@ -241,6 +242,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if palette feels random for the product domain.
 - Stop if navigation selected state changes without visible content or product-state change.
 - Stop if spatial labels collide with map/floor-plan/timeline/canvas objects.
+- Stop if a pattern canvas has catastrophic overlap between pieces, labels, badges, callouts, measurements, ruler text, or construction lines.
 - Stop if a desktop command surface buries the primary object inside generic card soup.
 - Stop if expressive mode uses a dull generated-app palette with no documented exploration.
 - Stop if real imagery is required but source plan or Unsplash asset manifest is missing.
@@ -423,6 +425,7 @@ Remaining verification gaps:
 - Agent ignores selected direction during implementation: max score 5.
 - No selected-direction.md after Migi chooses: max score 7.
 - Text visibly escapes container: max score 2.
+- Primary heading or important text clipped/cut off: max score 3.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.
 - Card content clipped/cut off: max score 4.
@@ -471,7 +474,9 @@ Hard stop: do not accept "advanced motion" from a single background animation or
 
 - For charts, graphs, maps, diagrams, timelines, floor plans, pattern canvases, node graphs, or spatial product objects, require evidence that `skills/chart-system-director/SKILL.md` or `skills/diagram-canvas-system/SKILL.md` was used before implementation.
 - Check whether labels, axes, legends, tooltips, values, units, pattern-piece names, section labels, and selected states stay readable and inside bounds.
+- Check whether pattern-canvas label lanes, callout routes, badge safe zones, measurements, rulers, and construction lines remain readable without catastrophic overlap.
 - Check whether selection updates inspector/details instead of acting as decoration.
 - Check whether a runnable diagram/canvas used `tools/diagram-integrity-check.mjs` or documented why the detector was blocked.
 - Route to `skills/data-viz-hardening-review/SKILL.md` when long labels, many objects, no data, async states, narrow widths, or accessibility stress could break the visualization.
 - Stop if the chart/diagram is decorative, fake, clipped, label-colliding, color-only, or lacks a visible product question.
+- Stop if the canvas feels janky, overdrawn, or performance-heavy and no rendering/performance budget is documented.

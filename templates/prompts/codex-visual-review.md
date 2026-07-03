@@ -42,6 +42,7 @@ Review against:
 - chart intelligence
 - chart/diagram/canvas system integrity
 - diagram integrity detector evidence or blocked report when runnable spatial UI exists
+- clipped primary text, catastrophic diagram overlap, and canvas performance budget
 - palette intelligence
 - palette exploration for artistic/cinematic/landing/portfolio/experimental work
 - Unsplash search plan and asset manifest when real imagery or Unsplash assets are used

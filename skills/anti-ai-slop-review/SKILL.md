@@ -481,6 +481,9 @@ Flag as AI slop:
 - charts with hidden units or unreadable axes
 - maps, pattern canvases, timelines, or diagrams with hand-placed overlapping objects
 - labels clipped by objects, selected outlines, badges, glows, or card edges
+- primary headings or important UI text clipped by line-height, masks, parent overflow, or viewport framing
+- catastrophic pattern-canvas overlap where labels, callouts, badges, measurement chips, construction lines, and objects become unreadable
+- performance-hostile diagram surfaces with too many shadows, filters, glows, or layout-bound interactions
 - selectable canvas objects that do not update inspector/details
 
 Route charts to `skills/chart-system-director/SKILL.md`, spatial canvases to `skills/diagram-canvas-system/SKILL.md`, and implemented visualizations to `skills/data-viz-hardening-review/SKILL.md`. For runnable spatial UIs, ask for `tools/diagram-integrity-check.mjs` output or a blocked report.

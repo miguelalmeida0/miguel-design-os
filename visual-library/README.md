@@ -20,6 +20,7 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - Rejected references are valuable because they name what future agents must avoid.
 - `rejected/case-studies/shelf-circle-mobile-product-failures/` is the rejected mobile product UI case study for cut-off sheets, overlapping control indicators, nonpersistent selection, text-only bottom nav, and add cards that masquerade as content.
 - `rejected/case-studies/service-floor-desktop-product-failure/` is the rejected desktop product case study for random domain palettes, placebo navigation, floor-map label collisions, and command surfaces that collapse into generic dashboard/card soup.
+- `rejected/case-studies/cutline-studio-pattern-canvas-failures/` is the rejected diagram/canvas case study for clipped primary text, catastrophic pattern-canvas overlap, weak construction-line semantics, unreadable labels, and performance-hostile canvas layering.
 - Each reference folder activates a design mode. Select the folder mode before choosing layout.
 - If Migi asks to use a folder or screenshot set as the basis for a design, activate Reference-Locked Build Mode. Select 3-5 exact reference anchors, decompose them, create a design transfer spec, and compare the result back to those anchors.
 - Do not proceed from folder vibe. Future agents must name the exact reference files and what each one contributes: composition, palette/material, graph/component, image/object/media, or responsive/layout mechanics.
@@ -33,7 +34,9 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - Do not accept random "looks cool" palettes. Palette must fit product domain, user environment, task pressure, and emotional state.
 - Do not accept placebo navigation: selected nav/tab state must change visible product state, route, scope, filter, or content.
 - Maps, floor plans, seating charts, canvases, and timelines need label safe zones. Objects, cards, and glows must not cover spatial labels.
+- Pattern canvases and diagram surfaces need label lanes, callout routes, badge safe zones, measurement hierarchy, and performance budgets. Badges, selected outlines, and callouts must not obscure piece names, measurements, axes, ruler labels, or construction lines.
 - Text escaping containers, chart overflow, clipped titles, overlapping badges, squeezed unreadable cards, and labels collapsing into nonsense are P0 failures before taste is evaluated.
+- Primary headings and important text cannot be cut off underneath. Partial clipping is still a hard failure.
 - For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
 - When using any folder, extract scale and density, not just color or mood. Many approved desktop references show more meaningful information at once than AI-generated apps usually produce.
 - Avoid inflated type, huge empty containers, oversized filler images, and low desktop density unless the reference clearly supports that scale relationship.

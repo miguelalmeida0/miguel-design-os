@@ -63,7 +63,7 @@ Before coding:
 12. Document navigation readability strategy, identity chrome decision, decorative geometry strategy, and line/divider strategy.
 13. Document Domain Palette Fit for product UIs: domain, user environment, task pressure, emotional state, state color semantics, and random palette rejected.
 14. Document No Placebo Navigation: every nav/tab/filter/segmented control must change visible content, route, scope, filter, or product state.
-15. If the product uses a map, floor plan, seating chart, route board, timeline, diagram, pattern canvas, node graph, or canvas-like product object, route `skills/diagram-canvas-system/SKILL.md` and document coordinate system, layer model, object model, label model, collision strategy, selection/inspector behavior, responsive fallback, and diagram-integrity detector plan.
+15. If the product uses a map, floor plan, seating chart, route board, timeline, diagram, pattern canvas, node graph, or canvas-like product object, route `skills/diagram-canvas-system/SKILL.md` and document coordinate system, layer model, object model, label model, label lanes, callout routes, badge safe zones, construction-line semantics, collision strategy, selection/inspector behavior, performance budget, responsive fallback, and diagram-integrity detector plan.
 16. If this is a desktop command surface, document the primary product object and how panels support rather than bury it.
 17. If landing, portfolio, marketing, or redesign work is involved, create `docs/qa/anti-ai-tell-preflight.md` and run Taste anti-AI-tell preflight before implementing.
 18. If motion is planned, define its purpose, frequency profile, durations, reduced-motion behavior, and review route.
@@ -85,6 +85,7 @@ Mobile/product hard bans:
 - placebo nav/tabs/filters with no visible state change
 - map/floor-plan/timeline/canvas labels covered by objects/cards/glows
 - chart/diagram/canvas lacks data contract, layer model, label model, collision strategy, or hardening pass
+- primary text is clipped/cut off, or pattern canvas labels/callouts/badges collapse into catastrophic overlap
 - desktop command surface collapsing into generic card soup
 
 Implementation order:

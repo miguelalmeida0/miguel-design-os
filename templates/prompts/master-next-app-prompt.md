@@ -129,6 +129,7 @@ Create `docs/design/visual-spec.md` with:
 - spatial label safe zones when maps/floor plans/timelines/canvases exist
 - visualization tool routing, data contract, chart-system plan, and data-viz hardening plan when charts/graphs/data visuals exist
 - diagram/canvas coordinate system, layer model, object model, label model, collision strategy, selection/inspector behavior, and responsive fallback when spatial product objects exist
+- label lanes, callout routes, badge safe zones, construction-line semantics, and performance budget when pattern canvases or dense diagrams exist
 - diagram integrity detector plan or blocked reason when runnable spatial UI exists
 - desktop command-surface primary object strategy
 - identity chrome decision

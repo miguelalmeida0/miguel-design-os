@@ -709,9 +709,12 @@ Before implementation:
 - name the primary product object
 - define coordinate system, canvas bounds, layer model, object model, label model, collision strategy, selection model, and responsive fallback
 - protect labels with safe zones
+- define label lanes, callout routes, badge safe zones, measurement hierarchy, and construction-line semantics
 - keep objects from overlapping critical labels
+- keep badges, selected outlines, and callouts from covering piece names, measurements, axes, ruler labels, or construction lines
 - make selection update details or inspector
 - reject decorative grids unless functional
+- define a rendering/performance budget for pan, zoom, drag, selection, hover, and dense label layers
 - keep the product object central rather than buried under generic dashboard panels
 - after implementation, route `skills/data-viz-hardening-review/SKILL.md`
 - when a runnable diagram/canvas exists, run `tools/diagram-integrity-check.mjs` where practical or save a blocked report
@@ -1008,7 +1011,7 @@ Global UI craft rules:
 - Container Text Weight Limit: panels should be scan-first. Use short labels, values, one-line summaries, metadata chips, and progressive disclosure. Long copy belongs in details, drawers, previews, or expanded states.
 - Button Proportion Discipline: button width should usually follow content. Full-width actions are allowed only when layout and context justify them. Avoid long desktop pills that dominate more than the action deserves.
 - No Responsive Collision: layouts must survive 1440, 1280, 1024, 768, and 390 checks with no overlapping containers, colliding chips, covered content, broken forms, or horizontal overflow.
-- P0 Layout Integrity: a UI cannot be visually good if layout integrity fails. Text must stay inside containers, charts inside plotting/card areas, cards above readable width, nav understandable, chips/pills intentionally wrapped or truncated, image badges collision-free, buttons proportionate, forms readable, and containers adapted instead of squeezed into garbage.
+- P0 Layout Integrity: a UI cannot be visually good if layout integrity fails. Text must stay inside containers, primary headings must not be clipped or cut off underneath, charts inside plotting/card areas, cards above readable width, nav understandable, chips/pills intentionally wrapped or truncated, image badges collision-free, buttons proportionate, forms readable, and containers adapted instead of squeezed into garbage.
 - Responsive Adaptation, Not Squeezing: desktop may be dense, but tablet must reorganize and mobile must use a dedicated simplified structure. Do not keep the same desktop layout until columns, charts, nav, or cards become unreadable.
 - Chart Bounds Discipline: bars, lines, points, axes, labels, and markers must remain inside plot/card bounds. Charts need explicit dimensions or responsive containers, controlled SVG overflow, label-aware padding, and simpler representations at smaller breakpoints when needed.
 - Semantic Label Integrity: labels cannot collapse into meaningless fragments such as `C`, `U`, or `?` without an obvious legend. Abbreviations are allowed only when standard, explained, or paired with a visible legend.

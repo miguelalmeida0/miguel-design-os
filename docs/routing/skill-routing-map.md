@@ -58,9 +58,10 @@ Use when real imagery is needed, image-first frontend is active, landing pages d
 2. `diagram-canvas-system` for pattern canvases, floor maps, seating charts, node graphs, workflow builders, spatial maps, architecture diagrams, and object-based product surfaces.
 3. `data-visualization-selection` when chart type selection needs data-shape guidance.
 4. `design-intelligence/visualization-tool-routing.md` for D3, Observable Plot, Vega-Lite, ECharts, Recharts, Chart.js, Nivo, React Flow, React Konva/Konva, Mermaid, D2, custom SVG, or CSS/HTML routing.
-5. `data-viz-hardening-review` after implementation.
-6. `tools/diagram-integrity-check.mjs` for runnable spatial UIs with `data-diagram-*` markup.
-7. `screenshot-scorecard-review` for visible label, bounds, tooltip, legend, overlap, and responsive evidence.
+5. `design-dna/diagram-canvas-elite-quality-bar.md` for pattern canvases and dense diagram quality.
+6. `data-viz-hardening-review` after implementation.
+7. `tools/diagram-integrity-check.mjs` for runnable spatial UIs with `data-diagram-*` markup.
+8. `screenshot-scorecard-review` for visible label, bounds, tooltip, legend, overlap, and responsive evidence.
 
 ## Mobile Product
 

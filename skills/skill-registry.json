@@ -394,7 +394,10 @@
         "visualization edge cases",
         "diagram integrity check",
         "data-diagram",
-        "collision detector"
+        "collision detector",
+        "canvas performance",
+        "diagram jank",
+        "catastrophic overlap"
       ]
     },
     {
@@ -549,7 +552,13 @@
         "Konva",
         "diagram integrity",
         "data-diagram-root",
-        "data-diagram-object"
+        "data-diagram-object",
+        "label lanes",
+        "callout routes",
+        "badge safe zones",
+        "catastrophic diagram overlap",
+        "canvas performance budget",
+        "pattern canvas overlap"
       ]
     },
     {

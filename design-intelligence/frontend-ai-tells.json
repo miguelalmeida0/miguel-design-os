@@ -98,6 +98,27 @@
       "rejected": true,
       "reason": "It erases product specificity and makes unrelated tools feel the same.",
       "correction": "Use domain palette fit, primary-object hierarchy, varied support panels, and real interaction state."
+    },
+    "clipped_primary_text": {
+      "type": "layout_ai_tell",
+      "description": "Important headings, labels, buttons, or chart/canvas text are visibly cut off by line-height, masks, parent overflow, transforms, sticky containers, or viewport framing.",
+      "rejected": true,
+      "reason": "Readable language is the baseline of visual quality; partial clipping makes the UI feel untested and unfinished.",
+      "correction": "Fix line-height, padding, overflow, transform origin, responsive height, and text role. Change the layout if the text cannot fit."
+    },
+    "catastrophic_diagram_overlap": {
+      "type": "diagram_ai_tell",
+      "description": "Labels, badges, callouts, measurement chips, selected outlines, ruler text, construction lines, and objects collide until a graph/diagram/canvas becomes unreadable.",
+      "rejected": true,
+      "reason": "The product object itself becomes untrustworthy because spatial meaning, measurement, and selected state are visually broken.",
+      "correction": "Use coordinate, layer, object, label-lane, callout-route, badge-safe-zone, and collision models before implementation."
+    },
+    "performance_hostile_diagram_canvas": {
+      "type": "performance_ai_tell",
+      "description": "Diagram or canvas surfaces repeat heavy shadows, filters, glows, dense DOM/SVG layers, or layout-bound interactions with no rendering budget.",
+      "rejected": true,
+      "reason": "Interactive spatial products must feel immediate; janky pan, zoom, drag, hover, or selection is product failure.",
+      "correction": "Choose SVG, Canvas/Konva, D3, or React Flow deliberately; limit expensive effects, throttle interaction work, precompute layout, and document a performance budget."
     }
   },
   "categories": {
@@ -198,6 +219,13 @@
       "selectable chip/item does not preserve selected state",
       "text-only bottom nav in practical product flow",
       "add/create card masquerades as content"
+    ],
+    "diagram": [
+      "catastrophic_diagram_overlap",
+      "performance_hostile_diagram_canvas"
+    ],
+    "layout": [
+      "clipped_primary_text"
     ]
   }
 }

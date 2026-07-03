@@ -250,6 +250,25 @@ Correction:
 
 Use real responsive constraints: `minmax(0, 1fr)`, min-width rules, `flex-wrap`, max-width, line clamp, content-aware breakpoints, responsive grid collapse, container queries where useful, chart clipping/margins, SVG/viewBox discipline, explicit chart bounds, and intentional overflow only when paired with visible truncation or scroll behavior.
 
+## Anti-Pattern: Clipped Primary Text
+
+Description:
+Important text, especially headings, titles, button labels, form labels, nav labels, or chart labels, is visibly cut off above, below, or at the sides.
+
+Why bad:
+It makes the UI look untested and unfinished. Partial clipping still destroys trust because the design is failing at its most basic job: preserving readable language.
+
+Blockers:
+
+- heading descenders or baseline area cut off
+- title cropped by viewport or parent overflow
+- text clipped by transform, mask, sticky container, line-height, or decorative frame
+- labels cut by chart/canvas bounds
+- button, form, or nav text clipped inside controls
+
+Correction:
+Fix line-height, padding, overflow, transform origin, clipping, and responsive height. If the text cannot fit, change the layout or text role instead of hiding the failure.
+
 ## Anti-Pattern: Squeezed Card Garbage
 
 Detect:
@@ -1193,6 +1212,45 @@ Blockers:
 
 Correction:
 Route `skills/diagram-canvas-system/SKILL.md`, define coordinate system, bounds, layer model, object model, label model, collision rules, and selection-to-inspector behavior. After implementation, route `skills/data-viz-hardening-review/SKILL.md` and run `tools/diagram-integrity-check.mjs` where practical.
+
+## Anti-Pattern: Catastrophic Diagram Overlap
+
+Description:
+A graph, diagram, pattern canvas, map, floor plan, or timeline lets labels, badges, callouts, measurement chips, selected outlines, ruler text, construction lines, and objects collide until the surface becomes unreadable.
+
+Why bad:
+This is worse than generic design. It damages the product object itself. The user cannot trust the spatial model, measurement system, or selected state because the drawing logic is visually broken.
+
+Blockers:
+
+- piece names covered by status badges or selected outlines
+- measurement callouts overlap labels or objects
+- construction lines run through important text without hierarchy
+- labels pile into large unreadable clusters
+- axes, rulers, or scale labels fight with object labels
+- close-up/zoom state becomes more chaotic instead of clearer
+
+Correction:
+Create label lanes, callout routes, object safe zones, z-index rules, label priority, collision avoidance, zoom behavior, and fallback display modes. Reduce visual layers before adding polish.
+
+## Anti-Pattern: Performance-Hostile Diagram Canvas
+
+Description:
+A canvas or diagram uses too many DOM layers, text shadows, blurs, glows, filters, oversized effects, or layout-bound interactions, making the surface feel slow, janky, or heavy.
+
+Why bad:
+Interactive spatial products must feel immediate. If pan, zoom, drag, selection, hover, or resize is sluggish, the visual system has failed product use.
+
+Blockers:
+
+- many shadow/filter/glow effects on repeated objects
+- layout thrash during drag, pan, zoom, or selection
+- huge DOM/SVG node count with no virtualization or canvas strategy
+- animated or blurred construction layers that do not help comprehension
+- no performance budget for dense labels and objects
+
+Correction:
+Choose the right rendering layer: custom SVG for small controlled diagrams, Canvas/Konva for dense interactive shape fields, D3 for bespoke geometry, or React Flow for node editors. Limit expensive effects, throttle interaction work, precompute layout where possible, and keep the diagram useful without animation.
 
 ## Anti-Pattern: Fake Orbit Atmosphere
 

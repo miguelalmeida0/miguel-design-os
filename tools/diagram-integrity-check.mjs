@@ -61,6 +61,8 @@ function renderMarkdown(result) {
 - protected labels: ${result.counts?.protectedLabels ?? 0}
 - selected: ${result.counts?.selected ?? 0}
 - tooltips: ${result.counts?.tooltips ?? 0}
+- DOM nodes in root: ${result.counts?.nodesInRoot ?? 0}
+- repeated expensive effects: ${result.counts?.expensiveEffects ?? 0}
 
 ## Issues
 | Severity | Type | Message | Target |
@@ -179,6 +181,32 @@ try {
     const protectedLabels = Array.from(root.querySelectorAll("[data-diagram-protected-label]"));
     const selected = Array.from(root.querySelectorAll("[data-diagram-selected]"));
     const tooltips = Array.from(document.querySelectorAll("[role='tooltip'], [data-tooltip], [data-diagram-tooltip]"));
+    const rootNodes = Array.from(root.querySelectorAll("*"));
+    const expensiveEffects = rootNodes.filter((element) => {
+      const style = window.getComputedStyle(element);
+      return style.filter !== "none" ||
+        style.backdropFilter !== "none" ||
+        style.boxShadow !== "none" ||
+        style.textShadow !== "none";
+    });
+
+    if (rootNodes.length > 600) {
+      issues.push({
+        type: "large_diagram_dom",
+        severity: "P2",
+        message: "Diagram root contains a large DOM/SVG node count; verify pan/zoom/selection performance or move dense rendering to Canvas/Konva.",
+        target: `${rootNodes.length} nodes`
+      });
+    }
+
+    if (expensiveEffects.length > 80) {
+      issues.push({
+        type: "repeated_expensive_effects",
+        severity: "P2",
+        message: "Diagram repeats shadows, filters, glows, or backdrop effects across many elements; this can cause janky canvas interaction.",
+        target: `${expensiveEffects.length} effect-heavy elements`
+      });
+    }
 
     for (const label of labels) {
       const labelRect = toRect(label);
@@ -284,7 +312,9 @@ try {
         labels: labels.length,
         protectedLabels: protectedLabels.length,
         selected: selected.length,
-        tooltips: tooltips.length
+        tooltips: tooltips.length,
+        nodesInRoot: rootNodes.length,
+        expensiveEffects: expensiveEffects.length
       },
       issues
     };

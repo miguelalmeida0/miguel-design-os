@@ -130,10 +130,16 @@ Required for maps, floor plans, seating charts, route boards, timelines, diagram
 - Layer model:
 - Object model:
 - Labels needing protection:
+- Label lanes:
+- Callout routes:
+- Badge/status safe zones:
+- Construction-line semantics:
 - Object/card collision risks:
 - Safe-zone rules:
 - Z-index/layer rules:
 - Dynamic collision strategy:
+- Performance budget:
+- Rendering layer:
 - Diagram integrity QA:
 - `data-diagram-*` hooks:
 - Detector blocked reason if any:

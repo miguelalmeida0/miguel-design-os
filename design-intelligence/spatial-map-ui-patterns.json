@@ -41,11 +41,57 @@
         "If a tab is a filter, the filtered result must visibly change.",
         "Do not leave the same map and inspector visible while only changing selected styling."
       ]
+    },
+    "pattern_canvas_label_lanes": {
+      "description": "Pattern drafting canvases need explicit label lanes, callout routes, badge safe zones, and measurement hierarchy before pieces are drawn.",
+      "useWhen": [
+        "pattern canvases",
+        "garment drafting",
+        "diagram editors",
+        "measurement-heavy canvases"
+      ],
+      "rules": [
+        "Reserve lanes for piece names, measurement labels, status chips, and construction notes.",
+        "Route callouts outside pattern geometry unless the label belongs inside the piece.",
+        "Badges and selected outlines must not cover piece names, measurements, axes, ruler labels, or construction lines.",
+        "Zoom states should reveal more clarity, not more overlap."
+      ],
+      "rejected": [
+        "piece names covered by status badges",
+        "measurement callouts crossing labels",
+        "construction lines running through important text",
+        "close-up state becoming visually noisier than overview state"
+      ]
+    },
+    "canvas_performance_budget": {
+      "description": "Interactive canvas-like products need a rendering/performance budget before adding dense labels, shadows, glows, filters, drag, pan, zoom, or selection effects.",
+      "useWhen": [
+        "pattern canvases",
+        "node editors",
+        "floor maps",
+        "timeline canvases",
+        "dense SVG diagrams"
+      ],
+      "rules": [
+        "Define expected object count and label count.",
+        "Choose SVG, Canvas/Konva, D3, React Flow, or HTML based on interaction and density.",
+        "Avoid repeated expensive shadows, filters, glows, and layout-triggering interactions.",
+        "Use culling, virtualization, precomputed layout, or Canvas/Konva when object density grows."
+      ],
+      "rejected": [
+        "janky pan/zoom/drag",
+        "hundreds of effect-heavy DOM/SVG nodes",
+        "layout-bound interaction loops",
+        "performance budget missing from visual spec"
+      ]
     }
   },
   "scorecardCaps": {
     "spatialLabelCollision": 4,
     "placeboNavigation": 3,
-    "primaryObjectBuriedByCards": 5
+    "primaryObjectBuriedByCards": 5,
+    "patternCanvasCollision": 3,
+    "catastrophicDiagramOverlap": 2,
+    "canvasPerformanceJank": 5
   }
 }

@@ -81,6 +81,8 @@ Migi's chart rule is now data-shape first. Charts must be selected from user dec
 
 Migi's diagram/canvas rule is model-first. Pattern canvases, floor maps, seating charts, node graphs, timelines, and spatial product objects need coordinate systems, layer models, object models, protected label zones, collision rules, selection states, and responsive fallbacks. Hand-placed objects, truncated labels, overlapping pieces, and selected states that obscure data are blockers.
 
+Cutline Studio failure rule: Migi rejects clipped primary text, catastrophic pattern-canvas overlap, weak construction-line semantics, unreadable label piles, and performance-hostile canvas layering. Pattern canvases need label lanes, callout routes, badge safe zones, measurement hierarchy, detector QA, and a rendering/performance budget before they can be considered designed.
+
 Migi's style rule is now taxonomy-constrained. Pick one primary style family and at most one supporting treatment from product fit, reference mode, accessibility, performance, and rejected directions. Do not mash aesthetics together or use a style because it looks cool in isolation.
 
 For premium websites and landing pages, image-first workflow is preferred when image generation or strong visual references are available: section references first, deep extraction second, implementation third. Avoid compressed multi-section boards, cropped section cutouts, nested-card prisons, fake micro-UI clutter, and coded drift away from the reference.
