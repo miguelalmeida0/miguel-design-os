@@ -49,6 +49,7 @@ Before coding:
    - Each direction must include a distinct navigation concept, desktop nav behavior, mobile nav behavior, CTA/nav relationship, and default nav pattern avoided.
    - If all three directions use the same top bar, the direction gate fails.
    - Do not call paid image APIs. Paid image generation is allowed only if Migi explicitly writes `I approve paid API image generation for this run.` and the command includes `--paid-ok`.
+   - If Figma work is requested, use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames. Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat features. If required, stop with: `Blocked: this requires a paid or plan-gated Figma feature.`
    - Each direction must include navigation readability, identity chrome, decorative geometry, and line/divider strategy.
    - Hard bans: no unreadable nav over images/giant type/changing backgrounds, no forced app-name/logo/initials chrome, no decorative circular/orbital/radar/HUD overlays, no fake sonar rings, no generic orbit graphics, no decorative hairline/separator ornaments, no red divider lines as fake editorial detail, no section-label-plus-line filler.
 3. When Migi chooses A, B, C, or a hybrid, proceed immediately to implementation. Do not stop after selected-direction.md. Do not ask for another confirmation unless Migi explicitly requested planning-only/spec-only/no-code.

@@ -81,6 +81,7 @@ Final response contract:
 - no-image fast direction gate status for new visual-heavy work
 - direction layout maps / risk check status
 - paid image generation status
+- Figma cost safety status: no Figma AI, Weave, Make, paid generation, AI credits, Motion, Draw, Dev Mode-only, or paid-seat feature used automatically
 - palette exploration status
 - Unsplash asset sourcing status if applicable
 - navigation art-direction status

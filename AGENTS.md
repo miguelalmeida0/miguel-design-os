@@ -51,6 +51,7 @@ For any frontend/design task:
 - Advanced/cinematic/artistic/portfolio motion is choreography, not one animation. When Migi asks for advanced animations, cinematic motion, artistic motion, Awwwards/Godly/Recent-level motion, scroll animation, appearing while scrolling, portfolio motion, or motion like Graffico/Manet/UXBert/Podium, route `skills/advanced-motion-choreography/SKILL.md`, create `docs/design/motion-choreography-plan.md`, implement multiple motion layers, capture motion sequence evidence or a blocker, and score `evaluation/benchmarks/motion-cinematic.benchmark.md`.
 - New visual-heavy work requires the No-Image Fast Direction Gate by default: create only `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`; then stop for Migi to choose before coding.
 - No paid image generation by default. Do not call `OPENAI_API_KEY`, `gpt-image`, or paid image APIs during the direction gate unless Migi explicitly writes `I approve paid API image generation for this run.` and the command includes `--paid-ok`.
+- Figma cost safety is strict. Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat Figma features. Use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames. If a Figma request requires a paid or plan-gated feature, stop and report exactly: `Blocked: this requires a paid or plan-gated Figma feature.`
 - No-image direction cards must include layout maps, domain palette rationale, primary product object, nav state effect, interaction promises, risk, complexity, and recommendation score. Vague vibe cards fail the gate.
 - Deep Direction Gate is opt-in only for deep exploration, full strategy, research pass, benchmark pass, reference decomposition, or reference-locked planning.
 - Direction selection means build. When Migi chooses Direction A, B, C, says use/go with a direction, or selects a hybrid like `B palette + C navigation`, the agent must create/update `docs/design/selected-direction.md` and proceed through visual spec, design-system tokens, implementation, validation, and final URL handoff without asking for another implementation confirmation. Stop only when Migi explicitly says spec only, planning only, do not implement, wait, no code yet, direction selection only, just document it, or do not edit src.
@@ -129,6 +130,7 @@ Use the smallest relevant set.
 - Mobile apps, mobile web flows, onboarding/profile/search/home screens, or mobile reference folders: `skills/mobile-product-flow/SKILL.md`.
 - Tailwind/global CSS migration: `skills/tailwind-migration-zero-regression/SKILL.md`.
 - Auth, onboarding/login naming, mock data, production states, persistence, or truthful claims: `skills/truthful-state-product-naming/SKILL.md`.
+- Figma design/file operations: read `design-dna/figma-cost-safety-rules.md` before using Figma tools. Normal Plugin API operations are allowed; paid/plan-gated Figma features must block with the required message.
 
 ## Tool Discipline
 

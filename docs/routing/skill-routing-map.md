@@ -77,6 +77,13 @@ Use when real imagery is needed, image-first frontend is active, landing pages d
 2. `design-intelligence/color-guidance.md`
 3. `screenshot-scorecard-review`
 
+## Figma Work
+
+1. Read `design-dna/figma-cost-safety-rules.md`.
+2. Use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames.
+3. Stop before any Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operation, or paid-seat feature.
+4. Required blocked response: `Blocked: this requires a paid or plan-gated Figma feature.`
+
 ## Motion
 
 1. `animation-vocabulary` for naming.

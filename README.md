@@ -79,6 +79,14 @@ Create:
 
 Paid image generation is disabled by default. It may only run if Migi explicitly writes `I approve paid API image generation for this run.` and the paid script is called with `--paid-ok`. Do not create visual specs, navigation plans, QA docs, build/lint reports, or frontend code until Migi selects a direction.
 
+## Figma Cost Safety
+
+Figma work must stay on normal Plugin API operations by default: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames.
+
+Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat features automatically. If a requested operation requires one of those paid or plan-gated features, the agent must stop and report exactly:
+
+`Blocked: this requires a paid or plan-gated Figma feature.`
+
 ## Post-Build Review Layers
 
 These run after implementation or when Migi asks for review, not during Fast Direction Gate:

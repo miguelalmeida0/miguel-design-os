@@ -122,6 +122,9 @@ Functional circular charts, progress rings, orbital selectors, diagrams, or maps
 - visual-heavy new app implemented without direction-options gate: max 60 (6/10)
 - paid API generation runs without explicit approval: max workflow score 20 (2/10)
 - paid API key required for default workflow: max workflow score 40 (4/10)
+- Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat Figma feature used automatically: max workflow score 20 (2/10)
+- Figma request requires paid/plan-gated feature but agent does not stop with `Blocked: this requires a paid or plan-gated Figma feature.`: max workflow score 30 (3/10)
+- Design OS workflow depends on paid or credit-based Figma features by default: max workflow score 40 (4/10)
 - direction gate fails because image API is unavailable: max workflow score 50 (5/10)
 - no-image direction gate lacks layout maps: max workflow score 60 (6/10)
 - no-image direction gate produces vague vibes only: max workflow score 50 (5/10)
@@ -682,6 +685,7 @@ These do not change the 100-point total, but they can trigger caps and blockers.
 - `docs/design/direction-risk-check.md` exists
 - Safe Refined, Artistic Expressive, and Unexpected High-Character are meaningfully distinct
 - no paid image API was called unless Migi explicitly approved it and the command used `--paid-ok`
+- no Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operation, or paid-seat feature was used automatically
 - each direction names primary product object, domain palette rationale, nav state effect, interaction promises, risk, complexity, and recommendation score
 - once Migi selects A, B, C, or a hybrid, selected-direction.md leads directly into implementation unless Migi explicitly requested planning-only/no-code
 

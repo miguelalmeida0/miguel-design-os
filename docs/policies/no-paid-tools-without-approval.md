@@ -32,6 +32,16 @@ Allowed by default:
 - comparing screenshots locally
 - generating prompts locally
 
+## Figma Cost Safety
+
+Figma work must use only normal Figma Plugin API operations unless Migi explicitly asks for a different paid workflow. Allowed operations are pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames.
+
+Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or any feature that requires a paid seat by default.
+
+If a requested operation requires Figma Motion, Figma Draw, Dev Mode, AI credits, Figma AI, Figma Weave, Figma Make, paid generation, or a paid seat, stop and report exactly:
+
+`Blocked: this requires a paid or plan-gated Figma feature.`
+
 ## Approval Requirement
 
 If an external or paid tool would be useful, the agent must stop and ask Migi first.

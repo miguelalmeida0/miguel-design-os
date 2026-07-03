@@ -50,41 +50,42 @@ Default direction gate mode is No-Image Fast Direction Gate. For normal first-pa
 17. Define design-system direction from `design-dna/design-system-first-rules.md` before significant UI implementation.
 18. If artistic, cinematic, landing, portfolio, creative, editorial, or experimental mode is active, read `design-dna/art-directed-palette-exploration.md` and include 3 palette directions before locking tokens.
 19. If color tokens, contrast repair, dark mode, chart colors, or color accessibility matter, route `skills/oklch-contrast-palette/SKILL.md` and check OKLCH/APCA before final palette approval.
-20. Define Domain Palette Fit for every product UI: product domain, user environment, task pressure, emotional state, state-color semantics, and what random "looks cool" palette is rejected.
-21. If real imagery, Unsplash, or source-image roles are needed, route `skills/unsplash-asset-sourcing/SKILL.md`, create `docs/design/unsplash-search-plan.md`, and create `docs/design/unsplash-asset-manifest.md` before implementation.
-22. For visual-heavy navigation, create `docs/design/navigation-strategy.md`, propose 3 distinct navigation concepts, select one pattern, and document desktop/tablet/mobile behavior before implementation.
-23. For visual-heavy navigation over images, giant type, video, or changing backgrounds, define Navigation Readability Strategy before implementation.
-24. Enforce No Placebo Navigation: clickable nav, tabs, filters, and segmented controls must change visible product state, route, content, scope, or filter.
-25. Decide whether visible logo/app-name chrome is justified; default is no forced app name, initials badge, or logo-left habit.
-26. Define Decorative Geometry Strategy and Line / Divider Strategy; default is no decorative orbital overlays and no decorative hairline ornaments.
-27. For charts, graphs, diagrams, maps, timelines, canvases, or visual encodings, route `skills/chart-system-director/SKILL.md`, define the data contract, choose the visualization/tool from `design-intelligence/visualization-tool-routing.md`, and document the question the visualization answers.
-28. For spatial products such as maps, floor plans, seating charts, pattern canvases, node graphs, diagrams, and timelines, route `skills/diagram-canvas-system/SKILL.md` and define coordinate system, layer model, object model, label model, collision strategy, and selection/inspector behavior before implementation.
-29. For desktop command surfaces, define the central primary product object before arranging support panels; panels must support the object, not replace it.
-30. For new frontend MVPs, use `agent-workflows/frontend-aha-moment-workflow.md`: truthful mock data in data files, visible interactions working locally, no backend unless requested.
-31. For landing, portfolio, marketing, or redesign work, read `design-dna/brief-inference-rules.md` and state the design read before coding.
-32. Perform a Scale Calibration Pass against the selected reference folder before implementation.
-33. If Command Center / Dashboard Mode is selected, define Dashboard Command-Surface Strategy before implementation.
-34. If charts or meaningful data visualizations are involved, route chart skills and create a chart-selection report before chart implementation.
-35. After implementing charts, diagrams, maps, timelines, floor plans, or canvas-like product objects, route `skills/data-viz-hardening-review/SKILL.md` before calling the UI final.
-36. If a style family/taxonomy direction matters, route `skills/visual-style-selection/SKILL.md` and create a visual-style selection report before tokens are locked.
-37. If building a premium website, landing page, hero, marketing page, product page, editorial/portfolio page, or website image-to-code output, use `agent-workflows/image-first-frontend-workflow.md`, route image-first skills, and create image-first website analysis before coding.
-38. For landing, portfolio, marketing, and redesign work, route `skills/landing-page-craft-director/SKILL.md` and `skills/anti-ai-tell-preflight/SKILL.md`.
-39. If motion is planned, route `skills/motion-craft-director/SKILL.md`; if motion code changes, route `skills/review-animations/SKILL.md`; if motion needs naming, route `skills/animation-vocabulary/SKILL.md`. If Migi asks for advanced animations, cinematic motion, artistic motion, Awwwards/Godly/Recent-level motion, scroll animation, appearing while scrolling, or portfolio motion, route `skills/advanced-motion-choreography/SKILL.md` and require `docs/design/motion-choreography-plan.md` before implementation.
-40. If delight/personality is planned, route `skills/delight-opportunity-director/SKILL.md`.
-41. If broad UI/UX craft, typography, pseudo-elements, audio feedback, predictive prefetching, UX laws, or visual design rules matter, route `skills/userinterface-wiki/SKILL.md`.
-42. After the main layout exists, route `skills/make-interfaces-feel-better/SKILL.md` before final screenshot review when the UI feels stiff, dead, generic, or unresponsive.
-43. After implementation, route `skills/text-clarity-review/SKILL.md` for copy-heavy product UI before calling copy final.
-44. After implementation, route `skills/production-hardening-review/SKILL.md` before calling product UI production-ready.
-45. After implementation or screenshots, route `skills/evidence-backed-critique/SKILL.md` when Migi asks for critique or the UI needs full post-build review.
-46. If mobile-first, read `design-dna/mobile-product-rules.md` and create or fill `docs/design/mobile-flow-spec.md` before implementation.
-47. Define Image Environment Strategy before implementation when references are artistic, landing-page, cinematic, image-led, or visual-heavy.
-48. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture.
-49. Define a project-specific visual identity and a non-obvious visual thesis.
-50. State which source project is relevant evidence and what will not be copied.
-51. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
-52. Plan to run `evaluation/ui-scorecard.md` before finishing.
-51. If the project is a Miguel Design OS dogfood target, state what rule/tool/prompt is being tested before coding and commit to translating every target-app failure back into a Design OS patch or named open gap.
-52. State product purpose clarity before implementation: what this app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the master system.
+20. If Figma work is requested, read `design-dna/figma-cost-safety-rules.md` first. Use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames. Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat features. If the request requires one, stop and report exactly: `Blocked: this requires a paid or plan-gated Figma feature.`
+21. Define Domain Palette Fit for every product UI: product domain, user environment, task pressure, emotional state, state-color semantics, and what random "looks cool" palette is rejected.
+22. If real imagery, Unsplash, or source-image roles are needed, route `skills/unsplash-asset-sourcing/SKILL.md`, create `docs/design/unsplash-search-plan.md`, and create `docs/design/unsplash-asset-manifest.md` before implementation.
+23. For visual-heavy navigation, create `docs/design/navigation-strategy.md`, propose 3 distinct navigation concepts, select one pattern, and document desktop/tablet/mobile behavior before implementation.
+24. For visual-heavy navigation over images, giant type, video, or changing backgrounds, define Navigation Readability Strategy before implementation.
+25. Enforce No Placebo Navigation: clickable nav, tabs, filters, and segmented controls must change visible product state, route, content, scope, or filter.
+26. Decide whether visible logo/app-name chrome is justified; default is no forced app name, initials badge, or logo-left habit.
+27. Define Decorative Geometry Strategy and Line / Divider Strategy; default is no decorative orbital overlays and no decorative hairline ornaments.
+28. For charts, graphs, diagrams, maps, timelines, canvases, or visual encodings, route `skills/chart-system-director/SKILL.md`, define the data contract, choose the visualization/tool from `design-intelligence/visualization-tool-routing.md`, and document the question the visualization answers.
+29. For spatial products such as maps, floor plans, seating charts, pattern canvases, node graphs, diagrams, and timelines, route `skills/diagram-canvas-system/SKILL.md` and define coordinate system, layer model, object model, label model, collision strategy, and selection/inspector behavior before implementation.
+30. For desktop command surfaces, define the central primary product object before arranging support panels; panels must support the object, not replace it.
+31. For new frontend MVPs, use `agent-workflows/frontend-aha-moment-workflow.md`: truthful mock data in data files, visible interactions working locally, no backend unless requested.
+32. For landing, portfolio, marketing, or redesign work, read `design-dna/brief-inference-rules.md` and state the design read before coding.
+33. Perform a Scale Calibration Pass against the selected reference folder before implementation.
+34. If Command Center / Dashboard Mode is selected, define Dashboard Command-Surface Strategy before implementation.
+35. If charts or meaningful data visualizations are involved, route chart skills and create a chart-selection report before chart implementation.
+36. After implementing charts, diagrams, maps, timelines, floor plans, or canvas-like product objects, route `skills/data-viz-hardening-review/SKILL.md` before calling the UI final.
+37. If a style family/taxonomy direction matters, route `skills/visual-style-selection/SKILL.md` and create a visual-style selection report before tokens are locked.
+38. If building a premium website, landing page, hero, marketing page, product page, editorial/portfolio page, or website image-to-code output, use `agent-workflows/image-first-frontend-workflow.md`, route image-first skills, and create image-first website analysis before coding.
+39. For landing, portfolio, marketing, and redesign work, route `skills/landing-page-craft-director/SKILL.md` and `skills/anti-ai-tell-preflight/SKILL.md`.
+40. If motion is planned, route `skills/motion-craft-director/SKILL.md`; if motion code changes, route `skills/review-animations/SKILL.md`; if motion needs naming, route `skills/animation-vocabulary/SKILL.md`. If Migi asks for advanced animations, cinematic motion, artistic motion, Awwwards/Godly/Recent-level motion, scroll animation, appearing while scrolling, or portfolio motion, route `skills/advanced-motion-choreography/SKILL.md` and require `docs/design/motion-choreography-plan.md` before implementation.
+41. If delight/personality is planned, route `skills/delight-opportunity-director/SKILL.md`.
+42. If broad UI/UX craft, typography, pseudo-elements, audio feedback, predictive prefetching, UX laws, or visual design rules matter, route `skills/userinterface-wiki/SKILL.md`.
+43. After the main layout exists, route `skills/make-interfaces-feel-better/SKILL.md` before final screenshot review when the UI feels stiff, dead, generic, or unresponsive.
+44. After implementation, route `skills/text-clarity-review/SKILL.md` for copy-heavy product UI before calling copy final.
+45. After implementation, route `skills/production-hardening-review/SKILL.md` before calling product UI production-ready.
+46. After implementation or screenshots, route `skills/evidence-backed-critique/SKILL.md` when Migi asks for critique or the UI needs full post-build review.
+47. If mobile-first, read `design-dna/mobile-product-rules.md` and create or fill `docs/design/mobile-flow-spec.md` before implementation.
+48. Define Image Environment Strategy before implementation when references are artistic, landing-page, cinematic, image-led, or visual-heavy.
+49. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture.
+50. Define a project-specific visual identity and a non-obvious visual thesis.
+51. State which source project is relevant evidence and what will not be copied.
+52. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
+53. Plan to run `evaluation/ui-scorecard.md` before finishing.
+54. If the project is a Miguel Design OS dogfood target, state what rule/tool/prompt is being tested before coding and commit to translating every target-app failure back into a Design OS patch or named open gap.
+55. State product purpose clarity before implementation: what this app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the master system.
 
 ## Direction Gate Modes
 
@@ -125,6 +126,27 @@ Paid image generation may only run if Migi explicitly writes:
 `I approve paid API image generation for this run.`
 
 The command must also include `--paid-ok`.
+
+## Figma Cost Safety Rule
+
+Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or any paid-seat Figma feature by default.
+
+Allowed normal Figma Plugin API operations:
+
+- pages
+- frames
+- vectors
+- shapes
+- text
+- variables if available
+- styles
+- components
+- node metadata
+- storyboard frames
+
+If a requested operation requires a paid or plan-gated Figma feature, stop and report exactly:
+
+`Blocked: this requires a paid or plan-gated Figma feature.`
 
 ## No-Image Direction Gate Requirements
 

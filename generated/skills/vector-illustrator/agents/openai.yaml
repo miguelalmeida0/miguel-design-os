@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vector Illustrator"
+  short_description: "Build polished SVG vector systems"
+  default_prompt: "Use $vector-illustrator to create a reusable SVG illustration component with accessible output."

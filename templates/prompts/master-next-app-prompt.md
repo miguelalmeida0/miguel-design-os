@@ -67,6 +67,14 @@ Hard bans:
 
 No paid API calls during the default direction gate. Paid image generation may only run if Migi explicitly writes `I approve paid API image generation for this run.` and the command includes `--paid-ok`. Do not code before selection.
 
+## Figma Cost Safety
+
+If Figma work is requested, use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames.
+
+Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat Figma features. If the requested operation requires one, stop and report exactly:
+
+`Blocked: this requires a paid or plan-gated Figma feature.`
+
 After selection, create `docs/design/selected-direction.md`.
 
 ## Direction Selection Behavior
