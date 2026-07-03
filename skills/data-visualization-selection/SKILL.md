@@ -14,7 +14,14 @@ Use this skill when a UI includes charts, metrics, graph-rich dashboards, analyt
 
 ## Operating Rule
 
-Do not choose a chart because it "looks dashboardy." Choose the chart from the data shape, user question, data volume, accessibility burden, and interaction need.
+Do not choose a chart because it "looks dashboardy." Choose the chart from the data shape, user question, data volume, accessibility burden, interaction need, and tool/rendering constraints.
+
+For implementation planning, pair this skill with:
+
+- `skills/chart-system-director/SKILL.md` for visualization intent, data contract, labels, states, responsiveness, and accessibility.
+- `design-intelligence/visualization-tool-routing.md` for D3, Observable Plot, Vega-Lite, ECharts, Recharts, Chart.js, Nivo, React Flow, React Konva/Konva, Mermaid, D2, custom SVG, or CSS/HTML routing.
+- `skills/diagram-canvas-system/SKILL.md` when the visualization is a map, floor plan, seating chart, timeline, node graph, pattern canvas, or spatial editor.
+- `skills/data-viz-hardening-review/SKILL.md` after implementation.
 
 Every chart must answer at least one of:
 
@@ -41,8 +48,9 @@ If a chart cannot answer one of those, remove it or replace it with text, a tabl
 6. Define data volume handling: SVG, Canvas, WebGL, aggregation, downsampling, pagination, or table.
 7. Define interaction level: hover, sort, filter, drill, zoom, brush, pause, or keyboard traversal.
 8. Define chart bounds: plot area, label margins, clipping, responsive fallback, and overflow control.
-9. Check whether the chart belongs in the dashboard composition or is just decorative.
-10. Fill `templates/chart-selection-report.template.md` for significant visual/data work.
+9. When the visualization is spatial, map-like, timeline-like, or canvas-based, define label safe zones and collision rules for objects, badges, cards, glows, axes, and annotations.
+10. Check whether the chart/map/timeline belongs in the dashboard composition or is just decorative.
+11. Fill `templates/chart-selection-report.template.md` for significant visual/data work.
 
 ## Chart Integrity Rules
 
@@ -73,6 +81,9 @@ For each meaningful chart, report:
 - responsive behavior
 - chart bounds strategy
 - why the chart is useful instead of decorative
+- recommended visualization library/tool
+- empty/loading/error states
+- data-viz hardening risks
 
 ## Stop Conditions
 
@@ -81,8 +92,13 @@ Stop and redesign when:
 - chart choice does not match data shape
 - chart has no product decision
 - labels, bars, axes, or lines escape the container
+- spatial labels are covered by objects, cards, glows, badges, or controls
+- a map, floor plan, timeline, or seating chart is reduced to generic card decoration
 - chart relies on color alone
 - chart is inaccessible with no fallback
 - chart is decorative wallpaper
 - real-time motion lacks pause/reduced-motion handling
 - dashboard references are graph-rich but output is chart-lite
+- chart or diagram has no data contract
+- visualization library/tool choice is arbitrary
+- chart/diagram lacks empty/loading/error states

@@ -35,10 +35,14 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 - Dashboard Command-Surface Strategy when Command Center / Dashboard Mode is selected.
 - Dashboard Palette Strategy, Graph System Strategy, and Image / Object / Media Strategy when Command Center / Dashboard Mode is selected.
 - Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used.
+- Unsplash search plan and asset manifest when real imagery or Unsplash assets are selected for reconstruction/translation.
 - Scale Calibration section when visual-library references are used.
 - Contrast / Legibility Strategy when image-led or visual-library references are used.
 - Palette Exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental reference work.
 - Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, and Palette Direction for dashboard or visual-heavy work.
+- Navigation Readability Strategy when nav overlays images, giant type, video, or changing backgrounds.
+- Identity / Brand Chrome Decision for visible logo, app name, initials, or wordmark chrome.
+- Decorative Geometry Strategy and Line / Divider Strategy for orbital/radar/HUD circles and hairline/separator systems.
 - Layout Integrity Contract and Responsive Breakpoint Proof at 1440, 1280, 1024, 768, and 390 for visual-heavy work.
 - Current product type.
 - Primary object and primary action.
@@ -59,6 +63,7 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 - `agent-workflows/visual-target-reconstruction-mode.md`
 - `agent-workflows/image-first-frontend-workflow.md` for image-led landing/portfolio/marketing work
 - `design-dna/art-directed-palette-exploration.md` for artistic, cinematic, landing, portfolio, creative, editorial, or experimental reference work
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are needed
 - `design-dna/landing-page-craft-rules.md` for landing/portfolio/marketing references
 - `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing references
 - `evaluation/ui-scorecard.md`
@@ -178,7 +183,11 @@ Product logic waits until the pixel-parity shell is approved.
 20. Reject hope-based contrast: important text over imagery needs a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image.
 21. Reject background image fear: immersive references should not be reduced to boxed rectangular assets.
 22. Reject safe AI palette defaults: artistic, landing, portfolio, cinematic, creative, editorial, and experimental reference work must not default to muddy brown/black, generic charcoal/orange, AI purple glow, beige premium, terminal green, neon lime, blue-grey SaaS, or safe neutral with one predictable accent.
-23. For landing-page, creative, artistic, cinematic, editorial, or image-led references, explicitly check:
+23. Reject decorative orbital/circular/radar/HUD overlays unless Migi explicitly requested them or they are functional components such as circular charts, selectors, maps, progress rings, or labeled diagrams.
+24. Reject navigation that becomes unreadable over reference imagery, giant type, video, gradients, or scroll-state background changes.
+25. Reject forced app-name/logo/initials chrome unless the selected direction or visual spec justifies it.
+26. Reject decorative separator hairlines, red ticks, label rails, and ornamental rules unless they align to real content boundaries.
+27. For landing-page, creative, artistic, cinematic, editorial, or image-led references, explicitly check:
    - composition was extracted, not just colors
    - image dominance is preserved
    - image is used as environment when the reference supports it
@@ -187,25 +196,26 @@ Product logic waits until the pixel-parity shell is approved.
    - generic section stacking is absent
    - visual mood continues after the hero
    - the screen behaves like a poster/editorial spread
-24. Define what to copy, avoid, and translate.
-25. For landing, portfolio, marketing, and imagegen reference work:
+28. Define what to copy, avoid, and translate.
+29. For landing, portfolio, marketing, and imagegen reference work:
    - use one horizontal image/reference per section
    - never compress multiple sections into one unreadable board
    - define section job, composition anchor, background mode, CTA variation, and second-read moment
    - run anti-AI-tell preflight before implementation
-26. If this is new visual-heavy work and Literal Target Copy Mode is not active, run the Three-Direction Mockup Gate before implementation: create `docs/design/direction-options.md`, stop for Migi to choose A, B, C, or a hybrid, then create `docs/design/selected-direction.md`.
-27. Run Visual Concept Gate v2 if the work is visual-heavy: exactly 3 rendered concepts, preview routes, and `1440 / 768 / 390` screenshot files when tooling exists.
-28. Stop for Migi approval after showing the directions or rendered concepts.
-29. Build a static visual shell from the approved direction/concept before product logic.
-30. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
-31. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
-32. Compare the shell against the reference and approved concept by selected anchors, transferred mechanics, composition, focal object, hidden information, emotional hook, image environment, scale/density, contrast strategy, navigation clarity, toolbar alignment, text density, button proportions, layout integrity, responsive breakpoint proof, responsive collision behavior, palette direction, dashboard command-surface strategy, dashboard palette strategy, graph system, and image/object/media strategy when applicable.
-33. Validate `asset-manifest.local.json` when production imagery is used.
-34. Verify the core loop before claiming the visual shell supports the product promise.
-35. Verify persistence truth for uploaded or user-generated data.
-36. Create or update `done-report.local.json` from screenshot evidence.
-37. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
-38. Patch the shell before adding feature depth.
+30. If real imagery is needed, create `docs/design/unsplash-search-plan.md` and `docs/design/unsplash-asset-manifest.md`; document roles, crop strategy, palette relationship, alt text, source metadata, and product-truth notes.
+31. If this is new visual-heavy work and Literal Target Copy Mode is not active, run the Three-Direction Mockup Gate before implementation: create `docs/design/direction-options.md`, stop for Migi to choose A, B, C, or a hybrid, then create `docs/design/selected-direction.md`.
+32. Run Visual Concept Gate v2 if the work is visual-heavy: exactly 3 rendered concepts, preview routes, and `1440 / 768 / 390` screenshot files when tooling exists.
+33. Stop for Migi approval after showing the directions or rendered concepts.
+34. Build a static visual shell from the approved direction/concept before product logic.
+35. Capture or inspect implementation screenshots at `390 / 768 / 1440`.
+36. Compare target/current screenshots with `node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>` when exact target copy applies.
+37. Compare the shell against the reference and approved concept by selected anchors, transferred mechanics, composition, focal object, hidden information, emotional hook, image environment, scale/density, contrast strategy, navigation clarity, navigation readability, brand chrome, decorative geometry, line/divider strategy, toolbar alignment, text density, button proportions, layout integrity, responsive breakpoint proof, responsive collision behavior, palette direction, dashboard command-surface strategy, dashboard palette strategy, graph system, and image/object/media strategy when applicable.
+38. Validate `asset-manifest.local.json` when production imagery is used.
+39. Verify the core loop before claiming the visual shell supports the product promise.
+40. Verify persistence truth for uploaded or user-generated data.
+41. Create or update `done-report.local.json` from screenshot evidence.
+42. Run `node tools/design-os.mjs validate-done-report done-report.local.json`.
+43. Patch the shell before adding feature depth.
 
 ## Stop Conditions
 
@@ -221,6 +231,10 @@ Product logic waits until the pixel-parity shell is approved.
 - Stop if Command Center / Dashboard Mode has no Dashboard Command-Surface Strategy.
 - Stop if Command Center / Dashboard Mode has no Dashboard Palette Strategy or Graph System Strategy.
 - Stop if dashboard or visual-heavy work has no Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, or Palette Direction.
+- Stop if navigation overlays images, giant type, video, or changing backgrounds without Navigation Readability Strategy.
+- Stop if visible app-name/logo/initials chrome appears without Identity / Brand Chrome Decision justification.
+- Stop if decorative circular/orbital/radar/HUD overlays appear without explicit Migi approval and functional meaning.
+- Stop if decorative separator hairlines, red lines, label rails, or ticks appear without functional Line / Divider Strategy.
 - Stop if visual-heavy work has no Layout Integrity Contract or Responsive Breakpoint Proof.
 - Stop if new visual-heavy work is not Literal Target Copy Mode, no visual direction is already approved, and `docs/design/direction-options.md` is missing.
 - Stop if implementation starts before Migi chooses Direction A, B, C, or a hybrid.
@@ -241,6 +255,8 @@ Product logic waits until the pixel-parity shell is approved.
 - Stop if any important text is hard to read.
 - Stop if the reference is immersive/image-led but the result uses a boxed rectangular image layout.
 - Stop if major images are used as decoration with no declared role.
+- Stop if real imagery is needed but Unsplash/source search plan or asset manifest is missing.
+- Stop if sourced imagery is generic filler, missing source metadata/alt text, has unsafe text overlays, breaks responsive crop, or implies false product proof.
 - Stop if the chosen layout contradicts the reference composition.
 - Stop if landing-page, creative, artistic, or image-led output looks like a normal landing page with artistic images pasted into cards or sections.
 - Stop if the visual-heavy concept gate is text-only or missing screenshots when Literal Target Copy Mode is not active.
@@ -288,6 +304,10 @@ Image environment strategy:
 Scale calibration:
 Contrast / legibility:
 Navigation strategy:
+Navigation readability:
+Identity / brand chrome:
+Decorative geometry:
+Line / divider strategy:
 Toolbar alignment:
 Text density:
 Button proportions:
@@ -331,6 +351,10 @@ Patch needed:
 - Direction options lack palette/image/layout/motion strategy: max score 6.
 - Agent ignores selected direction during implementation: max score 5.
 - No selected-direction.md after Migi chooses: max score 7.
+- Decorative circular/orbital/HUD overlay used as atmosphere: max score 5.
+- Nav unreadable over image/type/background: max score 4.
+- Forced app-name/logo chrome without justification: max score 5.
+- Decorative separator/hairline used without function: max score 5.
 - Missing Dashboard Command-Surface Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Dashboard Palette Strategy for Command Center / Dashboard Mode: max score 6.
 - Missing Graph System Strategy for Command Center / Dashboard Mode: max score 6.

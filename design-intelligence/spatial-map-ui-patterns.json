@@ -1,0 +1,51 @@
+{
+  "version": "2026-07-03",
+  "patterns": {
+    "label_safe_zones": {
+      "description": "Reserve readable zones for section labels, area names, axes, room names, server names, route labels, or timeline labels before placing interactive objects.",
+      "useWhen": [
+        "floor plans",
+        "maps",
+        "seating charts",
+        "timelines",
+        "route boards",
+        "canvas-based command surfaces"
+      ],
+      "rules": [
+        "Labels define spatial meaning and must not be covered by cards, glows, badges, or objects.",
+        "Objects should snap around label zones or labels should move to protected layers.",
+        "If a label is intentionally secondary, fade it deliberately but keep it legible enough to orient the user.",
+        "Use collision detection or layout constraints when objects are draggable or dynamic."
+      ],
+      "rejected": [
+        "table cards covering section names",
+        "status glows hiding map words",
+        "badges overlapping room/zone labels",
+        "labels clipped by viewport or scroll container"
+      ]
+    },
+    "primary_object_map": {
+      "description": "When a map, floor plan, seating chart, or timeline is the product object, it should own the command surface.",
+      "rules": [
+        "Keep the map/canvas/timeline visually central.",
+        "Use panels as inspectors, filters, queues, or action surfaces.",
+        "Do not reduce the product object to one generic card among many.",
+        "Provide clear selected state between object and inspector."
+      ]
+    },
+    "placebo_navigation_guard": {
+      "description": "Navigation/tabs over spatial products must change visible content, object scope, mode, route, filter, or selected panel.",
+      "rules": [
+        "Active nav state must correspond to visible product state.",
+        "If a tab is not implemented, disable it or remove it.",
+        "If a tab is a filter, the filtered result must visibly change.",
+        "Do not leave the same map and inspector visible while only changing selected styling."
+      ]
+    }
+  },
+  "scorecardCaps": {
+    "spatialLabelCollision": 4,
+    "placeboNavigation": 3,
+    "primaryObjectBuriedByCards": 5
+  }
+}

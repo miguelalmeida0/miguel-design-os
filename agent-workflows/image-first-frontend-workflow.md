@@ -34,11 +34,13 @@ If image generation is not available, use visual-library references or Migi-prov
 8. If the visual direction is not already approved, create `docs/design/direction-options.md` with three distinct directions and stop for Migi to choose.
 9. After Migi chooses A, B, C, or a hybrid, create `docs/design/selected-direction.md`.
 10. Create `docs/design/visual-spec.md` with a Direction Gate Summary.
-11. Define design-system tokens.
-12. Implement visual shell first.
-13. Add only the minimum visible interactions needed to evaluate the shell.
-14. Capture screenshots.
-15. Create `docs/qa/reference-match-report.md` or equivalent notes.
+11. If real imagery is needed, use `skills/unsplash-asset-sourcing/SKILL.md` before implementation.
+12. Create `docs/design/unsplash-search-plan.md` and `docs/design/unsplash-asset-manifest.md` when Unsplash images are selected.
+13. Define design-system tokens.
+14. Implement visual shell first.
+15. Add only the minimum visible interactions needed to evaluate the shell.
+16. Capture screenshots.
+17. Create `docs/qa/reference-match-report.md` or equivalent notes.
 
 ## Landing / Marketing / Portfolio Reference Rules
 
@@ -48,11 +50,13 @@ For landing, marketing, portfolio, and visual redesign work:
 2. Never compress a multi-section page into one unreadable board.
 3. Give every section a job: hook, proof, educate, compare, demonstrate, trust, convert, or close.
 4. For each section, choose composition anchor, background mode, CTA variation, and image role.
-5. Keep palette and typography locked across the page.
-6. Before locking the palette, explore Safe Refined, Artistic Expressive, and Unexpected High-Character palette directions.
-7. Vary section rhythm.
-8. Avoid AI-classic hero defaults unless the brief supports them.
-9. Run anti-AI-tell preflight before coding and before handoff.
+5. When real photography is needed, create an Unsplash search plan before implementation.
+6. Every major sourced image needs a manifest entry, source metadata, crop strategy, palette relationship, and text safe-zone notes.
+7. Keep palette and typography locked across the page.
+8. Before locking the palette, explore Safe Refined, Artistic Expressive, and Unexpected High-Character palette directions.
+9. Vary section rhythm.
+10. Avoid AI-classic hero defaults unless the brief supports them.
+11. Run anti-AI-tell preflight before coding and before handoff.
 
 ## Required Analysis
 
@@ -64,6 +68,7 @@ For each reference, extract:
 - section rhythm
 - typography roles
 - image role
+- image source metadata and asset manifest entry when real imagery is used
 - button/control behavior
 - spacing system
 - palette/material system
@@ -84,6 +89,8 @@ Stop before coding if:
 - no visual spec exists
 - no design-system direction exists
 - artistic, cinematic, landing, portfolio, creative, editorial, or experimental work has no 3-direction palette exploration
+- real imagery is needed but `docs/design/unsplash-search-plan.md` or `docs/design/unsplash-asset-manifest.md` is missing
+- selected images are generic filler, source metadata is missing, or responsive crop/text safe-zone risks are unresolved
 - landing/portfolio work has no anti-AI-tell plan
 - section references compress multiple sections into one unreadable image
 - exact target copy is requested but no target-copy report path exists
@@ -97,6 +104,8 @@ Use or create:
 - `docs/design/design-transfer-spec.md`
 - `docs/design/visual-spec.md`
 - `docs/design/design-system-direction.md`
+- `docs/design/unsplash-search-plan.md` when Unsplash sourcing is used
+- `docs/design/unsplash-asset-manifest.md` when Unsplash sourcing is used
 - `docs/qa/reference-match-report.md`
 
 ## Hard Reminder

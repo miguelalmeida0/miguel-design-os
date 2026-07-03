@@ -15,6 +15,71 @@ Fix:
 - Choose colors from the current product's domain, audience, and risk level.
 - State what source-project palette you are explicitly not copying.
 
+## Anti-Pattern: Random Domain Palette
+
+Detect:
+
+- Palette feels cool in isolation but wrong for the product domain.
+- Colors do not reflect the user environment, task pressure, emotional state, or state semantics.
+- Hospitality, healthcare, finance, operations, education, or utility products receive a generic dark/cinematic/AI palette without domain reasoning.
+- State colors are chosen for vibe rather than meaning.
+
+Why it fails:
+
+Palette is part of product comprehension. A restaurant service surface, for example, should feel like live hospitality operations, not a random dark dashboard skin.
+
+Correction:
+
+Define Domain Palette Fit before tokens: product domain, user environment, task pressure, emotional state, state colors, colors to avoid, and why the selected palette belongs to this product.
+
+## Anti-Pattern: Placebo Navigation
+
+Detect:
+
+- A nav item, tab, segmented control, filter, or mode switch changes active visual state but visible content does not change.
+- The URL, route, panel scope, data filter, selected mode, or visible product state remains the same after selection.
+- Users can click a control that only performs a styling change.
+
+Why it fails:
+
+Navigation is a promise. If selected state changes but product state does not, the UI becomes theater and trust collapses.
+
+Correction:
+
+Every clickable nav/tab/filter must change visible content, route, scope, data, or interaction mode. If the target is not implemented, remove it, disable it, or label it as unavailable.
+
+## Anti-Pattern: Spatial Label Collision
+
+Detect:
+
+- Floor-plan, map, seating chart, route, timeline, or canvas objects overlap section labels.
+- Cards, glows, badges, or controls cover room names, server names, map labels, axes, or timeline labels.
+- The primary spatial model remains visible but its labels become unreadable or meaningless.
+
+Why it fails:
+
+Spatial labels define the mental model. Covering them breaks orientation and makes the product feel untested.
+
+Correction:
+
+Reserve label safe zones, define z-index rules, offset objects around labels, add collision detection for dynamic layouts, or move labels to a protected layer.
+
+## Anti-Pattern: Primary Object Buried By Cards
+
+Detect:
+
+- A desktop product has a map, floor plan, timeline, canvas, roster, or operational object, but cards/panels visually replace it.
+- The main object becomes one card among many.
+- Support panels dominate while the object the user acts on is pushed down, clipped, or visually weak.
+
+Why it fails:
+
+Command surfaces need a central object. Panels support decisions about that object; they do not become the product.
+
+Correction:
+
+Name the primary product object first and design around it. Put support panels in inspector, queue, control, or metric roles around the object.
+
 ## Generic Dashboard
 
 Detect:
@@ -74,6 +139,26 @@ Responsive navigation is a product surface, not leftover chrome. It must feel cr
 Correction:
 
 Design desktop, tablet, and mobile nav intentionally. For applications with 3+ primary destinations, default to a polished bottom nav on mobile with clear labels, comfortable touch targets, balanced spacing, safe-area support, excellent icon/text alignment, and visible selected state. Use mobile top nav only for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites.
+
+## Anti-Pattern: Default Navbar Gravity
+
+Detect:
+
+- visual-heavy page uses logo-left links-center CTA-right by default
+- sticky pill nav appears because it looks safe
+- nav is pasted over the hero without becoming part of the composition
+- all three direction options use the same navigation structure
+- mobile receives a top link dump instead of a crafted mobile nav model
+- CTA placement is generic or visually disconnected from the page intent
+- nav competes with the focal image, object, or hero type
+
+Why it fails:
+
+Navigation is part of the product's visual world. A default bar can flatten a strong concept into generated SaaS even when the hero, imagery, and palette are better.
+
+Correction:
+
+Create `docs/design/navigation-strategy.md`, inspect reference nav behavior, propose 3 distinct nav concepts, select a pattern from `design-intelligence/navigation-patterns.json`, and define desktop/tablet/mobile behavior before implementation.
 
 ## Anti-Pattern: Misaligned Toolbar
 
@@ -1022,3 +1107,179 @@ Blockers:
 
 Correction:
 Use the frequency table. Keep common actions instant, occasional interactions crisp, and delight for rare earned moments.
+
+## Anti-Pattern: One-Animation Advanced Motion
+
+Description:
+The agent interprets advanced motion as one background animation, one parallax layer, one fade-up recipe, or hover scale sprinkled across a mostly static page.
+
+Why bad:
+Elite animated sites are choreographed experiences. They include page/section motion, image/media motion, typography rhythm, navigation/menu states, micro-feedback, and reduced-motion fallbacks. One animation is not an advanced motion system.
+
+Blockers:
+
+- no `docs/design/motion-choreography-plan.md`
+- no section-by-section motion map
+- no named techniques
+- no image/media choreography
+- no typography or navigation/menu choreography
+- no reduced-motion behavior
+- no motion evidence or documented capture blocker
+- every section uses the same fade-up
+
+Correction:
+Route to `skills/advanced-motion-choreography/SKILL.md`, create the choreography plan, choose a tool stack, implement the required motion layers, and score against `evaluation/benchmarks/motion-cinematic.benchmark.md`.
+
+## Anti-Pattern: Coding From Vague Direction Cards
+
+Description:
+The agent begins implementation for new visual-heavy work after vague mood notes or weak text-only direction cards that lack layout maps, primary product objects, domain palette rationale, interaction promises, and risk checks.
+
+Why bad:
+The no-image gate is only useful when it is concrete enough to build from. Vague direction cards let generic SaaS, default nav, safe palettes, card soup, and AI scale inflation leak into the first build.
+
+Blockers:
+
+- no `docs/design/direction-options.md`
+- no `docs/design/direction-layout-maps.md`
+- no `docs/design/direction-risk-check.md`
+- no primary product object per direction
+- no domain palette rationale per direction
+- no nav state effect or interaction promises
+- no Migi direction selection
+- paid image generation runs without explicit approval
+
+Correction:
+Run the No-Image Fast Direction Gate, create 3 differentiated direction cards with compact layout maps, risk checks, and recommendation scores, then stop for selection.
+
+## Anti-Pattern: Decorative Visualization Theater
+
+Description:
+A chart, graph, heatmap, timeline, gauge, or diagram is used to make a surface look intelligent, but it has no user question, data contract, readable labels, visible units, or decision value.
+
+Why bad:
+It creates fake usefulness. Users see visual complexity without a trustworthy answer, and the product feels generated rather than operational.
+
+Blockers:
+
+- no data contract
+- no user question
+- hidden or missing units
+- unreadable axes or labels
+- random donut/gauge/line chart
+- color-only state
+- decorative chart wallpaper
+
+Correction:
+Route `skills/chart-system-director/SKILL.md`, define the user question and data contract, choose a chart/tool from `design-intelligence/visualization-tool-routing.md`, and remove the chart if it cannot answer a real decision.
+
+## Anti-Pattern: Hand-Placed Canvas Objects
+
+Description:
+A map, floor plan, pattern canvas, seating chart, timeline, node graph, or diagram appears as a set of manually positioned shapes without a coordinate system, layer model, object model, label safe zones, collision strategy, or selection behavior.
+
+Why bad:
+It breaks immediately when labels get longer, objects change, selections add outlines/glows, or the viewport changes. The canvas looks designed from one screenshot instead of built from a product model.
+
+Blockers:
+
+- labels collide with objects
+- pattern pieces or map objects overlap unpredictably
+- selected state obscures data
+- object positions are arbitrary or undocumented
+- inspector/details do not update from selection
+- decorative grids or construction lines have no function
+- no small-breakpoint fallback
+
+Correction:
+Route `skills/diagram-canvas-system/SKILL.md`, define coordinate system, bounds, layer model, object model, label model, collision rules, and selection-to-inspector behavior. After implementation, route `skills/data-viz-hardening-review/SKILL.md` and run `tools/diagram-integrity-check.mjs` where practical.
+
+## Anti-Pattern: Fake Orbit Atmosphere
+
+Description:
+A page adds circular orbit, sonar, radar, target, HUD, or concentric arc lines to make the design feel advanced, cinematic, or technical, but the lines do not represent real data, navigation, selection, sound, movement, or interaction.
+
+Why bad:
+It is a repeated AI-builder motif with no semantic value. It adds visual noise, competes with imagery and typography, and makes unrelated projects feel the same.
+
+Blockers:
+
+- circular arcs over backgrounds
+- faint orbital rings
+- fake sonar/radar circles
+- large cropped circles as cinematic filler
+- glassy circular outlines behind UI
+- circular motion-path lines with no function
+
+Correction:
+Remove the circular overlay. Use image composition, object-led layout, full-canvas typography, clean negative space, material surface, photographic atmosphere, color field, motion reveal, or a functional diagram only when the circle has meaning.
+
+## Anti-Pattern: Unreadable Navigation Over Background
+
+Description:
+Navigation floats over changing images, giant type, video, or dark/light transitions without contrast protection.
+
+Why bad:
+Navigation is only premium when it is usable. If labels disappear in one scroll state, the composition has failed.
+
+Correction:
+Use a designed readability strategy: safe zone, subtle surface, blur, scrim, adaptive inverse text, position shift, contextual nav zone, menu collapse, or non-overlapping placement. Verify scroll states.
+
+## Anti-Pattern: Forced Brand Chrome
+
+Description:
+The UI adds logo marks, initials badges, app-name chips, wordmarks, or repeated product names because a template expects brand furniture.
+
+Why bad:
+Migi often wants the screen composition to carry identity. Forced top chrome wastes space, makes the product feel generic, and repeats the obvious name.
+
+Correction:
+Default to no forced logo/app-name chrome. Add it only when Migi requested it, the selected direction needs brand identity, the site is brand/portfolio-oriented, navigation clarity requires it, or the visual spec justifies it.
+
+## Anti-Pattern: Decorative Hairline Filler
+
+Description:
+Tiny separator lines, red rules, label rails, and ornamental ticks are added near headings to make a design look editorial or technical.
+
+Why rejected:
+
+- AI filler
+- no semantic value
+- repetitive
+- weakens composition
+- looks like fake sophistication
+
+Correction:
+Use real hierarchy: stronger type, spacing, image crop, color field, meaningful layout boundary, or an editorial rule that aligns to the content system.
+
+## Anti-Pattern: Overlapping Control Indicator
+
+Description:
+A button, chip, tab, segmented control, or mobile nav item has an underline, progress strip, active bar, highlight, or selection indicator that overlaps or cuts through the label/content.
+
+Why rejected:
+
+- looks broken
+- reduces readability
+- feels like a UI glitch
+- makes selected state ambiguous
+- common generated-app mistake
+
+Correction:
+Move the indicator below or outside the label area. Use active background, border, icon, color shift, or a separate progress area when the control cannot safely contain a bar/underline.
+
+## Anti-Pattern: Add Card Masquerading As Content
+
+Description:
+The add-new affordance is styled almost exactly like existing content/list/object cards.
+
+Why rejected:
+
+- users may think it is an item
+- weakens scanability
+- creates accidental clicks
+- makes product logic unclear
+- common mobile/generated UI mistake
+
+Correction:
+Give add actions a clearly different affordance: plus icon, dashed action surface, distinct action color, floating action button, separate CTA row, or a dedicated empty-state/create module.

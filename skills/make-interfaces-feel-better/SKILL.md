@@ -25,6 +25,7 @@ This is a polish pass, not an art-direction replacement.
 - `design-dna/interface-feel-rules.md`
 - `design-intelligence/interface-feel-checklist.json`
 - `design-dna/design-system-first-rules.md`
+- `design-intelligence/navigation-pattern-guidance.md` when navigation feels generic or pasted on
 - `evaluation/ui-scorecard.md`
 
 ## Output Contract
@@ -45,6 +46,17 @@ This is a polish pass, not an art-direction replacement.
 ## Checks
 
 - Pressable controls have hover, focus, active, disabled, and loading states.
+- Navigation has visible active/focus states and feels integrated with the page, not pasted on.
+- Navigation remains readable over images, giant type, video, gradients, and scroll-state background changes.
+- CTA/nav placement feels intentional and proportionate.
+- App-name/logo/initials chrome is removed unless the visual spec justifies it.
+- Decorative orbit/HUD/radar line overlays are absent unless functional and approved.
+- Decorative hairlines, red separators, label rails, and ticks are absent unless they separate real content.
+- Mobile modals/sheets fit the viewport, respect safe areas, scroll internally when long, and keep primary actions visible/reachable.
+- Practical mobile bottom nav has semantic icons plus readable labels.
+- Selectable chips/items/tabs visibly preserve selected state until changed.
+- Active bars, progress strips, underlines, and selected indicators do not overlap labels/content.
+- Add/create actions look distinct from content cards and use plus/create affordance.
 - Focus rings are visible and not ugly afterthoughts.
 - Empty, loading, and error states are specific to the product.
 - Spacing uses a consistent scale.
@@ -53,12 +65,30 @@ This is a polish pass, not an art-direction replacement.
 - Skeletons/progress states are truthful.
 - Surfaces do not feel like dead rectangles.
 - Motion, if present, is purposeful and reduced-motion aware.
+- Advanced/cinematic motion, if requested, has more than one layer and follows `docs/design/motion-choreography-plan.md`.
 - The UI has a few crafted details without becoming noisy.
 
 ## Stop Conditions
 
 - Functionally working UI still feels dead, stiff, or generic.
 - Visible controls have no active feedback.
+- Navigation feels generic, pasted on, or disconnected from the visual thesis.
+- Navigation becomes unreadable over its background.
+- Forced app-name/logo/initials chrome remains without justification.
+- Decorative circular/orbital/HUD overlays or hairline filler remain as polish.
+- Mobile modal/sheet is cut off, hides actions, ignores safe areas, cannot scroll long content, or collides with bottom nav.
+- Practical mobile product bottom nav is text-only without justification.
+- Selectable controls lose selected state or confuse hover/pressed/selected.
+- Control indicators overlap labels/content.
+- Add/create affordance masquerades as content.
 - Loading/empty/error states are missing or generic.
 - Spacing is arbitrary.
 - The polish pass tries to hide a broken core loop.
+- The polish pass adds a token animation instead of fixing the broader motion choreography that Migi requested.
+
+## Post-Build Review Escalation
+
+- Use `skills/evidence-backed-critique/SKILL.md` when a finished interface still feels wrong but the exact issue is unclear.
+- Use `skills/text-clarity-review/SKILL.md` when the interface feel problem is caused by vague CTAs, unclear state copy, generic empty/error/loading messages, inconsistent terms, or confusing labels.
+- Use `skills/production-hardening-review/SKILL.md` when the polish pass reveals brittle behavior under long text, missing data, errors, slow networks, translations, accessibility, or small viewports.
+- Do not run these reviews during direction selection; they are post-build quality layers.

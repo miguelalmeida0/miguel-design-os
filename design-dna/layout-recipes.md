@@ -410,6 +410,37 @@ Recipe:
 9. Avoid repeating rectangular image cards unless the reference explicitly uses them.
 10. Continue image-led rhythm beyond the hero.
 
+## Recipe: Composed Navigation System
+
+Use when:
+
+- visual-heavy work includes primary navigation
+- landing, portfolio, creative, editorial, cinematic, dashboard, or mobile work needs a non-generic shell
+- references show nav as part of the composition
+- the default navbar would weaken the visual thesis
+
+Recipe:
+
+1. Define how much navigation the page actually needs.
+2. Inspect reference navigation separately from hero imagery and palette.
+3. Choose 3 possible navigation concepts: Functional Refined, Art-Directed, and Unexpected High-Character.
+4. Select a pattern from `design-intelligence/navigation-patterns.json`.
+5. Decide wordmark behavior: quiet, centered, oversized, cornered, spatial, or contextual.
+6. Decide CTA behavior: inline, floating anchor, bottom action, menu item, or contextual.
+7. Plan desktop, tablet, and mobile behavior before coding.
+8. Define active/focus states and keyboard order.
+9. Make mobile app navigation bottom-first when there are 3+ primary destinations.
+10. Verify nav supports the hero instead of competing with it.
+
+Avoid:
+
+- logo-left links-center CTA-right as an unexamined default
+- sticky pill nav as a fake premium move
+- overpopulated menus on visual landing pages
+- nav labels that are cryptic or too clever to understand
+- mobile top link dumps
+- three direction options with identical nav
+
 Do not:
 
 - start with a rigid grid and paste the image into it later

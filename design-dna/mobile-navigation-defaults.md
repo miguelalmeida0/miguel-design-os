@@ -44,6 +44,8 @@ Requirements:
 - premium spacing
 - generous touch targets
 - excellent icon/text alignment
+- clear icon plus readable label for each primary destination in practical product apps
+- semantically matched icons from one consistent icon family
 - active state feels intentional
 - floating or integrated depending on design direction
 - proper safe-area support
@@ -58,6 +60,10 @@ Requirements:
 - desktop navigation copied directly onto mobile
 - top navigation consuming valuable mobile space
 - tiny icon bars
+- text-only bottom navigation in practical product apps unless explicitly justified
+- cryptic icons without labels
+- inconsistent icon families
+- badges/counters overlapping labels or icons
 - oversized bottom bars
 - generic Android-looking navigation
 - poor safe-area handling

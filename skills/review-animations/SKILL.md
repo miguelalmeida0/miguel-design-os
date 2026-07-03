@@ -51,3 +51,18 @@ Block if:
 - reduced motion is missing
 - animation causes jank or layout work
 - delight blocks the task
+- advanced motion was requested but `docs/design/motion-choreography-plan.md` is missing
+- advanced motion was requested but only one animation layer exists
+- every section uses the same fade-up or reveal pattern
+- section-by-section motion map is missing
+- no motion benchmark review or capture blocker exists when motion is central
+
+## Advanced Motion Review
+
+When reviewing advanced/cinematic/artistic/portfolio motion, compare the implementation against:
+
+- `docs/design/motion-choreography-plan.md`
+- `design-intelligence/motion-tool-stack-guidance.md`
+- `evaluation/benchmarks/motion-cinematic.benchmark.md`
+
+Approval requires named techniques, at least page/section, image/media, typography, navigation/menu, and micro-feedback layers where the plan calls for them, plus reduced-motion behavior.

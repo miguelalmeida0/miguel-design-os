@@ -41,6 +41,22 @@ Before coding:
 6. Define safe areas, thumb zones, nav, gestures, and touch targets.
 7. Define design-system tokens for mobile surfaces and controls.
 8. If the selected mobile direction is artistic/creative/experimental, document palette exploration and contrast risk.
+9. Define modal/sheet fit strategy: max-height, internal scroll, action placement, safe-area bottom, close behavior, and relationship to bottom nav.
+10. Define bottom nav icon + label strategy: destination labels, icon family, icon per destination, active state, badges/counters, touch targets, and safe-area handling.
+11. Define selection state strategy for chips/tabs/object selectors: selected, hover, pressed, focus, disabled, persistence behavior, accessibility attributes, and local state source.
+12. Define add/create action differentiation: where the action lives, how it differs from content cards, plus/icon affordance, label, interaction, and confusion risk.
+13. Define control decoration collision check: active indicators, underlines/progress strips, label safe zones, and fallback state treatment.
+
+Hard bans:
+
+- cut-off mobile sheets or modals
+- primary sheet actions hidden below viewport
+- active bars, progress strips, or underlines overlapping labels
+- selectable chips/items without persistent selected state
+- text-only bottom nav in practical mobile product flows unless explicitly justified
+- add-new cards styled like content cards
+- badges/counters overlapping nav icons or labels
+- generic mobile template behavior
 
 Implementation order:
 
@@ -55,6 +71,11 @@ Evidence requirements:
 - 390 screenshot
 - no scaled-down website behavior
 - nav readable and touch-safe
+- bottom nav icons plus labels for practical product apps
+- modal/sheet fit and safe-area behavior
+- selection state persistence
+- add/create affordance differentiation
+- control indicators do not overlap labels
 - interactions work locally
 - direction gate honored when applicable
 
@@ -64,6 +85,11 @@ Final response contract:
 - visual spec
 - direction options / selected direction where applicable
 - palette exploration where applicable
+- modal/sheet fit strategy
+- bottom nav icon + label strategy
+- selection state strategy
+- add/create action differentiation
+- control decoration collision check
 - files changed
 - interactions verified
 - screenshots or blocker

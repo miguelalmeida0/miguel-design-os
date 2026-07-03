@@ -34,9 +34,10 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Image Environment Strategy when image-led, artistic, landing-page, cinematic, or visual-heavy references are used.
 - Scale Calibration section when visual-library references are used.
 - Contrast / Legibility Strategy when image-led or visual-library references are used.
-- Navigation Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, and Palette Direction for dashboard or visual-heavy work.
+- Navigation Strategy, Navigation Art-Direction Strategy, Toolbar Alignment Strategy, Text Density Strategy, Button Proportion Strategy, Responsive Collision Checks, and Palette Direction for dashboard or visual-heavy work.
 - Layout Integrity Contract and Responsive Breakpoint Proof at 1440, 1280, 1024, 768, and 390 for visual-heavy work.
 - Image role strategy for major images.
+- Unsplash search plan and asset manifest when real imagery or Unsplash assets are used.
 - Done report artifact before final handoff when visual UI work is reviewed.
 - Target-copy report when reviewing Literal Target Copy Mode output.
 - Asset manifest when reviewing production image-led output.
@@ -47,6 +48,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - `design-dna/anti-patterns.md`
 - `design-dna/rejected-directions.md`
 - `design-dna/anti-ai-tell-preflight.md` for landing/portfolio/marketing work
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are used
+- `design-intelligence/navigation-pattern-guidance.md` when navigation affects composition
 - `design-dna/motion-and-delight-rules.md` when motion exists
 - `rules/anti-patterns.md`
 - `evaluation/ui-scorecard.md`
@@ -90,6 +93,8 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - Three-Direction Mockup Gate skipped for new visual-heavy work
    - direction options are minor variants of the same layout or palette
    - implementation started before Migi selected a direction
+   - agent stopped after selected-direction.md despite Migi choosing A, B, C, or a hybrid
+   - agent asked for redundant implementation confirmation after explicit direction selection
    - selected direction ignored during implementation
    - image/object/chart behavior from selected anchors ignored
    - missing final reference-match report
@@ -98,11 +103,25 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - overlap/collision
    - generic dashboard energy
    - cryptic navigation labels such as `CMD`, `SIG`, `CMP`, `BRF`, or vague system labels
+   - generic logo-left links-center CTA-right nav used without exploration
+   - sticky pill nav, sticky black bar, or generic SaaS top bar used by default
+   - nav pasted over a hero or image-led composition instead of integrated
+   - nav unreadable over images, giant type, video, gradients, or scroll-state background changes
+   - forced app-name/logo/initials chrome used without justification
+   - decorative circular/orbital/radar/HUD overlays used as fake atmosphere
+   - decorative separator hairlines, red ticks, label rails, or section-line filler
+   - all direction options use the same nav shape
    - broken responsive navigation, cramped mobile nav, or nav overlapping content
    - desktop/top navigation copied directly onto mobile despite 3+ primary destinations
    - top navigation stealing mobile vertical space that should hold brand, title, search, context, or hero imagery
    - generic, cramped, oversized, poorly aligned, or safe-area-hostile bottom navigation
+   - text-only bottom navigation in practical mobile product flows
+   - bottom nav icons missing, semantically unclear, inconsistent, or crowded by badges
    - duplicated top and bottom navigation for the same primary destinations
+   - mobile modal/sheet cut off, too low, hiding actions, ignoring safe areas, unable to scroll, or colliding with bottom nav
+   - active/progress/underline bar overlapping button, chip, tab, segmented-control, or nav label
+   - selectable chip/item/tab that does not preserve selected state after tap
+   - add/create card masquerading as normal content
    - misaligned search/filter/action toolbar controls
    - text-heavy containers that feel like prose boxes
    - oversized full-width buttons without layout justification
@@ -114,8 +133,18 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
    - semantic label collapse into fragments such as `C`, `U`, or `?`
    - fake live/session/status/telemetry UI with no user-facing product meaning
    - machine-generated palette: dull robotic color, terminal green, AI purple, neon lime, or generic blue/grey defaults
+   - random domain palette: color that looks cool but does not fit product domain, user environment, task pressure, emotional state, or state semantics
+   - placebo navigation: nav, tabs, filters, or segmented controls that change active visual state without changing visible content, route, scope, filter, or product state
+   - spatial label collision on maps, floor plans, seating charts, route boards, timelines, or canvases
+   - primary object buried by cards in desktop command surfaces
+   - dark dashboard regression where a product surface becomes generic card soup
    - safe AI-default palette in expressive modes: muddy brown, dull charcoal, beige, grey-blue, orange accent, purple glow, terminal green, neon lime, or safe neutral plus predictable accent
    - no palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work
+   - image-first page uses no real images or documented image source when real imagery is required
+   - Unsplash or source imagery lacks source/photographer manifest
+   - major sourced image has no role, alt text, crop strategy, palette relationship, or safe-zone notes
+   - generic filler stock or misleading product-proof imagery
+   - broken remote image URLs
    - dashboard-specific slop:
      - generic SaaS/admin template
      - same-weight card/widget field
@@ -177,6 +206,7 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if screenshot evidence is missing and the UI can run.
 - Stop if a new visual-heavy app, landing page, portfolio, mobile app, dashboard redesign, or artistic interface skipped `docs/design/direction-options.md` and no visual direction was already approved.
 - Stop if implementation starts before Migi chooses A, B, C, or a hybrid.
+- Stop if Migi chose A, B, C, or a hybrid and the agent did not proceed into visual spec, tokens, implementation, and validation unless Migi explicitly requested planning-only/spec-only/no-code.
 - Stop if `docs/design/selected-direction.md` is missing after Migi chooses.
 - Stop if the design has no clear primary object or action.
 - Stop if a rejected layout is being polished.
@@ -189,8 +219,19 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if dashboard references become generic SaaS/admin, same-weight card soup, terminal-ish dark panel spam, murky monochrome panels, text-and-metrics-only panels, decorative charts, image-starved surfaces, or a surface with no focal attraction zone.
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic.
+- Stop if a visual-heavy app uses generic top navigation without `docs/design/navigation-strategy.md`.
+- Stop if navigation feels pasted on top of the page composition.
+- Stop if navigation becomes unreadable over images, giant type, or changing scroll backgrounds.
+- Stop if app-name/logo/initials chrome appears without visual-spec justification.
+- Stop if decorative circular/orbital/radar/HUD overlays appear without explicit Migi approval and functional meaning.
+- Stop if decorative hairline/separator filler appears without function.
 - Stop if an app with 3+ primary destinations uses desktop/top navigation on mobile without justification.
 - Stop if bottom navigation feels generic, cramped, oversized, poorly aligned, or unsafe around gestures.
+- Stop if practical mobile product bottom nav has no icons or unclear icons.
+- Stop if a mobile modal/sheet is visibly cut off, hides primary actions, ignores safe areas, cannot scroll, or collides with bottom nav.
+- Stop if a control indicator overlaps a label/content.
+- Stop if selectable controls do not preserve selected state.
+- Stop if add/create action looks like content.
 - Stop if responsive layout collides or nav overlaps content.
 - Stop if any text escapes a container.
 - Stop if any chart overflows its plot/card bounds.
@@ -200,8 +241,14 @@ Review an existing UI for common AI-builder failure modes and produce concrete f
 - Stop if text-heavy containers kill scanability.
 - Stop if toolbar controls are visibly misaligned.
 - Stop if the palette feels robotic, generic, or template-generated.
+- Stop if the palette feels random for the product domain.
+- Stop if nav/tabs/filters change active styling but no visible content or product state changes.
+- Stop if map/floor-plan/timeline/canvas labels are covered by objects, cards, glows, or badges.
+- Stop if a desktop command surface loses the primary product object to generic cards.
 - Stop if an expressive mode uses a dull generated-app palette with no documented palette exploration.
 - Stop if Image Environment Strategy is missing for image-led/artistic/landing references.
+- Stop if real imagery is required but `docs/design/unsplash-search-plan.md` or `docs/design/unsplash-asset-manifest.md` is missing.
+- Stop if stock imagery is generic filler, missing source metadata/alt text, fights the palette, breaks responsive crops, or creates false product proof.
 - Stop if Scale Calibration is missing for visual-library reference work.
 - Stop if Contrast / Legibility Strategy is missing for image-led or visual-library reference work.
 - Stop if major images have no declared role.
@@ -235,6 +282,7 @@ Image environment:
 Scale calibration:
 Contrast / legibility:
 Navigation strategy:
+Selected navigation pattern:
 Toolbar alignment:
 Text density:
 Button proportions:
@@ -242,6 +290,10 @@ Responsive collision checks:
 Layout integrity contract:
 Responsive breakpoint proof:
 Palette direction:
+Domain palette fit:
+Placebo navigation:
+Spatial label safe zones:
+Primary product object:
 AI-slop failures:
 Score caps applied:
 Top structural fix:
@@ -333,6 +385,14 @@ Patch recommendation:
 - Top navigation stealing vertical space on mobile: max score 5.
 - Bottom navigation with poor spacing/alignment: max score 5.
 - Generic mobile navigation with no personality: max score 6.
+- Visual-heavy page uses generic top navbar without navigation exploration: max score 6.
+- Creative/portfolio/landing page defaults to logo-left links-center CTA-right without justification: max score 5.
+- Three direction options all use the same navigation structure: max score 5.
+- Navigation feels pasted on top of the composition: max score 6.
+- Navigation competes with the hero instead of supporting it: max score 6.
+- CTA placement in navigation is generic or visually disconnected: max score 7.
+- Navigation has no documented responsive behavior: max score 6.
+- Navigation lacks clear active/focus states: max score 7.
 - Mobile nav cryptic or cramped: max score 6.
 - Misaligned search/action toolbar: max score 7.
 - Toolbar controls collide or wrap badly: max score 6.
@@ -346,6 +406,11 @@ Patch recommendation:
 - Status indicator with no user meaning: max score 6.
 - Decorative telemetry/status chips: max score 6.
 - Palette feels machine-generated/generic: max score 6.
+- Random domain palette: max score 5.
+- Placebo navigation: max score 3.
+- Spatial label collision: max score 4.
+- Primary product object buried by support cards/panels: max score 5.
+- Desktop command surface regresses into generic card soup: max score 5.
 - Artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max score 6.
 - Palette feels machine-generated/generic despite expressive mode: max score 5.
 - No palette exploration documented for artistic/cinematic mode: max score 6.
@@ -393,6 +458,29 @@ Patch recommendation:
 - Do not accept important text over imagery without deliberate protection.
 - Do not accept immersive references reduced to boxed image/card/grid layouts by default.
 - Do not fix an artistic landing page by adding more sections, cards, stats, or explanatory content.
+- Do not accept advanced/cinematic/portfolio motion that is only one background animation, fade-up everywhere, or random hover scale.
+- Do not accept motion that has no named technique, no section-by-section map, no reduced-motion plan, or no evidence when motion is central.
 - Do not globalize a one-app rejection.
 - Do not claim done from anti-slop review unless visual evidence is captured and the done report validates.
 - Treat visual target screenshots as evidence only; production UI must not contain watermark/editor/browser artifacts.
+
+## Post-Build Review Escalation
+
+- If the UI needs a full finished-state critique, route to `skills/evidence-backed-critique/SKILL.md` and require screenshot/browser evidence, Nielsen scoring, cognitive load assessment, persona red flags, priority fixes, and a saved critique snapshot when possible.
+- If AI slop appears through vague, generic, confusing, or inconsistent copy, route to `skills/text-clarity-review/SKILL.md` for before/after rewrites.
+- If the UI works only with perfect demo data, route to `skills/production-hardening-review/SKILL.md` for long-text, empty/error/loading, i18n, accessibility, concurrency, and responsive stress checks.
+- These escalation reviews happen after implementation or screenshot review, not during Fast Direction Gate.
+
+## Visualization / Diagram Slop
+
+Flag as AI slop:
+
+- decorative chart wallpaper with no user question
+- fake or unlabeled chart data
+- random donuts, gauges, heatmaps, line charts, or waveforms
+- charts with hidden units or unreadable axes
+- maps, pattern canvases, timelines, or diagrams with hand-placed overlapping objects
+- labels clipped by objects, selected outlines, badges, glows, or card edges
+- selectable canvas objects that do not update inspector/details
+
+Route charts to `skills/chart-system-director/SKILL.md`, spatial canvases to `skills/diagram-canvas-system/SKILL.md`, and implemented visualizations to `skills/data-viz-hardening-review/SKILL.md`. For runnable spatial UIs, ask for `tools/diagram-integrity-check.mjs` output or a blocked report.

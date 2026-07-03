@@ -10,6 +10,7 @@ Define:
 
 - semantic color tokens
 - OKLCH/APCA contrast targets for foreground/background pairs
+- domain palette fit: product domain, user environment, task pressure, emotional state, and state color semantics
 - palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, and experimental modes
 - typography roles
 - spacing scale
@@ -17,10 +18,13 @@ Define:
 - shadow/elevation logic
 - border/divider logic
 - chart colors
+- visualization/diagram color encodings and non-color fallbacks
 - state colors
 - component variants
 - image treatment
 - motion rules
+- copy/state language roles for CTAs, empty states, loading states, errors, success, and destructive actions
+- production resilience rules for long text, missing data, translations, focus, reduced motion, and small viewports
 
 ## Forbidden
 
@@ -36,6 +40,9 @@ Define:
 - trial-and-error hex tweaks without OKLCH/APCA contrast reasoning
 - contrast repairs made by changing chroma/saturation instead of OKLCH lightness
 - safe AI-default muddy palettes in expressive modes without documented exploration
+- random "looks cool" palettes that do not fit the product domain
+- design systems that only work for perfect demo copy or perfect mock data
+- component variants with no empty, loading, error, disabled, focused, selected, or overflow behavior
 
 ## Required Token Roles
 
@@ -70,6 +77,15 @@ For expressive visual modes, document:
 - selected palette and why
 - AI-default palette avoided
 
+For every product UI, document:
+
+- product domain
+- user environment
+- task pressure
+- emotional state
+- state color semantics
+- palette choices rejected because they are random, imported, or domain-mismatched
+
 Typography:
 
 - display
@@ -92,7 +108,36 @@ Components:
 - nav item
 - tab/segmented control
 - chart container
+- diagram/canvas container
+- legend
+- tooltip
+- selected spatial object
+- inspector/details panel
 - image/media frame
+
+States and copy:
+
+- loading
+- success
+- empty
+- error with retry
+- permission denied
+- disabled
+- focused
+- selected
+- destructive confirmation
+- long label / truncated label
+- translated label
+
+## Post-Build Review Hooks
+
+Before calling a product UI final or production-ready, route to the appropriate post-build layers:
+
+- `skills/text-clarity-review/SKILL.md` when visible copy, CTAs, forms, state messages, errors, empty states, onboarding, settings, dashboards, or product flows need clarity.
+- `skills/production-hardening-review/SKILL.md` when the UI must survive long text, missing data, async states, translation expansion, accessibility, large datasets, or responsive stress.
+- `skills/evidence-backed-critique/SKILL.md` when a finished UI needs a full evidence-backed critique with heuristic scoring, cognitive load, persona red flags, and a persisted snapshot.
+
+These are post-build review layers. Do not run them during Fast Direction Gate.
 
 ## Chart Color Rules
 
@@ -102,6 +147,32 @@ Chart colors must be:
 - accessible beyond color alone
 - labeled or patterned where needed
 - bounded by chart role and state meaning
+
+## Visualization / Diagram System Rules
+
+For any chart, graph, diagram, map, timeline, spatial canvas, or product object surface, define:
+
+- visualization intent and user question
+- data contract with fields, types, units, ranges, missing/null behavior, and mock-data truth
+- chart/diagram tool choice from `design-intelligence/visualization-tool-routing.md`
+- axis, scale, label, legend, tooltip, and state color tokens
+- empty, loading, error, stale, and no-permission states when async
+- color-independent encoding for important states
+- responsive behavior at 1440, 1280, 1024, 768, and 390 when relevant
+- accessible text summary or table fallback where needed
+
+For spatial/canvas systems, also define:
+
+- coordinate system
+- canvas bounds
+- layer model
+- object model
+- label safe zones
+- collision strategy
+- selection/inspector state
+- zoom/pan/reset controls if needed
+- mobile fallback when the canvas cannot remain useful
+- `data-diagram-*` hooks or equivalent QA affordances when diagram integrity checks are practical
 
 ## Image Treatment Rules
 
@@ -159,12 +230,19 @@ Use this as the minimum token contract before significant UI:
 - `focus`:
 
 ### Palette Exploration
+- product domain:
+- user environment:
+- task pressure:
+- emotional state:
+- state color semantics:
 - safe refined palette:
 - artistic expressive palette:
 - unexpected high-character palette:
 - selected palette:
 - why selected:
+- why this palette fits the domain:
 - AI-default palette avoided:
+- random/cool palette rejected:
 
 ### Typography Roles
 - display:

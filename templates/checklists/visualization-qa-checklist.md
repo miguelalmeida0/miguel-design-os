@@ -1,0 +1,21 @@
+# Visualization QA Checklist
+
+- Does the chart/diagram answer a real user question?
+- Is the data contract documented?
+- Are units visible?
+- Are axes/labels readable?
+- Are labels clipped?
+- Are objects overlapping?
+- Is color semantic?
+- Is color the only encoding?
+- Does the legend work?
+- Does it survive long labels?
+- Does it survive no data?
+- Does it survive many data points/items?
+- Does it survive 1440 / 1280 / 1024 / 768 / 390?
+- Does selection update details?
+- Do controls actually change state?
+- Are tooltips/focus states accessible?
+- Is reduced motion supported?
+- Are charts/diagrams still useful without animation?
+- If a runnable diagram/canvas exists, did `tools/diagram-integrity-check.mjs` pass or produce a blocked report?

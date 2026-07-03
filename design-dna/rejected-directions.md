@@ -173,6 +173,45 @@ Scope:
 
 This applies to mobile apps, mobile web apps, app-like dashboards, consumer product flows, onboarding/profile/search/home screens, and any responsive application with 3+ primary destinations. It does not ban top navigation for the listed exceptions.
 
+## System Rejected Direction: Default Navbar Gravity
+
+Description:
+
+The agent keeps defaulting to the same safe top navigation structure regardless of concept: logo left, links center, CTA right, often inside a rounded pill, sticky black bar, or generic SaaS header.
+
+Rejected because:
+
+- makes every app feel the same
+- breaks art direction
+- looks like generated SaaS
+- wastes the potential of creative, portfolio, landing, and image-led layouts
+- ignores modern reference behavior
+- makes even good pages feel templated
+- turns navigation into pasted chrome instead of composition
+
+Signs:
+
+- same centered top nav appears across unrelated projects
+- same rounded pill nav with different colors
+- same logo-left links-center CTA-right structure
+- sticky black bar used as a default
+- nav competes with the hero instead of supporting it
+- CTA placement feels generic or visually disconnected
+- all 3 direction options use the same nav structure
+
+Correction:
+
+- create `docs/design/navigation-strategy.md`
+- inspect reference navigation behavior
+- propose 3 distinct navigation concepts before implementation
+- select a pattern from `design-intelligence/navigation-patterns.json`
+- document desktop, tablet, and mobile behavior
+- design CTA/nav relationship, active states, focus states, and accessibility
+
+Scope:
+
+This applies to visual-heavy apps, landing pages, portfolios, creative/editorial sites, dashboards, mobile products, and redesigns. Functional top bars are allowed when justified by the product, but they are never the default art direction.
+
 ## System Rejected Direction: Generic Admin Dashboard
 
 Context:
@@ -218,6 +257,40 @@ Correction:
 Scope:
 
 This applies to dashboard folders, command-center references, dense data/productivity tools, Signal Desk-style command surfaces, and any future dashboard task using `visual-library/approved/inspiration/01-command-centers-dashboards/`. It does not ban simple dashboards when the user explicitly asks for a plain internal admin tool, but Migi's dashboard references require the stronger direction by default.
+
+## System Rejected Direction: Service Floor Generic Card-Soup Regression
+
+Context:
+
+Service Floor was meant to be a desktop hospitality operations product. The floor map should have been the central command object. Instead, the result used random dark dashboard palette logic, generic cards, and navigation that changed active styling without changing visible content.
+
+Rejected because:
+
+- palette felt arbitrary for restaurant/service operations
+- floor-plan cards overlapped spatial labels and server names
+- nav/tabs changed selected state but not visible content
+- support panels competed with or buried the floor map
+- the product regressed into dark dashboard/card soup instead of premium hospitality command surface
+
+Signs:
+
+- map/floor plan is treated as one generic panel
+- section labels are covered by table cards or glows
+- tabs like Kitchen/Reservations/Sections do not change content
+- colors feel like imported dashboard theme rather than domain-fit hospitality operations
+- panels support visual filling more than service decisions
+
+Correction:
+
+- define Domain Palette Fit before tokens
+- make the floor map or spatial command object central
+- create spatial label safe zones before placing objects
+- make navigation change route, content, data scope, or mode
+- use panels as inspector, queue, control, and metric surfaces around the primary object
+
+Scope:
+
+This applies to desktop product surfaces, command centers, maps, floor plans, seating charts, timelines, route boards, operational canvases, and any product where a central object should drive the UI.
 
 ## System Rejected Direction: Murky Monochrome Dashboard
 
@@ -725,3 +798,97 @@ Avoid for selection-first products:
 - crossed grid textures as atmosphere
 - dashboards before selection
 - stats/badges/tabs as the first emotional hook
+
+## Rejected: Token Advanced Motion
+
+Description:
+The user asks for advanced, cinematic, artistic, Awwwards/Godly/Recent-level, scroll, or portfolio motion, but the agent ships one animation: a drifting background, a repeated fade-up, a hover scale, or a generic reveal.
+
+Why rejected:
+
+- fails the reference quality bar
+- treats motion as decoration instead of choreography
+- has no story arc or section handoff
+- ignores image/media, typography, navigation/menu, and micro-feedback layers
+- cannot be benchmarked against elite animated sites
+
+Correction:
+Create `docs/design/motion-choreography-plan.md`, name the techniques, map every section, define tool stack and reduced motion, then capture a scroll-state sequence or document the blocker.
+
+## Rejected: Text-Only Direction Gate
+
+Description:
+The agent offers three vague written design directions for a new visual-heavy app, landing page, portfolio, mobile app, dashboard redesign, or creative interface, then starts coding without layout maps, product-object decisions, interaction promises, or risk checks.
+
+Why rejected:
+
+- does not behave like a serious direction selection process
+- leaves too much room for generic UI defaults
+- makes Migi approve vibes instead of buildable art direction
+- fails to expose palette, composition, typography, imagery, nav, and motion tradeoffs early
+
+Correction:
+Create 3 no-image direction cards with compact layout maps, primary product object, domain palette rationale, navigation model, interaction promises, implementation complexity, and recommendation score. Stop for Migi selection before implementation.
+
+## Rejected: Decorative Orbital HUD Overlay
+
+Description:
+A design uses large faint circular arcs, radar rings, sonar circles, orbit paths, target graphics, or HUD-style circle overlays as visual atmosphere.
+
+Why rejected:
+
+- generic AI design tell
+- fake technical depth
+- no semantic value
+- repeated across unrelated projects
+- competes with real imagery
+- makes the design feel templated
+
+Correction:
+Remove the circular overlay. Replace it with a stronger image crop, typography composition, color field, material texture, motion reveal, or functional diagram only if needed. Functional circular charts, progress rings, orbital selectors, diagrams, or maps are allowed only when they carry meaning and are documented in the visual spec.
+
+## Rejected: Unreadable Floating Navigation
+
+Description:
+Navigation sits over large typography, image backgrounds, video, or changing scroll states without a readability strategy.
+
+Why rejected:
+
+- users cannot reliably read or use the nav
+- contrast depends on a lucky scroll position or image crop
+- nav fights with hero typography or photography
+- creative placement becomes visual failure instead of art direction
+
+Correction:
+Give navigation a designed protection strategy: safe placement, subtle scrim, translucent surface, backdrop blur, adaptive inverse text, position shift, contextual collapse, or non-overlapping zone. Check it at multiple scroll positions.
+
+## Rejected: Forced App Name / Logo Chrome
+
+Description:
+The UI adds initials bubbles, fake logo marks, app-name chips, wordmarks, startup lockups, or repeated product names at the top because the template expects brand chrome.
+
+Why rejected:
+
+- Migi rarely wants visible app-name chrome by default
+- identity can live in the main composition instead of persistent UI furniture
+- logo-left nav is a habit, not a design decision
+- repeated app names waste premium screen space
+
+Correction:
+Remove default app-name/logo chrome unless Migi explicitly requested it, the selected direction requires brand identity, it is a portfolio/agency/brand site, it is needed for navigation clarity, or the visual spec justifies it.
+
+## Rejected: Decorative Separator Ornaments
+
+Description:
+Tiny separator lines, red hairlines, label rails, corner ticks, and ornamental horizontal rules appear above or near headings to make a design feel editorial, technical, or premium.
+
+Why rejected:
+
+- common AI-generated UI tell
+- fake sophistication
+- no semantic value
+- repetitive across pages
+- weakens composition and hierarchy
+
+Correction:
+Use typography hierarchy, spacing, image crop, color field, real layout boundaries, section rhythm, or a meaningful editorial rule. Decorative line fragments must be removed unless they separate real content and align to a documented system.

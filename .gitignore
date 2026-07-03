@@ -34,9 +34,13 @@ docs/concept-runs/*
 docs/object-swap/*
 !docs/object-swap/README.md
 !docs/object-swap/.gitkeep
+docs/qa/motion-runs/*
+!docs/qa/motion-runs/README.md
 
 smoke-tests/
 
 research-input/taste-motion-skills/*.zip
 research-input/**/raw/
 research-input/**/*.zip
+
+generated/moodboards/

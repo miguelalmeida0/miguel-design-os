@@ -17,8 +17,13 @@ Before scoring, record:
 - active design dials
 - `docs/design/visual-spec.md` for visual-heavy work
 - `docs/design/direction-options.md` before visual-heavy implementation when visual direction is not already approved
+- `generated/moodboards/<slug>/manifest.json` and `generated/moodboards/<slug>/prompts.md` when image generation succeeds for Fast Direction Gate
+- `generated/moodboards/<slug>/blocked-report.md` when image generation is blocked for Fast Direction Gate
+- explicit Migi approval when image/prototype generation is blocked and text-only fallback is used
 - `docs/design/selected-direction.md` after Migi chooses or hybridizes a direction
 - Direction Gate Summary inside visual spec
+- `docs/design/navigation-strategy.md` for visual-heavy work with navigation
+- navigation concept options, selected navigation pattern, desktop/tablet/mobile behavior, CTA/nav relationship, active/focus states, and generic nav default avoided
 - Palette Exploration section for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work
 - design-system direction for significant UI work
 - frontend aha moment and local/mock data location for new frontend MVPs
@@ -44,6 +49,10 @@ Before scoring, record:
 - section references and extraction notes before website implementation when image-first workflow applies
 - anti-AI-tell preflight for landing, portfolio, marketing, and redesign work
 - motion strategy when animation exists or motion is planned
+- `docs/design/motion-choreography-plan.md` when advanced/cinematic/artistic/portfolio/scroll motion is requested
+- motion tool stack decision, five-layer motion plan, section-by-section motion map, and reduced-motion fallback when advanced motion is requested
+- motion sequence report or documented capture blocker when motion is central
+- motion benchmark review from `evaluation/benchmarks/motion-cinematic.benchmark.md` when advanced motion is central
 - animation review when motion code changed
 - delight strategy when personality/delight is added
 - Scale Calibration section from `docs/design/reference-usage-report.md` when visual-library references are used
@@ -67,12 +76,15 @@ Before scoring, record:
 - landing pattern when landing pages are built or reviewed
 - mobile platform fit when mobile work is involved
 - mobile navigation default/exception when the app has 3+ primary destinations
+- mobile product interaction integrity when mobile product work is involved: modal/sheet fit, safe-area behavior, icon+label bottom nav, selection persistence, add/create action differentiation, and control-indicator collision checks
 - implementation workflow/tool discipline when code is changed
 - brief inference quality: page kind, audience, vibe, reference signals, mode/system, quiet constraints
 - landing/portfolio craft: section jobs, composition anchors, background modes, CTA variation, and section rhythm
 - motion craft: purpose, frequency, duration, easing, reduced motion, performance
 - delight appropriateness: earned moment, domain register, no task delay
 - image role strategy for every major image
+- Unsplash search plan when real imagery or Unsplash assets are used
+- Unsplash asset manifest when Unsplash images are selected: source page, download metadata, photographer, alt text, crop strategy, palette relationship, safe-zone notes, and product-truth note
 - product purpose: what the app is, what it tests in Miguel Design OS, which rules are being validated, and what success/failure teaches the system
 - core loop proof when the product depends on upload, classification, generation, selection, or persistence
 - persistence truth for user-generated data across route changes, refresh, and browser reopen
@@ -102,21 +114,92 @@ Artistic style never excuses poor readability. Award-level UI protects legibilit
 
 Layout integrity caps apply before taste scoring. A broken layout cannot be award-level.
 
+Asset sourcing caps do not apply to purely typographic or minimal pages where image use is explicitly not part of the chosen direction.
+
+Functional circular charts, progress rings, orbital selectors, diagrams, or maps are allowed only when they carry meaning and are documented. Decorative orbit/radar/sonar/HUD atmosphere is rejected by default.
+
 - no screenshots and no documented blocker: max 60
 - visual-heavy new app implemented without direction-options gate: max 60 (6/10)
+- paid API generation runs without explicit approval: max workflow score 20 (2/10)
+- paid API key required for default workflow: max workflow score 40 (4/10)
+- direction gate fails because image API is unavailable: max workflow score 50 (5/10)
+- no-image direction gate lacks layout maps: max workflow score 60 (6/10)
+- no-image direction gate produces vague vibes only: max workflow score 50 (5/10)
+- no-image direction gate has no primary product object: max workflow score 60 (6/10)
+- visual-heavy new app coded without 3 no-image direction cards or approved rendered directions: max 50 (5/10)
+- 3 direction options are minor variations of same design: max 50 (5/10)
+- Fast direction gate creates full visual spec before selection: max workflow score 60 (6/10)
+- Fast direction gate runs build/lint before selection: max workflow score 60 (6/10)
+- Fast direction gate edits src before selection: max workflow score 40 (4/10)
+- Fast direction gate produces direction essays longer than needed: max workflow score 70 (7/10)
+- Direction gate takes full implementation-level planning time without deep mode: max workflow score 60 (6/10)
+- agent ignores selected direction: max 50 (5/10)
+- generated image artifacts copied literally into production UI when paid image generation was explicitly approved: max 60 (6/10)
+- no Migi selection before implementation: max 50 (5/10)
 - agent provides only one direction when direction is not approved: max 60 (6/10)
 - three directions are minor variations of same layout or palette: max 50 (5/10)
 - agent codes before Migi selects direction: max 50 (5/10)
+- agent stops after selected-direction.md despite Migi choosing a direction: max workflow score 50 (5/10)
+- agent asks for implementation confirmation after explicit direction selection: max workflow score 50 (5/10)
+- direction gate requires redundant approval step: max workflow score 60 (6/10)
 - direction options lack palette, image, layout, or motion strategy: max 60 (6/10)
 - agent ignores selected direction during implementation: max 50 (5/10)
+- selected direction is not carried into implementation: max 50 (5/10)
 - no `docs/design/selected-direction.md` after Migi chooses: max 70 (7/10)
+- critique silently degrades from dual assessment to single context: max workflow score 50 (5/10)
+- full critique has no heuristic scoring: max review score 70 (7/10)
+- full critique has no persona red flags: max review score 70 (7/10)
+- critique gives vague issues without concrete fixes: max review score 60 (6/10)
+- critique ignores screenshot/browser evidence: max review score 60 (6/10)
+- critique finds placebo navigation but does not mark it P1/P0: max review score 50 (5/10)
+- critique finds layout collision but does not mark it P1/P0: max review score 50 (5/10)
+- vague primary CTA: max copy score 60 (6/10)
+- generic destructive confirmation: max copy score 50 (5/10)
+- unclear error message with no fix: max copy score 50 (5/10)
+- placeholder-only form labels: max copy score 50 (5/10)
+- inconsistent terminology: max copy score 60 (6/10)
+- copy assumes technical knowledge without context: max copy score 60 (6/10)
+- loading state longer than 3 seconds with only `Loading...`: max copy score 60 (6/10)
+- empty state has no next action: max copy score 60 (6/10)
+- long translation breaks layout: max hardening score 50 (5/10)
+- no empty state for primary list: max hardening score 60 (6/10)
+- no error recovery for async action: max hardening score 50 (5/10)
+- double-submit possible on destructive action: max hardening score 50 (5/10)
+- icon-only controls lack accessible labels: max hardening score 50 (5/10)
+- color-only status indicators: max hardening score 50 (5/10)
+- large dataset has no pagination/search/virtualization plan: max hardening score 60 (6/10)
+- no reduced-motion support for animated interface: max hardening score 60 (6/10)
 - artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max 60 (6/10)
 - palette feels machine-generated/generic despite expressive mode: max 50 (5/10)
 - no palette exploration documented for artistic/cinematic mode: max 60 (6/10)
 - color palette is readable but conceptually boring in an art-directed page: max 70 (7/10)
 - palette chosen without relation to imagery, references, or concept: max 60 (6/10)
+- random domain palette that does not fit product domain, user environment, task pressure, or emotional state: max 50 (5/10)
 - bold palette used but contrast/readability fails: max 50 (5/10)
 - agent defaults to charcoal/brown/orange generated-app palette again: max 50 (5/10)
+- decorative circular/orbital line overlay used as background atmosphere: max 50 (5/10)
+- fake radar/sonar/HUD circles used without function: max 50 (5/10)
+- circular line motif appears as generic tech decoration: max 50 (5/10)
+- orbital/circular overlay competes with imagery or typography: max 60 (6/10)
+- circular line system not documented as functional in visual spec: max 60 (6/10)
+- agent repeats decorative circular overlay across unrelated projects: max 50 (5/10)
+- Migi explicitly rejects the circular/orbital motif and it still appears: max 30 (3/10)
+- nav unreadable over image/type/background: max 40 (4/10)
+- nav contrast depends on lucky scroll position: max 50 (5/10)
+- nav has no scroll-state readability strategy: max 60 (6/10)
+- nav overlaps giant typography without protection: max 50 (5/10)
+- nav protection is generic and damages art direction: max 70 (7/10)
+- nav unreadability appears above the fold: max 40 (4/10)
+- forced app name/logo chrome without justification: max 50 (5/10)
+- initials badge used by default: max 50 (5/10)
+- app name repeated in nav and hero without need: max 60 (6/10)
+- brand chrome appears because of template habit: max 50 (5/10)
+- no-logo rule ignored after being documented: max 40 (4/10)
+- decorative separator/hairline used without function: max 50 (5/10)
+- small red section line used as AI filler: max 50 (5/10)
+- repeated label + hairline motif across sections: max 50 (5/10)
+- separator line not aligned to real content boundary: max 60 (6/10)
+- visual spec does not justify decorative line system: max 60 (6/10)
 - no APCA/WCAG contrast check for final palette: max 70 (7/10)
 - normal text below APCA `Lc 60` without reason: max 60 (6/10)
 - UI component contrast below APCA `Lc 30`: max 60 (6/10)
@@ -155,15 +238,36 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - duplicate CTA intent: max 70 (7/10)
 - fake div-based screenshot used as product visual: max 50 (5/10)
 - generated landing references compress multiple sections into one unreadable image: max 50 (5/10)
+- image-first page uses no real images or documented image source when images are part of the chosen direction: max 60 (6/10)
+- Unsplash images used without source/photographer manifest: max 60 (6/10)
+- major image has no defined role: max 60 (6/10)
+- image feels generic/filler stock: max 60 (6/10)
+- image crop breaks responsive layout: max 50 (5/10)
+- text overlays busy image without safe-zone/scrim: max 50 (5/10)
+- image is used as factual product proof without truth basis: max 50 (5/10)
+- broken remote image URL: max 40 (4/10)
+- missing alt text for meaningful image: max 60 (6/10)
+- stock imagery fights selected palette: max 60 (6/10)
 - plain text logo wall used as social proof when logos are required: max 60 (6/10)
 - generic AI names, fake-perfect numbers, or generic avatar eggs are visible: max 70 (7/10)
 - section-number eyebrows, decorative scroll cues, or hero version labels used without real purpose: max 70 (7/10)
 - animation has no purpose: max 60 (6/10)
+- advanced motion requested but no `docs/design/motion-choreography-plan.md`: max 60 (6/10)
+- advanced motion requested but only one animation exists: max 50 (5/10)
+- advanced motion has no page/section choreography: max 60 (6/10)
+- advanced motion has no image/media motion: max 70 (7/10)
+- advanced motion has no typography or navigation motion: max 70 (7/10)
+- all sections use the same fade-up: max 60 (6/10)
+- motion has no named technique: max 60 (6/10)
+- no motion evidence/screenshots/sequence when motion is central: max 60 (6/10)
+- motion copied from reference without adapting to concept: max 60 (6/10)
+- motion distracts from reading/content: max 60 (6/10)
 - ease-in on UI motion: max 50 (5/10)
 - scale(0) entrance animation: max 50 (5/10)
 - missing prefers-reduced-motion on movement: max 50 (5/10)
 - high-frequency action animated: max 40 (4/10)
 - `transition: all` in production UI: max 50 (5/10)
+- scroll animation causes jank or layout shift: max 50 (5/10)
 - delight delays or blocks core task: max 40 (4/10)
 - delight mismatches domain seriousness: max 60 (6/10)
 - no local core-loop interaction in frontend MVP: max 60 (6/10)
@@ -204,6 +308,19 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - inaccessible chart type used as primary representation with no fallback: max 50 (5/10)
 - real-time chart has motion without pause/reduced-motion behavior: max 60 (6/10)
 - major dashboard chart is decorative or unclear: max 50 (5/10)
+- decorative/fake chart: max 40 (4/10)
+- chart has no clear user question or product decision: max 50 (5/10)
+- chart has no documented data contract: max 50 (5/10)
+- chart type mismatches the data task: max 50 (5/10)
+- axes/labels unreadable: max 50 (5/10)
+- chart clips labels, values, units, or tooltips: max 40 (4/10)
+- chart lacks empty/error/loading state when needed: max 60 (6/10)
+- chart relies only on color for important meaning: max 50 (5/10)
+- hidden units or unexplained abbreviations in chart labels: max 50 (5/10)
+- visualization library/tool chosen with no rationale: max 60 (6/10)
+- chart/diagram review skipped for a UI containing charts, graphs, diagrams, maps, timelines, or canvases: max 60 (6/10)
+- diagram/canvas UI lacks diagram-integrity QA evidence or a blocked report when detector markup is practical: max 60 (6/10)
+- diagram-integrity detector finds label/object collision and the issue is ignored: max 40 (4/10)
 - dashboard imagery/object/media is absent despite relevant reference evidence: max 60 (6/10)
 - dashboard uses only text/metrics/panels with no image/object/media layer despite reference support: max 60 (6/10)
 - no visual/object/media attraction zone despite reference evidence: max 60 (6/10)
@@ -217,6 +334,15 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - dashboard uses many boxes but little crafted hierarchy: max 60 (6/10)
 - static dashboard feels dead despite live/monitoring product concept: max 70 (7/10)
 - terminal-ish dark panel spam used as dashboard art direction: max 60 (6/10)
+- visual-heavy page uses generic top navbar without navigation exploration: max 60 (6/10)
+- creative, portfolio, or landing page defaults to logo-left links-center CTA-right without justification: max 50 (5/10)
+- three direction options all use the same navigation structure: max 50 (5/10)
+- navigation feels pasted on top of the composition: max 60 (6/10)
+- navigation competes with the hero instead of supporting it: max 60 (6/10)
+- CTA placement in navigation is generic or visually disconnected: max 70 (7/10)
+- navigation has no documented responsive behavior: max 60 (6/10)
+- navigation lacks clear active/focus states: max 70 (7/10)
+- placebo navigation: selected nav/tab/control state changes but visible content, route, scope, filter, or product state does not change: max 30 (3/10)
 - cryptic primary navigation: max 50 (5/10)
 - navigation abbreviations without obvious meaning: max 60 (6/10)
 - icon-only nav without labels, tooltips, or obvious context: max 60 (6/10)
@@ -230,6 +356,33 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - generic mobile navigation with no personality: max 60 (6/10)
 - mobile nav is cryptic or cramped: max 60 (6/10)
 - desktop rail simply becomes giant mobile pills: max 60 (6/10)
+- mobile modal/sheet is cut off: max 30 (3/10)
+- primary modal action below viewport or not reachable: max 40 (4/10)
+- modal ignores safe-area bottom: max 50 (5/10)
+- modal content cannot scroll when needed: max 40 (4/10)
+- modal opens at awkward vertical position: max 60 (6/10)
+- bottom nav and modal visually collide: max 50 (5/10)
+- active/progress/underline bar overlaps button or tab label: max 40 (4/10)
+- selection indicator makes text harder to read: max 50 (5/10)
+- control decoration collides with content: max 50 (5/10)
+- segmented control active state is unclear or glitchy: max 50 (5/10)
+- selectable chip/item does not retain selected state: max 40 (4/10)
+- selected state flickers or glitches: max 40 (4/10)
+- hover/active/selected states are visually confused: max 50 (5/10)
+- selected state is color-only with no secondary cue: max 60 (6/10)
+- selectable controls do not affect UI behavior: max 60 (6/10)
+- mobile product bottom nav has labels but no icons: max 60 (6/10)
+- bottom nav icons are missing or semantically unclear: max 60 (6/10)
+- nav badges overlap labels/icons: max 50 (5/10)
+- bottom nav active state crowds adjacent items: max 50 (5/10)
+- inconsistent icon family in nav: max 60 (6/10)
+- add/new action looks like a normal content item: max 50 (5/10)
+- add tile lacks plus/icon/action affordance: max 60 (6/10)
+- add action placement causes confusion with list content: max 50 (5/10)
+- add action uses same styling as content cards without clear distinction: max 50 (5/10)
+- primary create action is hidden or ambiguous: max 60 (6/10)
+- mobile safe area ignored: max 50 (5/10)
+- click/tap feedback is missing or misleading: max 60 (6/10)
 - visibly misaligned search/action toolbar: max 70 (7/10)
 - toolbar controls collide or wrap badly: max 60 (6/10)
 - primary action misaligned from input group: max 70 (7/10)
@@ -251,6 +404,22 @@ Layout integrity caps apply before taste scoring. A broken layout cannot be awar
 - form fields/buttons become clipped or unreadable: max 40 (4/10)
 - any core screen has horizontal overflow: max 50 (5/10)
 - chart is visually attractive but structurally broken: max 40 (4/10)
+- spatial map/floor-plan/timeline labels collide with objects, cards, glows, or badges: max 40 (4/10)
+- primary product object is buried by support cards/panels in a desktop command surface: max 50 (5/10)
+- desktop command surface collapses into generic card soup instead of preserving the primary product object: max 50 (5/10)
+- floor map, seating chart, route map, timeline, or canvas is treated as a generic dashboard card: max 50 (5/10)
+- diagram labels collide with objects: max 40 (4/10)
+- object layout is arbitrary and undocumented: max 50 (5/10)
+- selected object obscures critical labels/data: max 50 (5/10)
+- canvas/diagram has no layer model: max 60 (6/10)
+- primary product object is buried by support panels/cards: max 60 (6/10)
+- diagram is decorative rather than operational: max 50 (5/10)
+- inspector/details does not update from selection: max 40 (4/10)
+- chart/diagram labels fail long-label, CJK, RTL, or German expansion stress: max 50 (5/10)
+- chart/diagram tooltip escapes viewport: max 50 (5/10)
+- legend breaks, hides meaning, or cannot wrap/collapse: max 50 (5/10)
+- values lack units in quantitative visualizations: max 50 (5/10)
+- many series/items make the visualization unreadable with no fallback: max 50 (5/10)
 - stat pills/badges collide: max 40 (4/10)
 - responsive layout hides or covers content: max 50 (5/10)
 - fake live/session status UI: max 50 (5/10)
@@ -364,6 +533,7 @@ Elite: 90 to 100. Pass: 80 to 89. Needs work: 65 to 79. Fail: below 65.
 - 5: visual identity is named and fits current project type
 - identity check: strong themes have a non-obvious visual thesis and avoid the first genre cliche
 - 4: palette/tokens are project-specific, not copied
+- domain palette fit: colors match product domain, user environment, task pressure, emotional state, and state semantics
 - 3: density matches task complexity
 - 3: source-project influence is marked as evidence, not template
 
@@ -387,6 +557,8 @@ Elite: 90 to 100. Pass: 80 to 89. Needs work: 65 to 79. Fail: below 65.
 - 4: no container soup in primary regions
 - 3: desktop adds actionable context for non-editorial tools: inspector, preview, comparison, table density, or source rail
 - dashboard check: command-center work has one attraction zone, varied panel weights, useful chart forms, and calm/busy rhythm
+- desktop command-surface check: the primary product object stays central and support panels do not bury it
+- spatial UI check: labels on maps, floor plans, seating charts, timelines, and canvases have protected zones
 - 3: spacing/alignment supports scanning without extra wrappers
 - overlap check: text, badges, controls, stats, and imagery do not collide at tested viewports
 - 3: layout recipe matches archetype
@@ -464,6 +636,16 @@ These do not change the 100-point total, but they can trigger caps and blockers.
 - safe areas and touch targets are planned
 - 390 px proof exists or blocker is documented
 
+### Mobile Product Interaction Integrity
+
+- mobile modal/sheet fits the viewport, respects safe areas, scrolls internally when needed, and keeps primary actions reachable
+- bottom nav uses semantic icons plus readable labels for practical product apps
+- selected chips, tabs, filters, object selectors, and segmented controls visibly persist selected state until changed
+- hover, pressed, focused, selected, and disabled states are distinct where relevant
+- active bars, progress strips, underlines, and selection indicators do not overlap labels or content
+- add/create actions are visually distinct from content cards and use clear plus/create affordance
+- 390 px proof checks sheet fit, bottom nav safety, selection persistence, add/create affordance, and control indicator collision
+
 ### Frontend Aha Moment
 
 - local/mock data is truthful and isolated in data files
@@ -486,6 +668,45 @@ These do not change the 100-point total, but they can trigger caps and blockers.
 - vibe language is explicit
 - selected mode/system/aesthetic fits the brief
 - quiet constraints are named
+
+### No-Image Direction Gate
+
+- `docs/design/direction-options.md` exists
+- `docs/design/direction-layout-maps.md` exists
+- `docs/design/direction-risk-check.md` exists
+- Safe Refined, Artistic Expressive, and Unexpected High-Character are meaningfully distinct
+- no paid image API was called unless Migi explicitly approved it and the command used `--paid-ok`
+- each direction names primary product object, domain palette rationale, nav state effect, interaction promises, risk, complexity, and recommendation score
+- once Migi selects A, B, C, or a hybrid, selected-direction.md leads directly into implementation unless Migi explicitly requested planning-only/no-code
+
+### Evidence-Backed Critique
+
+- report states dual-assessment method or degraded single-context reason
+- Nielsen heuristic scoring is present
+- cognitive load is assessed
+- persona red flags are selected by mode
+- priority issues are capped at 3-5 and include concrete fixes
+- screenshot/browser evidence is used when available
+- critique snapshot is saved when possible
+
+### Text Clarity
+
+- primary CTAs are specific
+- error states include recovery
+- empty states include next action
+- destructive confirmations name object and consequence
+- terminology is consistent
+- placeholders are not the only labels
+
+### Production Hardening
+
+- long text and translation expansion do not break layout
+- empty/loading/error/retry states exist for async UI
+- destructive/concurrent actions prevent double-submit
+- icon-only controls have accessible labels
+- color is not the only status signal
+- large datasets have pagination/search/virtualization plan
+- modals/sheets survive small viewport and long content
 
 ### Anti-AI-Tell Compliance
 
@@ -512,6 +733,18 @@ These do not change the 100-point total, but they can trigger caps and blockers.
 - duration/easing follows motion standards
 - reduced-motion behavior exists
 - performance avoids layout animation and `transition: all`
+
+### Advanced Motion / Choreography
+
+- `docs/design/motion-choreography-plan.md` exists when advanced motion is requested
+- motion references and named techniques are documented
+- at least page/section, image/media, typography, navigation/menu, and micro-feedback layers are planned
+- section-by-section motion map exists
+- signature motion moment supports the concept
+- tool stack is selected deliberately
+- reduced-motion fallback preserves meaning
+- motion evidence or capture blocker is documented
+- result is scored against `evaluation/benchmarks/motion-cinematic.benchmark.md` when motion is central
 
 ### Delight Appropriateness
 

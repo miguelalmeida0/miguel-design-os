@@ -14,6 +14,8 @@ Use when visual references or generated images should drive implementation.
 - `templates/image-first-website-analysis.template.md`
 - `design-dna/design-system-first-rules.md`
 - `design-dna/art-directed-palette-exploration.md` for artistic/landing/portfolio/cinematic/experimental work
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are needed
+- `design-intelligence/navigation-pattern-guidance.md` when navigation affects composition
 - `design-dna/landing-page-craft-rules.md` for landing/marketing/portfolio work
 - `design-dna/anti-ai-tell-preflight.md` for landing/marketing/portfolio work
 
@@ -23,14 +25,20 @@ Use when visual references or generated images should drive implementation.
 2. Prefer section-specific references over compressed boards.
 3. For generated landing references, use one horizontal image per section.
 4. Analyze text, type, spacing, buttons, colors, images, layout, and unclear details.
-5. If no visual direction is approved, create `docs/design/direction-options.md` with 3 distinct directions and stop for Migi.
-6. After selection, create `docs/design/selected-direction.md`.
-7. Create design-system tokens from the references and selected direction.
-8. For expressive modes, explore safe refined, artistic expressive, and unexpected high-character palettes before locking tokens.
-9. For landing/portfolio/marketing, define section jobs, composition anchors, background modes, CTA variations, and anti-AI-tell plan.
-10. Implement faithful visual shell first.
-11. Add interactions only after shell is coherent.
-12. Screenshot compare and score.
+5. If no visual direction is approved, create `docs/design/direction-options.md` with 3 distinct directions and stop for Migi during the first pass.
+6. When Migi selects A, B, C, or a hybrid, treat that as implementation approval unless Migi explicitly says planning-only/spec-only/no-code.
+7. After selection, create `docs/design/selected-direction.md` and continue immediately into the build pipeline.
+8. Create `docs/design/design-system-tokens.md` from the references and selected direction.
+9. For expressive modes, explore safe refined, artistic expressive, and unexpected high-character palettes before locking tokens.
+10. Create `docs/design/color-and-contrast.md` or an equivalent palette doc for significant visual work.
+11. If real imagery is needed, route `skills/unsplash-asset-sourcing/SKILL.md`, create `docs/design/unsplash-search-plan.md`, and create `docs/design/unsplash-asset-manifest.md`.
+12. If navigation is present, create `docs/design/navigation-strategy.md`; propose 3 navigation concepts and select a pattern before implementation.
+13. For landing/portfolio/marketing, define section jobs, composition anchors, background modes, CTA variations, and `docs/qa/anti-ai-tell-preflight.md`.
+14. If advanced/cinematic/portfolio motion is requested, create `docs/design/motion-choreography-plan.md` before implementation.
+15. Remove decorative orbital/radar/HUD line overlays, forced brand chrome, and decorative hairline ornaments unless the visual spec documents functional meaning.
+16. Implement faithful visual shell first.
+17. Add interactions only after shell is coherent.
+18. Screenshot compare and score.
 
 ## Output
 
@@ -38,16 +46,32 @@ Create or update:
 
 - `docs/design/image-first-website-analysis.md` for websites/landing pages
 - `docs/design/visual-spec.md` for general visual-heavy work
+- `docs/design/unsplash-search-plan.md` when Unsplash or real image sourcing is used
+- `docs/design/unsplash-asset-manifest.md` when Unsplash images are selected
+- `docs/design/navigation-strategy.md` when navigation is present
+- `docs/design/motion-choreography-plan.md` when advanced/cinematic/portfolio motion is requested
 
 ## Stop Conditions
 
 - no readable reference
 - reference is too compressed
 - direction gate applies but direction options or selected direction are missing
+- agent asks for implementation permission after Migi already selected A, B, C, or a hybrid
 - expressive mode uses a safe AI-default palette with no exploration
+- real imagery is needed but no Unsplash/source plan exists
+- navigation defaults to a generic top bar without exploration
+- navigation overlays image/type/scroll-state backgrounds without readability protection
+- visible logo/app-name/initials chrome appears without visual-spec justification
+- decorative circular/orbital/radar/HUD overlays appear as atmosphere
+- decorative separator hairlines, red lines, label rails, or ticks appear as filler
+- nav competes with image-led composition or is pasted over the hero
+- major sourced image has no manifest entry, source metadata, alt text, crop strategy, or text safe-zone notes
+- selected imagery is generic stock filler or misleading product proof
 - implementation starts from generic components
 - image/text balance drifts
 - fake micro-UI clutter appears
 - landing references compress multiple sections into one unreadable board
 - anti-AI-tell preflight is skipped for landing/portfolio/marketing work
+- advanced motion is requested but the page only has one animation, repeated fade-up, or no section motion map
+- motion is central but no motion benchmark/evidence plan exists
 - no screenshot proof

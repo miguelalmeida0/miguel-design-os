@@ -50,8 +50,10 @@ Design and review products where the core loop is choosing, browsing, collecting
 5. Do not expose dense stats, meters, tabs, or technical analysis before selection.
 6. Use progressive disclosure after choice.
 7. Define hover and selected-state rewards before styling cards.
-8. Make the detail view feel like the product world, not a brochure.
-9. Verify `390 / 768 / 1440` layouts if screenshots exist or the app can run.
+8. Make selected state persistent until changed; hover, pressed, focus, and selected states must not collapse into the same styling.
+9. Make add/create actions visually distinct from content cards so creation cannot be mistaken for an object.
+10. Make the detail view feel like the product world, not a brochure.
+11. Verify `390 / 768 / 1440` layouts if screenshots exist or the app can run.
 
 ## Stop Conditions
 
@@ -59,6 +61,8 @@ Design and review products where the core loop is choosing, browsing, collecting
 - Stop if cards feel passive.
 - Stop if details overwhelm desire before selection.
 - Stop if selected state is only a border or color change and selection is central.
+- Stop if a selectable chip, tab, or object item does not visibly preserve selected state.
+- Stop if an add/create card masquerades as a normal content item.
 
 ## Output Contract
 
@@ -69,6 +73,8 @@ First-screen choice moment:
 Hidden until after selection:
 Hover reward:
 Selected reward:
+Selected persistence:
+Add/create affordance:
 Detail view model:
 Screenshots/evidence:
 Blockers:
@@ -80,6 +86,8 @@ Blockers:
 - First-screen information wall: max score 7.
 - Excitement created mainly through badges/glows/stats: max score 7.
 - Clickable/passive ambiguity: max score 7.
+- Selectable chip/item does not retain selected state: max score 4.
+- Add/new action looks like a normal content item: max score 5.
 
 ## Safety/Scope Rules
 

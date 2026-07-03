@@ -14,6 +14,7 @@ Required files to read:
 - `AGENTS.md`
 - `design-dna/interface-feel-rules.md`
 - `skills/make-interfaces-feel-better/SKILL.md`
+- `skills/advanced-motion-choreography/SKILL.md` when advanced/cinematic/portfolio motion is part of the brief
 - `design-intelligence/interface-feel-checklist.json`
 - `evaluation/ui-scorecard.md`
 
@@ -34,6 +35,8 @@ Polish checks:
 - dead/stiff surfaces
 - jank and layout jumps
 - reduced motion if motion exists
+- motion layers feel cohesive when advanced motion was requested
+- no one-animation substitute for cinematic/award-level motion
 
 Final response contract:
 

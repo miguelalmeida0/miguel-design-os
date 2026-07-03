@@ -2,6 +2,8 @@
 
 Use these dials before visual-heavy work. They make taste decisions explicit instead of letting defaults leak in.
 
+For new visual-heavy work, dials must feed the No-Image Fast Direction Gate. Each direction card should interpret the dials differently enough that Safe Refined, Artistic Expressive, and Unexpected High-Character are meaningfully distinct in composition, palette, navigation, motion concept, and primary product object.
+
 Scale: 1 to 10.
 
 ## DESIGN_VARIANCE
@@ -226,3 +228,15 @@ Use this as the starting point, then adjust based on Migi's brief and selected r
 | Portfolio / Editorial | 7-10 | 3-7 | 2-6 | 8-10 | 7-10 | 7-9 | 5-7 | 1-3 |
 
 These defaults are not permission to ignore references. Reference-Locked Build Mode overrides generic defaults with observed scale, density, image, graph, and composition mechanics from selected anchors.
+
+## Direction Gate Use
+
+When creating 3 no-image direction cards:
+
+- Safe Refined usually keeps variance moderate and implementation clarity high.
+- Artistic Expressive usually increases art direction, image priority, and palette character.
+- Unexpected High-Character should push design variance while preserving readability and implementation clarity.
+
+Do not make three directions by changing only color. Composition, type mood, image/media strategy, motion concept, and navigation approach must change too.
+
+After Migi selects one direction or a hybrid, lock the selected dials into `docs/design/selected-direction.md` and continue into implementation. Do not ask for another approval checkpoint unless Migi explicitly asked for planning-only, spec-only, wait, or no-code.

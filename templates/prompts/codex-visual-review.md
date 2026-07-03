@@ -27,6 +27,7 @@ Required files to read:
 - `design-dna/motion-and-delight-rules.md`
 - `design-dna/design-system-first-rules.md`
 - `design-dna/art-directed-palette-exploration.md`
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are visible
 
 Review against:
 
@@ -39,13 +40,28 @@ Review against:
 - interaction completeness
 - mobile fit
 - chart intelligence
+- chart/diagram/canvas system integrity
+- diagram integrity detector evidence or blocked report when runnable spatial UI exists
 - palette intelligence
 - palette exploration for artistic/cinematic/landing/portfolio/experimental work
+- Unsplash search plan and asset manifest when real imagery or Unsplash assets are used
+- image source truth, alt text, crop quality, palette relationship, and text safe zones
+- navigation strategy, selected navigation pattern, CTA/nav relationship, active/focus states, and whether nav supports the visual thesis
+- navigation readability over images, giant type, video, gradients, and scroll-state backgrounds
+- identity chrome decision: no forced app-name/logo/initials chrome without justification
+- decorative geometry: no circular/orbital/radar/HUD line overlays unless functional and approved
+- line/divider strategy: no decorative hairline, red divider, label rail, or section-label-plus-line filler
+- modal/sheet fit, safe-area behavior, and visible/reachable actions for mobile overlays
+- bottom nav icon + label strategy for practical mobile product apps
+- selection state persistence for chips/tabs/items/object selectors
+- control decoration collision: no active/progress/underline bars overlapping labels
+- add/create action differentiation from content cards
 - OKLCH/APCA contrast targets and lightness repair
 - active feedback, focus states, loading/empty/error states, and interface feel
 - brief inference quality
 - anti-AI-tell compliance
 - motion purpose, duration, easing, reduced-motion behavior
+- advanced motion choreography plan, five motion layers, section map, and motion evidence when advanced/cinematic/portfolio motion is central
 - delight appropriateness
 - screenshot evidence
 
@@ -61,8 +77,18 @@ Final response contract:
 - score caps applied
 - design read / preflight status
 - direction gate status
+- no-image fast direction gate status for new visual-heavy work
+- direction layout maps / risk check status
+- paid image generation status
 - palette exploration status
+- Unsplash asset sourcing status if applicable
+- navigation art-direction status
+- navigation readability status
+- identity chrome status
+- decorative geometry / line-divider blockers
+- mobile product blockers: sheet fit, nav icons+labels, selected state, control indicator collision, add action differentiation
 - motion review verdict if applicable
+- advanced motion benchmark status if applicable
 - OKLCH/APCA issues if applicable
 - interface-feel blockers if applicable
 - files or screenshots referenced

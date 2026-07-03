@@ -64,3 +64,25 @@ Close alternatives:
 - Disambiguate terms that sound similar.
 - Keep answers short unless Migi asks for implementation details.
 - This skill names/specifies motion only. It does not design, implement, or approve motion by itself.
+
+## Advanced Motion Vocabulary
+
+For advanced motion planning, prefer exact terms that can be implemented and reviewed:
+
+- pinned section
+- scrubbed timeline
+- scroll-linked parallax
+- scroll-triggered reveal
+- clip-path reveal
+- mask reveal
+- sticky horizontal scroll
+- view transition
+- image-to-panel expansion
+- staggered typography
+- kinetic marquee
+- menu reveal
+- reel overlay
+- hover image trail
+- floating CTA transition
+
+If Migi asks for award-level, cinematic, or scroll-heavy motion, name the likely techniques and route to `skills/advanced-motion-choreography/SKILL.md`.

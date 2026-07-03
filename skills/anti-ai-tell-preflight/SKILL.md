@@ -12,6 +12,7 @@ Use for landing, portfolio, marketing, and redesign work. Do not apply blindly t
 - `design-dna/brief-inference-rules.md`
 - `design-dna/anti-ai-tell-preflight.md`
 - `design-dna/landing-page-craft-rules.md` when landing/portfolio
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are used
 - `evaluation/ui-scorecard.md`
 
 ## Checklist
@@ -33,7 +34,10 @@ Use for landing, portfolio, marketing, and redesign work. Do not apply blindly t
 - zigzag cap
 - logo wall rules
 - real image requirement
+- real image source/manifest requirement when photography is needed
+- image role, crop, alt text, and text safe-zone check
 - no div fake screenshots
+- no generic stock filler or stock imagery used as product proof
 - no fake numbers
 - no generic names/copy
 - motion motivated

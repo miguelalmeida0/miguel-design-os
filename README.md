@@ -30,10 +30,12 @@ The previous frontend Studio experiment has been deprecated under `deprecated/st
 Use this repo as:
 
 ```txt
-rules + visual-library + prompts + screenshot QA
+rules + visual-library + prompt templates + screenshot QA + benchmark scoring
 ```
 
 For frontend/design work:
+
+No-Image Fast Direction Gate is the default for normal new visual-heavy tests. Read `design-dna/NO_IMAGE_DIRECTION_GATE_CONTEXT.md` and `design-dna/FAST_DIRECTION_GATE_CONTEXT.md` first, create only `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`, then stop for Migi selection. Use Deep Direction Gate only when Migi explicitly asks for deep exploration, full strategy, research, benchmark, or reference decomposition.
 
 1. Read `AGENTS.md`.
 2. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
@@ -41,18 +43,79 @@ For frontend/design work:
 4. Classify task mode.
 5. Declare active design dials.
 6. Select references or image-first mode.
-7. For new visual-heavy work, create `docs/design/direction-options.md` with 3 directions and stop for Migi's choice.
-8. Create `docs/design/selected-direction.md` after Migi chooses.
-9. Create `docs/design/visual-spec.md`.
-10. Define design-system tokens.
-11. Check OKLCH/APCA contrast and palette logic.
-12. Implement the frontend aha moment.
-13. Apply an interface-feel polish pass.
-14. Review motion if present.
-15. Verify interactions.
-16. Capture screenshot QA.
-17. Run scorecard / done report.
-18. Patch Design OS from failures.
+7. For new visual-heavy work, run the No-Image Fast Direction Gate: create concise direction cards, layout maps, and risk checks, then stop for Migi's choice.
+8. When Migi chooses A, B, C, or a hybrid, treat the selection as approval to build unless Migi explicitly says planning-only, spec-only, wait, or no-code.
+9. Create `docs/design/selected-direction.md` and continue immediately into implementation planning.
+10. Create `docs/design/visual-spec.md`.
+11. Define design-system tokens.
+12. Check OKLCH/APCA contrast and palette logic.
+13. If real imagery is required, create Unsplash search and asset-manifest artifacts.
+14. Create `docs/design/navigation-strategy.md` for visual-heavy navigation.
+15. Implement the frontend aha moment.
+16. Apply an interface-feel polish pass.
+17. Review motion if present.
+18. For advanced/cinematic/artistic/scroll/portfolio motion, create `docs/design/motion-choreography-plan.md`, use `skills/advanced-motion-choreography/SKILL.md`, capture a motion sequence if possible, and score `evaluation/benchmarks/motion-cinematic.benchmark.md`.
+19. Verify interactions.
+20. Capture screenshot QA.
+21. Run benchmark scoring from `evaluation/benchmarks/` when a mode benchmark exists.
+22. Run post-build review layers when relevant: evidence-backed critique, text clarity, production hardening, screenshot scorecard, and anti-AI slop.
+23. Run scorecard / done report.
+24. For dogfood targets, write a postmortem.
+25. Patch Design OS from failures only when the postmortem shows a system-level gap.
+
+## Operating Model
+
+The full local operating model is documented in `docs/architecture/design-os-operating-model.md`.
+
+## Fast Direction Gate
+
+New visual-heavy apps, landing pages, portfolios, creative sites, mobile flows, dashboard redesigns, and major UI redesigns use No-Image Fast Direction Gate by default. It is intentionally short: direction cards, layout maps, and risk checks.
+
+Create:
+
+- `docs/design/direction-options.md`
+- `docs/design/direction-layout-maps.md`
+- `docs/design/direction-risk-check.md`
+
+Paid image generation is disabled by default. It may only run if Migi explicitly writes `I approve paid API image generation for this run.` and the paid script is called with `--paid-ok`. Do not create visual specs, navigation plans, QA docs, build/lint reports, or frontend code until Migi selects a direction.
+
+## Post-Build Review Layers
+
+These run after implementation or when Migi asks for review, not during Fast Direction Gate:
+
+- `skills/evidence-backed-critique/SKILL.md`: finished UI critique with design judgment, screenshot/browser evidence, Nielsen scoring, cognitive load, persona red flags, and critique snapshots.
+- `skills/text-clarity-review/SKILL.md`: UX writing review for unclear, vague, generic, inconsistent, or confusing interface copy.
+- `skills/production-hardening-review/SKILL.md`: production resilience review for long text, empty/error/loading states, i18n, accessibility, slow networks, large data, and responsive stress.
+
+## Direction Selection Means Build
+
+After the direction gate, Migi's selection is implementation approval. If Migi says Direction A, Direction B, Direction C, use A, go with B, selected direction is X, or chooses a hybrid such as `B palette + C navigation`, the agent must create/update `docs/design/selected-direction.md`, continue into `docs/design/visual-spec.md`, define design-system tokens, implement, validate, and return the local UI URL when a dev server is started.
+
+The agent stops after `selected-direction.md` only when Migi explicitly says spec only, planning only, do not implement, wait, no code yet, direction selection only, just document it, or do not edit src. Do not ask "ready for implementation?" after a direction has already been selected.
+
+Required post-selection flow: `docs/design/selected-direction.md`, `docs/design/visual-spec.md`, `docs/design/design-system-tokens.md`, `docs/design/color-and-contrast.md` or equivalent palette doc, `docs/design/navigation-strategy.md` for visual-heavy work, `docs/design/motion-choreography-plan.md` when advanced motion is requested, `docs/qa/anti-ai-tell-preflight.md`, implementation, build/lint, screenshot/dev-server report if available, and final response with URL when a dev server starts.
+
+- `visual-library/` is the screenshot source of truth.
+- `evaluation/benchmarks/` is the scoring/test layer that references visual-library assets.
+- `skills/` are routeable specialists.
+- `templates/prompts/` are the standard reusable interface for future agents.
+
+Do not duplicate screenshot libraries for benchmarks. Benchmark files should point back to existing visual-library paths.
+
+## Benchmark Layer
+
+Mode benchmarks live in `evaluation/benchmarks/`:
+
+- `landing-artistic.benchmark.md`
+- `dashboard-command.benchmark.md`
+- `mobile-product.benchmark.md`
+- `portfolio-experimental.benchmark.md`
+
+Use benchmark review after screenshot QA to compare a target against gold and rejected mechanics from the visual library.
+
+## Dogfood Postmortems
+
+Use `docs/qa/dogfood-postmortem.template.md` when a target app is testing Miguel Design OS itself. Postmortems decide whether a failure should become project-specific feedback, a prompt fix, a skill check, a scorecard cap, a benchmark update, or a global rule.
 
 ## Visual Library
 
@@ -65,6 +128,8 @@ For frontend/design work:
 - `visual-library/templates/reference-note.template.md`: note format for every screenshot.
 
 Screenshots are design evidence, not production assets. Future agents should extract composition, hierarchy, density, interaction ideas, and anti-patterns. Do not copy colors, brands, or layouts blindly unless Migi explicitly activates Literal Target Copy Mode.
+
+Rejected mobile product evidence now includes `visual-library/rejected/case-studies/shelf-circle-mobile-product-failures/`. Use it to catch cut-off mobile sheets, active indicators crossing labels, nonpersistent selection chips, text-only bottom navigation, and add cards that look like content.
 
 ## Literal Target Copy
 
@@ -81,7 +146,7 @@ When Migi says a screenshot is inspiration, extract principles instead of clonin
 
 ## Three-Direction Mockup Gate
 
-For new visual-heavy apps, landing pages, portfolios, mobile apps, dashboard redesigns, or artistic interfaces with no approved visual direction, agents must create `docs/design/direction-options.md` first, then stop for Migi to choose Direction A, B, C, or a hybrid. Implementation starts only after `docs/design/selected-direction.md` exists.
+For new visual-heavy apps, landing pages, portfolios, mobile apps, dashboard redesigns, or artistic interfaces with no approved visual direction, agents must create `docs/design/direction-options.md` first, then stop for Migi to choose Direction A, B, C, or a hybrid. Once Migi chooses, the selection is approval to build unless the message explicitly says planning-only or no-code. Implementation starts after `docs/design/selected-direction.md` exists, and the agent must not request a redundant approval step.
 
 Each direction must be meaningfully different and include vibe, palette, typography, layout, imagery, motion, mobile strategy, tradeoffs, and what AI default it avoids.
 
@@ -91,16 +156,52 @@ When Migi says landing page, creative, artistic, cinematic, editorial, visual-he
 
 For these modes, palette exploration is required: one safe refined palette, one artistic expressive palette, and one unexpected high-character palette. Bold color is allowed; unreadable color is not.
 
+## Unsplash Asset Sourcing
+
+Use `skills/unsplash-asset-sourcing/SKILL.md` when real photography or Unsplash assets are needed for landing pages, portfolios, creative/editorial sites, image-first frontend, or product concepts.
+
+Required project artifacts:
+
+- `docs/design/unsplash-search-plan.md`
+- `docs/design/unsplash-asset-manifest.md`
+
+Every selected image needs a role, source/photographer/download metadata, alt text, crop strategy, palette relationship, text safe-zone notes, and product-truth notes. Unsplash imagery is atmosphere/source material, not proof of actual product operation.
+
+## Navigation Art Direction
+
+Navigation is part of the page's art direction. For visual-heavy apps, landing pages, portfolios, creative/editorial sites, dashboards, and redesigns, create `docs/design/navigation-strategy.md` before implementation.
+
+Use `design-intelligence/navigation-patterns.json` and `design-intelligence/navigation-pattern-guidance.md` to choose between patterns such as split corner navigation, centered wordmark navigation, oversized typographic menus, spatial/canvas navigation, portfolio index navigation, floating contact anchors, and crafted mobile bottom navigation.
+
+Do not default to the same logo-left links-center CTA-right navbar, sticky pill, sticky black bar, or mobile top link dump unless the concept explicitly earns it.
+
+Navigation must remain readable over every background it crosses. Do not use forced app-name/logo chrome, decorative circular/orbital/HUD line overlays, fake sonar rings, or decorative hairline/separator ornaments unless the visual spec documents functional meaning and Migi has explicitly accepted the motif.
+
 ## Dashboard Mode
 
 When Migi points to `visual-library/approved/inspiration/01-command-centers-dashboards/`, dashboard means image-aware command surface, not generic admin panel. Future agents must define one attraction zone, varied panel weights, useful chart forms, deliberate image/object/media roles, compact scale, and calm/busy rhythm before coding.
 
 Avoid same-weight card soup, text-and-metrics-only dashboards, terminal-ish dark panel spam, decorative charts, oversized empty dashboard UI, and any dashboard with no memorable visual anchor.
 
+## Visualization And Diagram Systems
+
+Any chart, graph, diagram, map, timeline, pattern canvas, node graph, floor plan, seating chart, or canvas-like product object needs a real model before implementation.
+
+- `skills/chart-system-director/`: visualization intent, data contract, chart type, library/tool routing, labels, states, responsiveness, and accessibility.
+- `skills/diagram-canvas-system/`: coordinate system, canvas bounds, layer model, object model, label safe zones, collision strategy, selection/inspector behavior, and responsive fallback.
+- `skills/data-viz-hardening-review/`: post-build stress testing for long labels, missing values, many series/items, no data, async states, tooltips, legends, zoom, high contrast, reduced motion, and keyboard access.
+- `design-intelligence/visualization-tool-routing.md`: D3, Observable Plot, Vega-Lite, ECharts, Recharts, Chart.js, Nivo, React Flow, React Konva/Konva, Mermaid, D2, custom SVG, and CSS/HTML routing.
+- `tools/diagram-integrity-check.mjs`: optional Playwright geometry check for runnable diagrams/canvases marked with `data-diagram-*` attributes.
+
+Broken diagrams cannot be hidden under visual polish. Primary product objects must have a model, not just composition.
+
 ## Ingested World-Class Skills
 
-Three external skill/reference systems are now normalized into repo-local skills:
+External skill/reference systems are normalized into repo-local skills:
 
+- `skills/chart-system-director/`: chart intent, data contracts, library recommendation, and anti-decorative-chart enforcement.
+- `skills/diagram-canvas-system/`: spatial product object, canvas, map, and diagram system planning.
+- `skills/data-viz-hardening-review/`: chart/diagram/canvas edge-case hardening.
 - `skills/data-visualization-selection/`: chart type selection, accessibility fallback, rendering strategy, and graph usefulness.
 - `skills/visual-style-selection/`: style taxonomy selection, token planning, effect limits, accessibility/performance fit, and rejected-style checks.
 - `skills/image-first-website-to-code/`: image-first website workflow, section-specific references, deep extraction, and anti-drift implementation.
@@ -145,7 +246,7 @@ The transferable mechanisms now live as:
 - `AGENTS.md`: short router for future Codex agents.
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`: compact always-read design context.
 - `design-dna/`: reusable design rules.
-- `design-intelligence/`: distilled recommendation engines for color, charts, style, and landing patterns.
+- `design-intelligence/`: distilled recommendation engines for color, charts, visualization tool routing, style, and landing patterns.
 - `visual-library/`: approved/rejected/inspiration references and notes.
 - `skills/`: focused playbooks for visual concepting, target reconstruction, QA, selection-first products, OKLCH/APCA color, UI craft, interface-feel polish, data visualization, style selection, image-first website work, and truthful state.
 - `templates/prompts/`: Codex prompt templates.

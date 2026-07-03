@@ -20,6 +20,22 @@ Migi is open to bold and unusual color palettes if:
 
 The palette should help create memory, mood, and identity.
 
+## Domain Palette Fit
+
+Even expressive palettes must fit the product domain, user environment, task pressure, and emotional state. A palette can be bold and still be wrong if it feels randomly imported from another product type.
+
+Before locking tokens, document:
+
+- product domain
+- user environment
+- task pressure
+- emotional state
+- state color semantics
+- why the palette belongs to this product
+- what random or "looks cool" palette was rejected
+
+For practical product surfaces such as hospitality operations, finance, healthcare, logistics, education, or music utility, domain fit is required even when the UI is visually ambitious.
+
 ## Do Not Default To
 
 - muddy brown/black generated-app backgrounds
@@ -31,6 +47,7 @@ The palette should help create memory, mood, and identity.
 - neon lime tech palette
 - safe neutral surfaces with one predictable accent
 - dull gradients that feel like AI filler
+- palettes that are visually interesting but domain-random
 
 Color should be part of the concept.
 

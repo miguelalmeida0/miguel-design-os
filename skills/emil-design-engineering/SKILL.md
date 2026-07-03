@@ -74,3 +74,9 @@ Valid purposes: feedback, spatial consistency, state transition, hierarchy, stor
 - high-frequency controls are animated
 - reduced-motion behavior is missing
 - component polish masks unclear UX
+- advanced motion was requested but only one animation or repeated fade-up exists
+- motion lacks a section-by-section choreography plan when cinematic/portfolio motion is the brief
+
+## Advanced Motion Craft Lens
+
+For award-level motion, invisible craft includes timing relationships across the whole page. Check whether the implementation has page/section, image/media, typography, navigation/menu, and micro-feedback layers, and whether those layers feel cohesive rather than scattered.

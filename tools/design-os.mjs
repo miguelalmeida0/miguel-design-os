@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const designOsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -15,10 +16,12 @@ const paths = {
   doneReportTemplate: "templates/done-report.template.json",
   targetCopyReportTemplate: "templates/target-copy-report.template.json",
   assetManifestTemplate: "templates/asset-manifest.template.json",
+  unsplashAssetManifestTemplate: "templates/unsplash-asset-manifest.template.json",
   inspirationManifestTemplate: "inspiration-library/manifests/inspiration-manifest.template.json",
   visualQaReportTemplate: "templates/visual-qa-report.template.json",
   screenshotComparisonReportTemplate: "templates/screenshot-comparison-report.template.json",
-  objectSwapReportTemplate: "templates/object-swap-report.template.json"
+  objectSwapReportTemplate: "templates/object-swap-report.template.json",
+  motionSequenceReportTemplate: "templates/motion-sequence-report.template.json"
 };
 
 const visualAgents = [
@@ -301,6 +304,32 @@ const agentPromptConfig = {
   }
 };
 
+const promptTemplates = new Map([
+  ["fast-direction-gate", "templates/prompts/fast-direction-gate.md"],
+  ["no-image-fast-direction-gate", "templates/prompts/no-image-fast-direction-gate.md"],
+  ["master-next-app", "templates/prompts/master-next-app-prompt.md"],
+  ["spec-only-direction-gate", "templates/prompts/spec-only-direction-gate.md"],
+  ["implementation-after-selected-direction", "templates/prompts/implementation-after-selected-direction.md"],
+  ["postmortem-ingestion", "templates/prompts/postmortem-ingestion.md"],
+  ["evidence-backed-critique", "templates/prompts/evidence-backed-critique.md"],
+  ["text-clarity-review", "templates/prompts/text-clarity-review.md"],
+  ["production-hardening-review", "templates/prompts/production-hardening-review.md"],
+  ["chart-system-director", "templates/prompts/chart-system-director.md"],
+  ["diagram-canvas-system", "templates/prompts/diagram-canvas-system.md"],
+  ["data-viz-hardening-review", "templates/prompts/data-viz-hardening-review.md"],
+  ["benchmark-scoring-review", "templates/prompts/benchmark-scoring-review.md"],
+  ["codex-new-frontend", "templates/prompts/codex-new-frontend-prompt.md"],
+  ["codex-dashboard-reference-locked", "templates/prompts/codex-dashboard-reference-locked.md"],
+  ["codex-landing-image-first", "templates/prompts/codex-landing-image-first.md"],
+  ["codex-mobile-product-flow", "templates/prompts/codex-mobile-product-flow.md"],
+  ["codex-visual-review", "templates/prompts/codex-visual-review.md"],
+  ["codex-advanced-motion-choreography", "templates/prompts/codex-advanced-motion-choreography.md"],
+  ["codex-motion-benchmark-review", "templates/prompts/codex-motion-benchmark-review.md"],
+  ["codex-motion-only-patch", "templates/prompts/codex-motion-only-patch.md"],
+  ["codex-generate-3-direction-images", "templates/prompts/codex-generate-3-direction-images.md"],
+  ["codex-select-direction-from-images", "templates/prompts/codex-select-direction-from-images.md"]
+]);
+
 function resolveDesignOsPath(filePath) {
   return path.isAbsolute(filePath) ? filePath : path.resolve(designOsRoot, filePath);
 }
@@ -382,6 +411,21 @@ function normalizeText(value) {
     .trim()
     .toLowerCase()
     .replace(/\s+/g, " ");
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function keywordMatchesText(text, keyword) {
+  const normalizedText = normalizeText(text);
+  const normalizedKeyword = normalizeText(keyword);
+  if (!normalizedKeyword) {
+    return false;
+  }
+
+  const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegExp(normalizedKeyword)}([^a-z0-9]|$)`, "i");
+  return pattern.test(normalizedText);
 }
 
 function validateViewportObject(value, label, errors) {
@@ -632,6 +676,267 @@ function listAgents() {
   }
 }
 
+function listBenchmarks() {
+  const benchmarksDir = resolveDesignOsPath("evaluation/benchmarks");
+  if (!fs.existsSync(benchmarksDir)) {
+    fail("No benchmark directory found at evaluation/benchmarks.");
+  }
+
+  const files = fs.readdirSync(benchmarksDir)
+    .filter((file) => file.endsWith(".benchmark.md"))
+    .sort();
+
+  for (const file of files) {
+    console.log(`evaluation/benchmarks/${file}`);
+  }
+}
+
+function newPostmortem() {
+  const templatePath = "docs/qa/dogfood-postmortem.template.md";
+  const outPath = getFlagValue("--out");
+  const template = readText(templatePath, { base: "design-os" });
+
+  if (!outPath) {
+    console.log(template);
+    return;
+  }
+
+  const absolute = resolveProjectPath(outPath);
+  if (fs.existsSync(absolute)) {
+    fail(`Refusing to overwrite existing postmortem: ${outPath}`);
+  }
+  fs.mkdirSync(path.dirname(absolute), { recursive: true });
+  fs.writeFileSync(absolute, `${template}\n`);
+  pass("Created dogfood postmortem", { out: outPath });
+}
+
+function printPrompt() {
+  const name = getFlagValue("--name");
+  if (!name) {
+    fail("Usage: node tools/design-os.mjs prompt --name <template-name>");
+  }
+
+  const templatePath = promptTemplates.get(name);
+  if (!templatePath) {
+    fail(`Unknown prompt template: ${name}\nKnown templates:\n- ${Array.from(promptTemplates.keys()).sort().join("\n- ")}`);
+  }
+
+  console.log(readText(templatePath, { base: "design-os" }));
+}
+
+function resolveManifestImagePath(manifestPath, imagePath) {
+  const fromProjectRoot = resolveProjectPath(imagePath);
+  if (fs.existsSync(fromProjectRoot)) {
+    return fromProjectRoot;
+  }
+  return path.resolve(path.dirname(resolveProjectPath(manifestPath)), imagePath);
+}
+
+function validateDirectionImages(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-direction-images <manifest.json>");
+  }
+
+  const manifest = readJson(filePath);
+  const errors = [];
+  if (!Array.isArray(manifest.directions)) {
+    errors.push("directions must be an array.");
+  } else {
+    if (manifest.directions.length !== 3) {
+      errors.push("directions must contain exactly 3 items.");
+    }
+    const ids = new Set();
+    for (const [index, direction] of manifest.directions.entries()) {
+      const label = `directions[${index}]`;
+      if (!isNonEmptyString(direction.id)) {
+        errors.push(`${label}.id is required.`);
+      } else if (ids.has(direction.id)) {
+        errors.push(`${label}.id must be unique.`);
+      } else {
+        ids.add(direction.id);
+      }
+      for (const field of ["name", "prompt", "imagePath", "designThesis", "paletteIntent", "typographyIntent", "layoutIntent", "imageIntent", "motionIntent", "risks"]) {
+        if (!isNonEmptyString(direction[field])) {
+          errors.push(`${label}.${field} is required.`);
+        }
+      }
+      if (isNonEmptyString(direction.imagePath) && !fs.existsSync(resolveManifestImagePath(filePath, direction.imagePath))) {
+        errors.push(`${label}.imagePath does not exist: ${direction.imagePath}`);
+      }
+    }
+  }
+  if (manifest.status === "blocked") {
+    errors.push("manifest status is blocked; generated images are not valid direction evidence.");
+  }
+  if (errors.length > 0) {
+    fail(`Direction image manifest failed validation:\n- ${errors.join("\n- ")}`);
+  }
+  pass("Direction image manifest valid", { file: filePath, directions: manifest.directions.length });
+}
+
+function validateDirectionGate(slug) {
+  if (!slug) {
+    fail("Usage: node tools/design-os.mjs validate-direction-gate <slug>");
+  }
+
+  const errors = [];
+  const moodboardDir = resolveProjectPath(path.posix.join("generated/moodboards", slug));
+  const manifestPath = path.join(moodboardDir, "manifest.json");
+  const blockedPath = path.join(moodboardDir, "blocked-report.md");
+  const optionsPath = resolveProjectPath("docs/design/direction-options.md");
+
+  if (!fs.existsSync(optionsPath)) {
+    errors.push("docs/design/direction-options.md is missing.");
+  } else {
+    const content = fs.readFileSync(optionsPath, "utf8");
+    for (const label of ["Direction A", "Direction B", "Direction C"]) {
+      if (!content.includes(label)) errors.push(`direction-options.md is missing ${label}.`);
+    }
+  }
+
+  if (!fs.existsSync(manifestPath) && !fs.existsSync(blockedPath)) {
+    errors.push(`Expected manifest.json or blocked-report.md in generated/moodboards/${slug}.`);
+  }
+
+  if (fs.existsSync(manifestPath)) {
+    const manifest = readJson(manifestPath);
+    if (manifest.briefHash && typeof manifest.briefHash !== "string") {
+      errors.push("manifest.briefHash must be a string when present.");
+    }
+    if (!Array.isArray(manifest.directions) || manifest.directions.length !== 3) {
+      errors.push("manifest.directions must contain exactly 3 directions.");
+    } else {
+      for (const [index, direction] of manifest.directions.entries()) {
+        const label = `directions[${index}]`;
+        for (const field of ["id", "name", "prompt", "imagePath"]) {
+          if (!isNonEmptyString(direction[field])) errors.push(`${label}.${field} is required.`);
+        }
+        if (manifest.status !== "blocked" && isNonEmptyString(direction.imagePath) && !fs.existsSync(resolveManifestImagePath(manifestPath, direction.imagePath))) {
+          errors.push(`${label}.imagePath does not exist: ${direction.imagePath}`);
+        }
+      }
+    }
+  }
+
+  try {
+    const srcStatus = execSync("git status --short -- src", { cwd: projectRoot, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+    if (srcStatus) {
+      errors.push(`src files changed during gate-only work:\n${srcStatus}`);
+    }
+  } catch (error) {
+    // Non-git projects can still validate the direction artifacts.
+  }
+
+  if (errors.length > 0) {
+    fail(`Invalid fast direction gate:\n- ${errors.join("\n- ")}`);
+  }
+  pass("Fast direction gate valid", { slug });
+}
+
+function buildDirectionPrompt(direction, options) {
+  return [
+    `Frontend design reference image for ${options.product || "the product"}.`,
+    `Product type: ${options.type || "visual-heavy interface"}.`,
+    `User brief: ${options.brief || "No brief supplied."}`,
+    `Selected visual mode: ${options.mode || "unclassified visual-heavy mode"}.`,
+    `Active dials: ${options.dials || "not supplied"}.`,
+    `References to consider: ${options.references || "none supplied"}.`,
+    `Direction: ${direction.name}.`,
+    `Palette direction: ${direction.palette}.`,
+    `Typography direction: ${direction.typography}.`,
+    `Layout/composition: ${direction.layout}.`,
+    `Image/media direction: ${direction.image}.`,
+    `Navigation concept: ${direction.navigation}.`,
+    `Motion feeling: ${direction.motion}.`,
+    `Avoid: ${direction.avoid}.`,
+    "Create a frontend design reference, not abstract art.",
+    "No fake broken UI text, nonsense logos, distorted typography, random artifacts, or unreadable microcopy.",
+    "Make the design implementation-friendly with clear hierarchy, plausible components, and responsive logic."
+  ].join(" ");
+}
+
+function generateDirectionPrompts() {
+  const options = {
+    product: getFlagValue("--product") || getFlagValue("--project"),
+    type: getFlagValue("--type"),
+    brief: getFlagValue("--brief"),
+    references: getFlagValue("--references"),
+    mode: getFlagValue("--mode") || "fast",
+    dials: getFlagValue("--dials"),
+    out: getFlagValue("--out") || "docs/design/generated-image-prompts.md"
+  };
+  const directions = [
+    {
+      id: "A",
+      name: "Safe Refined",
+      palette: "safe refined palette with strong contrast and restrained accent logic",
+      typography: "clean premium typography with calibrated scale",
+      layout: "clear hierarchy, strong focal zone, balanced density",
+      image: "imagery supports product meaning without becoming filler",
+      navigation: "clear, elegant, understandable navigation",
+      motion: "subtle, purposeful transitions and feedback",
+      avoid: "generic SaaS, card soup, AI scale inflation, muddy default palette"
+    },
+    {
+      id: "B",
+      name: "Artistic Expressive",
+      palette: "expressive balanced palette tied to mood and references",
+      typography: "more distinctive type rhythm with readable UI roles",
+      layout: "composition-led, asymmetric or poster-like where appropriate",
+      image: "images/media as structural design material",
+      navigation: "navigation treated as art direction, not default navbar",
+      motion: "cinematic section rhythm and media reveals",
+      avoid: "Blogspot structure, repeated feature rows, decorative chaos"
+    },
+    {
+      id: "C",
+      name: "Unexpected High-Character",
+      palette: "unexpected high-character palette with disciplined contrast",
+      typography: "distinctive type attitude with implementation-safe text zones",
+      layout: "unusual but coherent composition, not template default",
+      image: "focal object/media world creates identity",
+      navigation: "unconventional but understandable navigation approach",
+      motion: "signature motion moment plus supporting motion layers",
+      avoid: "AI-purple glow, dull charcoal/orange, fake text, random visual noise"
+    }
+  ];
+  const result = {
+    generatedAt: new Date().toISOString(),
+    product: options.product,
+    type: options.type,
+    brief: options.brief,
+    references: options.references,
+    mode: options.mode,
+    dials: options.dials,
+    directions: directions.map((direction) => ({
+      id: direction.id,
+      name: direction.name,
+      prompt: buildDirectionPrompt(direction, options)
+    }))
+  };
+  const markdown = `# Generated Image Prompts
+
+These prompts are for Fast Direction Gate. They do not call the image API and do not authorize implementation before Migi selects a direction.
+
+- mode: ${result.mode}
+
+${result.directions.map((direction) => `## Direction ${direction.id} - ${direction.name}
+
+${direction.prompt}
+`).join("\n")}
+
+## JSON
+
+\`\`\`json
+${JSON.stringify(result, null, 2)}
+\`\`\`
+`;
+  const absolute = resolveProjectPath(options.out);
+  fs.mkdirSync(path.dirname(absolute), { recursive: true });
+  fs.writeFileSync(absolute, markdown);
+  pass("Generated direction prompts", { out: options.out, directions: result.directions.length });
+}
+
 function routeAgent() {
   const taskIndex = args.indexOf("--task");
   if (taskIndex === -1 || !args[taskIndex + 1]) {
@@ -639,11 +944,10 @@ function routeAgent() {
   }
 
   const task = args[taskIndex + 1];
-  const normalized = task.toLowerCase();
   const selected = [];
 
   for (const agent of visualAgents) {
-    const matchedKeywords = agent.routeKeywords.filter((keyword) => normalized.includes(keyword.toLowerCase()));
+    const matchedKeywords = agent.routeKeywords.filter((keyword) => keywordMatchesText(task, keyword));
     if (matchedKeywords.length > 0) {
       selected.push({
         id: agent.id,
@@ -654,7 +958,7 @@ function routeAgent() {
     }
   }
 
-  const impliesVisualQa = ["build", "app", "visual", "target", "inspiration", "selection", "roster", "gallery", "redesign"].some((keyword) => normalized.includes(keyword));
+  const impliesVisualQa = ["build", "app", "visual", "target", "inspiration", "selection", "roster", "gallery", "redesign"].some((keyword) => keywordMatchesText(task, keyword));
   if (impliesVisualQa && !selected.some((agent) => agent.id === "04-visual-qa-anti-slop")) {
     selected.push({
       id: "04-visual-qa-anti-slop",
@@ -683,12 +987,11 @@ function routeTask() {
   }
 
   const task = args[taskIndex + 1];
-  const normalized = task.toLowerCase();
   const registry = getRegistry();
   const selected = [];
 
   for (const skill of registry.skills) {
-    const matchedKeywords = (skill.routeKeywords || []).filter((keyword) => normalized.includes(keyword.toLowerCase()));
+    const matchedKeywords = (skill.routeKeywords || []).filter((keyword) => keywordMatchesText(task, keyword));
     if (matchedKeywords.length > 0) {
       selected.push({
         id: skill.id,
@@ -1563,16 +1866,29 @@ function doctor() {
     paths.doneReportTemplate,
     paths.targetCopyReportTemplate,
     paths.assetManifestTemplate,
+    paths.unsplashAssetManifestTemplate,
     paths.inspirationManifestTemplate,
     paths.visualQaReportTemplate,
     paths.screenshotComparisonReportTemplate,
     paths.objectSwapReportTemplate,
+    paths.motionSequenceReportTemplate,
+    "visual-library/approved/inspiration/advanced-motion-sites/references.json",
+    "design-intelligence/motion-tool-stack.json",
+    "design-intelligence/design-direction-image-prompts.json",
     "templates/visual-agent-run.template.json",
     "templates/prompts/codex-inspiration-scout.md",
     "templates/prompts/codex-art-direction-concept.md",
     "templates/prompts/codex-literal-target-copy.md",
     "templates/prompts/codex-visual-qa-fix.md",
     "templates/prompts/codex-productionizer.md",
+    "templates/prompts/codex-advanced-motion-choreography.md",
+    "templates/prompts/codex-motion-benchmark-review.md",
+    "templates/prompts/codex-motion-only-patch.md",
+    "templates/prompts/codex-generate-3-direction-images.md",
+    "templates/prompts/codex-select-direction-from-images.md",
+    "evaluation/benchmarks/motion-cinematic.benchmark.md",
+    "design-intelligence/motion-tool-stack-guidance.md",
+    "design-intelligence/design-direction-image-guidance.md",
     "templates/screenshot-report.template.json",
     "templates/visual-concepts.template.json",
     "inspiration-library/queues/weekend-visual-corpus.queue.json",
@@ -1588,6 +1904,7 @@ function doctor() {
     "schemas/visual-qa-report.schema.json",
     "schemas/screenshot-comparison-report.schema.json",
     "schemas/object-swap-report.schema.json",
+    "schemas/motion-sequence-report.schema.json",
     "schemas/screenshot-report.schema.json",
     "schemas/visual-concepts.schema.json"
   ]) {
@@ -1876,9 +2193,13 @@ function showHelp() {
 Commands:
   list-skills
   list-agents
+  list-benchmarks
   route --task "..."
   route-agent --task "..."
+  prompt --name <template-name>
+  generate-direction-prompts --product "..." --brief "..."
   new-brief
+  new-postmortem [--out <file>]
   new-inspiration-manifest
   new-done-report
   new-target-copy-report
@@ -1893,6 +2214,8 @@ Commands:
   validate-visual-qa-report <file>
   validate-comparison-report <file>
   validate-object-swap-report <file>
+  validate-direction-images <manifest.json>
+  validate-direction-gate <slug>
   check-visual-gate <brief> <concepts>   Requires 3 rendered concepts, screenshots, and approved selectedConceptId for visual-heavy briefs.
   validate-gate <brief> <concepts>        Alias for check-visual-gate.
   approve-concept <concepts> --id <id>    Marks one concept approved by Migi.
@@ -1909,14 +2232,26 @@ switch (command) {
   case "list-agents":
     listAgents();
     break;
+  case "list-benchmarks":
+    listBenchmarks();
+    break;
   case "route":
     routeTask();
     break;
   case "route-agent":
     routeAgent();
     break;
+  case "prompt":
+    printPrompt();
+    break;
+  case "generate-direction-prompts":
+    generateDirectionPrompts();
+    break;
   case "new-brief":
     newBrief();
+    break;
+  case "new-postmortem":
+    newPostmortem();
     break;
   case "new-inspiration-manifest":
     newInspirationManifest();
@@ -1959,6 +2294,12 @@ switch (command) {
     break;
   case "validate-object-swap-report":
     validateObjectSwapReport(args[1]);
+    break;
+  case "validate-direction-images":
+    validateDirectionImages(args[1]);
+    break;
+  case "validate-direction-gate":
+    validateDirectionGate(args[1]);
     break;
   case "check-visual-gate":
     checkVisualGate(args[1], args[2]);

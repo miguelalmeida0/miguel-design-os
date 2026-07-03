@@ -60,7 +60,7 @@ Use landing and hero-page references for image-led composition, sparse copy, pos
 
 ### Mobile Product Flow Mode
 
-Use mobile app references for strong mobile hierarchy, real flow, thumb-friendly actions, polished navigation/card systems, and readable layouts. Beautiful stills are not enough; the screen must imply a usable product flow.
+Use mobile app references for strong mobile hierarchy, real flow, thumb-friendly actions, polished navigation/card systems, and readable layouts. Beautiful stills are not enough; the screen must imply a usable product flow. Strong mobile product UI also proves sheet fit, icon+label bottom navigation, persistent selected states, distinct add/create affordances, and control indicators that never collide with labels.
 
 ### Selection / Gallery / Browse Mode
 
@@ -245,12 +245,35 @@ What works:
 - tablet nav that preserves spacing and label readability
 - mobile bottom navigation by default for applications with 3+ primary destinations
 - compact top navigation only for documented exceptions: documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites
-- bottom nav with balanced spacing, touch-safe targets, clear labels, excellent icon/text alignment, safe-area support, and visible selected state
+- bottom nav with balanced spacing, touch-safe targets, clear labels, meaningful icons, excellent icon/text alignment, safe-area support, and visible selected state
 - nav that never overlaps content or becomes oversized pills fighting the layout
 
 Future-agent rule:
 
 Mobile navigation should feel as polished as a strong consumer app, even in a dashboard or command surface. The top of mobile app screens should be reserved for branding, current page title, search, context, or hero imagery, not primary navigation.
+
+## Approved: Composed Navigation System
+
+Navigation should feel intentionally designed for the page's visual world, not pasted on top of it.
+
+What works:
+
+- placement supports the composition
+- wordmark, links, and CTA have clear roles
+- navigation feels native to the concept
+- desktop, tablet, and mobile behavior is planned
+- mobile does not receive a desktop link dump
+- CTA is visually integrated but still clear
+- interaction, focus, and active states feel crafted
+- navigation pattern is selected from references, mode, and product needs
+
+Why it works:
+
+It turns navigation into part of the brand experience while preserving usability.
+
+Future-agent rule:
+
+For visual-heavy work, create `docs/design/navigation-strategy.md` before implementation and choose a navigation pattern deliberately. Do not let every direction use the same navbar with different colors.
 
 ## Approved: Scan-First Product Panels
 
@@ -501,3 +524,36 @@ What works:
 
 Future-agent rule:
 Every animation needs a reason: feedback, state, spatial continuity, hierarchy, story, explanation, or perceived performance.
+
+## Approved: Choreographed Motion System
+
+Advanced/cinematic/artistic motion works when the whole page is designed in time, not when a static layout receives one animation layer.
+
+What works:
+
+- page and section motion create a story arc
+- image and media reveals feel cinematic and concept-specific
+- typography motion supports reading rhythm
+- navigation/menu states are part of the art direction
+- micro-feedback feels tactile but not noisy
+- one signature motion moment is supported by quieter motion layers
+- reduced-motion behavior preserves meaning
+- motion evidence is captured or honestly blocked
+
+Future-agent rule:
+When Migi asks for award-level motion, create `docs/design/motion-choreography-plan.md` and score against `evaluation/benchmarks/motion-cinematic.benchmark.md`.
+
+## Approved: Image-Generated Direction Gate
+
+New visual-heavy work starts with three visual north stars before implementation.
+
+What works:
+
+- Safe Refined, Artistic Expressive, and Unexpected High-Character are visually distinct
+- generated images are saved locally with a manifest
+- direction options analyze composition, palette, typography, imagery, navigation, motion, and risk
+- Migi selects a direction or hybrid before coding
+- generated images guide art direction without being copied literally
+
+Future-agent rule:
+No new visual-heavy implementation before generated/rendered direction evidence exists or Migi explicitly approves a blocked fallback.

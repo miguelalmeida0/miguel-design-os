@@ -25,6 +25,7 @@ Required files to read:
 - `design-dna/landing-page-craft-rules.md`
 - `design-dna/anti-ai-tell-preflight.md`
 - `design-dna/art-directed-palette-exploration.md`
+- `design-dna/unsplash-asset-sourcing-rules.md` when real imagery is needed
 - `agent-workflows/image-first-frontend-workflow.md`
 - `skills/image-first-frontend/SKILL.md`
 - `skills/landing-page-craft-director/SKILL.md`
@@ -37,10 +38,11 @@ Reference generation contract:
 3. Generate or select one horizontal image/reference per section, not one compressed full-page board.
 4. Each section must define a job, composition anchor, background mode, CTA variation, image role, and second-read moment.
 5. Explore Safe Refined, Artistic Expressive, and Unexpected High-Character palette options; do not default to muddy AI-background colors.
-6. Keep the selected palette and typography locked across sections.
-7. Vary section rhythm without breaking the concept spine.
-8. Use images structurally, not as decoration.
-9. After references, create `docs/design/visual-spec.md` with Direction Gate Summary and Palette Exploration, then define design-system tokens before implementation.
+6. If real imagery is required, create `docs/design/unsplash-search-plan.md` and `docs/design/unsplash-asset-manifest.md`; include source/photographer/download metadata, alt text, crop strategy, palette relationship, text safe zones, and product-truth notes.
+7. Keep the selected palette and typography locked across sections.
+8. Vary section rhythm without breaking the concept spine.
+9. Use images structurally, not as decoration.
+10. After references, create `docs/design/visual-spec.md` with Direction Gate Summary and Palette Exploration, then define design-system tokens before implementation.
 
 Evidence requirements:
 
@@ -48,6 +50,7 @@ Evidence requirements:
 - direction options / selected direction
 - visual spec
 - palette exploration and contrast notes
+- Unsplash search plan / asset manifest when applicable
 - anti-AI-tell checklist
 - screenshot QA after implementation
 - final scorecard / done report

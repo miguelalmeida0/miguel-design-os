@@ -40,6 +40,33 @@ Rules:
 - modals/sheets must account for keyboard and thumb reach
 - hero/media crops must survive notches and dynamic browser bars
 
+## Modal and Bottom Sheet Fit Is Non-Negotiable
+
+Mobile modals, drawers, sheets, and detail panels must fit the viewport and respect safe areas.
+
+A modal or sheet fails if:
+
+- it opens too low on the screen
+- the bottom is cut off
+- primary actions are hidden below the viewport
+- content cannot scroll inside the sheet
+- sheet height is not constrained
+- safe-area bottom is ignored
+- header or close button is cramped
+- the sheet competes with bottom navigation
+- the user cannot clearly see where the modal begins and ends
+
+Rules:
+
+- define `max-height` for mobile sheets
+- scroll long sheet content internally
+- keep primary actions visible or sticky inside the sheet
+- respect `safe-area-inset-bottom`
+- open detail sheets at a visually intentional height
+- use internal scroll instead of page clipping when content exceeds viewport
+- keep close/dismiss control reachable
+- hide, dim, or spatially separate bottom navigation when a modal/sheet is active
+
 ## Navigation
 
 Mobile navigation must be crafted:
@@ -100,6 +127,7 @@ Requirements:
 - premium spacing
 - generous touch targets
 - excellent icon/text alignment
+- meaningful icon plus readable label for each primary destination
 - active state feels intentional
 - floating or integrated depending on design direction
 - proper safe-area support
@@ -108,6 +136,42 @@ Requirements:
 - labels remain readable
 - never cramped
 - never oversized
+
+## Mobile Bottom Navigation Requires Icons And Labels
+
+For practical mobile product apps with bottom navigation, each primary destination should have both:
+
+- a clear icon
+- a readable label
+
+Rules:
+
+- bottom nav items need meaningful icons
+- labels must remain readable
+- icons must not replace labels unless Migi explicitly approves
+- icons must semantically match the destination
+- active state must affect icon and label
+- badges/counters must not crowd labels or icons
+- use a consistent icon family
+- Material Symbols, Material Icons, Lucide, or Heroicons are acceptable depending on project style
+- for practical product apps, Material Symbols or an equivalent semantic icon set is preferred
+
+Forbidden:
+
+- text-only bottom nav for practical mobile product apps unless explicitly justified
+- cryptic icons without labels
+- inconsistent icon styles
+- fake decorative icons
+- badges overlapping labels
+- oversized active pills that crush adjacent items
+
+Examples:
+
+- Shelf: inventory, shelves, home, or storage icon
+- Borrowed: hand, assignment, clock, or arrow icon
+- Add: plus or add-circle icon
+- People: group or person icon
+- Notes: note or chat icon
 
 ## Touch Targets
 
@@ -149,6 +213,65 @@ Avoid:
 - invisible hierarchy
 - three competing CTAs
 
+## Control Decoration Cannot Collide With Control Content
+
+Active bars, underlines, progress strips, borders, shadows, highlights, and selection indicators must never overlap button labels or interactive content.
+
+A control fails if:
+
+- underline sits on top of button text
+- active bar overlaps label
+- progress strip crosses button content
+- decorative stroke reduces readability
+- selected indicator makes the control feel broken
+- indicator is visually detached from the control state
+
+Rules:
+
+- active indicators need their own spatial layer
+- underline/bar must sit outside the text safe area
+- control labels need a protected text zone
+- active state must improve clarity, not reduce it
+- button and segmented-control variants must be checked at realistic text lengths
+- if an indicator cannot fit, use background, border, icon, or color shift instead
+
+## Selectable Controls Must Preserve State
+
+Any chip, tab, filter, object selector, category selector, segmented control, or item button that appears selectable must visibly preserve its selected state after click/tap.
+
+A selectable control fails if:
+
+- click does not visibly select it
+- selected state disappears immediately
+- hover/active state is confused with selected state
+- state flickers or glitches
+- selected item is not accessible through aria/state
+- selected item cannot be identified by color/shape/text/icon
+- selected state is lost unintentionally during local interaction
+
+Rules:
+
+- selected state must be visually distinct
+- selected state must persist until changed
+- hover, pressed, focused, and selected states must be different
+- selected state must be keyboard/focus accessible
+- selected chips/tabs should use `aria-selected` or equivalent where appropriate
+- state changes must update actual UI behavior, not only style
+
+## Add Actions Must Not Masquerade As Content Items
+
+An add-new action must be visually distinct from existing list/content items.
+
+Rules:
+
+- add action must have a different visual treatment from content cards
+- add action should use a clear plus icon or creation affordance
+- add action may use a large plus button, dashed outline, empty-state panel, floating action button, bottom sheet trigger, distinct CTA row, or separate add item module
+- add action must not look like an existing object/item unless the difference is extremely clear
+- add action label must be explicit
+- if placed in a grid, add tile must have different shape, icon, border, or color logic
+- add action should not be confused with a category/object card
+
 ## Mobile Screenshot Proof
 
 At minimum, mobile work needs 390 px screenshot proof.
@@ -168,6 +291,11 @@ Check:
 - no cards squeezed into garbage
 - primary action visible
 - core flow evident
+- modals/sheets fit and keep actions reachable
+- bottom nav has icons plus labels for practical product apps
+- selection states persist after tap
+- add/create affordance is distinct from content
+- active indicators never overlap labels
 
 ## Output Artifact
 

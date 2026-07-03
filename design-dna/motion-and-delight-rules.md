@@ -97,3 +97,41 @@ Good delight moments:
 - movement lacks reduced-motion behavior
 - delight distracts from the primary task
 - motion style conflicts with the product mood
+
+## Advanced Motion Means Choreography
+
+When Migi asks for advanced animations, cinematic motion, artistic motion, award-winning motion, Awwwards/Godly/Recent-level motion, scroll animation, appearing while scrolling, or portfolio motion, the agent must route to `skills/advanced-motion-choreography/SKILL.md`.
+
+Advanced motion requires `docs/design/motion-choreography-plan.md` before implementation.
+
+Required layers:
+
+- page / section choreography
+- image / media choreography
+- typography choreography
+- navigation / menu choreography
+- micro-feedback layer
+- reduced-motion fallback
+
+Approved:
+
+- choreographed motion system
+- scroll-linked story rhythm
+- cinematic image reveals
+- navigation/menu motion as part of art direction
+- signature motion moment
+- measured restraint
+
+Rejected:
+
+- single background animation
+- fade-up everywhere
+- hover scale sprinkled across the page
+- motion not tied to section purpose
+- motion without named technique
+- motion with no capture or review evidence
+- motion that distracts from reading or content
+
+Rule:
+
+One animation is not advanced motion. If motion is central, capture a motion sequence or document the blocker honestly.

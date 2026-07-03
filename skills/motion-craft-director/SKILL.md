@@ -54,3 +54,18 @@ Create:
 - explicit purpose per animation
 - performance budget
 - consistency with product mood
+
+## Advanced Motion Escalation
+
+If the task asks for advanced animations, cinematic motion, artistic motion, award-winning motion, Awwwards/Godly/Recent-level motion, scroll animations, appearing while scrolling, or portfolio motion, route to `skills/advanced-motion-choreography/SKILL.md` before implementation.
+
+Advanced motion requires `docs/design/motion-choreography-plan.md`, not only this lightweight motion strategy.
+
+Block final handoff when:
+
+- advanced motion was requested but only one animation exists
+- page/section choreography is missing
+- image/media choreography is missing despite reference need
+- typography or navigation/menu motion is missing despite reference need
+- no reduced-motion fallback exists
+- no motion benchmark review or motion evidence exists when motion is central

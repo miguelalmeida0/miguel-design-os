@@ -19,6 +19,7 @@ This is a broad UI craft skill. It does not replace specialist skills.
 
 - `design-intelligence/userinterface-wiki-rules.json`
 - `design-intelligence/userinterface-wiki-guidance.md`
+- `design-intelligence/navigation-pattern-guidance.md` when navigation composition matters
 - `evaluation/ui-scorecard.md`
 
 ## Output Contract
@@ -59,6 +60,19 @@ This is a broad UI craft skill. It does not replace specialist skills.
 - Is perceived performance improved without lying?
 - Do typography choices support scanning, numbers, and hierarchy?
 - Do visual grouping rules support proximity, similarity, and common region?
+- Does navigation placement support the composition and interaction model?
+- Are navigation active/focus states visible and understandable?
+- Does navigation remain readable over every background and scroll state it crosses?
+- For practical mobile product apps, does bottom nav use semantic icons plus readable labels?
+- Do mobile modals/sheets fit the viewport, safe areas, and internal scrolling needs?
+- Do selectable chips/tabs/items preserve selected state after tap?
+- Do active bars, progress strips, or underlines overlap labels/content?
+- Do add/create affordances look distinct from content cards?
+- Are decorative orbital/radar/HUD circles absent unless functional?
+- Are logo/app-name/initials chrome and decorative hairline separators justified rather than template habits?
+- If advanced motion is requested, are page/section, image/media, typography, nav/menu, and micro-feedback layers planned?
+- Does motion use named techniques instead of vague "smooth" movement?
+- Is motion evidence captured or blocked honestly?
 
 ## Stop Conditions
 
@@ -67,3 +81,12 @@ This is a broad UI craft skill. It does not replace specialist skills.
 - Audio feedback is added without mute or visual equivalent.
 - Data/pricing/dashboard numbers lack tabular alignment.
 - Pseudo-elements create inaccessible content or broken layering.
+- Advanced motion requested but only one animation exists.
+- Navigation becomes unreadable over images, giant type, or changing backgrounds.
+- Decorative circular/orbital/HUD overlays are used as fake atmosphere.
+- Forced brand chrome or decorative separator hairlines appear without functional justification.
+- Mobile sheet/modal is cut off or hides primary actions.
+- Practical mobile product bottom nav lacks icons plus labels.
+- Selectable controls do not preserve selected state.
+- Add/create action is styled like normal content.
+- Control indicator overlaps label/content.

@@ -9,6 +9,8 @@ Use this final pass for landing pages, portfolios, marketing pages, redesigns, a
 - no three equal feature cards as the default layout
 - no endless centered sections
 - no fake div-based screenshots
+- no generic stock filler when real imagery is structurally needed
+- no stock image used as factual product proof
 - no generic names like `Acme`, `Nexus`, `SmartFlow`, `Cloudly`, `John Doe`
 - no fake-perfect numbers like `99.99%`, `1234567`, `50%`, or fake spec precision
 - no generic avatar eggs or default user icons as social proof
@@ -35,6 +37,8 @@ Use this final pass for landing pages, portfolios, marketing pages, redesigns, a
 
 - design read declared
 - active dials declared
+- strict 3-image direction gate completed for new visual-heavy work, or blocked fallback explicitly approved
+- if Migi selected A, B, C, or a hybrid, the agent continued into build instead of asking for redundant implementation permission
 - design system or aesthetic family selected honestly
 - one page theme locked across the page
 - one palette/accent system used consistently
@@ -46,8 +50,10 @@ Use this final pass for landing pages, portfolios, marketing pages, redesigns, a
 - each CTA has clear distinct intent
 - every CTA passes contrast and fits on one desktop line
 - visible copy is reread and scrubbed of generic phrasing
-- real images or explicit image placeholders are used where images are structurally needed
+- real images, source metadata, and asset manifests are used where images are structurally needed
+- meaningful images have accurate alt text, crop strategy, palette relationship, and text safe-zone notes
 - motion is motivated and respects reduced motion
+- advanced/cinematic/portfolio motion, when requested, has `docs/design/motion-choreography-plan.md`, named techniques, multiple motion layers, and evidence or a documented capture blocker
 - mobile collapse is explicitly planned
 
 ## Mechanical Caps

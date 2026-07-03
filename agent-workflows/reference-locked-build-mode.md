@@ -92,6 +92,7 @@ The spec must translate the reference mechanics into the target app. It must inc
 - acceptance criteria
 - anti-AI-tell checks when landing, portfolio, or marketing
 - motion/delight strategy when relevant
+- Unsplash/source image strategy when real imagery is required
 
 ### 4. Run The Direction Gate When Direction Is Not Approved
 
@@ -112,6 +113,15 @@ After Migi chooses A, B, C, or a hybrid, create:
 `docs/design/selected-direction.md`
 
 Do not implement until the selected or hybrid direction is documented.
+
+### 5. Source Real Imagery When Needed
+
+If the transfer spec requires real photography, Unsplash, or source images, create before implementation:
+
+- `docs/design/unsplash-search-plan.md`
+- `docs/design/unsplash-asset-manifest.md`
+
+Every selected image must map back to a reference mechanic or section job. Reject generic stock filler and stock imagery used as product proof.
 
 ## Build Segments
 
@@ -154,6 +164,7 @@ Include:
 - Stop if direction is unapproved and `docs/design/direction-options.md` is missing.
 - Stop if Migi has not selected Direction A, B, C, or a hybrid.
 - Stop if Migi selected a direction but `docs/design/selected-direction.md` is missing.
+- Stop if real imagery is required but the Unsplash search plan or asset manifest is missing.
 - Stop if implementation starts from generic layout instead of the spec.
 - Stop if final handoff has no `docs/qa/reference-match-report.md`.
 
@@ -167,6 +178,8 @@ Reference decomposition:
 Design transfer spec:
 Direction options:
 Selected direction:
+Unsplash search plan:
+Unsplash asset manifest:
 Build segments completed:
 Reference match report:
 Known mismatches:
