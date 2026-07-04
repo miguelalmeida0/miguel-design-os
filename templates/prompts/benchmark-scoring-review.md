@@ -17,6 +17,7 @@ Steps:
 4. Compare concrete mechanics, not vibes:
    - composition
    - palette
+   - absence of sepia/espresso/umber brown-black archive wash
    - typography
    - image/object/media use
    - motion when relevant

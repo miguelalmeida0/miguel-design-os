@@ -45,6 +45,7 @@ Review against:
 - clipped primary text, catastrophic diagram overlap, and canvas performance budget
 - palette intelligence
 - palette exploration for artistic/cinematic/landing/portfolio/experimental work
+- strict rejection of sepia/espresso/umber brown-black archive wash and any nocturne/archive/field-guide rationale for it
 - Unsplash search plan and asset manifest when real imagery or Unsplash assets are used
 - image source truth, alt text, crop quality, palette relationship, and text safe zones
 - navigation strategy, selected navigation pattern, CTA/nav relationship, active/focus states, and whether nav supports the visual thesis

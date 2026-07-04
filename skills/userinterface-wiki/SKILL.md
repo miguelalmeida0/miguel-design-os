@@ -90,3 +90,19 @@ This is a broad UI craft skill. It does not replace specialist skills.
 - Selectable controls do not preserve selected state.
 - Add/create action is styled like normal content.
 - Control indicator overlaps label/content.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Act as a router/reference, not a broad catch-all.
+
+Required evidence:
+- categories used, specialist skills routed, strongest applicable rules, and what this skill intentionally does not own.
+
+Repair routing:
+- creative-orchestration-director reroutes broad findings to narrower specialists.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "userinterface-wiki"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

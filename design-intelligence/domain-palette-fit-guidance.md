@@ -24,6 +24,8 @@ Do not select colors because they "look cool" in isolation. The color system mus
 
 - Random dark palette for a warm human-service domain.
 - "Restaurant" palette made only from brown/orange without reason.
+- Muddy sepia/espresso/umber brown-black archive wash used as a background, stage, card, panel, container, sidebar, or navigation color.
+- Nocturne, archive, field-guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium language used to justify that same banned brown-black surface family.
 - Terminal green or neon tech palettes for non-technical operations.
 - AI purple/blue glow as default identity.
 - Palette chosen only because it matched a screenshot mood, not product use.
@@ -44,4 +46,3 @@ In visual specs or palette docs, include:
 - why the palette fits this product:
 - what random/cool palette was rejected:
 ```
-

@@ -10,6 +10,7 @@ Define:
 
 - semantic color tokens
 - OKLCH/APCA contrast targets for foreground/background pairs
+- state contrast matrix for default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled foreground/background pairs
 - domain palette fit: product domain, user environment, task pressure, emotional state, and state color semantics
 - palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, and experimental modes
 - typography roles
@@ -39,10 +40,11 @@ Define:
 - visible UI generated before tokens exist
 - trial-and-error hex tweaks without OKLCH/APCA contrast reasoning
 - contrast repairs made by changing chroma/saturation instead of OKLCH lightness
+- interactive labels that become unreadable in hover, focus-visible, active/pressed, selected, selected+hover, or selected+focus states
 - safe AI-default muddy palettes in expressive modes without documented exploration
 - random "looks cool" palettes that do not fit the product domain
 - design systems that only work for perfect demo copy or perfect mock data
-- component variants with no empty, loading, error, disabled, focused, selected, or overflow behavior
+- component variants with no empty, loading, error, disabled, focused, selected, hover, active/pressed, selected+hover, selected+focus, or overflow behavior
 
 ## Required Token Roles
 

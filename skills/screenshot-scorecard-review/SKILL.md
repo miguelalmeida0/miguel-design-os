@@ -133,6 +133,9 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Does each nav/tab/filter selected state change visible content, route, scope, filter, or product state?
    - If there is a map, floor plan, seating chart, timeline, or canvas, do labels stay protected from object/card/glow overlap?
    - Is the primary product object central, or has it been buried by cards?
+   - Are textures and illustrations free of ambient blobs, dotted filler, amateur vector forms, and paths crossing text?
+   - Is the Native Tooltip Ban respected, with no browser-native tooltip over art-directed SVG?
+   - Does every annotation obey the Annotation Protected Zone Rule?
 12. Check palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental work:
    - Did the agent explore multiple palette directions?
    - Does the palette feel authored or generated?
@@ -147,6 +150,7 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
    - Is every important text layer readable?
    - Is text over image protected?
    - Are small labels readable?
+   - Do interactive labels remain readable in default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled states?
    - Does contrast survive 1440 / 768 / 390?
    - Are focal objects protected from overlays?
    - Is image treatment consistent?
@@ -218,8 +222,14 @@ Evidence-based screenshot review for responsive quality, overlap, readability, s
 - Stop if dashboard mode produces lifeless same-color panels with weak charts and no visual anchor.
 - Stop if navigation is cryptic or responsive nav overlaps content.
 - Stop if navigation becomes unreadable over imagery, giant type, video, or changing scroll backgrounds.
+- Stop if selected+hover, selected+focus, hover, focus-visible, active, or pressed state makes an interactive label unreadable.
 - Stop if visible app-name/logo/initials chrome appears without visual-spec justification.
 - Stop if decorative circular/orbital/radar/HUD overlays appear without explicit Migi approval and functional meaning.
+- Stop if ambient light blob, foggy radial glow, spotlight haze, or dotted/star-field/micro-dot texture appears as generic atmosphere.
+- Stop if vector illustration looks amateur, arbitrary, fake scientific/botanical, lacks shape roles, or lets paths/callouts/stems/arcs cross or clip readable text.
+- Stop if Native Tooltip Ban is violated: browser-native tooltip appears over an art-directed SVG surface.
+- Stop if Annotation Protected Zone Rule is violated: leader lines, stems, arcs, or annotation rules cross readable label text.
+- Stop if Background Texture Quality Rule is violated: dot grid, star field, random noise, or vague glow reads as AI atmospheric texture.
 - Stop if decorative hairline/separator filler appears without function.
 - Stop if a mobile app with 3+ primary destinations uses desktop/top navigation without justification.
 - Stop if bottom navigation is generic, cramped, oversized, poorly aligned, or lacks safe-area support.
@@ -357,6 +367,8 @@ Remaining verification gaps:
 - Important text hard to read over image: max score 5.
 - Small text over busy image without protection: max score 5.
 - CTA/nav text weak contrast: max score 5.
+- Selected + hover makes interactive text disappear: max score 3.
+- Interactive text unreadable in hover/focus/active/selected combined states: max score 4.
 - Text readable in one viewport but failing another: max score 6.
 - Image-led UI without contrast strategy: max score 6.
 - Focal object darkened/covered until emotional impact is lost: max score 7.
@@ -401,6 +413,12 @@ Remaining verification gaps:
 - Random domain palette: max score 5.
 - Placebo navigation: max score 3.
 - Spatial label collision: max score 4.
+- Ambient light blob or dotted background texture as generic atmosphere: max score 4.
+- Amateur vector illustration or fake botanical/scientific plate: max score 4.
+- Illustration path/callout/stem/arc crosses or clips readable text: max score 3.
+- Native SVG tooltip over art-directed surface: max score 4.
+- Leader line cuts a word: max score 3.
+- Background reads as AI atmospheric texture: max score 5.
 - Primary product object buried by support cards/panels: max score 5.
 - Desktop command surface regresses into generic card soup: max score 5.
 - Artistic/landing/portfolio page uses safe AI-default muddy palette without exploration: max score 6.
@@ -420,6 +438,7 @@ Remaining verification gaps:
 - Direction options lack palette/image/layout/motion strategy: max score 6.
 - Decorative circular/orbital line overlay used as atmosphere: max score 5.
 - Nav unreadable over image/type/background: max score 4.
+- Selected nav/tab/chip/button/card hover makes text disappear: max score 3.
 - Forced app name/logo chrome without justification: max score 5.
 - Decorative separator/hairline used without function: max score 5.
 - Agent ignores selected direction during implementation: max score 5.
@@ -480,3 +499,244 @@ Hard stop: do not accept "advanced motion" from a single background animation or
 - Route to `skills/data-viz-hardening-review/SKILL.md` when long labels, many objects, no data, async states, narrow widths, or accessibility stress could break the visualization.
 - Stop if the chart/diagram is decorative, fake, clipped, label-colliding, color-only, or lacks a visible product question.
 - Stop if the canvas feels janky, overdrawn, or performance-heavy and no rendering/performance budget is documented.
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- If no signature interaction appears after award-level references, final verdict cannot be "masterpiece."
+- Generic section stack after signature references is a hard failure.
+
+## Sepia Archive Brown Regression Check
+
+During screenshot scoring, cap harshly if the muddy sepia/espresso/umber brown-black archive wash appears on page, stage, card, panel, nav, sidebar, or container surfaces.
+
+Evidence terms that do not excuse it:
+
+- nocturne
+- archive
+- field guide
+- botanical
+- brass
+- tobacco
+- parchment
+- vintage
+- cinematic
+- premium
+
+Score rule: if visible screenshot evidence shows the banned surface family, apply the `evaluation/ui-scorecard.md` max 3 cap before taste scoring.
+
+## Illustration-First Gate Screenshot Review
+
+For illustration-heavy work, require screenshot or rendered proof of the isolated hero illustration before accepting full-page screenshots as final evidence.
+
+Apply these caps:
+
+- full page built before illustration asset passes: max score 4
+- hero illustration looks amateur: max score 4
+- botanical/character/object illustration uses primitive ellipses/blobs: max score 4
+- no isolated illustration review before full page: max score 5
+- illustration-heavy project has no style guide: max score 5
+
+## No Ambient Background Blobs
+
+During screenshot scoring, cap visible generic background blobs, ghost ellipses, radial glows, random translucent ovals, fake lens shapes, generic dot/star fields, decorative orbits/HUD lines, and abstract atmosphere shapes unless they are the primary product object, part of the selected signature interaction, directly derived from an approved reference mechanic, or named in the shape inventory with role, layer, and purpose.
+
+## Native Tooltip Ban
+
+No art-directed SVG may expose browser-native tooltips over the visual surface. If a browser-native tooltip appears in screenshot review, max score 4.
+
+## Annotation Protected Zone
+
+Leader lines, annotation rules, stems, connectors, and decorative lines may never cross through label text. If a leader line cuts through text, max score 3. If labels collide with art or other labels, max score 4.
+
+## Layout Integrity Gate
+
+Text/container integrity is mandatory. Run `skills/layout-integrity-review/SKILL.md` before final handoff when screenshots exist.
+
+Screenshot contradiction beats agent self-report.
+
+Hard blockers:
+
+- any clipped text
+- any word cut inside a card, sticker, nav pill, badge, button, tab, modal, or panel
+- any nav label overflow
+- any CTA/button label clipping
+- any sticker/card/image/overlay covering headline, body, CTA, or navigation text
+- huge accidental blank viewport area
+- text overflow visible in screenshot
+
+Score caps:
+
+- critical text clipped: max score 2
+- nav label overflows item: max score 3
+- sticker/card covers headline word: max score 3
+- button/CTA text clipped: max score 3
+- unresolved text/container issue appears in screenshot: max score 3
+
+## Elite Scroll Choreography Routing
+
+When a landing, brand, portfolio, editorial, playful product, or video-first site depends on scroll as the experience, route to skills/elite-scroll-choreography-director/SKILL.md before implementation. The selected scroll pattern must appear in the visual spec, and skills/scroll-choreography-review/SKILL.md must run after implementation.
+
+Block fade-only scroll when elite scroll was requested, pinned blank frames, moving objects covering critical text, horizontal routes without mobile fallback, scroll-to-assemble claims where objects do not visibly assemble, and scroll navigation that does not sync to chapters. Run layout-integrity review after scroll-choreography review.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Emit machine-readable verdicts and repair tasks, not only prose review.
+
+Required evidence:
+- screenshots at required breakpoints, score caps, blocker list, and `templates/skill-verdict.template.json`.
+
+Repair routing:
+- creative-orchestration-director routes every failed cap to owner skills.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "screenshot-scorecard-review"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Media/Text Protected Zone Requirement
+
+For any scroll-heavy page where video/image/media objects move, pin, scale, rotate, transform, or become interface objects:
+
+Required before implementation:
+
+- docs/design/protected-zone-map.md
+- docs/design/media-object-stage-plan.md
+- docs/design/scroll-motion-spec.md
+
+The protected-zone map must identify:
+
+- critical text zones
+- media lanes
+- start rect for media object
+- end rect for media object
+- forbidden overlap zones
+- responsive fallback
+- reduced-motion fallback
+
+Hard rule:
+No moving media object may cover critical text.
+
+Review requirement:
+Scroll choreography review must inspect scroll states for media/text collision. Layout integrity review must inspect final and intermediate states where possible. Use `design-dna/media-text-protected-zone-rules.md` and the rejected Late Check FM case study at `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/` as the failure memory.
+
+Score caps to apply:
+
+- moving video/media covers critical text: max score 3
+- scroll-transformed object crosses protected text zone: max score 3
+- video-to-object transform has no protected-zone map: max score 5
+- media object is above text by z-index without readable surface: max score 4
+- screenshot shows media/text collision: max score 3
+- no scroll-state screenshots for media-heavy choreography: max score 5
+
+## Hero-Only Media Default
+
+For video-led pages, the default is:
+
+1. Use video as the hero/top-stage object.
+2. Remove or dock video after the hero unless a later state has an explicit role.
+3. Never allow persistent media overlay to cover content.
+4. Never thin content containers to fit media.
+5. If media stays visible during scroll, it must live in a reserved media lane.
+
+## Media Must Yield To Content
+
+If media and text compete:
+
+- text wins
+- CTA wins
+- navigation wins
+- content card readability wins
+- media moves, docks, shrinks, or exits
+
+The agent must not preserve a media gimmick by damaging readability.
+
+## Small-Screen Nav Clarity Requirement
+
+For every visual/product/landing/mobile page with navigation, the agent must define:
+
+- desktop nav variant
+- tablet nav variant
+- mobile/compact nav variant
+- label/icon behavior
+- active state behavior
+- accessible labels
+- hit target sizes
+- overflow behavior
+
+Compact nav must use icons or a real menu pattern. Two-letter abbreviations are not a design system.
+
+Review requirement:
+
+- screenshot-scorecard-review must inspect compact nav at 768 and 390
+- layout-integrity-review must flag abbreviation fallback as a failure
+- final-scorecard cannot pass if compact nav looks clipped, cryptic, or broken
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard
+
+## Final UI Integrity Gate v3
+
+For visual/frontend work, final UI integrity v3 is mandatory before handoff. Screenshot evidence at only one width is insufficient.
+
+Required v3 proof:
+- Test viewport matrix: 390, 430, 640, 768, 900, 1024, 1180, 1280, 1366, 1440, 1536, 1728, 1920.
+- Sample scroll positions: 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00.
+- Include applicable states: default, nav active states, selected/open detail panel, sticky/pinned active section, compact nav, and reduced motion when practical.
+- Report passed and failed sampled viewport states.
+
+Floating labels, stickers, cards, badges, props, and containers require responsive anchoring and overlap checks. Final response must not claim success if the v3 gate fails, is blocked, has blockers, has cut text, has floating overlap, has media/text collision, has nav overflow, or lacks matrix evidence.
+
+## Final UI Integrity Gate v3
+
+Final UI Integrity Gate v3 is mandatory. Fixed breakpoint-only evidence is insufficient. Width sweep evidence is required. Horizontal scroll must prove readable resting states. Floating objects must prove safe across resizing. Final response is forbidden unless the gate passes or clearly reports blocked/failed.
+
+## Mobile Bottom Navigation Requirement
+
+For mobile route/app experiences, navigation must be persistent and bottom-positioned by default. Do not accept primary mobile route navigation that appears only at the top and disappears on scroll.
+
+Screenshot review must include:
+
+- mobile nav after scrolling
+- bottom nav safe-area handling
+- active state
+- icon/label readability
+- accessible full-label strategy
+
+Score caps:
+
+- mobile route nav disappears on scroll: max score 3.
+- mobile nav is top-only for app-like route experience: max score 4.
+- compact nav has no bottom/persistent access: max score 4.
+
+## Detail Reveal Spatial Context Requirement
+
+Every selected card/item detail state must show a clear trigger/detail relationship. The selected trigger and detail panel must be connected by layout, animation, placement, or explicit selected state.
+
+Screenshot review must include at least one open detail state when detail interactions exist. Block if the detail panel appears far from the clicked object or the user cannot tell what opened it.

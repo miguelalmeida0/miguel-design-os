@@ -106,6 +106,10 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
    - nav has a designed readability strategy instead of relying on a lucky crop or scroll position
    - visible logo/app-name/initials chrome is justified instead of forced by template habit
    - decorative orbital/radar/HUD circles are absent unless explicitly functional and approved
+   - ambient light blobs, foggy radial glow, spotlight haze, and dotted/star-field texture are absent as generic atmosphere
+   - vector illustration has role, layer, bounds, anchors, text-safe zones, and does not cross or clip typography
+   - browser-native SVG tooltips are absent from the art-directed surface
+   - annotation leader lines route around labels and never cross words
    - decorative separator hairlines, red ticks, and label rails are absent unless they separate real content
    - direction options do not all repeat the same top bar
    - responsive nav is crafted for desktop, tablet, and mobile instead of squeezed
@@ -157,6 +161,7 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
    - Is every important text layer readable?
    - Is text over image protected?
    - Are small labels readable?
+   - Do interactive labels remain readable in default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled states?
    - Does contrast survive 1440 / 768 / 390?
    - Are focal objects protected from overlays?
    - Is image treatment consistent?
@@ -230,8 +235,14 @@ Ruthless elite redesign critique focused on visual thesis, composition, focal ob
 - Stop if visual-heavy work uses generic top navigation without `docs/design/navigation-strategy.md`.
 - Stop if navigation feels pasted onto the composition or competes with the hero.
 - Stop if navigation becomes unreadable over images, giant type, or changing scroll backgrounds.
+- Stop if selected+hover, selected+focus, hover, focus-visible, active, or pressed state makes an interactive label unreadable.
 - Stop if visible app-name/logo/initials chrome appears without visual-spec justification.
 - Stop if decorative circular/orbital/radar/HUD overlays appear without explicit approval and functional meaning.
+- Stop if ambient light blob, foggy radial glow, spotlight haze, or dotted/star-field/micro-dot texture appears as generic atmosphere.
+- Stop if vector illustration looks amateur, arbitrary, fake scientific/botanical, lacks shape roles, or lets paths/callouts/stems/arcs cross or clip readable text.
+- Stop if Native Tooltip Ban is violated: browser-native tooltip appears over an art-directed SVG surface.
+- Stop if Annotation Protected Zone Rule is violated: leader lines, stems, arcs, or annotation rules cross readable label text.
+- Stop if Background Texture Quality Rule is violated: dot grid, star field, random noise, or vague glow reads as AI atmospheric texture.
 - Stop if decorative separator hairlines, red lines, label rails, or ticks appear as filler.
 - Stop if an app with 3+ primary destinations uses desktop/top navigation on mobile without justification.
 - Stop if bottom navigation is cramped, oversized, poorly aligned, generic, or unsafe around gesture/safe areas.
@@ -383,6 +394,12 @@ Scorecard caps:
 - Random domain palette: max score 5.
 - Placebo navigation: max score 3.
 - Spatial label collision: max score 4.
+- Ambient light blob or dotted background texture as generic atmosphere: max score 4.
+- Amateur vector illustration or fake botanical/scientific plate: max score 4.
+- Illustration path/callout/stem/arc crosses or clips readable text: max score 3.
+- Native SVG tooltip over art-directed surface: max score 4.
+- Leader line cuts a word: max score 3.
+- Background reads as AI atmospheric texture: max score 5.
 - Primary product object buried by support cards/panels: max score 5.
 - Desktop command surface regresses into generic card soup: max score 5.
 - Dull robotic palette despite expressive references: max score 5.
@@ -424,6 +441,8 @@ Scorecard caps:
 - Important text hard to read over image: max score 5.
 - Small text over busy image without protection: max score 5.
 - CTA/nav text weak contrast: max score 5.
+- Selected + hover makes interactive text disappear: max score 3.
+- Interactive text unreadable in hover/focus/active/selected combined states: max score 4.
 - Text readable in one viewport but failing another: max score 6.
 - Image-led UI without contrast strategy: max score 6.
 - Focal object darkened/covered until emotional impact is lost: max score 7.
@@ -478,3 +497,240 @@ Stop condition: if Migi asked for advanced/cinematic/artistic motion and the res
 - A visually beautiful chart or diagram still fails if users cannot read labels, units, scale, state, or what changed after selection.
 - Canvas beauty is irrelevant if performance feels heavy. Dense SVG/DOM labels, repeated shadows/filters/glows, and unbudgeted pan/zoom/drag interactions are review blockers.
 - When a runnable spatial UI exists, require diagram integrity evidence from `tools/diagram-integrity-check.mjs` or an explicit blocked report.
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- If no signature interaction appears after award-level references, final verdict cannot be "masterpiece."
+- Generic section stack after signature references is a hard failure.
+
+## Sepia Archive Brown Regression Check
+
+Migi explicitly rejects the muddy sepia/espresso/umber brown-black archive wash.
+
+Flag and stop if:
+
+- page, stage, card, panel, container, sidebar, nav, or framed object surfaces use that brown-black family
+- the palette is justified as nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium
+- beige/cream strokes, brass lines, muted purple, or botanical/vector decoration are used to make the banned brown feel intentional
+
+Correction: redesign the palette before continuing. Preserve useful composition only if it survives without the brown-black archive wash.
+
+## Illustration-First Gate Review
+
+For illustration-heavy work, stop the review if the full page was built before isolated illustration assets passed review.
+
+Required evidence:
+
+- `docs/design/illustration-art-direction.md`
+- `docs/design/illustration-style-guide.md`
+- `docs/design/illustration-asset-options.md`
+- isolated hero illustration component or SVG
+- `docs/qa/illustration-gate-review.md`
+
+Score caps:
+
+- full page built before illustration asset passes: max score 4
+- hero illustration looks amateur: max score 4
+- botanical/character/object illustration uses primitive ellipses/blobs: max score 4
+- no isolated illustration review before full page: max score 5
+- illustration-heavy project has no style guide: max score 5
+
+## No Ambient Background Blobs
+
+Reject large vague background blobs, ghost ellipses, generic radial glows, random translucent ovals, fake lens shapes, generic dot/star fields, decorative orbits/HUD lines, and abstract atmosphere shapes unless they are the primary product object, part of the selected signature interaction, directly derived from an approved reference mechanic, or explicitly named in the shape inventory with role, layer, and purpose.
+
+## Botanical / Organic Illustration Minimum Bar
+
+Botanical, animal, human, and organic illustrations require reference grammar, silhouette study, linework strategy, detail budget, material/texture strategy, simplification strategy, and believable subject logic. Primitive botanical illustration or repeated ellipse leaves as hero art cap at max score 4.
+
+## Layout Integrity Gate
+
+Text/container integrity is mandatory. Layout-integrity-review must run before final handoff for visual-heavy pages, landing pages, product UIs, custom nav, stickers/cards/badges/overlays, large display type, and scroll/sticky/pinned experiences.
+
+Screenshot contradiction beats agent self-report.
+
+Block if:
+
+- any critical text is clipped
+- any nav text overflows its item
+- card/sticker/overlay covers headline text
+- button/CTA text is clipped
+- huge blank area is accidental
+- user complaint remains visible
+
+Stickers, cards, images, decorative objects, and overlays require protected text zones. Huge accidental blank space is a hard blocker, not a taste issue.
+
+## Elite Scroll Choreography Routing
+
+When a landing, brand, portfolio, editorial, playful product, or video-first site depends on scroll as the experience, route to skills/elite-scroll-choreography-director/SKILL.md before implementation. The selected scroll pattern must appear in the visual spec, and skills/scroll-choreography-review/SKILL.md must run after implementation.
+
+Block fade-only scroll when elite scroll was requested, pinned blank frames, moving objects covering critical text, horizontal routes without mobile fallback, scroll-to-assemble claims where objects do not visibly assemble, and scroll navigation that does not sync to chapters. Run layout-integrity review after scroll-choreography review.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Calibrate subjective taste against references and visible evidence.
+
+Required evidence:
+- reference anchors, screenshot evidence, scoring rationale, and concrete examples of the desired move.
+
+Repair routing:
+- landing/image/style/vector/motion specialists own fixes by failure class.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "frontend-art-director-review"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Elite Experience Specialist Routing
+
+When a selected direction or reference asks for elite craft beyond broad signature/scroll planning, route the smallest relevant specialist:
+
+- scroll-physics-smoothing-director for smoothing, scrub, lerp, snap, settle, velocity, touch behavior, mobile fallback, reduced motion, and scroll performance.
+- media-object-stage-director when video/image/media is the primary object: hero, mask, sticky object, poster, portal, card, broadcast tile, or detail view.
+- physical-interface-props-director for stickers, tickets, labels, stamps, keycards, rails, pins, tabs, and tactile cards.
+- designed-detail-reveal-director for drawers, panels, sleeves, split views, object pull-outs, station boards, and ritual selectors.
+- brand-voice-as-interface-director when CTAs, nav labels, cards, reviews, states, or microcopy must carry brand voice without losing clarity.
+
+Blockers to flag: raw/jittery scroll, media used as generic background when object staging is required, prop text clipping, default modal where a designed reveal is required, and generic SaaS/hotel/template copy on a playful or brand-led site.
+
+## Media/Text Protected Zone Requirement
+
+For any scroll-heavy page where video/image/media objects move, pin, scale, rotate, transform, or become interface objects:
+
+Required before implementation:
+
+- docs/design/protected-zone-map.md
+- docs/design/media-object-stage-plan.md
+- docs/design/scroll-motion-spec.md
+
+The protected-zone map must identify:
+
+- critical text zones
+- media lanes
+- start rect for media object
+- end rect for media object
+- forbidden overlap zones
+- responsive fallback
+- reduced-motion fallback
+
+Hard rule:
+No moving media object may cover critical text.
+
+Review requirement:
+Scroll choreography review must inspect scroll states for media/text collision. Layout integrity review must inspect final and intermediate states where possible. Use `design-dna/media-text-protected-zone-rules.md` and the rejected Late Check FM case study at `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/` as the failure memory.
+
+Score caps to apply:
+
+- moving video/media covers critical text: max score 3
+- scroll-transformed object crosses protected text zone: max score 3
+- video-to-object transform has no protected-zone map: max score 5
+- media object is above text by z-index without readable surface: max score 4
+- screenshot shows media/text collision: max score 3
+- no scroll-state screenshots for media-heavy choreography: max score 5
+
+## Hero-Only Media Default
+
+For video-led pages, the default is:
+
+1. Use video as the hero/top-stage object.
+2. Remove or dock video after the hero unless a later state has an explicit role.
+3. Never allow persistent media overlay to cover content.
+4. Never thin content containers to fit media.
+5. If media stays visible during scroll, it must live in a reserved media lane.
+
+## Media Must Yield To Content
+
+If media and text compete:
+
+- text wins
+- CTA wins
+- navigation wins
+- content card readability wins
+- media moves, docks, shrinks, or exits
+
+The agent must not preserve a media gimmick by damaging readability.
+
+## Small-Screen Nav Clarity Requirement
+
+For every visual/product/landing/mobile page with navigation, the agent must define:
+
+- desktop nav variant
+- tablet nav variant
+- mobile/compact nav variant
+- label/icon behavior
+- active state behavior
+- accessible labels
+- hit target sizes
+- overflow behavior
+
+Compact nav must use icons or a real menu pattern. Two-letter abbreviations are not a design system.
+
+Review requirement:
+
+- screenshot-scorecard-review must inspect compact nav at 768 and 390
+- layout-integrity-review must flag abbreviation fallback as a failure
+- final-scorecard cannot pass if compact nav looks clipped, cryptic, or broken
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard
+
+## Final UI Integrity Gate v3
+
+For visual/frontend work, final UI integrity v3 is mandatory before handoff. Screenshot evidence at only one width is insufficient.
+
+Required v3 proof:
+- Test viewport matrix: 390, 430, 640, 768, 900, 1024, 1180, 1280, 1366, 1440, 1536, 1728, 1920.
+- Sample scroll positions: 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00.
+- Include applicable states: default, nav active states, selected/open detail panel, sticky/pinned active section, compact nav, and reduced motion when practical.
+- Report passed and failed sampled viewport states.
+
+Floating labels, stickers, cards, badges, props, and containers require responsive anchoring and overlap checks. Final response must not claim success if the v3 gate fails, is blocked, has blockers, has cut text, has floating overlap, has media/text collision, has nav overflow, or lacks matrix evidence.
+
+## Final UI Integrity Gate v3
+
+Final UI Integrity Gate v3 is mandatory. Fixed breakpoint-only evidence is insufficient. Width sweep evidence is required. Horizontal scroll must prove readable resting states. Floating objects must prove safe across resizing. Final response is forbidden unless the gate passes or clearly reports blocked/failed.
+
+## Mobile Bottom Navigation Requirement
+
+For mobile route/app experiences, navigation must be persistent and bottom-positioned by default. A visually strong mobile page still fails if route navigation is placed only at the top and disappears during scroll.
+
+Final art-direction review must check:
+
+- mobile nav visibility after scroll
+- thumb-reachable bottom placement or approved bottom-accessible alternative
+- safe-area handling
+- active route clarity
+- accessible full labels
+
+## Detail Reveal Spatial Context Requirement
+
+Every card/item/detail interaction must preserve spatial context. The selected trigger and detail panel must be connected by layout, animation, placement, or explicit selected state.
+
+Final review must reject detail reveals that feel lost from the clicked object, open in unrelated page regions, or require the user to visually search for the revealed content.

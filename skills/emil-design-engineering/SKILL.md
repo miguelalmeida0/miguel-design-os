@@ -80,3 +80,19 @@ Valid purposes: feedback, spatial consistency, state transition, hierarchy, stor
 ## Advanced Motion Craft Lens
 
 For award-level motion, invisible craft includes timing relationships across the whole page. Check whether the implementation has page/section, image/media, typography, navigation/menu, and micro-feedback layers, and whether those layers feel cohesive rather than scattered.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Differentiate as component-level craft repair.
+
+Required evidence:
+- component-level findings, accessibility/performance notes, interaction states, and exact code targets.
+
+Repair routing:
+- specialist skills own domain decisions; emil-design-engineering owns small component craft fixes.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "emil-design-engineering"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

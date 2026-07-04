@@ -389,6 +389,22 @@ Signs:
 - safe neutral surfaces with one predictable accent
 - dull gradients that feel like AI filler
 
+## Rejected: Sepia Archive Brown Surface Wash
+
+Description:
+A design uses muddy sepia, espresso, umber, tobacco, parchment, or brown-black archive surfaces for pages, hero stages, cards, panels, containers, sidebars, nav, or framed objects.
+
+Why rejected:
+
+- Migi explicitly rejected this exact generated-app palette family
+- it keeps returning across unrelated projects
+- it makes the UI feel stale, dirty, and machine-generated
+- it hides behind "archive", "nocturne", "field guide", "botanical", "brass", "vintage", or "premium" language
+- it weakens otherwise strong typography, composition, and interaction ideas
+
+Correction:
+Remove the brown-black archive wash entirely from major surfaces. Replace it with a concept-specific palette such as ink blue, aubergine-black, deep green-black, mineral grey, true black/cream, cold moonlit blue, oxidized red, chrome blue, or another reference-driven contrast-tested system.
+
 Correction:
 
 Create a palette from the concept, imagery, references, and mood. Explore bolder and more specific color systems while preserving readability and contrast.

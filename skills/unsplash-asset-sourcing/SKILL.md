@@ -161,3 +161,19 @@ Remaining image risks:
 - Broken remote image URL: max score 4.
 - Missing alt text for meaningful image: max score 6.
 - Stock imagery fights selected palette: max score 6.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Become an asset pipeline, not only Unsplash lookup.
+
+Required evidence:
+- role/query/orientation/source/license/crop/alt/product-truth manifest for every asset source.
+
+Repair routing:
+- image-first-frontend owns placement repairs; truthful-state-product-naming owns proof claims.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "unsplash-asset-sourcing"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

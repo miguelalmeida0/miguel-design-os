@@ -2,6 +2,20 @@
 
 Use the smallest useful skill set. Skills are specialists, not a pile of prompt text to load every time.
 
+## Orchestration / Self-Correction
+
+Use `creative-orchestration-director` when the task spans multiple skills, a critique must become fixes, a dogfood finding needs Design OS repair, or Migi asks to improve the skill system.
+
+Required loop:
+
+1. Route the smallest specialist chain.
+2. Create/update creative state.
+3. Require evidence or a blocked-evidence note.
+4. Normalize results into `templates/skill-verdict.template.json`.
+5. Convert failures into `templates/reports/repair-task-queue.template.md`.
+6. Assign an owner skill and acceptance check for each repair.
+7. Re-run the evidence gate that found the issue.
+
 ## New Visual-Heavy App
 
 1. No-Image Fast Direction Gate by default: read `design-dna/NO_IMAGE_DIRECTION_GATE_CONTEXT.md` and `design-dna/FAST_DIRECTION_GATE_CONTEXT.md`, create `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`, then stop.
@@ -16,9 +30,10 @@ Use the smallest useful skill set. Skills are specialists, not a pile of prompt 
 10. `anti-ai-slop-review` / `anti-ai-tell-preflight`
 11. `text-clarity-review` when copy-heavy product UI exists
 12. `production-hardening-review` before calling product UI production-ready
-13. `evidence-backed-critique` for full post-build critique
-14. `make-interfaces-feel-better`
-15. `review-animations` if motion code exists
+13. `final-ui-integrity-gate` before final handoff
+14. `evidence-backed-critique` for full post-build critique
+15. `make-interfaces-feel-better`
+16. `review-animations` if motion code exists
 
 Deep Direction Gate is opt-in only for deep exploration, full strategy, full spec, research, benchmark, or reference decomposition.
 
@@ -76,6 +91,12 @@ Use when real imagery is needed, image-first frontend is active, landing pages d
 1. `oklch-contrast-palette`
 2. `design-intelligence/color-guidance.md`
 3. `screenshot-scorecard-review`
+
+## Vector / Illustration / Texture
+
+1. Global `vector-form-system-director` for SVG, vector forms, abstract shapes, masks, clipping, illustration systems, callouts, shape-heavy landing pages, and texture-heavy visual stages.
+2. `visual-spec-compiler` must require Texture / Illustration Role Inventory, shape inventory, layer stack, bounds, anchors, responsive behavior, accessibility/decorative status, and text-safe zones.
+3. `screenshot-scorecard-review` must reject ambient light blobs, foggy radial glows, dotted/star-field/micro-dot texture, amateur vector illustration, fake botanical/scientific plates, and any illustration path crossing or clipping readable text.
 
 ## Figma Work
 
@@ -150,3 +171,125 @@ Do not merge these yet. Route them intentionally.
 - `data-visualization-selection` chooses chart types from data shape and user decision.
 - `diagram-canvas-system` defines spatial canvas coordinate/layer/object/label/collision/selection models.
 - `data-viz-hardening-review` stress-tests implemented charts, diagrams, labels, legends, tooltips, axes, and canvases.
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- Generic section stack after signature references is a hard failure.
+
+## Illustration-First Gate
+
+For illustration-heavy work, route in this order:
+1. `skills/illustration-art-director/SKILL.md`
+2. `skills/svg-illustration-system/SKILL.md` when SVG/vector implementation is planned
+3. isolated asset review through `skills/illustration-quality-review/SKILL.md`
+4. Migi approval or explicit pass when required
+5. full page build
+
+Do not route directly from brief to full page if custom illustration is the visual hero.
+
+Use `templates/prompts/illustration-first-gate.md` or `templates/prompts/asset-first-illustration-test.md` before implementation.
+
+## Background Atmosphere Routing
+
+When a design includes background atmosphere, blobs, glows, ellipses, dot fields, grain, or material texture, consult `design-dna/background-atmosphere-rules.md`. Generic ambient background blobs are rejected unless they are primary objects, selected signature-interaction objects, approved reference-derived mechanics, or named shape-inventory items with role, layer, and purpose.
+
+## Layout Integrity Gate
+
+For all implemented visual-heavy pages, landing pages, product UIs, mobile flows, pages with custom nav, sticker/card/badge/overlay systems, large display type, and scroll/sticky/pinned experiences, route `skills/layout-integrity-review/SKILL.md` before final handoff.
+
+Use after screenshot evidence exists. If a runnable URL exists, run `tools/layout-integrity-check.mjs --url <url> --out docs/qa/layout-integrity/ --width-sweep 360:1920:40 --heights 720,844,900,1080` or document why blocked.
+
+Required post-build order:
+1. screenshot-scorecard-review
+2. layout-integrity-review
+3. interaction-verification
+4. text-clarity-review
+5. production-hardening-review
+6. anti-ai-slop-review
+7. final-ui-integrity-gate
+8. final-scorecard
+
+## Final UI Integrity Gate
+
+For every frontend implementation, landing page, app redesign, visual-heavy page, scroll/motion-heavy page, mobile/product UI, custom navigation page, or page with media/cards/stickers/labels/overlays/custom typography, route `skills/final-ui-integrity-gate/SKILL.md` before final handoff.
+
+Final UI Integrity Gate v3 must sample a width sweep from `360` to `1920` in `40px` steps or smaller when practical, height samples `720, 844, 900, 1080`, scroll samples `0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00`, and applicable interaction states. Fixed breakpoint-only screenshots cannot pass the final gate.
+
+Relationship:
+
+- `screenshot-scorecard-review` reviews screenshot quality and score caps.
+- `layout-integrity-review` reviews layout/text/container risk.
+- `final-ui-integrity-gate` is the fail-closed final gate after screenshots and layout review.
+
+If final UI integrity is failed or blocked, the agent must fix the UI and rerun validation before responding. A failed gate forbids a passed final verdict. Viewport-edge clipping, horizontal partial content, floating-object drift, and blank scroll states are blockers. Follow `agent-workflows/fail-closed-final-handoff-contract.md` for final response fields and blocked/failed handoff behavior.
+
+## Agent Skill Layer V2 Routing
+
+For nontrivial design/frontend work, route in this order:
+
+1. `creative-session-state-manager` to establish live context and artifact graph.
+2. `failure-memory-retrieval-router` to retrieve rejected evidence and active score caps.
+3. `skill-orchestration-planner` to choose the smallest sufficient skill DAG.
+4. `reference-grammar-compiler` if references guide the work.
+5. `preference-model-migi-taste-learner` after explicit Migi feedback or postmortem signals.
+6. `responsive-constraint-solver` before implementation when layout/nav/text/container risk exists.
+7. `interaction-state-matrix-director` before implementation for stateful controls.
+8. `creative-prototype-spike-director` before full-page build when a risky creative mechanic must be proven.
+9. Existing specialist implementation/review skills.
+10. `evidence-to-repair-planner` after findings.
+11. `artifact-contract-validator` before final handoff.
+
+Do not use the new layer to add paperwork. Use it to preserve memory, select skills, prevent known failures earlier, repair from evidence, and block false completion.
+
+## Elite Scroll Choreography
+
+Use elite-scroll-choreography-director when Migi asks for elite, Awwwards, million-dollar, original, authored, or memorable scroll experiences; when references include Stiff-like routes, Bucks-like card assembly, Wembi-like list/detail reveals, Podium-like portal/media stages, Don’t Board Me-like directional transitions, or Bunk Radio-like video-first interfaces; or when a page feels like static sections but should travel, assemble, open, dock, settle, or transform.
+
+Routing order:
+1. signature-interaction-director selects the memorable mechanic when needed.
+2. elite-scroll-choreography-director creates the route/chapter/timeline/fallback plan.
+3. implementation with data hooks when runnable.
+4. scroll-choreography-review after implementation.
+5. layout-integrity-review after scroll review.
+6. benchmark with evaluation/benchmarks/elite-scroll-choreography.benchmark.md when scroll is central.
+
+Do not accept fade-only scrolling, blank pinned stages, moving objects covering text, media/video objects covering protected text, persistent video overlays without reserved lanes, content containers thinned to fit media, horizontal routes without mobile fallback, unsynced chapter nav, or missing reduced-motion fallback. Use `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/` as the rejected reference for media/text collision and `visual-library/rejected/case-studies/late-check-fm-persistent-video-overlay-container-thinning/` as the rejected reference for persistent video overlay and container-thinning failures.
+
+## Elite Experience Specialists
+
+Use these after signature-interaction-director or elite-scroll-choreography-director identifies a richer craft need:
+
+1. scroll-physics-smoothing-director: scroll engine, smoothing, scrub, lerp, snap, settle, velocity, touch behavior, mobile fallback, reduced motion, and performance budget.
+2. media-object-stage-director: media as hero, crop, mask, sticky object, poster, portal, card, broadcast tile, or detail view with crop/safe-zone/fallback/state map, protected text zones, reserved media lanes, and forbidden overlap zones.
+
+For scroll/media-heavy UI, required artifacts are `docs/design/protected-zone-map.md`, `docs/design/media-object-stage-plan.md`, and `docs/design/scroll-motion-spec.md`. Read `design-dna/media-text-protected-zone-rules.md`, `design-dna/video-media-placement-rules.md`, and `design-dna/text-container-integrity-rules.md`. Run scroll choreography review and then layout integrity review with scroll-state screenshots.
+
+Hero-only media default: use video in the top stage unless a later state has an explicit role. If media stays visible after hero, it must be docked, reserved in a media lane, or converted to a static poster/thumb. Content wins over media; never preserve a media gimmick by making cards narrow or text unreadable.
+3. physical-interface-props-director: tactile stickers, labels, tickets, stamps, keycards, rails, tabs, pins, and cards with role, material, text-fit, and protected zones.
+4. designed-detail-reveal-director: non-default drawers, panels, sleeves, split views, object pull-outs, station boards, and ritual selectors with state, focus, close, keyboard, and responsive fallback.
+5. brand-voice-as-interface-director: CTAs, nav labels, cards, reviews, detail panels, empty/loading/error states, and microcopy as authored interface voice.
+
+## Anchored Detail Reveal Routing
+
+Route `skills/designed-detail-reveal-director/SKILL.md` when cards, rows, objects, stations, media tiles, service items, work items, or route rooms open detail panels.
+
+Use `design-dna/anchored-detail-reveal-rules.md`, `templates/checklists/anchored-detail-reveal-checklist.md`, and `templates/reports/anchored-detail-reveal-report.md`.
+
+Final review must block when the detail panel is disconnected from the clicked trigger, selected state is unclear, the panel opens below the fold without focus/scroll, or a default modal appears where a designed reveal was required.
+
+## Mobile Bottom Navigation Routing
+
+Route `skills/mobile-product-flow/SKILL.md`, `skills/layout-integrity-review/SKILL.md`, and `skills/final-ui-integrity-gate/SKILL.md` for mobile route/app experiences, scroll-heavy chapter sites, interactive landing pages with stations/sections, and pages with 3+ primary destinations.
+
+Use `design-dna/mobile-navigation-defaults.md`, `design-dna/navigation-responsiveness-rules.md`, `templates/checklists/mobile-bottom-nav-checklist.md`, and `templates/reports/mobile-bottom-nav-report.md`.
+
+Final review must block when mobile route navigation appears only at the top, disappears on scroll, lacks bottom-accessible route control, lacks safe-area handling, or loses full accessible labels.
+
+Do not use all five by default. Route only the specialist that matches the selected mechanic or observed failure.

@@ -150,3 +150,19 @@ Maximum 200 words per direction.
 ## Critical Rule
 
 Generated images are visual north stars, not production assets by default. Do not copy random AI artifacts, fake UI text, nonsense logos, distorted hands, broken text, or visual noise directly into code.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Keep legacy paid generation disabled and route no-image fallback.
+
+Required evidence:
+- explicit paid approval check, blocked report when missing, and no-image direction gate fallback.
+
+Repair routing:
+- visual-concept-gate owns normal direction work.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "design-start-image-exploration"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

@@ -106,3 +106,19 @@ Remaining truth risks:
 - Do not hide local-only or session-only behavior.
 - Do not let counts, Memory, summaries, or generated outputs contradict each other.
 - Do not change auth behavior beyond the requested scope unless needed to prevent a visible crash.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Move trust rules into central state/copy contracts.
+
+Required evidence:
+- state source, persistence scope, mock/local/session disclosure, claim audit, and UI copy targets.
+
+Repair routing:
+- text-clarity-review owns wording; production-hardening-review owns missing states.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "truthful-state-product-naming"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

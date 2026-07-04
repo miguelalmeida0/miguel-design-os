@@ -347,6 +347,7 @@ Detect:
 
 - Palette feels dull, robotic, generic, or emitted by a template.
 - Terminal green, neon lime, AI purple, or generic blue/grey appears by default.
+- Muddy sepia, espresso, umber, brown-black, tobacco, or stale parchment appears as the default page, card, container, sidebar, or navigation background.
 - One accent color is used everywhere.
 - Surfaces lack roles: base, raised, quiet, active, image/media, data, danger, and success.
 
@@ -358,11 +359,35 @@ Correction:
 
 Define a human palette direction from references or product mood. Limit accent roles, vary surface material, and use state colors only when they clarify behavior.
 
+## Anti-Pattern: Sepia Espresso Surface Wash
+
+Detect:
+
+- Page background, panels, cards, containers, nav bars, sidebars, or large framed stages use a muddy sepia/espresso/umber brown-black wash by default.
+- The palette reads like old coffee, tobacco, stale parchment, dirty bronze, dark olive-brown, or generated-app “nocturne” brown.
+- The color appears repeatedly across unrelated projects, especially landing/editorial/portfolio screens.
+- The UI tries to make the color feel premium by adding beige text, brass lines, muted purple, cream strokes, or botanical/vector decoration.
+- The design cannot explain why that brown family belongs to the product domain, environment, task pressure, or reference anchors.
+- The design tries to rename the same banned color as archive, nocturne, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
+
+Why it fails:
+
+Migi has explicitly rejected this recurring generated palette. It makes unrelated products feel the same, flattens contrast, dirties the mood, and turns artistic layouts into AI-default sepia theater.
+
+Correction:
+
+Remove the sepia/espresso/umber wash from major surfaces. Choose a palette from the product domain, selected references, or a fresh art-direction thesis. If a warm dark palette is truly needed, use a distinct color strategy such as aubergine-black, ink blue, deep green-black, mineral grey, clean black/white, or a reference-specific palette with documented OKLCH/APCA contrast. Do not rescue the banned palette by giving it a poetic label.
+
+Hard rule:
+
+For Migi work, sepia/espresso/umber brown-black archive wash is not a default, not a safe refined option, not a high-character option, and not an acceptable "nocturne" shortcut. If it appears as a large background/stage/card surface, stop and redesign the palette before continuing.
+
 ## Anti-Pattern: Safe AI Palette Default
 
 Detect:
 
 - Artistic, landing, portfolio, cinematic, creative, or experimental page uses muddy brown, dull charcoal, beige, grey-blue, orange accent, purple glow, terminal green, neon lime, or one predictable safe accent.
+- Artistic/editorial UI uses the banned sepia/espresso/umber brown-black wash as its main surface color.
 - Palette exploration is missing.
 - Palette feels readable but conceptually boring.
 - Image colors and UI colors do not feel intentionally composed.
@@ -1272,6 +1297,64 @@ Blockers:
 Correction:
 Remove the circular overlay. Use image composition, object-led layout, full-canvas typography, clean negative space, material surface, photographic atmosphere, color field, motion reveal, or a functional diagram only when the circle has meaning.
 
+## Anti-Pattern: AI Ambient Light Blob
+
+Description:
+A UI adds a blurred radial light blob, foggy glow, soft spotlight smear, or vague haze to make the page feel cool, advanced, textured, or cinematic.
+
+Detect:
+
+- a central or corner glow with no visible light source
+- a muddy fog spot sitting behind typography or illustration
+- a blurred blob used as the main background event
+- "advanced" atmosphere created by haze instead of composition, object, image, material, or motion
+- the blob appears across unrelated products with no domain reason
+
+Why bad:
+It is a default AI-builder move. It makes the page look generated, hides weak composition, dirties contrast, and usually has no relationship to the product or scene.
+
+Correction:
+Remove the blob. Build atmosphere through a real product object, image environment, authored color field, material surface, functional lighting, typography composition, or meaningful motion. If lighting exists, document the source, direction, layer, and text-safety impact.
+
+## Anti-Pattern: Decorative Dotted Background Texture
+
+Description:
+A page uses dotted, star-field, micro-dot, stipple, perforated, matrix, or grid-like background texture as generic atmosphere.
+
+Detect:
+
+- evenly repeated dots across a dark or gradient background
+- dots used to make an empty surface feel technical or premium
+- dot field has no data, grid, navigation, measurement, brand, or material meaning
+- texture repeats across unrelated designs
+- background pattern competes with typography or lowers perceived polish
+
+Why bad:
+The dotted field is another generated-app default. It reads like placeholder texture, not art direction, and often makes the UI feel amateur or noisy.
+
+Correction:
+Remove the dot texture. Use clean negative space, a real material texture, an image environment, a domain-specific pattern requested by Migi, or a functional grid/data layer only when it has a declared role and proof.
+
+## Anti-Pattern: Amateur Illustration Text Collision
+
+Description:
+An illustration or vector form system looks childish, arbitrary, or unmodeled, and its lines, stems, arcs, masks, callouts, or shapes cross through readable words or clip text.
+
+Detect:
+
+- fake botanical/scientific plates, arbitrary leaves, childish stems, or unstable curves
+- oversized vector paths with no role, layer, bounds, anchors, or responsive behavior
+- callout lines, stems, arcs, masks, or shape edges crossing words
+- labels clipped by the viewport, parent overflow, masks, or illustration layer
+- decorative illustration dominates without a shape inventory or layer model
+- typography is treated as scenery instead of protected content
+
+Why bad:
+Premium editorial illustration requires discipline. Amateur vector work makes the product feel childish, and text collisions destroy the user's ability to read the page.
+
+Correction:
+Use `vector-form-system-director` before implementation. Produce a shape inventory, role map, layer stack, geometry model, label-safe zones, callout routes, and responsive fallback. If the illustration cannot protect text, remove it.
+
 ## Anti-Pattern: Unreadable Navigation Over Background
 
 Description:
@@ -1282,6 +1365,26 @@ Navigation is only premium when it is usable. If labels disappear in one scroll 
 
 Correction:
 Use a designed readability strategy: safe zone, subtle surface, blur, scrim, adaptive inverse text, position shift, contextual nav zone, menu collapse, or non-overlapping placement. Verify scroll states.
+
+## Anti-Pattern: Selected Hover Contrast Collapse
+
+Description:
+An interactive control is readable at rest, but a combined state makes the label vanish. The common failure is a selected nav item, tab, chip, segmented control, card, menu item, or button whose hover state changes the surface, opacity, blend mode, or inherited color until the selected label disappears.
+
+Detect:
+
+- selected + hover text becomes the same lightness or color family as the selected surface
+- selected item looks like an empty pill or blank highlighted region on hover
+- focus-visible or keyboard state reduces label contrast
+- active/pressed state hides text behind opacity, blur, mask, or blend mode
+- CSS tokens only define default, hover, and selected separately, with no combined selected+hover or selected+focus proof
+- screenshot QA captures the resting state only and misses pointer/keyboard states
+
+Why bad:
+The selected state is supposed to tell the user where they are. If hover or focus makes the selected label disappear, the UI stops being navigable and the state system cannot be trusted.
+
+Correction:
+Define a State Contrast Matrix for every interactive control: default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled. Use foreground/background token pairs that preserve readable contrast in every combined state. If a visual reward conflicts with legibility, change the reward, not the text.
 
 ## Anti-Pattern: Forced Brand Chrome
 
@@ -1341,3 +1444,48 @@ Why rejected:
 
 Correction:
 Give add actions a clearly different affordance: plus icon, dashed action surface, distinct action color, floating action button, separate CTA row, or a dedicated empty-state/create module.
+
+## Anti-Pattern: Full Page Before Illustration Proof
+
+Description:
+An illustration-heavy site is implemented as a full page before the hero illustration or custom SVG asset has passed an isolated review.
+
+Why rejected:
+
+- hides amateur drawing inside layout polish
+- turns visual quality into a late-stage cleanup problem
+- creates "requirements fulfilled" success without art direction
+- makes the signature interaction depend on weak assets
+
+Correction:
+Run the Illustration-First Gate, create 1 to 3 isolated illustration assets, write the style guide and QA review, and stop until the asset passes or Migi explicitly approves continuing.
+
+## Anti-Pattern: Ambient Background Blob
+
+Description:
+Large vague background blobs, ghost ellipses, radial glows, translucent ovals, fake lenses, dot/star fields, or decorative orbits are used as generic atmosphere.
+
+Why rejected:
+
+- reads as AI decoration
+- competes with primary content
+- has no object role or interaction purpose
+- makes weak composition look busy instead of better
+
+Correction:
+Remove the blob. Use material-specific texture, photographic grain, scan texture, ink speckle, surface wear, or a purposeful object tied to the selected signature interaction.
+
+## Anti-Pattern: Primitive Botanical Hero Art
+
+Description:
+Botanical or organic hero illustration is made from repeated ellipses, generic petals, flat doodle stems, copy-paste leaves, or scaled-up icons.
+
+Why rejected:
+
+- looks childlike
+- fails premium/editorial standards
+- cannot carry a hero or signature interaction
+- lacks species-specific silhouette and believable structure
+
+Correction:
+Extract reference grammar, define species silhouette, linework, detail budget, material/texture strategy, and botanical label safe zones before drawing.

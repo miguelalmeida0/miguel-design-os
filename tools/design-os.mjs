@@ -21,7 +21,8 @@ const paths = {
   visualQaReportTemplate: "templates/visual-qa-report.template.json",
   screenshotComparisonReportTemplate: "templates/screenshot-comparison-report.template.json",
   objectSwapReportTemplate: "templates/object-swap-report.template.json",
-  motionSequenceReportTemplate: "templates/motion-sequence-report.template.json"
+  motionSequenceReportTemplate: "templates/motion-sequence-report.template.json",
+  skillVerdictTemplate: "templates/skill-verdict.template.json"
 };
 
 const visualAgents = [
@@ -141,6 +142,34 @@ const requiredDoneReportFields = [
   "screenshots",
   "screenshotReportPath",
   "visualQa",
+  "finalUiIntegrityGateRun",
+  "finalUiIntegrityGateVersion",
+  "finalUiIntegrityVerdict",
+  "finalUiIntegrityBlockers",
+  "widthSweepTested",
+  "heightMatrixTested",
+  "viewportMatrixTested",
+  "scrollSamplesTested",
+  "interactionStatesTested",
+  "finalUiIntegrityBlockerCount",
+  "finalUiIntegrityScreenshotDir",
+  "failedViewportStates",
+  "passedViewportStates",
+  "clippedTextRemaining",
+  "textClipRemaining",
+  "overlapRemaining",
+  "floatingOverlapRemaining",
+  "viewportEdgeClippingRemaining",
+  "floatingObjectDriftRemaining",
+  "horizontalScrollPartialContentRemaining",
+  "blankScrollStateRemaining",
+  "mediaTextCollisionRemaining",
+  "navOverflowRemaining",
+  "fixedOverlayCollisionRemaining",
+  "accidentalWhitespaceRemaining",
+  "finalHandoffAllowed",
+  "screenshotEvidence",
+  "finalVerdict",
   "interactionQa",
   "assetQa",
   "targetCopyQa",
@@ -150,6 +179,11 @@ const requiredDoneReportFields = [
   "blockers",
   "finalStatus"
 ];
+
+const finalUiIntegrityV2ViewportMatrix = [390, 430, 640, 768, 900, 1024, 1180, 1280, 1366, 1440, 1536, 1728, 1920];
+const finalUiIntegrityV2ScrollSamples = [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9, 1];
+const finalUiIntegrityV3WidthSweep = Array.from({ length: ((1920 - 360) / 40) + 1 }, (_, index) => 360 + (index * 40));
+const finalUiIntegrityV3HeightMatrix = [720, 844, 900, 1080];
 
 const requiredTargetCopyFields = [
   "targetScreens",
@@ -220,7 +254,10 @@ const requiredInspirationReferenceFields = [
 
 const validDoneModes = new Set(["visual-concept", "literal-target-copy", "visual-repair", "implementation", "review"]);
 const validFinalStatuses = new Set(["done", "blocked", "needs-work"]);
+const validFinalUiIntegrityVerdicts = new Set(["passed", "partial", "failed", "blocked"]);
 const validApprovalStatuses = new Set(["pending", "approved", "rejected"]);
+const validSkillVerdictStatuses = new Set(["pass", "needs-repair", "blocked", "not-applicable"]);
+const validSkillRepairPriorities = new Set(["P0", "P1", "P2"]);
 const validAssetRoles = new Set(["production", "reference", "temporary", "source"]);
 const validAssetSourceTypes = new Set(["official", "press", "Wikimedia", "provided", "generated", "unknown"]);
 const validReferenceTypes = new Set(["inspiration", "literal-target", "anti-pattern"]);
@@ -311,9 +348,32 @@ const promptTemplates = new Map([
   ["spec-only-direction-gate", "templates/prompts/spec-only-direction-gate.md"],
   ["implementation-after-selected-direction", "templates/prompts/implementation-after-selected-direction.md"],
   ["postmortem-ingestion", "templates/prompts/postmortem-ingestion.md"],
+  ["creative-orchestration-director", "templates/prompts/creative-orchestration-director.md"],
   ["evidence-backed-critique", "templates/prompts/evidence-backed-critique.md"],
   ["text-clarity-review", "templates/prompts/text-clarity-review.md"],
   ["production-hardening-review", "templates/prompts/production-hardening-review.md"],
+  ["creative-session-state-manager", "templates/prompts/creative-session-state-manager.md"],
+  ["skill-orchestration-planner", "templates/prompts/skill-orchestration-planner.md"],
+  ["failure-memory-retrieval-router", "templates/prompts/failure-memory-retrieval-router.md"],
+  ["evidence-to-repair-planner", "templates/prompts/evidence-to-repair-planner.md"],
+  ["responsive-constraint-solver", "templates/prompts/responsive-constraint-solver.md"],
+  ["reference-grammar-compiler", "templates/prompts/reference-grammar-compiler.md"],
+  ["preference-model-migi-taste-learner", "templates/prompts/preference-model-migi-taste-learner.md"],
+  ["interaction-state-matrix-director", "templates/prompts/interaction-state-matrix-director.md"],
+  ["artifact-contract-validator", "templates/prompts/artifact-contract-validator.md"],
+  ["creative-prototype-spike-director", "templates/prompts/creative-prototype-spike-director.md"],
+  ["signature-interaction-director", "templates/prompts/signature-interaction-director.md"],
+  ["elite-scroll-choreography-director", "templates/prompts/elite-scroll-choreography-director.md"],
+  ["scroll-choreography-review", "templates/prompts/scroll-choreography-review.md"],
+  ["scroll-physics-smoothing-director", "templates/prompts/scroll-physics-smoothing-director.md"],
+  ["physical-interface-props-director", "templates/prompts/physical-interface-props-director.md"],
+  ["media-object-stage-director", "templates/prompts/media-object-stage-director.md"],
+  ["designed-detail-reveal-director", "templates/prompts/designed-detail-reveal-director.md"],
+  ["brand-voice-as-interface-director", "templates/prompts/brand-voice-as-interface-director.md"],
+  ["illustration-first-gate", "templates/prompts/illustration-first-gate.md"],
+  ["asset-first-illustration-test", "templates/prompts/asset-first-illustration-test.md"],
+  ["layout-integrity-review", "templates/prompts/layout-integrity-review.md"],
+  ["final-ui-integrity-gate", "templates/prompts/final-ui-integrity-gate.md"],
   ["chart-system-director", "templates/prompts/chart-system-director.md"],
   ["diagram-canvas-system", "templates/prompts/diagram-canvas-system.md"],
   ["data-viz-hardening-review", "templates/prompts/data-viz-hardening-review.md"],
@@ -1383,14 +1443,65 @@ function validateDoneReport(filePath) {
     errors.push(`finalStatus must be one of: ${Array.from(validFinalStatuses).join(", ")}.`);
   }
 
+  if (report.finalUiIntegrityVerdict && !validFinalUiIntegrityVerdicts.has(report.finalUiIntegrityVerdict)) {
+    errors.push(`finalUiIntegrityVerdict must be one of: ${Array.from(validFinalUiIntegrityVerdicts).join(", ")}.`);
+  }
+
+  if (report.finalVerdict && !validFinalUiIntegrityVerdicts.has(report.finalVerdict)) {
+    errors.push(`finalVerdict must be one of: ${Array.from(validFinalUiIntegrityVerdicts).join(", ")}.`);
+  }
+
   if ("isVisualWork" in report && !isBoolean(report.isVisualWork)) {
     errors.push("isVisualWork must be a boolean.");
   }
 
-  for (const field of ["filesChanged", "commandsRun", "remainingWeaknesses", "blockers"]) {
+  for (const field of [
+    "filesChanged",
+    "commandsRun",
+    "remainingWeaknesses",
+    "blockers",
+    "finalUiIntegrityBlockers",
+    "screenshotEvidence",
+    "widthSweepTested",
+    "heightMatrixTested",
+    "viewportMatrixTested",
+    "scrollSamplesTested",
+    "interactionStatesTested",
+    "failedViewportStates",
+    "passedViewportStates"
+  ]) {
     if (field in report && !Array.isArray(report[field])) {
       errors.push(`${field} must be an array.`);
     }
+  }
+
+  for (const field of [
+    "finalUiIntegrityGateRun",
+    "clippedTextRemaining",
+    "textClipRemaining",
+    "overlapRemaining",
+    "floatingOverlapRemaining",
+    "viewportEdgeClippingRemaining",
+    "floatingObjectDriftRemaining",
+    "horizontalScrollPartialContentRemaining",
+    "blankScrollStateRemaining",
+    "mediaTextCollisionRemaining",
+    "navOverflowRemaining",
+    "fixedOverlayCollisionRemaining",
+    "accidentalWhitespaceRemaining",
+    "finalHandoffAllowed"
+  ]) {
+    if (field in report && !isBoolean(report[field])) {
+      errors.push(`${field} must be a boolean.`);
+    }
+  }
+
+  if ("finalUiIntegrityBlockerCount" in report && !isNumber(report.finalUiIntegrityBlockerCount)) {
+    errors.push("finalUiIntegrityBlockerCount must be a number.");
+  }
+
+  if ("finalUiIntegrityScreenshotDir" in report && !isNonEmptyString(report.finalUiIntegrityScreenshotDir)) {
+    errors.push("finalUiIntegrityScreenshotDir must be a non-empty string. Use \"blocked\" when screenshots could not be captured.");
   }
 
   if (!isPlainObject(report.screenshots)) {
@@ -1426,7 +1537,68 @@ function validateDoneReport(filePath) {
 
   const isVisualWork = inferVisualWork(report);
   const claimsDone = report.finalStatus === "done";
+  const visualHandoffAllowed = report.finalHandoffAllowed === true || claimsDone || report.finalVerdict === "passed";
   if (isVisualWork) {
+    if (report.finalUiIntegrityGateVersion !== "v3") {
+      errors.push("visual work requires finalUiIntegrityGateVersion v3.");
+    }
+
+    const hasAllViewportSamples = Array.isArray(report.viewportMatrixTested) &&
+      finalUiIntegrityV2ViewportMatrix.every((width) => report.viewportMatrixTested.includes(width));
+    const hasAllWidthSweepSamples = Array.isArray(report.widthSweepTested) &&
+      finalUiIntegrityV3WidthSweep.every((width) => report.widthSweepTested.includes(width));
+    const hasAllHeightSamples = Array.isArray(report.heightMatrixTested) &&
+      finalUiIntegrityV3HeightMatrix.every((height) => report.heightMatrixTested.includes(height));
+    const hasAllScrollSamples = Array.isArray(report.scrollSamplesTested) &&
+      finalUiIntegrityV2ScrollSamples.every((sample) => report.scrollSamplesTested.some((actual) => Math.abs(Number(actual) - sample) < 0.0001));
+
+    if (visualHandoffAllowed && !hasAllWidthSweepSamples) {
+      errors.push(`finalHandoffAllowed/final passed requires widthSweepTested to include the v3 360:1920:40 sweep.`);
+    }
+    if (visualHandoffAllowed && !hasAllHeightSamples) {
+      errors.push(`finalHandoffAllowed/final passed requires heightMatrixTested to include: ${finalUiIntegrityV3HeightMatrix.join(", ")}.`);
+    }
+    if (visualHandoffAllowed && !hasAllViewportSamples && !hasAllWidthSweepSamples) {
+      errors.push(`finalHandoffAllowed/final passed requires viewportMatrixTested or widthSweepTested evidence.`);
+    }
+    if (visualHandoffAllowed && !hasAllScrollSamples) {
+      errors.push(`finalHandoffAllowed/final passed requires scrollSamplesTested to include: ${finalUiIntegrityV2ScrollSamples.join(", ")}.`);
+    }
+    if (visualHandoffAllowed && (!Array.isArray(report.interactionStatesTested) || report.interactionStatesTested.length === 0)) {
+      errors.push("finalHandoffAllowed/final passed requires interactionStatesTested to list sampled states.");
+    }
+
+    if (claimsDone && report.finalUiIntegrityGateRun !== true) {
+      errors.push("finalStatus done requires finalUiIntegrityGateRun true.");
+    }
+    if (claimsDone && report.finalUiIntegrityVerdict !== "passed") {
+      errors.push("finalStatus done requires finalUiIntegrityVerdict passed.");
+    }
+    if (claimsDone && report.finalVerdict !== "passed") {
+      errors.push("finalStatus done requires finalVerdict passed.");
+    }
+    if (claimsDone && Array.isArray(report.finalUiIntegrityBlockers) && report.finalUiIntegrityBlockers.length > 0) {
+      errors.push("finalStatus done requires finalUiIntegrityBlockers to be empty.");
+    }
+    for (const field of [
+      "clippedTextRemaining",
+      "textClipRemaining",
+      "overlapRemaining",
+      "floatingOverlapRemaining",
+      "viewportEdgeClippingRemaining",
+      "floatingObjectDriftRemaining",
+      "horizontalScrollPartialContentRemaining",
+      "blankScrollStateRemaining",
+      "mediaTextCollisionRemaining",
+      "navOverflowRemaining",
+      "fixedOverlayCollisionRemaining",
+      "accidentalWhitespaceRemaining"
+    ]) {
+      if (claimsDone && report[field] === true) {
+        errors.push(`finalStatus done requires ${field} false.`);
+      }
+    }
+
     const visualQaBlocked = report.visualQa?.status === "blocked" || report.visualQa?.captureMode === "blocked";
     if (claimsDone || !visualQaBlocked) {
       validateRequiredViewportStrings(report.screenshots, "screenshots", errors);
@@ -1480,6 +1652,40 @@ function validateDoneReport(filePath) {
 
   if (Array.isArray(report.blockers) && report.blockers.length > 0 && report.finalStatus === "done") {
     errors.push("finalStatus cannot be done while blockers exist.");
+  }
+
+  if (report.finalUiIntegrityVerdict !== "passed" && report.finalVerdict === "passed") {
+    errors.push("finalVerdict cannot be passed unless finalUiIntegrityVerdict is passed.");
+  }
+
+  if (report.finalHandoffAllowed === false && report.finalVerdict === "passed") {
+    errors.push("finalVerdict cannot be passed when finalHandoffAllowed is false.");
+  }
+
+  if (isNumber(report.finalUiIntegrityBlockerCount) && report.finalUiIntegrityBlockerCount > 0 && report.finalVerdict === "passed") {
+    errors.push("finalVerdict cannot be passed while finalUiIntegrityBlockerCount is greater than 0.");
+  }
+
+  if (Array.isArray(report.failedViewportStates) && report.failedViewportStates.length > 0 && report.finalVerdict === "passed") {
+    errors.push("finalVerdict cannot be passed while failedViewportStates is non-empty.");
+  }
+
+  for (const field of [
+    "clippedTextRemaining",
+    "textClipRemaining",
+    "overlapRemaining",
+    "floatingOverlapRemaining",
+    "viewportEdgeClippingRemaining",
+    "floatingObjectDriftRemaining",
+    "horizontalScrollPartialContentRemaining",
+    "blankScrollStateRemaining",
+    "mediaTextCollisionRemaining",
+    "navOverflowRemaining",
+    "fixedOverlayCollisionRemaining"
+  ]) {
+    if (report[field] === true && !["failed", "blocked"].includes(report.finalVerdict)) {
+      errors.push(`${field} true requires finalVerdict failed or blocked.`);
+    }
   }
 
   if (report.finalStatus === "done" && report.visualQa?.status !== "passing") {
@@ -1847,6 +2053,92 @@ function validateObjectSwapReport(filePath) {
   pass("Object swap report valid", { file: filePath, finalStatus: report.finalStatus });
 }
 
+function validateSkillVerdict(filePath) {
+  if (!filePath) {
+    fail("Usage: node tools/design-os.mjs validate-skill-verdict <file>");
+  }
+
+  const report = readJson(filePath);
+  const errors = [];
+
+  for (const field of ["version", "skillId", "task", "phase", "status", "notes"]) {
+    if (!isNonEmptyString(report[field])) {
+      errors.push(`${field} must be a non-empty string.`);
+    }
+  }
+
+  if (!validSkillVerdictStatuses.has(report.status)) {
+    errors.push(`status must be one of: ${Array.from(validSkillVerdictStatuses).join(", ")}.`);
+  }
+
+  if (!Array.isArray(report.evidence)) {
+    errors.push("evidence must be an array.");
+  } else {
+    report.evidence.forEach((item, index) => {
+      if (!isPlainObject(item)) {
+        errors.push(`evidence[${index}] must be an object.`);
+        return;
+      }
+      for (const field of ["type", "pathOrCommand", "summary"]) {
+        if (!isNonEmptyString(item[field])) {
+          errors.push(`evidence[${index}].${field} must be a non-empty string.`);
+        }
+      }
+    });
+  }
+
+  if (!isPlainObject(report.machineVerdict)) {
+    errors.push("machineVerdict must be an object.");
+  } else {
+    if (!("score" in report.machineVerdict) || !(report.machineVerdict.score === null || isNumber(report.machineVerdict.score))) {
+      errors.push("machineVerdict.score must be a number or null.");
+    }
+    for (const field of ["scoreCaps", "blockers"]) {
+      if (!Array.isArray(report.machineVerdict[field])) {
+        errors.push(`machineVerdict.${field} must be an array.`);
+      }
+    }
+  }
+
+  if (!Array.isArray(report.repairTasks)) {
+    errors.push("repairTasks must be an array.");
+  } else {
+    report.repairTasks.forEach((task, index) => {
+      if (!isPlainObject(task)) {
+        errors.push(`repairTasks[${index}] must be an object.`);
+        return;
+      }
+      if (!validSkillRepairPriorities.has(task.priority)) {
+        errors.push(`repairTasks[${index}].priority must be P0, P1, or P2.`);
+      }
+      for (const field of ["ownerSkill", "target", "action", "acceptanceCheck"]) {
+        if (!isNonEmptyString(task[field])) {
+          errors.push(`repairTasks[${index}].${field} must be a non-empty string.`);
+        }
+      }
+    });
+  }
+
+  if (!Array.isArray(report.nextSkills)) {
+    errors.push("nextSkills must be an array.");
+  }
+
+  if (report.status === "needs-repair" && Array.isArray(report.repairTasks) && report.repairTasks.length === 0) {
+    errors.push("needs-repair verdicts must include at least one repair task.");
+  }
+
+  if (errors.length > 0) {
+    fail(`Skill verdict failed validation:\n- ${errors.join("\n- ")}`);
+  }
+
+  pass("Skill verdict valid", {
+    file: filePath,
+    skillId: report.skillId,
+    status: report.status,
+    repairTasks: Array.isArray(report.repairTasks) ? report.repairTasks.length : 0
+  });
+}
+
 function doctor() {
   const checks = [];
   const errors = [];
@@ -1872,6 +2164,7 @@ function doctor() {
     paths.screenshotComparisonReportTemplate,
     paths.objectSwapReportTemplate,
     paths.motionSequenceReportTemplate,
+    paths.skillVerdictTemplate,
     "visual-library/approved/inspiration/advanced-motion-sites/references.json",
     "design-intelligence/motion-tool-stack.json",
     "design-intelligence/design-direction-image-prompts.json",
@@ -1881,11 +2174,21 @@ function doctor() {
     "templates/prompts/codex-literal-target-copy.md",
     "templates/prompts/codex-visual-qa-fix.md",
     "templates/prompts/codex-productionizer.md",
+    "templates/prompts/creative-orchestration-director.md",
     "templates/prompts/codex-advanced-motion-choreography.md",
     "templates/prompts/codex-motion-benchmark-review.md",
     "templates/prompts/codex-motion-only-patch.md",
     "templates/prompts/codex-generate-3-direction-images.md",
     "templates/prompts/codex-select-direction-from-images.md",
+    "templates/prompts/final-ui-integrity-gate.md",
+    "skills/creative-orchestration-director/SKILL.md",
+    "skills/final-ui-integrity-gate/SKILL.md",
+    "tools/final-ui-integrity-check.mjs",
+    "design-intelligence/skill-orchestration-matrix.md",
+    "design-intelligence/self-correction-repair-loop.md",
+    "templates/reports/creative-state-ledger.template.md",
+    "templates/reports/repair-task-queue.template.md",
+    "templates/reports/final-ui-integrity-report.md",
     "evaluation/benchmarks/motion-cinematic.benchmark.md",
     "design-intelligence/motion-tool-stack-guidance.md",
     "design-intelligence/design-direction-image-guidance.md",
@@ -1905,10 +2208,11 @@ function doctor() {
     "schemas/screenshot-comparison-report.schema.json",
     "schemas/object-swap-report.schema.json",
     "schemas/motion-sequence-report.schema.json",
+    "schemas/skill-verdict.schema.json",
     "schemas/screenshot-report.schema.json",
     "schemas/visual-concepts.schema.json"
   ]) {
-    if (filePath.endsWith(".md")) {
+    if (filePath.endsWith(".md") || filePath.endsWith(".mjs")) {
       const absolute = resolveDesignOsPath(filePath);
       if (fs.existsSync(absolute)) {
         checks.push(filePath);
@@ -2214,6 +2518,7 @@ Commands:
   validate-visual-qa-report <file>
   validate-comparison-report <file>
   validate-object-swap-report <file>
+  validate-skill-verdict <file>
   validate-direction-images <manifest.json>
   validate-direction-gate <slug>
   check-visual-gate <brief> <concepts>   Requires 3 rendered concepts, screenshots, and approved selectedConceptId for visual-heavy briefs.
@@ -2294,6 +2599,9 @@ switch (command) {
     break;
   case "validate-object-swap-report":
     validateObjectSwapReport(args[1]);
+    break;
+  case "validate-skill-verdict":
+    validateSkillVerdict(args[1]);
     break;
   case "validate-direction-images":
     validateDirectionImages(args[1]);

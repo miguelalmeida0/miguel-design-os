@@ -37,6 +37,23 @@ Rules:
 - if background `L > 0.6`, use a dark foreground
 - if background `L <= 0.6`, use a light foreground
 
+## Stateful Contrast Matrix
+
+Contrast checks must cover interaction states, not only the default screenshot.
+
+For nav items, tabs, chips, segmented controls, buttons, menus, cards, and selectable objects, record foreground/background pairs for:
+
+- default
+- hover
+- focus-visible
+- active / pressed
+- selected
+- selected + hover
+- selected + focus
+- disabled
+
+If selected + hover or selected + focus makes text disappear, repair the lightness relationship first. Do not hide the failure with opacity, blend modes, shadows, or animation.
+
 ## Hue Drift Detection
 
 Convert HSL ramps to OKLCH before trusting them.
@@ -82,7 +99,7 @@ HSL causes hue drift and perceived brightness inconsistency. OKLCH has stable hu
 
 ## Stop Condition
 
-If an agent changes a palette through trial-and-error hex tweaks without checking OKLCH/APCA logic, stop and redo the palette from tokens, lightness targets, and contrast thresholds.
+If an agent changes a palette through trial-and-error hex tweaks without checking OKLCH/APCA logic, stop and redo the palette from tokens, lightness targets, state contrast pairs, and contrast thresholds.
 
 ## Bold Palette Note
 

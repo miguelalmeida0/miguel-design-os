@@ -92,3 +92,27 @@ This is a polish pass, not an art-direction replacement.
 - Use `skills/text-clarity-review/SKILL.md` when the interface feel problem is caused by vague CTAs, unclear state copy, generic empty/error/loading messages, inconsistent terms, or confusing labels.
 - Use `skills/production-hardening-review/SKILL.md` when the polish pass reveals brittle behavior under long text, missing data, errors, slow networks, translations, accessibility, or small viewports.
 - Do not run these reviews during direction selection; they are post-build quality layers.
+
+## Layout Integrity Gate
+
+Do not polish over layout failure. Clipped text, word overflow, nav overflow, CTA clipping, sticker/card/headline collision, and huge accidental blank space must be fixed before any feel-better pass can claim success.
+
+Run `skills/layout-integrity-review/SKILL.md` before final handoff when the UI contains custom nav, stickers/cards/badges/overlays, large display type, or responsive composition.
+
+Screenshot contradiction beats agent self-report.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Replace vague polish with measurable interaction states.
+
+Required evidence:
+- state inventory, feedback latency, focus/hover/pressed/selected evidence, spacing rhythm, and perceived performance notes.
+
+Repair routing:
+- motion-craft-director owns animation gaps; text/layout reviewers own clarity and collision gaps.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "make-interfaces-feel-better"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

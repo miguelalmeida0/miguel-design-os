@@ -6,6 +6,8 @@ Use this final pass for landing pages, portfolios, marketing pages, redesigns, a
 
 - no generic AI-purple / blue gradient default
 - no safe AI-default muddy brown, dull charcoal, beige, grey-blue, orange accent, purple glow, terminal green, or neon lime palette in expressive modes without exploration
+- no sepia/espresso/umber brown-black archive wash on pages, stages, cards, panels, containers, sidebars, or nav
+- no nocturne/archive/field-guide/botanical/brass/tobacco/parchment/vintage/premium rationale for that same banned brown-black surface family
 - no three equal feature cards as the default layout
 - no endless centered sections
 - no fake div-based screenshots

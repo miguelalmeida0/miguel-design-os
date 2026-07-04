@@ -99,3 +99,64 @@ Final response:
 - scorecard caps
 - evidence-backed critique / text clarity / production hardening status when relevant
 - remaining weaknesses
+
+## Required Layout Integrity Final Checks
+
+Before final handoff, verify:
+
+- no text clipping
+- no words cut
+- no nav label overflow
+- no sticker/card covering headline words
+- no accidental blank viewport area
+- no floating label/card/sticker drift or overlap at intermediate widths
+- no detail panel disconnected from clicked/selected trigger
+- no mobile route/app navigation that disappears on scroll
+- mobile route/app navigation uses persistent bottom nav or bottom-accessible controller by default
+- final UI integrity v3 width sweep checked from 360 to 1920 at 40px steps or smaller when practical
+- height matrix checked at 720, 844, 900, and 1080
+- scroll samples checked at 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, and 1.00 when scroll/sticky/pinned content exists
+
+Run `skills/layout-integrity-review/SKILL.md` after screenshots exist. Screenshot contradiction beats agent self-report.
+
+## Late Check FM Media Placement Guardrails
+
+- Apply the hero-only media default: video belongs in the top stage unless a later role is explicit.
+- Enforce media never over text: media cannot cover headline, body, CTA, nav, labels, captions, or card content.
+- Enforce no container thinning to fit media: content cards keep readable minimum widths.
+- Content wins over media: text, CTAs, nav, and card readability beat any media object or scroll gimmick.
+- Persistent video overlay is a hard blocker unless a reserved media lane, protected-zone map, and screenshot proof exist.
+
+## Compact Navigation Icon Fallback
+
+- compact nav must use icon fallback or a real menu pattern
+- no arbitrary two-letter nav abbreviations
+- active compact nav item must be understandable
+- accessible labels are required for icon-only or visually-shortened items
+- small-screen screenshots are required at 768 and 390
+
+## Anchored Detail Reveal
+
+- detail reveal must be anchored to clicked item or use an explicit sheet/drawer/full-screen pattern with selected-item context
+- use `data-detail-trigger`, `data-detail-panel`, `data-detail-for`, and `data-selected-item` where practical
+- final handoff is blocked if the detail panel is spatially lost
+
+## Persistent Mobile Bottom Navigation
+
+- mobile app/route nav must be persistent bottom by default
+- mobile nav must remain accessible after scroll
+- bottom nav must respect safe area and preserve accessible full labels
+- final handoff is blocked if mobile route nav disappears on scroll
+
+## Final UI Integrity Gate
+
+Before final handoff:
+
+1. Run build/lint.
+2. Capture screenshots/checks across the final UI integrity v3 width sweep, height matrix, and required scroll samples.
+3. Run scroll-choreography-review if scroll-heavy.
+4. Run layout-integrity-review.
+5. Run final-ui-integrity-gate.
+6. Run final scorecard.
+
+Do not claim success if clipped text, viewport-edge clipping, partially visible active panels, horizontal scroll partial content, overlap, floating object drift, nav overflow, media/text collision, accidental blank space, fixed overlay collision, or the user's original complaint remains visible at any sampled width, height, scroll position, or state. If the final UI integrity gate is failed or blocked, fix the UI and rerun validation before responding.

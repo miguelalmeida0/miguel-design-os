@@ -46,7 +46,7 @@ Preflight requirements:
 2. Confirm `docs/design/direction-options.md` and `docs/design/selected-direction.md` exist when the landing/portfolio/marketing direction was not already approved.
 3. Confirm visual spec and design-system tokens exist or block implementation.
 4. Check Palette Exploration: Safe Refined, Artistic Expressive, and Unexpected High-Character options; selected palette; OKLCH/APCA notes; AI-default palette avoided.
-5. Check for banned AI tells: generic purple, muddy generated-app palettes, equal feature cards, fake numbers, div-based screenshots, generic names, decorative status dots, hero version labels, section-number eyebrows, scroll cues, duplicate CTA intent, CTA wrapping, logo-wall labels, prose-heavy hero stacks, and giant type without layout reason.
+5. Check for banned AI tells: generic purple, muddy generated-app palettes, sepia/espresso/umber brown-black archive wash, nocturne/archive/field-guide rationale for that banned palette, equal feature cards, fake numbers, div-based screenshots, generic names, decorative status dots, hero version labels, section-number eyebrows, scroll cues, duplicate CTA intent, CTA wrapping, logo-wall labels, prose-heavy hero stacks, and giant type without layout reason.
 6. Check landing craft: image-first sections, varied rhythm, clear CTA path, no Blogspot structure, no repeated layout family, no compressed multi-section reference board.
 7. Check APCA/WCAG contrast targets and OKLCH lightness repair for final palette.
 8. Check interface-feel basics: active/focus states, loading/empty/error states, perceived performance, and no dead surfaces.

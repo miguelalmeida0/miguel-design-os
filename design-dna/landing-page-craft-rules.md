@@ -51,7 +51,7 @@ Across the page:
 
 ## Palette Exploration Rule
 
-Landing, portfolio, artistic, cinematic, creative, editorial, and experimental pages must not default to muddy generated-app palettes.
+Landing, portfolio, artistic, cinematic, creative, editorial, and experimental pages must not default to muddy generated-app palettes. The sepia/espresso/umber brown-black archive wash is banned for pages, stages, cards, panels, nav, sidebars, and containers; do not excuse it as nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
 
 Before implementation, propose:
 

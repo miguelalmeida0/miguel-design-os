@@ -49,15 +49,15 @@ Default direction gate mode is No-Image Fast Direction Gate. For normal first-pa
 16. If visual-heavy, route `skills/visual-spec-compiler/SKILL.md` and create `docs/design/visual-spec.md` before implementation.
 17. Define design-system direction from `design-dna/design-system-first-rules.md` before significant UI implementation.
 18. If artistic, cinematic, landing, portfolio, creative, editorial, or experimental mode is active, read `design-dna/art-directed-palette-exploration.md` and include 3 palette directions before locking tokens.
-19. If color tokens, contrast repair, dark mode, chart colors, or color accessibility matter, route `skills/oklch-contrast-palette/SKILL.md` and check OKLCH/APCA before final palette approval.
+19. If color tokens, contrast repair, dark mode, chart colors, interactive state contrast, or color accessibility matter, route `skills/oklch-contrast-palette/SKILL.md` and check OKLCH/APCA before final palette approval.
 20. If Figma work is requested, read `design-dna/figma-cost-safety-rules.md` first. Use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames. Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat features. If the request requires one, stop and report exactly: `Blocked: this requires a paid or plan-gated Figma feature.`
-21. Define Domain Palette Fit for every product UI: product domain, user environment, task pressure, emotional state, state-color semantics, and what random "looks cool" palette is rejected.
+21. Define Domain Palette Fit for every product UI: product domain, user environment, task pressure, emotional state, state-color semantics, and what random "looks cool" palette is rejected. Explicitly reject the muddy sepia/espresso/umber brown-black archive wash for page backgrounds, stages, containers, cards, panels, sidebars, and navigation bars. Do not rationalize it as nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
 22. If real imagery, Unsplash, or source-image roles are needed, route `skills/unsplash-asset-sourcing/SKILL.md`, create `docs/design/unsplash-search-plan.md`, and create `docs/design/unsplash-asset-manifest.md` before implementation.
 23. For visual-heavy navigation, create `docs/design/navigation-strategy.md`, propose 3 distinct navigation concepts, select one pattern, and document desktop/tablet/mobile behavior before implementation.
 24. For visual-heavy navigation over images, giant type, video, or changing backgrounds, define Navigation Readability Strategy before implementation.
-25. Enforce No Placebo Navigation: clickable nav, tabs, filters, and segmented controls must change visible product state, route, content, scope, or filter.
+25. Enforce No Placebo Navigation: clickable nav, tabs, filters, and segmented controls must change visible product state, route, content, scope, or filter. Their labels must also remain readable in default, hover, focus-visible, active, selected, selected+hover, and selected+focus states.
 26. Decide whether visible logo/app-name chrome is justified; default is no forced app name, initials badge, or logo-left habit.
-27. Define Decorative Geometry Strategy and Line / Divider Strategy; default is no decorative orbital overlays and no decorative hairline ornaments.
+27. Define Decorative Geometry Strategy, Texture / Illustration Role Inventory, and Line / Divider Strategy; default is no decorative orbital overlays, no ambient blob haze, no dotted background texture, no amateur vector illustration, and no decorative hairline ornaments.
 28. For charts, graphs, diagrams, maps, timelines, canvases, or visual encodings, route `skills/chart-system-director/SKILL.md`, define the data contract, choose the visualization/tool from `design-intelligence/visualization-tool-routing.md`, and document the question the visualization answers.
 29. For spatial products such as maps, floor plans, seating charts, pattern canvases, node graphs, diagrams, and timelines, route `skills/diagram-canvas-system/SKILL.md` and define coordinate system, layer model, object model, label model, collision strategy, and selection/inspector behavior before implementation.
 30. For desktop command surfaces, define the central primary product object before arranging support panels; panels must support the object, not replace it.
@@ -77,9 +77,10 @@ Default direction gate mode is No-Image Fast Direction Gate. For normal first-pa
 44. After implementation, route `skills/text-clarity-review/SKILL.md` for copy-heavy product UI before calling copy final.
 45. After implementation, route `skills/production-hardening-review/SKILL.md` before calling product UI production-ready.
 46. After implementation or screenshots, route `skills/evidence-backed-critique/SKILL.md` when Migi asks for critique or the UI needs full post-build review.
+47. When review finds blockers or score caps, route `skills/creative-orchestration-director/SKILL.md` to create a skill verdict, repair queue, owner skills, acceptance checks, and evidence rerun plan.
 47. If mobile-first, read `design-dna/mobile-product-rules.md` and create or fill `docs/design/mobile-flow-spec.md` before implementation.
 48. Define Image Environment Strategy before implementation when references are artistic, landing-page, cinematic, image-led, or visual-heavy.
-49. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture.
+49. Define a contrast and legibility strategy before implementation, especially for text over images, gradients, video, or texture. Define a State Contrast Matrix for interactive controls before styling nav, tabs, chips, segmented controls, cards, menus, or buttons.
 50. Define a project-specific visual identity and a non-obvious visual thesis.
 51. State which source project is relevant evidence and what will not be copied.
 52. Plan fresh screenshots for the new UI; old captures are evidence, not templates.
@@ -287,6 +288,8 @@ Image role strategy:
 Image environment strategy:
 Scale calibration:
 Contrast / legibility strategy:
+State contrast matrix:
+Selected-hover contrast proof:
 Navigation strategy:
 Toolbar alignment strategy:
 Text density strategy:
@@ -611,9 +614,12 @@ The spec must include:
 - layout skeleton
 - design-system tokens
 - image roles
+- texture / illustration role inventory
+- text-safe zones for illustration and vector paths
 - chart strategy when relevant
 - mobile strategy when relevant
 - interaction strategy
+- state contrast matrix for interactive labels
 - responsive strategy
 - evidence plan
 - forbidden drift
@@ -631,15 +637,47 @@ The spec must also include:
 
 Default: Decorative circular/orbital overlays are not used.
 
+## Texture / Illustration Role Inventory
+- ambient light blobs/glows used? no by default:
+- dotted/star-field/micro-dot textures used? no by default:
+- if any texture exists, what role does it serve?
+- if any illustration exists, shape inventory path:
+- shape roles:
+- layer stack:
+- bounds and anchors:
+- responsive behavior:
+- accessibility or decorative status:
+- text-safe zones:
+- label/callout routes:
+- proof that paths do not cross words:
+- proof that words are not clipped:
+- if the answer is only "looks cool," remove it:
+
 ## Navigation Readability Strategy
 - does nav overlap images/type?
 - background states:
 - contrast protection:
 - scroll-state behavior:
 - active/focus state:
+- selected+hover state:
+- selected+focus state:
 - mobile behavior:
 - readability risk:
 - screenshot checks:
+
+## State Contrast Matrix
+- controls covered: nav / tabs / chips / buttons / cards / menus / segmented controls / selectable objects
+- default text/background:
+- hover text/background:
+- focus-visible text/background:
+- active/pressed text/background:
+- selected text/background:
+- selected+hover text/background:
+- selected+focus text/background:
+- disabled text/background:
+- APCA/WCAG target:
+- screenshot/proof plan:
+- failure response if any label disappears:
 
 ## Identity / Brand Chrome Decision
 - visible logo/name needed? yes/no:
@@ -675,6 +713,7 @@ Before significant UI implementation, define:
 - border/divider logic
 - chart colors
 - state colors
+- state contrast matrix for default, hover, focus-visible, active, selected, selected+hover, selected+focus, disabled, and pressed states
 - component variants
 - image treatment
 - motion rules
@@ -906,7 +945,7 @@ Dashboard mode must not become lifeless operational furniture. Elite dashboards 
 
 Dashboard palette discipline:
 
-Dashboard references must drive palette decisions. Do not default to murky dark green, terminal black, neon lime, or purple AI dashboard palettes unless the reference folder clearly supports that direction.
+Dashboard references must drive palette decisions. Do not default to murky dark green, terminal black, neon lime, purple AI dashboard palettes, or muddy sepia/espresso/umber brown-black archive backgrounds. Nocturne/archive/botanical language is not a valid excuse for that banned surface family.
 
 Dashboard palettes can be:
 
@@ -1025,7 +1064,7 @@ A dashboard is not done when it is merely functional. Dashboard mode needs reada
 
 Global UI craft rules:
 
-- No Cryptic Navigation: navigation must be immediately understandable. Do not use unexplained labels such as `CMD`, `SIG`, `CMP`, `BRF`, vague system labels such as `SD LOCAL`, or icon-only nav without labels, tooltips, or obvious context.
+- No Cryptic Navigation: navigation must be immediately understandable. Do not use unexplained labels such as `CMD`, `SIG`, `CMP`, `BRF`, vague system labels such as `SD LOCAL`, or icon-only nav without labels, tooltips, or obvious context. Compact navigation must use icons or a real menu pattern, never arbitrary two-letter labels such as `IN`, `WL`, `BD`, `NW`, `RL`, or `BK`.
 - Mobile Navigation Defaults: applications with 3+ primary destinations default to bottom navigation on mobile. Desktop may use top navigation or left sidebar; tablet adapts; mobile top navigation is acceptable only for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites. Reserve the top of mobile app screens for branding, page title, search, context, or hero imagery.
 - Crafted Responsive Navigation: desktop nav may be top, side, or hybrid; tablet nav must preserve spacing and readability; mobile bottom nav must have clear labels, premium spacing, generous touch targets, excellent icon/text alignment, intentional active state, safe-area support, and visible selected state. Nav must never overlap content, become cramped, become oversized, or look generic.
 - Mobile Product Interaction Integrity: modal/detail sheets must fit the viewport and safe areas, scroll internally when long, keep primary actions visible or sticky, and avoid colliding with bottom nav. Practical mobile product bottom nav requires semantic icons plus readable labels. Selectable chips/items/tabs must preserve selected state until changed. Add/create actions must be visually distinct from content items. Active bars, underlines, and progress strips must not overlap labels.
@@ -1037,7 +1076,14 @@ Global UI craft rules:
 - Responsive Adaptation, Not Squeezing: desktop may be dense, but tablet must reorganize and mobile must use a dedicated simplified structure. Do not keep the same desktop layout until columns, charts, nav, or cards become unreadable.
 - Chart Bounds Discipline: bars, lines, points, axes, labels, and markers must remain inside plot/card bounds. Charts need explicit dimensions or responsive containers, controlled SVG overflow, label-aware padding, and simpler representations at smaller breakpoints when needed.
 - Semantic Label Integrity: labels cannot collapse into meaningless fragments such as `C`, `U`, or `?` without an obvious legend. Abbreviations are allowed only when standard, explained, or paired with a visible legend.
-- Human Palette Direction: palette must be derived from selected references or product mood. Do not default to terminal green, AI purple, neon lime, generic blue/grey, or one dull machine-generated color wash. Accent color should be limited and meaningful.
+- Human Palette Direction: palette must be derived from selected references or product mood. Do not default to terminal green, AI purple, neon lime, generic blue/grey, muddy sepia/espresso/umber brown-black archive wash, or one dull machine-generated color wash. Accent color should be limited and meaningful.
+- No AI Ambient Blob: do not use blurred light blobs, foggy radial glow, spotlight smears, or "cool advanced UI" haze as background atmosphere. If lighting exists, it needs a scene source, role, layer, and contrast proof.
+- No Decorative Dot Texture: do not use dotted, star-field, micro-dot, matrix, or stipple backgrounds as generic texture. Dots are allowed only as explicit data, a functional grid, a documented brand pattern, or a real sourced material texture requested by Migi.
+- No Amateur Illustration: vector illustrations require role, layer, bounds, anchors, responsive behavior, accessibility/decorative status, shape inventory, label-safe zones, and collision proof. Childish botanical plates, arbitrary stems/petals, and paths crossing words are hard failures.
+- Native Tooltip Ban: no art-directed SVG may expose browser-native tooltips over the visual surface. Do not use `title` attributes on child shapes. If using `<title>`/`<desc>` for accessibility, scope them to the top-level meaningful SVG and avoid hoverable child titles. Decorative groups must be aria-hidden and pointer-events none unless interactive.
+- Annotation Protected Zone Rule: leader lines, annotation rules, stems, and decorative marks may never cross through label text. Every annotation label needs a protected zone; every callout needs anchor, offset, label box, and collision strategy.
+- Illustration Complexity Honesty Rule: do not claim professional illustration if the art is primitive ellipses, generic leaves, or simple blobs. Botanical, character, and object subjects require silhouette study, detail budget, linework strategy, motif library, material/texture strategy, and reference grammar.
+- Background Texture Quality Rule: no generic dot grid, generic star field, random noise, or vague glow blob unless explicitly justified by reference mechanics. Texture must be material paper texture, photographic/grain texture, meaningful field marks, image-led atmospheric layer, or brand-specific pattern.
 - No Fake Live / Session Status Slop: do not use live dots, session-only chips, glowing telemetry, or monitoring/status badges unless the product truly has that state, the label is understandable, and it changes user decision-making.
 
 Dashboard-specific layout integrity:
@@ -1468,6 +1514,35 @@ Every major image must have one declared role:
 
 Images must not be used as random decoration. If an image does not clarify composition, identity, proof, mood, selection, or material, remove it or change its role.
 
+## Texture And Illustration Rules
+
+Textures and vector illustrations are not polish stickers. They are visual systems.
+
+Forbidden by default:
+
+- ambient light blobs
+- foggy radial glow
+- soft spotlight haze
+- dotted/star-field/micro-dot background texture
+- fake botanical/scientific plates
+- childish line illustrations
+- arbitrary petals, stems, arcs, or abstract shapes
+- illustration paths crossing readable words
+- words clipped by masks, overflow, viewport edges, or illustration layers
+
+Any texture or illustration must define:
+
+- role
+- layer
+- bounds
+- anchors
+- responsive behavior
+- accessibility meaning or explicit decorative status
+- text-safe zones
+- collision/callout strategy
+
+If the texture or illustration exists because it "looks cool," remove it.
+
 ## Image As Environment, Not Rectangular Asset
 
 Definition:
@@ -1549,6 +1624,25 @@ For every text layer, know:
 Hard rule:
 
 Important text must never rely on hope. It needs a stable readable background.
+
+## Stateful Text Contrast
+
+Interactive text must remain readable in every state, not only in the resting screenshot.
+
+Required states:
+
+- default
+- hover
+- focus-visible
+- active / pressed
+- selected
+- selected + hover
+- selected + focus
+- disabled
+
+Hard rule:
+
+If hovering a selected nav item, tab, chip, segmented control, card, menu item, or button makes its label disappear, the UI fails before taste scoring. Repair the foreground/background tokens, remove opacity/blend-mode tricks, or use a different selected/hover treatment.
 
 ## Text On Images Requires Protection
 
@@ -1712,7 +1806,7 @@ For landing-page, creative, artistic, cinematic, editorial, or image-led referen
 3. Implement or update semantic tokens.
 4. Build the primary object and its primary action.
 5. Add secondary context only after the primary object works.
-6. Add component states: empty, loading, error, disabled, selected, focus-visible.
+6. Add component states: empty, loading, error, disabled, selected, focus-visible, hover, active/pressed, selected+hover, and selected+focus.
 7. Add responsive behavior for 390, 768, and 1440 px.
 8. Add copy that names actions, states, and consequences.
 9. Add product logic only after the visual shell works.
@@ -1792,6 +1886,7 @@ Do not:
 
 - assume robotics means dark cyber UI, neon cards, stat badges, grids, and fighter language
 - assume AI means glow, blobs, magic copy, or fake intelligence animation
+- assume "advanced UI" means ambient blobs, dotted texture, fake technical patterns, or amateur vector decoration
 - assume finance means a copied market terminal
 - mistake theme decoration for product concept
 
@@ -1833,3 +1928,234 @@ Blockers fixed:
 Remaining weaknesses:
 Patched after review: yes/no
 ```
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- Generic section stack after signature references is a hard failure.
+
+## Illustration-First Gate
+
+For any illustration-heavy project, especially botanical illustration, character illustration, mascot illustration, product object illustration, editorial SVG illustration, hero illustration, or custom SVG scene, the agent must first create isolated illustration assets before building the full page.
+
+Required gate outputs:
+
+- `docs/design/illustration-art-direction.md`
+- `docs/design/illustration-style-guide.md`
+- `docs/design/illustration-asset-options.md`
+- at least 1 isolated hero illustration component or SVG
+- `docs/qa/illustration-gate-review.md`
+
+The agent must stop after the illustration gate unless explicitly instructed to continue.
+
+No full page implementation may begin if the illustration looks amateur, is made from primitive shapes with no detail system, has weak silhouette, poor linework, generic texture/material, missing reference grammar, or lacks Migi approval when approval is required.
+
+Score caps:
+
+- full page built before illustration asset passes: max score 4
+- hero illustration looks amateur: max score 4
+- botanical/character/object illustration uses primitive ellipses/blobs: max score 4
+- no isolated illustration review before full page: max score 5
+- illustration-heavy project has no style guide: max score 5
+
+## No Ambient Background Blobs
+
+Do not use large vague background blobs, ghost ellipses, generic radial glows, random translucent ovals, fake lens shapes, or abstract atmosphere shapes unless they are the primary product object, part of the selected signature interaction, directly derived from an approved reference mechanic, or explicitly named in the shape inventory with role, layer, and purpose.
+
+Rejected: vague light blob in the corner, random huge transparent ellipse, generic star/dot field, abstract glow that exists only to make the page feel "premium", background shapes that compete with content, background shapes that do not interact with anything, and decorative orbits/HUD lines.
+
+Allowed: subtle material-specific paper grain, real photographic grain, low-opacity scan texture, ink speckle, surface wear, texture tied to domain material, or a purposeful mask/object used by the signature interaction.
+
+Score caps:
+
+- visible generic background blob: max score 4
+- generic dot/star field as atmosphere: max score 4
+- atmosphere shape has no role/purpose: max score 4
+- background decoration competes with primary content: max score 4
+- "premium glow" with no reference justification: max score 5
+
+## Botanical / Organic Illustration Minimum Bar
+
+Botanical, animal, human, and organic illustrations are high-risk. Before coding, require reference grammar, silhouette study, linework strategy, detail budget, material/texture strategy, simplification strategy, and what makes the subject believable.
+
+For botanical plates specifically, require stem structure, leaf/petal hierarchy, asymmetry, vein or line detail where appropriate, root/stem/petal relationship, botanical label/callout safe zones, and distinct species silhouettes.
+
+Reject leaves made only from repeated ellipses, flowers made only from generic petals, flat doodle stems, childlike plant silhouettes, repeated copy-paste leaves, and generic "botanical" icons scaled up as hero art.
+
+## Layout Integrity Gate
+
+Text/container integrity is mandatory. Text must never be accidentally clipped, hidden, covered, or forced outside its intended container.
+
+Hard blockers:
+
+- word cut off inside a card, sticker, nav pill, badge, button, tab, modal, or panel
+- text escaping a container
+- overlay object covering important headline/body/navigation text
+- heading hidden behind a card/sticker/image
+- button label clipped
+- nav label clipped or overflowing its item
+- text visually present but unreadable because of shape/texture/background
+- container too small for its text at any required breakpoint
+- `overflow: hidden` used to hide text failure
+- fixed-width container used for dynamic labels without responsive fallback
+- huge accidental blank viewport area
+
+Navigation must define desktop, tablet, and mobile variants. If labels collapse, accessible labels must remain. Active state must not clip text or create unpredictable width jumps. Compact nav must use icon fallback or a real menu pattern; arbitrary two-letter nav abbreviations are not acceptable.
+
+Stickers, cards, badges, images, decorative shapes, and overlays require protected text zones. Screenshot contradiction beats agent self-report.
+
+## Final UI Integrity Gate
+
+No frontend/design task may be handed off until final UI integrity passes.
+
+Build/lint is not visual proof. Component splitting is not visual proof. Reports are not visual proof. Screenshots and DOM geometry are required.
+
+Hard blockers:
+
+- clipped text
+- cut words
+- nav overflow
+- button/CTA clipping
+- card title/body clipping
+- media over text
+- container overlap over text
+- fixed/sticky overlay covering content
+- text hidden with overflow hidden
+- accidental huge blank viewport areas
+- unresolved user complaint
+
+No overlap without permission: visual overlap is allowed only when intentional, documented, decorative/protected, not covering readable text, layer-defined, and proven by screenshot.
+
+No hidden text fixes: do not use overflow hidden, clip, max-height, fixed height, or masking to hide a text-fit failure.
+
+Text wins over visual objects: text, CTA, navigation, and readable card content beat media, shapes, cards, and animation.
+
+If a blocker appears in any required screenshot, final verdict is failed.
+
+Score caps:
+
+- final UI integrity gate not run: max score 5
+- final UI integrity gate blocked/failed: max score 4
+- critical text clipped: max score 2
+- word cut off in screenshot: max score 2
+- nav label overflows item: max score 3
+- sticker/card covers headline word: max score 3
+- button/CTA text clipped: max score 3
+- card title/body clipped: max score 3
+- media/image/video over readable text: max score 3
+- overlapping containers cover text: max score 3
+- fixed/sticky overlay covers content: max score 3
+- text hidden by `overflow: hidden`: max score 3
+- unresolved text/container issue appears in screenshot: max score 3
+- unresolved user complaint remains visible: max score 2
+- screenshot contradicts final report: max score 2
+- no text fit strategy for sticker/card/nav system: max score 5
+- nav huge dead space at breakpoint: max score 4
+- nav lacks responsive variant: max score 5
+- compact nav uses arbitrary abbreviations: max score 4
+- nav hides full labels without icons: max score 4
+- active compact nav item is unclear: max score 5
+- nav looks clipped/broken at small width: max score 3
+- large accidental blank viewport area: max score 4
+
+## Agent Skill Layer V2
+
+For nontrivial new app/design work, the agent must not jump directly from brief to implementation.
+
+Default route:
+
+1. Create/update creative session state.
+2. Retrieve relevant failure memory.
+3. Create a skill orchestration plan.
+4. Compile reference grammar when references are present.
+5. Define responsive constraints and interaction state matrix before implementation when relevant.
+6. Run creative prototype spikes for risky signature mechanics, illustration, scroll choreography, unusual nav, WebGL/canvas, or media staging.
+7. Implement.
+8. Review with screenshot evidence.
+9. Convert evidence to repair tasks.
+10. Validate artifact contract before final handoff.
+
+This layer is mandatory when the task is visual-heavy, reference-led, multi-skill, high-risk, or follows a recent failure pattern.
+
+## Final UI Integrity Gate v3
+
+No final product may be returned to Migi unless Final UI Integrity Gate v3 passed or the agent explicitly reports blocked/failed.
+
+The gate must test a width sweep from 360 to 1920 in 40px steps or smaller when practical; height samples 720, 844, 900, and 1080; scroll samples 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, and 1.00; and applicable states including default, nav active states, selected card/detail open, sticky/pinned active section, compact nav state, and reduced motion when practical.
+
+If a layout failure appears at any sampled width, height, scroll point, or state, final handoff is blocked.
+
+Score caps:
+
+- final gate v3 not run on visual frontend work: max score 4
+- final gate v3 failed but handoff claimed success: max score 2
+- fixed breakpoint-only evidence for final handoff: max score 4
+- width sweep evidence missing: max score 4
+- layout failure appears at any sampled width: max score 3
+- viewport-edge clipping remains: max score 2
+- horizontal scroll shows partial critical content at rest: max score 3
+- floating container overlaps another container: max score 3
+- cut text remains after gate: max score 2
+- final report lacks screenshot matrix evidence: max score 4
+- final report does not include failed/passed viewport list: max score 4
+
+## Anchored Detail Reveal And Mobile Bottom Nav
+
+For any card/item/container that opens details, the reveal must stay spatially connected to the selected trigger or use an explicit full-screen/drawer/sheet pattern with selected-item context.
+
+Required:
+
+- `data-detail-trigger`
+- `data-detail-panel`
+- `data-detail-for`
+- `data-selected-item`
+- selected trigger state
+- close/focus/keyboard strategy
+- mobile behavior
+
+Mobile route/app experiences, scroll-heavy chapter sites, and interactive station/section pages must use persistent bottom navigation / bottom route controller by default.
+
+Required:
+
+- desktop/tablet/mobile nav variants
+- mobile bottom nav or bottom-accessible alternative
+- nav remains available after scroll
+- icon or icon + active label strategy
+- accessible full labels
+- safe-area handling
+- proof at 390, 430, 640, and 768
+
+Score caps:
+
+- detail panel disconnected from trigger: max score 4
+- selected item not visibly connected to detail: max score 5
+- detail opens below fold without focus/scroll: max score 4
+- mobile route nav disappears on scroll: max score 3
+- mobile nav is top-only for app-like route experience: max score 4
+- compact nav has no bottom/persistent access: max score 4
+
+## Elite Scroll Choreography Rule
+
+For award-level landing, portfolio, editorial, brand, playful product, and video-first work, scrolling must be authored when scroll is central. Generic fade-in sections are not enough. Select a named pattern from design-intelligence/elite-scroll-choreography-patterns.md, document route map, chapter map, pinned/sticky stage plan, moving object inventory, nav sync, mobile fallback, reduced-motion fallback, and layout risks before implementation.
+
+After implementation, run skills/scroll-choreography-review/SKILL.md and then layout integrity review. Block blank pinned frames, scroll movement covering critical text, media/video objects covering protected text, horizontal routes without mobile fallback, fake card assembly, unsynced chapter nav, and accidental horizontal overflow.
+
+Media/text protected-zone rule: for video-first, media-led, sticky media, pinned media, portal, card assembly, or video-to-object scroll work, read `design-dna/media-text-protected-zone-rules.md`, `design-dna/video-media-placement-rules.md`, and `design-dna/text-container-integrity-rules.md`. Create `docs/design/protected-zone-map.md`, `docs/design/media-object-stage-plan.md`, and `docs/design/scroll-motion-spec.md` before implementation. Use the rejected Late Check FM case studies at `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/` and `visual-library/rejected/case-studies/late-check-fm-persistent-video-overlay-container-thinning/` as canonical failure memory.
+
+Hero-only media default: video belongs in the top/hero stage by default. After the hero, remove it, dock it into a reserved component, replace it with a static poster/thumb, or keep it only inside a reserved media lane with protected text zones. No persistent video overlay, media-over-text, or container thinning to fit media may ship.
+
+## Elite Experience Specialist Layer
+
+For award-level brand, portfolio, editorial, playful product, media-led, and scroll-heavy work, broad signature and scroll planning can route into five focused craft specialists:
+
+- scroll-physics-smoothing-director for scroll engine feel, smoothing, scrub, snap, settle, touch, mobile fallback, reduced motion, and performance.
+- media-object-stage-director for video/image/media as a primary object with protected text zones, reserved media lanes, crop strategy, poster fallback, and media-state map.
+- physical-interface-props-director for tactile props with role, material, text-fit strategy, protected zones, responsive behavior, and no clipping.
+- designed-detail-reveal-director for non-default drawers, sleeves, split views, object pull-outs, station boards, and ritual selectors with state, focus, close, keyboard, and text overflow handling.
+- brand-voice-as-interface-director for CTAs, nav labels, cards, detail copy, reviews, states, and microcopy that feel authored rather than generic SaaS/hotel/template language.

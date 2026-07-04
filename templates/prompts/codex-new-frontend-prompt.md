@@ -33,6 +33,7 @@ Required files to read:
 - `design-dna/unsplash-asset-sourcing-rules.md` when real imagery, Unsplash, or source-image roles are needed
 - `design-dna/oklch-contrast-and-palette-rules.md` when palette, contrast, dark mode, or chart colors matter
 - `design-dna/interface-feel-rules.md` before final visual review
+- `skills/signature-interaction-director/SKILL.md` for artistic, brand, portfolio, experimental, image-led, or award-reference work
 - `agent-workflows/frontend-aha-moment-workflow.md`
 - `agent-workflows/efficient-agent-implementation-workflow.md`
 - `agent-workflows/image-first-frontend-workflow.md` when image/reference-first
@@ -51,19 +52,20 @@ Before coding:
    - Do not call paid image APIs. Paid image generation is allowed only if Migi explicitly writes `I approve paid API image generation for this run.` and the command includes `--paid-ok`.
    - If Figma work is requested, use only normal Figma Plugin API operations: pages, frames, vectors, shapes, text, variables if available, styles, components, node metadata, and storyboard frames. Do not use Figma AI, Figma Weave, Figma Make, paid generation, AI credits, Figma Motion, Figma Draw, Dev Mode-only operations, or paid-seat features. If required, stop with: `Blocked: this requires a paid or plan-gated Figma feature.`
    - Each direction must include navigation readability, identity chrome, decorative geometry, and line/divider strategy.
-   - Hard bans: no unreadable nav over images/giant type/changing backgrounds, no forced app-name/logo/initials chrome, no decorative circular/orbital/radar/HUD overlays, no fake sonar rings, no generic orbit graphics, no decorative hairline/separator ornaments, no red divider lines as fake editorial detail, no section-label-plus-line filler.
+   - Hard bans: no unreadable nav over images/giant type/changing backgrounds, no selected nav/tab/chip/card/button state whose hover or focus makes text disappear, no forced app-name/logo/initials chrome, no decorative circular/orbital/radar/HUD overlays, no fake sonar rings, no generic orbit graphics, no ambient light blobs/foggy radial glows/spotlight haze, no dotted/star-field/micro-dot background textures, no amateur vector illustration or fake botanical/scientific plates, no illustration paths crossing words, no decorative hairline/separator ornaments, no red divider lines as fake editorial detail, no section-label-plus-line filler.
 3. When Migi chooses A, B, C, or a hybrid, proceed immediately to implementation. Do not stop after selected-direction.md. Do not ask for another confirmation unless Migi explicitly requested planning-only/spec-only/no-code.
 4. After Migi chooses, create `docs/design/selected-direction.md`.
 5. Create `docs/design/visual-spec.md` from `templates/visual-spec.template.md`.
 6. Create `docs/design/design-system-tokens.md` before UI implementation.
 7. For expressive modes, include 3 palette directions and do not pick the safe option automatically.
-8. Create `docs/design/color-and-contrast.md` or an equivalent palette doc with OKLCH/APCA logic for significant UI: semantic tokens, APCA/WCAG targets, lightness repair, numeric scale, and dark-mode mapping.
+8. Create `docs/design/color-and-contrast.md` or an equivalent palette doc with OKLCH/APCA logic for significant UI: semantic tokens, APCA/WCAG targets, lightness repair, numeric scale, dark-mode mapping, and a state contrast matrix for interactive controls.
 9. If references are used, create reference usage/decomposition artifacts required by Design OS.
+   - For artistic, brand, portfolio, experimental, image-led, or award-reference work, select one signature interaction or justify why none fits. Extract mechanics only; do not copy reference brands, mascots, names, logos, colors, or content.
 10. If real imagery is required, create `docs/design/unsplash-search-plan.md`, define image roles, source images by query/orientation/color/content_filter/order_by, select based on art direction and crop quality, and create `docs/design/unsplash-asset-manifest.md` with photographer/source/download metadata, alt text, crop strategy, text safe zones, palette relationship, and product-truth notes.
-11. Create `docs/design/navigation-strategy.md` when navigation is present; propose at least 3 nav concepts, select one, and document desktop/tablet/mobile behavior, CTA behavior, active/focus states, and generic nav default avoided.
-12. Document navigation readability strategy, identity chrome decision, decorative geometry strategy, and line/divider strategy.
-13. Document Domain Palette Fit for product UIs: domain, user environment, task pressure, emotional state, state color semantics, and random palette rejected.
-14. Document No Placebo Navigation: every nav/tab/filter/segmented control must change visible content, route, scope, filter, or product state.
+11. Create `docs/design/navigation-strategy.md` when navigation is present; propose at least 3 nav concepts, select one, and document desktop/tablet/mobile behavior, CTA behavior, default/hover/focus/active/selected/selected+hover/selected+focus states, and generic nav default avoided.
+12. Document navigation readability strategy, identity chrome decision, decorative geometry strategy, texture / illustration role inventory when textures or vector forms exist, and line/divider strategy.
+13. Document Domain Palette Fit for product UIs: domain, user environment, task pressure, emotional state, state color semantics, random palette rejected, and confirmation that muddy sepia/espresso/umber brown-black archive wash is not used as a page, stage, container, card, panel, sidebar, or nav background.
+14. Document No Placebo Navigation: every nav/tab/filter/segmented control must change visible content, route, scope, filter, or product state. Document that every interactive label remains readable in default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled states.
 15. If the product uses a map, floor plan, seating chart, route board, timeline, diagram, pattern canvas, node graph, or canvas-like product object, route `skills/diagram-canvas-system/SKILL.md` and document coordinate system, layer model, object model, label model, label lanes, callout routes, badge safe zones, construction-line semantics, collision strategy, selection/inspector behavior, performance budget, responsive fallback, and diagram-integrity detector plan.
 16. If this is a desktop command surface, document the primary product object and how panels support rather than bury it.
 17. If landing, portfolio, marketing, or redesign work is involved, create `docs/qa/anti-ai-tell-preflight.md` and run Taste anti-AI-tell preflight before implementing.
@@ -78,16 +80,24 @@ Mobile/product hard bans:
 - cut-off mobile sheets or hidden modal actions
 - active/underline/progress bars overlapping labels
 - selectable chips/items with no persistent selected state
+- selected + hover or selected + focus state makes text disappear
 - text-only bottom nav in practical mobile product flows unless justified
 - add-new cards styled like content cards
 - badges/counters overlapping nav labels/icons
 - generic mobile template behavior
 - random domain palette for the product environment
+- muddy sepia/espresso/umber brown-black archive wash used as page, stage, container, card, panel, sidebar, or nav background
+- "nocturne/archive/field-guide/botanical/brass/tobacco/parchment/vintage/premium" rationale for that same banned brown-black surface family
+- ambient light blob, foggy radial glow, spotlight haze, or dotted/star-field/micro-dot texture used as generic atmosphere
+- amateur vector illustration, fake botanical/scientific plate, arbitrary petals/stems, or paths crossing/cutting readable words
 - placebo nav/tabs/filters with no visible state change
 - map/floor-plan/timeline/canvas labels covered by objects/cards/glows
 - chart/diagram/canvas lacks data contract, layer model, label model, collision strategy, or hardening pass
 - primary text is clipped/cut off, or pattern canvas labels/callouts/badges collapse into catastrophic overlap
 - desktop command surface collapsing into generic card soup
+- generic section stack after award/signature interaction references
+- copied reference brand skin instead of transferred mechanics
+- signature interaction without accessibility and reduced-motion fallback
 
 Implementation order:
 
@@ -116,7 +126,10 @@ Final response contract:
 - visual spec path
 - design-system tokens summary
 - palette exploration
+- banned sepia/espresso/umber surface wash check
+- ambient blob / dotted texture / amateur illustration ban check
 - OKLCH/APCA palette pass
+- state contrast matrix / selected-hover proof
 - Unsplash search plan / asset manifest when applicable
 - navigation strategy / selected navigation pattern
 - domain palette fit

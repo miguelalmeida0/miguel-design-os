@@ -50,16 +50,22 @@ Hard bans:
 - no forced app-name/logo/initials chrome
 - no decorative circular/orbital/radar/HUD line overlays
 - no fake sonar rings or generic orbit graphics
+- no ambient light blobs, foggy radial glow, soft spotlight haze, or "cool advanced UI" background smears
+- no dotted/star-field/micro-dot background textures as generic atmosphere
+- no amateur vector illustration, fake botanical/scientific plates, arbitrary petals/stems, or illustration paths crossing text
 - no decorative hairline/separator ornaments
 - no red divider lines as fake editorial detail
 - no section-label-plus-line filler
 - no cut-off mobile sheets or hidden modal actions
 - no active/underline/progress bars overlapping labels
 - no selectable chips/items with missing selected state
+- no selected nav/tab/chip/card/button state whose hover or focus makes text disappear
 - no text-only bottom nav in practical mobile product flows unless justified
 - no add-new cards styled like content cards
 - no badges/counters overlapping nav labels/icons
 - no random domain palettes chosen just because they look cool
+- no muddy sepia/espresso/umber brown-black archive wash as page, stage, container, card, panel, sidebar, or nav background
+- no "nocturne/archive/field-guide/botanical/brass/tobacco/parchment/vintage/premium" rationale for that same banned brown-black surface family
 - no placebo navigation where selected tabs/nav do not change visible product state
 - no map/floor-plan/timeline/canvas label collisions
 - chart/diagram/canvas system present when charts, maps, timelines, diagrams, or spatial product objects exist
@@ -109,6 +115,16 @@ If references are used:
 - declare image roles
 - do not copy screenshots as production assets
 
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental, image-led, or award-reference work, route `skills/signature-interaction-director/SKILL.md` before implementation.
+
+- Choose one signature interaction, or explicitly justify why none fits.
+- Extract mechanics from references, not logos, characters, names, copy, or brand styling.
+- Document the interaction story, motion choreography, accessibility fallback, and reduced-motion fallback in the visual spec.
+- Do not ship a generic section stack after references with portal entries, playful gates, mascot motion, scroll-assembled cards, kinetic poster boards, cinematic media constellations, or custom detail modals.
+- Do not use a playful gate for high-frequency utility work where it slows the task.
+
 ## Unsplash Asset Sourcing
 
 If real imagery is required:
@@ -132,6 +148,9 @@ Create `docs/design/visual-spec.md` with:
 - selected direction
 - reference mechanics
 - navigation readability strategy
+- state contrast matrix for default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled states
+- texture / illustration role inventory
+- text-safe zones for illustration and vector paths
 - domain palette fit
 - no placebo navigation contract
 - spatial label safe zones when maps/floor plans/timelines/canvases exist
@@ -142,13 +161,16 @@ Create `docs/design/visual-spec.md` with:
 - desktop command-surface primary object strategy
 - identity chrome decision
 - decorative geometry strategy
+- no ambient blob / dotted texture / amateur illustration proof
 - line/divider strategy
 - modal/sheet fit strategy when mobile overlays exist
 - mobile nav icon+label strategy for practical product apps
 - selection state strategy for chips/tabs/filters/object selectors
+- selected+hover and selected+focus contrast proof for chips/tabs/filters/object selectors
 - control decoration collision check
 - add/create action differentiation
 - palette exploration when expressive mode applies
+- banned sepia/espresso/umber surface wash check
 - layout strategy
 - responsive strategy
 - motion strategy
@@ -176,6 +198,7 @@ Define semantic tokens before UI code:
 - shadow/elevation
 - borders/dividers
 - chart/state colors
+- state contrast pairs for default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled
 - component variants
 - image treatment
 - motion rules
@@ -225,7 +248,9 @@ If the task asks for advanced animations, cinematic motion, artistic motion, Aww
 - implemented selected direction
 - visual spec
 - design-system tokens
+- texture / illustration role inventory
 - OKLCH/APCA palette pass
+- state contrast matrix / selected-hover proof
 - interactions verified
 - build/lint result
 - local dev server URL if running
@@ -238,3 +263,56 @@ If the task asks for advanced animations, cinematic motion, artistic motion, Aww
 - evidence-backed critique / text clarity / production hardening status when relevant
 - files changed
 - remaining weaknesses
+
+## Required Layout Integrity Final Checks
+
+Before final handoff, verify:
+
+- no text clipping
+- no words cut
+- no nav label overflow
+- no sticker/card covering headline words
+- no accidental blank viewport area
+- no floating label/card/sticker drift or overlap at intermediate widths
+- no detail panel disconnected from clicked/selected trigger
+- no mobile route/app navigation that disappears on scroll
+- mobile route/app navigation uses persistent bottom nav or bottom-accessible controller by default
+- final UI integrity v3 width sweep checked from 360 to 1920 at 40px steps or smaller when practical
+- height matrix checked at 720, 844, 900, and 1080
+- scroll samples checked at 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, and 1.00 when scroll/sticky/pinned content exists
+
+Run `skills/layout-integrity-review/SKILL.md` after screenshots exist. If a runnable URL exists, run `tools/layout-integrity-check.mjs --url <url> --out docs/qa/layout-integrity/ --width-sweep 360:1920:40 --heights 720,844,900,1080` or document why blocked.
+
+## Compact Navigation Icon Fallback
+
+- compact nav must use icon fallback or a real menu pattern
+- no arbitrary two-letter nav abbreviations
+- active compact nav item must be understandable
+- accessible labels are required for icon-only or visually-shortened items
+- small-screen screenshots are required at 768 and 390
+
+## Anchored Detail Reveal
+
+- detail reveal must be anchored to clicked item or use an explicit sheet/drawer/full-screen pattern with selected-item context
+- use `data-detail-trigger`, `data-detail-panel`, `data-detail-for`, and `data-selected-item` where practical
+- final handoff is blocked if the detail panel is spatially lost
+
+## Persistent Mobile Bottom Navigation
+
+- mobile app/route nav must be persistent bottom by default
+- mobile nav must remain accessible after scroll
+- bottom nav must respect safe area and preserve accessible full labels
+- final handoff is blocked if mobile route nav disappears on scroll
+
+## Final UI Integrity Gate
+
+Before final handoff:
+
+1. Run build/lint.
+2. Capture screenshots/checks across the final UI integrity v3 width sweep, height matrix, and required scroll samples.
+3. Run scroll-choreography-review if scroll-heavy.
+4. Run layout-integrity-review.
+5. Run final-ui-integrity-gate.
+6. Run final scorecard.
+
+Do not claim success if clipped text, viewport-edge clipping, partially visible active panels, horizontal scroll partial content, overlap, floating object drift, nav overflow, media/text collision, accidental blank space, fixed overlay collision, or the user's original complaint remains visible at any sampled width, height, scroll position, or state. If the final UI integrity gate is failed or blocked, fix the UI and rerun validation before responding.

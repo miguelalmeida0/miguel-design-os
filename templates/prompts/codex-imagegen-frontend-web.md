@@ -37,7 +37,7 @@ Reference generation contract:
 2. After Migi chooses A, B, C, or a hybrid, create `docs/design/selected-direction.md`.
 3. Generate or select one horizontal image/reference per section, not one compressed full-page board.
 4. Each section must define a job, composition anchor, background mode, CTA variation, image role, and second-read moment.
-5. Explore Safe Refined, Artistic Expressive, and Unexpected High-Character palette options; do not default to muddy AI-background colors.
+5. Explore Safe Refined, Artistic Expressive, and Unexpected High-Character palette options; do not default to muddy AI-background colors. Reject sepia/espresso/umber brown-black archive wash even when the concept says nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
 6. If real imagery is required, create `docs/design/unsplash-search-plan.md` and `docs/design/unsplash-asset-manifest.md`; include source/photographer/download metadata, alt text, crop strategy, palette relationship, text safe zones, and product-truth notes.
 7. Keep the selected palette and typography locked across sections.
 8. Vary section rhythm without breaking the concept spine.

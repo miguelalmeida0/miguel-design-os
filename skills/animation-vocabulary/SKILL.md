@@ -86,3 +86,19 @@ For advanced motion planning, prefer exact terms that can be implemented and rev
 - floating CTA transition
 
 If Migi asks for award-level, cinematic, or scroll-heavy motion, name the likely techniques and route to `skills/advanced-motion-choreography/SKILL.md`.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Feed named terms into specs and repair tasks.
+
+Required evidence:
+- chosen term, close alternatives, implementation implication, and misuse warning.
+
+Repair routing:
+- motion-craft-director or advanced-motion-choreography owns downstream action.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "animation-vocabulary"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

@@ -39,6 +39,7 @@ For practical product surfaces such as hospitality operations, finance, healthca
 ## Do Not Default To
 
 - muddy brown/black generated-app backgrounds
+- muddy sepia/espresso/umber brown-black archive wash on pages, stages, cards, panels, containers, sidebars, or navigation
 - generic charcoal plus orange
 - generic blue-grey SaaS
 - AI purple/blue glow
@@ -50,6 +51,25 @@ For practical product surfaces such as hospitality operations, finance, healthca
 - palettes that are visually interesting but domain-random
 
 Color should be part of the concept.
+
+## Strict Ban: Sepia Archive Brown Surface Wash
+
+Migi has repeatedly rejected the muddy sepia/espresso/umber brown-black surface family.
+
+Do not use it for:
+
+- page backgrounds
+- hero stages
+- product cards
+- framed illustrations
+- drawers/sheets
+- sidebars
+- navigation
+- "archive" or "field guide" visual systems
+
+Do not rename it as nocturne, archive, botanical, brass, tobacco, parchment, vintage, cinematic, or premium. Those labels do not make the color acceptable.
+
+If a generated direction contains this surface family, it fails the palette gate. Replace it with a more authored palette such as ink blue, aubergine-black, deep green-black, mineral grey, true black/cream, cold moonlit blue, oxidized red, surgical green, chrome blue, or another reference-specific system with contrast proof.
 
 ## Required Palette Exploration
 

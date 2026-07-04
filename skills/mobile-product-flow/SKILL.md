@@ -151,3 +151,113 @@ Also create or fill:
 - touch targets are too small
 - beautiful screen has no usable flow
 - text or cards are unreadable at 390
+
+## Layout Integrity Gate
+
+Mobile flow review must block clipped text, card/sticker text overflow, CTA label clipping, nav label overflow, and accidental blank viewport space.
+
+For 390px and 768px proof:
+
+- no words cut inside chips, cards, sheets, bottom nav, buttons, or tabs
+- no active indicator overlaps labels/content
+- no fixed-width nav or control forces dynamic text outside the hit target
+- no modal/sheet/container clips its content
+- no decorative object covers critical text
+
+Run `skills/layout-integrity-review/SKILL.md` before final handoff for mobile flows.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Require screen-sequence and native behavior proof.
+
+Required evidence:
+- screen sequence, safe areas, thumb zones, bottom nav exception/default, sheet fit, and 390 screenshots.
+
+Repair routing:
+- layout-integrity-review owns collisions; screenshot-scorecard-review owns viewport proof.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "mobile-product-flow"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Small-Screen Nav Clarity Requirement
+
+For every visual/product/landing/mobile page with navigation, the agent must define:
+
+- desktop nav variant
+- tablet nav variant
+- mobile/compact nav variant
+- label/icon behavior
+- active state behavior
+- accessible labels
+- hit target sizes
+- overflow behavior
+
+Compact nav must use icons or a real menu pattern. Two-letter abbreviations are not a design system.
+
+Review requirement:
+
+- screenshot-scorecard-review must inspect compact nav at 768 and 390
+- layout-integrity-review must flag abbreviation fallback as a failure
+- final-scorecard cannot pass if compact nav looks clipped, cryptic, or broken
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard
+
+## Mobile Bottom Navigation Requirement
+
+For mobile route/app experiences, navigation must be persistent and bottom-positioned by default.
+
+The agent must not place primary mobile route navigation only at the top unless the page is a simple document page and does not need persistent access.
+
+For scroll-heavy experiences, mobile nav must remain accessible while scrolling.
+
+Final review must check:
+
+- mobile nav visibility after scroll
+- bottom nav safe area
+- active state
+- accessible labels
+- icon or icon + active label strategy
+
+Score caps:
+
+- mobile route nav disappears on scroll: max score 3.
+- mobile nav is top-only for app-like route experience: max score 4.
+- compact nav has no bottom/persistent access: max score 4.
+- mobile nav lacks icons or clear labels: max score 4.
+- mobile nav has no accessible labels: max score 5.
+
+## Detail Reveal Spatial Context Requirement
+
+Every card/item/detail interaction must preserve spatial context. The selected trigger and detail panel must be connected by layout, animation, placement, or explicit selected state.
+
+Final review must check:
+
+- selected card detail placement
+- selected trigger remains clear
+- detail panel is inline, adjacent, anchored, focused into view, or an explicit full-screen/mobile sheet
+- close/focus/keyboard behavior is acceptable
+
+If the detail panel feels disconnected from the clicked object, final verdict cannot pass.

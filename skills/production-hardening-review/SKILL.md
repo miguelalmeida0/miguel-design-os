@@ -69,6 +69,23 @@ Do not use during Fast Direction Gate, early concept selection, or pure visual m
 - large dataset has no pagination/search/virtualization plan: max hardening score 6
 - no reduced-motion support for animated interface: max hardening score 6
 
+## Layout Integrity Gate
+
+Text/container integrity is mandatory production hardening. Long labels, translations, dynamic content, state changes, and viewport changes must not clip text or break nav.
+
+Run `skills/layout-integrity-review/SKILL.md` before production-ready claims.
+
+Block if:
+
+- any critical text is clipped
+- nav text overflows its item
+- card/sticker/overlay covers headline text
+- CTA text is clipped
+- text overflow appears in screenshot
+- huge blank area is accidental
+
+Required stress: 1440, 1280, 1024, 768, 390, long strings, selected/hover/active states, and hidden-label accessible-name checks.
+
 ## Visualization Hardening Escalation
 
 When charts, diagrams, maps, timelines, floor plans, pattern canvases, or spatial product objects are present, also route `skills/data-viz-hardening-review/SKILL.md`.
@@ -84,3 +101,90 @@ Check:
 - units and abbreviation explanations
 - color-independent encoding
 - 1440 / 1280 / 1024 / 768 / 390 and 200% zoom
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Add automation hooks and stress fixtures.
+
+Required evidence:
+- long text, empty/error/loading, i18n, permissions, slow network, accessibility, and responsive stress evidence.
+
+Repair routing:
+- owner skills fix class-specific failures; creative-orchestration-director tracks remaining P0/P1 repairs.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "production-hardening-review"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Small-Screen Nav Clarity Requirement
+
+For every visual/product/landing/mobile page with navigation, the agent must define:
+
+- desktop nav variant
+- tablet nav variant
+- mobile/compact nav variant
+- label/icon behavior
+- active state behavior
+- accessible labels
+- hit target sizes
+- overflow behavior
+
+Compact nav must use icons or a real menu pattern. Two-letter abbreviations are not a design system.
+
+Review requirement:
+
+- screenshot-scorecard-review must inspect compact nav at 768 and 390
+- layout-integrity-review must flag abbreviation fallback as a failure
+- final-scorecard cannot pass if compact nav looks clipped, cryptic, or broken
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard
+
+## Final UI Integrity Gate v3
+
+For visual/frontend work, final UI integrity v3 is mandatory before handoff. Screenshot evidence at only one width is insufficient.
+
+Required v3 proof:
+- Test viewport matrix: 390, 430, 640, 768, 900, 1024, 1180, 1280, 1366, 1440, 1536, 1728, 1920.
+- Sample scroll positions: 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00.
+- Include applicable states: default, nav active states, selected/open detail panel, sticky/pinned active section, compact nav, and reduced motion when practical.
+- Report passed and failed sampled viewport states.
+
+Floating labels, stickers, cards, badges, props, and containers require responsive anchoring and overlap checks. Final response must not claim success if the v3 gate fails, is blocked, has blockers, has cut text, has floating overlap, has media/text collision, has nav overflow, or lacks matrix evidence.
+
+## Final UI Integrity Gate v3
+
+Final UI Integrity Gate v3 is mandatory. Fixed breakpoint-only evidence is insufficient. Width sweep evidence is required. Horizontal scroll must prove readable resting states. Floating objects must prove safe across resizing. Final response is forbidden unless the gate passes or clearly reports blocked/failed.
+
+## Mobile Bottom Navigation Requirement
+
+For mobile route/app experiences, navigation must be persistent and bottom-positioned by default. Verify that route navigation remains accessible after scroll, respects safe areas, has clear active state, and preserves accessible full labels.
+
+Block if mobile route navigation disappears on scroll or if compact route access is unavailable.
+
+## Detail Reveal Spatial Context Requirement
+
+Every card/item/detail interaction must preserve spatial context. The selected trigger and detail panel must be connected by layout, animation, placement, or explicit selected state.
+
+Verify close behavior, focus behavior, keyboard behavior, mobile behavior, selected state, and `data-detail-for` relationships where practical. Block detached reveals with no focus/scroll/context strategy.

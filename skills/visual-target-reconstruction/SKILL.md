@@ -182,7 +182,7 @@ Product logic waits until the pixel-parity shell is approved.
 19. Reject scale-only drama: giant headlines, giant images, huge empty containers, and low desktop density are not premium.
 20. Reject hope-based contrast: important text over imagery needs a safe zone, scrim, plate, mask, vignette, crop, or separation outside the image.
 21. Reject background image fear: immersive references should not be reduced to boxed rectangular assets.
-22. Reject safe AI palette defaults: artistic, landing, portfolio, cinematic, creative, editorial, and experimental reference work must not default to muddy brown/black, generic charcoal/orange, AI purple glow, beige premium, terminal green, neon lime, blue-grey SaaS, or safe neutral with one predictable accent.
+22. Reject safe AI palette defaults: artistic, landing, portfolio, cinematic, creative, editorial, and experimental reference work must not default to muddy brown/black, sepia/espresso/umber archive wash, generic charcoal/orange, AI purple glow, beige premium, terminal green, neon lime, blue-grey SaaS, or safe neutral with one predictable accent.
 23. Reject decorative orbital/circular/radar/HUD overlays unless Migi explicitly requested them or they are functional components such as circular charts, selectors, maps, progress rings, or labeled diagrams.
 24. Reject navigation that becomes unreadable over reference imagery, giant type, video, gradients, or scroll-state background changes.
 25. Reject forced app-name/logo/initials chrome unless the selected direction or visual spec justifies it.
@@ -426,6 +426,8 @@ Patch needed:
 - Palette chosen without relation to imagery, references, or concept: max score 6.
 - Bold palette used but contrast/readability fails: max score 5.
 - Agent defaults to charcoal/brown/orange generated-app palette again: max score 5.
+- Sepia/espresso/umber brown-black archive wash appears as a page, stage, card, panel, nav, sidebar, or container surface: max score 3.
+- Nocturne/archive/field-guide/botanical/brass/tobacco/parchment/vintage/premium language is used to justify the banned brown-black surface family: max score 3.
 - Text visibly escapes container: max score 2.
 - Chart bars/lines escape chart/card bounds: max score 2.
 - Containers overlap on resize: max score 3.
@@ -464,3 +466,19 @@ Patch needed:
 - Do not let dogfood work drift into building adjacent tools instead of evaluating the target app.
 - Visual target screenshots are evidence, not production assets.
 - Run `tools/compare-screenshots.mjs` for target/current parity evidence.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Turn visual matching into a measurable reconstruction loop.
+
+Required evidence:
+- target/current screenshots, excluded artifacts, pixel/composition differences, and repair list.
+
+Repair routing:
+- visual-target-reconstruction owns reconstruction fixes; screenshot-scorecard-review owns evidence gaps.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "visual-target-reconstruction"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

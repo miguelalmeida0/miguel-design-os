@@ -34,6 +34,7 @@ Review against:
 - design-system token quality
 - visual spec completeness
 - palette exploration for artistic, cinematic, landing, portfolio, creative, editorial, or experimental redesigns
+- strict rejection of sepia/espresso/umber brown-black archive wash and any nocturne/archive/field-guide rationale for it
 - anti-AI-tell compliance
 - layout integrity and responsive proof
 - motion purpose and reduced-motion behavior

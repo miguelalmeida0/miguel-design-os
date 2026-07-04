@@ -151,3 +151,19 @@ When a runnable UI exists, use `tools/diagram-integrity-check.mjs` where practic
 ## Stop Conditions
 
 Stop before implementation if the canvas has no coordinate system, no layer model, no label safe zones, no collision strategy, or no selection-to-inspector behavior for selectable objects.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Keep the strong model and require detector-backed proof.
+
+Required evidence:
+- coordinate/layer/object/label/collision/selection model plus diagram-integrity check or blocker.
+
+Repair routing:
+- data-viz-hardening-review owns edge cases after implementation.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "diagram-canvas-system"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

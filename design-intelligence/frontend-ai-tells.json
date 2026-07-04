@@ -71,6 +71,13 @@
       "reason": "Color becomes arbitrary styling instead of product communication.",
       "correction": "Define Domain Palette Fit before tokens: domain, environment, pressure, emotion, state colors, and random palette rejected."
     },
+    "sepia_archive_brown_wash": {
+      "type": "palette_ai_tell",
+      "description": "Muddy sepia, espresso, umber, tobacco, parchment, or brown-black archive wash used as a page, stage, card, panel, sidebar, nav, or framed object background.",
+      "rejected": true,
+      "reason": "Migi has explicitly rejected this recurring generated-app palette. It makes unrelated projects feel like the same nocturne/archive/botanical template.",
+      "correction": "Remove the brown-black surface family. Use an authored palette from the concept or references, such as ink blue, aubergine-black, deep green-black, mineral grey, true black/cream, or another contrast-tested system."
+    },
     "placebo_navigation": {
       "type": "interaction_ai_tell",
       "description": "Navigation, tabs, filters, or segmented controls change active visual state but do not change visible content, route, scope, filter, or product state.",
@@ -142,7 +149,8 @@
       "neon lime tech palette without reference support",
       "safe neutral surfaces with one predictable accent",
       "artistic or landing page has no palette exploration",
-      "random domain palette with no product-environment reasoning"
+      "random domain palette with no product-environment reasoning",
+      "sepia/espresso/umber archive brown wash rationalized as nocturne, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium"
     ],
     "typographyTells": [
       "Inter used as premium default without reason",

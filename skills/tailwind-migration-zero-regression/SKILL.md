@@ -86,3 +86,19 @@ Remaining regression risk:
 - Do not add external dependencies.
 - Do not delete styling without proving no visual regression.
 - Do not touch unrelated product logic.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Keep narrow utility value with visual parity proof.
+
+Required evidence:
+- before/after screenshots, class mapping, changed files, build result, and zero-regression checklist.
+
+Repair routing:
+- screenshot-scorecard-review owns visual parity failures.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "tailwind-migration-zero-regression"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

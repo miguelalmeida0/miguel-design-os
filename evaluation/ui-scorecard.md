@@ -58,6 +58,10 @@ Before scoring, record:
 - Scale Calibration section from `docs/design/reference-usage-report.md` when visual-library references are used
 - Image Environment Strategy from `docs/design/reference-usage-report.md` when image-led, artistic, landing-page, cinematic, or visual-heavy references are used
 - Contrast / Legibility Strategy from `docs/design/reference-usage-report.md` when image-led or visual-library references are used
+- Texture / Illustration Role Inventory when textures, SVG, vector forms, abstract forms, masks, callouts, or illustration are present
+- Text-safe zones for illustration and vector paths when text and drawing share a scene
+- State Contrast Matrix for interactive controls, including default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled
+- selected+hover contrast proof for nav, tabs, chips, segmented controls, menus, buttons, cards, and selectable objects when present
 - Navigation Strategy for dashboard or visual-heavy work
 - Toolbar Alignment Strategy for dashboard or visual-heavy work with search, filters, or action clusters
 - Text Density Strategy for dashboard or visual-heavy panels
@@ -119,6 +123,11 @@ Asset sourcing caps do not apply to purely typographic or minimal pages where im
 Functional circular charts, progress rings, orbital selectors, diagrams, or maps are allowed only when they carry meaning and are documented. Decorative orbit/radar/sonar/HUD atmosphere is rejected by default.
 
 - no screenshots and no documented blocker: max 60
+- multi-skill work skips `creative-orchestration-director`: max workflow score 60 (6/10)
+- critique, audit, or scorecard produces prose but no repair queue: max workflow score 50 (5/10)
+- specialist review has no machine-readable skill verdict: max workflow score 60 (6/10)
+- P0/P1 repair has no owner skill, target, action, and acceptance check: max workflow score 50 (5/10)
+- final handoff claims done while skill verdicts still have open P0 repairs: max workflow score 40 (4/10)
 - visual-heavy new app implemented without direction-options gate: max 60 (6/10)
 - paid API generation runs without explicit approval: max workflow score 20 (2/10)
 - paid API key required for default workflow: max workflow score 40 (4/10)
@@ -180,6 +189,10 @@ Functional circular charts, progress rings, orbital selectors, diagrams, or maps
 - random domain palette that does not fit product domain, user environment, task pressure, or emotional state: max 50 (5/10)
 - bold palette used but contrast/readability fails: max 50 (5/10)
 - agent defaults to charcoal/brown/orange generated-app palette again: max 50 (5/10)
+- sepia/espresso/umber brown-black archive wash used as main page, stage, or app background: max 30 (3/10)
+- sepia/espresso/umber brown-black archive wash used for navigation, sidebar, card, panel, or container backgrounds: max 40 (4/10)
+- repeated sepia/espresso/umber palette appears across unrelated generated UIs: max 30 (3/10)
+- "nocturne", "archive", "field guide", "botanical", "brass", "tobacco", "parchment", "vintage", "cinematic", or "premium" used to justify the same muddy brown-black surface family: max 30 (3/10)
 - decorative circular/orbital line overlay used as background atmosphere: max 50 (5/10)
 - fake radar/sonar/HUD circles used without function: max 50 (5/10)
 - circular line motif appears as generic tech decoration: max 50 (5/10)
@@ -187,6 +200,18 @@ Functional circular charts, progress rings, orbital selectors, diagrams, or maps
 - circular line system not documented as functional in visual spec: max 60 (6/10)
 - agent repeats decorative circular overlay across unrelated projects: max 50 (5/10)
 - Migi explicitly rejects the circular/orbital motif and it still appears: max 30 (3/10)
+- unmotivated ambient light blob, foggy radial glow, spotlight smear, or AI haze used as background atmosphere: max 40 (4/10)
+- decorative dotted/star-field/micro-dot background texture used as fake advanced UI atmosphere: max 40 (4/10)
+- texture exists only because it looks cool and has no role/layer/bounds/anchors: max 50 (5/10)
+- amateur/childlike vector illustration in premium, editorial, landing, or visual-heavy UI: max 40 (4/10)
+- fake botanical/scientific plate or arbitrary petals/stems used as roleless decoration: max 40 (4/10)
+- illustration line, stem, arc, callout, mask, or path crosses readable words: max 30 (3/10)
+- words are clipped/cut by illustration, viewport edge, mask, parent overflow, or vector layer: max 30 (3/10)
+- shape/vector/illustration system lacks role, layer, bounds, anchors, responsive behavior, and text-safe zones: max 50 (5/10)
+- Native Tooltip Ban violation: browser-native tooltip appears over art-directed SVG: max 40 (4/10)
+- Annotation Protected Zone Rule violation: leader line cuts a word or crosses label text: max 30 (3/10)
+- Illustration Complexity Honesty Rule violation: primitive ellipses, generic leaves, simple blobs, or childlike drawing claimed as professional illustration: max 40 (4/10)
+- Background Texture Quality Rule violation: background reads as AI atmospheric texture: max 50 (5/10)
 - nav unreadable over image/type/background: max 40 (4/10)
 - nav contrast depends on lucky scroll position: max 50 (5/10)
 - nav has no scroll-state readability strategy: max 60 (6/10)
@@ -367,6 +392,10 @@ Functional circular charts, progress rings, orbital selectors, diagrams, or maps
 - bottom nav and modal visually collide: max 50 (5/10)
 - active/progress/underline bar overlaps button or tab label: max 40 (4/10)
 - selection indicator makes text harder to read: max 50 (5/10)
+- selected + hover state makes text disappear: max 30 (3/10)
+- interactive text unreadable in hover, focus-visible, active, selected, selected+hover, or selected+focus state: max 40 (4/10)
+- hover/focus/selected styling drops label contrast below readable threshold: max 50 (5/10)
+- no state contrast matrix for interactive nav, tabs, chips, segmented controls, buttons, cards, menus, or selectable objects: max 60 (6/10)
 - control decoration collides with content: max 50 (5/10)
 - segmented control active state is unclear or glitchy: max 50 (5/10)
 - selectable chip/item does not retain selected state: max 40 (4/10)
@@ -435,6 +464,7 @@ Functional circular charts, progress rings, orbital selectors, diagrams, or maps
 - status indicator with no user meaning: max 60 (6/10)
 - decorative telemetry/status chips: max 60 (6/10)
 - palette feels machine-generated/generic: max 60 (6/10)
+- banned sepia/espresso/umber archive surface wash appears in a screenshot: max 30 (3/10)
 - visual style chosen by vibe only with no style-selection report: max 60 (6/10)
 - palette selected without reference/product reasoning: max 60 (6/10)
 - incompatible visual style systems mashed together without hierarchy: max 60 (6/10)
@@ -774,6 +804,9 @@ Any blocker prevents elite:
 - source-project palette/layout copied literally
 - In The Loop social patterns applied to a non-social product
 - text overlap or clipping in primary flow
+- ambient light blob, dotted texture, or amateur vector illustration appears as generic advanced UI atmosphere
+- illustration lines, stems, arcs, callouts, masks, or paths cross/cut readable text
+- browser-native tooltip appears over art-directed SVG
 - important text hard to read over image, gradient, video, texture, or washed-out panel
 - text over image has no deliberate protection method
 - CTA or navigation text has weak contrast
@@ -803,6 +836,7 @@ Any blocker prevents elite:
 - dashboard charts are decorative filler instead of supporting decisions, status, comparison, or trend
 - dashboard major chart is decorative or unclear
 - dashboard uses murky monochrome / terminal-green palette without reference justification
+- dashboard uses sepia/espresso/umber brown-black archive wash on panels, cards, sidebars, or nav backgrounds
 - dashboard overuses one accent color everywhere
 - dashboard uses only text, metrics, and panels despite image/object/media reference support
 - dashboard lacks live/state energy when the product represents monitoring, activity, or freshness
@@ -903,3 +937,178 @@ Always report:
 - blockers
 - verification gaps
 - whether the UI was patched after review
+
+## Signature Interaction Score Caps
+
+- Award-level/signature references provided but no signature interaction selected or justified: max score 6.
+- Generic section stack after signature interaction references: max score 4.
+- Copied reference branding instead of extracted mechanics: max score 4.
+- Playful interaction blocks access with no fallback: max score 5.
+- Portal/morphing claim but only fade/slide delivered: max score 4.
+- Review/testimonial section generic despite Review Theater pattern: max score 6.
+- Modal/detail interaction uses default dialog styling despite Editorial List Detail Modal pattern: max score 6.
+- No reduced-motion fallback for signature motion: max score 5.
+- Signature interaction is not visible in screenshot or motion evidence: max score 6.
+- Static SVG illustration delivered where the selected signature interaction requires animated reveal: max score 5.
+- If no signature interaction appears after award-level references, the final verdict cannot be "masterpiece."
+
+## Illustration-First Gate Score Caps
+
+- Full page built before illustration asset passes: max score 4.
+- Hero illustration looks amateur: max score 4.
+- Botanical/character/object illustration uses primitive ellipses/blobs: max score 4.
+- No isolated illustration review before full page: max score 5.
+- Illustration-heavy project has no style guide: max score 5.
+
+## No Ambient Background Blobs Score Caps
+
+- Visible generic background blob: max score 4.
+- Generic dot/star field as atmosphere: max score 4.
+- Atmosphere shape has no role/purpose: max score 4.
+- Background decoration competes with primary content: max score 4.
+- "Premium glow" with no reference justification: max score 5.
+
+## Botanical / Organic Illustration Score Caps
+
+- Primitive botanical illustration: max score 4.
+- Repeated ellipse leaves as hero art: max score 4.
+- No species-specific silhouette: max score 5.
+- No reference grammar: max score 5.
+
+## Native Tooltip Ban
+
+No art-directed SVG may expose browser-native tooltips over the visual surface. Do not put `title` attributes on child SVG elements. Do not create child `<title>` elements that appear as browser hover tooltips in art-directed surfaces. Use top-level SVG `<title>` and `<desc>` only for accessibility. Decorative inner groups must be `aria-hidden="true"` and `pointer-events="none"` unless intentionally interactive.
+
+If a browser-native tooltip appears in screenshot review: max score 4.
+
+## Annotation Protected Zone
+
+Leader lines, annotation rules, stems, connectors, and decorative lines may never cross through label text. Every annotation must define anchor point, leader path, label box, protected label zone, collision fallback, and responsive fallback.
+
+- If a leader line cuts through text: max score 3.
+- If annotation labels collide with art or other labels: max score 4.
+
+## Layout Integrity Score Caps
+
+- Final UI integrity gate not run: max score 50 (5/10).
+- Final UI integrity gate blocked/failed: max score 40 (4/10).
+- Critical text clipped: max score 2.
+- Clipped critical text visible: max score 2.
+- Word cut off in screenshot: max score 2.
+- Nav label overflows item: max score 3.
+- Nav label overflow visible: max score 3.
+- Sticker/card covers headline word: max score 3.
+- Button/CTA text clipped: max score 3.
+- CTA/button text clipped: max score 3.
+- Card title/body clipped: max score 3.
+- Media/image/video over readable text: max score 3.
+- Overlapping containers cover text: max score 3.
+- Fixed/sticky overlay covers content: max score 3.
+- Text hidden by `overflow: hidden`: max score 3.
+- Accidental huge blank viewport area: max score 4.
+- Unresolved user complaint remains visible: max score 2.
+- Screenshot contradicts final report: max score 2.
+- Unresolved text/container issue appears in screenshot: max score 3.
+- No text fit strategy for sticker/card/nav system: max score 5.
+- Nav label outside item: max score 3.
+- Nav huge dead space at breakpoint: max score 4.
+- Nav active state clips text: max score 3.
+- Nav lacks responsive variant: max score 5.
+- Nav inaccessible after label hiding: max score 5.
+- Compact nav uses arbitrary abbreviations: max score 4.
+- Nav hides full labels without icons: max score 4.
+- Nav icons lack accessible labels: max score 5.
+- Active compact nav item is unclear: max score 5.
+- Nav looks clipped/broken at small width: max score 3.
+- No small-screen nav variant: max score 5.
+- Large accidental blank viewport area: max score 4.
+- Empty space from layout bug: max score 3.
+- Scroll/pinned stage has blank dead frame: max score 4.
+- Whitespace has no stated purpose in visual spec: max score 6.
+
+## Final UI Integrity Gate v2 Score Caps
+
+- Final gate v2 not run on visual frontend work: max score 4.
+- Final gate v2 failed but handoff claimed success: max score 2.
+- Layout failure appears at any sampled width: max score 3.
+- Floating container overlaps another container: max score 3.
+- Cut text remains after gate: max score 2.
+- Final report lacks screenshot matrix evidence: max score 4.
+- Final report does not include failed/passed viewport list: max score 4.
+- Floating object overlaps important container: max score 3.
+- Floating object covers readable text: max score 3.
+- Floating object has no responsive placement strategy: max score 5.
+- Free-floating absolute object causes failure at intermediate width: max score 3.
+
+## Final UI Integrity Gate v3 Score Caps
+
+- Final gate v3 not run on visual frontend work: max score 4.
+- Final gate v3 failed but handoff claimed success: max score 2.
+- Fixed breakpoint-only evidence for final handoff: max score 4.
+- Width sweep evidence missing: max score 4.
+- Critical text clipped by viewport edge: max score 2.
+- Viewport-edge clipping remains after gate: max score 2.
+- Active card/panel partially unreadable: max score 3.
+- CTA/nav clipped by viewport edge: max score 3.
+- Horizontal scroll shows partial critical content at rest: max score 3.
+- Horizontal route has unreadable partial content: max score 3.
+- Active content cut during horizontal scroll: max score 3.
+- Horizontal scroll creates accidental blank area: max score 4.
+- Floating object overlaps content after resize: max score 3.
+- Floating object becomes compositionally lost: max score 4.
+- Arbitrary free-floating absolute object causes failure: max score 3.
+- Scroll choreography damages readability: max score 3.
+- Scroll route creates partial unreadable content: max score 3.
+- Agent preserves scroll gimmick despite readability failure: max score 2.
+- Detail panel disconnected from clicked trigger: max score 4.
+- Selected item not visibly connected to detail: max score 5.
+- Detail opens below fold without focus/scroll: max score 4.
+- Default modal used where designed reveal required: max score 5.
+- No selected state on detail trigger: max score 5.
+- Mobile route nav disappears on scroll: max score 3.
+- Mobile nav is top-only for app-like route experience: max score 4.
+- Compact route nav has no bottom/persistent access: max score 4.
+- Mobile nav lacks icons or clear labels: max score 4.
+- Mobile nav lacks accessible labels: max score 5.
+- Mobile nav blocks content or ignores safe area: max score 4.
+
+## Elite Scroll Choreography Caps
+
+These caps apply when a site claims elite, award-level, Awwwards, original, authored, million-dollar, video-first, portal, horizontal route, pinned media, card assembly, media constellation, or other scroll-heavy choreography.
+
+- elite scroll requested but only fade-in sections delivered: max score 40 (4/10)
+- selected scroll pattern not visible: max score 40 (4/10)
+- scroll-to-assemble claim but objects do not assemble: max score 40 (4/10)
+- pinned/sticky stage has blank dead frame: max score 40 (4/10)
+- horizontal scroll route has no mobile fallback: max score 50 (5/10)
+- scroll movement covers critical text: max score 30 (3/10)
+- moving video/media covers critical text: max score 30 (3/10)
+- video/image covers critical text: max score 30 (3/10)
+- scroll-transformed object crosses protected text zone: max score 30 (3/10)
+- video-to-object transform has no protected-zone map: max score 50 (5/10)
+- media object is above text by z-index without readable surface: max score 40 (4/10)
+- screenshot shows media/text collision: max score 30 (3/10)
+- persistent video overlay without reserved lane: max score 40 (4/10)
+- content containers thinned to fit media: max score 30 (3/10)
+- cards become unreadable because of media placement: max score 30 (3/10)
+- video remains after hero with no defined role: max score 50 (5/10)
+- media placement forces awkward text wrapping: max score 40 (4/10)
+- media object wins over content integrity: max score 30 (3/10)
+- no scroll-state screenshots for media-heavy choreography: max score 50 (5/10)
+- scroll nav does not sync to chapters: max score 50 (5/10)
+- no reduced-motion fallback for scroll choreography: max score 50 (5/10)
+- scroll implementation causes horizontal overflow: max score 40 (4/10)
+- no scroll-choreography review for scroll-heavy site: max score 60 (6/10)
+
+## Elite Experience Specialist Caps
+
+- scroll feels jittery or raw: max score 5.
+- no scroll smoothing spec for scroll-heavy site: max score 6.
+- video/media used only as background when media-object stage was required: max score 5.
+- media crop breaks subject or text readability: max score 4.
+- physical prop clips text: max score 3.
+- physical prop has no role/text-fit strategy: max score 5.
+- default modal used where designed detail reveal was required: max score 5.
+- detail panel overflows or lacks close/focus behavior: max score 4.
+- playful/brand site uses generic SaaS copy: max score 5.
+- CTAs do not match brand voice: max score 6.

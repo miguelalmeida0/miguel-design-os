@@ -74,3 +74,19 @@ For dashboard work, include in `docs/design/visual-spec.md`:
 - visualization tool/library choice has no rationale
 - canvas or spatial product object has no coordinate/layer/object model
 - selection does not update inspector/details
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Orchestrate the dashboard/chart/data-viz stack instead of overlapping it.
+
+Required evidence:
+- dashboard attraction zone, chart hierarchy, graph mix, data decisions, image/media roles, and route table.
+
+Repair routing:
+- chart-system-director and data-visualization-selection own chart-specific repairs.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "dashboard-graph-system"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

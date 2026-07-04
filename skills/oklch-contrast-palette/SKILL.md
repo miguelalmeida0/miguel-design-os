@@ -76,6 +76,12 @@ Create or fill a palette/contrast note in the relevant design artifact:
 - Does it avoid muddy generated-app defaults?
 - Are image colors and UI colors compatible?
 
+## Sepia Archive Brown Ban
+
+Do not approve palettes that use muddy sepia/espresso/umber brown-black archive wash on page, stage, card, panel, sidebar, nav, or container surfaces. This remains rejected even when described as nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
+
+If this palette appears, the palette pass fails before contrast repair. Replace the surface family with an authored palette and then run contrast checks.
+
 ## Stop Conditions
 
 - Palette was repaired by random hex tweaks.
@@ -84,3 +90,20 @@ Create or fill a palette/contrast note in the relevant design artifact:
 - Dark mode uses unrelated ad hoc colors.
 - The palette feels machine-generated because no perceptual system was used.
 - Expressive mode uses safe AI-default muddy palette without documented exploration.
+- Sepia/espresso/umber brown-black archive wash is used on major surfaces.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Keep color science concrete through token-level repair.
+
+Required evidence:
+- OKLCH/APCA or WCAG matrix, token deltas, state contrast matrix, and repaired values.
+
+Repair routing:
+- visual-spec-compiler updates tokens; screenshot-scorecard-review verifies rendered contrast.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "oklch-contrast-palette"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

@@ -23,6 +23,7 @@ Required files to read:
 - `skills/image-first-website-to-code/SKILL.md`
 - `skills/landing-page-pattern-director/SKILL.md`
 - `skills/landing-page-craft-director/SKILL.md`
+- `skills/signature-interaction-director/SKILL.md` for artistic, brand, portfolio, experimental, or award-reference work
 - `skills/anti-ai-tell-preflight/SKILL.md`
 - `agent-workflows/image-first-frontend-workflow.md`
 - `design-dna/brief-inference-rules.md`
@@ -52,16 +53,17 @@ Before coding:
 5. Select landing pattern and concept spine.
 6. Generate or select one horizontal image/reference per section; never compress a multi-section page into one unreadable board.
 7. For every section, define section job, composition anchor, background mode, CTA variation, image role, and second-read moment.
-8. Explore safe refined, artistic expressive, and unexpected high-character palette directions; do not default to muddy AI-generated backgrounds.
-9. If real imagery is required, create `docs/design/unsplash-search-plan.md`, search by role/query/orientation/color/content_filter/order_by, reject generic stock filler, and create `docs/design/unsplash-asset-manifest.md`.
-10. Create `docs/design/navigation-strategy.md`; propose at least 3 nav concepts and select one based on the chosen direction.
-11. Create `docs/design/image-first-website-analysis.md`.
-12. For new visual-heavy landing/portfolio work with no approved direction, run the No-Image Fast Direction Gate and create `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`.
-13. Create `docs/design/visual-spec.md`.
-14. Create `docs/design/design-system-tokens.md`.
-15. Create `docs/design/color-and-contrast.md` or an equivalent palette doc.
-16. Define image role, image environment strategy, contrast strategy, navigation readability, identity chrome, decorative geometry, line/divider strategy, section rhythm, `docs/qa/anti-ai-tell-preflight.md`, motion strategy, and delight strategy when applicable.
-17. If advanced/cinematic/portfolio motion is requested, create `docs/design/motion-choreography-plan.md` and score against `evaluation/benchmarks/motion-cinematic.benchmark.md`.
+8. Select one signature interaction or explicitly justify why none fits. Extract mechanics from references, not visual brands, mascots, logos, names, colors, or content.
+9. Explore safe refined, artistic expressive, and unexpected high-character palette directions; do not default to muddy AI-generated backgrounds. Reject sepia/espresso/umber brown-black archive wash even for nocturne, archive, field-guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium concepts.
+10. If real imagery is required, create `docs/design/unsplash-search-plan.md`, search by role/query/orientation/color/content_filter/order_by, reject generic stock filler, and create `docs/design/unsplash-asset-manifest.md`.
+11. Create `docs/design/navigation-strategy.md`; propose at least 3 nav concepts and select one based on the chosen direction.
+12. Create `docs/design/image-first-website-analysis.md`.
+13. For new visual-heavy landing/portfolio work with no approved direction, run the No-Image Fast Direction Gate and create `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`.
+14. Create `docs/design/visual-spec.md`.
+15. Create `docs/design/design-system-tokens.md`.
+16. Create `docs/design/color-and-contrast.md` or an equivalent palette doc.
+17. Define image role, image environment strategy, contrast strategy, navigation readability, identity chrome, decorative geometry, line/divider strategy, section rhythm, signature interaction, `docs/qa/anti-ai-tell-preflight.md`, motion strategy, and delight strategy when applicable.
+18. If advanced/cinematic/portfolio motion is requested, create `docs/design/motion-choreography-plan.md` and score against `evaluation/benchmarks/motion-cinematic.benchmark.md`.
 
 Implementation order:
 
@@ -76,6 +78,9 @@ Evidence requirements:
 
 - no Blogspot structure
 - no generic feature-card fallback after hero
+- no generic section stack after signature/award references
+- no copied reference brand skin instead of transferred mechanics
+- no signature interaction without accessibility and reduced-motion fallback
 - no major Taste preflight failures
 - no repeated generic section family
 - no CTA wrapping or duplicate CTA intent

@@ -90,3 +90,19 @@ When the target contains charts, graphs, diagrams, maps, timelines, floor plans,
 Route follow-up to `skills/chart-system-director/SKILL.md`, `skills/diagram-canvas-system/SKILL.md`, or `skills/data-viz-hardening-review/SKILL.md`.
 
 When runnable spatial UI markup exists, include `tools/diagram-integrity-check.mjs` output in Assessment B or state why it was blocked.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Become the central critique memory loop.
+
+Required evidence:
+- screenshots/tools/references, Nielsen/cognitive/persona findings, score caps, skill verdicts, and repair queue.
+
+Repair routing:
+- creative-orchestration-director owns routing; specialist skills own repairs.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "evidence-backed-critique"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

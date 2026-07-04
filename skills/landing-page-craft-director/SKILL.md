@@ -79,3 +79,95 @@ Use for landing/portfolio/marketing pages. Do not use as the primary skill for d
 - text-only page when images are needed
 - unreadable generated references
 - CTA path unclear
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- If no signature interaction appears after award-level references, final verdict cannot be "masterpiece."
+- Generic section stack after signature references is a hard failure.
+
+## Layout Integrity Gate
+
+Landing-page craft fails if text is clipped, covered, or overflowing. Stickers, cards, badges, media, and art-directed overlays require protected text zones.
+
+Before handoff, run `skills/layout-integrity-review/SKILL.md` after screenshot evidence exists.
+
+Block if:
+
+- card/sticker/image covers headline text
+- large display type is clipped by viewport, mask, or container
+- CTA/button text clips
+- nav label overflows item
+- nav creates huge empty space at a breakpoint
+- page has huge accidental blank viewport space
+
+## Elite Scroll Choreography Routing
+
+When a landing, brand, portfolio, editorial, playful product, or video-first site depends on scroll as the experience, route to skills/elite-scroll-choreography-director/SKILL.md before implementation. The selected scroll pattern must appear in the visual spec, and skills/scroll-choreography-review/SKILL.md must run after implementation.
+
+Block fade-only scroll when elite scroll was requested, pinned blank frames, moving objects covering critical text, horizontal routes without mobile fallback, scroll-to-assemble claims where objects do not visibly assemble, and scroll navigation that does not sync to chapters. Run layout-integrity review after scroll-choreography review.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Delegate overlapping landing decisions to pattern, interaction, image, and evidence skills.
+
+Required evidence:
+- section job map, rhythm map, CTA path, reference anchors, and selected companion skills.
+
+Repair routing:
+- landing-page-pattern-director, signature-interaction-director, image-first-frontend, and anti-ai-tell-preflight own specific repairs.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "landing-page-craft-director"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Small-Screen Nav Clarity Requirement
+
+For every visual/product/landing/mobile page with navigation, the agent must define:
+
+- desktop nav variant
+- tablet nav variant
+- mobile/compact nav variant
+- label/icon behavior
+- active state behavior
+- accessible labels
+- hit target sizes
+- overflow behavior
+
+Compact nav must use icons or a real menu pattern. Two-letter abbreviations are not a design system.
+
+Review requirement:
+
+- screenshot-scorecard-review must inspect compact nav at 768 and 390
+- layout-integrity-review must flag abbreviation fallback as a failure
+- final-scorecard cannot pass if compact nav looks clipped, cryptic, or broken
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard

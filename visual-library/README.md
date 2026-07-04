@@ -17,10 +17,16 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - Screenshots are design evidence, not production assets.
 - Approved references teach composition and taste; they are not palettes or brands to clone blindly.
 - `approved/case-studies/tempo-loom-mobile-product-success/` is the approved mobile product case study for functional control UI, icon+label bottom nav, persistent selected states, compact density, product-specific copy, and useful dark mobile craft.
+- `approved/case-studies/late-check-fm-first-passed-project/` is the first passed Design OS random project case study. It validates the Gen-Z hostel concept, video-first hero, bold broadcast typography, physical room/event cards, fun brand voice, hero-only video rule, readable cards, mobile layout quality, and Final UI Integrity Gate v3 after unsafe scroll was removed or simplified.
 - Rejected references are valuable because they name what future agents must avoid.
 - `rejected/case-studies/shelf-circle-mobile-product-failures/` is the rejected mobile product UI case study for cut-off sheets, overlapping control indicators, nonpersistent selection, text-only bottom nav, and add cards that masquerade as content.
 - `rejected/case-studies/service-floor-desktop-product-failure/` is the rejected desktop product case study for random domain palettes, placebo navigation, floor-map label collisions, and command surfaces that collapse into generic dashboard/card soup.
 - `rejected/case-studies/cutline-studio-pattern-canvas-failures/` is the rejected diagram/canvas case study for clipped primary text, catastrophic pattern-canvas overlap, weak construction-line semantics, unreadable labels, and performance-hostile canvas layering.
+- `rejected/case-studies/ai-texture-illustration-failures/` is the rejected visual-heavy/UI atmosphere case study for AI ambient light blobs, weird dotted background textures, amateur vector illustration, clipped words, and illustration lines crossing text.
+- `rejected/case-studies/nocturne-field-guide-amateur-svg-failure/` is the rejected artistic landing case study for amateur SVG illustration, native SVG tooltip leakage, annotation collisions, generic dot/light texture, and missing signature interaction.
+- `rejected/case-studies/nocturne-field-guide-plate-drawer-failure/` is the rejected Plate Drawer rebuild case study for visible mechanics with amateur illustration, weak field-guide plates, ambient background blobs, and full-page implementation before illustration proof.
+- `rejected/case-studies/bunk-radio-text-container-nav-failures/` is the rejected execution case study for a promising Bunk Radio concept that failed due to clipped text, card/sticker/headline collisions, nav label overflow, responsive nav dead space, and huge accidental whitespace.
+- `rejected/bad-practices/text-overflow-and-clipping/` and `rejected/bad-practices/navigation-responsiveness-failures/` are canonical bad-practice folders for text/container integrity and nav responsiveness failures.
 - Each reference folder activates a design mode. Select the folder mode before choosing layout.
 - If Migi asks to use a folder or screenshot set as the basis for a design, activate Reference-Locked Build Mode. Select 3-5 exact reference anchors, decompose them, create a design transfer spec, and compare the result back to those anchors.
 - Do not proceed from folder vibe. Future agents must name the exact reference files and what each one contributes: composition, palette/material, graph/component, image/object/media, or responsive/layout mechanics.
@@ -37,12 +43,14 @@ It exists so future frontend agents can quickly inspect what Migi likes, what Mi
 - Pattern canvases and diagram surfaces need label lanes, callout routes, badge safe zones, measurement hierarchy, and performance budgets. Badges, selected outlines, and callouts must not obscure piece names, measurements, axes, ruler labels, or construction lines.
 - Text escaping containers, chart overflow, clipped titles, overlapping badges, squeezed unreadable cards, and labels collapsing into nonsense are P0 failures before taste is evaluated.
 - Primary headings and important text cannot be cut off underneath. Partial clipping is still a hard failure.
+- Production-quality tests should prefer simple, readable, stable scroll unless advanced scroll passes Final UI Integrity Gate v3 across width sweep, height matrix, scroll samples, and readable resting states. Late Check FM passed only after unsafe experimental scroll/media movement was removed or simplified.
 - For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
 - When using any folder, extract scale and density, not just color or mood. Many approved desktop references show more meaningful information at once than AI-generated apps usually produce.
 - Avoid inflated type, huge empty containers, oversized filler images, and low desktop density unless the reference clearly supports that scale relationship.
 - When using image-led references, extract contrast strategy too. Text over images must use safe zones, scrims, plates, masks, deliberate crops, or be separated outside the image.
 - Award-level UI never makes users fight to read. Artistic mood does not excuse weak contrast, washed-out labels, or text over noisy image detail.
 - Every major image needs a declared role: hero scene, focal object, proof object, background atmosphere, editorial fragment, selection thumbnail, or texture/material layer.
+- Every texture and illustration needs a role, layer, bounds, anchors, responsive behavior, and text-safe zones. Do not use ambient light blobs, dotted background texture, or amateur vector drawings as a shortcut to "advanced" UI.
 - For artistic, landing-page, cinematic, editorial, or image-led references, decide whether the image is environment or asset. Do not trap immersive scenes in rectangular cards by default.
 - If the reference uses a dominant background scene, compose around the image first: full-bleed, oversized, masked, layered, edge-to-edge, soft backdrop, or composition-driving crop.
 - Every screenshot should have a matching `.md` note using `templates/reference-note.template.md`.
@@ -109,3 +117,11 @@ When active, the project must include:
 The final UI must be compared against the selected anchors for density, composition, palette, chart behavior, image/object/media behavior, and responsiveness.
 
 The goal is not to make a museum. The goal is to make future work faster, sharper, and less generic.
+
+## Signature Interactions Inspiration
+
+`visual-library/approved/inspiration/signature-interactions/` is the canonical folder for elite interaction mechanics such as portal entry, scroll route choreography, mascot hero motion, editorial list modals, scroll-to-assemble cards, review theater cards, and playful entry gates. Extract mechanics, not brand skin.
+
+## Rejected Palette Regression: Sepia Archive Brown
+
+`visual-library/rejected/case-studies/sepia-espresso-surface-wash-regression/` is the canonical rejected evidence for the muddy sepia/espresso/umber brown-black archive wash. Do not use this surface family for pages, stages, cards, panels, sidebars, nav, or framed objects. Do not justify it with nocturne, archive, field-guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium language.

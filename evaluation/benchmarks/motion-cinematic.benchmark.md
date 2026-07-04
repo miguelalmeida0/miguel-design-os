@@ -91,3 +91,6 @@ Test whether motion feels award-level, choreographed, and concept-specific rathe
 - Motion creates layout shift, scroll jank, or unreadable content.
 - No evidence or documented capture blocker.
 
+## Elite Scroll Choreography Addendum
+
+When scroll is central to this benchmark, also score against evaluation/benchmarks/elite-scroll-choreography.benchmark.md. Require a selected scroll pattern, route map, chapter map, mobile fallback, reduced-motion fallback, and post-build scroll-choreography-review. Fade-only sections, blank pinned frames, movement covering critical text, and horizontal routes without mobile fallback are hard failures.

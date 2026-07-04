@@ -76,3 +76,83 @@ Do not use during Fast Direction Gate, early visual direction generation, or pur
 - copy assumes technical knowledge without context: max copy score 6
 - loading longer than 3 seconds with only `Loading...`: max copy score 6
 - empty state has no next action: max copy score 6
+
+## Layout Integrity Gate
+
+Readable copy is not valid if it is clipped, covered, or overflowing.
+
+Before final copy approval, check:
+
+- no word is cut inside cards, stickers, buttons, tabs, nav pills, badges, modals, or panels
+- no label escapes a nav item or hit target
+- no sticker/card/image/overlay covers headline/body/navigation text
+- no `overflow: hidden` masks copy failure
+- label hiding preserves accessible labels
+
+Any clipped critical text or nav label overflow blocks handoff, regardless of copy quality.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Treat copy as state/action/consequence system.
+
+Required evidence:
+- unclear copy table, rewritten strings, affected states, and user consequence/recovery notes.
+
+Repair routing:
+- truthful-state-product-naming owns truth claims; implementation owner applies strings.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "text-clarity-review"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.
+
+## Elite Experience Specialist Routing
+
+When a selected direction or reference asks for elite craft beyond broad signature/scroll planning, route the smallest relevant specialist:
+
+- scroll-physics-smoothing-director for smoothing, scrub, lerp, snap, settle, velocity, touch behavior, mobile fallback, reduced motion, and scroll performance.
+- media-object-stage-director when video/image/media is the primary object: hero, mask, sticky object, poster, portal, card, broadcast tile, or detail view.
+- physical-interface-props-director for stickers, tickets, labels, stamps, keycards, rails, pins, tabs, and tactile cards.
+- designed-detail-reveal-director for drawers, panels, sleeves, split views, object pull-outs, station boards, and ritual selectors.
+- brand-voice-as-interface-director when CTAs, nav labels, cards, reviews, states, or microcopy must carry brand voice without losing clarity.
+
+Blockers to flag: raw/jittery scroll, media used as generic background when object staging is required, prop text clipping, default modal where a designed reveal is required, and generic SaaS/hotel/template copy on a playful or brand-led site.
+
+## Final UI Integrity Gate Requirement
+
+Before final handoff, run final-ui-integrity-gate.
+
+The agent must not claim success if:
+
+- clipped text remains
+- overlap remains
+- nav overflow remains
+- media/text collision remains
+- accidental blank space remains
+- the user's original complaint remains true
+
+The final review order must be:
+
+1. build/lint
+2. screenshot capture
+3. scroll-choreography-review if scroll-heavy
+4. layout-integrity-review
+5. final-ui-integrity-gate
+6. final-scorecard
+
+## Final UI Integrity Gate v3
+
+For visual/frontend work, final UI integrity v3 is mandatory before handoff. Screenshot evidence at only one width is insufficient.
+
+Required v3 proof:
+- Test viewport matrix: 390, 430, 640, 768, 900, 1024, 1180, 1280, 1366, 1440, 1536, 1728, 1920.
+- Sample scroll positions: 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00.
+- Include applicable states: default, nav active states, selected/open detail panel, sticky/pinned active section, compact nav, and reduced motion when practical.
+- Report passed and failed sampled viewport states.
+
+Floating labels, stickers, cards, badges, props, and containers require responsive anchoring and overlap checks. Final response must not claim success if the v3 gate fails, is blocked, has blockers, has cut text, has floating overlap, has media/text collision, has nav overflow, or lacks matrix evidence.
+
+## Final UI Integrity Gate v3
+
+Final UI Integrity Gate v3 is mandatory. Fixed breakpoint-only evidence is insufficient. Width sweep evidence is required. Horizontal scroll must prove readable resting states. Floating objects must prove safe across resizing. Final response is forbidden unless the gate passes or clearly reports blocked/failed.

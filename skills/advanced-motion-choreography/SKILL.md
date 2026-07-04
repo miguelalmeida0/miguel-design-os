@@ -184,3 +184,36 @@ Stop before implementation or final handoff if:
 - no motion benchmark review exists when motion is central
 - no motion sequence/evidence exists and no capture blocker is documented
 
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- If no signature interaction appears after award-level references, final verdict cannot be "masterpiece."
+- Generic section stack after signature references is a hard failure.
+
+## Elite Scroll Choreography Routing
+
+When a landing, brand, portfolio, editorial, playful product, or video-first site depends on scroll as the experience, route to skills/elite-scroll-choreography-director/SKILL.md before implementation. The selected scroll pattern must appear in the visual spec, and skills/scroll-choreography-review/SKILL.md must run after implementation.
+
+Block fade-only scroll when elite scroll was requested, pinned blank frames, moving objects covering critical text, horizontal routes without mobile fallback, scroll-to-assemble claims where objects do not visibly assemble, and scroll navigation that does not sync to chapters. Run layout-integrity review after scroll-choreography review.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Move from heavy planning to execution verification.
+
+Required evidence:
+- motion layer map, implementation target, reduced-motion plan, capture sequence, and benchmark score.
+
+Repair routing:
+- review-animations owns code-level fixes; capture-motion-sequence evidence closes claims.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "advanced-motion-choreography"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

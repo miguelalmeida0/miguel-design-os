@@ -148,6 +148,7 @@ Rules:
 
 - bottom nav items need meaningful icons
 - labels must remain readable
+- labels must remain readable in default, hover, focus-visible, active/pressed, selected, selected+hover, selected+focus, and disabled states
 - icons must not replace labels unless Migi explicitly approves
 - icons must semantically match the destination
 - active state must affect icon and label
@@ -254,6 +255,7 @@ Rules:
 - selected state must be visually distinct
 - selected state must persist until changed
 - hover, pressed, focused, and selected states must be different
+- selected+hover and selected+focus must stay readable and must not make the selected label disappear
 - selected state must be keyboard/focus accessible
 - selected chips/tabs should use `aria-selected` or equivalent where appropriate
 - state changes must update actual UI behavior, not only style

@@ -314,3 +314,19 @@ Implementation continuation started:
 - Do not copy a source project or inspiration reference literally.
 - Do not use inspiration screenshots as production assets.
 - Do not build or revive a frontend Studio app just to satisfy this gate. A project-local static preview or screenshot-backed reference note is enough when it proves the visual direction.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Tie direction cards to downstream proof, not just selection.
+
+Required evidence:
+- direction-options, layout maps, risk check, selected-direction when chosen, and next proof gates named.
+
+Repair routing:
+- visual-spec-compiler owns missing build spec; screenshot-scorecard-review owns missing proof; creative-orchestration-director owns unresolved gate gaps.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "visual-concept-gate"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

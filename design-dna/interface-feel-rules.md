@@ -11,8 +11,11 @@ Make Interfaces Feel Better is a micro-polish gate. It must not replace visual d
 ## What To Improve
 
 - invisible details
+- hover states
 - press states
 - focus states
+- selected states
+- selected+hover and selected+focus states
 - disabled states
 - loading states
 - empty states
@@ -32,6 +35,7 @@ Make Interfaces Feel Better is a micro-polish gate. It must not replace visual d
 
 - Feedback should be immediate.
 - State should be visible.
+- Interactive labels must stay readable in every state, including selected+hover and selected+focus.
 - Motion should clarify, not decorate.
 - Empty/loading/error states should be product-specific.
 - Polish should support the core loop, not distract from it.
@@ -39,4 +43,4 @@ Make Interfaces Feel Better is a micro-polish gate. It must not replace visual d
 
 ## Stop Condition
 
-If the UI works but feels dead, unresponsive, generic, or clumsy, run this pass before screenshot-scorecard review.
+If the UI works but feels dead, unresponsive, generic, clumsy, or loses label readability in any hover/focus/selected combined state, run this pass before screenshot-scorecard review.

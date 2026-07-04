@@ -78,3 +78,19 @@ Use after a chart, graph, diagram, spatial map, floor plan, timeline, canvas, or
 - Canvas/diagram lacks keyboard fallback where practical: max hardening score 6.
 - Diagram/canvas interaction is janky or performance-heavy without mitigation: max hardening score 5.
 - Pattern canvas labels/callouts/status chips collide under zoom or dense data: max hardening score 3.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Require real edge-case fixtures and viewport stress.
+
+Required evidence:
+- long labels, missing values, many items, narrow widths, empty/loading/error states, and screenshot/tool evidence.
+
+Repair routing:
+- chart-system-director or diagram-canvas-system owns structural fixes.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "data-viz-hardening-review"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

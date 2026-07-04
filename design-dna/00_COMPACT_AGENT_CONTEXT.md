@@ -47,7 +47,8 @@ No-Image Fast Direction Gate is the default for normal new visual-heavy tests. R
 39. Do not write major UI code until the Design Intent Record is filled and used as the design contract.
 40. No done without evidence: visual UI work requires a validated done report before final handoff.
 41. Post-build review layers are routed only after implementation or when Migi asks: Evidence-Backed Critique, Text Clarity Review, Production Hardening Review, Screenshot Scorecard Review, and Anti-AI Slop Review.
-42. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must be examined in a postmortem and converted into a Design OS patch only when the failure is system-level.
+42. Use `skills/creative-orchestration-director/SKILL.md` when the task spans multiple skills, Design OS is being improved, or critique must become repairs.
+43. Dogfood targets are feedback loops: if a project is created to test Miguel Design OS, every target-app failure must be examined in a postmortem and converted into a Design OS patch only when the failure is system-level.
 
 Literal Target Copy Mode overrides product thinking. When Migi says `copy this exact UI`, `100% this design`, `literally what you see`, or `exact visual target`, do not run the 3-concept gate, create new art direction, expand features, add useful panels, reinterpret, or improve. The only goal is visual parity with the supplied target: identify target screens, reconstruct visible composition, exclude browser chrome/editor/watermark artifacts, build the static shell first, implement only minimum visible interactions, screenshot compare, validate a target-copy report, and report exact differences. Product logic waits until the pixel-parity shell is approved.
 
@@ -63,11 +64,25 @@ Migi strongly rejects AI scale inflation: giant text, giant cards, giant contain
 
 Migi strongly rejects poor contrast and unreadable text over images. Artistic/image-led design must still be readable. Every image-led UI needs a contrast strategy: safe zones, scrims, plates, masks, or text outside the image. Award-level UI never makes users fight to read.
 
+Migi strongly rejects state contrast collapse: interactive text must stay readable in default, hover, focus-visible, active, selected, disabled, pressed, selected+hover, and selected+focus states. A selected nav/tab/chip/card whose label disappears on hover is a hard failure, not a small polish issue.
+
 Migi strongly rejects cryptic navigation, fake live/session indicators, misaligned toolbars, text-heavy cards, oversized full-width buttons, responsive collisions, and machine-looking color palettes. Every app must have understandable nav, crafted responsive navigation, aligned input/action groups, scan-first containers, proportionate buttons, collision-free resizing, and a human reference-driven palette.
 
 Migi strongly rejects random domain palettes, placebo navigation, spatial label collisions, and desktop command surfaces where the primary product object is buried by cards. Palette must fit product domain, user environment, task pressure, and emotional state. Nav/tabs must change visible content, route, scope, filter, or product state. Maps, floor plans, seating charts, timelines, and canvases need protected label zones. Desktop command surfaces must keep the primary object central.
 
 Migi strongly rejects decorative circular/orbital/radar/HUD line overlays. Do not use fake orbit, sonar, radar, target, or circular arc atmosphere in his designs unless explicitly requested and functional, such as a real chart, selector, map, progress ring, or labeled diagram.
+
+Migi strongly rejects generic AI texture atmosphere: ambient light blobs, foggy radial glows, soft spotlight smears, dotted/star-field/micro-dot backgrounds, and fake advanced UI haze. Do not use these unless Migi explicitly requests the exact motif and the visual spec proves a functional role.
+
+Migi strongly rejects amateur vector illustration. Shapes, botanical plates, stems, arcs, callouts, and abstract forms need role, layer, bounds, anchors, responsive behavior, accessibility/decorative status, and text-safe zones. Illustration paths must never cross readable words or clip/cut text.
+
+Native Tooltip Ban: art-directed SVG must not expose browser-native tooltips. Do not use `title` attributes on child shapes; use top-level `<title>`/`<desc>` only for meaningful SVG accessibility, and make decorative groups `aria-hidden` with `pointer-events: none`.
+
+Annotation Protected Zone Rule: leader lines, annotation rules, stems, and decorative marks may never cross through label text. Every callout needs anchor, offset, label box, protected zone, and collision strategy.
+
+Illustration Complexity Honesty Rule: primitive ellipses, generic leaves, simple blobs, fake botanical/scientific plates, and childlike linework cannot be called professional illustration. Require silhouette study, detail budget, linework strategy, motif library, material/texture strategy, and reference grammar for botanical, character, and object subjects.
+
+Background Texture Quality Rule: no generic dot grid, star field, random noise, or vague glow blob unless explicitly justified by reference mechanics. Texture must be material paper, photographic/grain, meaningful field marks, image-led atmosphere, or brand-specific pattern.
 
 Navigation must survive its background. Creative or floating nav is allowed, but nav text and controls must remain readable over images, giant typography, video, and scroll-state background changes through a designed strategy such as safe placement, scrim, blur, quiet surface, adaptive inverse text, position shift, or contextual collapse.
 
@@ -78,6 +93,8 @@ Migi rejects decorative separator ornaments: tiny hairlines, red dividers, label
 Migi treats layout integrity as P0. Text escaping containers, chart bars overflowing, clipped card titles, overlapping badges, unreadable squeezed cards, broken responsive nav, labels collapsing into meaningless fragments, or any collision on resize are hard failures before taste is evaluated. Responsive design must adapt, not squeeze.
 
 Migi's chart rule is now data-shape first. Charts must be selected from user decision, data shape, volume, accessibility, and interaction need. Decorative chart wallpaper, chart-lite dashboards, inaccessible color-only charts, and graphs that overflow their containers are blockers.
+
+Migi's skill loop is now self-correcting. Multi-skill work must maintain a creative state ledger, emit `templates/skill-verdict.template.json`, and turn blockers into `templates/reports/repair-task-queue.template.md` items with owner skills and acceptance checks. Prose-only critique is incomplete.
 
 Migi's diagram/canvas rule is model-first. Pattern canvases, floor maps, seating charts, node graphs, timelines, and spatial product objects need coordinate systems, layer models, object models, protected label zones, collision rules, selection states, and responsive fallbacks. Hand-placed objects, truncated labels, overlapping pieces, and selected states that obscure data are blockers.
 
@@ -107,7 +124,7 @@ Design-system-first is a hard gate for significant UI: semantic color tokens, ty
 
 OKLCH/APCA color rule: significant UI palettes need semantic tokens, numeric scales, documented foreground/background contrast targets, and lightness-based repairs. APCA is the default perceptual model; WCAG 2 remains required for formal compliance claims. Do not repair contrast by random hex or chroma tweaks.
 
-Art-directed palette exploration rule: for artistic, cinematic, landing, portfolio, creative, editorial, and experimental interfaces, the palette must be actively designed. Explore safe refined, artistic expressive, and unexpected high-character palettes before locking tokens. Avoid muddy generated-app browns, generic charcoal/orange, AI purple glow, blue-grey SaaS, beige premium cliche, terminal green, neon lime, and predictable one-accent neutrals.
+Art-directed palette exploration rule: for artistic, cinematic, landing, portfolio, creative, editorial, and experimental interfaces, the palette must be actively designed. Explore safe refined, artistic expressive, and unexpected high-character palettes before locking tokens. Avoid muddy generated-app browns, generic charcoal/orange, AI purple glow, blue-grey SaaS, beige premium cliche, terminal green, neon lime, and predictable one-accent neutrals. Hard ban: do not use the muddy sepia/espresso/umber brown-black archive wash as page, stage, container, card, panel, sidebar, or navigation background. Do not excuse it as nocturne, archive, field guide, botanical, brass, tobacco, parchment, premium, cinematic, or vintage.
 
 Unsplash asset sourcing rule: use Unsplash when visual-heavy landing, portfolio, creative, editorial, or product-concept work needs real photographic atmosphere. Create `docs/design/unsplash-search-plan.md` before sourcing and `docs/design/unsplash-asset-manifest.md` for selected images. Every real image needs a role, source/photographer/download metadata, alt text, crop strategy, palette relationship, safe-zone notes, and product-truth note. Stock imagery is not factual product proof.
 
@@ -122,6 +139,10 @@ Taste preflight rule: landing, portfolio, marketing, and redesign work must decl
 Motion craft rule: motion must serve feedback, state, spatial continuity, hierarchy, storytelling, explanation, or perceived performance. High-frequency actions should not animate. UI motion should generally stay under 300ms, avoid ease-in, avoid scale(0), avoid transition all, and define reduced-motion behavior.
 
 Advanced motion rule: when Migi asks for advanced animations, cinematic motion, artistic motion, Awwwards/Godly/Recent-level motion, scroll animation, appearing while scrolling, portfolio motion, or motion like Graffico/Manet/UXBert/Podium, route `skills/advanced-motion-choreography/SKILL.md` and create `docs/design/motion-choreography-plan.md` before implementation. One animation is not advanced motion. Required layers are page/section, image/media, typography, navigation/menu, and micro-feedback, plus reduced-motion fallback and motion sequence evidence or a documented blocker.
+
+Media/text protected-zone rule: moving media objects, video frames, sticky media, portals, image cards, and scroll-transformed objects may never cover critical text. For scroll/media-heavy UI, route `media-object-stage-director` when present, read `design-dna/media-text-protected-zone-rules.md`, `design-dna/video-media-placement-rules.md`, and `design-dna/text-container-integrity-rules.md`, create `docs/design/protected-zone-map.md`, `docs/design/media-object-stage-plan.md`, and `docs/design/scroll-motion-spec.md`, then run scroll choreography review and layout integrity review. Rejected failure memory: `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/` and `visual-library/rejected/case-studies/late-check-fm-persistent-video-overlay-container-thinning/`.
+
+Hero-only media default: video belongs in the top/hero stage by default. After hero, media exits, docks into a reserved component, becomes a static poster/thumb, or stays only inside a reserved media lane. Content wins over media: do not thin cards, break text, or keep a persistent overlay because it looks cool.
 
 When Migi asks for artistic, landing-page, cinematic, or image-led work, do not trap imagery in rectangular cards by default. If references use immersive image scenes, treat the image as the page environment: full-bleed, oversized, masked, layered, or composition-driving. Image-led means the page is built around the image, not that an image is inserted into a grid.
 
@@ -195,9 +216,13 @@ Archetype:
 Layout recipe:
 Visual identity words:
 Image role strategy:
+Texture / illustration role inventory:
+Text-safe zones for illustration:
 Image environment strategy:
 Scale calibration:
 Contrast / legibility strategy:
+State contrast matrix:
+Selected-hover contrast proof:
 Navigation strategy:
 Toolbar alignment strategy:
 Text density strategy:
@@ -254,7 +279,8 @@ Persistence contract:
 - Image as Environment, Not Rectangular Asset: when references use a dominant atmospheric scene, explore full-bleed, oversized, masked, layered, edge-to-edge, or backdrop treatment before defaulting to a boxed image. The image should feel like the page was composed around it.
 - No AI Scale Inflation: calibrate headline size, body text, containers, cards, images, spacing, visible content objects, and meaningful information above the fold against the selected reference folder. The goal is controlled scale, useful density, hierarchy with range, and no giant empty furniture.
 - Award-Level Contrast Discipline: every important text layer needs a stable readable background. For text over imagery, use deliberate protection such as a scrim, plate, vignette, mask, safe image zone, deliberate crop, or move text outside the image.
-- No Cryptic Navigation: primary navigation must be immediately understandable. Do not ship unexplained abbreviations like `CMD`, `SIG`, `CMP`, `BRF`, vague labels like `SD LOCAL`, or icon-only navigation without clear labels, tooltips, or obvious context.
+- Stateful Text Contrast: interactive labels must remain readable across default, hover, focus-visible, active, selected, disabled, pressed, selected+hover, and selected+focus. Do not ship nav, tabs, chips, segmented controls, cards, menus, or buttons where a combined state makes the label vanish.
+- No Cryptic Navigation: primary navigation must be immediately understandable. Do not ship unexplained abbreviations like `CMD`, `SIG`, `CMP`, `BRF`, vague labels like `SD LOCAL`, or icon-only navigation without clear labels, tooltips, or obvious context. Compact navigation must use a recognizable icon system or real menu pattern, not arbitrary two-letter labels such as `IN`, `WL`, `BD`, `NW`, `RL`, or `BK`.
 - Mobile Navigation Defaults: for applications with 3+ primary destinations, mobile navigation defaults to a bottom navigation bar. Desktop may use top nav or left sidebar; tablet adapts; mobile top nav is reserved for documentation sites, desktop-first enterprise tools, editor software, or scrolling-first websites. The top of app screens should hold branding, page title, search, context, or hero imagery, not primary navigation.
 - Crafted Responsive Navigation: desktop, tablet, and mobile navigation must each be intentionally designed. Mobile bottom nav must be beautifully proportioned, safe-area aware, readable, touch-generous, never cramped, never oversized, and never generic.
 - Mobile product interaction integrity: modals and bottom sheets must fit the viewport, use internal scroll when needed, keep primary actions reachable, respect safe areas, and avoid colliding with bottom nav. Practical mobile bottom nav requires icons plus labels. Selectable chips/items must preserve selected state. Add/create actions must be visually distinct from content cards. Active bars, progress strips, underlines, and selection indicators must not overlap labels.
@@ -266,7 +292,12 @@ Persistence contract:
 - Responsive Adaptation, Not Squeezing: desktop can be dense, but tablet must reorganize and mobile must use a dedicated simplified structure. If a card, chart, nav, or form cannot preserve meaning at a width, change the layout instead of clipping or squeezing it.
 - Chart Bounds Discipline: bars, lines, points, axes, labels, and markers must stay inside the chart's plot/card bounds. If the chart cannot fit, change dimensions, margins, clipping, or chart type at that breakpoint.
 - Semantic Label Integrity: labels cannot collapse into meaningless fragments such as `C`, `U`, or `?` unless there is an obvious legend. If the label cannot remain understandable, the layout must change.
-- Human Palette Direction: palettes must come from the references or product mood. Do not default to terminal green, AI purple, neon lime, generic blue/grey, or one dull machine-generated color wash.
+- Human Palette Direction: palettes must come from the references or product mood. Do not default to terminal green, AI purple, neon lime, generic blue/grey, muddy sepia/espresso/umber brown-black archive wash, or one dull machine-generated color wash.
+- No Generic AI Texture Atmosphere: do not use ambient light blobs, foggy radial glow, soft spotlight haze, or dotted/star-field/micro-dot backgrounds as decorative filler.
+- Illustration Discipline: vector forms must have role, layer, bounds, anchors, responsive behavior, and text-safe zones. Amateur illustration, arbitrary petals/stems, fake botanical/scientific plates, and lines crossing words are hard failures.
+- Native Tooltip Ban: browser-native tooltips over art-directed SVG cap score at 4.
+- Annotation Protected Zone Rule: leader lines crossing words cap score at 3.
+- Background Texture Quality Rule: AI atmospheric texture caps score at 5.
 - No Fake Live / Session Status Slop: do not add live dots, session-only chips, glowing telemetry, or monitoring badges unless they have real product meaning, are understandable, and change user decision-making.
 - Hero is not enough: if the first viewport follows the reference but the rest of the page falls back to generic grids, cards, or sections, max score is 7.
 - Avoid container soup: no nested card stacks as default layout. Use grids, rails, sections, inspectors, and direct object composition.
@@ -402,3 +433,88 @@ Blockers fixed:
 Remaining weaknesses:
 Patched after review: yes/no
 ```
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- Generic section stack after signature references is a hard failure.
+
+## Illustration-First Gate
+
+For illustration-heavy work, especially botanical, character, mascot, product object, editorial SVG, hero illustration, or custom SVG scene work, create isolated illustration assets before full-page implementation.
+
+Required gate outputs: `docs/design/illustration-art-direction.md`, `docs/design/illustration-style-guide.md`, `docs/design/illustration-asset-options.md`, at least 1 isolated hero illustration component or SVG, and `docs/qa/illustration-gate-review.md`.
+
+Stop after the illustration gate unless explicitly instructed to continue. Do not build the full page if the hero illustration looks amateur, uses primitive shapes with no detail system, has weak silhouette, poor linework, generic texture/material, missing reference grammar, or needs but lacks Migi approval.
+
+## No Ambient Background Blobs
+
+Large vague background blobs, ghost ellipses, generic radial glows, random translucent ovals, fake lens shapes, generic dot/star fields, and decorative orbits/HUD lines are rejected unless they are the primary product object, part of the selected signature interaction, directly derived from an approved reference mechanic, or named in the shape inventory with role, layer, and purpose.
+
+## Botanical / Organic Illustration Minimum Bar
+
+Botanical, animal, human, and organic illustration needs reference grammar, silhouette study, linework strategy, detail budget, material/texture strategy, simplification strategy, and believable subject logic. Botanical plates need stem structure, leaf/petal hierarchy, asymmetry, vein or line detail where appropriate, root/stem/petal relationship, botanical label/callout safe zones, and distinct species silhouettes.
+
+## Layout Integrity Gate
+
+Text/container integrity is mandatory. Any clipped text, word overflow, text escaping a container, card/sticker/headline collision, CTA clipping, nav label overflow, or huge accidental blank viewport area blocks handoff.
+
+Use `skills/layout-integrity-review/SKILL.md` after implementation for visual-heavy pages, landing pages, product UIs, mobile flows, custom nav, stickers/cards/badges/overlays, large display type, and scroll/sticky/pinned experiences. Use `tools/layout-integrity-check.mjs` when a runnable URL exists.
+
+Final UI Integrity Gate: no frontend/design task may be handed off until `skills/final-ui-integrity-gate/SKILL.md` passes. Build/lint is not visual proof. Screenshots and DOM geometry are required. Clipped text, cut words, nav overflow, button/CTA clipping, card title/body clipping, media over text, container overlap over text, fixed/sticky overlays covering content, hidden text, huge accidental blank viewport areas, or unresolved user complaints fail the gate.
+
+Post-build order: screenshot-scorecard-review, layout-integrity-review, interaction-verification, text-clarity-review, production-hardening-review, anti-ai-slop-review, final-ui-integrity-gate, final-scorecard.
+
+Screenshot contradiction beats agent self-report.
+
+## Agent Skill Layer V2
+
+For nontrivial design/frontend work, run the stateful orchestration layer:
+
+1. `creative-session-state-manager`
+2. `failure-memory-retrieval-router`
+3. `skill-orchestration-planner`
+4. relevant foundation/spec/prototype skills
+5. post-build review skills
+6. `evidence-to-repair-planner`
+7. `artifact-contract-validator`
+
+Use `responsive-constraint-solver` for breakpoint contracts, `reference-grammar-compiler` for reference-led work, `preference-model-migi-taste-learner` after explicit Migi feedback, `interaction-state-matrix-director` for stateful controls, and `creative-prototype-spike-director` for risky visual mechanics.
+
+Goal: preserve creative context, retrieve failure memory, route the smallest sufficient skill DAG, prove risky mechanics early, repair from evidence, and block false completion.
+
+## Final UI Integrity Gate v3
+
+For visual/frontend work, final handoff is forbidden unless Final UI Integrity Gate v3 passed, the gate was blocked and reported as blocked/not passed, or the task is explicitly non-visual.
+
+Required sweep: widths 360 through 1920 in 40px steps or smaller when practical; heights 720, 844, 900, 1080; scroll samples 0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00; applicable states such as nav active, selected/detail open, sticky/pinned active section, compact nav, and reduced motion when practical.
+
+Block on any clipped/cut critical text, viewport-edge clipping, partially visible critical containers, horizontal scroll partial content, text hidden by overflow, card/sticker/label covering critical text, floating container drift/overlap, media over text, fixed/sticky overlay covering content, nav label overflow, CTA clipping, body horizontal overflow, accidental blank viewport area, or original complaint still visible.
+
+Elite Scroll Choreography Rule: award-level landing, portfolio, editorial, brand, playful product, and video-first sites cannot rely on generic fade-in section scrolling. Route skills/elite-scroll-choreography-director/SKILL.md, choose a named scroll pattern, create route map, chapter map, pinned/sticky stage plan, moving object inventory, nav sync plan, motion timeline, mobile fallback, reduced-motion fallback, and run skills/scroll-choreography-review/SKILL.md after implementation. Block blank pinned frames, movement covering critical text, horizontal routes without mobile fallback, scroll nav that does not sync, and scroll-to-assemble claims where objects do not assemble.
+
+## Elite Experience Specialist Layer
+
+For award-level brand, portfolio, editorial, playful product, media-led, and scroll-heavy work, broad signature and scroll planning can route into five focused craft specialists:
+
+- scroll-physics-smoothing-director for scroll engine feel, smoothing, scrub, snap, settle, touch, mobile fallback, reduced motion, and performance.
+- media-object-stage-director for video/image/media as a primary object with safe zones, crop strategy, poster fallback, and media-state map.
+- physical-interface-props-director for tactile props with role, material, text-fit strategy, protected zones, responsive behavior, and no clipping.
+- designed-detail-reveal-director for non-default drawers, sleeves, split views, object pull-outs, station boards, and ritual selectors with state, focus, close, keyboard, and text overflow handling.
+- brand-voice-as-interface-director for CTAs, nav labels, cards, detail copy, reviews, states, and microcopy that feel authored rather than generic SaaS/hotel/template language.
+
+## Anchored Detail Reveal And Mobile Bottom Nav
+
+When a card, item, station, media tile, or container opens a detail panel, the detail must feel connected to the selected trigger. Use `design-dna/anchored-detail-reveal-rules.md`, `skills/designed-detail-reveal-director/SKILL.md`, `templates/checklists/anchored-detail-reveal-checklist.md`, and `visual-library/rejected/case-studies/late-check-fm-detail-reveal-mobile-nav-failures/`.
+
+Block final handoff if the panel opens far away from the clicked card, appears in an unrelated region, loses selected context, opens below the fold without focus/scroll, or uses a default detached modal where a designed reveal was required.
+
+For mobile route/app experiences, scroll-heavy chapter sites, interactive landing stations, and pages with 3+ primary destinations, primary mobile navigation must be persistent and bottom-positioned by default. Use `design-dna/mobile-navigation-defaults.md`, `design-dna/navigation-responsiveness-rules.md`, and `templates/checklists/mobile-bottom-nav-checklist.md`.
+
+Block final handoff if mobile route navigation appears only at the top, disappears on scroll, lacks a bottom-accessible controller, uses cryptic labels, lacks accessible full labels, or ignores safe-area/content overlap.

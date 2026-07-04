@@ -17,3 +17,7 @@ This folder contains approved inspiration references. They are design evidence o
 ## What Future Agents Should Inspect First
 
 Start with `mobile-apps/index.md`, then open individual notes for references matching the current project type.
+
+## Signature Interactions
+
+- `signature-interactions/`: approved elite interaction mechanics from Stiff, Bucks Sauce, Wembi, Podium, and Don't Board Me. Use these as mechanics references, not visual clone targets.

@@ -95,3 +95,19 @@ Blockers:
 - Do not force Robot Skill Forge's direction onto unrelated products.
 - Do not use fake rarity, power, or live labels unless the product truth supports them.
 - Do not hide information required for safety, pricing, consent, or critical decisions.
+
+## Audit Upgrade: Self-Correction Contract
+
+Audit fix: Prove the selection loop, not just card aesthetics.
+
+Required evidence:
+- object set, selected state, preview/detail relationship, compare/browse rhythm, and interaction proof.
+
+Repair routing:
+- make-interfaces-feel-better owns feedback polish; screenshot-scorecard-review owns selected-state evidence.
+
+Machine-readable verdict:
+- Emit or update `templates/skill-verdict.template.json` with `skillId: "selection-first-products"`, `status`, `evidence`, `machineVerdict.scoreCaps`, `repairTasks`, and `nextSkills`.
+
+Self-correction rule:
+- If this skill finds a P0/P1 issue, it must name the owner skill, target artifact or selector, concrete action, acceptance check, and evidence needed to close the repair.

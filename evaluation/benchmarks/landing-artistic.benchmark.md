@@ -80,3 +80,32 @@ Tests whether landing, cinematic, artistic, and image-led pages behave like art-
 - Anti-AI-tell compliance: 10
 - Responsive layout integrity: 10
 - Screenshot evidence and done report: 5
+
+## Signature Interaction Requirements
+
+When award-level or signature interaction references are provided, landing work must choose one mechanic from `design-intelligence/signature-interaction-patterns.md` or justify why no signature interaction is appropriate.
+
+Gold mechanics to consider:
+- Kinetic Poster Board.
+- Floating Product Ingredient Stage.
+- Scroll-to-Assemble Cards.
+- Editorial List Detail Modal.
+- Portal Object Entry.
+- Playful Entry Gate.
+- Annotation Ritual.
+- Specimen Lens Entry.
+- Field Guide Plate Drawer.
+
+Hard failures:
+- generic section stack after signature references;
+- decorative animation with no interaction story;
+- copied reference branding instead of extracted mechanics;
+- static SVG illustration where the selected mechanic requires animated reveal;
+- browser-native SVG tooltip over an art-directed surface;
+- annotation leader line crossing text;
+- background texture reads as AI slop;
+- no reduced-motion fallback.
+
+## Elite Scroll Choreography Addendum
+
+When scroll is central to this benchmark, also score against evaluation/benchmarks/elite-scroll-choreography.benchmark.md. Require a selected scroll pattern, route map, chapter map, mobile fallback, reduced-motion fallback, and post-build scroll-choreography-review. Fade-only sections, blank pinned frames, movement covering critical text, and horizontal routes without mobile fallback are hard failures.

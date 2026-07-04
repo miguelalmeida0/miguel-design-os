@@ -164,6 +164,8 @@ When Migi says landing page, creative, artistic, cinematic, editorial, visual-he
 
 For these modes, palette exploration is required: one safe refined palette, one artistic expressive palette, and one unexpected high-character palette. Bold color is allowed; unreadable color is not.
 
+Strict palette ban: do not use the muddy sepia/espresso/umber brown-black archive wash for pages, stages, cards, panels, containers, sidebars, navigation, or framed objects. Do not rationalize it as nocturne, archive, field guide, botanical, brass, tobacco, parchment, vintage, cinematic, or premium.
+
 ## Unsplash Asset Sourcing
 
 Use `skills/unsplash-asset-sourcing/SKILL.md` when real photography or Unsplash assets are needed for landing pages, portfolios, creative/editorial sites, image-first frontend, or product concepts.
@@ -184,6 +186,12 @@ Use `design-intelligence/navigation-patterns.json` and `design-intelligence/navi
 Do not default to the same logo-left links-center CTA-right navbar, sticky pill, sticky black bar, or mobile top link dump unless the concept explicitly earns it.
 
 Navigation must remain readable over every background it crosses. Do not use forced app-name/logo chrome, decorative circular/orbital/HUD line overlays, fake sonar rings, or decorative hairline/separator ornaments unless the visual spec documents functional meaning and Migi has explicitly accepted the motif.
+
+## Creative Orchestration And Repair
+
+Use `skills/creative-orchestration-director/` when work spans multiple skills or when critique must turn into fixes. The orchestration layer records creative state, routes specialist skills, requires evidence, emits `templates/skill-verdict.template.json`, and converts blockers into `templates/reports/repair-task-queue.template.md`.
+
+The key rule: no review is complete until every P0/P1 issue has an owner skill, target, action, acceptance check, and evidence needed to close it.
 
 ## Dashboard Mode
 
@@ -342,3 +350,129 @@ Build/lint is not visual QA. Desktop screenshots with browser chrome, dock, edit
 - `source-projects/`: golden source projects; do not modify unless explicitly asked.
 - `captures/`: existing screenshots; do not modify unless explicitly asked.
 - `raw-chat-input/`: temporary ingestion input; do not modify unless explicitly asked.
+
+## Signature Interaction Gate
+
+For artistic, brand, portfolio, experimental landing, playful product, and image-led sites, consult `skills/signature-interaction-director/SKILL.md` when references include memorable mechanics such as portal entry, scroll route choreography, mascot motion, scroll-assembled cards, editorial list modals, media constellations, directional page transitions, or playful entry gates.
+
+Rules:
+- Select one signature interaction before implementation, or explicitly justify why none is appropriate.
+- Extract mechanics, not brand skin. Do not copy logos, mascots, names, colors, exact content, or proprietary media.
+- Include the selected mechanic in the visual spec when chosen.
+- Final review must check whether the signature mechanic is visible, meaningful, accessible, and supported by reduced motion.
+- Generic section stack after signature references is a hard failure.
+
+## Illustration-First Gate
+
+For illustration-heavy work, Design OS routes through:
+1. Illustration-First Gate.
+2. Isolated asset review.
+3. Migi approval or explicit pass when required.
+4. Full page build.
+
+Do not route directly from brief to full page if custom illustration is the visual hero.
+
+Use `agent-workflows/illustration-first-gate-workflow.md`, `templates/prompts/illustration-first-gate.md`, and `templates/prompts/asset-first-illustration-test.md`.
+
+The gate blocks full-page implementation when illustration looks amateur, relies on primitive ellipses/blobs, lacks a detail system, has weak silhouette or poor linework, uses generic texture/material, lacks reference grammar, or needs but has not received Migi approval.
+
+## No Ambient Background Blobs
+
+Large vague background blobs, ghost ellipses, generic radial glows, random translucent ovals, fake lens shapes, star/dot fields, decorative orbits, and abstract atmosphere shapes are rejected unless they are a named primary object, signature-interaction object, approved reference-derived mechanic, or shape-inventory item with role, layer, and purpose.
+
+## Layout Integrity Gate
+
+Design OS treats clipped text, word overflow, container/text collision, nav overflow, and accidental dead whitespace as hard blockers.
+
+Use:
+
+- `design-dna/text-container-integrity-rules.md`
+- `design-dna/navigation-responsiveness-rules.md`
+- `design-dna/whitespace-density-rules.md`
+- `skills/layout-integrity-review/SKILL.md`
+- `tools/layout-integrity-check.mjs` when a runnable URL exists
+
+Post-build review order:
+1. screenshot-scorecard-review
+2. layout-integrity-review
+3. interaction-verification
+4. text-clarity-review
+5. production-hardening-review
+6. anti-ai-slop-review
+7. final-ui-integrity-gate
+8. final-scorecard
+
+Screenshot contradiction beats agent self-report: if a screenshot shows clipped words, nav label overflow, a sticker/card covering headline text, CTA clipping, or huge accidental blank space, the result is blocked.
+
+## Final UI Integrity Gate
+
+Every frontend/design handoff must run `skills/final-ui-integrity-gate/SKILL.md` after screenshots and layout review. Use `tools/final-ui-integrity-check.mjs` when a local URL exists.
+
+Final UI Integrity Gate v3 must test a width sweep from `360` to `1920` in `40px` steps or smaller when practical, height samples `720, 844, 900, 1080`, scroll samples `0, 0.10, 0.20, 0.35, 0.50, 0.65, 0.80, 0.90, 1.00`, and applicable interactive states. Fixed breakpoint-only evidence is insufficient.
+
+The gate fails closed on clipped text, cut words, viewport-edge clipping, partially visible critical containers, horizontal scroll showing unreadable partial content, floating container drift/overlap, nav overflow, CTA/button clipping, card title/body clipping, media over text, overlapping containers covering text, fixed/sticky overlays covering content, hidden text, huge accidental blank areas, or unresolved user complaints. A failed or blocked final UI integrity gate cannot be called passed.
+
+Final handoff must follow `agent-workflows/fail-closed-final-handoff-contract.md`: the final response must report the v3 verdict, width sweep tested, height matrix tested, scroll samples tested, blocker count, screenshot evidence directory, and whether the user complaint remains visible.
+
+## Compact Navigation Icon Fallback
+
+When navigation does not have enough space for full labels, use a recognizable icon system or a real menu pattern. Do not use arbitrary two-letter labels such as `IN`, `WL`, `BD`, `NW`, `RL`, or `BK` as the primary visible fallback.
+
+Use `design-dna/navigation-responsiveness-rules.md`, `templates/checklists/navigation-responsiveness-checklist.md`, and `visual-library/rejected/case-studies/late-check-fm-small-screen-nav-abbreviation-failure/` before accepting compact navigation.
+
+## Anchored Detail Reveals
+
+When a user clicks, taps, selects, or opens a card/item/container, the detail panel must preserve spatial context. Use `design-dna/anchored-detail-reveal-rules.md`, `skills/designed-detail-reveal-director/SKILL.md`, `templates/checklists/anchored-detail-reveal-checklist.md`, and `templates/reports/anchored-detail-reveal-report.md`.
+
+Block final handoff if the detail opens far from the clicked object, the selected trigger disappears with no context, the reveal opens below the fold without focus/scroll, or the trigger/detail relationship is not visually or programmatically linked.
+
+## Persistent Mobile Bottom Navigation
+
+For mobile route/app experiences, route-based brand sites, scroll-heavy chapter experiences, and interactive pages with 3+ destinations, mobile navigation must be persistent and bottom-positioned by default. Use `design-dna/mobile-navigation-defaults.md`, `design-dna/navigation-responsiveness-rules.md`, `templates/checklists/mobile-bottom-nav-checklist.md`, and `templates/reports/mobile-bottom-nav-report.md`.
+
+Block final handoff if mobile route navigation appears only at the top, disappears during scroll, lacks bottom-accessible route control, lacks safe-area handling, or hides full accessible labels.
+
+## Agent Skill Layer V2
+
+The next Design OS layer makes the agent stateful and self-correcting:
+
+- `creative-session-state-manager`: remembers the live creative context.
+- `skill-orchestration-planner`: turns the registry into a gate-aware skill DAG.
+- `failure-memory-retrieval-router`: retrieves relevant rejected evidence before planning.
+- `evidence-to-repair-planner`: turns screenshots and critique into repair tasks.
+- `responsive-constraint-solver`: defines breakpoint behavior before build.
+- `reference-grammar-compiler`: extracts transferable mechanics from references.
+- `preference-model-migi-taste-learner`: records Migi-specific taste with scope and evidence.
+- `interaction-state-matrix-director`: specifies component states before build/QA.
+- `artifact-contract-validator`: validates docs/proof before handoff.
+- `creative-prototype-spike-director`: proves risky mechanics before full-page build.
+
+For nontrivial visual/frontend work, start with session state, failure memory retrieval, and skill orchestration. End with artifact contract validation after evidence-backed repair.
+
+## Elite Scroll Choreography
+
+Award-level landing, portfolio, editorial, brand, playful product, and video-first sites need authored scroll when scroll is part of the experience. Use skills/elite-scroll-choreography-director/SKILL.md to select a named pattern, route map, chapter map, pinned/sticky stage plan, moving object inventory, nav sync plan, motion timeline, mobile fallback, and reduced-motion fallback.
+
+After implementation, run skills/scroll-choreography-review/SKILL.md, then layout integrity review. Generic fade-in section scrolling is capped when elite scroll was requested.
+
+## Elite Experience Specialist Layer
+
+For award-level brand, portfolio, editorial, playful product, media-led, and scroll-heavy work, broad signature and scroll planning can route into five focused craft specialists:
+
+- scroll-physics-smoothing-director for scroll engine feel, smoothing, scrub, snap, settle, touch, mobile fallback, reduced motion, and performance.
+- media-object-stage-director for video/image/media as a primary object with safe zones, crop strategy, poster fallback, and media-state map.
+- physical-interface-props-director for tactile props with role, material, text-fit strategy, protected zones, responsive behavior, and no clipping.
+- designed-detail-reveal-director for non-default drawers, sleeves, split views, object pull-outs, station boards, and ritual selectors with state, focus, close, keyboard, and text overflow handling.
+- brand-voice-as-interface-director for CTAs, nav labels, cards, detail copy, reviews, states, and microcopy that feel authored rather than generic SaaS/hotel/template language.
+
+## Media / Text Protected Zones
+
+Moving video, image, portal, sticky media, and scroll-transformed objects may never cover critical text. Use `design-dna/media-text-protected-zone-rules.md` for scroll/media-heavy work, create `docs/design/protected-zone-map.md`, `docs/design/media-object-stage-plan.md`, and `docs/design/scroll-motion-spec.md`, then run `skills/scroll-choreography-review/SKILL.md` followed by `skills/layout-integrity-review/SKILL.md`.
+
+Rejected memory: `visual-library/rejected/case-studies/late-check-fm-scroll-media-text-collision/`. Preserve the concept direction, reject the execution pattern.
+
+## Video / Media Placement
+
+Video is hero-only by default. After the hero, remove it, dock it into a reserved media component, replace it with a static poster/thumb, or keep it only inside a reserved media lane with protected text zones. Read `design-dna/video-media-placement-rules.md` and `design-dna/text-container-integrity-rules.md` for video-led pages.
+
+Rejected memory: `visual-library/rejected/case-studies/late-check-fm-persistent-video-overlay-container-thinning/`. Preserve the Late Check FM concept, reject persistent overlays, media-over-text, and container thinning to fit media.
