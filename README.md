@@ -7,7 +7,7 @@ Miguel Design OS turns personal visual judgment into reusable engineering contex
 It exists to solve a practical problem: **an AI coding agent can remember code conventions more easily than taste.** This repository makes taste inspectable.
 
 <p align="center">
-  <img src="./captures/agent-boss/desktop/primary.png" alt="Design OS agent-boss reference capture" width="100%">
+  <img src="./docs/readme/current/desktop-primary.png" alt="Design OS agent-boss reference capture" width="100%">
 </p>
 
 ## The loop
@@ -88,9 +88,9 @@ The capture library stores the same product across device classes so a “good d
     <td width="33%"><strong>Mobile</strong></td>
   </tr>
   <tr>
-    <td><img src="./captures/agent-boss/desktop/primary.png" alt="Desktop design capture"></td>
-    <td><img src="./captures/agent-boss/tablet/primary.png" alt="Tablet design capture"></td>
-    <td><img src="./captures/agent-boss/mobile/primary.png" alt="Mobile design capture"></td>
+    <td><img src="./docs/readme/current/desktop-primary.png" alt="Desktop design capture"></td>
+    <td><img src="./docs/readme/current/tablet-primary.png" alt="Tablet design capture"></td>
+    <td><img src="./docs/readme/current/mobile-primary.png" alt="Mobile design capture"></td>
   </tr>
 </table>
 
