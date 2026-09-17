@@ -2,7 +2,7 @@
 
 Audit date: 2026-07-01
 
-Scope: repository structure, `AGENTS.md`, `README.md`, `design-dna/`, `skills/`, `evaluation/`, `agent-workflows/`, `case-studies/`, `manual-preferences/`, `project-index.md`, evidence folders, and local helper scripts.
+Scope: repository structure, `AGENTS.md`, `README.md`, `design-dna/`, `skills/`, `evaluation/`, `agent-workflows/`, `case-studies/`, `manual-preferences/`, `docs/notes/project-index.md`, evidence folders, and local helper scripts.
 
 Protected folders were inspected only as structure/evidence. No changes should be made to `source-projects/`, `captures/`, or `raw-chat-input/` during this audit.
 
@@ -21,7 +21,7 @@ Root:
 - `system.md`: architecture reference.
 - `design-system.json`: machine-readable summary of gates, caps, skill routing, evidence, handoff fields.
 - `MIGUEL_DESIGN_OS_MANUAL.md`: long manual for human/agent use.
-- `project-index.md`: source-project index and global learning rules.
+- `docs/notes/project-index.md`: source-project index and global learning rules.
 
 Core instruction folders:
 

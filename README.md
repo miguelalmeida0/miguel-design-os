@@ -6,10 +6,6 @@ Miguel Design OS turns personal visual judgment into reusable engineering contex
 
 It exists to solve a practical problem: **an AI coding agent can remember code conventions more easily than taste.** This repository makes taste inspectable.
 
-<p align="center">
-  <img src="./docs/readme/current/desktop-primary.png" alt="Design OS agent-boss reference capture" width="100%">
-</p>
-
 ## The loop
 
 ```mermaid
@@ -77,22 +73,17 @@ implementation
 
 Selection is treated as implementation approval unless the task is explicitly planning-only. This removes the common AI-agent loop where the system repeatedly asks permission after the visual direction has already been chosen.
 
-## Responsive evidence
+## Explore the system
 
-The capture library stores the same product across device classes so a “good desktop screenshot” cannot hide a broken phone experience.
+**[Design principles](./design-dna/)** — visual rules and quality criteria.
 
-<table>
-  <tr>
-    <td width="33%"><strong>Desktop</strong></td>
-    <td width="33%"><strong>Tablet</strong></td>
-    <td width="33%"><strong>Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="./docs/readme/current/desktop-primary.png" alt="Desktop design capture"></td>
-    <td><img src="./docs/readme/current/tablet-primary.png" alt="Tablet design capture"></td>
-    <td><img src="./docs/readme/current/mobile-primary.png" alt="Mobile design capture"></td>
-  </tr>
-</table>
+**[Task workflows](./skills/)** — focused instructions for implementation and review.
+
+**[Reference library](./visual-library/)** — examples used to inform design decisions.
+
+**[Evaluation](./evaluation/)** — review criteria and benchmarks.
+
+Design OS is a repository of design knowledge and workflows, not a standalone dashboard. Screenshots of reference applications are not presented as its own interface.
 
 ## Quality layers
 
@@ -153,3 +144,8 @@ Then select the task mode and route into the relevant skill / benchmark instead 
 ---
 
 Built and continuously dogfooded by [Miguel Almeida](https://github.com/miguelalmeida0).
+
+
+[Repository guide](./docs/START_HERE.md)
+
+<!-- repository-presentation-repair:1 -->
