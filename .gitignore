@@ -8,8 +8,8 @@ node_modules/
 .svelte-kit/
 dist/
 build/
-deprecated/**/dist/
-deprecated/**/build/
+docs/archive/deprecated/**/dist/
+docs/archive/deprecated/**/build/
 .tmp/
 tmp/
 playwright-report/

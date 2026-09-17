@@ -94,13 +94,13 @@ Not allowed:
 
 ### Deprecated Build Output
 
-- `./deprecated/studio/dist`
+- `./docs/archive/deprecated/studio/dist`
 
 ### Empty Folder
 
 - `research-input/ai-ui-builders/notes`
 
-Decision: remove. It is empty and not referenced by `README.md`, `AGENTS.md`, or the research manifests as an intentional folder. It appears only in audit/cleanup docs.
+Decision: remove. It is empty and not referenced by `README.md`, `docs/internal/automation/AGENTS.md`, or the research manifests as an intentional folder. It appears only in audit/cleanup docs.
 
 ## Deferred Consolidation Candidates
 
@@ -147,7 +147,7 @@ Deleted files:
 
 Deleted folders:
 
-- `./deprecated/studio/dist`
+- `./docs/archive/deprecated/studio/dist`
 - `research-input/ai-ui-builders/notes`
 
 Not deleted:
@@ -168,8 +168,8 @@ Not deleted:
 
 Added:
 
-- `deprecated/**/dist/`
-- `deprecated/**/build/`
+- `docs/archive/deprecated/**/dist/`
+- `docs/archive/deprecated/**/build/`
 - `research-input/**/raw/`
 - `research-input/**/*.zip`
 

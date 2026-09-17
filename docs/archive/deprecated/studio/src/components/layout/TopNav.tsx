@@ -6,7 +6,7 @@ const navItems: Array<{ id: StudioRoute; label: string }> = [
   { id: "concepts", label: "CONCEPTS" },
   { id: "target-copy", label: "TARGET COPY" },
   { id: "qa-runs", label: "QA RUNS" },
-  { id: "agents", label: "AGENTS" },
+  { id: "tooling/agents/catalog", label: "AGENTS" },
   { id: "prompts", label: "PROMPTS" }
 ];
 

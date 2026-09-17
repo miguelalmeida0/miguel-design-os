@@ -1,13 +1,13 @@
 # Design Start Image Exploration Wrapper
 
-This wrapper exists so Codex can run the exceptional paid-image direction script from a copied `.agents/skills` folder while the canonical instructions remain in `skills/design-start-image-exploration/SKILL.md`.
+This wrapper exists so Codex can run the exceptional paid-image direction script from a copied `tooling/tooling/agents/catalog/runtime/skills` folder while the canonical instructions remain in `skills/design-start-image-exploration/SKILL.md`.
 
 Paid image generation is disabled by default. The normal Design OS direction gate is no-image.
 
 Run:
 
 ```bash
-node .agents/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
+node tooling/tooling/agents/catalog/runtime/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
   --project "Project" \
   --brief "Brief" \
   --slug project \

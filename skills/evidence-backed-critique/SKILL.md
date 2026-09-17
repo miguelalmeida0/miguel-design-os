@@ -11,7 +11,7 @@ Do not use during Fast Direction Gate, first direction options, implementation c
 
 ## Files To Read
 
-- `agent-workflows/evidence-backed-critique-workflow.md`
+- `tooling/workflows/evidence-backed-critique-workflow.md`
 - `templates/reports/evidence-backed-critique-report.md`
 - `evaluation/ui-scorecard.md`
 - relevant Design OS rules for the active mode

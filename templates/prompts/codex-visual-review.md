@@ -11,7 +11,7 @@ Visual Review / Anti-Slop
 
 Required files to read:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `evaluation/ui-scorecard.md`
 - `skills/screenshot-scorecard-review/SKILL.md`
 - `skills/anti-ai-slop-review/SKILL.md`

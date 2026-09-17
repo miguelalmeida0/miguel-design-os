@@ -16,7 +16,7 @@ Files to change/create:
 - `docs/projects/_template/brief.json`
 - `tools/validate-brief.mjs`
 - update `skills/visual-concept-gate/SKILL.md`
-- update `AGENTS.md`
+- update `docs/internal/automation/AGENTS.md`
 
 Acceptance criteria:
 
@@ -128,7 +128,7 @@ Files to change/create:
 - `skills/registry.json`
 - `tools/route-skills.mjs`
 - `schemas/task-intake.schema.json`
-- update `AGENTS.md`
+- update `docs/internal/automation/AGENTS.md`
 
 Acceptance criteria:
 

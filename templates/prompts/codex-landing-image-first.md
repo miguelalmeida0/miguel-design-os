@@ -25,7 +25,7 @@ Required files to read:
 - `skills/landing-page-craft-director/SKILL.md`
 - `skills/signature-interaction-director/SKILL.md` for artistic, brand, portfolio, experimental, or award-reference work
 - `skills/anti-ai-tell-preflight/SKILL.md`
-- `agent-workflows/image-first-frontend-workflow.md`
+- `tooling/workflows/image-first-frontend-workflow.md`
 - `design-dna/brief-inference-rules.md`
 - `design-dna/anti-ai-tell-preflight.md`
 - `design-dna/landing-page-craft-rules.md`

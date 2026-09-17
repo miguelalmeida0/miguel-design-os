@@ -23,7 +23,7 @@ Image generation may cost money. Do not call the API during validation unless Mi
 ## Manual Script
 
 ```bash
-node .agents/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
+node tooling/tooling/agents/catalog/runtime/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
   --project "Project Name" \
   --brief "Brief text" \
   --slug project-name

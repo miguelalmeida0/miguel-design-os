@@ -18,7 +18,7 @@ When Migi chooses A, B, C, or a hybrid, proceed immediately to implementation. D
 
 Required reading:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `docs/architecture/design-os-operating-model.md`
 - `docs/routing/skill-routing-map.md`

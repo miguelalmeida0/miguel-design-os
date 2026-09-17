@@ -60,8 +60,8 @@ If Migi asks for an exact copy, this skill enters Literal Target Copy Mode inste
 
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/new-app-generation-rules.md`
-- `agent-workflows/visual-target-reconstruction-mode.md`
-- `agent-workflows/image-first-frontend-workflow.md` for image-led landing/portfolio/marketing work
+- `tooling/workflows/visual-target-reconstruction-mode.md`
+- `tooling/workflows/image-first-frontend-workflow.md` for image-led landing/portfolio/marketing work
 - `design-dna/art-directed-palette-exploration.md` for artistic, cinematic, landing, portfolio, creative, editorial, or experimental reference work
 - `design-dna/unsplash-asset-sourcing-rules.md` when real imagery or Unsplash assets are needed
 - `design-dna/landing-page-craft-rules.md` for landing/portfolio/marketing references

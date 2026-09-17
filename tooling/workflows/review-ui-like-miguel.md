@@ -5,7 +5,7 @@ Use for UI critique, QA, or design review.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `AGENTS.md` and route to the smallest matching skill set.
+2. Read `docs/internal/automation/AGENTS.md` and route to the smallest matching skill set.
 3. Run `node tools/design-os.mjs route --task "<task>"` when the CLI is available.
 4. For existing UI review, load `skills/anti-ai-slop-review/SKILL.md`.
 5. If screenshots exist or the UI can run, also load `skills/screenshot-scorecard-review/SKILL.md`.

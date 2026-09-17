@@ -22,7 +22,7 @@ Active dials:
 
 Required files to read:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/brief-inference-rules.md` for visual-heavy landing, portfolio, marketing, or redesign work
 - `design-dna/anti-ai-tell-preflight.md` for landing, portfolio, marketing, or redesign work
@@ -34,9 +34,9 @@ Required files to read:
 - `design-dna/oklch-contrast-and-palette-rules.md` when palette, contrast, dark mode, or chart colors matter
 - `design-dna/interface-feel-rules.md` before final visual review
 - `skills/signature-interaction-director/SKILL.md` for artistic, brand, portfolio, experimental, image-led, or award-reference work
-- `agent-workflows/frontend-aha-moment-workflow.md`
-- `agent-workflows/efficient-agent-implementation-workflow.md`
-- `agent-workflows/image-first-frontend-workflow.md` when image/reference-first
+- `tooling/workflows/frontend-aha-moment-workflow.md`
+- `tooling/workflows/efficient-agent-implementation-workflow.md`
+- `tooling/workflows/image-first-frontend-workflow.md` when image/reference-first
 - `design-dna/NO_IMAGE_DIRECTION_GATE_CONTEXT.md` for new visual-heavy work with no approved direction
 - relevant `skills/*/SKILL.md`
 

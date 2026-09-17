@@ -123,7 +123,7 @@ Paid image-generation and plan-gated design features are opt-in, not automatic. 
 Start with:
 
 ```text
-AGENTS.md
+docs/internal/automation/AGENTS.md
 design-dna/00_COMPACT_AGENT_CONTEXT.md
 visual-library/README.md
 ```

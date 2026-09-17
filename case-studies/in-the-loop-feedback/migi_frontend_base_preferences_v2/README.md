@@ -8,7 +8,7 @@ Use this folder to understand Migi’s taste, UX standards, and recurring fronte
 
 ## How agents should use this
 
-1. Read `AGENTS.md` first.
+1. Read `docs/internal/automation/AGENTS.md` first.
 2. Read `01_project_intake.md` before making design decisions.
 3. Use `02_design_preferences.md` and `03_interaction_grammar.md` to guide UX/UI choices.
 4. Use `04_anti_patterns.md` to avoid repeated failures.

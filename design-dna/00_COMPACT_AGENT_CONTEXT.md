@@ -6,7 +6,7 @@ Use this before building or reviewing any frontend.
 
 No-Image Fast Direction Gate is the default for normal new visual-heavy tests. Read `design-dna/NO_IMAGE_DIRECTION_GATE_CONTEXT.md` and `design-dna/FAST_DIRECTION_GATE_CONTEXT.md` first, create only `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`, and stop for Migi selection. Paid image generation is disabled by default. Load the deeper Design OS planning stack only after selection or when Migi explicitly asks for deep exploration, full strategy, research, benchmark, or reference decomposition.
 
-1. Read `AGENTS.md` as the skill router.
+1. Read `docs/internal/automation/AGENTS.md` as the skill router.
 2. Load only the routed `skills/*/SKILL.md` files. Do not load every skill.
 3. Read `visual-library/README.md`, then inspect relevant approved/rejected references and notes.
 4. Read only the files listed by routed skills under `Files To Read`, plus `system.md` or `design-system.json` when the selected skill asks for them.
@@ -25,14 +25,14 @@ No-Image Fast Direction Gate is the default for normal new visual-heavy tests. R
 17. For significant UI palettes, contrast repair, dark mode, or chart/state colors, route `skills/oklch-contrast-palette/SKILL.md` and check OKLCH/APCA before final palette approval.
 18. When real imagery, Unsplash, or source-image roles are needed, route `skills/unsplash-asset-sourcing/SKILL.md` and create `docs/design/unsplash-search-plan.md` plus `docs/design/unsplash-asset-manifest.md`.
 19. For visual-heavy navigation, create `docs/design/navigation-strategy.md`, explore 3 nav concepts, select a pattern, and document desktop/tablet/mobile behavior before implementation.
-20. For frontend MVP/new app work, use `agent-workflows/frontend-aha-moment-workflow.md`: local truthful mock data, working visible interactions, and no backend unless requested.
+20. For frontend MVP/new app work, use `tooling/workflows/frontend-aha-moment-workflow.md`: local truthful mock data, working visible interactions, and no backend unless requested.
 21. For landing, portfolio, marketing, or redesign work, read `design-dna/brief-inference-rules.md` and state the design read before coding.
 22. For visual-heavy work using visual-library references, create `docs/design/reference-usage-report.md` before coding.
 23. If charts, analytics, BI, monitoring, forecast, maps, funnels, or graph-rich dashboards are involved, route `skills/chart-system-director/SKILL.md` and `skills/data-visualization-selection/SKILL.md`, define the data contract, choose the visualization/tool from `design-intelligence/visualization-tool-routing.md`, and create chart rationale before implementation.
 24. If diagrams, pattern canvases, floor maps, seating charts, node graphs, timelines, spatial maps, or canvas-like product objects are involved, route `skills/diagram-canvas-system/SKILL.md` and define coordinate system, layer model, object model, label model, collision strategy, and selection/inspector behavior before implementation.
 25. After implementing charts, diagrams, maps, timelines, labels, legends, axes, tooltips, or canvases, route `skills/data-viz-hardening-review/SKILL.md` before calling the UI final.
 26. If the task needs a deliberate style family or taxonomy-driven art direction, route `skills/visual-style-selection/SKILL.md` and create a visual-style selection report before tokens are locked.
-27. If the task is a premium website, landing page, hero, marketing site, product page, editorial/portfolio page, or website image-to-code task, use `agent-workflows/image-first-frontend-workflow.md`, route image-first skills, and create image-first website analysis before coding.
+27. If the task is a premium website, landing page, hero, marketing site, product page, editorial/portfolio page, or website image-to-code task, use `tooling/workflows/image-first-frontend-workflow.md`, route image-first skills, and create image-first website analysis before coding.
 28. For landing, portfolio, marketing, and redesign work, route `skills/landing-page-craft-director/SKILL.md` and `skills/anti-ai-tell-preflight/SKILL.md`.
 29. If motion is planned or animation code changes, route `skills/motion-craft-director/SKILL.md` or `skills/review-animations/SKILL.md`; use `skills/animation-vocabulary/SKILL.md` only to name/specify motion.
 30. If adding delight/personality, route `skills/delight-opportunity-director/SKILL.md`.
@@ -148,9 +148,9 @@ When Migi asks for artistic, landing-page, cinematic, or image-led work, do not 
 
 Evidence gates: build/lint is not visual QA; visual target screenshots are evidence, not production assets; watermark/editor/browser artifacts in production UI are hard blockers; production image-led work requires an asset manifest; Literal Target Copy Mode requires a target-copy report; visual-heavy work requires a done report before final handoff.
 
-Visual Swarm v1 agents in `agents/`: Inspiration Scout creates `inspiration-manifest.local.json`; Art Direction Concept creates 3 rendered concepts; Literal Target Copy creates `target-copy-report.local.json`; Visual QA Anti-Slop validates screenshot/done evidence; Productionizer adds interactions only after shell approval. Use `list-agents` and `route-agent` when available.
+Visual Swarm v1 agents in `tooling/agents/catalog/`: Inspiration Scout creates `inspiration-manifest.local.json`; Art Direction Concept creates 3 rendered concepts; Literal Target Copy creates `target-copy-report.local.json`; Visual QA Anti-Slop validates screenshot/done evidence; Productionizer adds interactions only after shell approval. Use `list-agents` and `route-agent` when available.
 
-Miguel Design OS is not a product app or frontend Studio. The primary workflow is rules + `visual-library/` + prompts + screenshot QA. Frontend experiments are archived under `deprecated/` and are not the default workflow.
+Miguel Design OS is not a product app or frontend Studio. The primary workflow is rules + `visual-library/` + prompts + screenshot QA. Frontend experiments are archived under `docs/archive/deprecated/` and are not the default workflow.
 
 Optional local/free tools exist for validation: `tools/compare-screenshots.mjs`, `tools/visual-qa.mjs`, `tools/playwright-doctor.mjs`, `tools/import-manual-screenshots.mjs`, `tools/object-swap-check.mjs`, and Design OS validators. Generated runs under `docs/qa-runs/`, `docs/comparisons/`, `docs/concept-runs/`, and `docs/object-swap/` are local evidence and gitignored by default. Playwright is optional; if unavailable, capture tools must report a clear local setup blocker.
 

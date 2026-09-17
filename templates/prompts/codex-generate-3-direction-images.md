@@ -13,7 +13,7 @@ Only after explicit paid approval, generate 3 visual direction images before imp
 Run:
 
 ```bash
-node .agents/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
+node tooling/tooling/agents/catalog/runtime/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
   --project "{{PROJECT_NAME}}" \
   --brief "{{BRIEF}}" \
   --slug "{{SLUG}}" \

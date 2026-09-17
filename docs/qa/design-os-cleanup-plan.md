@@ -19,7 +19,7 @@ Likely low-risk cleanup after Migi approval:
 3. Delete or keep local-only archive:
    - `research-input/taste-motion-skills/taste-motion-skill-pack.zip`
 4. Decide whether `research-input/ai-ui-builders/notes` should get `.gitkeep` or be deleted.
-5. Delete `deprecated/studio/dist` if Studio source is retained but build output is not needed.
+5. Delete `docs/archive/deprecated/studio/dist` if Studio source is retained but build output is not needed.
 
 ## Needs Migi Approval
 
@@ -29,19 +29,19 @@ These are not safe to remove without a choice from Migi:
    - `research-input/ai-ui-builders/raw/`
    - `research-input/taste-motion-skills/raw/`
 2. Deprecated Studio source:
-   - `deprecated/studio/`
-   - `deprecated/studio-preview/`
-   - `deprecated/studio-docs/`
+   - `docs/archive/deprecated/studio/`
+   - `docs/archive/deprecated/studio-preview/`
+   - `docs/archive/deprecated/studio-docs/`
 3. Historical roadmap/audit docs that discuss Studio or "Lovable inside the repo":
    - `docs/audits/design-os-current-state-audit.md`
    - `docs/audits/lovable-gap-audit.md`
    - `docs/strategy/design-os-extreme-power-roadmap.md`
    - `docs/roadmap/lovable-inside-repo-roadmap.md`
 4. Older wrapper workflows:
-   - `agent-workflows/generate-new-app.md`
-   - `agent-workflows/fix-ui-until-elite.md`
-   - `agent-workflows/review-ui-like-miguel.md`
-   - `agent-workflows/visual-target-reconstruction-mode.md`
+   - `tooling/workflows/generate-new-app.md`
+   - `tooling/workflows/fix-ui-until-elite.md`
+   - `tooling/workflows/review-ui-like-miguel.md`
+   - `tooling/workflows/visual-target-reconstruction-mode.md`
 
 ## Keep As Intentional Placeholders
 
@@ -61,7 +61,7 @@ Keep these unless the related feature is abandoned:
 
 Do not merge yet. Recommended consolidation sequence:
 
-1. Make `agent-workflows/reference-locked-build-mode.md` the single source of truth for Reference-Locked Build Mode.
+1. Make `tooling/workflows/reference-locked-build-mode.md` the single source of truth for Reference-Locked Build Mode.
 2. Make `design-dna/landing-page-craft-rules.md` and `design-dna/anti-ai-tell-preflight.md` the single source of truth for Taste/landing craft.
 3. Make `design-dna/motion-and-delight-rules.md` and `skills/review-animations/STANDARDS.md` the single source of truth for motion and animation standards.
 4. Make `docs/qa/layout-integrity-rules.md` plus `evaluation/ui-scorecard.md` the single source of truth for P0 layout integrity.
@@ -164,7 +164,7 @@ rm -rf smoke-tests/visual-concept-gate-v2
 rm -f research-input/taste-motion-skills/taste-motion-skill-pack.zip
 
 # Remove deprecated Studio build output only, keeping source history.
-rm -rf deprecated/studio/dist
+rm -rf docs/archive/deprecated/studio/dist
 ```
 
 Possible consolidation commands should be done as manual edits, not blind shell deletion:
@@ -172,8 +172,8 @@ Possible consolidation commands should be done as manual edits, not blind shell 
 ```sh
 # Review before editing.
 sed -n '1,220p' design-dna/new-app-generation-rules.md
-sed -n '1,220p' agent-workflows/generate-new-app.md
-sed -n '1,220p' agent-workflows/review-ui-like-miguel.md
+sed -n '1,220p' tooling/workflows/generate-new-app.md
+sed -n '1,220p' tooling/workflows/review-ui-like-miguel.md
 ```
 
 ## Suggested Follow-Up Prompt

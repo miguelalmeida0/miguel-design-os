@@ -44,10 +44,10 @@ The source skill was transformed into a Miguel Design OS compatible workflow: im
 
 Updated:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/new-app-generation-rules.md`
-- `agent-workflows/simple-visual-reference-workflow.md`
+- `tooling/workflows/simple-visual-reference-workflow.md`
 - `evaluation/ui-scorecard.md`
 - `skills/skill-registry.json`
 

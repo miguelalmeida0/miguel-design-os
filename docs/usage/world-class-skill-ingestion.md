@@ -36,7 +36,7 @@ Output artifact:
 
 ## How Future Agents Should Use This
 
-1. Route the task through `AGENTS.md`.
+1. Route the task through `docs/internal/automation/AGENTS.md`.
 2. Use the smallest relevant skill set.
 3. If the task has charts, load Data Visualization Selection.
 4. If the task needs a style family, load Visual Style Selection.

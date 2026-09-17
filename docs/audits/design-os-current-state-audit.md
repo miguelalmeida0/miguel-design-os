@@ -2,13 +2,13 @@
 
 Audit date: 2026-07-01
 
-Scope: repository structure, `AGENTS.md`, `README.md`, `design-dna/`, `skills/`, `evaluation/`, `agent-workflows/`, `case-studies/`, `manual-preferences/`, `docs/notes/project-index.md`, evidence folders, and local helper scripts.
+Scope: repository structure, `docs/internal/automation/AGENTS.md`, `README.md`, `design-dna/`, `skills/`, `evaluation/`, `tooling/workflows/`, `case-studies/`, `manual-preferences/`, `docs/notes/project-index.md`, evidence folders, and local helper scripts.
 
 Protected folders were inspected only as structure/evidence. No changes should be made to `source-projects/`, `captures/`, or `raw-chat-input/` during this audit.
 
 ## Executive Take
 
-Miguel Design OS has already crossed from "preference docs" into a routed local instruction system. The strongest move is the new `AGENTS.md` router plus narrow `skills/*/SKILL.md` files. That is the right architecture for future agents because it reduces context bloat and creates task-specific loops.
+Miguel Design OS has already crossed from "preference docs" into a routed local instruction system. The strongest move is the new `docs/internal/automation/AGENTS.md` router plus narrow `skills/*/SKILL.md` files. That is the right architecture for future agents because it reduces context bloat and creates task-specific loops.
 
 The system is still not yet "Lovable inside the repo" because most enforcement is text-based. Agents can still skip gates, invent concepts without diagrams, avoid screenshot comparison, fail to produce a visual shell, or score themselves generously. The next leap is not more advice. It is local product infrastructure: structured briefs, galleries of approved/rejected evidence, screenshot harness, anti-slop checks, prompt compiler, and report artifacts that make the agent loop observable.
 
@@ -16,7 +16,7 @@ The system is still not yet "Lovable inside the repo" because most enforcement i
 
 Root:
 
-- `AGENTS.md`: thin router to skills.
+- `docs/internal/automation/AGENTS.md`: thin router to skills.
 - `README.md`: overview, evidence map, fast start.
 - `system.md`: architecture reference.
 - `design-system.json`: machine-readable summary of gates, caps, skill routing, evidence, handoff fields.
@@ -28,7 +28,7 @@ Core instruction folders:
 - `skills/`: 8 routed skill files plus `skills/README.md`.
 - `design-dna/`: persistent taste rules, anti-patterns, archetypes, responsive rules, copy rules, rejected/approved directions.
 - `rules/`: operational rule layer for tokens, components, layout, interaction, anti-patterns, scorecard, new-app workflow.
-- `agent-workflows/`: older workflow layer for app generation, review, ingestion, fix-until-elite, and visual target reconstruction.
+- `tooling/workflows/`: older workflow layer for app generation, review, ingestion, fix-until-elite, and visual target reconstruction.
 - `evaluation/`: `ui-scorecard.md`.
 - `manual-preferences/`: global frontend principles.
 
@@ -63,7 +63,7 @@ Local helpers:
 
 ## What Is Strong
 
-- `AGENTS.md` is now a real router. It is short and trigger-based.
+- `docs/internal/automation/AGENTS.md` is now a real router. It is short and trigger-based.
 - The skills have consistent required sections: name, description, use when, do not use when, inputs, files to read, workflow, stop conditions, output contract, blockers, scope rules.
 - The Visual Concept Gate is correctly treated as pre-implementation.
 - The system is explicit about references: composition, focal object, hidden information, absent elements, material, atmosphere, interaction model.
@@ -81,20 +81,20 @@ Local helpers:
 - Anti-slop checks are partly manual. Scripts only cover horizontal scroll, overlap heuristics, and scale inflation.
 - Design-system schema is not yet the canonical source of truth. It mirrors docs but does not drive validation.
 - Approved/rejected examples are mostly text; there is no visual gallery with screenshots, reasons, tags, and lessons.
-- `MIGUEL_DESIGN_OS_MANUAL.md`, `system.md`, `rules/`, `design-dna/`, and `agent-workflows/` still repeat similar loops.
+- `MIGUEL_DESIGN_OS_MANUAL.md`, `system.md`, `rules/`, `design-dna/`, and `tooling/workflows/` still repeat similar loops.
 - There is no "project packet" generator that compiles only relevant context for a new app.
 - There is no prompt compiler for Codex, Lovable, v0, Bolt, or other agents.
 - There is no local Studio UI, CLI, or checklist runner that makes the workflow feel like a product.
 
 ## What Is Duplicated
 
-- Visual Concept Gate appears in `system.md`, `README.md`, `MIGUEL_DESIGN_OS_MANUAL.md`, `design-dna/00_COMPACT_AGENT_CONTEXT.md`, `design-dna/miguel-style-principles.md`, `design-dna/new-app-generation-rules.md`, `rules/new-app-workflow.md`, `agent-workflows/generate-new-app.md`, and `skills/visual-concept-gate/SKILL.md`.
+- Visual Concept Gate appears in `system.md`, `README.md`, `MIGUEL_DESIGN_OS_MANUAL.md`, `design-dna/00_COMPACT_AGENT_CONTEXT.md`, `design-dna/miguel-style-principles.md`, `design-dna/new-app-generation-rules.md`, `rules/new-app-workflow.md`, `tooling/workflows/generate-new-app.md`, and `skills/visual-concept-gate/SKILL.md`.
 - Screenshot proof appears in scorecard, skills, workflows, compact context, manual, and rules.
 - Anti-slop language appears in `design-dna/anti-patterns.md`, `rules/anti-patterns.md`, `skills/anti-ai-slop-review/SKILL.md`, scorecard, compact context, and workflows.
-- New-app flow exists in both `rules/new-app-workflow.md` and `agent-workflows/generate-new-app.md`.
-- Visual target reconstruction exists in `skills/visual-target-reconstruction/SKILL.md`, `agent-workflows/visual-target-reconstruction-mode.md`, `design-dna/new-app-generation-rules.md`, and `MIGUEL_DESIGN_OS_MANUAL.md`.
+- New-app flow exists in both `rules/new-app-workflow.md` and `tooling/workflows/generate-new-app.md`.
+- Visual target reconstruction exists in `skills/visual-target-reconstruction/SKILL.md`, `tooling/workflows/visual-target-reconstruction-mode.md`, `design-dna/new-app-generation-rules.md`, and `MIGUEL_DESIGN_OS_MANUAL.md`.
 
-Duplication is not fatal yet, but it creates drift risk. The v2 architecture should make `AGENTS.md` + skills + schemas canonical, with old docs becoming reference material.
+Duplication is not fatal yet, but it creates drift risk. The v2 architecture should make `docs/internal/automation/AGENTS.md` + skills + schemas canonical, with old docs becoming reference material.
 
 ## What Is Too Vague
 
@@ -168,12 +168,12 @@ That is too much for routine tasks. V2 should introduce a "context packet" gener
 
 ## Instruction Conflicts Or Drift Risks
 
-- `AGENTS.md` says load only routed skills. Some older docs still describe broad read orders and may encourage reading more than needed.
+- `docs/internal/automation/AGENTS.md` says load only routed skills. Some older docs still describe broad read orders and may encourage reading more than needed.
 - Skills are instruction-only, but workflows mention scripts. This is acceptable if scripts remain outside skills, but agents need a clearer boundary.
 - `system.md` still contains detailed Visual Concept Gate instructions that overlap with the skill. The skill should be canonical.
-- `agent-workflows/visual-target-reconstruction-mode.md` duplicates the skill. It should become reference or be folded into the skill.
+- `tooling/workflows/visual-target-reconstruction-mode.md` duplicates the skill. It should become reference or be folded into the skill.
 - `design-dna/new-app-generation-rules.md` still says read relevant rules/skills/design-dna directly; this can fight the router model.
-- `design-system.json` includes routing but is not generated from `AGENTS.md`, so drift is possible.
+- `design-system.json` includes routing but is not generated from `docs/internal/automation/AGENTS.md`, so drift is possible.
 
 ## Manual Prompt Dependency
 
@@ -196,7 +196,7 @@ Target: "Migi should be able to start a new frontend project, point an agent to 
 
 | Dimension | Score | Rationale |
 | --- | ---: | --- |
-| Agent routing clarity | 8 | `AGENTS.md` is now a clear router. Drift remains in older docs. |
+| Agent routing clarity | 8 | `docs/internal/automation/AGENTS.md` is now a clear router. Drift remains in older docs. |
 | Visual concept generation | 7 | Strong gate and fields, but no diagrams, saved concepts, or enforcement artifact. |
 | Inspiration image handling | 7 | Correct analysis categories exist. Needs target comparison and gallery examples. |
 | Visual target reconstruction | 6 | Workflow exists, but no harness or side-by-side diff. |

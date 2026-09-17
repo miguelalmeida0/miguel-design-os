@@ -29,35 +29,35 @@ const visualAgents = [
   {
     id: "01-inspiration-scout",
     name: "Inspiration Scout Agent",
-    path: "agents/01-inspiration-scout-agent.md",
+    path: "tooling/agents/catalog/01-inspiration-scout-agent.md",
     description: "Collects, classifies, and documents visual inspiration before implementation.",
     routeKeywords: ["inspiration", "pinterest", "moodboard", "awwwards", "fwa", "reference", "visual research", "source"]
   },
   {
     id: "02-art-direction-concept",
     name: "Art Direction Concept Agent",
-    path: "agents/02-art-direction-concept-agent.md",
+    path: "tooling/agents/catalog/02-art-direction-concept-agent.md",
     description: "Turns a brief and inspiration into 3 rendered visual concepts.",
     routeKeywords: ["concept", "art direction", "visual-heavy", "new app", "rendered", "three concepts", "selection", "roster", "gallery"]
   },
   {
     id: "03-literal-target-copy",
     name: "Literal Target Copy Agent",
-    path: "agents/03-literal-target-copy-agent.md",
+    path: "tooling/agents/catalog/03-literal-target-copy-agent.md",
     description: "Reconstructs exact visual targets without product reinterpretation.",
     routeKeywords: ["copy this exact ui", "100% this design", "literally what you see", "exact visual target", "lovable target", "target copy", "target screenshot", "target screenshots", "reconstruct"]
   },
   {
     id: "04-visual-qa-anti-slop",
     name: "Visual QA Anti-Slop Agent",
-    path: "agents/04-visual-qa-anti-slop-agent.md",
+    path: "tooling/agents/catalog/04-visual-qa-anti-slop-agent.md",
     description: "Blocks fake done reports with screenshot QA and scorecard caps.",
     routeKeywords: ["qa", "screenshot", "scorecard", "anti-slop", "verify", "done report", "overlap", "watermark", "dead button"]
   },
   {
     id: "05-productionizer",
     name: "Productionizer Agent",
-    path: "agents/05-productionizer-agent.md",
+    path: "tooling/agents/catalog/05-productionizer-agent.md",
     description: "Adds clean app code and interactions after the visual shell passes.",
     routeKeywords: ["productionize", "implementation", "interactions", "components", "build", "lint", "local data", "product logic"]
   }
@@ -293,7 +293,7 @@ const agentAliases = new Map([
 const agentPromptConfig = {
   "01-inspiration-scout": {
     template: "templates/prompts/codex-inspiration-scout.md",
-    agentPath: "agents/01-inspiration-scout-agent.md",
+    agentPath: "tooling/agents/catalog/01-inspiration-scout-agent.md",
     skillPaths: ["skills/visual-concept-gate/SKILL.md"],
     validationCommands: [
       "node tools/new-inspiration-queue.mjs",
@@ -303,7 +303,7 @@ const agentPromptConfig = {
   },
   "02-art-direction-concept": {
     template: "templates/prompts/codex-art-direction-concept.md",
-    agentPath: "agents/02-art-direction-concept-agent.md",
+    agentPath: "tooling/agents/catalog/02-art-direction-concept-agent.md",
     skillPaths: ["skills/visual-concept-gate/SKILL.md"],
     validationCommands: [
       "node tools/capture-concepts.mjs --url http://localhost:5174",
@@ -312,7 +312,7 @@ const agentPromptConfig = {
   },
   "03-literal-target-copy": {
     template: "templates/prompts/codex-literal-target-copy.md",
-    agentPath: "agents/03-literal-target-copy-agent.md",
+    agentPath: "tooling/agents/catalog/03-literal-target-copy-agent.md",
     skillPaths: ["skills/visual-target-reconstruction/SKILL.md"],
     validationCommands: [
       "node tools/compare-screenshots.mjs --target <target.png> --current <current.png> --name <name>",
@@ -321,7 +321,7 @@ const agentPromptConfig = {
   },
   "04-visual-qa-anti-slop": {
     template: "templates/prompts/codex-visual-qa-fix.md",
-    agentPath: "agents/04-visual-qa-anti-slop-agent.md",
+    agentPath: "tooling/agents/catalog/04-visual-qa-anti-slop-agent.md",
     skillPaths: ["skills/screenshot-scorecard-review/SKILL.md", "skills/anti-ai-slop-review/SKILL.md"],
     validationCommands: [
       "node tools/visual-qa.mjs --url http://localhost:5173 --name <name>",
@@ -331,7 +331,7 @@ const agentPromptConfig = {
   },
   "05-productionizer": {
     template: "templates/prompts/codex-productionizer.md",
-    agentPath: "agents/05-productionizer-agent.md",
+    agentPath: "tooling/agents/catalog/05-productionizer-agent.md",
     skillPaths: ["skills/screenshot-scorecard-review/SKILL.md"],
     validationCommands: [
       "npm run build",
@@ -1023,7 +1023,7 @@ function routeAgent() {
     selected.push({
       id: "04-visual-qa-anti-slop",
       name: "Visual QA Anti-Slop Agent",
-      path: "agents/04-visual-qa-anti-slop-agent.md",
+      path: "tooling/agents/catalog/04-visual-qa-anti-slop-agent.md",
       matchedKeywords: ["implied-visual-qa"]
     });
   }
@@ -1032,7 +1032,7 @@ function routeAgent() {
     selected.push({
       id: "04-visual-qa-anti-slop",
       name: "Visual QA Anti-Slop Agent",
-      path: "agents/04-visual-qa-anti-slop-agent.md",
+      path: "tooling/agents/catalog/04-visual-qa-anti-slop-agent.md",
       matchedKeywords: ["fallback-qa"]
     });
   }

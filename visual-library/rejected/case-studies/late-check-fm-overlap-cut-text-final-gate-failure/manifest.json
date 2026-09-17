@@ -18,7 +18,7 @@
     "screenshots/late-check-fm-02-cut-text-and-fixed-overlay-collision.png"
   ],
   "rulesAdded": [
-    "agent-workflows/final-ui-integrity-gate-workflow.md",
+    "tooling/workflows/final-ui-integrity-gate-workflow.md",
     "skills/final-ui-integrity-gate/SKILL.md",
     "design-dna/final-ui-integrity-gate-rules.md"
   ],

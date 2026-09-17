@@ -7,7 +7,7 @@ Use when adding another completed project to this memory system.
 Before inspecting the project:
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `AGENTS.md` and `skills/README.md`.
+2. Read `docs/internal/automation/AGENTS.md` and `skills/README.md`.
 3. Read `system.md`, `design-system.json`, and `design-dna/miguel-style-principles.md`.
 4. Inspect the new project's type, framework, routes, components, styling system, tokens, and screenshots if present.
 5. Define the project's project-specific visual identity in the report.

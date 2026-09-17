@@ -5,7 +5,7 @@ Use when iterating an existing UI until it clears the Design OS bar.
 ## Mandatory Start
 
 1. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
-2. Read `AGENTS.md` and route to the smallest matching skill set.
+2. Read `docs/internal/automation/AGENTS.md` and route to the smallest matching skill set.
 3. For UI quality fixes, load `skills/anti-ai-slop-review/SKILL.md` and `skills/screenshot-scorecard-review/SKILL.md`.
 4. If the fix is visual-heavy or Migi rejected the direction, also load `skills/visual-concept-gate/SKILL.md`.
 5. Read only the files listed by the selected skills before editing.

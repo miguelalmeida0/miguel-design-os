@@ -14,7 +14,7 @@ Use Miguel Design OS from `.design-os` if embedded in the project, otherwise use
 
 ## Reading List
 
-1. `AGENTS.md`
+1. `docs/internal/automation/AGENTS.md`
 2. `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 3. `docs/architecture/design-os-operating-model.md`
 4. `docs/routing/skill-routing-map.md`

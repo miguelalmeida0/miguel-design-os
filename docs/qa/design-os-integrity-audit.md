@@ -45,8 +45,8 @@ Major folders:
 
 | Folder | Appears to contain | Audit note |
 | --- | --- | --- |
-| `agents/` | Visual Swarm instruction agents | Active instruction layer. Not a frontend app. |
-| `agent-workflows/` | Markdown workflows for visual reference, reference-locking, image-first, app generation, implementation, review | Useful, but overlapping. Needs routing consolidation. |
+| `tooling/agents/catalog/` | Visual Swarm instruction agents | Active instruction layer. Not a frontend app. |
+| `tooling/workflows/` | Markdown workflows for visual reference, reference-locking, image-first, app generation, implementation, review | Useful, but overlapping. Needs routing consolidation. |
 | `design-dna/` | Core rules, modes, recipes, anti-patterns, compact context | Main rule memory. `new-app-generation-rules.md` is now very large and duplicates more focused files. |
 | `design-intelligence/` | JSON/Markdown recommendation libraries for charts, color, style, landing, motion, delight, AI tells | JSON is valid. Some JSON files lack adjacent guidance docs. |
 | `docs/` | Architecture, audits, QA reports, usage docs, research syntheses, roadmap | Useful but contains older roadmap/studio-era docs that may confuse future agents unless clearly marked. |
@@ -58,13 +58,13 @@ Major folders:
 | `templates/` | Report templates and Codex prompt templates | Active generation layer. |
 | `tools/` | CLI and local QA scripts | Active tooling layer. |
 | `visual-library/` | Approved/rejected screenshots, manifests, notes, case studies | Active taste memory. Contains `.DS_Store` files. |
-| `deprecated/` | Archived Studio and Studio Preview experiments | Correctly deprecated, but still contains frontend app files and a `dist` directory. |
+| `docs/archive/deprecated/` | Archived Studio and Studio Preview experiments | Correctly deprecated, but still contains frontend app files and a `dist` directory. |
 | `source-projects/`, `captures/`, `raw-chat-input/` | Protected source evidence/input folders | Not modified. |
 
 Temporary or suspicious folders:
 
 - `research-input/ai-ui-builders/notes` is empty.
-- `deprecated/studio/` and `deprecated/studio-preview/` are intentionally deprecated but still carry package files and source code.
+- `docs/archive/deprecated/studio/` and `docs/archive/deprecated/studio-preview/` are intentionally deprecated but still carry package files and source code.
 - `docs/concept-runs/2026-07-01T17-13-59-231Z/` contains a generated local concept report and is ignored by `.gitignore`.
 - `smoke-tests/` contains generated local smoke artifacts and is ignored by `.gitignore`.
 
@@ -121,7 +121,7 @@ Command run:
 | Image-first frontend | `skills/image-first-frontend/SKILL.md`, `skills/image-first-website-to-code/SKILL.md`, `skills/landing-page-craft-director/SKILL.md` | Complementary but close. `image-first-frontend` is general, `image-first-website-to-code` is website/landing implementation, `landing-page-craft-director` is section/craft direction. | Agents may load all three and duplicate work. | Keep separate, but document routing order: craft director -> image-first workflow -> website-to-code only when implementing a website/landing output. |
 | Landing page direction | `skills/landing-page-pattern-director/SKILL.md`, `skills/landing-page-craft-director/SKILL.md`, `skills/anti-ai-tell-preflight/SKILL.md` | Complementary. Pattern chooses structure, craft defines section behavior, preflight blocks Taste failures. | Medium overlap in section rhythm and Blogspot prevention. | Keep separate. Preferred order: pattern director before spec, craft director during spec, anti-AI-tell preflight before final handoff. |
 | General visual review | `skills/anti-ai-slop-review/SKILL.md`, `skills/frontend-art-director-review/SKILL.md`, `skills/screenshot-scorecard-review/SKILL.md` | Complementary review lenses. Anti-slop catches failure modes, art director critiques taste, screenshot review checks evidence. | Medium risk that a review task loads too much. | Keep separate. Preferred order: screenshot evidence first when runnable, anti-slop for blockers, art director for elite critique. |
-| Target/reference reconstruction | `skills/visual-target-reconstruction/SKILL.md`, `agent-workflows/reference-locked-build-mode.md`, `templates/reference-decomposition.template.md`, `templates/design-transfer-spec.template.md` | Complementary. Skill routes and evaluates, workflow defines process, templates define artifacts. | Low structural risk, high repetition across docs. | Keep. Make `agent-workflows/reference-locked-build-mode.md` the source of truth. |
+| Target/reference reconstruction | `skills/visual-target-reconstruction/SKILL.md`, `tooling/workflows/reference-locked-build-mode.md`, `templates/reference-decomposition.template.md`, `templates/design-transfer-spec.template.md` | Complementary. Skill routes and evaluates, workflow defines process, templates define artifacts. | Low structural risk, high repetition across docs. | Keep. Make `tooling/workflows/reference-locked-build-mode.md` the source of truth. |
 | Visual spec | `skills/visual-spec-compiler/SKILL.md`, `templates/visual-spec.template.md`, `design-dna/design-system-first-rules.md` | Complementary. Skill compiles, template captures, DNA sets prerequisites. | Low. | Keep. Doctor should eventually verify template exists when skill exists. |
 | Dashboard charts | `skills/dashboard-graph-system/SKILL.md`, `skills/data-visualization-selection/SKILL.md`, `design-intelligence/chart-recommendation-matrix.json` | Complementary but overlapping. Dashboard graph system is mode-specific; data visualization selection is chart-type logic. | Medium routing ambiguity for "dashboard chart" tasks. | Preferred order: dashboard-graph-system for dashboard surface, data-visualization-selection for specific chart choice. |
 | Style/color | `skills/visual-style-selection/SKILL.md`, `design-intelligence/style-taxonomy.json`, `design-intelligence/product-color-matrix.json` | Complementary. | Low. | Keep. Avoid treating style taxonomy as taste override. |
@@ -179,16 +179,16 @@ Recommendation:
 
 Files inspected:
 
-- `agent-workflows/simple-visual-reference-workflow.md`
-- `agent-workflows/reference-locked-build-mode.md`
-- `agent-workflows/image-first-frontend-workflow.md`
-- `agent-workflows/frontend-aha-moment-workflow.md`
-- `agent-workflows/efficient-agent-implementation-workflow.md`
-- `agent-workflows/generate-new-app.md`
-- `agent-workflows/fix-ui-until-elite.md`
-- `agent-workflows/review-ui-like-miguel.md`
-- `agent-workflows/visual-target-reconstruction-mode.md`
-- `agent-workflows/ingest-new-project.md`
+- `tooling/workflows/simple-visual-reference-workflow.md`
+- `tooling/workflows/reference-locked-build-mode.md`
+- `tooling/workflows/image-first-frontend-workflow.md`
+- `tooling/workflows/frontend-aha-moment-workflow.md`
+- `tooling/workflows/efficient-agent-implementation-workflow.md`
+- `tooling/workflows/generate-new-app.md`
+- `tooling/workflows/fix-ui-until-elite.md`
+- `tooling/workflows/review-ui-like-miguel.md`
+- `tooling/workflows/visual-target-reconstruction-mode.md`
+- `tooling/workflows/ingest-new-project.md`
 
 | Workflow | Purpose | Overlap | Conflict risk | Recommendation |
 | --- | --- | --- | --- | --- |
@@ -223,7 +223,7 @@ Potential contradiction:
 
 Files inspected:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `README.md`
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/new-app-generation-rules.md`
@@ -254,7 +254,7 @@ Duplicate clusters:
 
 | Cluster | Appears in | Conflict? | Recommended source of truth |
 | --- | --- | --- | --- |
-| Reference-Locked Build Mode | `AGENTS.md`, compact context, new-app rules, simple workflow, reference-locked workflow, scorecard, several skills | Mostly consistent, but repeated many times | `agent-workflows/reference-locked-build-mode.md` plus templates; other files should summarize/link. |
+| Reference-Locked Build Mode | `docs/internal/automation/AGENTS.md`, compact context, new-app rules, simple workflow, reference-locked workflow, scorecard, several skills | Mostly consistent, but repeated many times | `tooling/workflows/reference-locked-build-mode.md` plus templates; other files should summarize/link. |
 | Landing/artistic/image-led rules | README, AGENTS, compact context, new-app rules, landing craft rules, anti-AI preflight, layout recipes, approved/rejected, anti-patterns, skills | Mostly consistent | `design-dna/landing-page-craft-rules.md` and `design-dna/anti-ai-tell-preflight.md`. |
 | Dashboard mode | README, AGENTS, compact context, new-app rules, layout recipes, approved/rejected, anti-patterns, scorecard, dashboard extraction doc | Mostly consistent but very spread out | Keep dashboard taste in a future dedicated file or `docs/qa/dashboard-direction-extraction.md`; keep caps in scorecard. |
 | Motion and delight | AGENTS, compact context, new-app rules, design-system-first, motion-and-delight, anti-patterns, skills, scorecard | Consistent but repeated | `design-dna/motion-and-delight-rules.md` and `skills/review-animations/STANDARDS.md`. |
@@ -270,7 +270,7 @@ Contradictions found:
 - Landing rules are repeated enough that agents may run pattern/craft/preflight redundantly unless routing is simplified.
 - Motion rules are consistent with anti-animation-fatigue guidance: motion is allowed only with purpose, frequency fit, and reduced-motion support.
 
-Broken or missing references in `README.md` / `AGENTS.md`:
+Broken or missing references in `README.md` / `docs/internal/automation/AGENTS.md`:
 
 - Several referenced artifacts are generated-per-project and do not currently exist in `docs/design/`, including:
   - `docs/design/visual-spec.md`
@@ -294,7 +294,7 @@ Broken or missing references in `README.md` / `AGENTS.md`:
 
 Studio status in docs:
 
-- `AGENTS.md`, `README.md`, and compact context all correctly say the frontend Studio is deprecated/not part of the current workflow.
+- `docs/internal/automation/AGENTS.md`, `README.md`, and compact context all correctly say the frontend Studio is docs/archive/deprecated/not part of the current workflow.
 - Older roadmap/audit docs still discuss Studio-like or "Lovable inside repo" infrastructure. They are in docs/roadmap, docs/audits, or docs/strategy and should be treated as historical/planning docs, not current workflow.
 
 ## Phase 8 - Research Input / Raw File Audit
@@ -362,7 +362,7 @@ Focused findings:
 | `docs/concept-runs/2026-07-01T17-13-59-231Z/visual-concepts.local.json` | Generated local concept run | Keep ignored or delete if no longer useful. |
 | `smoke-tests/visual-concept-gate-v2/*.local.json` | Generated smoke artifacts | Keep ignored or delete if no longer useful. |
 | `research-input/taste-motion-skills/taste-motion-skill-pack.zip` | Local handoff archive | Keep ignored locally or delete after Migi downloads. |
-| `deprecated/studio/dist` | Old build output under deprecated frontend | Delete with approval if deprecated Studio source is kept. |
+| `docs/archive/deprecated/studio/dist` | Old build output under deprecated frontend | Delete with approval if deprecated Studio source is kept. |
 
 The broad scan also reported many `dist`, `build`, `.zip`, and `.local.json` files under protected `source-projects/node_modules` and app build folders. Those were not modified and are outside this cleanup scope.
 
@@ -378,17 +378,17 @@ Findings:
 
 - Active root-level frontend app folders were not found.
 - Studio remnants exist only under:
-  - `deprecated/studio/`
-  - `deprecated/studio-preview/`
+  - `docs/archive/deprecated/studio/`
+  - `docs/archive/deprecated/studio-preview/`
 - Both deprecated folders include frontend app files such as `package.json`, `src`, and in the Studio case `vite.config.ts`.
-- `deprecated/studio/dist` exists and is a build artifact.
-- `README.md`, `AGENTS.md`, and compact context clearly state Studio is deprecated and not the primary workflow.
+- `docs/archive/deprecated/studio/dist` exists and is a build artifact.
+- `README.md`, `docs/internal/automation/AGENTS.md`, and compact context clearly state Studio is deprecated and not the primary workflow.
 
 Recommendation:
 
 - Do not revive Studio.
 - Keep deprecated folders only if Migi wants historical source.
-- If not, delete `deprecated/studio/`, `deprecated/studio-preview/`, and `deprecated/studio-docs/` in a cleanup pass after approval.
+- If not, delete `docs/archive/deprecated/studio/`, `docs/archive/deprecated/studio-preview/`, and `docs/archive/deprecated/studio-docs/` in a cleanup pass after approval.
 
 ## Phase 11 - Design Intelligence Audit
 

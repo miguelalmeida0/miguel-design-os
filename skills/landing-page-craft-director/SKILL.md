@@ -16,7 +16,7 @@ Use for landing/portfolio/marketing pages. Do not use as the primary skill for d
 - `design-intelligence/navigation-pattern-guidance.md`
 - `design-intelligence/navigation-patterns.json`
 - `design-dna/anti-ai-tell-preflight.md`
-- `agent-workflows/image-first-frontend-workflow.md`
+- `tooling/workflows/image-first-frontend-workflow.md`
 - `design-intelligence/landing-section-composition-library.json`
 
 ## Workflow

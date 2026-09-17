@@ -11,7 +11,7 @@ OKLCH / APCA Palette Pass
 
 Required files to read:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/oklch-contrast-and-palette-rules.md`
 - `design-dna/design-system-first-rules.md`
 - `skills/oklch-contrast-palette/SKILL.md`

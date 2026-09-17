@@ -19,8 +19,8 @@ Active dials:
 
 Required files to read:
 
-- `AGENTS.md`
-- `agent-workflows/reference-locked-build-mode.md`
+- `docs/internal/automation/AGENTS.md`
+- `tooling/workflows/reference-locked-build-mode.md`
 - `skills/visual-spec-compiler/SKILL.md`
 - `skills/dashboard-graph-system/SKILL.md`
 - `skills/data-visualization-selection/SKILL.md`

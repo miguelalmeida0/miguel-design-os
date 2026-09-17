@@ -15,7 +15,7 @@ Read:
 
 - `design-dna/FAST_DIRECTION_GATE_CONTEXT.md`
 - `design-dna/NO_IMAGE_DIRECTION_GATE_CONTEXT.md`
-- `AGENTS.md` only if routing is unclear
+- `docs/internal/automation/AGENTS.md` only if routing is unclear
 
 Create:
 

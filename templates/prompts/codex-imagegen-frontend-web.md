@@ -26,7 +26,7 @@ Required files to read:
 - `design-dna/anti-ai-tell-preflight.md`
 - `design-dna/art-directed-palette-exploration.md`
 - `design-dna/unsplash-asset-sourcing-rules.md` when real imagery is needed
-- `agent-workflows/image-first-frontend-workflow.md`
+- `tooling/workflows/image-first-frontend-workflow.md`
 - `skills/image-first-frontend/SKILL.md`
 - `skills/landing-page-craft-director/SKILL.md`
 - `design-intelligence/landing-section-composition-library.json`

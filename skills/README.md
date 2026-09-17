@@ -1,10 +1,10 @@
 # Miguel Design OS Skills
 
-Skills are narrow, trigger-specific instruction files. They keep `AGENTS.md` small and prevent future agents from loading the whole Design OS into every task.
+Skills are narrow, trigger-specific instruction files. They keep `docs/internal/automation/AGENTS.md` small and prevent future agents from loading the whole Design OS into every task.
 
 ## How Routing Works
 
-Start with `AGENTS.md`. It routes the task to the smallest relevant skill set.
+Start with `docs/internal/automation/AGENTS.md`. It routes the task to the smallest relevant skill set.
 
 Do not load all skills. Load only the skill whose trigger matches the current task, plus any second skill that is directly required by the evidence. For example, a selection-first redesign with screenshots may load:
 

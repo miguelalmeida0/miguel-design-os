@@ -10,7 +10,7 @@ The Design OS already has Markdown rules, CLI validators, local schemas, Visual 
 
 ## Relationship To CLI And Scripts
 
-Studio does not replace the CLI. It exposes the workflow state and gives agents/users copyable commands:
+Studio does not replace the CLI. It exposes the workflow state and gives tooling/agents/catalog/users copyable commands:
 
 - `route-agent`
 - `capture-concepts`

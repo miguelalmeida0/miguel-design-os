@@ -10,7 +10,7 @@ Use when visual references or generated images should drive implementation.
 ## Files To Read
 
 - `skills/image-first-website-to-code/SKILL.md`
-- `agent-workflows/image-first-frontend-workflow.md`
+- `tooling/workflows/image-first-frontend-workflow.md`
 - `templates/image-first-website-analysis.template.md`
 - `design-dna/design-system-first-rules.md`
 - `design-dna/art-directed-palette-exploration.md` for artistic/landing/portfolio/cinematic/experimental work

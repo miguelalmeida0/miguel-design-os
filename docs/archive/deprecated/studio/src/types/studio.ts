@@ -4,7 +4,7 @@ export type StudioRoute =
   | "concepts"
   | "target-copy"
   | "qa-runs"
-  | "agents"
+  | "tooling/agents/catalog"
   | "prompts";
 
 export type StatusState = "missing" | "ready" | "blocked" | "passed";

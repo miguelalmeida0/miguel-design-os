@@ -20,7 +20,7 @@ skills/design-start-image-exploration/SKILL.md
 Local script:
 
 ```bash
-node .agents/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
+node tooling/tooling/agents/catalog/runtime/skills/design-start-image-exploration/scripts/generate-design-directions.mjs \
   --project "Project Name" \
   --brief "Brief text" \
   --slug project-slug \

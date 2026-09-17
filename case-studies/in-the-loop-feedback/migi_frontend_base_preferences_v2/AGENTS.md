@@ -1,4 +1,4 @@
-# AGENTS.md — Frontend / UX Master Preferences
+# docs/internal/automation/AGENTS.md — Frontend / UX Master Preferences
 
 Read this before designing or implementing any frontend for Migi.
 

@@ -14,9 +14,9 @@ For any frontend/design task:
 4. Check `visual-library/rejected/` for relevant anti-patterns.
 5. Classify task mode.
 6. Declare active design dials from `design-dna/design-generation-dials.md`.
-7. Use `agent-workflows/simple-visual-reference-workflow.md` when visual references matter.
-8. Use `agent-workflows/reference-locked-build-mode.md` when Migi asks to base work on a specific visual-library folder or screenshot set.
-9. Use `agent-workflows/image-first-frontend-workflow.md` for image/reference-first website or visual-heavy work.
+7. Use `tooling/workflows/simple-visual-reference-workflow.md` when visual references matter.
+8. Use `tooling/workflows/reference-locked-build-mode.md` when Migi asks to base work on a specific visual-library folder or screenshot set.
+9. Use `tooling/workflows/image-first-frontend-workflow.md` for image/reference-first website or visual-heavy work.
 10. For new visual-heavy work with no approved direction, first run the No-Image Fast Direction Gate: create `docs/design/direction-options.md`, `docs/design/direction-layout-maps.md`, and `docs/design/direction-risk-check.md`. Do not create visual specs, QA docs, build/lint reports, or frontend code before selection.
 11. Stop for Migi to choose A, B, C, or a hybrid during the first direction pass.
 12. When Migi chooses, treat that as implementation approval unless Migi explicitly says spec only, planning only, do not implement, wait, no code yet, direction selection only, just document it, or do not edit src.
@@ -26,7 +26,7 @@ For any frontend/design task:
 16. Run an OKLCH/APCA palette pass for significant UI, palette repair, dark mode, chart colors, or contrast-sensitive work.
 17. Use `skills/unsplash-asset-sourcing/SKILL.md` when real imagery, Unsplash, or source-image roles are needed.
 18. Create `docs/design/navigation-strategy.md` before visual-heavy navigation implementation.
-19. Use `agent-workflows/efficient-agent-implementation-workflow.md` for nontrivial implementation.
+19. Use `tooling/workflows/efficient-agent-implementation-workflow.md` for nontrivial implementation.
 20. Apply an interface-feel polish pass after the main layout works and before final screenshot review.
 21. Use routed skills only when relevant; do not load the whole repo.
 22. Run benchmark scoring from `evaluation/benchmarks/` when a mode benchmark exists.
@@ -138,7 +138,7 @@ Use the smallest relevant set.
 - Final Taste-style preflight for landing/portfolio/marketing UI: `skills/anti-ai-tell-preflight/SKILL.md`.
 - Image-first visual implementation from references/screenshots/generated sections: `skills/image-first-frontend/SKILL.md`.
 - Unsplash or real photographic asset sourcing: `skills/unsplash-asset-sourcing/SKILL.md`.
-- Generating or selecting landing-page visual references: use imagegen-frontend-web logic through `agent-workflows/image-first-frontend-workflow.md` and `skills/landing-page-craft-director/SKILL.md`.
+- Generating or selecting landing-page visual references: use imagegen-frontend-web logic through `tooling/workflows/image-first-frontend-workflow.md` and `skills/landing-page-craft-director/SKILL.md`.
 - Motion planning for product/brand UI: `skills/motion-craft-director/SKILL.md`.
 - Advanced/cinematic/artistic/award-winning/scroll/portfolio motion: `skills/animation-vocabulary/SKILL.md`, then `skills/advanced-motion-choreography/SKILL.md`, then `skills/motion-craft-director/SKILL.md`, then `tools/capture-motion-sequence.mjs` if possible, then `skills/review-animations/SKILL.md`, `skills/make-interfaces-feel-better/SKILL.md`, and `skills/screenshot-scorecard-review/SKILL.md`.
 - Motion code review: `skills/review-animations/SKILL.md`.
@@ -356,7 +356,7 @@ Final UI Integrity Gate v3 requires:
 - passed and failed sampled viewport states in the final report
 - blocker detection for viewport-edge clipping, horizontal scroll partial content, floating-object resize drift, blank scroll states, clipped text, overlap, nav overflow, and media/text collision
 
-Follow `agent-workflows/fail-closed-final-handoff-contract.md`: final responses must report the v3 verdict, width sweep tested, height matrix tested, scroll samples tested, blocker count, screenshot evidence directory, and whether the user complaint remains visible.
+Follow `tooling/workflows/fail-closed-final-handoff-contract.md`: final responses must report the v3 verdict, width sweep tested, height matrix tested, scroll samples tested, blocker count, screenshot evidence directory, and whether the user complaint remains visible.
 
 7. final scorecard
 

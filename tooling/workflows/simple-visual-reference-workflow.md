@@ -4,7 +4,7 @@ Use this for future frontend/design work when Migi wants the Design OS to guide 
 
 ## Workflow
 
-1. Read `AGENTS.md`.
+1. Read `docs/internal/automation/AGENTS.md`.
 2. Read `design-dna/00_COMPACT_AGENT_CONTEXT.md`.
 3. Check `visual-library/approved/` for relevant approved references.
 4. Check `visual-library/rejected/` for relevant anti-patterns.

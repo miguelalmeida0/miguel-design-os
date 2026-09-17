@@ -14,7 +14,7 @@ Design read:
 
 Required files to read:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/00_COMPACT_AGENT_CONTEXT.md`
 - `design-dna/brief-inference-rules.md`
 - `design-dna/anti-ai-tell-preflight.md`

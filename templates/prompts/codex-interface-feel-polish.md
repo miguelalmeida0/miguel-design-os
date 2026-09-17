@@ -11,7 +11,7 @@ Interface Feel Polish
 
 Required files to read:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `design-dna/interface-feel-rules.md`
 - `skills/make-interfaces-feel-better/SKILL.md`
 - `skills/advanced-motion-choreography/SKILL.md` when advanced/cinematic/portfolio motion is part of the brief

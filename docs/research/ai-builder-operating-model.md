@@ -35,7 +35,7 @@ If Migi points to a folder, use Reference-Locked Build Mode. If the task is prem
 
 Read the smallest useful set:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - compact context
 - selected skills
 - selected reference notes

@@ -14,8 +14,8 @@ Active dials:
 
 Required files to read:
 
-- `agent-workflows/frontend-aha-moment-workflow.md`
-- `agent-workflows/efficient-agent-implementation-workflow.md`
+- `tooling/workflows/frontend-aha-moment-workflow.md`
+- `tooling/workflows/efficient-agent-implementation-workflow.md`
 - `skills/visual-spec-compiler/SKILL.md`
 - `skills/anti-ai-tell-preflight/SKILL.md` for landing, portfolio, marketing, or redesign work
 - `skills/motion-craft-director/SKILL.md` when motion is planned

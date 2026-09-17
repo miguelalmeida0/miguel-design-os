@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { AgentsScreen } from "../components/agents/AgentsScreen";
+import { AgentsScreen } from "../components/tooling/agents/catalog/AgentsScreen";
 import { CommandCenter } from "../components/command/CommandCenter";
 import { ConceptsScreen } from "../components/concepts/ConceptsScreen";
 import { InspirationScreen } from "../components/inspiration/InspirationScreen";
@@ -34,7 +34,7 @@ export function StudioApp() {
         {route === "concepts" && <ConceptsScreen concepts={concepts} onConceptsChange={setConcepts} />}
         {route === "target-copy" && <TargetCopyScreen items={targetCopyItems} onItemsChange={setTargetCopyItems} />}
         {route === "qa-runs" && <QaRunsScreen runs={qaRuns} onRunsChange={setQaRuns} />}
-        {route === "agents" && <AgentsScreen />}
+        {route === "tooling/agents/catalog" && <AgentsScreen />}
         {route === "prompts" && <PromptsScreen />}
       </main>
     </div>

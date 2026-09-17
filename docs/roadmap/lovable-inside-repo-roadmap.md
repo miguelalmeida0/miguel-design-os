@@ -129,7 +129,7 @@ Files/folders required:
 - `schemas/done-report.schema.json`
 - `templates/done-report.template.json`
 - `tools/validate-done-report.mjs`
-- update `AGENTS.md`
+- update `docs/internal/automation/AGENTS.md`
 - update `evaluation/ui-scorecard.md`
 
 Free/local or paid-risk: free/local.

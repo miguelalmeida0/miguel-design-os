@@ -58,7 +58,7 @@ Use when real imagery is needed, image-first frontend is active, landing pages d
 
 ## Dashboard / Data Product
 
-1. `agent-workflows/reference-locked-build-mode.md`
+1. `tooling/workflows/reference-locked-build-mode.md`
 2. `dashboard-graph-system`
 3. `chart-system-director`
 4. `data-visualization-selection`
@@ -228,7 +228,7 @@ Relationship:
 - `layout-integrity-review` reviews layout/text/container risk.
 - `final-ui-integrity-gate` is the fail-closed final gate after screenshots and layout review.
 
-If final UI integrity is failed or blocked, the agent must fix the UI and rerun validation before responding. A failed gate forbids a passed final verdict. Viewport-edge clipping, horizontal partial content, floating-object drift, and blank scroll states are blockers. Follow `agent-workflows/fail-closed-final-handoff-contract.md` for final response fields and blocked/failed handoff behavior.
+If final UI integrity is failed or blocked, the agent must fix the UI and rerun validation before responding. A failed gate forbids a passed final verdict. Viewport-edge clipping, horizontal partial content, floating-object drift, and blank scroll states are blockers. Follow `tooling/workflows/fail-closed-final-handoff-contract.md` for final response fields and blocked/failed handoff behavior.
 
 ## Agent Skill Layer V2 Routing
 

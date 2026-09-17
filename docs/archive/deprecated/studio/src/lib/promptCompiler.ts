@@ -3,11 +3,11 @@ import { visualAgents } from "../data/agents";
 import type { CompiledPrompt, PromptMode } from "../types/studio";
 
 const agentFileByMode: Record<PromptMode, string> = {
-  "inspiration-scout": "agents/01-inspiration-scout-agent.md",
-  "art-direction-concept": "agents/02-art-direction-concept-agent.md",
-  "literal-target-copy": "agents/03-literal-target-copy-agent.md",
-  "visual-qa-anti-slop": "agents/04-visual-qa-anti-slop-agent.md",
-  productionizer: "agents/05-productionizer-agent.md"
+  "inspiration-scout": "tooling/agents/catalog/01-inspiration-scout-agent.md",
+  "art-direction-concept": "tooling/agents/catalog/02-art-direction-concept-agent.md",
+  "literal-target-copy": "tooling/agents/catalog/03-literal-target-copy-agent.md",
+  "visual-qa-anti-slop": "tooling/agents/catalog/04-visual-qa-anti-slop-agent.md",
+  productionizer: "tooling/agents/catalog/05-productionizer-agent.md"
 };
 
 export function compilePrompt(task: string, mode: PromptMode): CompiledPrompt {
@@ -35,7 +35,7 @@ ${agent?.mission ?? "Run the selected Visual Swarm phase."}
 ## Required Files To Read
 
 - design-dna/00_COMPACT_AGENT_CONTEXT.md
-- AGENTS.md
+- docs/internal/automation/AGENTS.md
 - ${agentFileByMode[mode]}
 - evaluation/ui-scorecard.md
 

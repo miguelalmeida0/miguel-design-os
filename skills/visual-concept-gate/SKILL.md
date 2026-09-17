@@ -144,7 +144,7 @@ Use this legacy/deep path only when Migi asks for deep exploration, full strateg
    - for dashboard concepts: attraction zone, panel mix, chart forms, palette strategy, image/object/media role, live/motion strategy, material range, and calm/busy rhythm
    - for dashboard or visual-heavy concepts: navigation strategy, toolbar alignment, text density, button proportions, responsive collision risks, and human palette direction
 10. Save rendered-concept artifacts only when the user explicitly asked for rendered previews.
-11. If a local preview is created, use a project-local preview route, static HTML, or another lightweight local render to support the direction cards. The archived `deprecated/studio-preview/` experiment is not the default workflow.
+11. If a local preview is created, use a project-local preview route, static HTML, or another lightweight local render to support the direction cards. The archived `docs/archive/deprecated/studio-preview/` experiment is not the default workflow.
 12. Capture rendered concepts with available screenshot QA only when preview artifacts were created; otherwise the no-image direction gate is complete through the direction cards and layout maps.
 13. Validate generated direction manifests with `node tools/design-os.mjs validate-direction-images generated/moodboards/<slug>/manifest.json` only when paid image generation was explicitly approved and succeeds.
 14. Validate rendered concepts with `node tools/design-os.mjs validate-concepts visual-concepts.local.json` or the captured run artifact when the CLI is available.

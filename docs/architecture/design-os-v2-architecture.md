@@ -6,7 +6,7 @@ Goal: a local, routed, artifact-driven AI frontend/design operating system that 
 
 ```txt
 design-os/
-  AGENTS.md
+  docs/internal/automation/AGENTS.md
   README.md
   system.md
   design-system.json
@@ -128,7 +128,7 @@ Purpose:
 
 Instruction-only:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `README.md`
 - `system.md`
 
@@ -199,7 +199,7 @@ Instruction-only:
 
 V2 change:
 
-- Rename from `agent-workflows/` to `workflows/` or keep alias.
+- Rename from `tooling/workflows/` to `workflows/` or keep alias.
 - Workflows should route to skills, not duplicate skill content.
 
 ### `schemas/`
@@ -372,7 +372,7 @@ Instruction-only:
 ## Canonical Flow In V2
 
 1. User starts a task.
-2. `AGENTS.md` routes to skills.
+2. `docs/internal/automation/AGENTS.md` routes to skills.
 3. `tools/route-skills.mjs` optionally confirms route.
 4. Agent creates `docs/projects/[project]/brief.json`.
 5. `validate-brief.mjs` checks Design Brief Contract.
@@ -388,7 +388,7 @@ Instruction-only:
 
 Instruction-only:
 
-- `AGENTS.md`
+- `docs/internal/automation/AGENTS.md`
 - `README.md`
 - `system.md`
 - `skills/`

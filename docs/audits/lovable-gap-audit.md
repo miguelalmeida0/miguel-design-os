@@ -20,7 +20,7 @@ Lovable wins visually because it starts as a visual synthesis engine. Miguel Des
 
 ### Routing
 
-- `AGENTS.md` acts as a short router instead of a giant always-load manual.
+- `docs/internal/automation/AGENTS.md` acts as a short router instead of a giant always-load manual.
 - `tools/design-os.mjs route --task "..."` maps task language to relevant skills.
 - The skill registry keeps routing keywords, inputs, and output contracts in one machine-readable place.
 - Recent embedded `.design-os` support lets the CLI resolve internal Design OS files from its own root instead of the host project root.
