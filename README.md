@@ -10,18 +10,30 @@ It exists to solve a practical problem: **an AI coding agent can remember code c
 
 ```mermaid
 flowchart LR
-    A[Task] --> B[Design context]
-    B --> C[Direction gate]
-    C --> D[Selected direction]
-    D --> E[Implementation]
-    E --> F[Screenshot QA]
-    F --> G[Benchmark + critique]
-    G --> H{Pass?}
-    H -->|Yes| I[Ship]
-    H -->|No| J[Repair queue]
-    J --> E
-    G --> K[Postmortem]
-    K --> B
+  BRIEF(["Product task"]):::actor
+  CONTEXT["Design memory<br/>rules · references · rejects"]:::data
+  GATE{"Direction gate"}:::decision
+  SELECT["Selected direction"]:::guard
+  BUILD[["Implementation"]]:::system
+  CAPTURE["Responsive captures"]:::actor
+  CRITIQUE["Benchmark + critique"]:::system
+  PASS{"Quality bar passed?"}:::decision
+  SHIP(["Ship"]):::safe
+  REPAIR["Repair queue"]:::private
+  MEMORY[("Postmortem → memory")]:::data
+
+  BRIEF --> CONTEXT --> GATE --> SELECT --> BUILD --> CAPTURE --> CRITIQUE --> PASS
+  PASS -- "yes" --> SHIP --> MEMORY --> CONTEXT
+  PASS -- "no" --> REPAIR --> BUILD
+
+  classDef actor fill:#E8F1FF,stroke:#2563EB,color:#0F172A,stroke-width:1.6px;
+classDef system fill:#ECFEFF,stroke:#0891B2,color:#0F172A,stroke-width:1.6px;
+classDef decision fill:#FFFBEB,stroke:#D97706,color:#0F172A,stroke-width:1.6px;
+classDef guard fill:#FFF7ED,stroke:#EA580C,color:#0F172A,stroke-width:1.6px;
+classDef safe fill:#ECFDF5,stroke:#059669,color:#0F172A,stroke-width:1.6px;
+classDef private fill:#FFF1F2,stroke:#E11D48,color:#0F172A,stroke-width:1.6px;
+classDef data fill:#F8FAFC,stroke:#64748B,color:#0F172A,stroke-width:1.6px;
+linkStyle default stroke:#94A3B8,stroke-width:1.5px;
 ```
 
 ## What is stored here
@@ -57,18 +69,27 @@ The output is not a palette. It is a **decision system**.
 
 For major visual work, the system forces a compact direction gate before code:
 
-```text
-brief
-  ↓
-direction A / B / C
-  ↓
-layout map + risk check
-  ↓
-human selects direction
-  ↓
-visual spec + tokens + navigation strategy
-  ↓
-implementation
+```mermaid
+flowchart TB
+  BRIEF(["Brief"]):::actor
+  OPTIONS["Direction A · B · C"]:::data
+  RISKS["Layout map + risk check"]:::guard
+  PICK{"Human selects direction"}:::decision
+  SPEC["Visual spec<br/>tokens · navigation · composition"]:::system
+  IMPLEMENT[["Implementation"]]:::system
+  VERIFY(["Screenshot QA + benchmark"]):::safe
+
+  BRIEF --> OPTIONS --> RISKS --> PICK --> SPEC --> IMPLEMENT --> VERIFY
+  VERIFY -. "repair if needed" .-> IMPLEMENT
+
+  classDef actor fill:#E8F1FF,stroke:#2563EB,color:#0F172A,stroke-width:1.6px;
+classDef system fill:#ECFEFF,stroke:#0891B2,color:#0F172A,stroke-width:1.6px;
+classDef decision fill:#FFFBEB,stroke:#D97706,color:#0F172A,stroke-width:1.6px;
+classDef guard fill:#FFF7ED,stroke:#EA580C,color:#0F172A,stroke-width:1.6px;
+classDef safe fill:#ECFDF5,stroke:#059669,color:#0F172A,stroke-width:1.6px;
+classDef private fill:#FFF1F2,stroke:#E11D48,color:#0F172A,stroke-width:1.6px;
+classDef data fill:#F8FAFC,stroke:#64748B,color:#0F172A,stroke-width:1.6px;
+linkStyle default stroke:#94A3B8,stroke-width:1.5px;
 ```
 
 Selection is treated as implementation approval unless the task is explicitly planning-only. This removes the common AI-agent loop where the system repeatedly asks permission after the visual direction has already been chosen.
