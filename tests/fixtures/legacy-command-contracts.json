@@ -1,0 +1,130 @@
+[
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "help"
+    ],
+    "exit": 0,
+    "stdoutSha256": "411f724ec4065d44320e8e1bf8d66abbd84cb3d22f1a3bddadacf979f4f9252d",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "list-agents"
+    ],
+    "exit": 0,
+    "stdoutSha256": "2da9ffcae4052094a74fa0d8c475b25a85378009348c5ca0edaa1808560dc6ce",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "list-skills"
+    ],
+    "exit": 0,
+    "stdoutSha256": "2ad64c3e199232c91b8a239c16384a5cb89640d30b5100cd0f6346f65c497804",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "list-benchmarks"
+    ],
+    "exit": 0,
+    "stdoutSha256": "0316fb5fe773727d96234ed628683db9b18fd1ffb8ba64304417b74dd558fa33",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "doctor"
+    ],
+    "exit": 0,
+    "stdoutSha256": "2ba124b3afd4c73997fec2c00b6599674869ef93b8a8e753e5f061be4f38542d",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "route",
+      "--task",
+      "Mobile onboarding with accessible motion and references"
+    ],
+    "exit": 0,
+    "stdoutSha256": "f9225e24523cf8187ff0af43b02f85c47af46c7745ea167bbcbfe596afb507e5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "route-agent",
+      "--task",
+      "Mobile onboarding with accessible motion and references"
+    ],
+    "exit": 0,
+    "stdoutSha256": "76d018d77ef1c9f1281afbd287d020653ffa230158e6db5c7de8e1cf971f409b",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "route",
+      "--task",
+      " QA  caf\u00e9  svg\n line"
+    ],
+    "exit": 0,
+    "stdoutSha256": "41e964fcb290e8f74b85d2bb95082fd804ae0e86f15b7cc5fb9083c065cb3dc6",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "route-agent",
+      "--task",
+      ""
+    ],
+    "exit": 1,
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrSha256": "fc85ea74c124c8f0dd218407111f8f0c32d8c617ac49180a9750dceafbb2aacc"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "route"
+    ],
+    "exit": 1,
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrSha256": "4fee49abe2541a3374a330a45c01b41f0e4faa3ad41ffb7f7fbc3f75e1bcda68"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "validate-brief",
+      "templates/design-brief.template.json"
+    ],
+    "exit": 0,
+    "stdoutSha256": "5cfb399794f886fd391a930b93257e70adb18283aa933c5d6281058a30139fbf",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "design-os.mjs",
+    "args": [
+      "validate-done-report",
+      "templates/done-report.template.json"
+    ],
+    "exit": 0,
+    "stdoutSha256": "cf3966845670ecfcf44ff8c4573dea4f536e885bae130095c29c783b11dc69e8",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tool": "failure-memory-search.mjs",
+    "args": [
+      "--query",
+      "text clipping nav overflow"
+    ],
+    "exit": 0,
+    "stdoutSha256": "2f669f8a6760b357a7d3c52a11b75fcd6c60a753100caa0f511f55e6c5c634ba",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

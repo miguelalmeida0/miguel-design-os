@@ -1,27 +1,7 @@
 # Start here
 
-[Project overview](../README.md)
+[Project overview](../README.md) · [Current agent instructions](../AGENTS.md) · [Engine usage](engine.md)
 
-## Repository guide
+The normal design path uses the private profile and a small project brief. Start with `node tools/design-os.mjs taste help`. Specialist skills and browser QA tools remain available on demand.
 
-**[design-dna/](../design-dna/)** — Design principles.
-
-**[skills/](../skills/)** — Task workflows.
-
-**[visual-library/](../visual-library/)** — Reference library.
-
-**[evaluation/](../evaluation/)** — Review criteria.
-
-**[templates/](../templates/)** — Reusable templates.
-
-**[tools/](../tools/)** — Repository tools.
-
-## Engineering history
-
-[Release notes, handoffs and relocation index](./history/ROOT_FILES.md)
-
-Historical records are retained for traceability; they are not a substitute for current setup instructions.
-
-## Root-directory policy
-
-Keep the root for the README, license/security/contribution files, agent entrypoints, build configuration and application directories. Put release notes, handoffs, design records and validation reports under `docs/`. Do not move source or native project files for cosmetic reasons.
+Original references remain in `visual-library/`. Personal uploads and client material remain private. Historical releases, earlier direction gates and old startup documents are retained under `docs/archive/` and `docs/history/`; they are not default startup context.

@@ -44,3 +44,6 @@ research-input/**/raw/
 research-input/**/*.zip
 
 generated/moodboards/
+
+# Personal references, client briefs, preferences and derived engine packets.
+.design-os-private/

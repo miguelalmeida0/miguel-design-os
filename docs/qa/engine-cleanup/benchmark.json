@@ -1,0 +1,23 @@
+{
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "samples": 30
+  },
+  "profileReferences": 228,
+  "inspirationReferences": 134,
+  "fullStateBytes": 1147184,
+  "compactIndexBytes": 233564,
+  "coldIndexMs": 15.43,
+  "warmLookupMedianMs": 1.17,
+  "warmLookupP95Ms": 2.8,
+  "priorEntryBytes": 102289,
+  "currentEntryBytes": 5580,
+  "samplePromptBytes": 3148,
+  "entryAndPacketReductionPercent": 91.5,
+  "referenceBrowsingRules": [
+    "Never use handwritten typography.",
+    "i dont want approved or apps or whatever, just references."
+  ],
+  "limits": "This measures local retrieval and context bytes, not model generation, design quality or Miguel's acceptance time. The source profile is not modified."
+}

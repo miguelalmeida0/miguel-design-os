@@ -27,9 +27,12 @@ function resolveProjectPath(filePath) {
 }
 
 function pngDimensions(filePath) {
+  let descriptor;
   try {
-    const buffer = fs.readFileSync(filePath);
-    if (buffer.length >= 24 && buffer.toString("ascii", 1, 4) === "PNG") {
+    descriptor = fs.openSync(filePath, "r");
+    const buffer = Buffer.alloc(24);
+    const bytesRead = fs.readSync(descriptor, buffer, 0, buffer.length, 0);
+    if (bytesRead >= 24 && buffer.toString("ascii", 1, 4) === "PNG") {
       return {
         width: buffer.readUInt32BE(16),
         height: buffer.readUInt32BE(20),
@@ -38,6 +41,8 @@ function pngDimensions(filePath) {
     }
   } catch {
     // handled below
+  } finally {
+    if (descriptor !== undefined) fs.closeSync(descriptor);
   }
   return { width: 0, height: 0, known: false };
 }

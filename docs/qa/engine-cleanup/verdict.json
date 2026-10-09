@@ -1,0 +1,37 @@
+{
+  "version": "p0-2026-07-04",
+  "skillId": "creative-orchestration-director",
+  "task": "Clean up the existing personal design engine workflow and runtime",
+  "phase": "handoff",
+  "status": "pass",
+  "evidence": [
+    {
+      "type": "test",
+      "pathOrCommand": "node --test tests/engine.test.mjs tests/legacy-regression.test.mjs",
+      "summary": "41 tests pass, including 13 exact legacy command contracts, private exports, scope isolation, history reverts, cache behavior, moved workspaces and changed image hashes."
+    },
+    {
+      "type": "benchmark",
+      "pathOrCommand": "docs/qa/engine-cleanup/benchmark.json",
+      "summary": "134 inspiration references; 30 warm lookups; 1.17 ms median; 91.5% instruction plus sample packet reduction."
+    },
+    {
+      "type": "filesystem",
+      "pathOrCommand": "original asset SHA-256 comparison against verified main HEAD 0676160",
+      "summary": "231 original assets unchanged; all 228 private records, three preferences and existing run history preserved."
+    },
+    {
+      "type": "process",
+      "pathOrCommand": "node tools/design-os.mjs references --context mobile-product --query wellness --limit 1",
+      "summary": "Actual Wysa original selected; exact user correction about plain references recalled in a fresh Node process."
+    }
+  ],
+  "machineVerdict": {
+    "score": null,
+    "scoreCaps": [],
+    "blockers": []
+  },
+  "repairTasks": [],
+  "nextSkills": [],
+  "notes": "Engine cleanup verified locally. No frontend changed or browser quality claim made. Independent GPT-session transfer and accepted-design time remain unmeasured; retrieval is lexical, not model training."
+}

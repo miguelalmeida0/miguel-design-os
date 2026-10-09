@@ -48,18 +48,24 @@ function expandTerms(input) {
   return [...expanded];
 }
 
-function walk(target) {
-  if (!fs.existsSync(target)) return [];
-  const stat = fs.statSync(target);
-  if (stat.isFile()) return [target];
+function walkDirectory(target) {
   const files = [];
-  for (const entry of fs.readdirSync(target)) {
-    const full = path.join(target, entry);
-    const childStat = fs.statSync(full);
-    if (childStat.isDirectory()) files.push(...walk(full));
-    if (childStat.isFile() && /\.(md|json)$/i.test(entry)) files.push(full);
+  for (const entry of fs.readdirSync(target, { withFileTypes: true })) {
+    const full = path.join(target, entry.name);
+    const child = entry.isSymbolicLink() ? fs.statSync(full) : entry;
+    if (child.isDirectory()) files.push(...walkDirectory(full));
+    if (child.isFile() && /\.(md|json)$/i.test(entry.name)) files.push(full);
   }
   return files;
+}
+
+function walk(target) {
+  let stat;
+  try { stat = fs.statSync(target); } catch (error) {
+    if (error.code === "ENOENT" || error.code === "ENOTDIR") return [];
+    throw error;
+  }
+  return stat.isFile() ? [target] : walkDirectory(target);
 }
 
 const terms = expandTerms(query);
