@@ -54,3 +54,5 @@ node tools/benchmark-engine.mjs
 [Engine details and limits](docs/engine.md) explain provenance, cache invalidation, context selection and private storage. Legacy CLI commands keep their existing behavior. No model API, paid pipeline, deployment or publication is part of this local engine.
 
 Built by [Miguel Almeida](https://github.com/miguelalmeida0).
+
+[Cleanup and preservation record](docs/CLEANUP_2026-10-09.md)
